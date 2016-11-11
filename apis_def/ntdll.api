@@ -1,0 +1,734 @@
+[NtdllDefWindowProc_A]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=NtdllDefWindowProc_A(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[NtdllDefWindowProc_W]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=NtdllDefWindowProc_W(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[NtdllDefWindowProc]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=NtdllDefWindowProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[DefWindowProcA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefWindowProcA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[DefWindowProcW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefWindowProcW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[PostQuitMessage]
+1=int nExitCode
+ParamCount=1
+@=PostQuitMessage(int nExitCode);
+[Int64ShllMod32]
+1=ULONGLONG Value
+2=DWORD ShiftCount
+ParamCount=2
+@=Int64ShllMod32(ULONGLONG Value, DWORD ShiftCount);
+[Int64ShraMod32]
+1=LONGLONG Value
+2=DWORD ShiftCount
+ParamCount=2
+@=Int64ShraMod32(LONGLONG Value, DWORD ShiftCount);
+[Int64ShrlMod32]
+1=ULONGLONG Value
+2=DWORD ShiftCount
+ParamCount=2
+@=Int64ShrlMod32(ULONGLONG Value, DWORD ShiftCount);
+[EXCEPTION_ROUTINE]
+1=_EXCEPTION_RECORD *ExceptionRecord
+2=PVOID EstablisherFrame
+3=_CONTEXT *ContextRecord
+4=PVOID DispatcherContext
+ParamCount=4
+@=EXCEPTION_ROUTINE(_EXCEPTION_RECORD *ExceptionRecord, PVOID EstablisherFrame, _CONTEXT *ContextRecord, PVOID DispatcherContext);
+[RtlLookupFunctionEntry]
+1=ULONGLONG ControlPc
+2=PULONGLONG ImageBase
+3=PULONGLONG TargetGp
+ParamCount=3
+@=RtlLookupFunctionEntry(ULONGLONG ControlPc, PULONGLONG ImageBase, PULONGLONG TargetGp);
+[RtlVirtualUnwind]
+1=ULONGLONG ImageBase
+2=ULONGLONG ControlPc
+3=PRUNTIME_FUNCTION FunctionEntry
+4=PCONTEXT ContextRecord
+5=PBOOLEAN InFunction
+6=PFRAME_POINTERS EstablisherFrame
+7=PKNONVOLATILE_CONTEXT_POINTERS ContextPointers
+8=PKNONVOLATILE_CONTEXT_POINTERS ContextPointers
+ParamCount=7
+@=RtlVirtualUnwind(ULONGLONG ImageBase, ULONGLONG ControlPc, PRUNTIME_FUNCTION FunctionEntry, PCONTEXT ContextRecord, PBOOLEAN InFunction, PFRAME_POINTERS EstablisherFrame, PKNONVOLATILE_CONTEXT_POINTERS ContextPointers);
+[RtlAddFunctionTable]
+1=PRUNTIME_FUNCTION FunctionTable
+2=DWORD EntryCount
+3=ULONGLONG BaseAddress
+4=ULONGLONG TargetGp
+ParamCount=4
+@=RtlAddFunctionTable(PRUNTIME_FUNCTION FunctionTable, DWORD EntryCount, ULONGLONG BaseAddress, ULONGLONG TargetGp);
+[RtlInstallFunctionTableCallback]
+1=DWORD64 TableIdentifier
+2=DWORD64 BaseAddress
+3=DWORD Length
+4=DWORD64 TargetGp
+5=PGET_RUNTIME_FUNCTION_CALLBACK Callback
+6=PVOID Context
+7=PCWSTR OutOfProcessCallbackDll
+ParamCount=7
+@=RtlInstallFunctionTableCallback(DWORD64 TableIdentifier, DWORD64 BaseAddress, DWORD Length, DWORD64 TargetGp, PGET_RUNTIME_FUNCTION_CALLBACK Callback, PVOID Context, PCWSTR OutOfProcessCallbackDll);
+[RtlDeleteFunctionTable]
+1=PRUNTIME_FUNCTION FunctionTable
+ParamCount=1
+@=RtlDeleteFunctionTable(PRUNTIME_FUNCTION FunctionTable);
+[RtlRestoreContext]
+1=PCONTEXT ContextRecord
+2=_EXCEPTION_RECORD *ExceptionRecord
+ParamCount=2
+@=RtlRestoreContext(PCONTEXT ContextRecord, _EXCEPTION_RECORD *ExceptionRecord);
+[__jump_unwind]
+1=ULONGLONG TargetMsFrame
+2=ULONGLONG TargetBsFrame
+3=ULONGLONG TargetPc
+ParamCount=3
+@=__jump_unwind(ULONGLONG TargetMsFrame, ULONGLONG TargetBsFrame, ULONGLONG TargetPc);
+[RtlUnwind]
+1=PVOID TargetFrame
+2=PVOID TargetIp
+3=PEXCEPTION_RECORD ExceptionRecord
+4=PVOID ReturnValue
+ParamCount=4
+@=RtlUnwind(PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue);
+[RtlUnwind2]
+1=FRAME_POINTERS TargetFrame
+2=PVOID TargetIp
+3=PEXCEPTION_RECORD ExceptionRecord
+4=PVOID ReturnValue
+5=PCONTEXT ContextRecord
+ParamCount=5
+@=RtlUnwind2(FRAME_POINTERS TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord);
+[RtlUnwindEx]
+1=FRAME_POINTERS TargetFrame
+2=PVOID TargetIp
+3=PEXCEPTION_RECORD ExceptionRecord
+4=PVOID ReturnValue
+5=PCONTEXT ContextRecord
+6=PUNWIND_HISTORY_TABLE HistoryTable
+ParamCount=6
+@=RtlUnwindEx(FRAME_POINTERS TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable);
+[RtlInitializeSListHead]
+1=PSLIST_HEADER ListHead
+ParamCount=1
+@=RtlInitializeSListHead(PSLIST_HEADER ListHead);
+[RtlFirstEntrySList]
+1=SLIST_HEADER *ListHead
+ParamCount=1
+@=RtlFirstEntrySList(SLIST_HEADER *ListHead);
+[RtlInterlockedPopEntrySList]
+1=PSLIST_HEADER ListHead
+ParamCount=1
+@=RtlInterlockedPopEntrySList(PSLIST_HEADER ListHead);
+[RtlInterlockedPushEntrySList]
+1=PSLIST_HEADER ListHead
+2=PSLIST_HEADER PSLIST_ENTRYListEntry
+ParamCount=2
+@=RtlInterlockedPushEntrySList(PSLIST_HEADER ListHead, PSLIST_HEADER PSLIST_ENTRYListEntry);
+[RtlInterlockedFlushSList]
+1=PSLIST_HEADER ListHead
+ParamCount=1
+@=RtlInterlockedFlushSList(PSLIST_HEADER ListHead);
+[RtlQueryDepthSList]
+1=PSLIST_HEADER ListHead
+ParamCount=1
+@=RtlQueryDepthSList(PSLIST_HEADER ListHead);
+[RtlInterlockedPopEntrySList32]
+1=PSLIST_HEADER32 ListHead
+ParamCount=1
+@=RtlInterlockedPopEntrySList32(PSLIST_HEADER32 ListHead);
+[RTL_RUN_ONCE_INIT_FN]
+1=PRTL_RUN_ONCE RunOnce
+2=PVOID Parameter
+3=PVOID *Context
+ParamCount=3
+@=RTL_RUN_ONCE_INIT_FN(PRTL_RUN_ONCE RunOnce, PVOID Parameter, PVOID *Context);
+[RtlRunOnceInitialize]
+1=PRTL_RUN_ONCE RunOnce
+ParamCount=1
+@=RtlRunOnceInitialize(PRTL_RUN_ONCE RunOnce);
+[RtlRunOnceExecuteOnce]
+1=PRTL_RUN_ONCE RunOnce
+2=PRTL_RUN_ONCE PRTL_RUN_ONCE_INIT_FNInitFn
+3=PVOID Parameter
+4=PVOID *Context
+ParamCount=4
+@=RtlRunOnceExecuteOnce(PRTL_RUN_ONCE RunOnce, PRTL_RUN_ONCE PRTL_RUN_ONCE_INIT_FNInitFn, PVOID Parameter, PVOID *Context);
+[RtlRunOnceBeginInitialize]
+1=PRTL_RUN_ONCE RunOnce
+2=DWORD Flags
+3=PVOID *Context
+ParamCount=3
+@=RtlRunOnceBeginInitialize(PRTL_RUN_ONCE RunOnce, DWORD Flags, PVOID *Context);
+[RtlRunOnceComplete]
+1=PRTL_RUN_ONCE RunOnce
+2=DWORD Flags
+3=PVOID Context
+ParamCount=3
+@=RtlRunOnceComplete(PRTL_RUN_ONCE RunOnce, DWORD Flags, PVOID Context);
+[RtlCaptureStackBackTrace]
+1=DWORD FramesToSkip
+2=DWORD FramesToCapture
+3=PVOID *BackTrace
+4=PDWORD BackTraceHash
+ParamCount=4
+@=RtlCaptureStackBackTrace(DWORD FramesToSkip, DWORD FramesToCapture, PVOID *BackTrace, PDWORD BackTraceHash);
+[RtlCaptureContext]
+1=PCONTEXT ContextRecord
+ParamCount=1
+@=RtlCaptureContext(PCONTEXT ContextRecord);
+[RtlCompareMemory]
+1=VOID *Source1
+2=VOID *Source2
+3=SIZE_T Length
+ParamCount=3
+@=RtlCompareMemory(VOID *Source1, VOID *Source2, SIZE_T Length);
+[RtlPcToFileHeader]
+1=PVOID PcValue
+2=PVOID *BaseOfImage
+ParamCount=2
+@=RtlPcToFileHeader(PVOID PcValue, PVOID *BaseOfImage);
+[VerSetConditionMask]
+1=ULONGLONG ConditionMask
+2=DWORD TypeMask
+3=BYTE Condition
+ParamCount=3
+@=VerSetConditionMask(ULONGLONG ConditionMask, DWORD TypeMask, BYTE Condition);
+[RtlGetProductInfo]
+1=DWORD OSMajorVersion
+2=DWORD OSMinorVersion
+3=DWORD SpMajorVersion
+4=DWORD SpMinorVersion
+5=PDWORD ReturnedProductType
+ParamCount=5
+@=RtlGetProductInfo(DWORD OSMajorVersion, DWORD OSMinorVersion, DWORD SpMajorVersion, DWORD SpMinorVersion, PDWORD ReturnedProductType);
+[RTL_UMS_SCHEDULER_ENTRY_POINT]
+1=RTL_UMS_SCHEDULER_REASON Reason
+2=ULONG_PTR ActivationPayload
+3=PVOID SchedulerParam
+ParamCount=3
+@=RTL_UMS_SCHEDULER_ENTRY_POINT(RTL_UMS_SCHEDULER_REASON Reason, ULONG_PTR ActivationPayload, PVOID SchedulerParam);
+[RtlCopyExtendedContext]
+1=PCONTEXT_EX Destination
+2=DWORD ContextFlags
+3=PCONTEXT_EX Source
+ParamCount=3
+@=RtlCopyExtendedContext(PCONTEXT_EX Destination, DWORD ContextFlags, PCONTEXT_EX Source);
+[RtlInitializeExtendedContext]
+1=PVOID Context
+2=DWORD ContextFlags
+3=PCONTEXT_EX* ContextEx
+ParamCount=3
+@=RtlInitializeExtendedContext(PVOID Context, DWORD ContextFlags, PCONTEXT_EX* ContextEx);
+[RtlGetEnabledExtendedFeatures]
+1=DWORD64 FeatureMask
+ParamCount=1
+@=RtlGetEnabledExtendedFeatures(DWORD64 FeatureMask);
+[RtlGetExtendedContextLength]
+1=DWORD ContextFlags
+2=PDWORD ContextLength
+ParamCount=2
+@=RtlGetExtendedContextLength(DWORD ContextFlags, PDWORD ContextLength);
+[RtlGetExtendedFeaturesMask]
+1=PCONTEXT_EX ContextEx
+ParamCount=1
+@=RtlGetExtendedFeaturesMask(PCONTEXT_EX ContextEx);
+[RtlLocateExtendedFeature]
+1=PCONTEXT_EX ContextEx
+2=DWORD FeatureId
+3=PDWORD Length
+ParamCount=3
+@=RtlLocateExtendedFeature(PCONTEXT_EX ContextEx, DWORD FeatureId, PDWORD Length);
+[RtlLocateLegacyContext]
+1=PCONTEXT_EX ContextEx
+2=PDWORD Length
+ParamCount=2
+@=RtlLocateLegacyContext(PCONTEXT_EX ContextEx, PDWORD Length);
+[RtlSetExtendedFeaturesMask]
+1=PCONTEXT_EX ContextEx
+2=DWORD64 FeatureMask
+ParamCount=2
+@=RtlSetExtendedFeaturesMask(PCONTEXT_EX ContextEx, DWORD64 FeatureMask);
+[NtClose]
+1=HANDLE Handle
+ParamCount=1
+@=NtClose(HANDLE Handle);
+[NtCreateFile]
+1=OUT PHANDLEFileHandle
+2=ACCESS_MASK DesiredAccess
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=IoStatusBlock
+5=PLARGE_INTEGER AllocationSizeOPTIONAL
+6=ULONG FileAttributes
+7=ULONG ShareAccess
+8=ULONG CreateDisposition
+9=ULONG CreateOptions
+10=PVOID EaBufferOPTIONAL
+11=ULONG EaLength
+ParamCount=11
+@=NtCreateFile(OUT PHANDLEFileHandle, ACCESS_MASK DesiredAccess, POBJECT_ATTRIBUTES ObjectAttributes, IoStatusBlock, PLARGE_INTEGER AllocationSizeOPTIONAL, ULONG FileAttributes, ULONG ShareAccess, ULONG CreateDisposition, ULONG CreateOptions, PVOID EaBufferOPTIONAL, ULONG EaLength);
+[NtOpenFile]
+1=OUT PHANDLEFileHandle
+2=ACCESS_MASK DesiredAccess
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=IoStatusBlock
+5=ULONG ShareAccess
+6=ULONG OpenOptions
+ParamCount=6
+@=NtOpenFile(OUT PHANDLEFileHandle, ACCESS_MASK DesiredAccess, POBJECT_ATTRIBUTES ObjectAttributes, IoStatusBlock, ULONG ShareAccess, ULONG OpenOptions);
+[NtDeviceIoControlFile]
+1=HANDLE FileHandle
+2=HANDLE EventOPTIONAL
+3=PIO_APC_ROUTINE ApcRoutineOPTIONAL
+4=PVOID ApcContextOPTIONAL
+5=IoStatusBlock
+6=ULONG IoControlCode
+7=PVOID InputBufferOPTIONAL
+8=ULONG InputBufferLength
+9=OUT PVOIDOutputBufferOPTIONAL
+10=ULONG OutputBufferLength
+ParamCount=10
+@=NtDeviceIoControlFile(HANDLE FileHandle, HANDLE EventOPTIONAL, PIO_APC_ROUTINE ApcRoutineOPTIONAL, PVOID ApcContextOPTIONAL, IoStatusBlock, ULONG IoControlCode, PVOID InputBufferOPTIONAL, ULONG InputBufferLength, OUT PVOIDOutputBufferOPTIONAL, ULONG OutputBufferLength);
+[NtWaitForSingleObject]
+1=HANDLE Handle
+2=BOOLEAN Alertable
+3=PLARGE_INTEGER TimeoutOPTIONAL
+ParamCount=3
+@=NtWaitForSingleObject(HANDLE Handle, BOOLEAN Alertable, PLARGE_INTEGER TimeoutOPTIONAL);
+[RtlIsNameLegalDOS8Dot3]
+1=PUNICODE_STRING Name
+2=OUT POEM_STRINGOemNameOPTIONAL
+3=OUT PBOOLEANNameContainsSpacesOPTIONAL
+ParamCount=3
+@=RtlIsNameLegalDOS8Dot3(PUNICODE_STRING Name, OUT POEM_STRINGOemNameOPTIONAL, OUT PBOOLEANNameContainsSpacesOPTIONAL);
+[RtlNtStatusToDosError]
+1=NTSTATUS Status
+ParamCount=1
+@=RtlNtStatusToDosError(NTSTATUS Status);
+[NtQueryInformationProcess]
+1=HANDLE ProcessHandle
+2=PROCESSINFOCLASS ProcessInformationClass
+3=OUT PVOIDProcessInformation
+4=ULONG ProcessInformationLength
+5=OUT PULONGReturnLengthOPTIONAL
+ParamCount=5
+@=NtQueryInformationProcess(HANDLE ProcessHandle, PROCESSINFOCLASS ProcessInformationClass, OUT PVOIDProcessInformation, ULONG ProcessInformationLength, OUT PULONGReturnLengthOPTIONAL);
+[NtQueryInformationThread]
+1=HANDLE ThreadHandle
+2=THREADINFOCLASS ThreadInformationClass
+3=OUT PVOIDThreadInformation
+4=ULONG ThreadInformationLength
+5=OUT PULONGReturnLengthOPTIONAL
+ParamCount=5
+@=NtQueryInformationThread(HANDLE ThreadHandle, THREADINFOCLASS ThreadInformationClass, OUT PVOIDThreadInformation, ULONG ThreadInformationLength, OUT PULONGReturnLengthOPTIONAL);
+[NtQueryObject]
+1=HANDLE Handle
+2=OBJECT_INFORMATION_CLASS ObjectInformationClass
+3=PVOID ObjectInformation
+4=ULONG ObjectInformationLength
+5=PULONG ReturnLength
+ParamCount=5
+@=NtQueryObject(HANDLE Handle, OBJECT_INFORMATION_CLASS ObjectInformationClass, PVOID ObjectInformation, ULONG ObjectInformationLength, PULONG ReturnLength);
+[NtQuerySystemInformation]
+1=SYSTEM_INFORMATION_CLASS SystemInformationClass
+2=OUT PVOIDSystemInformation
+3=ULONG SystemInformationLength
+4=OUT PULONGReturnLengthOPTIONAL
+ParamCount=4
+@=NtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemInformationClass, OUT PVOIDSystemInformation, ULONG SystemInformationLength, OUT PULONGReturnLengthOPTIONAL);
+[NtQuerySystemTime]
+1=SystemTime
+
+ParamCount=1
+@=NtQuerySystemTime(SystemTime
+);
+[RtlLocalTimeToSystemTime]
+1=PLARGE_INTEGER LocalTime
+2=SystemTime
+
+ParamCount=2
+@=RtlLocalTimeToSystemTime(PLARGE_INTEGER LocalTime, SystemTime
+);
+[RtlTimeToSecondsSince1970]
+1=Time
+2=PULONG ElapsedSeconds
+ParamCount=2
+@=RtlTimeToSecondsSince1970(Time, PULONG ElapsedSeconds);
+[RtlFreeAnsiString]
+1=AnsiString
+
+ParamCount=1
+@=RtlFreeAnsiString(AnsiString
+);
+[RtlFreeUnicodeString]
+1=UnicodeString
+
+ParamCount=1
+@=RtlFreeUnicodeString(UnicodeString
+);
+[RtlFreeOemString]
+1=OemString
+
+ParamCount=1
+@=RtlFreeOemString(OemString
+);
+[RtlInitString]
+1=PSTRING DestinationString
+2=PCSZ SourceString
+ParamCount=2
+@=RtlInitString(PSTRING DestinationString, PCSZ SourceString);
+[RtlInitAnsiString]
+1=DestinationString
+2=PCSZ SourceString
+ParamCount=2
+@=RtlInitAnsiString(DestinationString, PCSZ SourceString);
+[RtlInitUnicodeString]
+1=DestinationString
+2=PCWSTR SourceString
+ParamCount=2
+@=RtlInitUnicodeString(DestinationString, PCWSTR SourceString);
+[RtlAnsiStringToUnicodeString]
+1=DestinationString
+2=SourceString
+3=BOOLEAN AllocateDestinationString
+ParamCount=3
+@=RtlAnsiStringToUnicodeString(DestinationString, SourceString, BOOLEAN AllocateDestinationString);
+[RtlUnicodeStringToAnsiString]
+1=DestinationString
+2=SourceString
+3=BOOLEAN AllocateDestinationString
+ParamCount=3
+@=RtlUnicodeStringToAnsiString(DestinationString, SourceString, BOOLEAN AllocateDestinationString);
+[RtlUnicodeStringToOemString]
+1=DestinationString
+2=SourceString
+3=BOOLEAN AllocateDestinationString
+ParamCount=3
+@=RtlUnicodeStringToOemString(DestinationString, SourceString, BOOLEAN AllocateDestinationString);
+[RtlUnicodeToMultiByteSize]
+1=PULONG BytesInMultiByteString
+2=PWCH UnicodeString
+3=ULONG BytesInUnicodeString
+ParamCount=3
+@=RtlUnicodeToMultiByteSize(PULONG BytesInMultiByteString, PWCH UnicodeString, ULONG BytesInUnicodeString);
+[RtlCharToInteger]
+1=PCSZ String
+2=ULONG Base
+3=PULONG Value
+ParamCount=3
+@=RtlCharToInteger(PCSZ String, ULONG Base, PULONG Value);
+[RtlConvertSidToUnicodeString]
+1=UnicodeString
+2=PSID Sid
+3=BOOLEAN AllocateDestinationString
+ParamCount=3
+@=RtlConvertSidToUnicodeString(UnicodeString, PSID Sid, BOOLEAN AllocateDestinationString);
+[RtlUniform]
+1=PULONG Seed
+ParamCount=1
+@=RtlUniform(PULONG Seed);
+[HalDisplayString]
+1=PCHAR String
+ParamCount=1
+@=HalDisplayString(PCHAR String);
+[HalQueryRealTimeClock]
+1=OUT PTIME_FIELDSTimeFields
+ParamCount=1
+@=HalQueryRealTimeClock(OUT PTIME_FIELDSTimeFields);
+[HalSetRealTimeClock]
+1=PTIME_FIELDS TimeFields
+ParamCount=1
+@=HalSetRealTimeClock(PTIME_FIELDS TimeFields);
+[RtlGetNtGlobalFlags]
+ParamCount=0
+@=RtlGetNtGlobalFlags();
+[RtlImageNtHeader]
+1=PVOID BaseAddress
+ParamCount=1
+@=RtlImageNtHeader(PVOID BaseAddress);
+[RtlSetSaclSecurityDescriptor]
+1=OUT PSECURITY_DESCRIPTORSecurityDescriptor
+2=BOOLEAN SaclPresent
+3=PACL Sacl
+4=BOOLEAN SaclDefaulted
+ParamCount=4
+@=RtlSetSaclSecurityDescriptor(OUT PSECURITY_DESCRIPTORSecurityDescriptor, BOOLEAN SaclPresent, PACL Sacl, BOOLEAN SaclDefaulted);
+[RtlMoveMemory]
+1=VOID UNALIGNED *Destination
+2=VOID UNALIGNED *Source
+3=SIZE_T Length
+ParamCount=3
+@=RtlMoveMemory(VOID UNALIGNED *Destination, VOID UNALIGNED *Source, SIZE_T Length);
+[RtlFillMemory]
+1=VOID UNALIGNED *Destination
+2=SIZE_T Length
+3=UCHAR Fill
+ParamCount=3
+@=RtlFillMemory(VOID UNALIGNED *Destination, SIZE_T Length, UCHAR Fill);
+[RtlZeroMemory]
+1=VOID UNALIGNED *Destination
+2=SIZE_T Length
+ParamCount=2
+@=RtlZeroMemory(VOID UNALIGNED *Destination, SIZE_T Length);
+[ZwAdjustPrivilegesToken]
+1=HANDLE TokenHandle
+2=BOOLEAN DisableAllPrivileges
+3=PTOKEN_PRIVILEGES NewState
+4=ULONG BufferLength
+5=PreviousState OPTIONAL
+6=OUT PULONGReturnLength
+ParamCount=6
+@=ZwAdjustPrivilegesToken(HANDLE TokenHandle, BOOLEAN DisableAllPrivileges, PTOKEN_PRIVILEGES NewState, ULONG BufferLength, PreviousState OPTIONAL, OUT PULONGReturnLength);
+[ZwAlertThread]
+1=HANDLE ThreadHandle
+ParamCount=1
+@=ZwAlertThread(HANDLE ThreadHandle);
+[ZwAccessCheckAndAuditAlarm]
+1=PUNICODE_STRING SubsystemName
+2=PVOID HandleId
+3=PUNICODE_STRING ObjectTypeName
+4=PUNICODE_STRING ObjectName
+5=PSECURITY_DESCRIPTOR SecurityDescriptor
+6=ACCESS_MASK DesiredAccess
+7=PGENERIC_MAPPING GenericMapping
+8=BOOLEAN ObjectCreation
+9=GrantedAccess
+10=OUT PBOOLEANAccessStatus
+11=OUT PBOOLEANGenerateOnClose
+ParamCount=11
+@=ZwAccessCheckAndAuditAlarm(PUNICODE_STRING SubsystemName, PVOID HandleId, PUNICODE_STRING ObjectTypeName, PUNICODE_STRING ObjectName, PSECURITY_DESCRIPTOR SecurityDescriptor, ACCESS_MASK DesiredAccess, PGENERIC_MAPPING GenericMapping, BOOLEAN ObjectCreation, GrantedAccess, OUT PBOOLEANAccessStatus, OUT PBOOLEANGenerateOnClose);
+[ZwCancelIoFile]
+1=HANDLE FileHandle
+2=IoStatusBlock
+
+ParamCount=2
+@=ZwCancelIoFile(HANDLE FileHandle, IoStatusBlock
+);
+[ZwClearEvent]
+1=HANDLE EventHandle
+ParamCount=1
+@=ZwClearEvent(HANDLE EventHandle);
+[ZwConnectPort]
+1=OUT PHANDLEClientPortHandle
+2=PUNICODE_STRING ServerPortName
+3=PSECURITY_QUALITY_OF_SERVICE SecurityQos
+4=OUT PLPC_SECTION_WRITEClientSharedMemoryOPTIONAL
+5=OUT PLPC_SECTION_READServerSharedMemoryOPTIONAL
+6=OUT PULONGMaximumMessageLengthOPTIONAL
+7=OUT PVOIDConnectionInfoOPTIONAL
+8=OUT PULONGConnectionInfoLengthOPTIONAL
+ParamCount=8
+@=ZwConnectPort(OUT PHANDLEClientPortHandle, PUNICODE_STRING ServerPortName, PSECURITY_QUALITY_OF_SERVICE SecurityQos, OUT PLPC_SECTION_WRITEClientSharedMemoryOPTIONAL, OUT PLPC_SECTION_READServerSharedMemoryOPTIONAL, OUT PULONGMaximumMessageLengthOPTIONAL, OUT PVOIDConnectionInfoOPTIONAL, OUT PULONGConnectionInfoLengthOPTIONAL);
+[ZwCloseObjectAuditAlarm]
+1=PUNICODE_STRING SubsystemName
+2=PVOID HandleId
+3=BOOLEAN GenerateOnClose
+ParamCount=3
+@=ZwCloseObjectAuditAlarm(PUNICODE_STRING SubsystemName, PVOID HandleId, BOOLEAN GenerateOnClose);
+[ZwCreateSymbolicLinkObject]
+1=OUT PHANDLESymbolicLinkHandle
+2=ACCESS_MASK DesiredAccess
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PUNICODE_STRING TargetName
+ParamCount=4
+@=ZwCreateSymbolicLinkObject(OUT PHANDLESymbolicLinkHandle, ACCESS_MASK DesiredAccess, POBJECT_ATTRIBUTES ObjectAttributes, PUNICODE_STRING TargetName);
+[ZwFlushInstructionCache]
+1=HANDLE ProcessHandle
+2=PVOID BaseAddressOPTIONAL
+3=ULONG FlushSize
+ParamCount=3
+@=ZwFlushInstructionCache(HANDLE ProcessHandle, PVOID BaseAddressOPTIONAL, ULONG FlushSize);
+[ZwInitiatePowerAction]
+1=POWER_ACTION SystemAction
+2=SYSTEM_POWER_STATE MinSystemState
+3=ULONG Flags
+4=BOOLEAN Asynchronous
+ParamCount=4
+@=ZwInitiatePowerAction(POWER_ACTION SystemAction, SYSTEM_POWER_STATE MinSystemState, ULONG Flags, BOOLEAN Asynchronous);
+[ZwLoadKey]
+1=POBJECT_ATTRIBUTES KeyObjectAttributes
+2=POBJECT_ATTRIBUTES FileObjectAttributes
+ParamCount=2
+@=ZwLoadKey(POBJECT_ATTRIBUTES KeyObjectAttributes, POBJECT_ATTRIBUTES FileObjectAttributes);
+[ZwOpenProcessToken]
+1=HANDLE ProcessHandle
+2=ACCESS_MASK DesiredAccess
+3=OUT PHANDLETokenHandle
+ParamCount=3
+@=ZwOpenProcessToken(HANDLE ProcessHandle, ACCESS_MASK DesiredAccess, OUT PHANDLETokenHandle);
+[ZwOpenThread]
+1=OUT PHANDLEThreadHandle
+2=ACCESS_MASK DesiredAccess
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PCLIENT_ID ClientId
+ParamCount=4
+@=ZwOpenThread(OUT PHANDLEThreadHandle, ACCESS_MASK DesiredAccess, POBJECT_ATTRIBUTES ObjectAttributes, PCLIENT_ID ClientId);
+[ZwOpenThreadToken]
+1=HANDLE ThreadHandle
+2=ACCESS_MASK DesiredAccess
+3=BOOLEAN OpenAsSelf
+4=OUT PHANDLETokenHandle
+ParamCount=4
+@=ZwOpenThreadToken(HANDLE ThreadHandle, ACCESS_MASK DesiredAccess, BOOLEAN OpenAsSelf, OUT PHANDLETokenHandle);
+[ZwPulseEvent]
+1=HANDLE EventHandle
+2=OUT PULONGPreviousStateOPTIONAL
+ParamCount=2
+@=ZwPulseEvent(HANDLE EventHandle, OUT PULONGPreviousStateOPTIONAL);
+[ZwQueryDefaultLocale]
+1=BOOLEAN ThreadOrSystem
+2=OUT PLCIDLocale
+ParamCount=2
+@=ZwQueryDefaultLocale(BOOLEAN ThreadOrSystem, OUT PLCIDLocale);
+[ZwQueryDefaultUILanguage]
+1=OUT LANGID*LanguageId
+ParamCount=1
+@=ZwQueryDefaultUILanguage(OUT LANGID*LanguageId);
+[ZwQueryDirectoryObject]
+1=HANDLE DirectoryHandle
+2=OUT PVOIDBuffer
+3=ULONG Length
+4=BOOLEAN ReturnSingleEntry
+5=BOOLEAN RestartScan
+6=OUT PULONGContext
+7=OUT PULONGReturnLengthOPTIONAL
+ParamCount=7
+@=ZwQueryDirectoryObject(HANDLE DirectoryHandle, OUT PVOIDBuffer, ULONG Length, BOOLEAN ReturnSingleEntry, BOOLEAN RestartScan, OUT PULONGContext, OUT PULONGReturnLengthOPTIONAL);
+[ZwQueryInformationProcess]
+1=HANDLE ProcessHandle
+2=PROCESSINFOCLASS ProcessInformationClass
+3=OUT PVOIDProcessInformation
+4=ULONG ProcessInformationLength
+5=OUT PULONGReturnLengthOPTIONAL
+ParamCount=5
+@=ZwQueryInformationProcess(HANDLE ProcessHandle, PROCESSINFOCLASS ProcessInformationClass, OUT PVOIDProcessInformation, ULONG ProcessInformationLength, OUT PULONGReturnLengthOPTIONAL);
+[ZwQueryInformationThread]
+1=HANDLE ThreadHandle
+2=THREADINFOCLASS ThreadInformationClass
+3=OUT PVOIDThreadInformation
+4=ULONG ThreadInformationLength
+5=OUT PULONGReturnLengthOPTIONAL
+ParamCount=5
+@=ZwQueryInformationThread(HANDLE ThreadHandle, THREADINFOCLASS ThreadInformationClass, OUT PVOIDThreadInformation, ULONG ThreadInformationLength, OUT PULONGReturnLengthOPTIONAL);
+[ZwQueryInstallUILanguage]
+1=OUT LANGID*LanguageId
+ParamCount=1
+@=ZwQueryInstallUILanguage(OUT LANGID*LanguageId);
+[ZwQuerySection]
+1=HANDLE SectionHandle
+2=SECTION_INFORMATION_CLASS SectionInformationClass
+3=OUT PVOIDSectionInformation
+4=ULONG SectionInformationLength
+5=OUT PULONGResultLengthOPTIONAL
+ParamCount=5
+@=ZwQuerySection(HANDLE SectionHandle, SECTION_INFORMATION_CLASS SectionInformationClass, OUT PVOIDSectionInformation, ULONG SectionInformationLength, OUT PULONGResultLengthOPTIONAL);
+[ZwQuerySystemInformation]
+1=SYSTEM_INFORMATION_CLASS SystemInformationClass
+2=OUT PVOIDSystemInformation
+3=ULONG Length
+4=OUT PULONGReturnLength
+ParamCount=4
+@=ZwQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemInformationClass, OUT PVOIDSystemInformation, ULONG Length, OUT PULONGReturnLength);
+[ZwReplaceKey]
+1=POBJECT_ATTRIBUTES NewFileObjectAttributes
+2=HANDLE KeyHandle
+3=POBJECT_ATTRIBUTES OldFileObjectAttributes
+ParamCount=3
+@=ZwReplaceKey(POBJECT_ATTRIBUTES NewFileObjectAttributes, HANDLE KeyHandle, POBJECT_ATTRIBUTES OldFileObjectAttributes);
+[ZwRequestWaitReplyPort]
+1=HANDLE PortHandle
+2=PLPC_MESSAGE Request
+3=Reply
+
+ParamCount=3
+@=ZwRequestWaitReplyPort(HANDLE PortHandle, PLPC_MESSAGE Request, Reply
+);
+[ZwResetEvent]
+1=HANDLE EventHandle
+2=OUT PULONGPreviousStateOPTIONAL
+ParamCount=2
+@=ZwResetEvent(HANDLE EventHandle, OUT PULONGPreviousStateOPTIONAL);
+[ZwRestoreKey]
+1=HANDLE KeyHandle
+2=HANDLE FileHandle
+3=ULONG Flags
+ParamCount=3
+@=ZwRestoreKey(HANDLE KeyHandle, HANDLE FileHandle, ULONG Flags);
+[ZwSaveKey]
+1=HANDLE KeyHandle
+2=HANDLE FileHandle
+ParamCount=2
+@=ZwSaveKey(HANDLE KeyHandle, HANDLE FileHandle);
+[ZwSetDefaultLocale]
+1=BOOLEAN ThreadOrSystem
+2=LCID Locale
+ParamCount=2
+@=ZwSetDefaultLocale(BOOLEAN ThreadOrSystem, LCID Locale);
+[ZwSetDefaultUILanguage]
+1=LANGID LanguageId
+ParamCount=1
+@=ZwSetDefaultUILanguage(LANGID LanguageId);
+[ZwSetInformationObject]
+1=HANDLE ObjectHandle
+2=OBJECT_INFO_CLASS ObjectInformationClass
+3=PVOID ObjectInformation
+4=ULONG ObjectInformationLength
+ParamCount=4
+@=ZwSetInformationObject(HANDLE ObjectHandle, OBJECT_INFO_CLASS ObjectInformationClass, PVOID ObjectInformation, ULONG ObjectInformationLength);
+[ZwSetInformationProcess]
+1=HANDLE ProcessHandle
+2=PROCESSINFOCLASS ProcessInformationClass
+3=PVOID ProcessInformation
+4=ULONG ProcessInformationLength
+ParamCount=4
+@=ZwSetInformationProcess(HANDLE ProcessHandle, PROCESSINFOCLASS ProcessInformationClass, PVOID ProcessInformation, ULONG ProcessInformationLength);
+[ZwSetSystemInformation]
+1=SYSTEM_INFORMATION_CLASS SystemInformationClass
+2=PVOID SystemInformation
+3=ULONG Length
+ParamCount=3
+@=ZwSetSystemInformation(SYSTEM_INFORMATION_CLASS SystemInformationClass, PVOID SystemInformation, ULONG Length);
+[ZwSetSystemTime]
+1=PLARGE_INTEGER NewTime
+2=OldTime OPTIONAL
+ParamCount=2
+@=ZwSetSystemTime(PLARGE_INTEGER NewTime, OldTime OPTIONAL);
+[ZwUnloadKey]
+1=POBJECT_ATTRIBUTES KeyObjectAttributes
+ParamCount=1
+@=ZwUnloadKey(POBJECT_ATTRIBUTES KeyObjectAttributes);
+[ZwWaitForMultipleObjects]
+1=ULONG HandleCount
+2=PHANDLE Handles
+3=WAIT_TYPE WaitType
+4=BOOLEAN Alertable
+5=PLARGE_INTEGER TimeoutOPTIONAL
+ParamCount=5
+@=ZwWaitForMultipleObjects(ULONG HandleCount, PHANDLE Handles, WAIT_TYPE WaitType, BOOLEAN Alertable, PLARGE_INTEGER TimeoutOPTIONAL);
+[ZwYieldExecution]
+ParamCount=0
+@=ZwYieldExecution();

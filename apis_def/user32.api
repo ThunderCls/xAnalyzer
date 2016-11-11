@@ -1,0 +1,5465 @@
+[wvsprintfA]
+1=LPSTR
+2=LPCSTR __format_string
+3=va_list arglist
+ParamCount=3
+@=wvsprintfA(LPSTR, LPCSTR __format_string, va_list arglist);
+[wvsprintfW]
+1=LPWSTR
+2=LPCWSTR __format_string
+3=va_list arglist
+ParamCount=3
+@=wvsprintfW(LPWSTR, LPCWSTR __format_string, va_list arglist);
+[wsprintfA]
+1=LPSTR
+2=LPCSTR __format_string
+ParamCount=2
+@=wsprintfA(LPSTR, LPCSTR __format_string);
+[wsprintfW]
+1=LPWSTR
+2=LPCWSTR __format_string
+ParamCount=2
+@=wsprintfW(LPWSTR, LPCWSTR __format_string);
+[LoadKeyboardLayoutA]
+1=LPCSTR pwszKLID
+2=UINT Flags
+ParamCount=2
+@=LoadKeyboardLayoutA(LPCSTR pwszKLID, UINT Flags);
+[LoadKeyboardLayoutW]
+1=LPCWSTR pwszKLID
+2=UINT Flags
+ParamCount=2
+@=LoadKeyboardLayoutW(LPCWSTR pwszKLID, UINT Flags);
+[ActivateKeyboardLayout]
+1=HKL hkl
+2=UINT Flags
+ParamCount=2
+@=ActivateKeyboardLayout(HKL hkl, UINT Flags);
+[ToUnicodeEx]
+1=UINT wVirtKey
+2=UINT wScanCode
+3=BYTE *lpKeyState
+4=LPWSTR pwszBuff
+5=int cchBuff
+6=UINT wFlags
+7=HKL dwhkl
+ParamCount=7
+@=ToUnicodeEx(UINT wVirtKey, UINT wScanCode, BYTE *lpKeyState, LPWSTR pwszBuff, int cchBuff, UINT wFlags, HKL dwhkl);
+[UnloadKeyboardLayout]
+1=HKL hkl
+ParamCount=1
+@=UnloadKeyboardLayout(HKL hkl);
+[GetKeyboardLayoutNameA]
+1=LPSTR pwszKLID
+ParamCount=1
+@=GetKeyboardLayoutNameA(LPSTR pwszKLID);
+[GetKeyboardLayoutNameW]
+1=LPWSTR pwszKLID
+ParamCount=1
+@=GetKeyboardLayoutNameW(LPWSTR pwszKLID);
+[GetKeyboardLayoutList]
+1=int nBuff
+2=HKL *lpList
+ParamCount=2
+@=GetKeyboardLayoutList(int nBuff, HKL *lpList);
+[GetKeyboardLayout]
+1=DWORD idThread
+ParamCount=1
+@=GetKeyboardLayout(DWORD idThread);
+[GetMouseMovePointsEx]
+1=UINT cbSize
+2=LPMOUSEMOVEPOINT lppt
+3=LPMOUSEMOVEPOINT lpptBuf
+4=int nBufPoints
+5=DWORD resolution
+ParamCount=5
+@=GetMouseMovePointsEx(UINT cbSize, LPMOUSEMOVEPOINT lppt, LPMOUSEMOVEPOINT lpptBuf, int nBufPoints, DWORD resolution);
+[CreateDesktopA]
+1=LPCSTR lpszDesktop
+2=LPCSTR lpszDevice
+3=DEVMODEA* pDevmode
+4=DWORD dwFlags
+5=ACCESS_MASK dwDesiredAccess
+6=LPSECURITY_ATTRIBUTES lpsa
+ParamCount=6
+@=CreateDesktopA(LPCSTR lpszDesktop, LPCSTR lpszDevice, DEVMODEA* pDevmode, DWORD dwFlags, ACCESS_MASK dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa);
+[CreateDesktopW]
+1=LPCWSTR lpszDesktop
+2=LPCWSTR lpszDevice
+3=DEVMODEW* pDevmode
+4=DWORD dwFlags
+5=ACCESS_MASK dwDesiredAccess
+6=LPSECURITY_ATTRIBUTES lpsa
+ParamCount=6
+@=CreateDesktopW(LPCWSTR lpszDesktop, LPCWSTR lpszDevice, DEVMODEW* pDevmode, DWORD dwFlags, ACCESS_MASK dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa);
+[CreateDesktopExA]
+1=LPCSTR lpszDesktop
+2=LPCSTR lpszDevice
+3=DEVMODEA* pDevmode
+4=DWORD dwFlags
+5=ACCESS_MASK dwDesiredAccess
+6=LPSECURITY_ATTRIBUTES lpsa
+7=ULONG ulHeapSize
+8=PVOID pvoid
+ParamCount=8
+@=CreateDesktopExA(LPCSTR lpszDesktop, LPCSTR lpszDevice, DEVMODEA* pDevmode, DWORD dwFlags, ACCESS_MASK dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa, ULONG ulHeapSize, PVOID pvoid);
+[CreateDesktopExW]
+1=LPCWSTR lpszDesktop
+2=LPCWSTR lpszDevice
+3=DEVMODEW* pDevmode
+4=DWORD dwFlags
+5=ACCESS_MASK dwDesiredAccess
+6=LPSECURITY_ATTRIBUTES lpsa
+7=ULONG ulHeapSize
+8=PVOID pvoid
+ParamCount=8
+@=CreateDesktopExW(LPCWSTR lpszDesktop, LPCWSTR lpszDevice, DEVMODEW* pDevmode, DWORD dwFlags, ACCESS_MASK dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa, ULONG ulHeapSize, PVOID pvoid);
+[OpenDesktopA]
+1=LPCSTR lpszDesktop
+2=DWORD dwFlags
+3=BOOL fInherit
+4=ACCESS_MASK dwDesiredAccess
+ParamCount=4
+@=OpenDesktopA(LPCSTR lpszDesktop, DWORD dwFlags, BOOL fInherit, ACCESS_MASK dwDesiredAccess);
+[OpenDesktopW]
+1=LPCWSTR lpszDesktop
+2=DWORD dwFlags
+3=BOOL fInherit
+4=ACCESS_MASK dwDesiredAccess
+ParamCount=4
+@=OpenDesktopW(LPCWSTR lpszDesktop, DWORD dwFlags, BOOL fInherit, ACCESS_MASK dwDesiredAccess);
+[OpenInputDesktop]
+1=DWORD dwFlags
+2=BOOL fInherit
+3=ACCESS_MASK dwDesiredAccess
+ParamCount=3
+@=OpenInputDesktop(DWORD dwFlags, BOOL fInherit, ACCESS_MASK dwDesiredAccess);
+[EnumDesktopsA]
+1=HWINSTA hwinsta
+2=DESKTOPENUMPROCA lpEnumFunc
+3=LPARAM lParam
+ParamCount=3
+@=EnumDesktopsA(HWINSTA hwinsta, DESKTOPENUMPROCA lpEnumFunc, LPARAM lParam);
+[EnumDesktopsW]
+1=HWINSTA hwinsta
+2=DESKTOPENUMPROCW lpEnumFunc
+3=LPARAM lParam
+ParamCount=3
+@=EnumDesktopsW(HWINSTA hwinsta, DESKTOPENUMPROCW lpEnumFunc, LPARAM lParam);
+[EnumDesktopWindows]
+1=HDESK hDesktop
+2=WNDENUMPROC lpfn
+3=LPARAM lParam
+ParamCount=3
+@=EnumDesktopWindows(HDESK hDesktop, WNDENUMPROC lpfn, LPARAM lParam);
+[SwitchDesktop]
+1=HDESK hDesktop
+ParamCount=1
+@=SwitchDesktop(HDESK hDesktop);
+[SetThreadDesktop]
+1=HDESK hDesktop
+ParamCount=1
+@=SetThreadDesktop(HDESK hDesktop);
+[CloseDesktop]
+1=HDESK hDesktop
+ParamCount=1
+@=CloseDesktop(HDESK hDesktop);
+[GetThreadDesktop]
+1=DWORD dwThreadId
+ParamCount=1
+@=GetThreadDesktop(DWORD dwThreadId);
+[CreateWindowStationA]
+1=LPCSTR lpwinsta
+2=DWORD dwFlags
+3=ACCESS_MASK dwDesiredAccess
+4=LPSECURITY_ATTRIBUTES lpsa
+ParamCount=4
+@=CreateWindowStationA(LPCSTR lpwinsta, DWORD dwFlags, ACCESS_MASK dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa);
+[CreateWindowStationW]
+1=LPCWSTR lpwinsta
+2=DWORD dwFlags
+3=ACCESS_MASK dwDesiredAccess
+4=LPSECURITY_ATTRIBUTES lpsa
+ParamCount=4
+@=CreateWindowStationW(LPCWSTR lpwinsta, DWORD dwFlags, ACCESS_MASK dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa);
+[OpenWindowStationA]
+1=LPCSTR lpszWinSta
+2=BOOL fInherit
+3=ACCESS_MASK dwDesiredAccess
+ParamCount=3
+@=OpenWindowStationA(LPCSTR lpszWinSta, BOOL fInherit, ACCESS_MASK dwDesiredAccess);
+[OpenWindowStationW]
+1=LPCWSTR lpszWinSta
+2=BOOL fInherit
+3=ACCESS_MASK dwDesiredAccess
+ParamCount=3
+@=OpenWindowStationW(LPCWSTR lpszWinSta, BOOL fInherit, ACCESS_MASK dwDesiredAccess);
+[EnumWindowStationsA]
+1=WINSTAENUMPROCA lpEnumFunc
+2=LPARAM lParam
+ParamCount=2
+@=EnumWindowStationsA(WINSTAENUMPROCA lpEnumFunc, LPARAM lParam);
+[EnumWindowStationsW]
+1=WINSTAENUMPROCW lpEnumFunc
+2=LPARAM lParam
+ParamCount=2
+@=EnumWindowStationsW(WINSTAENUMPROCW lpEnumFunc, LPARAM lParam);
+[CloseWindowStation]
+1=HWINSTA hWinSta
+ParamCount=1
+@=CloseWindowStation(HWINSTA hWinSta);
+[SetProcessWindowStation]
+1=HWINSTA hWinSta
+ParamCount=1
+@=SetProcessWindowStation(HWINSTA hWinSta);
+[GetProcessWindowStation]
+ParamCount=0
+@=GetProcessWindowStation();
+[SetUserObjectSecurity]
+1=HANDLE hObj
+2=PSECURITY_INFORMATION pSIRequested
+3=PSECURITY_DESCRIPTOR pSID
+ParamCount=3
+@=SetUserObjectSecurity(HANDLE hObj, PSECURITY_INFORMATION pSIRequested, PSECURITY_DESCRIPTOR pSID);
+[GetUserObjectSecurity]
+1=HANDLE hObj
+2=PSECURITY_INFORMATION pSIRequested
+3=PSECURITY_DESCRIPTOR pSID
+4=DWORD nLength
+5=LPDWORD lpnLengthNeeded
+ParamCount=5
+@=GetUserObjectSecurity(HANDLE hObj, PSECURITY_INFORMATION pSIRequested, PSECURITY_DESCRIPTOR pSID, DWORD nLength, LPDWORD lpnLengthNeeded);
+[GetUserObjectInformationA]
+1=HANDLE hObj
+2=int nIndex
+3=PVOID pvInfo
+4=DWORD nLength
+5=LPDWORD lpnLengthNeeded
+ParamCount=5
+@=GetUserObjectInformationA(HANDLE hObj, int nIndex, PVOID pvInfo, DWORD nLength, LPDWORD lpnLengthNeeded);
+[GetUserObjectInformationW]
+1=HANDLE hObj
+2=int nIndex
+3=PVOID pvInfo
+4=DWORD nLength
+5=LPDWORD lpnLengthNeeded
+ParamCount=5
+@=GetUserObjectInformationW(HANDLE hObj, int nIndex, PVOID pvInfo, DWORD nLength, LPDWORD lpnLengthNeeded);
+[SetUserObjectInformationA]
+1=HANDLE hObj
+2=int nIndex
+3=PVOID pvInfo
+4=DWORD nLength
+ParamCount=4
+@=SetUserObjectInformationA(HANDLE hObj, int nIndex, PVOID pvInfo, DWORD nLength);
+[SetUserObjectInformationW]
+1=HANDLE hObj
+2=int nIndex
+3=PVOID pvInfo
+4=DWORD nLength
+ParamCount=4
+@=SetUserObjectInformationW(HANDLE hObj, int nIndex, PVOID pvInfo, DWORD nLength);
+[IsHungAppWindow]
+1=HWND hwnd
+ParamCount=1
+@=IsHungAppWindow(HWND hwnd);
+[DisableProcessWindowsGhosting]
+ParamCount=0
+@=DisableProcessWindowsGhosting();
+[RegisterWindowMessageA]
+1=LPCSTR lpString
+ParamCount=1
+@=RegisterWindowMessageA(LPCSTR lpString);
+[RegisterWindowMessageW]
+1=LPCWSTR lpString
+ParamCount=1
+@=RegisterWindowMessageW(LPCWSTR lpString);
+[TrackMouseEvent]
+1=LPTRACKMOUSEEVENT lpEventTrack
+ParamCount=1
+@=TrackMouseEvent(LPTRACKMOUSEEVENT lpEventTrack);
+[DrawEdge]
+1=HDC hdc
+2=LPRECT qrc
+3=UINT edge
+4=UINT grfFlags
+ParamCount=4
+@=DrawEdge(HDC hdc, LPRECT qrc, UINT edge, UINT grfFlags);
+[DrawFrameControl]
+1=HDC
+2=LPRECT
+3=UINT
+4=UINT
+ParamCount=4
+@=DrawFrameControl(HDC, LPRECT, UINT, UINT);
+[DrawCaption]
+1=HWND hwnd
+2=HDC hdc
+3=RECT *lprect
+4=UINT flags
+ParamCount=4
+@=DrawCaption(HWND hwnd, HDC hdc, RECT *lprect, UINT flags);
+[DrawAnimatedRects]
+1=HWND hwnd
+2=int idAni
+3=RECT *lprcFrom
+4=RECT *lprcTo
+ParamCount=4
+@=DrawAnimatedRects(HWND hwnd, int idAni, RECT *lprcFrom, RECT *lprcTo);
+[GetMessageA]
+1=LPMSG lpMsg
+2=HWND hWnd
+3=UINT wMsgFilterMin
+4=UINT wMsgFilterMax
+ParamCount=4
+@=GetMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax);
+[GetMessageW]
+1=LPMSG lpMsg
+2=HWND hWnd
+3=UINT wMsgFilterMin
+4=UINT wMsgFilterMax
+ParamCount=4
+@=GetMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax);
+[TranslateMessage]
+1=MSG *lpMsg
+ParamCount=1
+@=TranslateMessage(MSG *lpMsg);
+[DispatchMessageA]
+1=MSG *lpMsg
+ParamCount=1
+@=DispatchMessageA(MSG *lpMsg);
+[DispatchMessageW]
+1=MSG *lpMsg
+ParamCount=1
+@=DispatchMessageW(MSG *lpMsg);
+[SetMessageQueue]
+1=int cMessagesMax
+ParamCount=1
+@=SetMessageQueue(int cMessagesMax);
+[PeekMessageA]
+1=LPMSG lpMsg
+2=HWND hWnd
+3=UINT wMsgFilterMin
+4=UINT wMsgFilterMax
+5=UINT wRemoveMsg
+ParamCount=5
+@=PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg);
+[PeekMessageW]
+1=LPMSG lpMsg
+2=HWND hWnd
+3=UINT wMsgFilterMin
+4=UINT wMsgFilterMax
+5=UINT wRemoveMsg
+ParamCount=5
+@=PeekMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg);
+[RegisterHotKey]
+1=HWND hWnd
+2=int id
+3=UINT fsModifiers
+4=UINT vk
+ParamCount=4
+@=RegisterHotKey(HWND hWnd, int id, UINT fsModifiers, UINT vk);
+[UnregisterHotKey]
+1=HWND hWnd
+2=int id
+ParamCount=2
+@=UnregisterHotKey(HWND hWnd, int id);
+[ExitWindowsEx]
+1=UINT uFlags
+2=DWORD dwReason
+ParamCount=2
+@=ExitWindowsEx(UINT uFlags, DWORD dwReason);
+[SwapMouseButton]
+1=BOOL fSwap
+ParamCount=1
+@=SwapMouseButton(BOOL fSwap);
+[GetMessagePos]
+ParamCount=0
+@=GetMessagePos();
+[GetMessageTime]
+ParamCount=0
+@=GetMessageTime();
+[GetMessageExtraInfo]
+ParamCount=0
+@=GetMessageExtraInfo();
+[GetUnpredictedMessagePos]
+ParamCount=0
+@=GetUnpredictedMessagePos();
+[IsWow64Message]
+ParamCount=0
+@=IsWow64Message();
+[SetMessageExtraInfo]
+1=LPARAM lParam
+ParamCount=1
+@=SetMessageExtraInfo(LPARAM lParam);
+[SendMessageA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=SendMessageA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[SendMessageW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=SendMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[SendMessageTimeoutA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+5=UINT fuFlags
+6=UINT uTimeout
+7=PDWORD_PTR lpdwResult
+ParamCount=7
+@=SendMessageTimeoutA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam, UINT fuFlags, UINT uTimeout, PDWORD_PTR lpdwResult);
+[SendMessageTimeoutW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+5=UINT fuFlags
+6=UINT uTimeout
+7=PDWORD_PTR lpdwResult
+ParamCount=7
+@=SendMessageTimeoutW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam, UINT fuFlags, UINT uTimeout, PDWORD_PTR lpdwResult);
+[SendNotifyMessageA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=SendNotifyMessageA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[SendNotifyMessageW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=SendNotifyMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[SendMessageCallbackA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+5=SENDASYNCPROC lpResultCallBack
+6=ULONG_PTR dwData
+ParamCount=6
+@=SendMessageCallbackA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam, SENDASYNCPROC lpResultCallBack, ULONG_PTR dwData);
+[SendMessageCallbackW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+5=SENDASYNCPROC lpResultCallBack
+6=ULONG_PTR dwData
+ParamCount=6
+@=SendMessageCallbackW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam, SENDASYNCPROC lpResultCallBack, ULONG_PTR dwData);
+[BroadcastSystemMessageExA]
+1=DWORD flags
+2=LPDWORD lpInfo
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+6=PBSMINFO pbsmInfo
+ParamCount=6
+@=BroadcastSystemMessageExA(DWORD flags, LPDWORD lpInfo, UINT Msg, WPARAM wParam, LPARAM lParam, PBSMINFO pbsmInfo);
+[BroadcastSystemMessageExW]
+1=DWORD flags
+2=LPDWORD lpInfo
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+6=PBSMINFO pbsmInfo
+ParamCount=6
+@=BroadcastSystemMessageExW(DWORD flags, LPDWORD lpInfo, UINT Msg, WPARAM wParam, LPARAM lParam, PBSMINFO pbsmInfo);
+[BroadcastSystemMessageA]
+1=DWORD flags
+2=LPDWORD lpInfo
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=BroadcastSystemMessageA(DWORD flags, LPDWORD lpInfo, UINT Msg, WPARAM wParam, LPARAM lParam);
+[BroadcastSystemMessageW]
+1=DWORD flags
+2=LPDWORD lpInfo
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=BroadcastSystemMessageW(DWORD flags, LPDWORD lpInfo, UINT Msg, WPARAM wParam, LPARAM lParam);
+[BroadcastSystemMessage]
+1=DWORD flags
+2=LPDWORD lpInfo
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=BroadcastSystemMessage(DWORD flags, LPDWORD lpInfo, UINT Msg, WPARAM wParam, LPARAM lParam);
+[RegisterDeviceNotificationA]
+1=HANDLE hRecipient
+2=LPVOID NotificationFilter
+3=DWORD Flags
+ParamCount=3
+@=RegisterDeviceNotificationA(HANDLE hRecipient, LPVOID NotificationFilter, DWORD Flags);
+[RegisterDeviceNotificationW]
+1=HANDLE hRecipient
+2=LPVOID NotificationFilter
+3=DWORD Flags
+ParamCount=3
+@=RegisterDeviceNotificationW(HANDLE hRecipient, LPVOID NotificationFilter, DWORD Flags);
+[UnregisterDeviceNotification]
+1=HDEVNOTIFY Handle
+ParamCount=1
+@=UnregisterDeviceNotification(HDEVNOTIFY Handle);
+[RegisterPowerSettingNotification]
+1=HANDLE hRecipient
+2=LPCGUID PowerSettingGuid
+3=DWORD Flags
+ParamCount=3
+@=RegisterPowerSettingNotification(HANDLE hRecipient, LPCGUID PowerSettingGuid, DWORD Flags);
+[UnregisterPowerSettingNotification]
+1=HPOWERNOTIFY Handle
+ParamCount=1
+@=UnregisterPowerSettingNotification(HPOWERNOTIFY Handle);
+[RegisterSuspendResumeNotification]
+1=HANDLE hRecipient
+2=DWORD Flags
+ParamCount=2
+@=RegisterSuspendResumeNotification(HANDLE hRecipient, DWORD Flags);
+[UnregisterSuspendResumeNotification]
+1=HPOWERNOTIFY Handle
+ParamCount=1
+@=UnregisterSuspendResumeNotification(HPOWERNOTIFY Handle);
+[PostMessageA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=PostMessageA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[PostMessageW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=PostMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[PostThreadMessageA]
+1=DWORD idThread
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=PostThreadMessageA(DWORD idThread, UINT Msg, WPARAM wParam, LPARAM lParam);
+[PostThreadMessageW]
+1=DWORD idThread
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=PostThreadMessageW(DWORD idThread, UINT Msg, WPARAM wParam, LPARAM lParam);
+[AttachThreadInput]
+1=DWORD idAttach
+2=DWORD idAttachTo
+3=BOOL fAttach
+ParamCount=3
+@=AttachThreadInput(DWORD idAttach, DWORD idAttachTo, BOOL fAttach);
+[ReplyMessage]
+1=LRESULT lResult
+ParamCount=1
+@=ReplyMessage(LRESULT lResult);
+[WaitMessage]
+ParamCount=0
+@=WaitMessage();
+[WaitForInputIdle]
+1=HANDLE hProcess
+2=DWORD dwMilliseconds
+ParamCount=2
+@=WaitForInputIdle(HANDLE hProcess, DWORD dwMilliseconds);
+[DefWindowProcA]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefWindowProcA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[DefWindowProcW]
+1=HWND hWnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefWindowProcW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[PostQuitMessage]
+1=int nExitCode
+ParamCount=1
+@=PostQuitMessage(int nExitCode);
+[CallWindowProcA]
+1=FARPROC lpPrevWndFunc
+2=HWND hWnd
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=CallWindowProcA(FARPROC lpPrevWndFunc, HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[CallWindowProcW]
+1=FARPROC lpPrevWndFunc
+2=HWND hWnd
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=CallWindowProcW(FARPROC lpPrevWndFunc, HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[InSendMessage]
+ParamCount=0
+@=InSendMessage();
+[InSendMessageEx]
+1=LPVOID lpReserved
+ParamCount=1
+@=InSendMessageEx(LPVOID lpReserved);
+[GetDoubleClickTime]
+ParamCount=0
+@=GetDoubleClickTime();
+[SetDoubleClickTime]
+1=UINT
+ParamCount=1
+@=SetDoubleClickTime(UINT);
+[RegisterClassA]
+1=WNDCLASSA *lpWndClass
+ParamCount=1
+@=RegisterClassA(WNDCLASSA *lpWndClass);
+[RegisterClassW]
+1=WNDCLASSW *lpWndClass
+ParamCount=1
+@=RegisterClassW(WNDCLASSW *lpWndClass);
+[UnregisterClassA]
+1=LPCSTR lpClassName
+2=HINSTANCE hInstance
+ParamCount=2
+@=UnregisterClassA(LPCSTR lpClassName, HINSTANCE hInstance);
+[UnregisterClassW]
+1=LPCWSTR lpClassName
+2=HINSTANCE hInstance
+ParamCount=2
+@=UnregisterClassW(LPCWSTR lpClassName, HINSTANCE hInstance);
+[GetClassInfoA]
+1=HINSTANCE hInstance
+2=LPCSTR lpClassName
+3=LPWNDCLASSA lpWndClass
+ParamCount=3
+@=GetClassInfoA(HINSTANCE hInstance, LPCSTR lpClassName, LPWNDCLASSA lpWndClass);
+[GetClassInfoW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpClassName
+3=LPWNDCLASSW lpWndClass
+ParamCount=3
+@=GetClassInfoW(HINSTANCE hInstance, LPCWSTR lpClassName, LPWNDCLASSW lpWndClass);
+[RegisterClassExA]
+1=WNDCLASSEXA *
+ParamCount=1
+@=RegisterClassExA(WNDCLASSEXA *);
+[RegisterClassExW]
+1=WNDCLASSEXW *
+ParamCount=1
+@=RegisterClassExW(WNDCLASSEXW *);
+[GetClassInfoExA]
+1=HINSTANCE hInstance
+2=LPCSTR lpszClass
+3=LPWNDCLASSEXA lpwcx
+ParamCount=3
+@=GetClassInfoExA(HINSTANCE hInstance, LPCSTR lpszClass, LPWNDCLASSEXA lpwcx);
+[GetClassInfoExW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpszClass
+3=LPWNDCLASSEXW lpwcx
+ParamCount=3
+@=GetClassInfoExW(HINSTANCE hInstance, LPCWSTR lpszClass, LPWNDCLASSEXW lpwcx);
+[CreateWindowExA]
+1=DWORD dwExStyle
+2=LPCSTR lpClassName
+3=LPCSTR lpWindowName
+4=DWORD dwStyle
+5=int X
+6=int Y
+7=int nWidth
+8=int nHeight
+9=HWND hWndParent
+10=HMENU hMenu
+11=HINSTANCE hInstance
+12=LPVOID lpParam
+ParamCount=12
+@=CreateWindowExA(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam);
+[CreateWindowExW]
+1=DWORD dwExStyle
+2=LPCWSTR lpClassName
+3=LPCWSTR lpWindowName
+4=DWORD dwStyle
+5=int X
+6=int Y
+7=int nWidth
+8=int nHeight
+9=HWND hWndParent
+10=HMENU hMenu
+11=HINSTANCE hInstance
+12=LPVOID lpParam
+ParamCount=12
+@=CreateWindowExW(DWORD dwExStyle, LPCWSTR lpClassName, LPCWSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam);
+[IsWindow]
+1=HWND hWnd
+ParamCount=1
+@=IsWindow(HWND hWnd);
+[IsMenu]
+1=HMENU hMenu
+ParamCount=1
+@=IsMenu(HMENU hMenu);
+[IsChild]
+1=HWND hWndParent
+2=HWND hWnd
+ParamCount=2
+@=IsChild(HWND hWndParent, HWND hWnd);
+[DestroyWindow]
+1=HWND hWnd
+ParamCount=1
+@=DestroyWindow(HWND hWnd);
+[ShowWindow]
+1=HWND hWnd
+2=int nCmdShow
+ParamCount=2
+@=ShowWindow(HWND hWnd, int nCmdShow);
+[AnimateWindow]
+1=HWND hWnd
+2=DWORD dwTime
+3=DWORD dwFlags
+ParamCount=3
+@=AnimateWindow(HWND hWnd, DWORD dwTime, DWORD dwFlags);
+[UpdateLayeredWindow]
+1=HWND hWnd
+2=HDC hdcDst
+3=POINT* pptDst
+4=SIZE* psize
+5=HDC hdcSrc
+6=POINT* pptSrc
+7=COLORREF crKey
+8=BLENDFUNCTION* pblend
+9=DWORD dwFlags
+ParamCount=9
+@=UpdateLayeredWindow(HWND hWnd, HDC hdcDst, POINT* pptDst, SIZE* psize, HDC hdcSrc, POINT* pptSrc, COLORREF crKey, BLENDFUNCTION* pblend, DWORD dwFlags);
+[UpdateLayeredWindowIndirect]
+1=HWND hWnd
+2=UPDATELAYEREDWINDOWINFO* pULWInfo
+ParamCount=2
+@=UpdateLayeredWindowIndirect(HWND hWnd, UPDATELAYEREDWINDOWINFO* pULWInfo);
+[GetLayeredWindowAttributes]
+1=HWND hwnd
+2=COLORREF* pcrKey
+3=BYTE* pbAlpha
+4=DWORD* pdwFlags
+ParamCount=4
+@=GetLayeredWindowAttributes(HWND hwnd, COLORREF* pcrKey, BYTE* pbAlpha, DWORD* pdwFlags);
+[PrintWindow]
+1=HWND hwnd
+2=HDC hdcBlt
+3=UINT nFlags
+ParamCount=3
+@=PrintWindow(HWND hwnd, HDC hdcBlt, UINT nFlags);
+[SetLayeredWindowAttributes]
+1=HWND hwnd
+2=COLORREF crKey
+3=BYTE bAlpha
+4=DWORD dwFlags
+ParamCount=4
+@=SetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, BYTE bAlpha, DWORD dwFlags);
+[ShowWindowAsync]
+1=HWND hWnd
+2=int nCmdShow
+ParamCount=2
+@=ShowWindowAsync(HWND hWnd, int nCmdShow);
+[FlashWindow]
+1=HWND hWnd
+2=BOOL bInvert
+ParamCount=2
+@=FlashWindow(HWND hWnd, BOOL bInvert);
+[FlashWindowEx]
+1=PFLASHWINFO pfwi
+ParamCount=1
+@=FlashWindowEx(PFLASHWINFO pfwi);
+[ShowOwnedPopups]
+1=HWND hWnd
+2=BOOL fShow
+ParamCount=2
+@=ShowOwnedPopups(HWND hWnd, BOOL fShow);
+[OpenIcon]
+1=HWND hWnd
+ParamCount=1
+@=OpenIcon(HWND hWnd);
+[CloseWindow]
+1=HWND hWnd
+ParamCount=1
+@=CloseWindow(HWND hWnd);
+[MoveWindow]
+1=HWND hWnd
+2=int X
+3=int Y
+4=int nWidth
+5=int nHeight
+6=BOOL bRepaint
+ParamCount=6
+@=MoveWindow(HWND hWnd, int X, int Y, int nWidth, int nHeight, BOOL bRepaint);
+[SetWindowPos]
+1=HWND hWnd
+2=HWND hWndInsertAfter
+3=int X
+4=int Y
+5=int cx
+6=int cy
+7=UINT uFlags
+ParamCount=7
+@=SetWindowPos(HWND hWnd, HWND hWndInsertAfter, int X, int Y, int cx, int cy, UINT uFlags);
+[GetWindowPlacement]
+1=HWND hWnd
+2=WINDOWPLACEMENT *lpwndpl
+ParamCount=2
+@=GetWindowPlacement(HWND hWnd, WINDOWPLACEMENT *lpwndpl);
+[SetWindowPlacement]
+1=HWND hWnd
+2=WINDOWPLACEMENT *lpwndpl
+ParamCount=2
+@=SetWindowPlacement(HWND hWnd, WINDOWPLACEMENT *lpwndpl);
+[GetWindowDisplayAffinity]
+1=HWND hWnd
+2=DWORD* pdwAffinity
+ParamCount=2
+@=GetWindowDisplayAffinity(HWND hWnd, DWORD* pdwAffinity);
+[SetWindowDisplayAffinity]
+1=HWND hWnd
+2=DWORD dwAffinity
+ParamCount=2
+@=SetWindowDisplayAffinity(HWND hWnd, DWORD dwAffinity);
+[BeginDeferWindowPos]
+1=int nNumWindows
+ParamCount=1
+@=BeginDeferWindowPos(int nNumWindows);
+[DeferWindowPos]
+1=HDWP hWinPosInfo
+2=HWND hWnd
+3=HWND hWndInsertAfter
+4=int x
+5=int y
+6=int cx
+7=int cy
+8=UINT uFlags
+ParamCount=8
+@=DeferWindowPos(HDWP hWinPosInfo, HWND hWnd, HWND hWndInsertAfter, int x, int y, int cx, int cy, UINT uFlags);
+[EndDeferWindowPos]
+1=HDWP hWinPosInfo
+ParamCount=1
+@=EndDeferWindowPos(HDWP hWinPosInfo);
+[IsWindowVisible]
+1=HWND hWnd
+ParamCount=1
+@=IsWindowVisible(HWND hWnd);
+[IsIconic]
+1=HWND hWnd
+ParamCount=1
+@=IsIconic(HWND hWnd);
+[AnyPopup]
+ParamCount=0
+@=AnyPopup();
+[BringWindowToTop]
+1=HWND hWnd
+ParamCount=1
+@=BringWindowToTop(HWND hWnd);
+[IsZoomed]
+1=HWND hWnd
+ParamCount=1
+@=IsZoomed(HWND hWnd);
+[CreateDialogParamA]
+1=HINSTANCE hInstance
+2=LPCSTR lpTemplateName
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=CreateDialogParamA(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[CreateDialogParamW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpTemplateName
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=CreateDialogParamW(HINSTANCE hInstance, LPCWSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[CreateDialogIndirectParamA]
+1=HINSTANCE hInstance
+2=LPCDLGTEMPLATEA lpTemplate
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=CreateDialogIndirectParamA(HINSTANCE hInstance, LPCDLGTEMPLATEA lpTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[CreateDialogIndirectParamW]
+1=HINSTANCE hInstance
+2=LPCDLGTEMPLATEW lpTemplate
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=CreateDialogIndirectParamW(HINSTANCE hInstance, LPCDLGTEMPLATEW lpTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[DialogBoxParamA]
+1=HINSTANCE hInstance
+2=LPCSTR lpTemplateName
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=DialogBoxParamA(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[DialogBoxParamW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpTemplateName
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=DialogBoxParamW(HINSTANCE hInstance, LPCWSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[DialogBoxIndirectParamA]
+1=HINSTANCE hInstance
+2=LPCDLGTEMPLATEA hDialogTemplate
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=DialogBoxIndirectParamA(HINSTANCE hInstance, LPCDLGTEMPLATEA hDialogTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[DialogBoxIndirectParamW]
+1=HINSTANCE hInstance
+2=LPCDLGTEMPLATEW hDialogTemplate
+3=HWND hWndParent
+4=DLGPROC lpDialogFunc
+5=LPARAM dwInitParam
+ParamCount=5
+@=DialogBoxIndirectParamW(HINSTANCE hInstance, LPCDLGTEMPLATEW hDialogTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+[EndDialog]
+1=HWND hDlg
+2=INT_PTR nResult
+ParamCount=2
+@=EndDialog(HWND hDlg, INT_PTR nResult);
+[GetDlgItem]
+1=HWND hDlg
+2=int nIDDlgItem
+ParamCount=2
+@=GetDlgItem(HWND hDlg, int nIDDlgItem);
+[SetDlgItemInt]
+1=HWND hDlg
+2=int nIDDlgItem
+3=UINT uValue
+4=BOOL bSigned
+ParamCount=4
+@=SetDlgItemInt(HWND hDlg, int nIDDlgItem, UINT uValue, BOOL bSigned);
+[GetDlgItemInt]
+1=HWND hDlg
+2=int nIDDlgItem
+3=BOOL *lpTranslated
+4=BOOL bSigned
+ParamCount=4
+@=GetDlgItemInt(HWND hDlg, int nIDDlgItem, BOOL *lpTranslated, BOOL bSigned);
+[SetDlgItemTextA]
+1=HWND hDlg
+2=int nIDDlgItem
+3=LPCSTR lpString
+ParamCount=3
+@=SetDlgItemTextA(HWND hDlg, int nIDDlgItem, LPCSTR lpString);
+[SetDlgItemTextW]
+1=HWND hDlg
+2=int nIDDlgItem
+3=LPCWSTR lpString
+ParamCount=3
+@=SetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPCWSTR lpString);
+[GetDlgItemTextA]
+1=HWND hDlg
+2=int nIDDlgItem
+3=LPSTR lpString
+4=int cchMax
+ParamCount=4
+@=GetDlgItemTextA(HWND hDlg, int nIDDlgItem, LPSTR lpString, int cchMax);
+[GetDlgItemTextW]
+1=HWND hDlg
+2=int nIDDlgItem
+3=LPWSTR lpString
+4=int cchMax
+ParamCount=4
+@=GetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPWSTR lpString, int cchMax);
+[CheckDlgButton]
+1=HWND hDlg
+2=int nIDButton
+3=UINT uCheck
+ParamCount=3
+@=CheckDlgButton(HWND hDlg, int nIDButton, UINT uCheck);
+[CheckRadioButton]
+1=HWND hDlg
+2=int nIDFirstButton
+3=int nIDLastButton
+4=int nIDCheckButton
+ParamCount=4
+@=CheckRadioButton(HWND hDlg, int nIDFirstButton, int nIDLastButton, int nIDCheckButton);
+[IsDlgButtonChecked]
+1=HWND hDlg
+2=int nIDButton
+ParamCount=2
+@=IsDlgButtonChecked(HWND hDlg, int nIDButton);
+[SendDlgItemMessageA]
+1=HWND hDlg
+2=int nIDDlgItem
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=SendDlgItemMessageA(HWND hDlg, int nIDDlgItem, UINT Msg, WPARAM wParam, LPARAM lParam);
+[SendDlgItemMessageW]
+1=HWND hDlg
+2=int nIDDlgItem
+3=UINT Msg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=SendDlgItemMessageW(HWND hDlg, int nIDDlgItem, UINT Msg, WPARAM wParam, LPARAM lParam);
+[GetNextDlgGroupItem]
+1=HWND hDlg
+2=HWND hCtl
+3=BOOL bPrevious
+ParamCount=3
+@=GetNextDlgGroupItem(HWND hDlg, HWND hCtl, BOOL bPrevious);
+[GetNextDlgTabItem]
+1=HWND hDlg
+2=HWND hCtl
+3=BOOL bPrevious
+ParamCount=3
+@=GetNextDlgTabItem(HWND hDlg, HWND hCtl, BOOL bPrevious);
+[GetDlgCtrlID]
+1=HWND hWnd
+ParamCount=1
+@=GetDlgCtrlID(HWND hWnd);
+[GetDialogBaseUnits]
+ParamCount=0
+@=GetDialogBaseUnits();
+[DefDlgProcA]
+1=HWND hDlg
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefDlgProcA(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
+[DefDlgProcW]
+1=HWND hDlg
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefDlgProcW(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
+[CallMsgFilterA]
+1=LPMSG lpMsg
+2=int nCode
+ParamCount=2
+@=CallMsgFilterA(LPMSG lpMsg, int nCode);
+[CallMsgFilterW]
+1=LPMSG lpMsg
+2=int nCode
+ParamCount=2
+@=CallMsgFilterW(LPMSG lpMsg, int nCode);
+[OpenClipboard]
+1=HWND hWndNewOwner
+ParamCount=1
+@=OpenClipboard(HWND hWndNewOwner);
+[CloseClipboard]
+ParamCount=0
+@=CloseClipboard();
+[GetClipboardSequenceNumber]
+ParamCount=0
+@=GetClipboardSequenceNumber();
+[GetClipboardOwner]
+ParamCount=0
+@=GetClipboardOwner();
+[SetClipboardViewer]
+1=HWND hWndNewViewer
+ParamCount=1
+@=SetClipboardViewer(HWND hWndNewViewer);
+[GetClipboardViewer]
+ParamCount=0
+@=GetClipboardViewer();
+[ChangeClipboardChain]
+1=HWND hWndRemove
+2=HWND hWndNewNext
+ParamCount=2
+@=ChangeClipboardChain(HWND hWndRemove, HWND hWndNewNext);
+[SetClipboardData]
+1=UINT uFormat
+2=HANDLE hMem
+ParamCount=2
+@=SetClipboardData(UINT uFormat, HANDLE hMem);
+[GetClipboardData]
+1=UINT uFormat
+ParamCount=1
+@=GetClipboardData(UINT uFormat);
+[RegisterClipboardFormatA]
+1=LPCSTR lpszFormat
+ParamCount=1
+@=RegisterClipboardFormatA(LPCSTR lpszFormat);
+[RegisterClipboardFormatW]
+1=LPCWSTR lpszFormat
+ParamCount=1
+@=RegisterClipboardFormatW(LPCWSTR lpszFormat);
+[CountClipboardFormats]
+ParamCount=0
+@=CountClipboardFormats();
+[EnumClipboardFormats]
+1=UINT format
+ParamCount=1
+@=EnumClipboardFormats(UINT format);
+[GetClipboardFormatNameA]
+1=UINT format
+2=LPSTR lpszFormatName
+3=int cchMaxCount
+ParamCount=3
+@=GetClipboardFormatNameA(UINT format, LPSTR lpszFormatName, int cchMaxCount);
+[GetClipboardFormatNameW]
+1=UINT format
+2=LPWSTR lpszFormatName
+3=int cchMaxCount
+ParamCount=3
+@=GetClipboardFormatNameW(UINT format, LPWSTR lpszFormatName, int cchMaxCount);
+[EmptyClipboard]
+ParamCount=0
+@=EmptyClipboard();
+[IsClipboardFormatAvailable]
+1=UINT format
+ParamCount=1
+@=IsClipboardFormatAvailable(UINT format);
+[GetPriorityClipboardFormat]
+1=UINT *paFormatPriorityList
+2=int cFormats
+ParamCount=2
+@=GetPriorityClipboardFormat(UINT *paFormatPriorityList, int cFormats);
+[GetOpenClipboardWindow]
+ParamCount=0
+@=GetOpenClipboardWindow();
+[AddClipboardFormatListener]
+1=HWND hwnd
+ParamCount=1
+@=AddClipboardFormatListener(HWND hwnd);
+[RemoveClipboardFormatListener]
+1=HWND hwnd
+ParamCount=1
+@=RemoveClipboardFormatListener(HWND hwnd);
+[GetUpdatedClipboardFormats]
+1=PUINT lpuiFormats
+2=UINT cFormats
+3=PUINT pcFormatsOut
+ParamCount=3
+@=GetUpdatedClipboardFormats(PUINT lpuiFormats, UINT cFormats, PUINT pcFormatsOut);
+[CharToOemA]
+1=LPCSTR pSrc
+2=LPSTR pDst
+ParamCount=2
+@=CharToOemA(LPCSTR pSrc, LPSTR pDst);
+[CharToOemW]
+1=LPCWSTR pSrc
+2=LPSTR pDst
+ParamCount=2
+@=CharToOemW(LPCWSTR pSrc, LPSTR pDst);
+[OemToCharA]
+1=LPCSTR pSrc
+2=LPSTR pDst
+ParamCount=2
+@=OemToCharA(LPCSTR pSrc, LPSTR pDst);
+[OemToCharW]
+1=LPCSTR pSrc
+2=LPWSTR pDst
+ParamCount=2
+@=OemToCharW(LPCSTR pSrc, LPWSTR pDst);
+[CharToOemBuffA]
+1=LPCSTR lpszSrc
+2=LPSTR lpszDst
+3=DWORD cchDstLength
+ParamCount=3
+@=CharToOemBuffA(LPCSTR lpszSrc, LPSTR lpszDst, DWORD cchDstLength);
+[CharToOemBuffW]
+1=LPCWSTR lpszSrc
+2=LPSTR lpszDst
+3=DWORD cchDstLength
+ParamCount=3
+@=CharToOemBuffW(LPCWSTR lpszSrc, LPSTR lpszDst, DWORD cchDstLength);
+[OemToCharBuffA]
+1=LPCSTR lpszSrc
+2=LPSTR lpszDst
+3=DWORD cchDstLength
+ParamCount=3
+@=OemToCharBuffA(LPCSTR lpszSrc, LPSTR lpszDst, DWORD cchDstLength);
+[OemToCharBuffW]
+1=LPCSTR lpszSrc
+2=LPWSTR lpszDst
+3=DWORD cchDstLength
+ParamCount=3
+@=OemToCharBuffW(LPCSTR lpszSrc, LPWSTR lpszDst, DWORD cchDstLength);
+[CharUpperA]
+1=LPSTR lpsz
+ParamCount=1
+@=CharUpperA(LPSTR lpsz);
+[CharUpperW]
+1=LPWSTR lpsz
+ParamCount=1
+@=CharUpperW(LPWSTR lpsz);
+[CharUpperBuffA]
+1=LPSTR lpsz
+2=DWORD cchLength
+ParamCount=2
+@=CharUpperBuffA(LPSTR lpsz, DWORD cchLength);
+[CharUpperBuffW]
+1=LPWSTR lpsz
+2=DWORD cchLength
+ParamCount=2
+@=CharUpperBuffW(LPWSTR lpsz, DWORD cchLength);
+[CharLowerA]
+1=LPSTR lpsz
+ParamCount=1
+@=CharLowerA(LPSTR lpsz);
+[CharLowerW]
+1=LPWSTR lpsz
+ParamCount=1
+@=CharLowerW(LPWSTR lpsz);
+[CharLowerBuffA]
+1=LPSTR lpsz
+2=DWORD cchLength
+ParamCount=2
+@=CharLowerBuffA(LPSTR lpsz, DWORD cchLength);
+[CharLowerBuffW]
+1=LPWSTR lpsz
+2=DWORD cchLength
+ParamCount=2
+@=CharLowerBuffW(LPWSTR lpsz, DWORD cchLength);
+[CharNextA]
+1=LPCSTR lpsz
+ParamCount=1
+@=CharNextA(LPCSTR lpsz);
+[CharNextW]
+1=LPCWSTR lpsz
+ParamCount=1
+@=CharNextW(LPCWSTR lpsz);
+[CharPrevA]
+1=LPCSTR lpszStart
+2=LPCSTR lpszCurrent
+ParamCount=2
+@=CharPrevA(LPCSTR lpszStart, LPCSTR lpszCurrent);
+[CharPrevW]
+1=LPCWSTR lpszStart
+2=LPCWSTR lpszCurrent
+ParamCount=2
+@=CharPrevW(LPCWSTR lpszStart, LPCWSTR lpszCurrent);
+[CharNextExA]
+1=WORD CodePage
+2=LPCSTR lpCurrentChar
+3=DWORD dwFlags
+ParamCount=3
+@=CharNextExA(WORD CodePage, LPCSTR lpCurrentChar, DWORD dwFlags);
+[CharPrevExA]
+1=WORD CodePage
+2=LPCSTR lpStart
+3=LPCSTR lpCurrentChar
+4=DWORD dwFlags
+ParamCount=4
+@=CharPrevExA(WORD CodePage, LPCSTR lpStart, LPCSTR lpCurrentChar, DWORD dwFlags);
+[IsCharAlphaA]
+1=CHAR ch
+ParamCount=1
+@=IsCharAlphaA(CHAR ch);
+[IsCharAlphaW]
+1=WCHAR ch
+ParamCount=1
+@=IsCharAlphaW(WCHAR ch);
+[IsCharAlphaNumericA]
+1=CHAR ch
+ParamCount=1
+@=IsCharAlphaNumericA(CHAR ch);
+[IsCharAlphaNumericW]
+1=WCHAR ch
+ParamCount=1
+@=IsCharAlphaNumericW(WCHAR ch);
+[IsCharUpperA]
+1=CHAR ch
+ParamCount=1
+@=IsCharUpperA(CHAR ch);
+[IsCharUpperW]
+1=WCHAR ch
+ParamCount=1
+@=IsCharUpperW(WCHAR ch);
+[IsCharLowerA]
+1=CHAR ch
+ParamCount=1
+@=IsCharLowerA(CHAR ch);
+[IsCharLowerW]
+1=WCHAR ch
+ParamCount=1
+@=IsCharLowerW(WCHAR ch);
+[SetFocus]
+1=HWND hWnd
+ParamCount=1
+@=SetFocus(HWND hWnd);
+[GetActiveWindow]
+ParamCount=0
+@=GetActiveWindow();
+[GetFocus]
+ParamCount=0
+@=GetFocus();
+[GetKBCodePage]
+ParamCount=0
+@=GetKBCodePage();
+[GetKeyState]
+1=int nVirtKey
+ParamCount=1
+@=GetKeyState(int nVirtKey);
+[GetAsyncKeyState]
+1=int vKey
+ParamCount=1
+@=GetAsyncKeyState(int vKey);
+[GetKeyboardState]
+1=PBYTE lpKeyState
+ParamCount=1
+@=GetKeyboardState(PBYTE lpKeyState);
+[SetKeyboardState]
+1=LPBYTE lpKeyState
+ParamCount=1
+@=SetKeyboardState(LPBYTE lpKeyState);
+[GetKeyNameTextA]
+1=LONG lParam
+2=LPSTR lpString
+3=int cchSize
+ParamCount=3
+@=GetKeyNameTextA(LONG lParam, LPSTR lpString, int cchSize);
+[GetKeyNameTextW]
+1=LONG lParam
+2=LPWSTR lpString
+3=int cchSize
+ParamCount=3
+@=GetKeyNameTextW(LONG lParam, LPWSTR lpString, int cchSize);
+[GetKeyboardType]
+1=int nTypeFlag
+ParamCount=1
+@=GetKeyboardType(int nTypeFlag);
+[ToAscii]
+1=UINT uVirtKey
+2=UINT uScanCode
+3=BYTE *lpKeyState
+4=LPWORD lpChar
+5=UINT uFlags
+ParamCount=5
+@=ToAscii(UINT uVirtKey, UINT uScanCode, BYTE *lpKeyState, LPWORD lpChar, UINT uFlags);
+[ToAsciiEx]
+1=UINT uVirtKey
+2=UINT uScanCode
+3=BYTE *lpKeyState
+4=LPWORD lpChar
+5=UINT uFlags
+6=HKL dwhkl
+ParamCount=6
+@=ToAsciiEx(UINT uVirtKey, UINT uScanCode, BYTE *lpKeyState, LPWORD lpChar, UINT uFlags, HKL dwhkl);
+[ToUnicode]
+1=UINT wVirtKey
+2=UINT wScanCode
+3=BYTE *lpKeyState
+4=LPWSTR pwszBuff
+5=int cchBuff
+6=UINT wFlags
+ParamCount=6
+@=ToUnicode(UINT wVirtKey, UINT wScanCode, BYTE *lpKeyState, LPWSTR pwszBuff, int cchBuff, UINT wFlags);
+[OemKeyScan]
+1=WORD wOemChar
+ParamCount=1
+@=OemKeyScan(WORD wOemChar);
+[VkKeyScanA]
+1=CHAR ch
+ParamCount=1
+@=VkKeyScanA(CHAR ch);
+[VkKeyScanW]
+1=WCHAR ch
+ParamCount=1
+@=VkKeyScanW(WCHAR ch);
+[VkKeyScanExA]
+1=CHAR ch
+2=HKL dwhkl
+ParamCount=2
+@=VkKeyScanExA(CHAR ch, HKL dwhkl);
+[VkKeyScanExW]
+1=WCHAR ch
+2=HKL dwhkl
+ParamCount=2
+@=VkKeyScanExW(WCHAR ch, HKL dwhkl);
+[keybd_event]
+1=BYTE bVk
+2=BYTE bScan
+3=DWORD dwFlags
+4=ULONG_PTR dwExtraInfo
+ParamCount=4
+@=keybd_event(BYTE bVk, BYTE bScan, DWORD dwFlags, ULONG_PTR dwExtraInfo);
+[mouse_event]
+1=DWORD dwFlags
+2=DWORD dx
+3=DWORD dy
+4=DWORD dwData
+5=ULONG_PTR dwExtraInfo
+ParamCount=5
+@=mouse_event(DWORD dwFlags, DWORD dx, DWORD dy, DWORD dwData, ULONG_PTR dwExtraInfo);
+[SendInput]
+1=UINT cInputs
+2=LPINPUT pInputs
+3=int cbSize
+ParamCount=3
+@=SendInput(UINT cInputs, LPINPUT pInputs, int cbSize);
+[GetTouchInputInfo]
+1=HTOUCHINPUT hTouchInput
+2=UINT cInputs
+3=PTOUCHINPUT pInputs
+4=int cbSize
+ParamCount=4
+@=GetTouchInputInfo(HTOUCHINPUT hTouchInput, UINT cInputs, PTOUCHINPUT pInputs, int cbSize);
+[CloseTouchInputHandle]
+1=HTOUCHINPUT hTouchInput
+ParamCount=1
+@=CloseTouchInputHandle(HTOUCHINPUT hTouchInput);
+[RegisterTouchWindow]
+1=HWND hwnd
+2=ULONG ulFlags
+ParamCount=2
+@=RegisterTouchWindow(HWND hwnd, ULONG ulFlags);
+[UnregisterTouchWindow]
+1=HWND hwnd
+ParamCount=1
+@=UnregisterTouchWindow(HWND hwnd);
+[IsTouchWindow]
+1=HWND hwnd
+2=PULONG pulFlags
+ParamCount=2
+@=IsTouchWindow(HWND hwnd, PULONG pulFlags);
+[InitializeTouchInjection]
+1=UINT32 maxCount
+2=DWORD dwMode
+ParamCount=2
+@=InitializeTouchInjection(UINT32 maxCount, DWORD dwMode);
+[InjectTouchInput]
+1=UINT32 count
+2=POINTER_TOUCH_INFO *contacts
+ParamCount=2
+@=InjectTouchInput(UINT32 count, POINTER_TOUCH_INFO *contacts);
+[GetPointerType]
+1=UINT32 pointerId
+2=POINTER_INPUT_TYPE *pointerType
+ParamCount=2
+@=GetPointerType(UINT32 pointerId, POINTER_INPUT_TYPE *pointerType);
+[GetPointerCursorId]
+1=UINT32 pointerId
+2=UINT32 *cursorId
+ParamCount=2
+@=GetPointerCursorId(UINT32 pointerId, UINT32 *cursorId);
+[GetPointerInfo]
+1=UINT32 pointerId
+2=POINTER_INFO *pointerInfo
+ParamCount=2
+@=GetPointerInfo(UINT32 pointerId, POINTER_INFO *pointerInfo);
+[GetPointerInfoHistory]
+1=UINT32 pointerId
+2=UINT32 *entriesCount
+3=POINTER_INFO *pointerInfo
+ParamCount=3
+@=GetPointerInfoHistory(UINT32 pointerId, UINT32 *entriesCount, POINTER_INFO *pointerInfo);
+[GetPointerFrameInfo]
+1=UINT32 pointerId
+2=UINT32 *pointerCount
+3=POINTER_INFO *pointerInfo
+ParamCount=3
+@=GetPointerFrameInfo(UINT32 pointerId, UINT32 *pointerCount, POINTER_INFO *pointerInfo);
+[GetPointerFrameInfoHistory]
+1=UINT32 pointerId
+2=UINT32 *entriesCount
+3=UINT32 *pointerCount
+4=POINTER_INFO *pointerInfo
+ParamCount=4
+@=GetPointerFrameInfoHistory(UINT32 pointerId, UINT32 *entriesCount, UINT32 *pointerCount, POINTER_INFO *pointerInfo);
+[GetPointerTouchInfo]
+1=UINT32 pointerId
+2=POINTER_TOUCH_INFO *touchInfo
+ParamCount=2
+@=GetPointerTouchInfo(UINT32 pointerId, POINTER_TOUCH_INFO *touchInfo);
+[GetPointerTouchInfoHistory]
+1=UINT32 pointerId
+2=UINT32 *entriesCount
+3=POINTER_TOUCH_INFO *touchInfo
+ParamCount=3
+@=GetPointerTouchInfoHistory(UINT32 pointerId, UINT32 *entriesCount, POINTER_TOUCH_INFO *touchInfo);
+[GetPointerFrameTouchInfo]
+1=UINT32 pointerId
+2=UINT32 *pointerCount
+3=POINTER_TOUCH_INFO *touchInfo
+ParamCount=3
+@=GetPointerFrameTouchInfo(UINT32 pointerId, UINT32 *pointerCount, POINTER_TOUCH_INFO *touchInfo);
+[GetPointerFrameTouchInfoHistory]
+1=UINT32 pointerId
+2=UINT32 *entriesCount
+3=UINT32 *pointerCount
+4=POINTER_TOUCH_INFO *touchInfo
+ParamCount=4
+@=GetPointerFrameTouchInfoHistory(UINT32 pointerId, UINT32 *entriesCount, UINT32 *pointerCount, POINTER_TOUCH_INFO *touchInfo);
+[GetPointerPenInfo]
+1=UINT32 pointerId
+2=POINTER_PEN_INFO *penInfo
+ParamCount=2
+@=GetPointerPenInfo(UINT32 pointerId, POINTER_PEN_INFO *penInfo);
+[GetPointerPenInfoHistory]
+1=UINT32 pointerId
+2=UINT32 *entriesCount
+3=POINTER_PEN_INFO *penInfo
+ParamCount=3
+@=GetPointerPenInfoHistory(UINT32 pointerId, UINT32 *entriesCount, POINTER_PEN_INFO *penInfo);
+[GetPointerFramePenInfo]
+1=UINT32 pointerId
+2=UINT32 *pointerCount
+3=POINTER_PEN_INFO *penInfo
+ParamCount=3
+@=GetPointerFramePenInfo(UINT32 pointerId, UINT32 *pointerCount, POINTER_PEN_INFO *penInfo);
+[GetPointerFramePenInfoHistory]
+1=UINT32 pointerId
+2=UINT32 *entriesCount
+3=UINT32 *pointerCount
+4=POINTER_PEN_INFO *penInfo
+ParamCount=4
+@=GetPointerFramePenInfoHistory(UINT32 pointerId, UINT32 *entriesCount, UINT32 *pointerCount, POINTER_PEN_INFO *penInfo);
+[SkipPointerFrameMessages]
+1=UINT32 pointerId
+ParamCount=1
+@=SkipPointerFrameMessages(UINT32 pointerId);
+[RegisterPointerInputTarget]
+1=HWND hwnd
+2=POINTER_INPUT_TYPE pointerType
+ParamCount=2
+@=RegisterPointerInputTarget(HWND hwnd, POINTER_INPUT_TYPE pointerType);
+[UnregisterPointerInputTarget]
+1=HWND hwnd
+2=POINTER_INPUT_TYPE pointerType
+ParamCount=2
+@=UnregisterPointerInputTarget(HWND hwnd, POINTER_INPUT_TYPE pointerType);
+[EnableMouseInPointer]
+1=BOOL fEnable
+ParamCount=1
+@=EnableMouseInPointer(BOOL fEnable);
+[IsMouseInPointerEnabled]
+ParamCount=0
+@=IsMouseInPointerEnabled();
+[RegisterTouchHitTestingWindow]
+1=HWND hwnd
+2=ULONG value
+ParamCount=2
+@=RegisterTouchHitTestingWindow(HWND hwnd, ULONG value);
+[EvaluateProximityToRect]
+1=RECT *controlBoundingBox
+2=TOUCH_HIT_TESTING_INPUT *pHitTestingInput
+3=TOUCH_HIT_TESTING_PROXIMITY_EVALUATION *pProximityEval
+ParamCount=3
+@=EvaluateProximityToRect(RECT *controlBoundingBox, TOUCH_HIT_TESTING_INPUT *pHitTestingInput, TOUCH_HIT_TESTING_PROXIMITY_EVALUATION *pProximityEval);
+[EvaluateProximityToPolygon]
+1=UINT32 numVertices
+2=POINT *controlPolygon
+3=TOUCH_HIT_TESTING_INPUT *pHitTestingInput
+4=TOUCH_HIT_TESTING_PROXIMITY_EVALUATION *pProximityEval
+ParamCount=4
+@=EvaluateProximityToPolygon(UINT32 numVertices, POINT *controlPolygon, TOUCH_HIT_TESTING_INPUT *pHitTestingInput, TOUCH_HIT_TESTING_PROXIMITY_EVALUATION *pProximityEval);
+[PackTouchHitTestingProximityEvaluation]
+1=TOUCH_HIT_TESTING_INPUT *pHitTestingInput
+2=TOUCH_HIT_TESTING_PROXIMITY_EVALUATION *pProximityEval
+ParamCount=2
+@=PackTouchHitTestingProximityEvaluation(TOUCH_HIT_TESTING_INPUT *pHitTestingInput, TOUCH_HIT_TESTING_PROXIMITY_EVALUATION *pProximityEval);
+[GetWindowFeedbackSetting]
+1=HWND hwnd
+2=FEEDBACK_TYPE feedback
+3=DWORD dwFlags
+4=UINT32* pSize
+5=VOID* config
+ParamCount=5
+@=GetWindowFeedbackSetting(HWND hwnd, FEEDBACK_TYPE feedback, DWORD dwFlags, UINT32* pSize, VOID* config);
+[SetWindowFeedbackSetting]
+1=HWND hwnd
+2=FEEDBACK_TYPE feedback
+3=DWORD dwFlags
+4=UINT32 size
+5=VOID* configuration
+ParamCount=5
+@=SetWindowFeedbackSetting(HWND hwnd, FEEDBACK_TYPE feedback, DWORD dwFlags, UINT32 size, VOID* configuration);
+[GetPointerInputTransform]
+1=UINT32 pointerId
+2=UINT32 historyCount
+3=INPUT_TRANSFORM *inputTransform
+ParamCount=3
+@=GetPointerInputTransform(UINT32 pointerId, UINT32 historyCount, INPUT_TRANSFORM *inputTransform);
+[GetLastInputInfo]
+1=PLASTINPUTINFO plii
+ParamCount=1
+@=GetLastInputInfo(PLASTINPUTINFO plii);
+[MapVirtualKeyA]
+1=UINT uCode
+2=UINT uMapType
+ParamCount=2
+@=MapVirtualKeyA(UINT uCode, UINT uMapType);
+[MapVirtualKeyW]
+1=UINT uCode
+2=UINT uMapType
+ParamCount=2
+@=MapVirtualKeyW(UINT uCode, UINT uMapType);
+[MapVirtualKeyExA]
+1=UINT uCode
+2=UINT uMapType
+3=HKL dwhkl
+ParamCount=3
+@=MapVirtualKeyExA(UINT uCode, UINT uMapType, HKL dwhkl);
+[MapVirtualKeyExW]
+1=UINT uCode
+2=UINT uMapType
+3=HKL dwhkl
+ParamCount=3
+@=MapVirtualKeyExW(UINT uCode, UINT uMapType, HKL dwhkl);
+[GetInputState]
+ParamCount=0
+@=GetInputState();
+[GetQueueStatus]
+1=UINT flags
+ParamCount=1
+@=GetQueueStatus(UINT flags);
+[GetCapture]
+ParamCount=0
+@=GetCapture();
+[SetCapture]
+1=HWND hWnd
+ParamCount=1
+@=SetCapture(HWND hWnd);
+[ReleaseCapture]
+ParamCount=0
+@=ReleaseCapture();
+[MsgWaitForMultipleObjects]
+1=DWORD nCount
+2=HANDLE *pHandles
+3=BOOL fWaitAll
+4=DWORD dwMilliseconds
+5=DWORD dwWakeMask
+ParamCount=5
+@=MsgWaitForMultipleObjects(DWORD nCount, HANDLE *pHandles, BOOL fWaitAll, DWORD dwMilliseconds, DWORD dwWakeMask);
+[MsgWaitForMultipleObjectsEx]
+1=DWORD nCount
+2=HANDLE *pHandles
+3=DWORD dwMilliseconds
+4=DWORD dwWakeMask
+5=DWORD dwFlags
+ParamCount=5
+@=MsgWaitForMultipleObjectsEx(DWORD nCount, HANDLE *pHandles, DWORD dwMilliseconds, DWORD dwWakeMask, DWORD dwFlags);
+[SetTimer]
+1=HWND hWnd
+2=UINT_PTR nIDEvent
+3=UINT uElapse
+4=TIMERPROC lpTimerFunc
+ParamCount=4
+@=SetTimer(HWND hWnd, UINT_PTR nIDEvent, UINT uElapse, TIMERPROC lpTimerFunc);
+[SetCoalescableTimer]
+1=HWND hWnd
+2=UINT_PTR nIDEvent
+3=UINT uElapse
+4=TIMERPROC lpTimerFunc
+5=ULONG uToleranceDelay
+ParamCount=5
+@=SetCoalescableTimer(HWND hWnd, UINT_PTR nIDEvent, UINT uElapse, TIMERPROC lpTimerFunc, ULONG uToleranceDelay);
+[KillTimer]
+1=HWND hWnd
+2=UINT_PTR uIDEvent
+ParamCount=2
+@=KillTimer(HWND hWnd, UINT_PTR uIDEvent);
+[IsWindowUnicode]
+1=HWND hWnd
+ParamCount=1
+@=IsWindowUnicode(HWND hWnd);
+[EnableWindow]
+1=HWND hWnd
+2=BOOL bEnable
+ParamCount=2
+@=EnableWindow(HWND hWnd, BOOL bEnable);
+[IsWindowEnabled]
+1=HWND hWnd
+ParamCount=1
+@=IsWindowEnabled(HWND hWnd);
+[LoadAcceleratorsA]
+1=HINSTANCE hInstance
+2=LPCSTR lpTableName
+ParamCount=2
+@=LoadAcceleratorsA(HINSTANCE hInstance, LPCSTR lpTableName);
+[LoadAcceleratorsW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpTableName
+ParamCount=2
+@=LoadAcceleratorsW(HINSTANCE hInstance, LPCWSTR lpTableName);
+[CreateAcceleratorTableA]
+1=LPACCEL paccel
+2=int cAccel
+ParamCount=2
+@=CreateAcceleratorTableA(LPACCEL paccel, int cAccel);
+[CreateAcceleratorTableW]
+1=LPACCEL paccel
+2=int cAccel
+ParamCount=2
+@=CreateAcceleratorTableW(LPACCEL paccel, int cAccel);
+[DestroyAcceleratorTable]
+1=HACCEL hAccel
+ParamCount=1
+@=DestroyAcceleratorTable(HACCEL hAccel);
+[CopyAcceleratorTableA]
+1=HACCEL hAccelSrc
+2=LPACCEL lpAccelDst
+3=int cAccelEntries
+ParamCount=3
+@=CopyAcceleratorTableA(HACCEL hAccelSrc, LPACCEL lpAccelDst, int cAccelEntries);
+[CopyAcceleratorTableW]
+1=HACCEL hAccelSrc
+2=LPACCEL lpAccelDst
+3=int cAccelEntries
+ParamCount=3
+@=CopyAcceleratorTableW(HACCEL hAccelSrc, LPACCEL lpAccelDst, int cAccelEntries);
+[TranslateAcceleratorA]
+1=HWND hWnd
+2=HACCEL hAccTable
+3=LPMSG lpMsg
+ParamCount=3
+@=TranslateAcceleratorA(HWND hWnd, HACCEL hAccTable, LPMSG lpMsg);
+[TranslateAcceleratorW]
+1=HWND hWnd
+2=HACCEL hAccTable
+3=LPMSG lpMsg
+ParamCount=3
+@=TranslateAcceleratorW(HWND hWnd, HACCEL hAccTable, LPMSG lpMsg);
+[GetSystemMetrics]
+1=int nIndex
+ParamCount=1
+@=GetSystemMetrics(int nIndex);
+[LoadMenuA]
+1=HINSTANCE hInstance
+2=LPCSTR lpMenuName
+ParamCount=2
+@=LoadMenuA(HINSTANCE hInstance, LPCSTR lpMenuName);
+[LoadMenuW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpMenuName
+ParamCount=2
+@=LoadMenuW(HINSTANCE hInstance, LPCWSTR lpMenuName);
+[LoadMenuIndirectA]
+1=MENUTEMPLATEA *lpMenuTemplate
+ParamCount=1
+@=LoadMenuIndirectA(MENUTEMPLATEA *lpMenuTemplate);
+[LoadMenuIndirectW]
+1=MENUTEMPLATEW *lpMenuTemplate
+ParamCount=1
+@=LoadMenuIndirectW(MENUTEMPLATEW *lpMenuTemplate);
+[GetMenu]
+1=HWND hWnd
+ParamCount=1
+@=GetMenu(HWND hWnd);
+[SetMenu]
+1=HWND hWnd
+2=HMENU hMenu
+ParamCount=2
+@=SetMenu(HWND hWnd, HMENU hMenu);
+[ChangeMenuA]
+1=HMENU hMenu
+2=UINT cmd
+3=LPCSTR lpszNewItem
+4=UINT cmdInsert
+5=UINT flags
+ParamCount=5
+@=ChangeMenuA(HMENU hMenu, UINT cmd, LPCSTR lpszNewItem, UINT cmdInsert, UINT flags);
+[ChangeMenuW]
+1=HMENU hMenu
+2=UINT cmd
+3=LPCWSTR lpszNewItem
+4=UINT cmdInsert
+5=UINT flags
+ParamCount=5
+@=ChangeMenuW(HMENU hMenu, UINT cmd, LPCWSTR lpszNewItem, UINT cmdInsert, UINT flags);
+[HiliteMenuItem]
+1=HWND hWnd
+2=HMENU hMenu
+3=UINT uIDHiliteItem
+4=UINT uHilite
+ParamCount=4
+@=HiliteMenuItem(HWND hWnd, HMENU hMenu, UINT uIDHiliteItem, UINT uHilite);
+[GetMenuStringA]
+1=HMENU hMenu
+2=UINT uIDItem
+3=LPSTR lpString
+4=int cchMax
+5=UINT flags
+ParamCount=5
+@=GetMenuStringA(HMENU hMenu, UINT uIDItem, LPSTR lpString, int cchMax, UINT flags);
+[GetMenuStringW]
+1=HMENU hMenu
+2=UINT uIDItem
+3=LPWSTR lpString
+4=int cchMax
+5=UINT flags
+ParamCount=5
+@=GetMenuStringW(HMENU hMenu, UINT uIDItem, LPWSTR lpString, int cchMax, UINT flags);
+[GetMenuState]
+1=HMENU hMenu
+2=UINT uId
+3=UINT uFlags
+ParamCount=3
+@=GetMenuState(HMENU hMenu, UINT uId, UINT uFlags);
+[DrawMenuBar]
+1=HWND hWnd
+ParamCount=1
+@=DrawMenuBar(HWND hWnd);
+[GetSystemMenu]
+1=HWND hWnd
+2=BOOL bRevert
+ParamCount=2
+@=GetSystemMenu(HWND hWnd, BOOL bRevert);
+[CreateMenu]
+ParamCount=0
+@=CreateMenu();
+[CreatePopupMenu]
+ParamCount=0
+@=CreatePopupMenu();
+[DestroyMenu]
+1=HMENU hMenu
+ParamCount=1
+@=DestroyMenu(HMENU hMenu);
+[CheckMenuItem]
+1=HMENU hMenu
+2=UINT uIDCheckItem
+3=UINT uCheck
+ParamCount=3
+@=CheckMenuItem(HMENU hMenu, UINT uIDCheckItem, UINT uCheck);
+[EnableMenuItem]
+1=HMENU hMenu
+2=UINT uIDEnableItem
+3=UINT uEnable
+ParamCount=3
+@=EnableMenuItem(HMENU hMenu, UINT uIDEnableItem, UINT uEnable);
+[GetSubMenu]
+1=HMENU hMenu
+2=int nPos
+ParamCount=2
+@=GetSubMenu(HMENU hMenu, int nPos);
+[GetMenuItemID]
+1=HMENU hMenu
+2=int nPos
+ParamCount=2
+@=GetMenuItemID(HMENU hMenu, int nPos);
+[GetMenuItemCount]
+1=HMENU hMenu
+ParamCount=1
+@=GetMenuItemCount(HMENU hMenu);
+[InsertMenuA]
+1=HMENU hMenu
+2=UINT uPosition
+3=UINT uFlags
+4=UINT_PTR uIDNewItem
+5=LPCSTR lpNewItem
+ParamCount=5
+@=InsertMenuA(HMENU hMenu, UINT uPosition, UINT uFlags, UINT_PTR uIDNewItem, LPCSTR lpNewItem);
+[InsertMenuW]
+1=HMENU hMenu
+2=UINT uPosition
+3=UINT uFlags
+4=UINT_PTR uIDNewItem
+5=LPCWSTR lpNewItem
+ParamCount=5
+@=InsertMenuW(HMENU hMenu, UINT uPosition, UINT uFlags, UINT_PTR uIDNewItem, LPCWSTR lpNewItem);
+[AppendMenuA]
+1=HMENU hMenu
+2=UINT uFlags
+3=UINT_PTR uIDNewItem
+4=LPCSTR lpNewItem
+ParamCount=4
+@=AppendMenuA(HMENU hMenu, UINT uFlags, UINT_PTR uIDNewItem, LPCSTR lpNewItem);
+[AppendMenuW]
+1=HMENU hMenu
+2=UINT uFlags
+3=UINT_PTR uIDNewItem
+4=LPCWSTR lpNewItem
+ParamCount=4
+@=AppendMenuW(HMENU hMenu, UINT uFlags, UINT_PTR uIDNewItem, LPCWSTR lpNewItem);
+[ModifyMenuA]
+1=HMENU hMnu
+2=UINT uPosition
+3=UINT uFlags
+4=UINT_PTR uIDNewItem
+5=LPCSTR lpNewItem
+ParamCount=5
+@=ModifyMenuA(HMENU hMnu, UINT uPosition, UINT uFlags, UINT_PTR uIDNewItem, LPCSTR lpNewItem);
+[ModifyMenuW]
+1=HMENU hMnu
+2=UINT uPosition
+3=UINT uFlags
+4=UINT_PTR uIDNewItem
+5=LPCWSTR lpNewItem
+ParamCount=5
+@=ModifyMenuW(HMENU hMnu, UINT uPosition, UINT uFlags, UINT_PTR uIDNewItem, LPCWSTR lpNewItem);
+[RemoveMenu]
+1=HMENU hMenu
+2=UINT uPosition
+3=UINT uFlags
+ParamCount=3
+@=RemoveMenu(HMENU hMenu, UINT uPosition, UINT uFlags);
+[DeleteMenu]
+1=HMENU hMenu
+2=UINT uPosition
+3=UINT uFlags
+ParamCount=3
+@=DeleteMenu(HMENU hMenu, UINT uPosition, UINT uFlags);
+[SetMenuItemBitmaps]
+1=HMENU hMenu
+2=UINT uPosition
+3=UINT uFlags
+4=HBITMAP hBitmapUnchecked
+5=HBITMAP hBitmapChecked
+ParamCount=5
+@=SetMenuItemBitmaps(HMENU hMenu, UINT uPosition, UINT uFlags, HBITMAP hBitmapUnchecked, HBITMAP hBitmapChecked);
+[GetMenuCheckMarkDimensions]
+ParamCount=0
+@=GetMenuCheckMarkDimensions();
+[TrackPopupMenu]
+1=HMENU hMenu
+2=UINT uFlags
+3=int x
+4=int y
+5=int nReserved
+6=HWND hWnd
+7=RECT *prcRect
+ParamCount=7
+@=TrackPopupMenu(HMENU hMenu, UINT uFlags, int x, int y, int nReserved, HWND hWnd, RECT *prcRect);
+[TrackPopupMenuEx]
+1=HMENU hMenu
+2=UINT uFlags
+3=int x
+4=int y
+5=HWND hwnd
+6=LPTPMPARAMS lptpm
+ParamCount=6
+@=TrackPopupMenuEx(HMENU hMenu, UINT uFlags, int x, int y, HWND hwnd, LPTPMPARAMS lptpm);
+[CalculatePopupWindowPosition]
+1=POINT *anchorPoint
+2=SIZE *windowSize
+3=UINT flags
+4=RECT *excludeRect
+5=RECT *popupWindowPosition
+ParamCount=5
+@=CalculatePopupWindowPosition(POINT *anchorPoint, SIZE *windowSize, UINT flags, RECT *excludeRect, RECT *popupWindowPosition);
+[GetMenuInfo]
+1=HMENU
+2=LPMENUINFO
+ParamCount=2
+@=GetMenuInfo(HMENU, LPMENUINFO);
+[SetMenuInfo]
+1=HMENU
+2=LPCMENUINFO
+ParamCount=2
+@=SetMenuInfo(HMENU, LPCMENUINFO);
+[EndMenu]
+ParamCount=0
+@=EndMenu();
+[InsertMenuItemA]
+1=HMENU hmenu
+2=UINT item
+3=BOOL fByPosition
+4=LPCMENUITEMINFOA lpmi
+ParamCount=4
+@=InsertMenuItemA(HMENU hmenu, UINT item, BOOL fByPosition, LPCMENUITEMINFOA lpmi);
+[InsertMenuItemW]
+1=HMENU hmenu
+2=UINT item
+3=BOOL fByPosition
+4=LPCMENUITEMINFOW lpmi
+ParamCount=4
+@=InsertMenuItemW(HMENU hmenu, UINT item, BOOL fByPosition, LPCMENUITEMINFOW lpmi);
+[GetMenuItemInfoA]
+1=HMENU hmenu
+2=UINT item
+3=BOOL fByPosition
+4=LPMENUITEMINFOA lpmii
+ParamCount=4
+@=GetMenuItemInfoA(HMENU hmenu, UINT item, BOOL fByPosition, LPMENUITEMINFOA lpmii);
+[GetMenuItemInfoW]
+1=HMENU hmenu
+2=UINT item
+3=BOOL fByPosition
+4=LPMENUITEMINFOW lpmii
+ParamCount=4
+@=GetMenuItemInfoW(HMENU hmenu, UINT item, BOOL fByPosition, LPMENUITEMINFOW lpmii);
+[SetMenuItemInfoA]
+1=HMENU hmenu
+2=UINT item
+3=BOOL fByPositon
+4=LPCMENUITEMINFOA lpmii
+ParamCount=4
+@=SetMenuItemInfoA(HMENU hmenu, UINT item, BOOL fByPositon, LPCMENUITEMINFOA lpmii);
+[SetMenuItemInfoW]
+1=HMENU hmenu
+2=UINT item
+3=BOOL fByPositon
+4=LPCMENUITEMINFOW lpmii
+ParamCount=4
+@=SetMenuItemInfoW(HMENU hmenu, UINT item, BOOL fByPositon, LPCMENUITEMINFOW lpmii);
+[GetMenuDefaultItem]
+1=HMENU hMenu
+2=UINT fByPos
+3=UINT gmdiFlags
+ParamCount=3
+@=GetMenuDefaultItem(HMENU hMenu, UINT fByPos, UINT gmdiFlags);
+[SetMenuDefaultItem]
+1=HMENU hMenu
+2=UINT uItem
+3=UINT fByPos
+ParamCount=3
+@=SetMenuDefaultItem(HMENU hMenu, UINT uItem, UINT fByPos);
+[GetMenuItemRect]
+1=HWND hWnd
+2=HMENU hMenu
+3=UINT uItem
+4=LPRECT lprcItem
+ParamCount=4
+@=GetMenuItemRect(HWND hWnd, HMENU hMenu, UINT uItem, LPRECT lprcItem);
+[MenuItemFromPoint]
+1=HWND hWnd
+2=HMENU hMenu
+3=POINT ptScreen
+ParamCount=3
+@=MenuItemFromPoint(HWND hWnd, HMENU hMenu, POINT ptScreen);
+[DragObject]
+1=HWND hwndParent
+2=HWND hwndFrom
+3=UINT fmt
+4=ULONG_PTR data
+5=HCURSOR hcur
+ParamCount=5
+@=DragObject(HWND hwndParent, HWND hwndFrom, UINT fmt, ULONG_PTR data, HCURSOR hcur);
+[DragDetect]
+1=HWND hwnd
+2=POINT pt
+ParamCount=2
+@=DragDetect(HWND hwnd, POINT pt);
+[DrawIcon]
+1=HDC hDC
+2=int X
+3=int Y
+4=HICON hIcon
+ParamCount=4
+@=DrawIcon(HDC hDC, int X, int Y, HICON hIcon);
+[DrawTextA]
+1=HDC hdc
+2=LPCSTR lpchText
+3=int cchText
+4=LPRECT lprc
+5=UINT format
+ParamCount=5
+@=DrawTextA(HDC hdc, LPCSTR lpchText, int cchText, LPRECT lprc, UINT format);
+[DrawTextW]
+1=HDC hdc
+2=LPCWSTR lpchText
+3=int cchText
+4=LPRECT lprc
+5=UINT format
+ParamCount=5
+@=DrawTextW(HDC hdc, LPCWSTR lpchText, int cchText, LPRECT lprc, UINT format);
+[DrawTextExA]
+1=HDC hdc
+2=LPSTR lpchText
+3=int cchText
+4=LPRECT lprc
+5=UINT format
+6=LPDRAWTEXTPARAMS lpdtp
+ParamCount=6
+@=DrawTextExA(HDC hdc, LPSTR lpchText, int cchText, LPRECT lprc, UINT format, LPDRAWTEXTPARAMS lpdtp);
+[DrawTextExW]
+1=HDC hdc
+2=LPWSTR lpchText
+3=int cchText
+4=LPRECT lprc
+5=UINT format
+6=LPDRAWTEXTPARAMS lpdtp
+ParamCount=6
+@=DrawTextExW(HDC hdc, LPWSTR lpchText, int cchText, LPRECT lprc, UINT format, LPDRAWTEXTPARAMS lpdtp);
+[GrayStringA]
+1=HDC hDC
+2=HBRUSH hBrush
+3=GRAYSTRINGPROC lpOutputFunc
+4=LPARAM lpData
+5=int nCount
+6=int X
+7=int Y
+8=int nWidth
+9=int nHeight
+ParamCount=9
+@=GrayStringA(HDC hDC, HBRUSH hBrush, GRAYSTRINGPROC lpOutputFunc, LPARAM lpData, int nCount, int X, int Y, int nWidth, int nHeight);
+[GrayStringW]
+1=HDC hDC
+2=HBRUSH hBrush
+3=GRAYSTRINGPROC lpOutputFunc
+4=LPARAM lpData
+5=int nCount
+6=int X
+7=int Y
+8=int nWidth
+9=int nHeight
+ParamCount=9
+@=GrayStringW(HDC hDC, HBRUSH hBrush, GRAYSTRINGPROC lpOutputFunc, LPARAM lpData, int nCount, int X, int Y, int nWidth, int nHeight);
+[DrawStateA]
+1=HDC hdc
+2=HBRUSH hbrFore
+3=DRAWSTATEPROC qfnCallBack
+4=LPARAM lData
+5=WPARAM wData
+6=int x
+7=int y
+8=int cx
+9=int cy
+10=UINT uFlags
+ParamCount=10
+@=DrawStateA(HDC hdc, HBRUSH hbrFore, DRAWSTATEPROC qfnCallBack, LPARAM lData, WPARAM wData, int x, int y, int cx, int cy, UINT uFlags);
+[DrawStateW]
+1=HDC hdc
+2=HBRUSH hbrFore
+3=DRAWSTATEPROC qfnCallBack
+4=LPARAM lData
+5=WPARAM wData
+6=int x
+7=int y
+8=int cx
+9=int cy
+10=UINT uFlags
+ParamCount=10
+@=DrawStateW(HDC hdc, HBRUSH hbrFore, DRAWSTATEPROC qfnCallBack, LPARAM lData, WPARAM wData, int x, int y, int cx, int cy, UINT uFlags);
+[TabbedTextOutA]
+1=HDC hdc
+2=int x
+3=int y
+4=LPCSTR lpString
+5=int chCount
+6=int nTabPositions
+7=INT *lpnTabStopPositions
+8=int nTabOrigin
+ParamCount=8
+@=TabbedTextOutA(HDC hdc, int x, int y, LPCSTR lpString, int chCount, int nTabPositions, INT *lpnTabStopPositions, int nTabOrigin);
+[TabbedTextOutW]
+1=HDC hdc
+2=int x
+3=int y
+4=LPCWSTR lpString
+5=int chCount
+6=int nTabPositions
+7=INT *lpnTabStopPositions
+8=int nTabOrigin
+ParamCount=8
+@=TabbedTextOutW(HDC hdc, int x, int y, LPCWSTR lpString, int chCount, int nTabPositions, INT *lpnTabStopPositions, int nTabOrigin);
+[GetTabbedTextExtentA]
+1=HDC hdc
+2=LPCSTR lpString
+3=int chCount
+4=int nTabPositions
+5=INT *lpnTabStopPositions
+ParamCount=5
+@=GetTabbedTextExtentA(HDC hdc, LPCSTR lpString, int chCount, int nTabPositions, INT *lpnTabStopPositions);
+[GetTabbedTextExtentW]
+1=HDC hdc
+2=LPCWSTR lpString
+3=int chCount
+4=int nTabPositions
+5=INT *lpnTabStopPositions
+ParamCount=5
+@=GetTabbedTextExtentW(HDC hdc, LPCWSTR lpString, int chCount, int nTabPositions, INT *lpnTabStopPositions);
+[UpdateWindow]
+1=HWND hWnd
+ParamCount=1
+@=UpdateWindow(HWND hWnd);
+[SetActiveWindow]
+1=HWND hWnd
+ParamCount=1
+@=SetActiveWindow(HWND hWnd);
+[GetForegroundWindow]
+ParamCount=0
+@=GetForegroundWindow();
+[PaintDesktop]
+1=HDC hdc
+ParamCount=1
+@=PaintDesktop(HDC hdc);
+[SwitchToThisWindow]
+1=HWND hwnd
+2=BOOL fUnknown
+ParamCount=2
+@=SwitchToThisWindow(HWND hwnd, BOOL fUnknown);
+[SetForegroundWindow]
+1=HWND hWnd
+ParamCount=1
+@=SetForegroundWindow(HWND hWnd);
+[AllowSetForegroundWindow]
+1=DWORD dwProcessId
+ParamCount=1
+@=AllowSetForegroundWindow(DWORD dwProcessId);
+[LockSetForegroundWindow]
+1=UINT uLockCode
+ParamCount=1
+@=LockSetForegroundWindow(UINT uLockCode);
+[WindowFromDC]
+1=HDC hDC
+ParamCount=1
+@=WindowFromDC(HDC hDC);
+[GetDC]
+1=HWND hWnd
+ParamCount=1
+@=GetDC(HWND hWnd);
+[GetDCEx]
+1=HWND hWnd
+2=HRGN hrgnClip
+3=DWORD flags
+ParamCount=3
+@=GetDCEx(HWND hWnd, HRGN hrgnClip, DWORD flags);
+[GetWindowDC]
+1=HWND hWnd
+ParamCount=1
+@=GetWindowDC(HWND hWnd);
+[ReleaseDC]
+1=HWND hWnd
+2=HDC hDC
+ParamCount=2
+@=ReleaseDC(HWND hWnd, HDC hDC);
+[BeginPaint]
+1=HWND hWnd
+2=LPPAINTSTRUCT lpPaint
+ParamCount=2
+@=BeginPaint(HWND hWnd, LPPAINTSTRUCT lpPaint);
+[EndPaint]
+1=HWND hWnd
+2=PAINTSTRUCT *lpPaint
+ParamCount=2
+@=EndPaint(HWND hWnd, PAINTSTRUCT *lpPaint);
+[GetUpdateRect]
+1=HWND hWnd
+2=LPRECT lpRect
+3=BOOL bErase
+ParamCount=3
+@=GetUpdateRect(HWND hWnd, LPRECT lpRect, BOOL bErase);
+[GetUpdateRgn]
+1=HWND hWnd
+2=HRGN hRgn
+3=BOOL bErase
+ParamCount=3
+@=GetUpdateRgn(HWND hWnd, HRGN hRgn, BOOL bErase);
+[SetWindowRgn]
+1=HWND hWnd
+2=HRGN hRgn
+3=BOOL bRedraw
+ParamCount=3
+@=SetWindowRgn(HWND hWnd, HRGN hRgn, BOOL bRedraw);
+[GetWindowRgn]
+1=HWND hWnd
+2=HRGN hRgn
+ParamCount=2
+@=GetWindowRgn(HWND hWnd, HRGN hRgn);
+[GetWindowRgnBox]
+1=HWND hWnd
+2=LPRECT lprc
+ParamCount=2
+@=GetWindowRgnBox(HWND hWnd, LPRECT lprc);
+[ExcludeUpdateRgn]
+1=HDC hDC
+2=HWND hWnd
+ParamCount=2
+@=ExcludeUpdateRgn(HDC hDC, HWND hWnd);
+[InvalidateRect]
+1=HWND hWnd
+2=RECT *lpRect
+3=BOOL bErase
+ParamCount=3
+@=InvalidateRect(HWND hWnd, RECT *lpRect, BOOL bErase);
+[ValidateRect]
+1=HWND hWnd
+2=RECT *lpRect
+ParamCount=2
+@=ValidateRect(HWND hWnd, RECT *lpRect);
+[InvalidateRgn]
+1=HWND hWnd
+2=HRGN hRgn
+3=BOOL bErase
+ParamCount=3
+@=InvalidateRgn(HWND hWnd, HRGN hRgn, BOOL bErase);
+[ValidateRgn]
+1=HWND hWnd
+2=HRGN hRgn
+ParamCount=2
+@=ValidateRgn(HWND hWnd, HRGN hRgn);
+[RedrawWindow]
+1=HWND hWnd
+2=RECT *lprcUpdate
+3=HRGN hrgnUpdate
+4=UINT flags
+ParamCount=4
+@=RedrawWindow(HWND hWnd, RECT *lprcUpdate, HRGN hrgnUpdate, UINT flags);
+[LockWindowUpdate]
+1=HWND hWndLock
+ParamCount=1
+@=LockWindowUpdate(HWND hWndLock);
+[ScrollWindow]
+1=HWND hWnd
+2=int XAmount
+3=int YAmount
+4=RECT *lpRect
+5=RECT *lpClipRect
+ParamCount=5
+@=ScrollWindow(HWND hWnd, int XAmount, int YAmount, RECT *lpRect, RECT *lpClipRect);
+[ScrollDC]
+1=HDC hDC
+2=int dx
+3=int dy
+4=RECT *lprcScroll
+5=RECT *lprcClip
+6=HRGN hrgnUpdate
+7=LPRECT lprcUpdate
+ParamCount=7
+@=ScrollDC(HDC hDC, int dx, int dy, RECT *lprcScroll, RECT *lprcClip, HRGN hrgnUpdate, LPRECT lprcUpdate);
+[ScrollWindowEx]
+1=HWND hWnd
+2=int dx
+3=int dy
+4=RECT *prcScroll
+5=RECT *prcClip
+6=HRGN hrgnUpdate
+7=LPRECT prcUpdate
+8=UINT flags
+ParamCount=8
+@=ScrollWindowEx(HWND hWnd, int dx, int dy, RECT *prcScroll, RECT *prcClip, HRGN hrgnUpdate, LPRECT prcUpdate, UINT flags);
+[SetScrollPos]
+1=HWND hWnd
+2=int nBar
+3=int nPos
+4=BOOL bRedraw
+ParamCount=4
+@=SetScrollPos(HWND hWnd, int nBar, int nPos, BOOL bRedraw);
+[GetScrollPos]
+1=HWND hWnd
+2=int nBar
+ParamCount=2
+@=GetScrollPos(HWND hWnd, int nBar);
+[SetScrollRange]
+1=HWND hWnd
+2=int nBar
+3=int nMinPos
+4=int nMaxPos
+5=BOOL bRedraw
+ParamCount=5
+@=SetScrollRange(HWND hWnd, int nBar, int nMinPos, int nMaxPos, BOOL bRedraw);
+[GetScrollRange]
+1=HWND hWnd
+2=int nBar
+3=LPINT lpMinPos
+4=LPINT lpMaxPos
+ParamCount=4
+@=GetScrollRange(HWND hWnd, int nBar, LPINT lpMinPos, LPINT lpMaxPos);
+[ShowScrollBar]
+1=HWND hWnd
+2=int wBar
+3=BOOL bShow
+ParamCount=3
+@=ShowScrollBar(HWND hWnd, int wBar, BOOL bShow);
+[EnableScrollBar]
+1=HWND hWnd
+2=UINT wSBflags
+3=UINT wArrows
+ParamCount=3
+@=EnableScrollBar(HWND hWnd, UINT wSBflags, UINT wArrows);
+[SetPropA]
+1=HWND hWnd
+2=LPCSTR lpString
+3=HANDLE hData
+ParamCount=3
+@=SetPropA(HWND hWnd, LPCSTR lpString, HANDLE hData);
+[SetPropW]
+1=HWND hWnd
+2=LPCWSTR lpString
+3=HANDLE hData
+ParamCount=3
+@=SetPropW(HWND hWnd, LPCWSTR lpString, HANDLE hData);
+[GetPropA]
+1=HWND hWnd
+2=LPCSTR lpString
+ParamCount=2
+@=GetPropA(HWND hWnd, LPCSTR lpString);
+[GetPropW]
+1=HWND hWnd
+2=LPCWSTR lpString
+ParamCount=2
+@=GetPropW(HWND hWnd, LPCWSTR lpString);
+[RemovePropA]
+1=HWND hWnd
+2=LPCSTR lpString
+ParamCount=2
+@=RemovePropA(HWND hWnd, LPCSTR lpString);
+[RemovePropW]
+1=HWND hWnd
+2=LPCWSTR lpString
+ParamCount=2
+@=RemovePropW(HWND hWnd, LPCWSTR lpString);
+[EnumPropsExA]
+1=HWND hWnd
+2=PROPENUMPROCEXA lpEnumFunc
+3=LPARAM lParam
+ParamCount=3
+@=EnumPropsExA(HWND hWnd, PROPENUMPROCEXA lpEnumFunc, LPARAM lParam);
+[EnumPropsExW]
+1=HWND hWnd
+2=PROPENUMPROCEXW lpEnumFunc
+3=LPARAM lParam
+ParamCount=3
+@=EnumPropsExW(HWND hWnd, PROPENUMPROCEXW lpEnumFunc, LPARAM lParam);
+[EnumPropsA]
+1=HWND hWnd
+2=PROPENUMPROCA lpEnumFunc
+ParamCount=2
+@=EnumPropsA(HWND hWnd, PROPENUMPROCA lpEnumFunc);
+[EnumPropsW]
+1=HWND hWnd
+2=PROPENUMPROCW lpEnumFunc
+ParamCount=2
+@=EnumPropsW(HWND hWnd, PROPENUMPROCW lpEnumFunc);
+[SetWindowTextA]
+1=HWND hWnd
+2=LPCSTR lpString
+ParamCount=2
+@=SetWindowTextA(HWND hWnd, LPCSTR lpString);
+[SetWindowTextW]
+1=HWND hWnd
+2=LPCWSTR lpString
+ParamCount=2
+@=SetWindowTextW(HWND hWnd, LPCWSTR lpString);
+[GetWindowTextA]
+1=HWND hWnd
+2=LPSTR lpString
+3=int nMaxCount
+ParamCount=3
+@=GetWindowTextA(HWND hWnd, LPSTR lpString, int nMaxCount);
+[GetWindowTextW]
+1=HWND hWnd
+2=LPWSTR lpString
+3=int nMaxCount
+ParamCount=3
+@=GetWindowTextW(HWND hWnd, LPWSTR lpString, int nMaxCount);
+[GetWindowTextLengthA]
+1=HWND hWnd
+ParamCount=1
+@=GetWindowTextLengthA(HWND hWnd);
+[GetWindowTextLengthW]
+1=HWND hWnd
+ParamCount=1
+@=GetWindowTextLengthW(HWND hWnd);
+[GetClientRect]
+1=HWND hWnd
+2=LPRECT lpRect
+ParamCount=2
+@=GetClientRect(HWND hWnd, LPRECT lpRect);
+[GetWindowRect]
+1=HWND hWnd
+2=LPRECT lpRect
+ParamCount=2
+@=GetWindowRect(HWND hWnd, LPRECT lpRect);
+[AdjustWindowRect]
+1=LPRECT lpRect
+2=DWORD dwStyle
+3=BOOL bMenu
+ParamCount=3
+@=AdjustWindowRect(LPRECT lpRect, DWORD dwStyle, BOOL bMenu);
+[AdjustWindowRectEx]
+1=LPRECT lpRect
+2=DWORD dwStyle
+3=BOOL bMenu
+4=DWORD dwExStyle
+ParamCount=4
+@=AdjustWindowRectEx(LPRECT lpRect, DWORD dwStyle, BOOL bMenu, DWORD dwExStyle);
+[SetWindowContextHelpId]
+1=HWND
+2=DWORD
+ParamCount=2
+@=SetWindowContextHelpId(HWND, DWORD);
+[GetWindowContextHelpId]
+1=HWND
+ParamCount=1
+@=GetWindowContextHelpId(HWND);
+[SetMenuContextHelpId]
+1=HMENU
+2=DWORD
+ParamCount=2
+@=SetMenuContextHelpId(HMENU, DWORD);
+[GetMenuContextHelpId]
+1=HMENU
+ParamCount=1
+@=GetMenuContextHelpId(HMENU);
+[MessageBoxA]
+1=HWND hWnd
+2=LPCSTR lpText
+3=LPCSTR lpCaption
+4=UINT uType
+ParamCount=4
+@=MessageBoxA(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType);
+[MessageBoxW]
+1=HWND hWnd
+2=LPCWSTR lpText
+3=LPCWSTR lpCaption
+4=UINT uType
+ParamCount=4
+@=MessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType);
+[MessageBoxExA]
+1=HWND hWnd
+2=LPCSTR lpText
+3=LPCSTR lpCaption
+4=UINT uType
+5=WORD wLanguageId
+ParamCount=5
+@=MessageBoxExA(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType, WORD wLanguageId);
+[MessageBoxExW]
+1=HWND hWnd
+2=LPCWSTR lpText
+3=LPCWSTR lpCaption
+4=UINT uType
+5=WORD wLanguageId
+ParamCount=5
+@=MessageBoxExW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType, WORD wLanguageId);
+[MessageBoxIndirectA]
+1=MSGBOXPARAMSA *lpmbp
+ParamCount=1
+@=MessageBoxIndirectA(MSGBOXPARAMSA *lpmbp);
+[MessageBoxIndirectW]
+1=MSGBOXPARAMSW *lpmbp
+ParamCount=1
+@=MessageBoxIndirectW(MSGBOXPARAMSW *lpmbp);
+[MessageBeep]
+1=UINT uType
+ParamCount=1
+@=MessageBeep(UINT uType);
+[ShowCursor]
+1=BOOL bShow
+ParamCount=1
+@=ShowCursor(BOOL bShow);
+[SetCursorPos]
+1=int X
+2=int Y
+ParamCount=2
+@=SetCursorPos(int X, int Y);
+[SetPhysicalCursorPos]
+1=int X
+2=int Y
+ParamCount=2
+@=SetPhysicalCursorPos(int X, int Y);
+[SetCursor]
+1=HCURSOR hCursor
+ParamCount=1
+@=SetCursor(HCURSOR hCursor);
+[GetCursorPos]
+1=LPPOINT lpPoint
+ParamCount=1
+@=GetCursorPos(LPPOINT lpPoint);
+[GetPhysicalCursorPos]
+1=LPPOINT lpPoint
+ParamCount=1
+@=GetPhysicalCursorPos(LPPOINT lpPoint);
+[ClipCursor]
+1=RECT *lpRect
+ParamCount=1
+@=ClipCursor(RECT *lpRect);
+[GetClipCursor]
+1=LPRECT lpRect
+ParamCount=1
+@=GetClipCursor(LPRECT lpRect);
+[GetCursor]
+ParamCount=0
+@=GetCursor();
+[CreateCaret]
+1=HWND hWnd
+2=HBITMAP hBitmap
+3=int nWidth
+4=int nHeight
+ParamCount=4
+@=CreateCaret(HWND hWnd, HBITMAP hBitmap, int nWidth, int nHeight);
+[GetCaretBlinkTime]
+ParamCount=0
+@=GetCaretBlinkTime();
+[SetCaretBlinkTime]
+1=UINT uMSeconds
+ParamCount=1
+@=SetCaretBlinkTime(UINT uMSeconds);
+[DestroyCaret]
+ParamCount=0
+@=DestroyCaret();
+[HideCaret]
+1=HWND hWnd
+ParamCount=1
+@=HideCaret(HWND hWnd);
+[ShowCaret]
+1=HWND hWnd
+ParamCount=1
+@=ShowCaret(HWND hWnd);
+[SetCaretPos]
+1=int X
+2=int Y
+ParamCount=2
+@=SetCaretPos(int X, int Y);
+[GetCaretPos]
+1=LPPOINT lpPoint
+ParamCount=1
+@=GetCaretPos(LPPOINT lpPoint);
+[ClientToScreen]
+1=HWND hWnd
+2=LPPOINT lpPoint
+ParamCount=2
+@=ClientToScreen(HWND hWnd, LPPOINT lpPoint);
+[ScreenToClient]
+1=HWND hWnd
+2=LPPOINT lpPoint
+ParamCount=2
+@=ScreenToClient(HWND hWnd, LPPOINT lpPoint);
+[LogicalToPhysicalPoint]
+1=HWND hWnd
+2=LPPOINT lpPoint
+ParamCount=2
+@=LogicalToPhysicalPoint(HWND hWnd, LPPOINT lpPoint);
+[PhysicalToLogicalPoint]
+1=HWND hWnd
+2=LPPOINT lpPoint
+ParamCount=2
+@=PhysicalToLogicalPoint(HWND hWnd, LPPOINT lpPoint);
+[LogicalToPhysicalPointForPerMonitorDPI]
+1=HWND hWnd
+2=LPPOINT lpPoint
+ParamCount=2
+@=LogicalToPhysicalPointForPerMonitorDPI(HWND hWnd, LPPOINT lpPoint);
+[PhysicalToLogicalPointForPerMonitorDPI]
+1=HWND hWnd
+2=LPPOINT lpPoint
+ParamCount=2
+@=PhysicalToLogicalPointForPerMonitorDPI(HWND hWnd, LPPOINT lpPoint);
+[MapWindowPoints]
+1=HWND hWndFrom
+2=HWND hWndTo
+3=LPPOINT lpPoints
+4=UINT cPoints
+ParamCount=4
+@=MapWindowPoints(HWND hWndFrom, HWND hWndTo, LPPOINT lpPoints, UINT cPoints);
+[WindowFromPoint]
+1=POINT Point
+ParamCount=1
+@=WindowFromPoint(POINT Point);
+[WindowFromPhysicalPoint]
+1=POINT Point
+ParamCount=1
+@=WindowFromPhysicalPoint(POINT Point);
+[ChildWindowFromPoint]
+1=HWND hWndParent
+2=POINT Point
+ParamCount=2
+@=ChildWindowFromPoint(HWND hWndParent, POINT Point);
+[ChildWindowFromPointEx]
+1=HWND hwnd
+2=POINT pt
+3=UINT flags
+ParamCount=3
+@=ChildWindowFromPointEx(HWND hwnd, POINT pt, UINT flags);
+[GetSysColor]
+1=int nIndex
+ParamCount=1
+@=GetSysColor(int nIndex);
+[GetSysColorBrush]
+1=int nIndex
+ParamCount=1
+@=GetSysColorBrush(int nIndex);
+[SetSysColors]
+1=int cElements
+2=INT *lpaElements
+3=COLORREF *lpaRgbValues
+ParamCount=3
+@=SetSysColors(int cElements, INT *lpaElements, COLORREF *lpaRgbValues);
+[DrawFocusRect]
+1=HDC hDC
+2=RECT *lprc
+ParamCount=2
+@=DrawFocusRect(HDC hDC, RECT *lprc);
+[FillRect]
+1=HDC hDC
+2=RECT *lprc
+3=HBRUSH hbr
+ParamCount=3
+@=FillRect(HDC hDC, RECT *lprc, HBRUSH hbr);
+[FrameRect]
+1=HDC hDC
+2=RECT *lprc
+3=HBRUSH hbr
+ParamCount=3
+@=FrameRect(HDC hDC, RECT *lprc, HBRUSH hbr);
+[InvertRect]
+1=HDC hDC
+2=RECT *lprc
+ParamCount=2
+@=InvertRect(HDC hDC, RECT *lprc);
+[SetRect]
+1=LPRECT lprc
+2=int xLeft
+3=int yTop
+4=int xRight
+5=int yBottom
+ParamCount=5
+@=SetRect(LPRECT lprc, int xLeft, int yTop, int xRight, int yBottom);
+[SetRectEmpty]
+1=LPRECT lprc
+ParamCount=1
+@=SetRectEmpty(LPRECT lprc);
+[CopyRect]
+1=LPRECT lprcDst
+2=RECT *lprcSrc
+ParamCount=2
+@=CopyRect(LPRECT lprcDst, RECT *lprcSrc);
+[InflateRect]
+1=LPRECT lprc
+2=int dx
+3=int dy
+ParamCount=3
+@=InflateRect(LPRECT lprc, int dx, int dy);
+[IntersectRect]
+1=LPRECT lprcDst
+2=RECT *lprcSrc1
+3=RECT *lprcSrc2
+ParamCount=3
+@=IntersectRect(LPRECT lprcDst, RECT *lprcSrc1, RECT *lprcSrc2);
+[UnionRect]
+1=LPRECT lprcDst
+2=RECT *lprcSrc1
+3=RECT *lprcSrc2
+ParamCount=3
+@=UnionRect(LPRECT lprcDst, RECT *lprcSrc1, RECT *lprcSrc2);
+[SubtractRect]
+1=LPRECT lprcDst
+2=RECT *lprcSrc1
+3=RECT *lprcSrc2
+ParamCount=3
+@=SubtractRect(LPRECT lprcDst, RECT *lprcSrc1, RECT *lprcSrc2);
+[OffsetRect]
+1=LPRECT lprc
+2=int dx
+3=int dy
+ParamCount=3
+@=OffsetRect(LPRECT lprc, int dx, int dy);
+[IsRectEmpty]
+1=RECT *lprc
+ParamCount=1
+@=IsRectEmpty(RECT *lprc);
+[EqualRect]
+1=RECT *lprc1
+2=RECT *lprc2
+ParamCount=2
+@=EqualRect(RECT *lprc1, RECT *lprc2);
+[PtInRect]
+1=RECT *lprc
+2=POINT pt
+ParamCount=2
+@=PtInRect(RECT *lprc, POINT pt);
+[GetWindowWord]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetWindowWord(HWND hWnd, int nIndex);
+[SetWindowWord]
+1=HWND hWnd
+2=int nIndex
+3=WORD wNewWord
+ParamCount=3
+@=SetWindowWord(HWND hWnd, int nIndex, WORD wNewWord);
+[GetWindowLongA]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetWindowLongA(HWND hWnd, int nIndex);
+[GetWindowLongW]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetWindowLongW(HWND hWnd, int nIndex);
+[SetWindowLongA]
+1=HWND hWnd
+2=int nIndex
+3=LONG dwNewLong
+ParamCount=3
+@=SetWindowLongA(HWND hWnd, int nIndex, LONG dwNewLong);
+[SetWindowLongW]
+1=HWND hWnd
+2=int nIndex
+3=LONG dwNewLong
+ParamCount=3
+@=SetWindowLongW(HWND hWnd, int nIndex, LONG dwNewLong);
+[GetWindowLongPtrA]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetWindowLongPtrA(HWND hWnd, int nIndex);
+[GetWindowLongPtrW]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetWindowLongPtrW(HWND hWnd, int nIndex);
+[SetWindowLongPtrA]
+1=HWND hWnd
+2=int nIndex
+3=LONG_PTR dwNewLong
+ParamCount=3
+@=SetWindowLongPtrA(HWND hWnd, int nIndex, LONG_PTR dwNewLong);
+[SetWindowLongPtrW]
+1=HWND hWnd
+2=int nIndex
+3=LONG_PTR dwNewLong
+ParamCount=3
+@=SetWindowLongPtrW(HWND hWnd, int nIndex, LONG_PTR dwNewLong);
+[GetClassWord]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetClassWord(HWND hWnd, int nIndex);
+[SetClassWord]
+1=HWND hWnd
+2=int nIndex
+3=WORD wNewWord
+ParamCount=3
+@=SetClassWord(HWND hWnd, int nIndex, WORD wNewWord);
+[GetClassLongA]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetClassLongA(HWND hWnd, int nIndex);
+[GetClassLongW]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetClassLongW(HWND hWnd, int nIndex);
+[SetClassLongA]
+1=HWND hWnd
+2=int nIndex
+3=LONG dwNewLong
+ParamCount=3
+@=SetClassLongA(HWND hWnd, int nIndex, LONG dwNewLong);
+[SetClassLongW]
+1=HWND hWnd
+2=int nIndex
+3=LONG dwNewLong
+ParamCount=3
+@=SetClassLongW(HWND hWnd, int nIndex, LONG dwNewLong);
+[GetClassLongPtrA]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetClassLongPtrA(HWND hWnd, int nIndex);
+[GetClassLongPtrW]
+1=HWND hWnd
+2=int nIndex
+ParamCount=2
+@=GetClassLongPtrW(HWND hWnd, int nIndex);
+[SetClassLongPtrA]
+1=HWND hWnd
+2=int nIndex
+3=LONG_PTR dwNewLong
+ParamCount=3
+@=SetClassLongPtrA(HWND hWnd, int nIndex, LONG_PTR dwNewLong);
+[SetClassLongPtrW]
+1=HWND hWnd
+2=int nIndex
+3=LONG_PTR dwNewLong
+ParamCount=3
+@=SetClassLongPtrW(HWND hWnd, int nIndex, LONG_PTR dwNewLong);
+[GetProcessDefaultLayout]
+1=DWORD *pdwDefaultLayout
+ParamCount=1
+@=GetProcessDefaultLayout(DWORD *pdwDefaultLayout);
+[SetProcessDefaultLayout]
+1=DWORD dwDefaultLayout
+ParamCount=1
+@=SetProcessDefaultLayout(DWORD dwDefaultLayout);
+[GetDesktopWindow]
+ParamCount=0
+@=GetDesktopWindow();
+[GetParent]
+1=HWND hWnd
+ParamCount=1
+@=GetParent(HWND hWnd);
+[SetParent]
+1=HWND hWndChild
+2=HWND hWndNewParent
+ParamCount=2
+@=SetParent(HWND hWndChild, HWND hWndNewParent);
+[EnumChildWindows]
+1=HWND hWndParent
+2=WNDENUMPROC lpEnumFunc
+3=LPARAM lParam
+ParamCount=3
+@=EnumChildWindows(HWND hWndParent, WNDENUMPROC lpEnumFunc, LPARAM lParam);
+[FindWindowA]
+1=LPCSTR lpClassName
+2=LPCSTR lpWindowName
+ParamCount=2
+@=FindWindowA(LPCSTR lpClassName, LPCSTR lpWindowName);
+[FindWindowW]
+1=LPCWSTR lpClassName
+2=LPCWSTR lpWindowName
+ParamCount=2
+@=FindWindowW(LPCWSTR lpClassName, LPCWSTR lpWindowName);
+[FindWindowExA]
+1=HWND hWndParent
+2=HWND hWndChildAfter
+3=LPCSTR lpszClass
+4=LPCSTR lpszWindow
+ParamCount=4
+@=FindWindowExA(HWND hWndParent, HWND hWndChildAfter, LPCSTR lpszClass, LPCSTR lpszWindow);
+[FindWindowExW]
+1=HWND hWndParent
+2=HWND hWndChildAfter
+3=LPCWSTR lpszClass
+4=LPCWSTR lpszWindow
+ParamCount=4
+@=FindWindowExW(HWND hWndParent, HWND hWndChildAfter, LPCWSTR lpszClass, LPCWSTR lpszWindow);
+[GetShellWindow]
+ParamCount=0
+@=GetShellWindow();
+[RegisterShellHookWindow]
+1=HWND hwnd
+ParamCount=1
+@=RegisterShellHookWindow(HWND hwnd);
+[DeregisterShellHookWindow]
+1=HWND hwnd
+ParamCount=1
+@=DeregisterShellHookWindow(HWND hwnd);
+[EnumWindows]
+1=WNDENUMPROC lpEnumFunc
+2=LPARAM lParam
+ParamCount=2
+@=EnumWindows(WNDENUMPROC lpEnumFunc, LPARAM lParam);
+[EnumThreadWindows]
+1=DWORD dwThreadId
+2=WNDENUMPROC lpfn
+3=LPARAM lParam
+ParamCount=3
+@=EnumThreadWindows(DWORD dwThreadId, WNDENUMPROC lpfn, LPARAM lParam);
+[GetClassNameA]
+1=HWND hWnd
+2=LPSTR lpClassName
+3=int nMaxCount
+ParamCount=3
+@=GetClassNameA(HWND hWnd, LPSTR lpClassName, int nMaxCount);
+[GetClassNameW]
+1=HWND hWnd
+2=LPWSTR lpClassName
+3=int nMaxCount
+ParamCount=3
+@=GetClassNameW(HWND hWnd, LPWSTR lpClassName, int nMaxCount);
+[GetTopWindow]
+1=HWND hWnd
+ParamCount=1
+@=GetTopWindow(HWND hWnd);
+[GetWindowThreadProcessId]
+1=HWND hWnd
+2=LPDWORD lpdwProcessId
+ParamCount=2
+@=GetWindowThreadProcessId(HWND hWnd, LPDWORD lpdwProcessId);
+[IsGUIThread]
+1=BOOL bConvert
+ParamCount=1
+@=IsGUIThread(BOOL bConvert);
+[GetLastActivePopup]
+1=HWND hWnd
+ParamCount=1
+@=GetLastActivePopup(HWND hWnd);
+[GetWindow]
+1=HWND hWnd
+2=UINT uCmd
+ParamCount=2
+@=GetWindow(HWND hWnd, UINT uCmd);
+[SetWindowsHookA]
+1=int nFilterType
+2=HOOKPROC pfnFilterProc
+ParamCount=2
+@=SetWindowsHookA(int nFilterType, HOOKPROC pfnFilterProc);
+[SetWindowsHookW]
+1=int nFilterType
+2=HOOKPROC pfnFilterProc
+ParamCount=2
+@=SetWindowsHookW(int nFilterType, HOOKPROC pfnFilterProc);
+[UnhookWindowsHook]
+1=int nCode
+2=HOOKPROC pfnFilterProc
+ParamCount=2
+@=UnhookWindowsHook(int nCode, HOOKPROC pfnFilterProc);
+[SetWindowsHookExA]
+1=int idHook
+2=HOOKPROC lpfn
+3=HINSTANCE hmod
+4=DWORD dwThreadId
+ParamCount=4
+@=SetWindowsHookExA(int idHook, HOOKPROC lpfn, HINSTANCE hmod, DWORD dwThreadId);
+[SetWindowsHookExW]
+1=int idHook
+2=HOOKPROC lpfn
+3=HINSTANCE hmod
+4=DWORD dwThreadId
+ParamCount=4
+@=SetWindowsHookExW(int idHook, HOOKPROC lpfn, HINSTANCE hmod, DWORD dwThreadId);
+[UnhookWindowsHookEx]
+1=HHOOK hhk
+ParamCount=1
+@=UnhookWindowsHookEx(HHOOK hhk);
+[CallNextHookEx]
+1=HHOOK hhk
+2=int nCode
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=CallNextHookEx(HHOOK hhk, int nCode, WPARAM wParam, LPARAM lParam);
+[CheckMenuRadioItem]
+1=HMENU hmenu
+2=UINT first
+3=UINT last
+4=UINT check
+5=UINT flags
+ParamCount=5
+@=CheckMenuRadioItem(HMENU hmenu, UINT first, UINT last, UINT check, UINT flags);
+[LoadBitmapA]
+1=HINSTANCE hInstance
+2=LPCSTR lpBitmapName
+ParamCount=2
+@=LoadBitmapA(HINSTANCE hInstance, LPCSTR lpBitmapName);
+[LoadBitmapW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpBitmapName
+ParamCount=2
+@=LoadBitmapW(HINSTANCE hInstance, LPCWSTR lpBitmapName);
+[LoadCursorA]
+1=HINSTANCE hInstance
+2=LPCSTR lpCursorName
+ParamCount=2
+@=LoadCursorA(HINSTANCE hInstance, LPCSTR lpCursorName);
+[LoadCursorW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpCursorName
+ParamCount=2
+@=LoadCursorW(HINSTANCE hInstance, LPCWSTR lpCursorName);
+[LoadCursorFromFileA]
+1=LPCSTR lpFileName
+ParamCount=1
+@=LoadCursorFromFileA(LPCSTR lpFileName);
+[LoadCursorFromFileW]
+1=LPCWSTR lpFileName
+ParamCount=1
+@=LoadCursorFromFileW(LPCWSTR lpFileName);
+[CreateCursor]
+1=HINSTANCE hInst
+2=int xHotSpot
+3=int yHotSpot
+4=int nWidth
+5=int nHeight
+6=VOID *pvANDPlane
+7=VOID *pvXORPlane
+ParamCount=7
+@=CreateCursor(HINSTANCE hInst, int xHotSpot, int yHotSpot, int nWidth, int nHeight, VOID *pvANDPlane, VOID *pvXORPlane);
+[DestroyCursor]
+1=HCURSOR hCursor
+ParamCount=1
+@=DestroyCursor(HCURSOR hCursor);
+[CopyCursor]
+1=HCURSOR hCursor
+ParamCount=1
+@=CopyCursor(HCURSOR hCursor);
+[SetSystemCursor]
+1=HCURSOR hcur
+2=DWORD id
+ParamCount=2
+@=SetSystemCursor(HCURSOR hcur, DWORD id);
+[LoadIconA]
+1=HINSTANCE hInstance
+2=LPCSTR lpIconName
+ParamCount=2
+@=LoadIconA(HINSTANCE hInstance, LPCSTR lpIconName);
+[LoadIconW]
+1=HINSTANCE hInstance
+2=LPCWSTR lpIconName
+ParamCount=2
+@=LoadIconW(HINSTANCE hInstance, LPCWSTR lpIconName);
+[PrivateExtractIconsA]
+1=LPCSTR szFileName
+2=int nIconIndex
+3=int cxIcon
+4=int cyIcon
+5=HICON *phicon
+6=UINT *piconid
+7=UINT nIcons
+8=UINT flags
+ParamCount=8
+@=PrivateExtractIconsA(LPCSTR szFileName, int nIconIndex, int cxIcon, int cyIcon, HICON *phicon, UINT *piconid, UINT nIcons, UINT flags);
+[PrivateExtractIconsW]
+1=LPCWSTR szFileName
+2=int nIconIndex
+3=int cxIcon
+4=int cyIcon
+5=HICON *phicon
+6=UINT *piconid
+7=UINT nIcons
+8=UINT flags
+ParamCount=8
+@=PrivateExtractIconsW(LPCWSTR szFileName, int nIconIndex, int cxIcon, int cyIcon, HICON *phicon, UINT *piconid, UINT nIcons, UINT flags);
+[CreateIcon]
+1=HINSTANCE hInstance
+2=int nWidth
+3=int nHeight
+4=BYTE cPlanes
+5=BYTE cBitsPixel
+6=BYTE *lpbANDbits
+7=BYTE *lpbXORbits
+ParamCount=7
+@=CreateIcon(HINSTANCE hInstance, int nWidth, int nHeight, BYTE cPlanes, BYTE cBitsPixel, BYTE *lpbANDbits, BYTE *lpbXORbits);
+[DestroyIcon]
+1=HICON hIcon
+ParamCount=1
+@=DestroyIcon(HICON hIcon);
+[LookupIconIdFromDirectory]
+1=PBYTE presbits
+2=BOOL fIcon
+ParamCount=2
+@=LookupIconIdFromDirectory(PBYTE presbits, BOOL fIcon);
+[LookupIconIdFromDirectoryEx]
+1=PBYTE presbits
+2=BOOL fIcon
+3=int cxDesired
+4=int cyDesired
+5=UINT Flags
+ParamCount=5
+@=LookupIconIdFromDirectoryEx(PBYTE presbits, BOOL fIcon, int cxDesired, int cyDesired, UINT Flags);
+[CreateIconFromResource]
+1=PBYTE presbits
+2=DWORD dwResSize
+3=BOOL fIcon
+4=DWORD dwVer
+ParamCount=4
+@=CreateIconFromResource(PBYTE presbits, DWORD dwResSize, BOOL fIcon, DWORD dwVer);
+[CreateIconFromResourceEx]
+1=PBYTE presbits
+2=DWORD dwResSize
+3=BOOL fIcon
+4=DWORD dwVer
+5=int cxDesired
+6=int cyDesired
+7=UINT Flags
+ParamCount=7
+@=CreateIconFromResourceEx(PBYTE presbits, DWORD dwResSize, BOOL fIcon, DWORD dwVer, int cxDesired, int cyDesired, UINT Flags);
+[LoadImageA]
+1=HINSTANCE hInst
+2=LPCSTR name
+3=UINT type
+4=int cx
+5=int cy
+6=UINT fuLoad
+ParamCount=6
+@=LoadImageA(HINSTANCE hInst, LPCSTR name, UINT type, int cx, int cy, UINT fuLoad);
+[LoadImageW]
+1=HINSTANCE hInst
+2=LPCWSTR name
+3=UINT type
+4=int cx
+5=int cy
+6=UINT fuLoad
+ParamCount=6
+@=LoadImageW(HINSTANCE hInst, LPCWSTR name, UINT type, int cx, int cy, UINT fuLoad);
+[CopyImage]
+1=HANDLE h
+2=UINT type
+3=int cx
+4=int cy
+5=UINT flags
+ParamCount=5
+@=CopyImage(HANDLE h, UINT type, int cx, int cy, UINT flags);
+[DrawIconEx]
+1=HDC hdc
+2=int xLeft
+3=int yTop
+4=HICON hIcon
+5=int cxWidth
+6=int cyWidth
+7=UINT istepIfAniCur
+8=HBRUSH hbrFlickerFreeDraw
+9=UINT diFlags
+ParamCount=9
+@=DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon, int cxWidth, int cyWidth, UINT istepIfAniCur, HBRUSH hbrFlickerFreeDraw, UINT diFlags);
+[CreateIconIndirect]
+1=PICONINFO piconinfo
+ParamCount=1
+@=CreateIconIndirect(PICONINFO piconinfo);
+[CopyIcon]
+1=HICON hIcon
+ParamCount=1
+@=CopyIcon(HICON hIcon);
+[GetIconInfo]
+1=HICON hIcon
+2=PICONINFO piconinfo
+ParamCount=2
+@=GetIconInfo(HICON hIcon, PICONINFO piconinfo);
+[GetIconInfoExA]
+1=HICON hicon
+2=PICONINFOEXA piconinfo
+ParamCount=2
+@=GetIconInfoExA(HICON hicon, PICONINFOEXA piconinfo);
+[GetIconInfoExW]
+1=HICON hicon
+2=PICONINFOEXW piconinfo
+ParamCount=2
+@=GetIconInfoExW(HICON hicon, PICONINFOEXW piconinfo);
+[LoadStringA]
+1=HINSTANCE hInstance
+2=UINT uID
+3=LPSTR lpBuffer
+4=int cchBufferMax
+ParamCount=4
+@=LoadStringA(HINSTANCE hInstance, UINT uID, LPSTR lpBuffer, int cchBufferMax);
+[LoadStringW]
+1=HINSTANCE hInstance
+2=UINT uID
+3=LPWSTR lpBuffer
+4=int cchBufferMax
+ParamCount=4
+@=LoadStringW(HINSTANCE hInstance, UINT uID, LPWSTR lpBuffer, int cchBufferMax);
+[IsDialogMessageA]
+1=HWND hDlg
+2=LPMSG lpMsg
+ParamCount=2
+@=IsDialogMessageA(HWND hDlg, LPMSG lpMsg);
+[IsDialogMessageW]
+1=HWND hDlg
+2=LPMSG lpMsg
+ParamCount=2
+@=IsDialogMessageW(HWND hDlg, LPMSG lpMsg);
+[MapDialogRect]
+1=HWND hDlg
+2=LPRECT lpRect
+ParamCount=2
+@=MapDialogRect(HWND hDlg, LPRECT lpRect);
+[DlgDirListA]
+1=HWND hDlg
+2=LPSTR lpPathSpec
+3=int nIDListBox
+4=int nIDStaticPath
+5=UINT uFileType
+ParamCount=5
+@=DlgDirListA(HWND hDlg, LPSTR lpPathSpec, int nIDListBox, int nIDStaticPath, UINT uFileType);
+[DlgDirListW]
+1=HWND hDlg
+2=LPWSTR lpPathSpec
+3=int nIDListBox
+4=int nIDStaticPath
+5=UINT uFileType
+ParamCount=5
+@=DlgDirListW(HWND hDlg, LPWSTR lpPathSpec, int nIDListBox, int nIDStaticPath, UINT uFileType);
+[DlgDirSelectExA]
+1=HWND hwndDlg
+2=LPSTR lpString
+3=int chCount
+4=int idListBox
+ParamCount=4
+@=DlgDirSelectExA(HWND hwndDlg, LPSTR lpString, int chCount, int idListBox);
+[DlgDirSelectExW]
+1=HWND hwndDlg
+2=LPWSTR lpString
+3=int chCount
+4=int idListBox
+ParamCount=4
+@=DlgDirSelectExW(HWND hwndDlg, LPWSTR lpString, int chCount, int idListBox);
+[DlgDirListComboBoxA]
+1=HWND hDlg
+2=LPSTR lpPathSpec
+3=int nIDComboBox
+4=int nIDStaticPath
+5=UINT uFiletype
+ParamCount=5
+@=DlgDirListComboBoxA(HWND hDlg, LPSTR lpPathSpec, int nIDComboBox, int nIDStaticPath, UINT uFiletype);
+[DlgDirListComboBoxW]
+1=HWND hDlg
+2=LPWSTR lpPathSpec
+3=int nIDComboBox
+4=int nIDStaticPath
+5=UINT uFiletype
+ParamCount=5
+@=DlgDirListComboBoxW(HWND hDlg, LPWSTR lpPathSpec, int nIDComboBox, int nIDStaticPath, UINT uFiletype);
+[DlgDirSelectComboBoxExA]
+1=HWND hwndDlg
+2=LPSTR lpString
+3=int cchOut
+4=int idComboBox
+ParamCount=4
+@=DlgDirSelectComboBoxExA(HWND hwndDlg, LPSTR lpString, int cchOut, int idComboBox);
+[DlgDirSelectComboBoxExW]
+1=HWND hwndDlg
+2=LPWSTR lpString
+3=int cchOut
+4=int idComboBox
+ParamCount=4
+@=DlgDirSelectComboBoxExW(HWND hwndDlg, LPWSTR lpString, int cchOut, int idComboBox);
+[SetScrollInfo]
+1=HWND hwnd
+2=int nBar
+3=LPCSCROLLINFO lpsi
+4=BOOL redraw
+ParamCount=4
+@=SetScrollInfo(HWND hwnd, int nBar, LPCSCROLLINFO lpsi, BOOL redraw);
+[GetScrollInfo]
+1=HWND hwnd
+2=int nBar
+3=LPSCROLLINFO lpsi
+ParamCount=3
+@=GetScrollInfo(HWND hwnd, int nBar, LPSCROLLINFO lpsi);
+[DefFrameProcA]
+1=HWND hWnd
+2=HWND hWndMDIClient
+3=UINT uMsg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=DefFrameProcA(HWND hWnd, HWND hWndMDIClient, UINT uMsg, WPARAM wParam, LPARAM lParam);
+[DefFrameProcW]
+1=HWND hWnd
+2=HWND hWndMDIClient
+3=UINT uMsg
+4=WPARAM wParam
+5=LPARAM lParam
+ParamCount=5
+@=DefFrameProcW(HWND hWnd, HWND hWndMDIClient, UINT uMsg, WPARAM wParam, LPARAM lParam);
+[DefMDIChildProcA]
+1=HWND hWnd
+2=UINT uMsg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefMDIChildProcA(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+[DefMDIChildProcW]
+1=HWND hWnd
+2=UINT uMsg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefMDIChildProcW(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+[TranslateMDISysAccel]
+1=HWND hWndClient
+2=LPMSG lpMsg
+ParamCount=2
+@=TranslateMDISysAccel(HWND hWndClient, LPMSG lpMsg);
+[ArrangeIconicWindows]
+1=HWND hWnd
+ParamCount=1
+@=ArrangeIconicWindows(HWND hWnd);
+[CreateMDIWindowA]
+1=LPCSTR lpClassName
+2=LPCSTR lpWindowName
+3=DWORD dwStyle
+4=int X
+5=int Y
+6=int nWidth
+7=int nHeight
+8=HWND hWndParent
+9=HINSTANCE hInstance
+10=LPARAM lParam
+ParamCount=10
+@=CreateMDIWindowA(LPCSTR lpClassName, LPCSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam);
+[CreateMDIWindowW]
+1=LPCWSTR lpClassName
+2=LPCWSTR lpWindowName
+3=DWORD dwStyle
+4=int X
+5=int Y
+6=int nWidth
+7=int nHeight
+8=HWND hWndParent
+9=HINSTANCE hInstance
+10=LPARAM lParam
+ParamCount=10
+@=CreateMDIWindowW(LPCWSTR lpClassName, LPCWSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam);
+[TileWindows]
+1=HWND hwndParent
+2=UINT wHow
+3=RECT *lpRect
+4=UINT cKids
+5=HWND *lpKids
+ParamCount=5
+@=TileWindows(HWND hwndParent, UINT wHow, RECT *lpRect, UINT cKids, HWND *lpKids);
+[CascadeWindows]
+1=HWND hwndParent
+2=UINT wHow
+3=RECT *lpRect
+4=UINT cKids
+5=HWND *lpKids
+ParamCount=5
+@=CascadeWindows(HWND hwndParent, UINT wHow, RECT *lpRect, UINT cKids, HWND *lpKids);
+[WinHelpA]
+1=HWND hWndMain
+2=LPCSTR lpszHelp
+3=UINT uCommand
+4=ULONG_PTR dwData
+ParamCount=4
+@=WinHelpA(HWND hWndMain, LPCSTR lpszHelp, UINT uCommand, ULONG_PTR dwData);
+[WinHelpW]
+1=HWND hWndMain
+2=LPCWSTR lpszHelp
+3=UINT uCommand
+4=ULONG_PTR dwData
+ParamCount=4
+@=WinHelpW(HWND hWndMain, LPCWSTR lpszHelp, UINT uCommand, ULONG_PTR dwData);
+[GetGuiResources]
+1=HANDLE hProcess
+2=DWORD uiFlags
+ParamCount=2
+@=GetGuiResources(HANDLE hProcess, DWORD uiFlags);
+[ChangeDisplaySettingsA]
+1=DEVMODEA* lpDevMode
+2=DWORD dwFlags
+ParamCount=2
+@=ChangeDisplaySettingsA(DEVMODEA* lpDevMode, DWORD dwFlags);
+[ChangeDisplaySettingsW]
+1=DEVMODEW* lpDevMode
+2=DWORD dwFlags
+ParamCount=2
+@=ChangeDisplaySettingsW(DEVMODEW* lpDevMode, DWORD dwFlags);
+[ChangeDisplaySettingsExA]
+1=LPCSTR lpszDeviceName
+2=DEVMODEA* lpDevMode
+3=HWND hwnd
+4=DWORD dwflags
+5=LPVOID lParam
+ParamCount=5
+@=ChangeDisplaySettingsExA(LPCSTR lpszDeviceName, DEVMODEA* lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam);
+[ChangeDisplaySettingsExW]
+1=LPCWSTR lpszDeviceName
+2=DEVMODEW* lpDevMode
+3=HWND hwnd
+4=DWORD dwflags
+5=LPVOID lParam
+ParamCount=5
+@=ChangeDisplaySettingsExW(LPCWSTR lpszDeviceName, DEVMODEW* lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam);
+[EnumDisplaySettingsA]
+1=LPCSTR lpszDeviceName
+2=DWORD iModeNum
+3=DEVMODEA* lpDevMode
+ParamCount=3
+@=EnumDisplaySettingsA(LPCSTR lpszDeviceName, DWORD iModeNum, DEVMODEA* lpDevMode);
+[EnumDisplaySettingsW]
+1=LPCWSTR lpszDeviceName
+2=DWORD iModeNum
+3=DEVMODEW* lpDevMode
+ParamCount=3
+@=EnumDisplaySettingsW(LPCWSTR lpszDeviceName, DWORD iModeNum, DEVMODEW* lpDevMode);
+[EnumDisplaySettingsExA]
+1=LPCSTR lpszDeviceName
+2=DWORD iModeNum
+3=DEVMODEA* lpDevMode
+4=DWORD dwFlags
+ParamCount=4
+@=EnumDisplaySettingsExA(LPCSTR lpszDeviceName, DWORD iModeNum, DEVMODEA* lpDevMode, DWORD dwFlags);
+[EnumDisplaySettingsExW]
+1=LPCWSTR lpszDeviceName
+2=DWORD iModeNum
+3=DEVMODEW* lpDevMode
+4=DWORD dwFlags
+ParamCount=4
+@=EnumDisplaySettingsExW(LPCWSTR lpszDeviceName, DWORD iModeNum, DEVMODEW* lpDevMode, DWORD dwFlags);
+[EnumDisplayDevicesA]
+1=LPCSTR lpDevice
+2=DWORD iDevNum
+3=PDISPLAY_DEVICEA lpDisplayDevice
+4=DWORD dwFlags
+ParamCount=4
+@=EnumDisplayDevicesA(LPCSTR lpDevice, DWORD iDevNum, PDISPLAY_DEVICEA lpDisplayDevice, DWORD dwFlags);
+[EnumDisplayDevicesW]
+1=LPCWSTR lpDevice
+2=DWORD iDevNum
+3=PDISPLAY_DEVICEW lpDisplayDevice
+4=DWORD dwFlags
+ParamCount=4
+@=EnumDisplayDevicesW(LPCWSTR lpDevice, DWORD iDevNum, PDISPLAY_DEVICEW lpDisplayDevice, DWORD dwFlags);
+[GetDisplayConfigBufferSizes]
+1=UINT32 flags
+2=UINT32* numPathArrayElements
+3=UINT32* numModeInfoArrayElements
+ParamCount=3
+@=GetDisplayConfigBufferSizes(UINT32 flags, UINT32* numPathArrayElements, UINT32* numModeInfoArrayElements);
+[SetDisplayConfig]
+1=UINT32 numPathArrayElements
+2=DISPLAYCONFIG_PATH_INFO* pathArray
+3=UINT32 numModeInfoArrayElements
+4=DISPLAYCONFIG_MODE_INFO* modeInfoArray
+5=UINT32 flags
+ParamCount=5
+@=SetDisplayConfig(UINT32 numPathArrayElements, DISPLAYCONFIG_PATH_INFO* pathArray, UINT32 numModeInfoArrayElements, DISPLAYCONFIG_MODE_INFO* modeInfoArray, UINT32 flags);
+[QueryDisplayConfig]
+1=UINT32 flags
+2=UINT32* numPathArrayElements
+3=DISPLAYCONFIG_PATH_INFO* pathArray
+4=UINT32* numModeInfoArrayElements
+5=DISPLAYCONFIG_MODE_INFO* modeInfoArray
+6=DISPLAYCONFIG_TOPOLOGY_ID* currentTopologyId
+ParamCount=6
+@=QueryDisplayConfig(UINT32 flags, UINT32* numPathArrayElements, DISPLAYCONFIG_PATH_INFO* pathArray, UINT32* numModeInfoArrayElements, DISPLAYCONFIG_MODE_INFO* modeInfoArray, DISPLAYCONFIG_TOPOLOGY_ID* currentTopologyId);
+[DisplayConfigGetDeviceInfo]
+1=DISPLAYCONFIG_DEVICE_INFO_HEADER* requestPacket
+ParamCount=1
+@=DisplayConfigGetDeviceInfo(DISPLAYCONFIG_DEVICE_INFO_HEADER* requestPacket);
+[DisplayConfigSetDeviceInfo]
+1=DISPLAYCONFIG_DEVICE_INFO_HEADER* setPacket
+ParamCount=1
+@=DisplayConfigSetDeviceInfo(DISPLAYCONFIG_DEVICE_INFO_HEADER* setPacket);
+[SystemParametersInfoA]
+1=UINT uiAction
+2=UINT uiParam
+3=PVOID pvParam
+4=UINT fWinIni
+ParamCount=4
+@=SystemParametersInfoA(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni);
+[SystemParametersInfoW]
+1=UINT uiAction
+2=UINT uiParam
+3=PVOID pvParam
+4=UINT fWinIni
+ParamCount=4
+@=SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni);
+[SoundSentry]
+ParamCount=0
+@=SoundSentry();
+[SetDebugErrorLevel]
+1=DWORD dwLevel
+ParamCount=1
+@=SetDebugErrorLevel(DWORD dwLevel);
+[SetLastErrorEx]
+1=DWORD dwErrCode
+2=DWORD dwType
+ParamCount=2
+@=SetLastErrorEx(DWORD dwErrCode, DWORD dwType);
+[InternalGetWindowText]
+1=HWND hWnd
+2=LPWSTR pString
+3=int cchMaxCount
+ParamCount=3
+@=InternalGetWindowText(HWND hWnd, LPWSTR pString, int cchMaxCount);
+[EndTask]
+1=HWND hWnd
+2=BOOL fShutDown
+3=BOOL fForce
+ParamCount=3
+@=EndTask(HWND hWnd, BOOL fShutDown, BOOL fForce);
+[CancelShutdown]
+ParamCount=0
+@=CancelShutdown();
+[MonitorFromPoint]
+1=POINT pt
+2=DWORD dwFlags
+ParamCount=2
+@=MonitorFromPoint(POINT pt, DWORD dwFlags);
+[MonitorFromRect]
+1=LPCRECT lprc
+2=DWORD dwFlags
+ParamCount=2
+@=MonitorFromRect(LPCRECT lprc, DWORD dwFlags);
+[MonitorFromWindow]
+1=HWND hwnd
+2=DWORD dwFlags
+ParamCount=2
+@=MonitorFromWindow(HWND hwnd, DWORD dwFlags);
+[GetMonitorInfoA]
+1=HMONITOR hMonitor
+2=LPMONITORINFO lpmi
+ParamCount=2
+@=GetMonitorInfoA(HMONITOR hMonitor, LPMONITORINFO lpmi);
+[GetMonitorInfoW]
+1=HMONITOR hMonitor
+2=LPMONITORINFO lpmi
+ParamCount=2
+@=GetMonitorInfoW(HMONITOR hMonitor, LPMONITORINFO lpmi);
+[EnumDisplayMonitors]
+1=HDC hdc
+2=LPCRECT lprcClip
+3=MONITORENUMPROC lpfnEnum
+4=LPARAM dwData
+ParamCount=4
+@=EnumDisplayMonitors(HDC hdc, LPCRECT lprcClip, MONITORENUMPROC lpfnEnum, LPARAM dwData);
+[NotifyWinEvent]
+1=DWORD event
+2=HWND hwnd
+3=LONG idObject
+4=LONG idChild
+ParamCount=4
+@=NotifyWinEvent(DWORD event, HWND hwnd, LONG idObject, LONG idChild);
+[SetWinEventHook]
+1=DWORD eventMin
+2=DWORD eventMax
+3=HMODULE hmodWinEventProc
+4=WINEVENTPROC pfnWinEventProc
+5=DWORD idProcess
+6=DWORD idThread
+7=DWORD dwFlags
+ParamCount=7
+@=SetWinEventHook(DWORD eventMin, DWORD eventMax, HMODULE hmodWinEventProc, WINEVENTPROC pfnWinEventProc, DWORD idProcess, DWORD idThread, DWORD dwFlags);
+[IsWinEventHookInstalled]
+1=DWORD event
+ParamCount=1
+@=IsWinEventHookInstalled(DWORD event);
+[UnhookWinEvent]
+1=HWINEVENTHOOK hWinEventHook
+ParamCount=1
+@=UnhookWinEvent(HWINEVENTHOOK hWinEventHook);
+[GetGUIThreadInfo]
+1=DWORD idThread
+2=PGUITHREADINFO pgui
+ParamCount=2
+@=GetGUIThreadInfo(DWORD idThread, PGUITHREADINFO pgui);
+[BlockInput]
+1=BOOL fBlockIt
+ParamCount=1
+@=BlockInput(BOOL fBlockIt);
+[SetProcessDPIAware]
+ParamCount=0
+@=SetProcessDPIAware();
+[IsProcessDPIAware]
+ParamCount=0
+@=IsProcessDPIAware();
+[GetWindowModuleFileNameA]
+1=HWND hwnd
+2=LPSTR pszFileName
+3=UINT cchFileNameMax
+ParamCount=3
+@=GetWindowModuleFileNameA(HWND hwnd, LPSTR pszFileName, UINT cchFileNameMax);
+[GetWindowModuleFileNameW]
+1=HWND hwnd
+2=LPWSTR pszFileName
+3=UINT cchFileNameMax
+ParamCount=3
+@=GetWindowModuleFileNameW(HWND hwnd, LPWSTR pszFileName, UINT cchFileNameMax);
+[GetCursorInfo]
+1=PCURSORINFO pci
+ParamCount=1
+@=GetCursorInfo(PCURSORINFO pci);
+[GetWindowInfo]
+1=HWND hwnd
+2=PWINDOWINFO pwi
+ParamCount=2
+@=GetWindowInfo(HWND hwnd, PWINDOWINFO pwi);
+[GetTitleBarInfo]
+1=HWND hwnd
+2=PTITLEBARINFO pti
+ParamCount=2
+@=GetTitleBarInfo(HWND hwnd, PTITLEBARINFO pti);
+[GetMenuBarInfo]
+1=HWND hwnd
+2=LONG idObject
+3=LONG idItem
+4=PMENUBARINFO pmbi
+ParamCount=4
+@=GetMenuBarInfo(HWND hwnd, LONG idObject, LONG idItem, PMENUBARINFO pmbi);
+[GetScrollBarInfo]
+1=HWND hwnd
+2=LONG idObject
+3=PSCROLLBARINFO psbi
+ParamCount=3
+@=GetScrollBarInfo(HWND hwnd, LONG idObject, PSCROLLBARINFO psbi);
+[GetComboBoxInfo]
+1=HWND hwndCombo
+2=PCOMBOBOXINFO pcbi
+ParamCount=2
+@=GetComboBoxInfo(HWND hwndCombo, PCOMBOBOXINFO pcbi);
+[GetAncestor]
+1=HWND hwnd
+2=UINT gaFlags
+ParamCount=2
+@=GetAncestor(HWND hwnd, UINT gaFlags);
+[RealChildWindowFromPoint]
+1=HWND hwndParent
+2=POINT ptParentClientCoords
+ParamCount=2
+@=RealChildWindowFromPoint(HWND hwndParent, POINT ptParentClientCoords);
+[RealGetWindowClassA]
+1=HWND hwnd
+2=LPSTR ptszClassName
+3=UINT cchClassNameMax
+ParamCount=3
+@=RealGetWindowClassA(HWND hwnd, LPSTR ptszClassName, UINT cchClassNameMax);
+[RealGetWindowClassW]
+1=HWND hwnd
+2=LPWSTR ptszClassName
+3=UINT cchClassNameMax
+ParamCount=3
+@=RealGetWindowClassW(HWND hwnd, LPWSTR ptszClassName, UINT cchClassNameMax);
+[GetAltTabInfoA]
+1=HWND hwnd
+2=int iItem
+3=PALTTABINFO pati
+4=LPSTR pszItemText
+5=UINT cchItemText
+ParamCount=5
+@=GetAltTabInfoA(HWND hwnd, int iItem, PALTTABINFO pati, LPSTR pszItemText, UINT cchItemText);
+[GetAltTabInfoW]
+1=HWND hwnd
+2=int iItem
+3=PALTTABINFO pati
+4=LPWSTR pszItemText
+5=UINT cchItemText
+ParamCount=5
+@=GetAltTabInfoW(HWND hwnd, int iItem, PALTTABINFO pati, LPWSTR pszItemText, UINT cchItemText);
+[GetListBoxInfo]
+1=HWND hwnd
+ParamCount=1
+@=GetListBoxInfo(HWND hwnd);
+[LockWorkStation]
+ParamCount=0
+@=LockWorkStation();
+[UserHandleGrantAccess]
+1=HANDLE hUserHandle
+2=HANDLE hJob
+3=BOOL bGrant
+ParamCount=3
+@=UserHandleGrantAccess(HANDLE hUserHandle, HANDLE hJob, BOOL bGrant);
+[GetRawInputData]
+1=HRAWINPUT hRawInput
+2=UINT uiCommand
+3=LPVOID pData
+4=PUINT pcbSize
+5=UINT cbSizeHeader
+ParamCount=5
+@=GetRawInputData(HRAWINPUT hRawInput, UINT uiCommand, LPVOID pData, PUINT pcbSize, UINT cbSizeHeader);
+[GetRawInputDeviceInfoA]
+1=HANDLE hDevice
+2=UINT uiCommand
+3=LPVOID pData
+4=PUINT pcbSize
+ParamCount=4
+@=GetRawInputDeviceInfoA(HANDLE hDevice, UINT uiCommand, LPVOID pData, PUINT pcbSize);
+[GetRawInputDeviceInfoW]
+1=HANDLE hDevice
+2=UINT uiCommand
+3=LPVOID pData
+4=PUINT pcbSize
+ParamCount=4
+@=GetRawInputDeviceInfoW(HANDLE hDevice, UINT uiCommand, LPVOID pData, PUINT pcbSize);
+[GetRawInputBuffer]
+1=PRAWINPUT pData
+2=PUINT pcbSize
+3=UINT cbSizeHeader
+ParamCount=3
+@=GetRawInputBuffer(PRAWINPUT pData, PUINT pcbSize, UINT cbSizeHeader);
+[RegisterRawInputDevices]
+1=PCRAWINPUTDEVICE pRawInputDevices
+2=UINT uiNumDevices
+3=UINT cbSize
+ParamCount=3
+@=RegisterRawInputDevices(PCRAWINPUTDEVICE pRawInputDevices, UINT uiNumDevices, UINT cbSize);
+[GetRegisteredRawInputDevices]
+1=PRAWINPUTDEVICE pRawInputDevices
+2=PUINT puiNumDevices
+3=UINT cbSize
+ParamCount=3
+@=GetRegisteredRawInputDevices(PRAWINPUTDEVICE pRawInputDevices, PUINT puiNumDevices, UINT cbSize);
+[GetRawInputDeviceList]
+1=PRAWINPUTDEVICELIST pRawInputDeviceList
+2=PUINT puiNumDevices
+3=UINT cbSize
+ParamCount=3
+@=GetRawInputDeviceList(PRAWINPUTDEVICELIST pRawInputDeviceList, PUINT puiNumDevices, UINT cbSize);
+[DefRawInputProc]
+1=PRAWINPUT* paRawInput
+2=INT nInput
+3=UINT cbSizeHeader
+ParamCount=3
+@=DefRawInputProc(PRAWINPUT* paRawInput, INT nInput, UINT cbSizeHeader);
+[GetPointerDevices]
+1=UINT32* deviceCount
+2=POINTER_DEVICE_INFO *pointerDevices
+ParamCount=2
+@=GetPointerDevices(UINT32* deviceCount, POINTER_DEVICE_INFO *pointerDevices);
+[GetPointerDevice]
+1=HANDLE device
+2=POINTER_DEVICE_INFO *pointerDevice
+ParamCount=2
+@=GetPointerDevice(HANDLE device, POINTER_DEVICE_INFO *pointerDevice);
+[GetPointerDeviceProperties]
+1=HANDLE device
+2=UINT32* propertyCount
+3=POINTER_DEVICE_PROPERTY *pointerProperties
+ParamCount=3
+@=GetPointerDeviceProperties(HANDLE device, UINT32* propertyCount, POINTER_DEVICE_PROPERTY *pointerProperties);
+[RegisterPointerDeviceNotifications]
+1=HWND window
+2=BOOL notifyRange
+ParamCount=2
+@=RegisterPointerDeviceNotifications(HWND window, BOOL notifyRange);
+[GetPointerDeviceRects]
+1=HANDLE device
+2=RECT* pointerDeviceRect
+3=RECT* displayRect
+ParamCount=3
+@=GetPointerDeviceRects(HANDLE device, RECT* pointerDeviceRect, RECT* displayRect);
+[GetPointerDeviceCursors]
+1=HANDLE device
+2=UINT32* cursorCount
+3=POINTER_DEVICE_CURSOR_INFO *deviceCursors
+ParamCount=3
+@=GetPointerDeviceCursors(HANDLE device, UINT32* cursorCount, POINTER_DEVICE_CURSOR_INFO *deviceCursors);
+[GetRawPointerDeviceData]
+1=UINT32 pointerId
+2=UINT32 historyCount
+3=UINT32 propertiesCount
+4=POINTER_DEVICE_PROPERTY* pProperties
+5=LONG* pValues
+ParamCount=5
+@=GetRawPointerDeviceData(UINT32 pointerId, UINT32 historyCount, UINT32 propertiesCount, POINTER_DEVICE_PROPERTY* pProperties, LONG* pValues);
+[ChangeWindowMessageFilter]
+1=UINT message
+2=DWORD dwFlag
+ParamCount=2
+@=ChangeWindowMessageFilter(UINT message, DWORD dwFlag);
+[ChangeWindowMessageFilterEx]
+1=HWND hwnd
+2=UINT message
+3=DWORD action
+4=PCHANGEFILTERSTRUCT pChangeFilterStruct
+ParamCount=4
+@=ChangeWindowMessageFilterEx(HWND hwnd, UINT message, DWORD action, PCHANGEFILTERSTRUCT pChangeFilterStruct);
+[GetGestureInfo]
+1=HGESTUREINFO hGestureInfo
+2=PGESTUREINFO pGestureInfo
+ParamCount=2
+@=GetGestureInfo(HGESTUREINFO hGestureInfo, PGESTUREINFO pGestureInfo);
+[GetGestureExtraArgs]
+1=HGESTUREINFO hGestureInfo
+2=UINT cbExtraArgs
+3=PBYTE pExtraArgs
+ParamCount=3
+@=GetGestureExtraArgs(HGESTUREINFO hGestureInfo, UINT cbExtraArgs, PBYTE pExtraArgs);
+[CloseGestureInfoHandle]
+1=HGESTUREINFO hGestureInfo
+ParamCount=1
+@=CloseGestureInfoHandle(HGESTUREINFO hGestureInfo);
+[SetGestureConfig]
+1=HWND hwnd
+2=DWORD dwReserved
+3=UINT cIDs
+4=PGESTURECONFIG pGestureConfig
+5=UINT cbSize
+ParamCount=5
+@=SetGestureConfig(HWND hwnd, DWORD dwReserved, UINT cIDs, PGESTURECONFIG pGestureConfig, UINT cbSize);
+[GetGestureConfig]
+1=HWND hwnd
+2=DWORD dwReserved
+3=DWORD dwFlags
+4=PUINT pcIDs
+5=PGESTURECONFIG pGestureConfig
+6=UINT cbSize
+ParamCount=6
+@=GetGestureConfig(HWND hwnd, DWORD dwReserved, DWORD dwFlags, PUINT pcIDs, PGESTURECONFIG pGestureConfig, UINT cbSize);
+[ShutdownBlockReasonCreate]
+1=HWND hWnd
+2=LPCWSTR pwszReason
+ParamCount=2
+@=ShutdownBlockReasonCreate(HWND hWnd, LPCWSTR pwszReason);
+[ShutdownBlockReasonQuery]
+1=HWND hWnd
+2=LPWSTR pwszBuff
+3=DWORD *pcchBuff
+ParamCount=3
+@=ShutdownBlockReasonQuery(HWND hWnd, LPWSTR pwszBuff, DWORD *pcchBuff);
+[ShutdownBlockReasonDestroy]
+1=HWND hWnd
+ParamCount=1
+@=ShutdownBlockReasonDestroy(HWND hWnd);
+[GetCurrentInputMessageSource]
+1=INPUT_MESSAGE_SOURCE *inputMessageSource
+ParamCount=1
+@=GetCurrentInputMessageSource(INPUT_MESSAGE_SOURCE *inputMessageSource);
+[GetCIMSSM]
+1=INPUT_MESSAGE_SOURCE *inputMessageSource
+ParamCount=1
+@=GetCIMSSM(INPUT_MESSAGE_SOURCE *inputMessageSource);
+[GetAutoRotationState]
+1=PAR_STATE pState
+ParamCount=1
+@=GetAutoRotationState(PAR_STATE pState);
+[GetDisplayAutoRotationPreferences]
+1=ORIENTATION_PREFERENCE *pOrientation
+ParamCount=1
+@=GetDisplayAutoRotationPreferences(ORIENTATION_PREFERENCE *pOrientation);
+[GetDisplayAutoRotationPreferencesByProcessId]
+1=DWORD dwProcessId
+2=ORIENTATION_PREFERENCE *pOrientation
+3=BOOL *fRotateScreen
+ParamCount=3
+@=GetDisplayAutoRotationPreferencesByProcessId(DWORD dwProcessId, ORIENTATION_PREFERENCE *pOrientation, BOOL *fRotateScreen);
+[SetDisplayAutoRotationPreferences]
+1=ORIENTATION_PREFERENCE orientation
+ParamCount=1
+@=SetDisplayAutoRotationPreferences(ORIENTATION_PREFERENCE orientation);
+[IsImmersiveProcess]
+1=HANDLE hProcess
+ParamCount=1
+@=IsImmersiveProcess(HANDLE hProcess);
+[SetProcessRestrictionExemption]
+1=BOOL fEnableExemption
+ParamCount=1
+@=SetProcessRestrictionExemption(BOOL fEnableExemption);
+[NtUserHardErrorControl]
+1=HARDERRORCONTROL dwCmd
+2=HANDLE handle
+3=PDESKRESTOREDATA pdrdRestore
+ParamCount=3
+@=NtUserHardErrorControl(HARDERRORCONTROL dwCmd, HANDLE handle, PDESKRESTOREDATA pdrdRestore);
+[NtUserGetObjectInformation]
+1=HANDLE hObject
+2=int nIndex
+3=PVOID pvInfo
+4=DWORD nLength
+5=LPDWORD pnLengthNeeded
+ParamCount=5
+@=NtUserGetObjectInformation(HANDLE hObject, int nIndex, PVOID pvInfo, DWORD nLength, LPDWORD pnLengthNeeded);
+[NtUserSetObjectInformation]
+1=HANDLE hObject
+2=int nIndex
+3=LPCVOID pvInfo
+4=DWORD nLength
+ParamCount=4
+@=NtUserSetObjectInformation(HANDLE hObject, int nIndex, LPCVOID pvInfo, DWORD nLength);
+[NtUserWin32PoolAllocationStats]
+1=LPDWORD parrTags
+2=tagsCount
+3=lpdwMaxMem
+4=lpdwCrtMem
+5=LPDWORD lpdwMaxAlloc
+6=LPDWORD lpdwCrtAlloc
+ParamCount=6
+@=NtUserWin32PoolAllocationStats(LPDWORD parrTags, tagsCount, lpdwMaxMem, lpdwCrtMem, LPDWORD lpdwMaxAlloc, LPDWORD lpdwCrtAlloc);
+[NtUserDbgWin32HeapFail]
+1=DWORD dwFlags
+2=BOOL bFail
+ParamCount=2
+@=NtUserDbgWin32HeapFail(DWORD dwFlags, BOOL bFail);
+[NtUserDbgWin32HeapStat]
+1=PDBGHEAPSTAT phs
+2=DWORD dwLen
+ParamCount=2
+@=NtUserDbgWin32HeapStat(PDBGHEAPSTAT phs, DWORD dwLen);
+[NtUserConsoleControl]
+1=ECONTROL ConsoleCommand
+2=PVOID ConsoleInformation
+3=DWORD ConsoleInformationLength
+ParamCount=3
+@=NtUserConsoleControl(ECONTROL ConsoleCommand, PVOID ConsoleInformation, DWORD ConsoleInformationLength);
+[NtUserCreateWindowStation]
+1=POBJECT_ATTRIBUTES pObja
+2=amRequest
+3=HANDLE hKbdLayoutFile
+4=DWORD offTable
+5=PUNICODE_STRING pstrKLID
+6=UINT uKbdInputLocale
+ParamCount=6
+@=NtUserCreateWindowStation(POBJECT_ATTRIBUTES pObja, amRequest, HANDLE hKbdLayoutFile, DWORD offTable, PUNICODE_STRING pstrKLID, UINT uKbdInputLocale);
+[NtUserOpenWindowStation]
+1=POBJECT_ATTRIBUTES pObja
+2=amRequest
+ParamCount=2
+@=NtUserOpenWindowStation(POBJECT_ATTRIBUTES pObja, amRequest);
+[NtUserCloseWindowStation]
+1=HWINSTA hwinsta
+ParamCount=1
+@=NtUserCloseWindowStation(HWINSTA hwinsta);
+[NtUserGetProcessWindowStation]
+1=VOID
+ParamCount=1
+@=NtUserGetProcessWindowStation(VOID);
+[NtUserLockWorkStation]
+1=VOID
+ParamCount=1
+@=NtUserLockWorkStation(VOID);
+[NtUserCreateDesktop]
+1=POBJECT_ATTRIBUTES pObja
+2=PUNICODE_STRING pstrDevice
+3=LPDEVMODEW pDevmode
+4=DWORD dwFlags
+5=amRequest
+ParamCount=5
+@=NtUserCreateDesktop(POBJECT_ATTRIBUTES pObja, PUNICODE_STRING pstrDevice, LPDEVMODEW pDevmode, DWORD dwFlags, amRequest);
+[NtUserOpenDesktop]
+1=POBJECT_ATTRIBUTES pObja
+2=DWORD dwFlags
+3=amRequest
+ParamCount=3
+@=NtUserOpenDesktop(POBJECT_ATTRIBUTES pObja, DWORD dwFlags, amRequest);
+[NtUserOpenInputDesktop]
+1=DWORD dwFlags
+2=BOOL fInherit
+3=DWORD amRequest
+ParamCount=3
+@=NtUserOpenInputDesktop(DWORD dwFlags, BOOL fInherit, DWORD amRequest);
+[NtUserResolveDesktopForWOW]
+1=PUNICODE_STRING pstrDesktop
+ParamCount=1
+@=NtUserResolveDesktopForWOW(PUNICODE_STRING pstrDesktop);
+[NtUserResolveDesktop]
+1=HANDLE hProcess
+2=PUNICODE_STRING pstrDesktop
+3=BOOL fInherit
+4=HWINSTA *phwinsta
+ParamCount=4
+@=NtUserResolveDesktop(HANDLE hProcess, PUNICODE_STRING pstrDesktop, BOOL fInherit, HWINSTA *phwinsta);
+[NtUserCloseDesktop]
+1=HDESK hdesk
+ParamCount=1
+@=NtUserCloseDesktop(HDESK hdesk);
+[NtUserSetThreadDesktop]
+1=HDESK hdesk
+ParamCount=1
+@=NtUserSetThreadDesktop(HDESK hdesk);
+[NtUserGetThreadDesktop]
+1=DWORD dwThreadId
+2=HDESK hdeskConsole
+ParamCount=2
+@=NtUserGetThreadDesktop(DWORD dwThreadId, HDESK hdeskConsole);
+[NtUserSwitchDesktop]
+1=HDESK hdesk
+ParamCount=1
+@=NtUserSwitchDesktop(HDESK hdesk);
+[NtUserInitializeClientPfnArrays]
+1=PFNCLIENT *ppfnClientA
+2=PFNCLIENT *ppfnClientW
+3=PFNCLIENTWORKER *ppfnClientWorker
+4=HANDLE hModUser
+ParamCount=4
+@=NtUserInitializeClientPfnArrays(PFNCLIENT *ppfnClientA, PFNCLIENT *ppfnClientW, PFNCLIENTWORKER *ppfnClientWorker, HANDLE hModUser);
+[NtUserWaitForMsgAndEvent]
+1=HANDLE hevent
+ParamCount=1
+@=NtUserWaitForMsgAndEvent(HANDLE hevent);
+[NtUserDragObject]
+1=HWND hwndParent
+2=HWND hwndFrom
+3=UINT wFmt
+4=dwData
+5=HCURSOR hcur
+ParamCount=5
+@=NtUserDragObject(HWND hwndParent, HWND hwndFrom, UINT wFmt, dwData, HCURSOR hcur);
+[NtUserGetIconInfo]
+1=HICON hicon
+2=PICONINFO piconinfo
+3=PUNICODE_STRING pstrInstanceName
+4=PUNICODE_STRING pstrResName
+5=LPDWORD pbpp
+6=BOOL fInternal
+ParamCount=6
+@=NtUserGetIconInfo(HICON hicon, PICONINFO piconinfo, PUNICODE_STRING pstrInstanceName, PUNICODE_STRING pstrResName, LPDWORD pbpp, BOOL fInternal);
+[NtUserGetIconSize]
+1=HICON hIcon
+2=UINT istepIfAniCur
+3=int *pcx
+4=int *pcy
+ParamCount=4
+@=NtUserGetIconSize(HICON hIcon, UINT istepIfAniCur, int *pcx, int *pcy);
+[NtUserDrawIconEx]
+1=HDC hdc
+2=int x
+3=int y
+4=HICON hicon
+5=int cx
+6=int cy
+7=UINT istepIfAniCur
+8=HBRUSH hbrush
+9=UINT diFlags
+10=BOOL fMeta
+11=DRAWICONEXDATA *pdid
+ParamCount=11
+@=NtUserDrawIconEx(HDC hdc, int x, int y, HICON hicon, int cx, int cy, UINT istepIfAniCur, HBRUSH hbrush, UINT diFlags, BOOL fMeta, DRAWICONEXDATA *pdid);
+[NtUserDeferWindowPos]
+1=HDWP hWinPosInfo
+2=HWND hwnd
+3=HWND hwndInsertAfter
+4=int x
+5=int y
+6=int cx
+7=int cy
+8=UINT wFlags
+ParamCount=8
+@=NtUserDeferWindowPos(HDWP hWinPosInfo, HWND hwnd, HWND hwndInsertAfter, int x, int y, int cx, int cy, UINT wFlags);
+[NtUserEndDeferWindowPosEx]
+1=HDWP hWinPosInfo
+2=BOOL fAsync
+ParamCount=2
+@=NtUserEndDeferWindowPosEx(HDWP hWinPosInfo, BOOL fAsync);
+[NtUserGetMessage]
+1=LPMSG pmsg
+2=HWND hwnd
+3=UINT wMsgFilterMin
+4=UINT wMsgFilterMax
+ParamCount=4
+@=NtUserGetMessage(LPMSG pmsg, HWND hwnd, UINT wMsgFilterMin, UINT wMsgFilterMax);
+[NtUserMoveWindow]
+1=HWND hwnd
+2=int x
+3=int y
+4=int cx
+5=int cy
+6=BOOL fRepaint
+ParamCount=6
+@=NtUserMoveWindow(HWND hwnd, int x, int y, int cx, int cy, BOOL fRepaint);
+[NtUserTranslateAccelerator]
+1=HWND hwnd
+2=HACCEL hAccTable
+3=LPMSG lpMsg
+ParamCount=3
+@=NtUserTranslateAccelerator(HWND hwnd, HACCEL hAccTable, LPMSG lpMsg);
+[NtUserSetClassLong]
+1=HWND hwnd
+2=int nIndex
+3=LONG dwNewLong
+4=BOOL bAnsi
+ParamCount=4
+@=NtUserSetClassLong(HWND hwnd, int nIndex, LONG dwNewLong, BOOL bAnsi);
+[NtUserSetClassLongPtr]
+1=HWND hwnd
+2=int nIndex
+3=dwNewLong
+4=BOOL bAnsi
+ParamCount=4
+@=NtUserSetClassLongPtr(HWND hwnd, int nIndex, dwNewLong, BOOL bAnsi);
+[NtUserSetKeyboardState]
+1=BYTE *lpKeyState
+ParamCount=1
+@=NtUserSetKeyboardState(BYTE *lpKeyState);
+[NtUserSetWindowPos]
+1=HWND hwnd
+2=HWND hwndInsertAfter
+3=int x
+4=int y
+5=int cx
+6=int cy
+7=UINT dwFlags
+ParamCount=7
+@=NtUserSetWindowPos(HWND hwnd, HWND hwndInsertAfter, int x, int y, int cx, int cy, UINT dwFlags);
+[NtUserSetShellWindowEx]
+1=HWND hwnd
+2=HWND hwndBkGnd
+ParamCount=2
+@=NtUserSetShellWindowEx(HWND hwnd, HWND hwndBkGnd);
+[NtUserSystemParametersInfo]
+1=UINT wFlag
+2=DWORD wParam
+3=LPVOID lpData
+4=UINT flags
+ParamCount=4
+@=NtUserSystemParametersInfo(UINT wFlag, DWORD wParam, LPVOID lpData, UINT flags);
+[NtUserUpdatePerUserSystemParameters]
+1=HANDLE hToken
+2=BOOL bUserLoggedOn
+ParamCount=2
+@=NtUserUpdatePerUserSystemParameters(HANDLE hToken, BOOL bUserLoggedOn);
+[NtUserDdeInitialize]
+1=PHANDLE phInst
+2=HWND *phwnd
+3=LPDWORD pMonFlags
+4=DWORD afCmd
+5=PVOID pcii
+ParamCount=5
+@=NtUserDdeInitialize(PHANDLE phInst, HWND *phwnd, LPDWORD pMonFlags, DWORD afCmd, PVOID pcii);
+[NtUserUpdateInstance]
+1=HANDLE hInst
+2=LPDWORD pMonFlags
+3=DWORD afCmd
+ParamCount=3
+@=NtUserUpdateInstance(HANDLE hInst, LPDWORD pMonFlags, DWORD afCmd);
+[NtUserEvent]
+1=PEVENT_PACKET pep
+ParamCount=1
+@=NtUserEvent(PEVENT_PACKET pep);
+[NtUserFillWindow]
+1=HWND hwndBrush
+2=HWND hwndPaint
+3=HDC hdc
+4=HBRUSH hbr
+ParamCount=4
+@=NtUserFillWindow(HWND hwndBrush, HWND hwndPaint, HDC hdc, HBRUSH hbr);
+[NtUserGetWOWClass]
+1=HINSTANCE hInstance
+2=PUNICODE_STRING pString
+ParamCount=2
+@=NtUserGetWOWClass(HINSTANCE hInstance, PUNICODE_STRING pString);
+[NtUserGetInternalWindowPos]
+1=HWND hwnd
+2=LPRECT lpRect
+3=LPPOINT lpPoint
+ParamCount=3
+@=NtUserGetInternalWindowPos(HWND hwnd, LPRECT lpRect, LPPOINT lpPoint);
+[NtUserInitTask]
+1=UINT dwExpWinVer
+2=DWORD dwAppCompatFlags
+3=PUNICODE_STRING pstrModName
+4=PUNICODE_STRING pstrBaseFileName
+5=DWORD hTaskWow
+6=DWORD dwHotkey
+7=DWORD idTask
+8=DWORD dwX
+9=DWORD dwY
+10=DWORD dwXSize
+11=DWORD dwYSize
+ParamCount=11
+@=NtUserInitTask(UINT dwExpWinVer, DWORD dwAppCompatFlags, PUNICODE_STRING pstrModName, PUNICODE_STRING pstrBaseFileName, DWORD hTaskWow, DWORD dwHotkey, DWORD idTask, DWORD dwX, DWORD dwY, DWORD dwXSize, DWORD dwYSize);
+[NtUserPostThreadMessage]
+1=DWORD id
+2=UINT msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=NtUserPostThreadMessage(DWORD id, UINT msg, WPARAM wParam, LPARAM lParam);
+[NtUserRegisterTasklist]
+1=HWND hwndTasklist
+ParamCount=1
+@=NtUserRegisterTasklist(HWND hwndTasklist);
+[NtUserSetClipboardData]
+1=UINT wFmt
+2=HANDLE hMem
+3=PSETCLIPBDATA scd
+ParamCount=3
+@=NtUserSetClipboardData(UINT wFmt, HANDLE hMem, PSETCLIPBDATA scd);
+[NtUserCloseClipboard]
+1=VOID
+ParamCount=1
+@=NtUserCloseClipboard(VOID);
+[NtUserEmptyClipboard]
+1=VOID
+ParamCount=1
+@=NtUserEmptyClipboard(VOID);
+[NtUserConvertMemHandle]
+1=LPBYTE lpData
+2=UINT cbNULL
+ParamCount=2
+@=NtUserConvertMemHandle(LPBYTE lpData, UINT cbNULL);
+[NtUserCreateLocalMemHandle]
+1=HANDLE hMem
+2=LPBYTE lpData
+3=UINT cbData
+4=PUINT lpcbNeeded
+ParamCount=4
+@=NtUserCreateLocalMemHandle(HANDLE hMem, LPBYTE lpData, UINT cbData, PUINT lpcbNeeded);
+[NtUserSetWindowsHookEx]
+1=HANDLE hmod
+2=pstrLib
+3=DWORD idThread
+4=int nFilterType
+5=PROC pfnFilterProc
+6=DWORD dwFlags
+ParamCount=6
+@=NtUserSetWindowsHookEx(HANDLE hmod, pstrLib, DWORD idThread, int nFilterType, PROC pfnFilterProc, DWORD dwFlags);
+[NtUserSetInternalWindowPos]
+1=HWND hwnd
+2=UINT cmdShow
+3=RECT *lpRect
+4=POINT *lpPoint
+ParamCount=4
+@=NtUserSetInternalWindowPos(HWND hwnd, UINT cmdShow, RECT *lpRect, POINT *lpPoint);
+[NtUserChangeClipboardChain]
+1=HWND hwndRemove
+2=HWND hwndNewNext
+ParamCount=2
+@=NtUserChangeClipboardChain(HWND hwndRemove, HWND hwndNewNext);
+[NtUserCheckMenuItem]
+1=HMENU hmenu
+2=UINT wIDCheckItem
+3=UINT wCheck
+ParamCount=3
+@=NtUserCheckMenuItem(HMENU hmenu, UINT wIDCheckItem, UINT wCheck);
+[NtUserChildWindowFromPointEx]
+1=HWND hwndParent
+2=POINT point
+3=UINT flags
+ParamCount=3
+@=NtUserChildWindowFromPointEx(HWND hwndParent, POINT point, UINT flags);
+[NtUserClipCursor]
+1=RECT *lpRect
+ParamCount=1
+@=NtUserClipCursor(RECT *lpRect);
+[NtUserCreateAcceleratorTable]
+1=LPACCEL lpAccel
+2=INT cAccel
+ParamCount=2
+@=NtUserCreateAcceleratorTable(LPACCEL lpAccel, INT cAccel);
+[NtUserDeleteMenu]
+1=HMENU hmenu
+2=UINT nPosition
+3=UINT dwFlags
+ParamCount=3
+@=NtUserDeleteMenu(HMENU hmenu, UINT nPosition, UINT dwFlags);
+[NtUserDestroyAcceleratorTable]
+1=HACCEL hAccel
+ParamCount=1
+@=NtUserDestroyAcceleratorTable(HACCEL hAccel);
+[NtUserDestroyCursor]
+1=HCURSOR hcurs
+2=DWORD cmd
+ParamCount=2
+@=NtUserDestroyCursor(HCURSOR hcurs, DWORD cmd);
+[NtUserGetClipboardData]
+1=UINT fmt
+2=PGETCLIPBDATA pgcd
+ParamCount=2
+@=NtUserGetClipboardData(UINT fmt, PGETCLIPBDATA pgcd);
+[NtUserDestroyMenu]
+1=HMENU hmenu
+ParamCount=1
+@=NtUserDestroyMenu(HMENU hmenu);
+[NtUserDestroyWindow]
+1=HWND hwnd
+ParamCount=1
+@=NtUserDestroyWindow(HWND hwnd);
+[NtUserDispatchMessage]
+1=MSG *pmsg
+ParamCount=1
+@=NtUserDispatchMessage(MSG *pmsg);
+[NtUserEnableMenuItem]
+1=HMENU hMenu
+2=UINT wIDEnableItem
+3=UINT wEnable
+ParamCount=3
+@=NtUserEnableMenuItem(HMENU hMenu, UINT wIDEnableItem, UINT wEnable);
+[NtUserAttachThreadInput]
+1=DWORD idAttach
+2=DWORD idAttachTo
+3=BOOL fAttach
+ParamCount=3
+@=NtUserAttachThreadInput(DWORD idAttach, DWORD idAttachTo, BOOL fAttach);
+[NtUserGetWindowPlacement]
+1=HWND hwnd
+2=PWINDOWPLACEMENT pwp
+ParamCount=2
+@=NtUserGetWindowPlacement(HWND hwnd, PWINDOWPLACEMENT pwp);
+[NtUserSetWindowPlacement]
+1=HWND hwnd
+2=WINDOWPLACEMENT *lpwndpl
+ParamCount=2
+@=NtUserSetWindowPlacement(HWND hwnd, WINDOWPLACEMENT *lpwndpl);
+[NtUserLockWindowUpdate]
+1=HWND hwnd
+ParamCount=1
+@=NtUserLockWindowUpdate(HWND hwnd);
+[NtUserEnableScrollBar]
+1=HWND hwnd
+2=UINT wSBflags
+3=UINT wArrows
+ParamCount=3
+@=NtUserEnableScrollBar(HWND hwnd, UINT wSBflags, UINT wArrows);
+[NtUserDdeSetQualityOfService]
+1=HWND hwndClient
+2= NTAPINtUserDdeGetQualityOfService(INHWNDhwndClient
+3=HWND hwndServer
+4=pqos
+ParamCount=4
+@=NtUserDdeSetQualityOfService(HWND hwndClient,  NTAPINtUserDdeGetQualityOfService(INHWNDhwndClient, HWND hwndServer, pqos);
+[NtUserGetMenuIndex]
+1=HMENU hMenu
+2=HMENU hSubMenu
+ParamCount=2
+@=NtUserGetMenuIndex(HMENU hMenu, HMENU hSubMenu);
+[NtUserSetRipFlags]
+1=DWORD dwRipFlags
+2=DWORD PID
+ParamCount=2
+@=NtUserSetRipFlags(DWORD dwRipFlags, DWORD PID);
+[NtUserSetDbgTag]
+1=
+2=DWORD dwBitFlags
+ParamCount=2
+@=NtUserSetDbgTag(
+ inttag, DWORD dwBitFlags);
+ inttag
+[NtUserThunkedMenuItemInfo]
+1=HMENU hMenu
+2=UINT nPosition
+3=BOOL fByPosition
+4=BOOL fInsert
+5=LPMENUITEMINFOW lpmii
+6=pstrItem
+ParamCount=6
+@=NtUserThunkedMenuItemInfo(HMENU hMenu, UINT nPosition, BOOL fByPosition, BOOL fInsert, LPMENUITEMINFOW lpmii, pstrItem);
+[NtUserThunkedMenuInfo]
+1=HMENU hMenu
+2=LPCMENUINFO lpmi
+ParamCount=2
+@=NtUserThunkedMenuInfo(HMENU hMenu, LPCMENUINFO lpmi);
+[NtUserSetMenuDefaultItem]
+1=HMENU hMenu
+2=UINT wID
+3=UINT fByPosition
+ParamCount=3
+@=NtUserSetMenuDefaultItem(HMENU hMenu, UINT wID, UINT fByPosition);
+[NtUserDrawAnimatedRects]
+1=HWND hwnd
+2=int idAni
+3=RECT *lprcFrom
+4=RECT *lprcTo
+ParamCount=4
+@=NtUserDrawAnimatedRects(HWND hwnd, int idAni, RECT *lprcFrom, RECT *lprcTo);
+[NtUserLoadIcoCur]
+1=HANDLE hIcon
+2=DWORD cxNew
+3=DWORD cyNew
+4=
+5=HDC hdc
+6=RECT *lprc
+7=UINT flags
+ParamCount=7
+@=NtUserLoadIcoCur(HANDLE hIcon, DWORD cxNew, DWORD cyNew, 
+ NTAPINtUserDrawCaption(INHWNDhwnd, HDC hdc, RECT *lprc, UINT flags);
+ NTAPINtUserDrawCaption(INHWNDhwnd
+[NtUserFlashWindowEx]
+1=PFLASHWINFO pfwi
+ParamCount=1
+@=NtUserFlashWindowEx(PFLASHWINFO pfwi);
+[NtUserPaintDesktop]
+1=HDC hdc
+ParamCount=1
+@=NtUserPaintDesktop(HDC hdc);
+[NtUserGetAsyncKeyState]
+1=int vKey
+ParamCount=1
+@=NtUserGetAsyncKeyState(int vKey);
+[NtUserGetControlBrush]
+1=HWND hwnd
+2=HDC hdc
+3=UINT msg
+ParamCount=3
+@=NtUserGetControlBrush(HWND hwnd, HDC hdc, UINT msg);
+[NtUserGetControlColor]
+1=HWND hwndParent
+2=HWND hwndCtl
+3=HDC hdc
+4=UINT msg
+ParamCount=4
+@=NtUserGetControlColor(HWND hwndParent, HWND hwndCtl, HDC hdc, UINT msg);
+[NtUserEndMenu]
+1=VOID
+ParamCount=1
+@=NtUserEndMenu(VOID);
+[NtUserCountClipboardFormats]
+1=VOID
+ParamCount=1
+@=NtUserCountClipboardFormats(VOID);
+[NtUserGetClipboardSequenceNumber]
+1=VOID
+ParamCount=1
+@=NtUserGetClipboardSequenceNumber(VOID);
+[NtUserGetClipboardOwner]
+1=VOID
+ParamCount=1
+@=NtUserGetClipboardOwner(VOID);
+[NtUserGetClipboardSerialNumber]
+1=VOID
+ParamCount=1
+@=NtUserGetClipboardSerialNumber(VOID);
+[NtUserGetClipboardViewer]
+1=VOID
+ParamCount=1
+@=NtUserGetClipboardViewer(VOID);
+[NtUserGetDoubleClickTime]
+1=VOID
+ParamCount=1
+@=NtUserGetDoubleClickTime(VOID);
+[NtUserGetForegroundWindow]
+1=VOID
+ParamCount=1
+@=NtUserGetForegroundWindow(VOID);
+[NtUserGetOpenClipboardWindow]
+1=VOID
+ParamCount=1
+@=NtUserGetOpenClipboardWindow(VOID);
+[NtUserGetPriorityClipboardFormat]
+1=UINT *paFormatPriorityList
+2=int cFormats
+ParamCount=2
+@=NtUserGetPriorityClipboardFormat(UINT *paFormatPriorityList, int cFormats);
+[NtUserGetSystemMenu]
+1=HWND hwnd
+2=BOOL bRevert
+ParamCount=2
+@=NtUserGetSystemMenu(HWND hwnd, BOOL bRevert);
+[NtUserGetUpdateRect]
+1=HWND hwnd
+2=LPRECT prect
+3=BOOL bErase
+ParamCount=3
+@=NtUserGetUpdateRect(HWND hwnd, LPRECT prect, BOOL bErase);
+[NtUserHideCaret]
+1=HWND hwnd
+ParamCount=1
+@=NtUserHideCaret(HWND hwnd);
+[NtUserHiliteMenuItem]
+1=HWND hwnd
+2=HMENU hMenu
+3=UINT uIDHiliteItem
+4=UINT uHilite
+ParamCount=4
+@=NtUserHiliteMenuItem(HWND hwnd, HMENU hMenu, UINT uIDHiliteItem, UINT uHilite);
+[NtUserInvalidateRect]
+1=HWND hwnd
+2=RECT *prect
+3=BOOL bErase
+ParamCount=3
+@=NtUserInvalidateRect(HWND hwnd, RECT *prect, BOOL bErase);
+[NtUserIsClipboardFormatAvailable]
+1=UINT nFormat
+ParamCount=1
+@=NtUserIsClipboardFormatAvailable(UINT nFormat);
+[NtUserKillTimer]
+1=HWND hwnd
+2=nIDEvent
+ParamCount=2
+@=NtUserKillTimer(HWND hwnd, nIDEvent);
+[NtUserMinMaximize]
+1=HWND hwnd
+2=UINT nCmdShow
+3=BOOL fKeepHidden
+ParamCount=3
+@=NtUserMinMaximize(HWND hwnd, UINT nCmdShow, BOOL fKeepHidden);
+[NtUserMNDragOver]
+1=POINT *ppt
+2=PMNDRAGOVERINFO pmndoi
+ParamCount=2
+@=NtUserMNDragOver(POINT *ppt, PMNDRAGOVERINFO pmndoi);
+[NtUserMNDragLeave]
+1=VOID
+ParamCount=1
+@=NtUserMNDragLeave(VOID);
+[NtUserOpenClipboard]
+1=HWND hwnd
+2=PBOOL pfEmptyClient
+ParamCount=2
+@=NtUserOpenClipboard(HWND hwnd, PBOOL pfEmptyClient);
+[NtUserPeekMessage]
+1=LPMSG pmsg
+2=HWND hwnd
+3=UINT wMsgFilterMin
+4=UINT wMsgFilterMax
+5=UINT wRemoveMsg
+ParamCount=5
+@=NtUserPeekMessage(LPMSG pmsg, HWND hwnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg);
+[NtUserPostMessage]
+1=HWND hwnd
+2=UINT msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=NtUserPostMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+[NtUserSendNotifyMessage]
+1=HWND hwnd
+2=UINT Msg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=NtUserSendNotifyMessage(HWND hwnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+[NtUserSendMessageCallback]
+1=HWND hwnd
+2=UINT wMsg
+3=WPARAM wParam
+4=LPARAM lParam
+5=SENDASYNCPROC lpResultCallBack
+6=dwData
+ParamCount=6
+@=NtUserSendMessageCallback(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam, SENDASYNCPROC lpResultCallBack, dwData);
+[NtUserRegisterHotKey]
+1=HWND hwnd
+2=int id
+3=UINT fsModifiers
+4=UINT vk
+ParamCount=4
+@=NtUserRegisterHotKey(HWND hwnd, int id, UINT fsModifiers, UINT vk);
+[NtUserRemoveMenu]
+1=HMENU hmenu
+2=UINT nPosition
+3=UINT dwFlags
+ParamCount=3
+@=NtUserRemoveMenu(HMENU hmenu, UINT nPosition, UINT dwFlags);
+[NtUserScrollWindowEx]
+1=HWND hwnd
+2=int XAmount
+3=int YAmount
+4=RECT *pRect
+5=RECT *pClipRect
+6=HRGN hrgnUpdate
+7=LPRECT prcUpdate
+8=UINT flags
+ParamCount=8
+@=NtUserScrollWindowEx(HWND hwnd, int XAmount, int YAmount, RECT *pRect, RECT *pClipRect, HRGN hrgnUpdate, LPRECT prcUpdate, UINT flags);
+[NtUserSetActiveWindow]
+1=HWND hwnd
+ParamCount=1
+@=NtUserSetActiveWindow(HWND hwnd);
+[NtUserSetCapture]
+1=HWND hwnd
+ParamCount=1
+@=NtUserSetCapture(HWND hwnd);
+[NtUserSetClassWord]
+1=HWND hwnd
+2=int nIndex
+3=WORD wNewWord
+ParamCount=3
+@=NtUserSetClassWord(HWND hwnd, int nIndex, WORD wNewWord);
+[NtUserSetClipboardViewer]
+1=HWND hwndNewViewer
+ParamCount=1
+@=NtUserSetClipboardViewer(HWND hwndNewViewer);
+[NtUserSetCursor]
+1=HCURSOR hCursor
+ParamCount=1
+@=NtUserSetCursor(HCURSOR hCursor);
+[NtUserSetFocus]
+1=HWND hwnd
+ParamCount=1
+@=NtUserSetFocus(HWND hwnd);
+[NtUserSetMenu]
+1=HWND hwnd
+2=HMENU hmenu
+3=BOOL fRedraw
+ParamCount=3
+@=NtUserSetMenu(HWND hwnd, HMENU hmenu, BOOL fRedraw);
+[NtUserSetMenuContextHelpId]
+1=HMENU hMenu
+2=DWORD dwContextHelpId
+ParamCount=2
+@=NtUserSetMenuContextHelpId(HMENU hMenu, DWORD dwContextHelpId);
+[NtUserSetMenuFlagRtoL]
+1=HMENU hMenu
+ParamCount=1
+@=NtUserSetMenuFlagRtoL(HMENU hMenu);
+[NtUserSetParent]
+1=HWND hwndChild
+2=HWND hwndNewParent
+ParamCount=2
+@=NtUserSetParent(HWND hwndChild, HWND hwndNewParent);
+[NtUserSetScrollInfo]
+1=HWND hwnd
+2=int nBar
+3=LPCSCROLLINFO pInfo
+4=BOOL fRedraw
+ParamCount=4
+@=NtUserSetScrollInfo(HWND hwnd, int nBar, LPCSCROLLINFO pInfo, BOOL fRedraw);
+[NtUserSetSysColors]
+1=int cElements
+2=INT *lpaElements
+3=COLORREF *lpaRgbValues
+4=UINT uOptions
+ParamCount=4
+@=NtUserSetSysColors(int cElements, INT *lpaElements, COLORREF *lpaRgbValues, UINT uOptions);
+[NtUserSetTimer]
+1=HWND hwnd
+2=nIDEvent
+3=UINT wElapse
+4=TIMERPROC pTimerFunc
+ParamCount=4
+@=NtUserSetTimer(HWND hwnd, nIDEvent, UINT wElapse, TIMERPROC pTimerFunc);
+[NtUserSetWindowLong]
+1=HWND hwnd
+2=int nIndex
+3=LONG dwNewLong
+4=BOOL bAnsi
+ParamCount=4
+@=NtUserSetWindowLong(HWND hwnd, int nIndex, LONG dwNewLong, BOOL bAnsi);
+[NtUserSetWindowLongPtr]
+1=HWND hwnd
+2=int nIndex
+3=dwNewLong
+4=BOOL bAnsi
+ParamCount=4
+@=NtUserSetWindowLongPtr(HWND hwnd, int nIndex, dwNewLong, BOOL bAnsi);
+[NtUserSetWindowWord]
+1=HWND hwnd
+2=int nIndex
+3=WORD wNewWord
+ParamCount=3
+@=NtUserSetWindowWord(HWND hwnd, int nIndex, WORD wNewWord);
+[NtUserSetWindowsHookAW]
+1=int nFilterType
+2=HOOKPROC pfnFilterProc
+3=DWORD dwFlags
+ParamCount=3
+@=NtUserSetWindowsHookAW(int nFilterType, HOOKPROC pfnFilterProc, DWORD dwFlags);
+[NtUserShowCaret]
+1=HWND hwnd
+ParamCount=1
+@=NtUserShowCaret(HWND hwnd);
+[NtUserShowScrollBar]
+1=HWND hwnd
+2=int iBar
+3=BOOL fShow
+ParamCount=3
+@=NtUserShowScrollBar(HWND hwnd, int iBar, BOOL fShow);
+[NtUserShowWindowAsync]
+1=HWND hwnd
+2=int nCmdShow
+ParamCount=2
+@=NtUserShowWindowAsync(HWND hwnd, int nCmdShow);
+[NtUserShowWindow]
+1=HWND hwnd
+2=int nCmdShow
+ParamCount=2
+@=NtUserShowWindow(HWND hwnd, int nCmdShow);
+[NtUserTrackMouseEvent]
+1=LPTRACKMOUSEEVENT lpTME
+ParamCount=1
+@=NtUserTrackMouseEvent(LPTRACKMOUSEEVENT lpTME);
+[NtUserTrackPopupMenuEx]
+1=HMENU hMenu
+2=UINT uFlags
+3=int x
+4=int y
+5=HWND hwnd
+6=TPMPARAMS *pparamst
+ParamCount=6
+@=NtUserTrackPopupMenuEx(HMENU hMenu, UINT uFlags, int x, int y, HWND hwnd, TPMPARAMS *pparamst);
+[NtUserTranslateMessage]
+1=MSG *lpMsg
+2=UINT flags
+ParamCount=2
+@=NtUserTranslateMessage(MSG *lpMsg, UINT flags);
+[NtUserUnhookWindowsHookEx]
+1=HHOOK hhk
+ParamCount=1
+@=NtUserUnhookWindowsHookEx(HHOOK hhk);
+[NtUserUnregisterHotKey]
+1=HWND hwnd
+2=int id
+ParamCount=2
+@=NtUserUnregisterHotKey(HWND hwnd, int id);
+[NtUserValidateRect]
+1=HWND hwnd
+2=RECT *lpRect
+ParamCount=2
+@=NtUserValidateRect(HWND hwnd, RECT *lpRect);
+[NtUserWaitForInputIdle]
+1=ULONG_PTR idProcess
+2=DWORD dwMilliseconds
+3=BOOL fSharedWow
+ParamCount=3
+@=NtUserWaitForInputIdle(ULONG_PTR idProcess, DWORD dwMilliseconds, BOOL fSharedWow);
+[NtUserWindowFromPoint]
+1=POINT Point
+ParamCount=1
+@=NtUserWindowFromPoint(POINT Point);
+[NtUserBeginPaint]
+1=HWND hwnd
+2=LPPAINTSTRUCT lpPaint
+ParamCount=2
+@=NtUserBeginPaint(HWND hwnd, LPPAINTSTRUCT lpPaint);
+[NtUserCreateCaret]
+1=HWND hwnd
+2=HBITMAP hBitmap
+3=int nWidth
+4=int nHeight
+ParamCount=4
+@=NtUserCreateCaret(HWND hwnd, HBITMAP hBitmap, int nWidth, int nHeight);
+[NtUserEndPaint]
+1=HWND hwnd
+2=PAINTSTRUCT *lpPaint
+ParamCount=2
+@=NtUserEndPaint(HWND hwnd, PAINTSTRUCT *lpPaint);
+[NtUserExcludeUpdateRgn]
+1=HDC hDC
+2=HWND hwnd
+ParamCount=2
+@=NtUserExcludeUpdateRgn(HDC hDC, HWND hwnd);
+[NtUserGetDC]
+1=HWND hwnd
+ParamCount=1
+@=NtUserGetDC(HWND hwnd);
+[NtUserGetDCEx]
+1=HWND hwnd
+2=HRGN hrgnClip
+3=DWORD flags
+ParamCount=3
+@=NtUserGetDCEx(HWND hwnd, HRGN hrgnClip, DWORD flags);
+[NtUserGetWindowDC]
+1=HWND hwnd
+ParamCount=1
+@=NtUserGetWindowDC(HWND hwnd);
+[NtUserGetUpdateRgn]
+1=HWND hwnd
+2=HRGN hRgn
+3=BOOL bErase
+ParamCount=3
+@=NtUserGetUpdateRgn(HWND hwnd, HRGN hRgn, BOOL bErase);
+[NtUserRedrawWindow]
+1=HWND hwnd
+2=RECT *lprcUpdate
+3=HRGN hrgnUpdate
+4=UINT flags
+ParamCount=4
+@=NtUserRedrawWindow(HWND hwnd, RECT *lprcUpdate, HRGN hrgnUpdate, UINT flags);
+[NtUserInvalidateRgn]
+1=HWND hwnd
+2=HRGN hRgn
+3=BOOL bErase
+ParamCount=3
+@=NtUserInvalidateRgn(HWND hwnd, HRGN hRgn, BOOL bErase);
+[NtUserSetWindowRgn]
+1=HWND hwnd
+2=HRGN hRgn
+3=BOOL bRedraw
+ParamCount=3
+@=NtUserSetWindowRgn(HWND hwnd, HRGN hRgn, BOOL bRedraw);
+[NtUserScrollDC]
+1=HDC hDC
+2=int dx
+3=int dy
+4=RECT *lprcScroll
+5=RECT *lprcClip
+6=HRGN hrgnUpdate
+7=LPRECT lprcUpdate
+ParamCount=7
+@=NtUserScrollDC(HDC hDC, int dx, int dy, RECT *lprcScroll, RECT *lprcClip, HRGN hrgnUpdate, LPRECT lprcUpdate);
+[NtUserInternalGetWindowText]
+1=HWND hwnd
+2=LPWSTR lpString
+3=int nMaxCount
+ParamCount=3
+@=NtUserInternalGetWindowText(HWND hwnd, LPWSTR lpString, int nMaxCount);
+[NtUserGetMouseMovePointsEx]
+1=UINT cbSize
+2=MOUSEMOVEPOINT *lppt
+3=MOUSEMOVEPOINT *lpptBuf
+4=UINT nBufPoints
+5=DWORD resolution
+ParamCount=5
+@=NtUserGetMouseMovePointsEx(UINT cbSize, MOUSEMOVEPOINT *lppt, MOUSEMOVEPOINT *lpptBuf, UINT nBufPoints, DWORD resolution);
+[NtUserToUnicodeEx]
+1=UINT wVirtKey
+2=UINT wScanCode
+3=BYTE *lpKeyState
+4=LPWSTR lpszBuff
+5=int cchBuff
+6=UINT wFlags
+7=HKL hKeyboardLayout
+ParamCount=7
+@=NtUserToUnicodeEx(UINT wVirtKey, UINT wScanCode, BYTE *lpKeyState, LPWSTR lpszBuff, int cchBuff, UINT wFlags, HKL hKeyboardLayout);
+[NtUserYieldTask]
+1=VOID
+ParamCount=1
+@=NtUserYieldTask(VOID);
+[NtUserWaitMessage]
+1=VOID
+ParamCount=1
+@=NtUserWaitMessage(VOID);
+[NtUserLockWindowStation]
+1=HWINSTA hWindowStation
+ParamCount=1
+@=NtUserLockWindowStation(HWINSTA hWindowStation);
+[NtUserUnlockWindowStation]
+1=HWINSTA hWindowStation
+ParamCount=1
+@=NtUserUnlockWindowStation(HWINSTA hWindowStation);
+[NtUserSetWindowStationUser]
+1=HWINSTA hWindowStation
+2=PLUID pLuidUser
+3=PSID pSidUser
+4=DWORD cbSidUser
+ParamCount=4
+@=NtUserSetWindowStationUser(HWINSTA hWindowStation, PLUID pLuidUser, PSID pSidUser, DWORD cbSidUser);
+[NtUserSetLogonNotifyWindow]
+1=HWND hwndNotify
+ParamCount=1
+@=NtUserSetLogonNotifyWindow(HWND hwndNotify);
+[NtUserSetSystemCursor]
+1=HCURSOR hcur
+2=DWORD id
+ParamCount=2
+@=NtUserSetSystemCursor(HCURSOR hcur, DWORD id);
+[NtUserGetCursorFrameInfo]
+1=HCURSOR hcur
+2=int iFrame
+3=LPDWORD pjifRate
+4=LPINT pccur
+ParamCount=4
+@=NtUserGetCursorFrameInfo(HCURSOR hcur, int iFrame, LPDWORD pjifRate, LPINT pccur);
+[NtUserSetCursorContents]
+1=HCURSOR hCursor
+2=HCURSOR hCursorNew
+ParamCount=2
+@=NtUserSetCursorContents(HCURSOR hCursor, HCURSOR hCursorNew);
+[NtUserFindExistingCursorIcon]
+1=PUNICODE_STRING pstrModName
+2=PUNICODE_STRING pstrResName
+3=PCURSORFIND pcfSearch
+ParamCount=3
+@=NtUserFindExistingCursorIcon(PUNICODE_STRING pstrModName, PUNICODE_STRING pstrResName, PCURSORFIND pcfSearch);
+[NtUserSetCursorIconData]
+1=HCURSOR hCursor
+2=PUNICODE_STRING pstrModName
+3=PUNICODE_STRING pstrResName
+4=PCURSORDATA pData
+ParamCount=4
+@=NtUserSetCursorIconData(HCURSOR hCursor, PUNICODE_STRING pstrModName, PUNICODE_STRING pstrResName, PCURSORDATA pData);
+[NtUserWOWModuleUnload]
+1=HANDLE hModule
+ParamCount=1
+@=NtUserWOWModuleUnload(HANDLE hModule);
+[NtUserWOWCleanup]
+1=HANDLE hInstance
+2=DWORD hTaskWow
+ParamCount=2
+@=NtUserWOWCleanup(HANDLE hInstance, DWORD hTaskWow);
+[NtUserGetMenuItemRect]
+1=HWND hwnd
+2=HMENU hMenu
+3=UINT uItem
+4=LPRECT lprcItem
+ParamCount=4
+@=NtUserGetMenuItemRect(HWND hwnd, HMENU hMenu, UINT uItem, LPRECT lprcItem);
+[NtUserMenuItemFromPoint]
+1=HWND hwnd
+2=HMENU hMenu
+3=POINT ptScreen
+ParamCount=3
+@=NtUserMenuItemFromPoint(HWND hwnd, HMENU hMenu, POINT ptScreen);
+[NtUserGetCaretPos]
+1=LPPOINT lpPoint
+ParamCount=1
+@=NtUserGetCaretPos(LPPOINT lpPoint);
+[NtUserDefSetText]
+1=HWND hwnd
+2=Text
+ParamCount=2
+@=NtUserDefSetText(HWND hwnd, Text);
+[NtUserQueryInformationThread]
+1=HANDLE hThread
+2=USERTHREADINFOCLASS ThreadInfoClass
+3=PVOID ThreadInformation
+4=ULONG ThreadInformationLength
+5=PULONG ReturnLength
+ParamCount=5
+@=NtUserQueryInformationThread(HANDLE hThread, USERTHREADINFOCLASS ThreadInfoClass, PVOID ThreadInformation, ULONG ThreadInformationLength, PULONG ReturnLength);
+[NtUserSetInformationThread]
+1=HANDLE hThread
+2=USERTHREADINFOCLASS ThreadInfoClass
+3=PVOID ThreadInformation
+4=ULONG ThreadInformationLength
+ParamCount=4
+@=NtUserSetInformationThread(HANDLE hThread, USERTHREADINFOCLASS ThreadInfoClass, PVOID ThreadInformation, ULONG ThreadInformationLength);
+[NtUserSetInformationProcess]
+1=HANDLE hProcess
+2=USERPROCESSINFOCLASS ProcessInfoClass
+3=PVOID ProcessInformation
+4=ULONG ProcessInformationLength
+ParamCount=4
+@=NtUserSetInformationProcess(HANDLE hProcess, USERPROCESSINFOCLASS ProcessInfoClass, PVOID ProcessInformation, ULONG ProcessInformationLength);
+[NtUserNotifyProcessCreate]
+1=DWORD dwProcessId
+2=DWORD dwParentThreadId
+3=dwData
+4=DWORD dwFlags
+ParamCount=4
+@=NtUserNotifyProcessCreate(DWORD dwProcessId, DWORD dwParentThreadId, dwData, DWORD dwFlags);
+[NtUserTestForInteractiveUser]
+1=PLUID pluidCaller
+ParamCount=1
+@=NtUserTestForInteractiveUser(PLUID pluidCaller);
+[NtUserSetConsoleReserveKeys]
+1=HWND hwnd
+2=DWORD fsReserveKeys
+ParamCount=2
+@=NtUserSetConsoleReserveKeys(HWND hwnd, DWORD fsReserveKeys);
+[NtUserModifyUserStartupInfoFlags]
+1=DWORD dwMask
+2=DWORD dwFlags
+ParamCount=2
+@=NtUserModifyUserStartupInfoFlags(DWORD dwMask, DWORD dwFlags);
+[NtUserSetWindowFNID]
+1=HWND hwnd
+2=WORD fnid
+ParamCount=2
+@=NtUserSetWindowFNID(HWND hwnd, WORD fnid);
+[NtUserAlterWindowStyle]
+1=HWND hwnd
+2=DWORD mask
+3=DWORD flags
+ParamCount=3
+@=NtUserAlterWindowStyle(HWND hwnd, DWORD mask, DWORD flags);
+[NtUserSetThreadState]
+1=DWORD dwFlags
+2=DWORD dwMask
+ParamCount=2
+@=NtUserSetThreadState(DWORD dwFlags, DWORD dwMask);
+[NtUserGetThreadState]
+1=USERTHREADSTATECLASS ThreadState
+ParamCount=1
+@=NtUserGetThreadState(USERTHREADSTATECLASS ThreadState);
+[NtUserGetListboxString]
+1=HWND hwnd
+2=UINT msg
+3=WPARAM wParam
+4=pString
+5=xParam
+6=DWORD xpfn
+7=PBOOL pbNotString
+ParamCount=7
+@=NtUserGetListboxString(HWND hwnd, UINT msg, WPARAM wParam, pString, xParam, DWORD xpfn, PBOOL pbNotString);
+[NtUserValidateHandleSecure]
+1=HANDLE h
+ParamCount=1
+@=NtUserValidateHandleSecure(HANDLE h);
+[NtUserUserHandleGrantAccess]
+1=HANDLE hUserHandle
+2=HANDLE hJob
+3=BOOL bGrant
+ParamCount=3
+@=NtUserUserHandleGrantAccess(HANDLE hUserHandle, HANDLE hJob, BOOL bGrant);
+[NtUserCreateWindowEx]
+1=DWORD dwExStyle
+2=pstrClassName
+3=pstrWindowName
+4=DWORD dwStyle
+5=int x
+6=int y
+7=int nWidth
+8=int nHeight
+9=HWND hwndParent
+10=HMENU hmenu
+11=HANDLE hModule
+12=LPVOID pParam
+13=DWORD dwFlags
+ParamCount=13
+@=NtUserCreateWindowEx(DWORD dwExStyle, pstrClassName, pstrWindowName, DWORD dwStyle, int x, int y, int nWidth, int nHeight, HWND hwndParent, HMENU hmenu, HANDLE hModule, LPVOID pParam, DWORD dwFlags);
+[NtUserBuildHwndList]
+1=HDESK hdesk
+2=HWND hwndNext
+3=BOOL fEnumChildren
+4=DWORD idThread
+5=UINT cHwndMax
+6=HWND *phwndFirst
+7=PUINT pcHwndNeeded
+ParamCount=7
+@=NtUserBuildHwndList(HDESK hdesk, HWND hwndNext, BOOL fEnumChildren, DWORD idThread, UINT cHwndMax, HWND *phwndFirst, PUINT pcHwndNeeded);
+[NtUserBuildPropList]
+1=HWND hwnd
+2=UINT cPropMax
+3=PPROPSET pPropSet
+4=PUINT pcPropNeeded
+ParamCount=4
+@=NtUserBuildPropList(HWND hwnd, UINT cPropMax, PPROPSET pPropSet, PUINT pcPropNeeded);
+[NtUserBuildNameList]
+1=HWINSTA hwinsta
+2=UINT cbNameList
+3=PNAMELIST pNameList
+4=PUINT pcbNeeded
+ParamCount=4
+@=NtUserBuildNameList(HWINSTA hwinsta, UINT cbNameList, PNAMELIST pNameList, PUINT pcbNeeded);
+[NtUserActivateKeyboardLayout]
+1=HKL hkl
+2=UINT Flags
+ParamCount=2
+@=NtUserActivateKeyboardLayout(HKL hkl, UINT Flags);
+[NtUserLoadKeyboardLayoutEx]
+1=HANDLE hFile
+2=DWORD offTable
+3=HKL hkl
+4=PUNICODE_STRING pstrKLID
+5=UINT KbdInputLocale
+6=UINT Flags
+ParamCount=6
+@=NtUserLoadKeyboardLayoutEx(HANDLE hFile, DWORD offTable, HKL hkl, PUNICODE_STRING pstrKLID, UINT KbdInputLocale, UINT Flags);
+[NtUserUnloadKeyboardLayout]
+1=HKL hkl
+ParamCount=1
+@=NtUserUnloadKeyboardLayout(HKL hkl);
+[NtUserSetSystemMenu]
+1=HWND hwnd
+2=HMENU hmenu
+ParamCount=2
+@=NtUserSetSystemMenu(HWND hwnd, HMENU hmenu);
+[NtUserDragDetect]
+1=HWND hwnd
+2=POINT pt
+ParamCount=2
+@=NtUserDragDetect(HWND hwnd, POINT pt);
+[NtUserSetSystemTimer]
+1=HWND hwnd
+2=nIDEvent
+3=DWORD dwElapse
+4=WNDPROC pTimerFunc
+ParamCount=4
+@=NtUserSetSystemTimer(HWND hwnd, nIDEvent, DWORD dwElapse, WNDPROC pTimerFunc);
+[NtUserQuerySendMessage]
+1=PMSG pmsg
+ParamCount=1
+@=NtUserQuerySendMessage(PMSG pmsg);
+[NtUserSendInput]
+1=UINT cInputs
+2=INPUT *pInputs
+3=int cbSize
+ParamCount=3
+@=NtUserSendInput(UINT cInputs, INPUT *pInputs, int cbSize);
+[NtUserImpersonateDdeClientWindow]
+1=HWND hwndClient
+2=HWND hwndServer
+ParamCount=2
+@=NtUserImpersonateDdeClientWindow(HWND hwndClient, HWND hwndServer);
+[NtUserGetCPD]
+1=HWND hwnd
+2=DWORD options
+3=dwData
+ParamCount=3
+@=NtUserGetCPD(HWND hwnd, DWORD options, dwData);
+[NtUserCopyAcceleratorTable]
+1=HACCEL hAccelSrc
+2=LPACCEL lpAccelDst
+3=int cAccelEntries
+ParamCount=3
+@=NtUserCopyAcceleratorTable(HACCEL hAccelSrc, LPACCEL lpAccelDst, int cAccelEntries);
+[NtUserFindWindowEx]
+1=HWND hwndParent
+2=HWND hwndChild
+3=PUNICODE_STRING pstrClassName
+4=PUNICODE_STRING pstrWindowName
+5=DWORD dwType
+ParamCount=5
+@=NtUserFindWindowEx(HWND hwndParent, HWND hwndChild, PUNICODE_STRING pstrClassName, PUNICODE_STRING pstrWindowName, DWORD dwType);
+[NtUserGetClassInfo]
+1=HINSTANCE hInstance
+2=PUNICODE_STRING pstrClassName
+3=LPWNDCLASSEXW lpWndClass
+4=LPWSTR *ppszMenuName
+5=BOOL bAnsi
+ParamCount=5
+@=NtUserGetClassInfo(HINSTANCE hInstance, PUNICODE_STRING pstrClassName, LPWNDCLASSEXW lpWndClass, LPWSTR *ppszMenuName, BOOL bAnsi);
+[NtUserGetClassName]
+1=HWND hwnd
+2=BOOL bReal
+3=PUNICODE_STRING pstrClassName
+ParamCount=3
+@=NtUserGetClassName(HWND hwnd, BOOL bReal, PUNICODE_STRING pstrClassName);
+[NtUserGetClipboardFormatName]
+1=UINT format
+2=LPWSTR lpszFormatName
+3=UINT chMax
+ParamCount=3
+@=NtUserGetClipboardFormatName(UINT format, LPWSTR lpszFormatName, UINT chMax);
+[NtUserGetKeyNameText]
+1=LONG lParam
+2=LPWSTR lpszKeyName
+3=UINT chMax
+ParamCount=3
+@=NtUserGetKeyNameText(LONG lParam, LPWSTR lpszKeyName, UINT chMax);
+[NtUserGetKeyboardLayoutName]
+1=PUNICODE_STRING pstrKLID
+ParamCount=1
+@=NtUserGetKeyboardLayoutName(PUNICODE_STRING pstrKLID);
+[NtUserGetKeyboardLayoutList]
+1=UINT nItems
+2=HKL *lpBuff
+ParamCount=2
+@=NtUserGetKeyboardLayoutList(UINT nItems, HKL *lpBuff);
+[NtUserGetGuiResources]
+1=HANDLE hProcess
+2=DWORD dwFlags
+ParamCount=2
+@=NtUserGetGuiResources(HANDLE hProcess, DWORD dwFlags);
+[NtUserMapVirtualKeyEx]
+1=UINT uCode
+2=UINT uMapType
+3=dwHKLorPKL
+4=BOOL bHKL
+ParamCount=4
+@=NtUserMapVirtualKeyEx(UINT uCode, UINT uMapType, dwHKLorPKL, BOOL bHKL);
+[NtUserRegisterClassExWOW]
+1=WNDCLASSEX *lpWndClass
+2=PUNICODE_STRING pstrClassName
+3=PCLSMENUNAME pcmn
+4=WORD fnid
+5=DWORD dwFlags
+6=LPDWORD pdwWOWstuff
+ParamCount=6
+@=NtUserRegisterClassExWOW(WNDCLASSEX *lpWndClass, PUNICODE_STRING pstrClassName, PCLSMENUNAME pcmn, WORD fnid, DWORD dwFlags, LPDWORD pdwWOWstuff);
+[NtUserRegisterWindowMessage]
+1=PUNICODE_STRING pstrMessage
+ParamCount=1
+@=NtUserRegisterWindowMessage(PUNICODE_STRING pstrMessage);
+[NtUserRemoveProp]
+1=HWND hwnd
+2=DWORD dwProp
+ParamCount=2
+@=NtUserRemoveProp(HWND hwnd, DWORD dwProp);
+[NtUserSetProp]
+1=HWND hwnd
+2=DWORD dwProp
+3=HANDLE hData
+ParamCount=3
+@=NtUserSetProp(HWND hwnd, DWORD dwProp, HANDLE hData);
+[NtUserUnregisterClass]
+1=PUNICODE_STRING pstrClassName
+2=HINSTANCE hInstance
+3=PCLSMENUNAME pcmn
+ParamCount=3
+@=NtUserUnregisterClass(PUNICODE_STRING pstrClassName, HINSTANCE hInstance, PCLSMENUNAME pcmn);
+[NtUserVkKeyScanEx]
+1=WCHAR ch
+2=dwHKLorPKL
+3=BOOL bHKL
+ParamCount=3
+@=NtUserVkKeyScanEx(WCHAR ch, dwHKLorPKL, BOOL bHKL);
+[NtUserEnumDisplayDevices]
+1=PUNICODE_STRING pstrDeviceName
+2=DWORD iDevNum
+3=lpDisplayDevice
+4=DWORD dwFlags
+ParamCount=4
+@=NtUserEnumDisplayDevices(PUNICODE_STRING pstrDeviceName, DWORD iDevNum, lpDisplayDevice, DWORD dwFlags);
+[NtUserSetWinEventHook]
+1=DWORD eventMin
+2=DWORD eventMax
+3=HMODULE hmodWinEventProc
+4=PUNICODE_STRING pstrLib
+5=WINEVENTPROC pfnWinEventProc
+6=DWORD idEventProcess
+7=DWORD idEventThread
+8=DWORD dwFlags
+ParamCount=8
+@=NtUserSetWinEventHook(DWORD eventMin, DWORD eventMax, HMODULE hmodWinEventProc, PUNICODE_STRING pstrLib, WINEVENTPROC pfnWinEventProc, DWORD idEventProcess, DWORD idEventThread, DWORD dwFlags);
+[NtUserUnhookWinEvent]
+1=HWINEVENTHOOK hWinEventHook
+ParamCount=1
+@=NtUserUnhookWinEvent(HWINEVENTHOOK hWinEventHook);
+[NtUserNotifyWinEvent]
+1=DWORD event
+2=HWND hwnd
+3=LONG idObject
+4=LONG idChild
+ParamCount=4
+@=NtUserNotifyWinEvent(DWORD event, HWND hwnd, LONG idObject, LONG idChild);
+[NtUserGetGUIThreadInfo]
+1=DWORD idThread
+2=PGUITHREADINFO pgui
+ParamCount=2
+@=NtUserGetGUIThreadInfo(DWORD idThread, PGUITHREADINFO pgui);
+[NtUserGetTitleBarInfo]
+1=HWND hwnd
+2=PTITLEBARINFO ptbi
+ParamCount=2
+@=NtUserGetTitleBarInfo(HWND hwnd, PTITLEBARINFO ptbi);
+[NtUserGetScrollBarInfo]
+1=HWND hwnd
+2=LONG idObject
+3=PSCROLLBARINFO ptbi
+ParamCount=3
+@=NtUserGetScrollBarInfo(HWND hwnd, LONG idObject, PSCROLLBARINFO ptbi);
+[NtUserGetComboBoxInfo]
+1=HWND hwnd
+2=PCOMBOBOXINFO pcbi
+ParamCount=2
+@=NtUserGetComboBoxInfo(HWND hwnd, PCOMBOBOXINFO pcbi);
+[NtUserGetListBoxInfo]
+1=HWND hwnd
+ParamCount=1
+@=NtUserGetListBoxInfo(HWND hwnd);
+[NtUserGetAncestor]
+1=HWND hwnd
+2=UINT gaFlags
+ParamCount=2
+@=NtUserGetAncestor(HWND hwnd, UINT gaFlags);
+[NtUserGetCursorInfo]
+1=PCURSORINFO pci
+ParamCount=1
+@=NtUserGetCursorInfo(PCURSORINFO pci);
+[NtUserRealChildWindowFromPoint]
+1=HWND hwndParent
+2=POINT pt
+ParamCount=2
+@=NtUserRealChildWindowFromPoint(HWND hwndParent, POINT pt);
+[NtUserGetAltTabInfo]
+1=HWND hwnd
+2=int iItem
+3=PALTTABINFO pati
+4=LPWSTR lpszItemText
+5=UINT cchItemText
+6=BOOL bAnsi
+ParamCount=6
+@=NtUserGetAltTabInfo(HWND hwnd, int iItem, PALTTABINFO pati, LPWSTR lpszItemText, UINT cchItemText, BOOL bAnsi);
+[NtUserGetMenuBarInfo]
+1=HWND hwnd
+2=long idObject
+3=long idItem
+4=PMENUBARINFO pmbi
+ParamCount=4
+@=NtUserGetMenuBarInfo(HWND hwnd, long idObject, long idItem, PMENUBARINFO pmbi);
+[NtUserChangeDisplaySettings]
+1=PUNICODE_STRING pstrDeviceName
+2=LPDEVMODEW lpDevMode
+3=HWND hwnd
+4=DWORD dwFlags
+5=PVOID lParam
+ParamCount=5
+@=NtUserChangeDisplaySettings(PUNICODE_STRING pstrDeviceName, LPDEVMODEW lpDevMode, HWND hwnd, DWORD dwFlags, PVOID lParam);
+[NtUserCallMsgFilter]
+1=LPMSG lpMsg
+2=int nCode
+ParamCount=2
+@=NtUserCallMsgFilter(LPMSG lpMsg, int nCode);
+[NtUserDrawMenuBarTemp]
+1=HWND hwnd
+2=HDC hdc
+3=LPCRECT lprc
+4=HMENU hMenu
+5=HFONT hFont
+ParamCount=5
+@=NtUserDrawMenuBarTemp(HWND hwnd, HDC hdc, LPCRECT lprc, HMENU hMenu, HFONT hFont);
+[NtUserDrawCaptionTemp]
+1=HWND hwnd
+2=HDC hdc
+3=LPCRECT lprc
+4=HFONT hFont
+5=HICON hicon
+6=PUNICODE_STRING pstrText
+7=UINT flags
+ParamCount=7
+@=NtUserDrawCaptionTemp(HWND hwnd, HDC hdc, LPCRECT lprc, HFONT hFont, HICON hicon, PUNICODE_STRING pstrText, UINT flags);
+[NtUserGetKeyState]
+1=int vk
+ParamCount=1
+@=NtUserGetKeyState(int vk);
+[NtUserGetKeyboardState]
+1=PBYTE pb
+ParamCount=1
+@=NtUserGetKeyboardState(PBYTE pb);
+[NtUserQueryWindow]
+1=HWND hwnd
+2=WINDOWINFOCLASS WindowInfo
+ParamCount=2
+@=NtUserQueryWindow(HWND hwnd, WINDOWINFOCLASS WindowInfo);
+[NtUserSBGetParms]
+1=HWND hwnd
+2=int code
+3=PSBDATA pw
+4=LPSCROLLINFO lpsi
+ParamCount=4
+@=NtUserSBGetParms(HWND hwnd, int code, PSBDATA pw, LPSCROLLINFO lpsi);
+[NtUserBitBltSysBmp]
+1=HDC hdc
+2=int xDest
+3=int yDest
+4=int cxDest
+5=int cyDest
+6=int xSrc
+7=int ySrc
+8=DWORD dwRop
+ParamCount=8
+@=NtUserBitBltSysBmp(HDC hdc, int xDest, int yDest, int cxDest, int cyDest, int xSrc, int ySrc, DWORD dwRop);
+[NtUserMessageCall]
+1=HWND hwnd
+2=UINT msg
+3=WPARAM wParam
+4=LPARAM lParam
+5=xParam
+6=DWORD xpfnProc
+7=BOOL bAnsi
+ParamCount=7
+@=NtUserMessageCall(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam, xParam, DWORD xpfnProc, BOOL bAnsi);
+[NtUserCallNextHookEx]
+1=int nCode
+2=WPARAM wParam
+3=LPARAM lParam
+4=BOOL bAnsi
+ParamCount=4
+@=NtUserCallNextHookEx(int nCode, WPARAM wParam, LPARAM lParam, BOOL bAnsi);
+[NtUserEnumDisplayMonitors]
+1=HDC hdc
+2=LPCRECT lprcClip
+3=MONITORENUMPROC lpfnEnum
+4=LPARAM dwData
+ParamCount=4
+@=NtUserEnumDisplayMonitors(HDC hdc, LPCRECT lprcClip, MONITORENUMPROC lpfnEnum, LPARAM dwData);
+[NtUserEnumDisplaySettings]
+1=PUNICODE_STRING pstrDeviceName
+2=DWORD iModeNum
+3=LPDEVMODEW lpDevMode
+4=DWORD dwFlags
+ParamCount=4
+@=NtUserEnumDisplaySettings(PUNICODE_STRING pstrDeviceName, DWORD iModeNum, LPDEVMODEW lpDevMode, DWORD dwFlags);
+[NtUserQueryUserCounters]
+1=DWORD dwQueryType
+2=LPVOID pvIn
+3=DWORD dwInSize
+4=LPVOID pvResult
+5=DWORD dwOutSize
+ParamCount=5
+@=NtUserQueryUserCounters(DWORD dwQueryType, LPVOID pvIn, DWORD dwInSize, LPVOID pvResult, DWORD dwOutSize);
+[NtUserUpdateLayeredWindow]
+1=HWND hwnd
+2=HDC hdcDst
+3=POINT *pptDst
+4=SIZE *psize
+5=HDC hdcSrc
+6=POINT *pptSrc
+7=COLORREF crKey
+8=BLENDFUNCTION *pblend
+9=DWORD dwFlags
+ParamCount=9
+@=NtUserUpdateLayeredWindow(HWND hwnd, HDC hdcDst, POINT *pptDst, SIZE *psize, HDC hdcSrc, POINT *pptSrc, COLORREF crKey, BLENDFUNCTION *pblend, DWORD dwFlags);
+[NtUserSetLayeredWindowAttributes]
+1=HWND hwnd
+2=COLORREF crKey
+3=BYTE bAlpha
+4=DWORD dwFlags
+ParamCount=4
+@=NtUserSetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, BYTE bAlpha, DWORD dwFlags);
+[NtUserRemoteConnect]
+1=PDOCONNECTDATA pDoConnectData
+2=ULONG DisplayDriverNameLength
+3=PWCHAR DisplayDriverName
+ParamCount=3
+@=NtUserRemoteConnect(PDOCONNECTDATA pDoConnectData, ULONG DisplayDriverNameLength, PWCHAR DisplayDriverName);
+[NtUserRemoteRedrawRectangle]
+1=WORD Left
+2=WORD Top
+3=WORD Right
+4=WORD Bottom
+ParamCount=4
+@=NtUserRemoteRedrawRectangle(WORD Left, WORD Top, WORD Right, WORD Bottom);
+[NtUserRemoteRedrawScreen]
+ParamCount=0
+@=NtUserRemoteRedrawScreen();
+[NtUserRemoteStopScreenUpdates]
+ParamCount=0
+@=NtUserRemoteStopScreenUpdates();
+[NtUserCtxDisplayIOCtl]
+1=ULONG DisplayIOCtlFlags
+2=PUCHAR pDisplayIOCtlData
+3=ULONG cbDisplayIOCtlData
+ParamCount=3
+@=NtUserCtxDisplayIOCtl(ULONG DisplayIOCtlFlags, PUCHAR pDisplayIOCtlData, ULONG cbDisplayIOCtlData);
+[NtUserSelectPalette]
+1=HDC hdc
+2=HPALETTE hpalette
+3=BOOL fForceBackground
+ParamCount=3
+@=NtUserSelectPalette(HDC hdc, HPALETTE hpalette, BOOL fForceBackground);
+[NtUserProcessConnect]
+1=HANDLE hProcess
+2=PVOID pConnectInfo
+3=ULONG cbConnectInfo
+ParamCount=3
+@=NtUserProcessConnect(HANDLE hProcess, PVOID pConnectInfo, ULONG cbConnectInfo);
+[NtUserSoundSentry]
+ParamCount=0
+@=NtUserSoundSentry();
+[NtUserInitialize]
+1=DWORD dwVersion
+2=HANDLE hPowerRequestEvent
+3=HANDLE hMediaRequestEvent
+ParamCount=3
+@=NtUserInitialize(DWORD dwVersion, HANDLE hPowerRequestEvent, HANDLE hMediaRequestEvent);

@@ -1,0 +1,3964 @@
+[GdipCreatePath]
+1=GpFillMode brushMode
+2=GpPath **path
+ParamCount=2
+@=GdipCreatePath(GpFillMode brushMode, GpPath **path);
+[GdipCreatePath2]
+1=GDIPCONST GpPointF*
+2=GDIPCONST BYTE*
+3=INT
+4=GpFillMode
+5=GpPath **path
+ParamCount=5
+@=GdipCreatePath2(GDIPCONST GpPointF*, GDIPCONST BYTE*, INT, GpFillMode, GpPath **path);
+[GdipCreatePath2I]
+1=GDIPCONST GpPoint*
+2=GDIPCONST BYTE*
+3=INT
+4=GpFillMode
+5=GpPath **path
+ParamCount=5
+@=GdipCreatePath2I(GDIPCONST GpPoint*, GDIPCONST BYTE*, INT, GpFillMode, GpPath **path);
+[GdipClonePath]
+1=GpPath *path
+2=GpPath **clonePath
+ParamCount=2
+@=GdipClonePath(GpPath* path, GpPath **clonePath);
+[GdipDeletePath]
+1=GpPath *path
+ParamCount=1
+@=GdipDeletePath(GpPath *path);
+[GdipResetPath]
+1=GpPath *path
+ParamCount=1
+@=GdipResetPath(GpPath *path);
+[GdipGetPointCount]
+1=GpPath *path
+2=INT* count
+ParamCount=2
+@=GdipGetPointCount(GpPath *path, INT* count);
+[GdipGetPathTypes]
+1=GpPath *path
+2=BYTE* types
+3=INT count
+ParamCount=3
+@=GdipGetPathTypes(GpPath *path, BYTE* types, INT count);
+[GdipGetPathPoints]
+1=GpPath *path
+2=GpPointF *points
+3=INT count
+ParamCount=3
+@=GdipGetPathPoints(GpPath *path, GpPointF *points, INT count);
+[GdipGetPathPointsI]
+1=GpPath *path
+2=GpPoint *points
+3=INT count
+ParamCount=3
+@=GdipGetPathPointsI(GpPath *path, GpPoint *points, INT count);
+[GdipGetPathFillMode]
+1=GpPath *path
+2=GpFillMode *fillmode
+ParamCount=2
+@=GdipGetPathFillMode(GpPath *path, GpFillMode *fillmode);
+[GdipSetPathFillMode]
+1=GpPath *path
+2=GpFillMode fillmode
+ParamCount=2
+@=GdipSetPathFillMode(GpPath *path, GpFillMode fillmode);
+[GdipGetPathData]
+1=GpPath *path
+2=GpPathData *pathData
+ParamCount=2
+@=GdipGetPathData(GpPath *path, GpPathData *pathData);
+[GdipStartPathFigure]
+1=GpPath *path
+ParamCount=1
+@=GdipStartPathFigure(GpPath *path);
+[GdipClosePathFigure]
+1=GpPath *path
+ParamCount=1
+@=GdipClosePathFigure(GpPath *path);
+[GdipClosePathFigures]
+1=GpPath *path
+ParamCount=1
+@=GdipClosePathFigures(GpPath *path);
+[GdipSetPathMarker]
+1=GpPath *path
+ParamCount=1
+@=GdipSetPathMarker(GpPath *path);
+[GdipClearPathMarkers]
+1=GpPath *path
+ParamCount=1
+@=GdipClearPathMarkers(GpPath *path);
+[GdipReversePath]
+1=GpPath* path
+ParamCount=1
+@=GdipReversePath(GpPath *path);
+[GdipGetPathLastPoint]
+1=GpPath *path
+2=GpPointF *lastPoint
+ParamCount=2
+@=GdipGetPathLastPoint(GpPath *path, GpPointF *lastPoint);
+[GdipAddPathLine]
+1=GpPath *path
+2=REAL x1
+3=REAL y1
+4=REAL x2
+5=REAL y2
+ParamCount=5
+@=GdipAddPathLine(GpPath *path, REAL x1, REAL y1, REAL x2, REAL y2);
+[GdipAddPathLine2]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+ParamCount=3
+@=GdipAddPathLine2(GpPath *path, GDIPCONST GpPointF *points, INT count);
+[GdipAddPathArc]
+1=GpPath *path
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+6=REAL startAngle
+7=REAL sweepAngle
+ParamCount=7
+@=GdipAddPathArc(GpPath *path, REAL x, REAL y, REAL width, REAL height, REAL startAngle, REAL sweepAngle);
+[GdipAddPathBezier]
+1=GpPath *path
+2=REAL x1
+3=REAL y1
+4=REAL x2
+5=REAL y2
+6=REAL x3
+7=REAL y3
+8=REAL x4
+9=REAL y4
+ParamCount=9
+@=GdipAddPathBezier(GpPath *path, REAL x1, REAL y1, REAL x2, REAL y2, REAL x3, REAL y3, REAL x4, REAL y4);
+[GdipAddPathBeziers]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+ParamCount=3
+@=GdipAddPathBeziers(GpPath *path, GDIPCONST GpPointF *points, INT count);
+[GdipAddPathCurve]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+ParamCount=3
+@=GdipAddPathCurve(GpPath *path, GDIPCONST GpPointF *points, INT count);
+[GdipAddPathCurve2]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+4=REAL tension
+ParamCount=4
+@=GdipAddPathCurve2(GpPath *path, GDIPCONST GpPointF *points, INT count, REAL tension);
+[GdipAddPathCurve3]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+4=INT offset
+5=INT numberOfSegments
+6=REAL tension
+ParamCount=6
+@=GdipAddPathCurve3(GpPath *path, GDIPCONST GpPointF *points, INT count, INT offset, INT numberOfSegments, REAL tension);
+[GdipAddPathClosedCurve]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+ParamCount=3
+@=GdipAddPathClosedCurve(GpPath *path, GDIPCONST GpPointF *points, INT count);
+[GdipAddPathClosedCurve2]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+4=REAL tension
+ParamCount=4
+@=GdipAddPathClosedCurve2(GpPath *path, GDIPCONST GpPointF *points, INT count, REAL tension);
+[GdipAddPathRectangle]
+1=GpPath *path
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+ParamCount=5
+@=GdipAddPathRectangle(GpPath *path, REAL x, REAL y, REAL width, REAL height);
+[GdipAddPathRectangles]
+1=GpPath *path
+2=GDIPCONST GpRectF *rects
+3=INT count
+ParamCount=3
+@=GdipAddPathRectangles(GpPath *path, GDIPCONST GpRectF *rects, INT count);
+[GdipAddPathEllipse]
+1=GpPath *path
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+ParamCount=5
+@=GdipAddPathEllipse(GpPath *path, REAL x, REAL y, REAL width, REAL height);
+[GdipAddPathPie]
+1=GpPath *path
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+6=REAL startAngle
+7=REAL sweepAngle
+ParamCount=7
+@=GdipAddPathPie(GpPath *path, REAL x, REAL y, REAL width, REAL height, REAL startAngle, REAL sweepAngle);
+[GdipAddPathPolygon]
+1=GpPath *path
+2=GDIPCONST GpPointF *points
+3=INT count
+ParamCount=3
+@=GdipAddPathPolygon(GpPath *path, GDIPCONST GpPointF *points, INT count);
+[GdipAddPathPath]
+1=GpPath *path
+2=GDIPCONST GpPath *addingPath
+3=BOOL connect
+ParamCount=3
+@=GdipAddPathPath(GpPath *path, GDIPCONST GpPath *addingPath, BOOL connect);
+[GdipAddPathString]
+1=GpPath *path
+2=GDIPCONST WCHAR *string
+3=INT length
+4=GDIPCONST GpFontFamily *family
+5=INT style
+6=REAL emSize
+7=GDIPCONST RectF *layoutRect
+8=GDIPCONST GpStringFormat *format
+ParamCount=8
+@=GdipAddPathString(GpPath *path, GDIPCONST WCHAR *string, INT length, GDIPCONST GpFontFamily *family, INT style, REAL emSize, GDIPCONST RectF *layoutRect, GDIPCONST GpStringFormat *format);
+[GdipAddPathStringI]
+1=GpPath *path
+2=GDIPCONST WCHAR *string
+3=INT length
+4=GDIPCONST GpFontFamily *family
+5=INT style
+6=REAL emSize
+7=GDIPCONST Rect *layoutRect
+8=GDIPCONST GpStringFormat *format
+ParamCount=8
+@=GdipAddPathStringI(GpPath *path, GDIPCONST WCHAR *string, INT length, GDIPCONST GpFontFamily *family, INT style, REAL emSize, GDIPCONST Rect *layoutRect, GDIPCONST GpStringFormat *format);
+[GdipAddPathLineI]
+1=GpPath *path
+2=INT x1
+3=INT y1
+4=INT x2
+5=INT y2
+ParamCount=5
+@=GdipAddPathLineI(GpPath *path, INT x1, INT y1, INT x2, INT y2);
+[GdipAddPathLine2I]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+ParamCount=3
+@=GdipAddPathLine2I(GpPath *path, GDIPCONST GpPoint *points, INT count);
+[GdipAddPathArcI]
+1=GpPath *path
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+6=REAL startAngle
+7=REAL sweepAngle
+ParamCount=7
+@=GdipAddPathArcI(GpPath *path, INT x, INT y, INT width, INT height, REAL startAngle, REAL sweepAngle);
+[GdipAddPathBezierI]
+1=GpPath *path
+2=INT x1
+3=INT y1
+4=INT x2
+5=INT y2
+6=INT x3
+7=INT y3
+8=INT x4
+9=INT y4
+ParamCount=9
+@=GdipAddPathBezierI(GpPath *path, INT x1, INT y1, INT x2, INT y2, INT x3, INT y3, INT x4, INT y4);
+[GdipAddPathBeziersI]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+ParamCount=3
+@=GdipAddPathBeziersI(GpPath *path, GDIPCONST GpPoint *points, INT count);
+[GdipAddPathCurveI]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+ParamCount=3
+@=GdipAddPathCurveI(GpPath *path, GDIPCONST GpPoint *points, INT count);
+[GdipAddPathCurve2I]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+4=REAL tension
+ParamCount=4
+@=GdipAddPathCurve2I(GpPath *path, GDIPCONST GpPoint *points, INT count, REAL tension);
+[GdipAddPathCurve3I]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+4=INT offset
+5=INT numberOfSegments
+6=REAL tension
+ParamCount=6
+@=GdipAddPathCurve3I(GpPath *path, GDIPCONST GpPoint *points, INT count, INT offset, INT numberOfSegments, REAL tension);
+[GdipAddPathClosedCurveI]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+ParamCount=3
+@=GdipAddPathClosedCurveI(GpPath *path, GDIPCONST GpPoint *points, INT count);
+[GdipAddPathClosedCurve2I]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+4=REAL tension
+ParamCount=4
+@=GdipAddPathClosedCurve2I(GpPath *path, GDIPCONST GpPoint *points, INT count, REAL tension);
+[GdipAddPathRectangleI]
+1=GpPath *path
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+ParamCount=5
+@=GdipAddPathRectangleI(GpPath *path, INT x, INT y, INT width, INT height);
+[GdipAddPathRectanglesI]
+1=GpPath *path
+2=GDIPCONST GpRect *rects
+3=INT count
+ParamCount=3
+@=GdipAddPathRectanglesI(GpPath *path, GDIPCONST GpRect *rects, INT count);
+[GdipAddPathEllipseI]
+1=GpPath *path
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+ParamCount=5
+@=GdipAddPathEllipseI(GpPath *path, INT x, INT y, INT width, INT height);
+[GdipAddPathPieI]
+1=GpPath *path
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+6=REAL startAngle
+7=REAL sweepAngle
+ParamCount=7
+@=GdipAddPathPieI(GpPath *path, INT x, INT y, INT width, INT height, REAL startAngle, REAL sweepAngle);
+[GdipAddPathPolygonI]
+1=GpPath *path
+2=GDIPCONST GpPoint *points
+3=INT count
+ParamCount=3
+@=GdipAddPathPolygonI(GpPath *path, GDIPCONST GpPoint *points, INT count);
+[GdipFlattenPath]
+1=GpPath *path
+2=GpMatrix *matrix
+3=REAL flatness
+ParamCount=3
+@=GdipFlattenPath(GpPath *path, GpMatrix *matrix, REAL flatness);
+[GdipWindingModeOutline]
+1=GpPath *path
+2=GpMatrix *matrix
+3=REAL flatness
+ParamCount=3
+@=GdipWindingModeOutline(GpPath *path, GpMatrix *matrix, REAL flatness);
+[GdipWidenPath]
+1=GpPath *nativePath
+2=GpPen *pen
+3=GpMatrix *matrix
+4=REAL flatness
+ParamCount=4
+@=GdipWidenPath(GpPath *nativePath, GpPen *pen, GpMatrix *matrix, REAL flatness);
+[GdipWarpPath]
+1=GpPath *path
+2=GpMatrix *matrix
+3=GDIPCONST GpPointF *points
+4=INT count
+5=REAL srcx
+6=REAL srcy
+7=REAL srcwidth
+8=REAL srcheight
+9=WarpMode warpMode
+10=REAL flatness
+ParamCount=10
+@=GdipWarpPath(GpPath *path, GpMatrix *matrix, GDIPCONST GpPointF *points, INT count, REAL srcx, REAL srcy, REAL srcwidth, REAL srcheight, WarpMode warpMode, REAL flatness);
+[GdipTransformPath]
+1=GpPath *path
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipTransformPath(GpPath *path, GpMatrix *matrix);
+[GdipGetPathWorldBounds]
+1=GpPath *path
+2=GpRectF *bounds
+3=GDIPCONST GpMatrix *matrix
+4=GDIPCONST GpPen *pen
+ParamCount=4
+@=GdipGetPathWorldBounds(GpPath *path, GpRectF *bounds, GDIPCONST GpMatrix *matrix, GDIPCONST GpPen *pen);
+[GdipGetPathWorldBoundsI]
+1=GpPath *path
+2=GpRect *bounds
+3=GDIPCONST GpMatrix *matrix
+4=GDIPCONST GpPen *pen
+ParamCount=4
+@=GdipGetPathWorldBoundsI(GpPath *path, GpRect *bounds, GDIPCONST GpMatrix *matrix, GDIPCONST GpPen *pen);
+[GdipIsVisiblePathPoint]
+1=GpPath *path
+2=REAL x
+3=REAL y
+4=GpGraphics *graphics
+5=BOOL *result
+ParamCount=5
+@=GdipIsVisiblePathPoint(GpPath *path, REAL x, REAL y, GpGraphics *graphics, BOOL *result);
+[GdipIsVisiblePathPointI]
+1=GpPath* path
+2=INT x
+3=INT y
+4=GpGraphics *graphics
+5=BOOL *result
+ParamCount=5
+@=GdipIsVisiblePathPointI(GpPath* path, INT x, INT y, GpGraphics *graphics, BOOL *result);
+[GdipIsOutlineVisiblePathPoint]
+1=GpPath *path
+2=REAL x
+3=REAL y
+4=GpPen *pen
+5=GpGraphics *graphics
+6=BOOL *result
+ParamCount=6
+@=GdipIsOutlineVisiblePathPoint(GpPath *path, REAL x, REAL y, GpPen *pen, GpGraphics *graphics, BOOL *result);
+[GdipIsOutlineVisiblePathPointI]
+1=GpPath *path
+2=INT x
+3=INT y
+4=GpPen *pen
+5=GpGraphics *graphics
+6=BOOL *result
+ParamCount=6
+@=GdipIsOutlineVisiblePathPointI(GpPath *path, INT x, INT y, GpPen *pen, GpGraphics *graphics, BOOL *result);
+[GdipCreatePathIter]
+1=GpPathIterator **iterator
+2=GpPath *path
+ParamCount=2
+@=GdipCreatePathIter(GpPathIterator **iterator, GpPath *path);
+[GdipDeletePathIter]
+1=GpPathIterator *iterator
+ParamCount=1
+@=GdipDeletePathIter(GpPathIterator *iterator);
+[GdipPathIterNextSubpath]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=INT *startIndex
+4=INT *endIndex
+5=BOOL *isClosed
+ParamCount=5
+@=GdipPathIterNextSubpath(GpPathIterator *iterator, INT *resultCount, INT *startIndex, INT *endIndex, BOOL *isClosed);
+[GdipPathIterNextSubpathPath]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=GpPath *path
+4=BOOL *isClosed
+ParamCount=4
+@=GdipPathIterNextSubpathPath(GpPathIterator *iterator, INT *resultCount, GpPath *path, BOOL *isClosed);
+[GdipPathIterNextPathType]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=BYTE *pathType
+4=INT *startIndex
+5=INT *endIndex
+ParamCount=5
+@=GdipPathIterNextPathType(GpPathIterator *iterator, INT *resultCount, BYTE *pathType, INT *startIndex, INT *endIndex);
+[GdipPathIterNextMarker]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=INT *startIndex
+4=INT *endIndex
+ParamCount=4
+@=GdipPathIterNextMarker(GpPathIterator *iterator, INT *resultCount, INT *startIndex, INT *endIndex);
+[GdipPathIterNextMarkerPath]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=GpPath *path
+ParamCount=3
+@=GdipPathIterNextMarkerPath(GpPathIterator *iterator, INT *resultCount, GpPath *path);
+[GdipPathIterGetCount]
+1=GpPathIterator *iterator
+2=INT *count
+ParamCount=2
+@=GdipPathIterGetCount(GpPathIterator *iterator, INT *count);
+[GdipPathIterGetSubpathCount]
+1=GpPathIterator *iterator
+2=INT *count
+ParamCount=2
+@=GdipPathIterGetSubpathCount(GpPathIterator *iterator, INT *count);
+[GdipPathIterIsValid]
+1=GpPathIterator *iterator
+2=BOOL *valid
+ParamCount=2
+@=GdipPathIterIsValid(GpPathIterator *iterator, BOOL *valid);
+[GdipPathIterHasCurve]
+1=GpPathIterator *iterator
+2=BOOL *hasCurve
+ParamCount=2
+@=GdipPathIterHasCurve(GpPathIterator *iterator, BOOL *hasCurve);
+[GdipPathIterRewind]
+1=GpPathIterator *iterator
+ParamCount=1
+@=GdipPathIterRewind(GpPathIterator *iterator);
+[GdipPathIterEnumerate]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=GpPointF *points
+4=BYTE *types
+5=INT count
+ParamCount=5
+@=GdipPathIterEnumerate(GpPathIterator *iterator, INT *resultCount, GpPointF *points, BYTE *types, INT count);
+[GdipPathIterCopyData]
+1=GpPathIterator *iterator
+2=INT *resultCount
+3=GpPointF *points
+4=BYTE *types
+5=INT startIndex
+6=INT endIndex
+ParamCount=6
+@=GdipPathIterCopyData(GpPathIterator *iterator, INT *resultCount, GpPointF *points, BYTE *types, INT startIndex, INT endIndex);
+[GdipCreateMatrix]
+1=GpMatrix **matrix
+ParamCount=1
+@=GdipCreateMatrix(GpMatrix **matrix);
+[GdipCreateMatrix2]
+1=REAL m11
+2=REAL m12
+3=REAL m21
+4=REAL m22
+5=REAL dx
+6=REAL dy
+7=GpMatrix **matrix
+ParamCount=7
+@=GdipCreateMatrix2(REAL m11, REAL m12, REAL m21, REAL m22, REAL dx, REAL dy, GpMatrix **matrix);
+[GdipCreateMatrix3]
+1=GDIPCONST GpRectF *rect
+2=GDIPCONST GpPointF *dstplg
+3=GpMatrix **matrix
+ParamCount=3
+@=GdipCreateMatrix3(GDIPCONST GpRectF *rect, GDIPCONST GpPointF *dstplg, GpMatrix **matrix);
+[GdipCreateMatrix3I]
+1=GDIPCONST GpRect *rect
+2=GDIPCONST GpPoint *dstplg
+3=GpMatrix **matrix
+ParamCount=3
+@=GdipCreateMatrix3I(GDIPCONST GpRect *rect, GDIPCONST GpPoint *dstplg, GpMatrix **matrix);
+[GdipCloneMatrix]
+1=GpMatrix *matrix
+2=GpMatrix **cloneMatrix
+ParamCount=2
+@=GdipCloneMatrix(GpMatrix *matrix, GpMatrix **cloneMatrix);
+[GdipDeleteMatrix]
+1=GpMatrix *matrix
+ParamCount=1
+@=GdipDeleteMatrix(GpMatrix *matrix);
+[GdipSetMatrixElements]
+1=GpMatrix *matrix
+2=REAL m11
+3=REAL m12
+4=REAL m21
+5=REAL m22
+6=REAL dx
+7=REAL dy
+ParamCount=7
+@=GdipSetMatrixElements(GpMatrix *matrix, REAL m11, REAL m12, REAL m21, REAL m22, REAL dx, REAL dy);
+[GdipMultiplyMatrix]
+1=GpMatrix *matrix
+2=GpMatrix* matrix2
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipMultiplyMatrix(GpMatrix *matrix, GpMatrix* matrix2, GpMatrixOrder order);
+[GdipTranslateMatrix]
+1=GpMatrix *matrix
+2=REAL offsetX
+3=REAL offsetY
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipTranslateMatrix(GpMatrix *matrix, REAL offsetX, REAL offsetY, GpMatrixOrder order);
+[GdipScaleMatrix]
+1=GpMatrix *matrix
+2=REAL scaleX
+3=REAL scaleY
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipScaleMatrix(GpMatrix *matrix, REAL scaleX, REAL scaleY, GpMatrixOrder order);
+[GdipRotateMatrix]
+1=GpMatrix *matrix
+2=REAL angle
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipRotateMatrix(GpMatrix *matrix, REAL angle, GpMatrixOrder order);
+[GdipShearMatrix]
+1=GpMatrix *matrix
+2=REAL shearX
+3=REAL shearY
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipShearMatrix(GpMatrix *matrix, REAL shearX, REAL shearY, GpMatrixOrder order);
+[GdipInvertMatrix]
+1=GpMatrix *matrix
+ParamCount=1
+@=GdipInvertMatrix(GpMatrix *matrix);
+[GdipTransformMatrixPoints]
+1=GpMatrix *matrix
+2=GpPointF *pts
+3=INT count
+ParamCount=3
+@=GdipTransformMatrixPoints(GpMatrix *matrix, GpPointF *pts, INT count);
+[GdipTransformMatrixPointsI]
+1=GpMatrix *matrix
+2=GpPoint *pts
+3=INT count
+ParamCount=3
+@=GdipTransformMatrixPointsI(GpMatrix *matrix, GpPoint *pts, INT count);
+[GdipVectorTransformMatrixPoints]
+1=GpMatrix *matrix
+2=GpPointF *pts
+3=INT count
+ParamCount=3
+@=GdipVectorTransformMatrixPoints(GpMatrix *matrix, GpPointF *pts, INT count);
+[GdipVectorTransformMatrixPointsI]
+1=GpMatrix *matrix
+2=GpPoint *pts
+3=INT count
+ParamCount=3
+@=GdipVectorTransformMatrixPointsI(GpMatrix *matrix, GpPoint *pts, INT count);
+[GdipGetMatrixElements]
+1=GDIPCONST GpMatrix *matrix
+2=REAL *matrixOut
+ParamCount=2
+@=GdipGetMatrixElements(GDIPCONST GpMatrix *matrix, REAL *matrixOut);
+[GdipIsMatrixInvertible]
+1=GDIPCONST GpMatrix *matrix
+2=BOOL *result
+ParamCount=2
+@=GdipIsMatrixInvertible(GDIPCONST GpMatrix *matrix, BOOL *result);
+[GdipIsMatrixIdentity]
+1=GDIPCONST GpMatrix *matrix
+2=BOOL *result
+ParamCount=2
+@=GdipIsMatrixIdentity(GDIPCONST GpMatrix *matrix, BOOL *result);
+[GdipIsMatrixEqual]
+1=GDIPCONST GpMatrix *matrix
+2=GDIPCONST GpMatrix *matrix2
+3=BOOL *result
+ParamCount=3
+@=GdipIsMatrixEqual(GDIPCONST GpMatrix *matrix, GDIPCONST GpMatrix *matrix2,  BOOL *result);
+[GdipCreateRegion]
+1=GpRegion **region
+ParamCount=1
+@=GdipCreateRegion(GpRegion **region);
+[GdipCreateRegionRect]
+1=GDIPCONST GpRectF *rect
+2=GpRegion **region
+ParamCount=2
+@=GdipCreateRegionRect(GDIPCONST GpRectF *rect, GpRegion **region);
+[GdipCreateRegionRectI]
+1=GDIPCONST GpRect *rect
+2=GpRegion **region
+ParamCount=2
+@=GdipCreateRegionRectI(GDIPCONST GpRect *rect, GpRegion **region);
+[GdipCreateRegionPath]
+1=GpPath *path
+2=GpRegion **region
+ParamCount=2
+@=GdipCreateRegionPath(GpPath *path, GpRegion **region);
+[GdipCreateRegionRgnData]
+1=GDIPCONST BYTE *regionData
+2=INT size
+3=GpRegion **region
+ParamCount=3
+@=GdipCreateRegionRgnData(GDIPCONST BYTE *regionData, INT size, GpRegion **region);
+[GdipCreateRegionHrgn]
+1=HRGN hRgn
+2=GpRegion **region
+ParamCount=2
+@=GdipCreateRegionHrgn(HRGN hRgn, GpRegion **region);
+[GdipCloneRegion]
+1=GpRegion *region
+2=GpRegion **cloneRegion
+ParamCount=2
+@=GdipCloneRegion(GpRegion *region, GpRegion **cloneRegion);
+[GdipDeleteRegion]
+1=GpRegion *region
+ParamCount=1
+@=GdipDeleteRegion(GpRegion *region);
+[GdipSetInfinite]
+1=GpRegion *region
+ParamCount=1
+@=GdipSetInfinite(GpRegion *region);
+[GdipSetEmpty]
+1=GpRegion *region
+ParamCount=1
+@=GdipSetEmpty(GpRegion *region);
+[GdipCombineRegionRect]
+1=GpRegion *region
+2=GDIPCONST GpRectF *rect
+3=CombineMode combineMode
+ParamCount=3
+@=GdipCombineRegionRect(GpRegion *region, GDIPCONST GpRectF *rect, CombineMode combineMode);
+[GdipCombineRegionRectI]
+1=GpRegion *region
+2=GDIPCONST GpRect *rect
+3=CombineMode combineMode
+ParamCount=3
+@=GdipCombineRegionRectI(GpRegion *region, GDIPCONST GpRect *rect, CombineMode combineMode);
+[GdipCombineRegionPath]
+1=GpRegion *region
+2=GpPath *path
+3=CombineMode combineMode
+ParamCount=3
+@=GdipCombineRegionPath(GpRegion *region, GpPath *path, CombineMode combineMode);
+[GdipCombineRegionRegion]
+1=GpRegion *region
+2=GpRegion *region2
+3=CombineMode combineMode
+ParamCount=3
+@=GdipCombineRegionRegion(GpRegion *region, GpRegion *region2, CombineMode combineMode);
+[GdipTranslateRegion]
+1=GpRegion *region
+2=REAL dx
+3=REAL dy
+ParamCount=3
+@=GdipTranslateRegion(GpRegion *region, REAL dx, REAL dy);
+[GdipTranslateRegionI]
+1=GpRegion *region
+2=INT dx
+3=INT dy
+ParamCount=3
+@=GdipTranslateRegionI(GpRegion *region, INT dx, INT dy);
+[GdipTransformRegion]
+1=GpRegion *region
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipTransformRegion(GpRegion *region, GpMatrix *matrix);
+[GdipGetRegionBounds]
+1=GpRegion *region
+2=GpGraphics *graphics
+3=GpRectF *rect
+ParamCount=3
+@=GdipGetRegionBounds(GpRegion *region, GpGraphics *graphics, GpRectF *rect);
+[GdipGetRegionBoundsI]
+1=GpRegion *region
+2=GpGraphics *graphics
+3=GpRect *rect
+ParamCount=3
+@=GdipGetRegionBoundsI(GpRegion *region, GpGraphics *graphics, GpRect *rect);
+[GdipGetRegionHRgn]
+1=GpRegion *region
+2=GpGraphics *graphics
+3=HRGN *hRgn
+ParamCount=3
+@=GdipGetRegionHRgn(GpRegion *region, GpGraphics *graphics, HRGN *hRgn);
+[GdipIsEmptyRegion]
+1=GpRegion *region
+2=GpGraphics *graphics
+3=BOOL *result
+ParamCount=3
+@=GdipIsEmptyRegion(GpRegion *region, GpGraphics *graphics, BOOL *result);
+[GdipIsInfiniteRegion]
+1=GpRegion *region
+2=GpGraphics *graphics
+3=BOOL *result
+ParamCount=3
+@=GdipIsInfiniteRegion(GpRegion *region, GpGraphics *graphics, BOOL *result);
+[GdipIsEqualRegion]
+1=GpRegion *region
+2=GpRegion *region2
+3=GpGraphics *graphics
+4=BOOL *result
+ParamCount=4
+@=GdipIsEqualRegion(GpRegion *region, GpRegion *region2, GpGraphics *graphics, BOOL *result);
+[GdipGetRegionDataSize]
+1=GpRegion *region
+2=UINT *bufferSize
+ParamCount=2
+@=GdipGetRegionDataSize(GpRegion *region, UINT *bufferSize);
+[GdipGetRegionData]
+1=GpRegion *region
+2=BYTE *buffer
+3=UINT bufferSize
+4=UINT *sizeFilled
+ParamCount=4
+@=GdipGetRegionData(GpRegion *region, BYTE *buffer, UINT bufferSize, UINT *sizeFilled);
+[GdipIsVisibleRegionPoint]
+1=GpRegion *region
+2=REAL x
+3=REAL y
+4=GpGraphics *graphics
+5=BOOL *result
+ParamCount=5
+@=GdipIsVisibleRegionPoint(GpRegion *region, REAL x, REAL y, GpGraphics *graphics, BOOL *result);
+[GdipIsVisibleRegionPointI]
+1=GpRegion *region
+2=INT x
+3=INT y
+4=GpGraphics *graphics
+5=BOOL *result
+ParamCount=5
+@=GdipIsVisibleRegionPointI(GpRegion *region, INT x, INT y, GpGraphics *graphics, BOOL *result);
+[GdipIsVisibleRegionRect]
+1=GpRegion *region
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+6=GpGraphics *graphics
+7=BOOL *result
+ParamCount=7
+@=GdipIsVisibleRegionRect(GpRegion *region, REAL x, REAL y, REAL width, REAL height, GpGraphics *graphics, BOOL *result);
+[GdipIsVisibleRegionRectI]
+1=GpRegion *region
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+6=GpGraphics *graphics
+7=BOOL *result
+ParamCount=7
+@=GdipIsVisibleRegionRectI(GpRegion *region, INT x, INT y, INT width, INT height, GpGraphics *graphics, BOOL *result);
+[GdipGetRegionScansCount]
+1=GpRegion *region
+2=UINT *count
+3=GpMatrix *matrix
+ParamCount=3
+@=GdipGetRegionScansCount(GpRegion *region, UINT *count, GpMatrix *matrix);
+[GdipGetRegionScans]
+1=GpRegion *region
+2=GpRectF *rects
+3=INT *count
+4=GpMatrix *matrix
+ParamCount=4
+@=GdipGetRegionScans(GpRegion *region, GpRectF* rects, INT* count, GpMatrix*matrix);
+[GdipGetRegionScansI]
+1=GpRegion *region
+2=GpRect *rects
+3=INT *count
+4=GpMatrix *matrix
+ParamCount=4
+@=GdipGetRegionScansI(GpRegion *region, GpRect *rects, INT *count, GpMatrix *matrix);
+[GdipCloneBrush]
+1=GpBrush *brush
+2=GpBrush **cloneBrush
+ParamCount=2
+@=GdipCloneBrush(GpBrush *brush, GpBrush **cloneBrush);
+[GdipDeleteBrush]
+1=GpBrush *brush
+ParamCount=1
+@=GdipDeleteBrush(GpBrush *brush);
+[GdipGetBrushType]
+1=GpBrush *brush
+2=GpBrushType *type
+ParamCount=2
+@=GdipGetBrushType(GpBrush *brush, GpBrushType *type);
+[GdipCreateHatchBrush]
+1=GpHatchStyle hatchstyle
+2=ARGB forecol
+3=ARGB backcol
+4=GpHatch **brush
+ParamCount=4
+@=GdipCreateHatchBrush(GpHatchStyle hatchstyle, ARGB forecol, ARGB backcol, GpHatch **brush);
+[GdipGetHatchStyle]
+1=GpHatch *brush
+2=GpHatchStyle *hatchstyle
+ParamCount=2
+@=GdipGetHatchStyle(GpHatch *brush, GpHatchStyle *hatchstyle);
+[GdipGetHatchForegroundColor]
+1=GpHatch *brush
+2=ARGB *forecol
+ParamCount=2
+@=GdipGetHatchForegroundColor(GpHatch *brush, ARGB *forecol);
+[GdipGetHatchBackgroundColor]
+1=GpHatch *brush
+2=ARGB *backcol
+ParamCount=2
+@=GdipGetHatchBackgroundColor(GpHatch *brush, ARGB *backcol);
+[GdipCreateTexture]
+1=GpImage *image
+2=GpWrapMode wrapmode
+3=GpTexture **texture
+ParamCount=3
+@=GdipCreateTexture(GpImage *image, GpWrapMode wrapmode, GpTexture **texture);
+[GdipCreateTexture2]
+1=GpImage *image
+2=GpWrapMode wrapmode
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+7=GpTexture **texture
+ParamCount=7
+@=GdipCreateTexture2(GpImage *image, GpWrapMode wrapmode, REAL x, REAL y, REAL width, REAL height, GpTexture **texture);
+[GdipCreateTextureIA]
+1=GpImage *image
+2=GDIPCONST GpImageAttributes*imageAttributes
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+7=GpTexture **texture
+ParamCount=7
+@=GdipCreateTextureIA(GpImage *image, GDIPCONST GpImageAttributes*imageAttributes, REAL x, REAL y, REAL width, REAL height, GpTexture **texture);
+[GdipCreateTexture2I]
+1=GpImage *image
+2=GpWrapMode wrapmode
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+7=GpTexture **texture
+ParamCount=7
+@=GdipCreateTexture2I(GpImage *image, GpWrapMode wrapmode, INT x, INT y, INT width, INT height, GpTexture **texture);
+[GdipCreateTextureIAI]
+1=GpImage *image
+2=GDIPCONST GpImageAttributes *imageAttributes
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+7=GpTexture **texture
+ParamCount=7
+@=GdipCreateTextureIAI(GpImage *image, GDIPCONST GpImageAttributes *imageAttributes, INT x, INT y, INT width, INT height, GpTexture **texture);
+[GdipGetTextureTransform]
+1=GpTexture *brush
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipGetTextureTransform(GpTexture *brush, GpMatrix *matrix);
+[GdipSetTextureTransform]
+1=GpTexture *brush
+2=GDIPCONST GpMatrix *matrix
+ParamCount=2
+@=GdipSetTextureTransform(GpTexture *brush, GDIPCONST GpMatrix *matrix);
+[GdipResetTextureTransform]
+1=GpTexture *brush
+ParamCount=1
+@=GdipResetTextureTransform(GpTexture *brush);
+[GdipMultiplyTextureTransform]
+1=GpTexture *brush
+2=GDIPCONST GpMatrix *matrix
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipMultiplyTextureTransform(GpTexture *brush, GDIPCONST GpMatrix *matrix, GpMatrixOrder order);
+[GdipTranslateTextureTransform]
+1=GpTexture *brush
+2=REAL dx
+3=REAL dy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipTranslateTextureTransform(GpTexture *brush, REAL dx, REAL dy, GpMatrixOrder order);
+[GdipScaleTextureTransform]
+1=GpTexture *brush
+2=REAL sx
+3=REAL sy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipScaleTextureTransform(GpTexture *brush, REAL sx, REAL sy, GpMatrixOrder order);
+[GdipRotateTextureTransform]
+1=GpTexture *brush
+2=REAL angle
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipRotateTextureTransform(GpTexture *brush, REAL angle, GpMatrixOrder order);
+[GdipSetTextureWrapMode]
+1=GpTexture *brush
+2=GpWrapMode wrapmode
+ParamCount=2
+@=GdipSetTextureWrapMode(GpTexture *brush, GpWrapMode wrapmode);
+[GdipGetTextureWrapMode]
+1=GpTexture *brush
+2=GpWrapMode *wrapmode
+ParamCount=2
+@=GdipGetTextureWrapMode(GpTexture *brush, GpWrapMode *wrapmode);
+[GdipGetTextureImage]
+1=GpTexture *brush
+2=GpImage **image
+ParamCount=2
+@=GdipGetTextureImage(GpTexture *brush, GpImage **image);
+[GdipCreateSolidFill]
+1=ARGB color
+2=GpSolidFill **brush
+ParamCount=2
+@=GdipCreateSolidFill(ARGB color, GpSolidFill **brush);
+[GdipSetSolidFillColor]
+1=GpSolidFill *brush
+2=ARGB color
+ParamCount=2
+@=GdipSetSolidFillColor(GpSolidFill *brush, ARGB color);
+[GdipGetSolidFillColor]
+1=GpSolidFill *brush
+2=ARGB *color
+ParamCount=2
+@=GdipGetSolidFillColor(GpSolidFill *brush, ARGB *color);
+[GdipCreateLineBrush]
+1=GDIPCONST GpPointF *point1
+2=GDIPCONST GpPointF *point2
+3=ARGB color1
+4=ARGB color2
+5=GpWrapMode wrapMode
+6=GpLineGradient **lineGradient
+ParamCount=6
+@=GdipCreateLineBrush(GDIPCONST GpPointF *point1, GDIPCONST GpPointF *point2, ARGB color1, ARGB color2, GpWrapMode wrapMode, GpLineGradient **lineGradient);
+[GdipCreateLineBrushI]
+1=GDIPCONST GpPoint *point1
+2=GDIPCONST GpPoint *point2
+3=ARGB color1
+4=ARGB color2
+5=GpWrapMode wrapMode
+6=GpLineGradient **lineGradient
+ParamCount=6
+@=GdipCreateLineBrushI(GDIPCONST GpPoint *point1, GDIPCONST GpPoint *point2, ARGB color1, ARGB color2, GpWrapMode wrapMode, GpLineGradient **lineGradient);
+[GdipCreateLineBrushFromRect]
+1=GDIPCONST GpRectF *rect
+2=ARGB color1
+3=ARGB color2
+4=LinearGradientMode mode
+5=GpWrapMode wrapMode
+6=GpLineGradient **lineGradient
+ParamCount=6
+@=GdipCreateLineBrushFromRect(GDIPCONST GpRectF *rect, ARGB color1, ARGB color2, LinearGradientMode mode, GpWrapMode wrapMode, GpLineGradient **lineGradient);
+[GdipCreateLineBrushFromRectI]
+1=GDIPCONST GpRect *rect
+2=ARGB color1
+3=ARGB color2
+4=LinearGradientMode mode
+5=GpWrapMode wrapMode
+6=GpLineGradient **lineGradient
+ParamCount=6
+@=GdipCreateLineBrushFromRectI(GDIPCONST GpRect *rect, ARGB color1, ARGB color2, LinearGradientMode mode, GpWrapMode wrapMode, GpLineGradient **lineGradient);
+[GdipCreateLineBrushFromRectWithAngle]
+1=GDIPCONST GpRectF *rect
+2=ARGB color1
+3=ARGB color2
+4=REAL angle
+5=BOOL isAngleScalable
+6=GpWrapMode wrapMode
+7=GpLineGradient **lineGradient
+ParamCount=7
+@=GdipCreateLineBrushFromRectWithAngle(GDIPCONST GpRectF *rect, ARGB color1, ARGB color2, REAL angle, BOOL isAngleScalable, GpWrapMode wrapMode, GpLineGradient **lineGradient);
+[GdipCreateLineBrushFromRectWithAngleI]
+1=GDIPCONST GpRect *rect
+2=ARGB color1
+3=ARGB color2
+4=REAL angle
+5=BOOL isAngleScalable
+6=GpWrapMode wrapMode
+7=GpLineGradient **lineGradient
+ParamCount=7
+@=GdipCreateLineBrushFromRectWithAngleI(GDIPCONST GpRect *rect, ARGB color1, ARGB color2, REAL angle, BOOL isAngleScalable, GpWrapMode wrapMode, GpLineGradient **lineGradient);
+[GdipSetLineColors]
+1=GpLineGradient *brush
+2=ARGB color1
+3=ARGB color2
+ParamCount=3
+@=GdipSetLineColors(GpLineGradient *brush, ARGB color1, ARGB color2);
+[GdipGetLineColors]
+1=GpLineGradient *brush
+2=ARGB *colors
+ParamCount=2
+@=GdipGetLineColors(GpLineGradient *brush, ARGB *colors);
+[GdipGetLineRect]
+1=GpLineGradient *brush
+2=GpRectF *rect
+ParamCount=2
+@=GdipGetLineRect(GpLineGradient *brush, GpRectF *rect);
+[GdipGetLineRectI]
+1=GpLineGradient *brush
+2=GpRect *rect
+ParamCount=2
+@=GdipGetLineRectI(GpLineGradient *brush, GpRect *rect);
+[GdipSetLineGammaCorrection]
+1=GpLineGradient *brush
+2=BOOL useGammaCorrection
+ParamCount=2
+@=GdipSetLineGammaCorrection(GpLineGradient *brush, BOOL useGammaCorrection);
+[GdipGetLineGammaCorrection]
+1=GpLineGradient *brush
+2=BOOL *useGammaCorrection
+ParamCount=2
+@=GdipGetLineGammaCorrection(GpLineGradient *brush, BOOL *useGammaCorrection);
+[GdipGetLineBlendCount]
+1=GpLineGradient *brush
+2=INT *count
+ParamCount=2
+@=GdipGetLineBlendCount(GpLineGradient *brush, INT *count);
+[GdipGetLineBlend]
+1=GpLineGradient *brush
+2=REAL *blend
+3=REAL *positions
+4=INT count
+ParamCount=4
+@=GdipGetLineBlend(GpLineGradient *brush, REAL *blend, REAL *positions, INT count);
+[GdipSetLineBlend]
+1=GpLineGradient *brush
+2=GDIPCONST REAL *blend
+3=GDIPCONST REAL *positions
+4=INT count
+ParamCount=4
+@=GdipSetLineBlend(GpLineGradient *brush, GDIPCONST REAL *blend, GDIPCONST REAL *positions, INT count);
+[GdipGetLinePresetBlendCount]
+1=GpLineGradient *brush
+2=INT *count
+ParamCount=2
+@=GdipGetLinePresetBlendCount(GpLineGradient *brush, INT *count);
+[GdipGetLinePresetBlend]
+1=GpLineGradient *brush
+2=ARGB *blend
+3=REAL* positions
+4=INT count
+ParamCount=4
+@=GdipGetLinePresetBlend(GpLineGradient *brush, ARGB *blend, REAL* positions, INT count);
+[GdipSetLinePresetBlend]
+1=GpLineGradient *brush
+2=GDIPCONST ARGB *blend
+3=GDIPCONST REAL *positions
+4=INT count
+ParamCount=4
+@=GdipSetLinePresetBlend(GpLineGradient *brush, GDIPCONST ARGB *blend, GDIPCONST REAL *positions, INT count);
+[GdipSetLineSigmaBlend]
+1=GpLineGradient *brush
+2=REAL focus
+3=REAL scale
+ParamCount=3
+@=GdipSetLineSigmaBlend(GpLineGradient *brush, REAL focus, REAL scale);
+[GdipSetLineLinearBlend]
+1=GpLineGradient *brush
+2=REAL focus
+3=REAL scale
+ParamCount=3
+@=GdipSetLineLinearBlend(GpLineGradient *brush, REAL focus, REAL scale);
+[GdipSetLineWrapMode]
+1=GpLineGradient *brush
+2=GpWrapMode wrapmode
+ParamCount=2
+@=GdipSetLineWrapMode(GpLineGradient *brush, GpWrapMode wrapmode);
+[GdipGetLineWrapMode]
+1=GpLineGradient *brush
+2=GpWrapMode *wrapmode
+ParamCount=2
+@=GdipGetLineWrapMode(GpLineGradient *brush, GpWrapMode *wrapmode);
+[GdipGetLineTransform]
+1=GpLineGradient *brush
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipGetLineTransform(GpLineGradient *brush, GpMatrix *matrix);
+[GdipSetLineTransform]
+1=GpLineGradient *brush
+2=GDIPCONST GpMatrix *matrix
+ParamCount=2
+@=GdipSetLineTransform(GpLineGradient *brush, GDIPCONST GpMatrix *matrix);
+[GdipResetLineTransform]
+1=GpLineGradient *brush
+ParamCount=1
+@=GdipResetLineTransform(GpLineGradient *brush);
+[GdipMultiplyLineTransform]
+1=GpLineGradient *brush
+2=GDIPCONST GpMatrix *matrix
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipMultiplyLineTransform(GpLineGradient *brush, GDIPCONST GpMatrix *matrix, GpMatrixOrder order);
+[GdipTranslateLineTransform]
+1=GpLineGradient *brush
+2=REAL dx
+3=REAL dy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipTranslateLineTransform(GpLineGradient *brush, REAL dx, REAL dy, GpMatrixOrder order);
+[GdipScaleLineTransform]
+1=GpLineGradient *brush
+2=REAL sx
+3=REAL sy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipScaleLineTransform(GpLineGradient *brush, REAL sx, REAL sy, GpMatrixOrder order);
+[GdipRotateLineTransform]
+1=GpLineGradient *brush
+2=REAL angle
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipRotateLineTransform(GpLineGradient *brush, REAL angle, GpMatrixOrder order);
+[GdipCreatePathGradient]
+1=GDIPCONST GpPointF *points
+2=INT count
+3=GpWrapMode wrapMode
+4=GpPathGradient **polyGradient
+ParamCount=4
+@=GdipCreatePathGradient(GDIPCONST GpPointF *points, INT count, GpWrapMode wrapMode, GpPathGradient **polyGradient);
+[GdipCreatePathGradientI]
+1=GDIPCONST GpPoint *points
+2=INT count
+3=GpWrapMode wrapMode
+4=GpPathGradient **polyGradient
+ParamCount=4
+@=GdipCreatePathGradientI(GDIPCONST GpPoint *points, INT count, GpWrapMode wrapMode, GpPathGradient **polyGradient);
+[GdipCreatePathGradientFromPath]
+1=GDIPCONST GpPath *path
+2=GpPathGradient **polyGradient
+ParamCount=2
+@=GdipCreatePathGradientFromPath(GDIPCONST GpPath *path, GpPathGradient **polyGradient);
+[GdipGetPathGradientCenterColor]
+1=GpPathGradient *brush
+2=ARGB *colors
+ParamCount=2
+@=GdipGetPathGradientCenterColor(GpPathGradient *brush, ARGB *colors);
+[GdipSetPathGradientCenterColor]
+1=GpPathGradient *brush
+2=ARGB colors
+ParamCount=2
+@=GdipSetPathGradientCenterColor(GpPathGradient *brush, ARGB colors);
+[GdipGetPathGradientSurroundColorsWithCount]
+1=GpPathGradient *brush
+2=ARGB *color
+3=INT *count
+ParamCount=3
+@=GdipGetPathGradientSurroundColorsWithCount(GpPathGradient *brush, ARGB *color, INT *count);
+[GdipSetPathGradientSurroundColorsWithCount]
+1=GpPathGradient *brush
+2=GDIPCONST ARGB *color
+3=INT *count
+ParamCount=3
+@=GdipSetPathGradientSurroundColorsWithCount(GpPathGradient *brush, GDIPCONST ARGB *color, INT *count);
+[GdipGetPathGradientPath]
+1=GpPathGradient *brush
+2=GpPath *path
+ParamCount=2
+@=GdipGetPathGradientPath(GpPathGradient *brush, GpPath *path);
+[GdipSetPathGradientPath]
+1=GpPathGradient *brush
+2=GDIPCONST GpPath *path
+ParamCount=2
+@=GdipSetPathGradientPath(GpPathGradient *brush, GDIPCONST GpPath *path);
+[GdipGetPathGradientCenterPoint]
+1=GpPathGradient *brush
+2=GpPointF* points
+ParamCount=2
+@=GdipGetPathGradientCenterPoint(GpPathGradient *brush, GpPointF* points);
+[GdipGetPathGradientCenterPointI]
+1=GpPathGradient *brush
+2=GpPoint *points
+ParamCount=2
+@=GdipGetPathGradientCenterPointI(GpPathGradient *brush, GpPoint *points);
+[GdipSetPathGradientCenterPoint]
+1=GpPathGradient *brush
+2=GDIPCONST GpPointF *points
+ParamCount=2
+@=GdipSetPathGradientCenterPoint(GpPathGradient *brush, GDIPCONST GpPointF *points);
+[GdipSetPathGradientCenterPointI]
+1=GpPathGradient *brush
+2=GDIPCONST GpPoint *points
+ParamCount=2
+@=GdipSetPathGradientCenterPointI(GpPathGradient *brush, GDIPCONST GpPoint *points);
+[GdipGetPathGradientRect]
+1=GpPathGradient *brush
+2=GpRectF *rect
+ParamCount=2
+@=GdipGetPathGradientRect(GpPathGradient *brush, GpRectF *rect);
+[GdipGetPathGradientRectI]
+1=GpPathGradient *brush
+2=GpRect *rect
+ParamCount=2
+@=GdipGetPathGradientRectI(GpPathGradient *brush, GpRect *rect);
+[GdipGetPathGradientPointCount]
+1=GpPathGradient *brush
+2=INT* count
+ParamCount=2
+@=GdipGetPathGradientPointCount(GpPathGradient *brush, INT* count);
+[GdipGetPathGradientSurroundColorCount]
+1=GpPathGradient *brush
+2=INT* count
+ParamCount=2
+@=GdipGetPathGradientSurroundColorCount(GpPathGradient *brush, INT* count);
+[GdipSetPathGradientGammaCorrection]
+1=GpPathGradient *brush
+2=BOOL useGammaCorrection
+ParamCount=2
+@=GdipSetPathGradientGammaCorrection(GpPathGradient *brush, BOOL useGammaCorrection);
+[GdipGetPathGradientGammaCorrection]
+1=GpPathGradient *brush
+2=BOOL *useGammaCorrection
+ParamCount=2
+@=GdipGetPathGradientGammaCorrection(GpPathGradient *brush, BOOL *useGammaCorrection);
+[GdipGetPathGradientBlendCount]
+1=GpPathGradient *brush
+2=INT *count
+ParamCount=2
+@=GdipGetPathGradientBlendCount(GpPathGradient *brush, INT *count);
+[GdipGetPathGradientBlend]
+1=GpPathGradient *brush
+2=REAL *blend
+3=REAL *positions
+4=INT count
+ParamCount=4
+@=GdipGetPathGradientBlend(GpPathGradient *brush, REAL *blend, REAL *positions, INT count);
+[GdipSetPathGradientBlend]
+1=GpPathGradient *brush
+2=GDIPCONST REAL *blend
+3=GDIPCONST REAL *positions
+4=INT count
+ParamCount=4
+@=GdipSetPathGradientBlend(GpPathGradient *brush, GDIPCONST REAL *blend, GDIPCONST REAL *positions, INT count);
+[GdipGetPathGradientPresetBlendCount]
+1=GpPathGradient *brush
+2=INT *count
+ParamCount=2
+@=GdipGetPathGradientPresetBlendCount(GpPathGradient *brush, INT *count);
+[GdipGetPathGradientPresetBlend]
+1=GpPathGradient *brush
+2=ARGB *blend
+3=REAL *positions
+4=INT count
+ParamCount=4
+@=GdipGetPathGradientPresetBlend(GpPathGradient *brush, ARGB *blend, REAL *positions, INT count);
+[GdipSetPathGradientPresetBlend]
+1=GpPathGradient *brush
+2=GDIPCONST ARGB *blend
+3=GDIPCONST REAL *positions
+4=INT count
+ParamCount=4
+@=GdipSetPathGradientPresetBlend(GpPathGradient *brush, GDIPCONST ARGB *blend, GDIPCONST REAL *positions, INT count);
+[GdipSetPathGradientSigmaBlend]
+1=GpPathGradient *brush
+2=REAL focus
+3=REAL scale
+ParamCount=3
+@=GdipSetPathGradientSigmaBlend(GpPathGradient *brush, REAL focus, REAL scale);
+[GdipSetPathGradientLinearBlend]
+1=GpPathGradient *brush
+2=REAL focus
+3=REAL scale
+ParamCount=3
+@=GdipSetPathGradientLinearBlend(GpPathGradient *brush, REAL focus, REAL scale);
+[GdipGetPathGradientWrapMode]
+1=GpPathGradient *brush
+2=GpWrapMode *wrapmode
+ParamCount=2
+@=GdipGetPathGradientWrapMode(GpPathGradient *brush, GpWrapMode *wrapmode);
+[GdipSetPathGradientWrapMode]
+1=GpPathGradient *brush
+2=GpWrapMode wrapmode
+ParamCount=2
+@=GdipSetPathGradientWrapMode(GpPathGradient *brush, GpWrapMode wrapmode);
+[GdipGetPathGradientTransform]
+1=GpPathGradient *brush
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipGetPathGradientTransform(GpPathGradient *brush, GpMatrix *matrix);
+[GdipSetPathGradientTransform]
+1=GpPathGradient *brush
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipSetPathGradientTransform(GpPathGradient *brush, GpMatrix *matrix);
+[GdipResetPathGradientTransform]
+1=GpPathGradient* brush
+ParamCount=1
+@=GdipResetPathGradientTransform(GpPathGradient *brush);
+[GdipMultiplyPathGradientTransform]
+1=GpPathGradient *brush
+2=GDIPCONST GpMatrix *matrix
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipMultiplyPathGradientTransform(GpPathGradient *brush, GDIPCONST GpMatrix *matrix, GpMatrixOrder order);
+[GdipTranslatePathGradientTransform]
+1=GpPathGradient *brush
+2=REAL dx
+3=REAL dy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipTranslatePathGradientTransform(GpPathGradient *brush, REAL dx, REAL dy, GpMatrixOrder order);
+[GdipScalePathGradientTransform]
+1=GpPathGradient *brush
+2=REAL sx
+3=REAL sy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipScalePathGradientTransform(GpPathGradient *brush, REAL sx, REAL sy, GpMatrixOrder order);
+[GdipRotatePathGradientTransform]
+1=GpPathGradient *brush
+2=REAL angle
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipRotatePathGradientTransform(GpPathGradient *brush, REAL angle, GpMatrixOrder order);
+[GdipGetPathGradientFocusScales]
+1=GpPathGradient *brush
+2=REAL* xScale
+3= REAL*yScale
+ParamCount=3
+@=GdipGetPathGradientFocusScales(GpPathGradient *brush, REAL* xScale,  REAL*yScale);
+[GdipSetPathGradientFocusScales]
+1=GpPathGradient *brush
+2=REAL xScale
+3= REALyScale
+ParamCount=3
+@=GdipSetPathGradientFocusScales(GpPathGradient *brush, REAL xScale,  REALyScale);
+[GdipCreatePen1]
+1=ARGB color
+2=REAL width
+3=GpUnit unit
+4=GpPen **pen
+ParamCount=4
+@=GdipCreatePen1(ARGB color, REAL width, GpUnit unit, GpPen **pen);
+[GdipCreatePen2]
+1=GpBrush *brush
+2=REAL width
+3=GpUnit unit
+4=GpPen **pen
+ParamCount=4
+@=GdipCreatePen2(GpBrush *brush, REAL width, GpUnit unit, GpPen **pen);
+[GdipClonePen]
+1=GpPen *pen
+2=GpPen **clonepen
+ParamCount=2
+@=GdipClonePen(GpPen *pen, GpPen **clonepen);
+[GdipDeletePen]
+1=GpPen *pen
+ParamCount=1
+@=GdipDeletePen(GpPen *pen);
+[GdipSetPenWidth]
+1=GpPen *pen
+2=REAL width
+ParamCount=2
+@=GdipSetPenWidth(GpPen *pen, REAL width);
+[GdipGetPenWidth]
+1=GpPen *pen
+2=REAL *width
+ParamCount=2
+@=GdipGetPenWidth(GpPen *pen, REAL *width);
+[GdipSetPenUnit]
+1=GpPen *pen
+2=GpUnit unit
+ParamCount=2
+@=GdipSetPenUnit(GpPen *pen, GpUnit unit);
+[GdipGetPenUnit]
+1=GpPen *pen
+2=GpUnit *unit
+ParamCount=2
+@=GdipGetPenUnit(GpPen *pen, GpUnit *unit);
+[GdipSetPenLineCap197819]
+1=GpPen *pen
+2=GpLineCap startCap
+3=GpLineCap endCap
+4=GpDashCap dashCap
+ParamCount=4
+@=GdipSetPenLineCap197819(GpPen *pen, GpLineCap startCap, GpLineCap endCap, GpDashCap dashCap);
+[GdipSetPenStartCap]
+1=GpPen *pen
+2=GpLineCap startCap
+ParamCount=2
+@=GdipSetPenStartCap(GpPen *pen, GpLineCap startCap);
+[GdipSetPenEndCap]
+1=GpPen *pen
+2=GpLineCap endCap
+ParamCount=2
+@=GdipSetPenEndCap(GpPen *pen, GpLineCap endCap);
+[GdipSetPenDashCap197819]
+1=GpPen *pen
+2=GpDashCap dashCap
+ParamCount=2
+@=GdipSetPenDashCap197819(GpPen *pen, GpDashCap dashCap);
+[GdipGetPenStartCap]
+1=GpPen *pen
+2=GpLineCap *startCap
+ParamCount=2
+@=GdipGetPenStartCap(GpPen *pen, GpLineCap *startCap);
+[GdipGetPenEndCap]
+1=GpPen *pen
+2=GpLineCap *endCap
+ParamCount=2
+@=GdipGetPenEndCap(GpPen *pen, GpLineCap *endCap);
+[GdipGetPenDashCap197819]
+1=GpPen *pen
+2=GpDashCap *dashCap
+ParamCount=2
+@=GdipGetPenDashCap197819(GpPen *pen, GpDashCap *dashCap);
+[GdipSetPenLineJoin]
+1=GpPen *pen
+2=GpLineJoin lineJoin
+ParamCount=2
+@=GdipSetPenLineJoin(GpPen *pen, GpLineJoin lineJoin);
+[GdipGetPenLineJoin]
+1=GpPen *pen
+2=GpLineJoin *lineJoin
+ParamCount=2
+@=GdipGetPenLineJoin(GpPen *pen, GpLineJoin *lineJoin);
+[GdipSetPenCustomStartCap]
+1=GpPen *pen
+2=GpCustomLineCap* customCap
+ParamCount=2
+@=GdipSetPenCustomStartCap(GpPen *pen, GpCustomLineCap* customCap);
+[GdipGetPenCustomStartCap]
+1=GpPen *pen
+2=GpCustomLineCap** customCap
+ParamCount=2
+@=GdipGetPenCustomStartCap(GpPen *pen, GpCustomLineCap** customCap);
+[GdipSetPenCustomEndCap]
+1=GpPen *pen
+2=GpCustomLineCap* customCap
+ParamCount=2
+@=GdipSetPenCustomEndCap(GpPen *pen, GpCustomLineCap* customCap);
+[GdipGetPenCustomEndCap]
+1=GpPen *pen
+2=GpCustomLineCap** customCap
+ParamCount=2
+@=GdipGetPenCustomEndCap(GpPen *pen, GpCustomLineCap** customCap);
+[GdipSetPenMiterLimit]
+1=GpPen *pen
+2=REAL miterLimit
+ParamCount=2
+@=GdipSetPenMiterLimit(GpPen *pen, REAL miterLimit);
+[GdipGetPenMiterLimit]
+1=GpPen *pen
+2=REAL *miterLimit
+ParamCount=2
+@=GdipGetPenMiterLimit(GpPen *pen, REAL *miterLimit);
+[GdipSetPenMode]
+1=GpPen *pen
+2=GpPenAlignment penMode
+ParamCount=2
+@=GdipSetPenMode(GpPen *pen, GpPenAlignment penMode);
+[GdipGetPenMode]
+1=GpPen *pen
+2=GpPenAlignment *penMode
+ParamCount=2
+@=GdipGetPenMode(GpPen *pen, GpPenAlignment *penMode);
+[GdipSetPenTransform]
+1=GpPen *pen
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipSetPenTransform(GpPen *pen, GpMatrix *matrix);
+[GdipGetPenTransform]
+1=GpPen *pen
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipGetPenTransform(GpPen *pen, GpMatrix *matrix);
+[GdipResetPenTransform]
+1=GpPen *pen
+ParamCount=1
+@=GdipResetPenTransform(GpPen *pen);
+[GdipMultiplyPenTransform]
+1=GpPen *pen
+2=GDIPCONST GpMatrix *matrix
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipMultiplyPenTransform(GpPen *pen, GDIPCONST GpMatrix *matrix, GpMatrixOrder order);
+[GdipTranslatePenTransform]
+1=GpPen *pen
+2=REAL dx
+3=REAL dy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipTranslatePenTransform(GpPen *pen, REAL dx, REAL dy, GpMatrixOrder order);
+[GdipScalePenTransform]
+1=GpPen *pen
+2=REAL sx
+3=REAL sy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipScalePenTransform(GpPen *pen, REAL sx, REAL sy, GpMatrixOrder order);
+[GdipRotatePenTransform]
+1=GpPen *pen
+2=REAL angle
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipRotatePenTransform(GpPen *pen, REAL angle, GpMatrixOrder order);
+[GdipSetPenColor]
+1=GpPen *pen
+2=ARGB argb
+ParamCount=2
+@=GdipSetPenColor(GpPen *pen, ARGB argb);
+[GdipGetPenColor]
+1=GpPen *pen
+2=ARGB *argb
+ParamCount=2
+@=GdipGetPenColor(GpPen *pen, ARGB *argb);
+[GdipSetPenBrushFill]
+1=GpPen *pen
+2=GpBrush *brush
+ParamCount=2
+@=GdipSetPenBrushFill(GpPen *pen, GpBrush *brush);
+[GdipGetPenBrushFill]
+1=GpPen *pen
+2=GpBrush **brush
+ParamCount=2
+@=GdipGetPenBrushFill(GpPen *pen, GpBrush **brush);
+[GdipGetPenFillType]
+1=GpPen *pen
+2=GpPenType *type
+ParamCount=2
+@=GdipGetPenFillType(GpPen *pen, GpPenType *type);
+[GdipGetPenDashStyle]
+1=GpPen *pen
+2=GpDashStyle *dashstyle
+ParamCount=2
+@=GdipGetPenDashStyle(GpPen *pen, GpDashStyle *dashstyle);
+[GdipSetPenDashStyle]
+1=GpPen *pen
+2=GpDashStyle dashstyle
+ParamCount=2
+@=GdipSetPenDashStyle(GpPen *pen, GpDashStyle dashstyle);
+[GdipGetPenDashOffset]
+1=GpPen *pen
+2=REAL *offset
+ParamCount=2
+@=GdipGetPenDashOffset(GpPen *pen, REAL *offset);
+[GdipSetPenDashOffset]
+1=GpPen *pen
+2=REAL offset
+ParamCount=2
+@=GdipSetPenDashOffset(GpPen *pen, REAL offset);
+[GdipGetPenDashCount]
+1=GpPen *pen
+2=INT *count
+ParamCount=2
+@=GdipGetPenDashCount(GpPen *pen, INT *count);
+[GdipSetPenDashArray]
+1=GpPen *pen
+2=GDIPCONST REAL *dash
+3=INT count
+ParamCount=3
+@=GdipSetPenDashArray(GpPen *pen, GDIPCONST REAL *dash, INT count);
+[GdipGetPenDashArray]
+1=GpPen *pen
+2=REAL *dash
+3=INT count
+ParamCount=3
+@=GdipGetPenDashArray(GpPen *pen, REAL *dash, INT count);
+[GdipGetPenCompoundCount]
+1=GpPen *pen
+2=INT *count
+ParamCount=2
+@=GdipGetPenCompoundCount(GpPen *pen, INT *count);
+[GdipSetPenCompoundArray]
+1=GpPen *pen
+2=GDIPCONST REAL *dash
+3=INT count
+ParamCount=3
+@=GdipSetPenCompoundArray(GpPen *pen, GDIPCONST REAL *dash, INT count);
+[GdipGetPenCompoundArray]
+1=GpPen *pen
+2=REAL *dash
+3=INT count
+ParamCount=3
+@=GdipGetPenCompoundArray(GpPen *pen, REAL *dash, INT count);
+[GdipCreateCustomLineCap]
+1=GpPath *fillPath
+2=GpPath *strokePath
+3=GpLineCap baseCap
+4=REAL baseInset
+5=GpCustomLineCap **customCap
+ParamCount=5
+@=GdipCreateCustomLineCap(GpPath *fillPath, GpPath *strokePath, GpLineCap baseCap, REAL baseInset, GpCustomLineCap **customCap);
+[GdipDeleteCustomLineCap]
+1=GpCustomLineCap *customCap
+ParamCount=1
+@=GdipDeleteCustomLineCap(GpCustomLineCap *customCap);
+[GdipCloneCustomLineCap]
+1=GpCustomLineCap *customCap
+2=GpCustomLineCap **clonedCap
+ParamCount=2
+@=GdipCloneCustomLineCap(GpCustomLineCap *customCap, GpCustomLineCap **clonedCap);
+[GdipGetCustomLineCapType]
+1=GpCustomLineCap *customCap
+2=CustomLineCapType *capType
+ParamCount=2
+@=GdipGetCustomLineCapType(GpCustomLineCap  *customCap, CustomLineCapType *capType);
+[GdipSetCustomLineCapStrokeCaps]
+1=GpCustomLineCap *customCap
+2=GpLineCap startCap
+3=GpLineCap endCap
+ParamCount=3
+@=GdipSetCustomLineCapStrokeCaps(GpCustomLineCap *customCap, GpLineCap startCap, GpLineCap endCap);
+[GdipGetCustomLineCapStrokeCaps]
+1=GpCustomLineCap *customCap
+2=GpLineCap *startCap
+3=GpLineCap *endCap
+ParamCount=3
+@=GdipGetCustomLineCapStrokeCaps(GpCustomLineCap *customCap, GpLineCap *startCap, GpLineCap *endCap);
+[GdipSetCustomLineCapStrokeJoin]
+1=GpCustomLineCap *customCap
+2=GpLineJoin lineJoin
+ParamCount=2
+@=GdipSetCustomLineCapStrokeJoin(GpCustomLineCap *customCap, GpLineJoin lineJoin);
+[GdipGetCustomLineCapStrokeJoin]
+1=GpCustomLineCap *customCap
+2=GpLineJoin *lineJoin
+ParamCount=2
+@=GdipGetCustomLineCapStrokeJoin(GpCustomLineCap *customCap, GpLineJoin *lineJoin);
+[GdipSetCustomLineCapBaseCap]
+1=GpCustomLineCap* customCap
+2=GpLineCap baseCap
+ParamCount=2
+@=GdipSetCustomLineCapBaseCap(GpCustomLineCap *customCap, GpLineCap baseCap);
+[GdipGetCustomLineCapBaseCap]
+1=GpCustomLineCap *customCap
+2=GpLineCap *baseCap
+ParamCount=2
+@=GdipGetCustomLineCapBaseCap(GpCustomLineCap *customCap, GpLineCap *baseCap);
+[GdipSetCustomLineCapBaseInset]
+1=GpCustomLineCap *customCap
+2=REAL inset
+ParamCount=2
+@=GdipSetCustomLineCapBaseInset(GpCustomLineCap *customCap, REAL inset);
+[GdipGetCustomLineCapBaseInset]
+1=GpCustomLineCap *customCap
+2=REAL *inset
+ParamCount=2
+@=GdipGetCustomLineCapBaseInset(GpCustomLineCap *customCap, REAL *inset);
+[GdipSetCustomLineCapWidthScale]
+1=GpCustomLineCap *customCap
+2=REAL widthScale
+ParamCount=2
+@=GdipSetCustomLineCapWidthScale(GpCustomLineCap *customCap, REAL widthScale);
+[GdipGetCustomLineCapWidthScale]
+1=GpCustomLineCap *customCap
+2=REAL *widthScale
+ParamCount=2
+@=GdipGetCustomLineCapWidthScale(GpCustomLineCap *customCap, REAL *widthScale);
+[GdipCreateAdjustableArrowCap]
+1=REAL height
+2=REAL width
+3=BOOL isFilled
+4=GpAdjustableArrowCap **cap
+ParamCount=4
+@=GdipCreateAdjustableArrowCap(REAL height, REAL width, BOOL isFilled, GpAdjustableArrowCap **cap);
+[GdipSetAdjustableArrowCapHeight]
+1=GpAdjustableArrowCap *cap
+2=REAL height
+ParamCount=2
+@=GdipSetAdjustableArrowCapHeight(GpAdjustableArrowCap *cap, REAL height);
+[GdipGetAdjustableArrowCapHeight]
+1=GpAdjustableArrowCap *cap
+2=REAL *height
+ParamCount=2
+@=GdipGetAdjustableArrowCapHeight(GpAdjustableArrowCap *cap, REAL *height);
+[GdipSetAdjustableArrowCapWidth]
+1=GpAdjustableArrowCap *cap
+2=REAL width
+ParamCount=2
+@=GdipSetAdjustableArrowCapWidth(GpAdjustableArrowCap *cap, REAL width);
+[GdipGetAdjustableArrowCapWidth]
+1=GpAdjustableArrowCap *cap
+2=REAL *width
+ParamCount=2
+@=GdipGetAdjustableArrowCapWidth(GpAdjustableArrowCap *cap, REAL *width);
+[GdipSetAdjustableArrowCapMiddleInset]
+1=GpAdjustableArrowCap *cap
+2=REALmiddleInset
+ParamCount=2
+@=GdipSetAdjustableArrowCapMiddleInset(GpAdjustableArrowCap *cap, REAL middleInset);
+[GdipGetAdjustableArrowCapMiddleInset]
+1=GpAdjustableArrowCap *cap
+2=REAL *middleInset
+ParamCount=2
+@=GdipGetAdjustableArrowCapMiddleInset(GpAdjustableArrowCap *cap, REAL *middleInset);
+[GdipSetAdjustableArrowCapFillState]
+1=GpAdjustableArrowCap *cap
+2=BOOL fillState
+ParamCount=2
+@=GdipSetAdjustableArrowCapFillState(GpAdjustableArrowCap *cap, BOOL fillState);
+[GdipGetAdjustableArrowCapFillState]
+1=GpAdjustableArrowCap *cap
+2=BOOL *fillState
+ParamCount=2
+@=GdipGetAdjustableArrowCapFillState(GpAdjustableArrowCap *cap, BOOL *fillState);
+[GdipLoadImageFromStream]
+1=IStream *stream
+2=GpImage **image
+ParamCount=2
+@=GdipLoadImageFromStream(IStream *stream, GpImage **image);
+[GdipLoadImageFromFile]
+1=GDIPCONST WCHAR *filename
+2=GpImage **image
+ParamCount=2
+@=GdipLoadImageFromFile(GDIPCONST WCHAR *filename, GpImage **image);
+[GdipLoadImageFromStreamICM]
+1=IStream *stream
+2=GpImage **image
+ParamCount=2
+@=GdipLoadImageFromStreamICM(IStream *stream, GpImage **image);
+[GdipLoadImageFromFileICM]
+1=GDIPCONST WCHAR *filename
+2=GpImage **image
+ParamCount=2
+@=GdipLoadImageFromFileICM(GDIPCONST WCHAR *filename, GpImage **image);
+[GdipCloneImage]
+1=GpImage *image
+2=GpImage **cloneImage
+ParamCount=2
+@=GdipCloneImage(GpImage *image, GpImage **cloneImage);
+[GdipDisposeImage]
+1=GpImage *image
+ParamCount=1
+@=GdipDisposeImage(GpImage *image);
+[GdipSaveImageToFile]
+1=GpImage *image
+2=GDIPCONST WCHAR *filename
+3=GDIPCONST CLSID *clsidEncoder
+4= GDIPCONSTEncoderParameters*encoderParams
+ParamCount=4
+@=GdipSaveImageToFile(GpImage *image, GDIPCONST WCHAR *filename, GDIPCONST CLSID *clsidEncoder,  GDIPCONSTEncoderParameters *encoderParams);
+[GdipSaveImageToStream]
+1=GpImage *image
+2=IStream *stream
+3=GDIPCONST CLSID *clsidEncoder
+4=GDIPCONST EncoderParameters *encoderParams
+ParamCount=4
+@=GdipSaveImageToStream(GpImage *image, IStream *stream, GDIPCONST CLSID *clsidEncoder, GDIPCONST EncoderParameters *encoderParams);
+[GdipSaveAdd]
+1=GpImage *image
+2=GDIPCONST EncoderParameters *encoderParams
+ParamCount=2
+@=GdipSaveAdd(GpImage *image, GDIPCONST EncoderParameters *encoderParams);
+[GdipSaveAddImage]
+1=GpImage *image
+2=GpImage *newImage
+3=GDIPCONST EncoderParameters *encoderParams
+ParamCount=3
+@=GdipSaveAddImage(GpImage *image, GpImage *newImage, GDIPCONST EncoderParameters *encoderParams);
+[GdipGetImageGraphicsContext]
+1=GpImage *image
+2=GpGraphics **graphics
+ParamCount=2
+@=GdipGetImageGraphicsContext(GpImage *image, GpGraphics **graphics);
+[GdipGetImageBounds]
+1=GpImage *image
+2=GpRectF *srcRect
+3=GpUnit *srcUnit
+ParamCount=3
+@=GdipGetImageBounds(GpImage *image, GpRectF *srcRect, GpUnit *srcUnit);
+[GdipGetImageDimension]
+1=GpImage *image
+2=REAL *width
+3=REAL *height
+ParamCount=3
+@=GdipGetImageDimension(GpImage *image, REAL *width, REAL *height);
+[GdipGetImageType]
+1=GpImage *image
+2=ImageType *type
+ParamCount=2
+@=GdipGetImageType(GpImage *image, ImageType *type);
+[GdipGetImageWidth]
+1=GpImage *image
+2=UINT *width
+ParamCount=2
+@=GdipGetImageWidth(GpImage *image, UINT *width);
+[GdipGetImageHeight]
+1=GpImage *image
+2=UINT *height
+ParamCount=2
+@=GdipGetImageHeight(GpImage *image, UINT *height);
+[GdipGetImageHorizontalResolution]
+1=GpImage *image
+2=REAL *resolution
+ParamCount=2
+@=GdipGetImageHorizontalResolution(GpImage *image, REAL *resolution);
+[GdipGetImageVerticalResolution]
+1=GpImage *image
+2=REAL *resolution
+ParamCount=2
+@=GdipGetImageVerticalResolution(GpImage *image, REAL *resolution);
+[GdipGetImageFlags]
+1=GpImage *image
+2=UINT *flags
+ParamCount=2
+@=GdipGetImageFlags(GpImage *image, UINT *flags);
+[GdipGetImageRawFormat]
+1=GpImage *image
+2=GUID *format
+ParamCount=2
+@=GdipGetImageRawFormat(GpImage *image, GUID *format);
+[GdipGetImagePixelFormat]
+1=GpImage *image
+2=PixelFormat *format
+ParamCount=2
+@=GdipGetImagePixelFormat(GpImage *image, PixelFormat *format);
+[GdipGetImageThumbnail]
+1=GpImage *image
+2=UINT thumbWidth
+3=UINT thumbHeight
+4=GpImage **thumbImage
+5=GetThumbnailImageAbort callback
+6=VOID *callbackData
+ParamCount=6
+@=GdipGetImageThumbnail(GpImage *image, UINT thumbWidth, UINT thumbHeight, GpImage **thumbImage, GetThumbnailImageAbort callback, VOID *callbackData);
+[GdipGetEncoderParameterListSize]
+1=GpImage *image
+2=GDIPCONST CLSID *clsidEncoder
+3=UINT *size
+ParamCount=3
+@=GdipGetEncoderParameterListSize(GpImage *image, GDIPCONST CLSID *clsidEncoder, UINT *size);
+[GdipGetEncoderParameterList]
+1=GpImage *image
+2=GDIPCONST CLSID *clsidEncoder
+3=UINT size
+4=EncoderParameters *buffer
+ParamCount=4
+@=GdipGetEncoderParameterList(GpImage *image, GDIPCONST CLSID *clsidEncoder, UINT size, EncoderParameters *buffer);
+[GdipImageGetFrameDimensionsCount]
+1=GpImage *image
+2=UINT *count
+ParamCount=2
+@=GdipImageGetFrameDimensionsCount(GpImage *image, UINT *count);
+[GdipImageGetFrameDimensionsList]
+1=GpImage *image
+2=GUID *dimensionIDs
+3=UINT count
+ParamCount=3
+@=GdipImageGetFrameDimensionsList(GpImage *image, GUID* dimensionIDs, UINT count);
+[GdipImageGetFrameCount]
+1=GpImage *image
+2=GDIPCONST GUID *dimensionID
+3=UINT *count
+ParamCount=3
+@=GdipImageGetFrameCount(GpImage *image, GDIPCONST GUID *dimensionID, UINT *count);
+[GdipImageSelectActiveFrame]
+1=GpImage *image
+2=GDIPCONST GUID *dimensionID
+3=UINT frameIndex
+ParamCount=3
+@=GdipImageSelectActiveFrame(GpImage *image, GDIPCONST GUID *dimensionID, UINT frameIndex);
+[GdipImageRotateFlip]
+1=GpImage *image
+2=RotateFlipType rfType
+ParamCount=2
+@=GdipImageRotateFlip(GpImage *image, RotateFlipType rfType);
+[GdipGetImagePalette]
+1=GpImage *image
+2=ColorPalette *palette
+3=INT size
+ParamCount=3
+@=GdipGetImagePalette(GpImage *image, ColorPalette *palette, INT size);
+[GdipSetImagePalette]
+1=GpImage *image
+2=GDIPCONST ColorPalette *palette
+ParamCount=2
+@=GdipSetImagePalette(GpImage *image, GDIPCONST ColorPalette *palette);
+[GdipGetImagePaletteSize]
+1=GpImage *image
+2=INT *size
+ParamCount=2
+@=GdipGetImagePaletteSize(GpImage *image, INT *size);
+[GdipGetPropertyCount]
+1=GpImage *image
+2=UINT *numOfProperty
+ParamCount=2
+@=GdipGetPropertyCount(GpImage *image, UINT *numOfProperty);
+[GdipGetPropertyIdList]
+1=GpImage *image
+2=UINT numOfProperty
+3=PROPID *list
+ParamCount=3
+@=GdipGetPropertyIdList(GpImage *image, UINT numOfProperty, PROPID *list);
+[GdipGetPropertyItemSize]
+1=GpImage *image
+2=PROPID propId
+3=UINT *size
+ParamCount=3
+@=GdipGetPropertyItemSize(GpImage *image, PROPID propId, UINT *size);
+[GdipGetPropertyItem]
+1=GpImage *image
+2=PROPID propId
+3=INT propSize
+4=PropertyItem *buffer
+ParamCount=4
+@=GdipGetPropertyItem(GpImage *image, PROPID propId, INT propSize, PropertyItem *buffer);
+[GdipGetPropertySize]
+1=GpImage *image
+2=UINT *totalBufferSize
+3=UINT *numProperties
+ParamCount=3
+@=GdipGetPropertySize(GpImage *image, UINT *totalBufferSize, UINT *numProperties);
+[GdipGetAllPropertyItems]
+1=GpImage *image
+2=UINT totalBufferSize
+3=UINT numProperties
+4=PropertyItem *allItems
+ParamCount=4
+@=GdipGetAllPropertyItems(GpImage *image, UINT totalBufferSize, UINT numProperties, PropertyItem *allItems);
+[GdipRemovePropertyItem]
+1=GpImage *image
+2=PROPID propId
+ParamCount=2
+@=GdipRemovePropertyItem(GpImage *image, PROPID propId);
+[GdipSetPropertyItem]
+1=GpImage *image
+2=GDIPCONST PropertyItem *item
+ParamCount=2
+@=GdipSetPropertyItem(GpImage *image, GDIPCONST PropertyItem *item);
+[GdipFindFirstImageItem]
+1=GpImage *image
+2=ImageItemData *item
+ParamCount=2
+@=GdipFindFirstImageItem(GpImage *image, ImageItemData *item);
+[GdipFindNextImageItem]
+1=GpImage *image
+2=ImageItemData *item
+ParamCount=2
+@=GdipFindNextImageItem(GpImage *image, ImageItemData *item);
+[GdipGetImageItemData]
+1=GpImage *image
+2=ImageItemData *item
+ParamCount=2
+@=GdipGetImageItemData(GpImage *image, ImageItemData *item);
+[GdipImageForceValidation]
+1=GpImage *image
+ParamCount=1
+@=GdipImageForceValidation(GpImage *image);
+[GdipCreateBitmapFromStream]
+1=IStream *stream
+2=GpBitmap **bitmap
+ParamCount=2
+@=GdipCreateBitmapFromStream(IStream *stream, GpBitmap **bitmap);
+[GdipCreateBitmapFromFile]
+1=GDIPCONST WCHAR *filename
+2=GpBitmap **bitmap
+ParamCount=2
+@=GdipCreateBitmapFromFile(GDIPCONST WCHAR *filename, GpBitmap **bitmap);
+[GdipCreateBitmapFromStreamICM]
+1=IStream *stream
+2=GpBitmap **bitmap
+ParamCount=2
+@=GdipCreateBitmapFromStreamICM(IStream *stream, GpBitmap **bitmap);
+[GdipCreateBitmapFromFileICM]
+1=GDIPCONST WCHAR *filename
+2=GpBitmap **bitmap
+ParamCount=2
+@=GdipCreateBitmapFromFileICM(GDIPCONST WCHAR *filename, GpBitmap **bitmap);
+[GdipCreateBitmapFromScan0]
+1=INT width
+2=INT height
+3=INT stride
+4=PixelFormat format
+5=BYTE *scan0
+6=GpBitmap **bitmap
+ParamCount=6
+@=GdipCreateBitmapFromScan0(INT width, INT height, INT stride, PixelFormat format,  BYTE *scan0, GpBitmap **bitmap);
+[GdipCreateBitmapFromGraphics]
+1=INT width
+2=INT height
+3=GpGraphics *target
+4=GpBitmap **bitmap
+ParamCount=4
+@=GdipCreateBitmapFromGraphics(INT width, INT height, GpGraphics *target, GpBitmap **bitmap);
+[GdipCreateBitmapFromDirectDrawSurface]
+1=IDirectDrawSurface7 *surface
+2=GpBitmap **bitmap
+ParamCount=2
+@=GdipCreateBitmapFromDirectDrawSurface(IDirectDrawSurface7 *surface, GpBitmap **bitmap);
+[GdipCreateBitmapFromGdiDib]
+1=GDIPCONST BITMAPINFO *gdiBitmapInfo
+2=VOID *gdiBitmapData
+3=GpBitmap **bitmap
+ParamCount=3
+@=GdipCreateBitmapFromGdiDib(GDIPCONST BITMAPINFO *gdiBitmapInfo, VOID *gdiBitmapData, GpBitmap **bitmap);
+[GdipCreateBitmapFromHBITMAP]
+1=HBITMAP hbm
+2=HPALETTE hpal
+3=GpBitmap **bitmap
+ParamCount=3
+@=GdipCreateBitmapFromHBITMAP(HBITMAP hbm, HPALETTE hpal, GpBitmap **bitmap);
+[GdipCreateHBITMAPFromBitmap]
+1=GpBitmap *bitmap
+2=HBITMAP *hbmReturn
+3=ARGB background
+ParamCount=3
+@=GdipCreateHBITMAPFromBitmap(GpBitmap *bitmap, HBITMAP *hbmReturn, ARGB background);
+[GdipCreateBitmapFromHICON]
+1=HICON hicon
+2=GpBitmap **bitmap
+ParamCount=2
+@=GdipCreateBitmapFromHICON(HICON hicon, GpBitmap **bitmap);
+[GdipCreateHICONFromBitmap]
+1=GpBitmap *bitmap
+2=HICON *hbmReturn
+ParamCount=2
+@=GdipCreateHICONFromBitmap(GpBitmap *bitmap, HICON *hbmReturn);
+[GdipCreateBitmapFromResource]
+1=HINSTANCE hInstance
+2=GDIPCONST WCHAR *lpBitmapName
+3=GpBitmap **bitmap
+ParamCount=3
+@=GdipCreateBitmapFromResource(HINSTANCE hInstance, GDIPCONST WCHAR *lpBitmapName, GpBitmap **bitmap);
+[GdipCloneBitmapArea]
+1=REAL x
+2=REAL y
+3=REAL width
+4=REAL height
+5=PixelFormat format
+6=GpBitmap *srcBitmap
+7=GpBitmap **dstBitmap
+ParamCount=7
+@=GdipCloneBitmapArea(REAL x, REAL y, REAL width, REAL height, PixelFormat format, GpBitmap *srcBitmap, GpBitmap **dstBitmap);
+[GdipCloneBitmapAreaI]
+1=INT x
+2=INT y
+3=INT width
+4=INT height
+5=PixelFormat format
+6=GpBitmap *srcBitmap
+7=GpBitmap **dstBitmap
+ParamCount=7
+@=GdipCloneBitmapAreaI(INT x, INT y, INT width, INT height, PixelFormat format, GpBitmap *srcBitmap, GpBitmap **dstBitmap);
+[GdipBitmapLockBits]
+1=GpBitmap *bitmap
+2=GDIPCONST GpRect *rect
+3=UINT flags
+4=PixelFormat format
+5=BitmapData *lockedBitmapData
+ParamCount=5
+@=GdipBitmapLockBits(GpBitmap *bitmap, GDIPCONST GpRect *rect, UINT flags, PixelFormat format, BitmapData *lockedBitmapData);
+[GdipBitmapUnlockBits]
+1=GpBitmap *bitmap
+2=BitmapData *lockedBitmapData
+ParamCount=2
+@=GdipBitmapUnlockBits(GpBitmap *bitmap, BitmapData *lockedBitmapData);
+[GdipBitmapGetPixel]
+1=GpBitmap *bitmap
+2=INT x
+3=INT y
+4=ARGB *color
+ParamCount=4
+@=GdipBitmapGetPixel(GpBitmap *bitmap, INT x, INT y, ARGB *color);
+[GdipBitmapSetPixel]
+1=GpBitmap *bitmap
+2=INT x
+3=INT y
+4=ARGB color
+ParamCount=4
+@=GdipBitmapSetPixel(GpBitmap *bitmap, INT x, INT y, ARGB color);
+[dipImageSetAbort]
+1=GpImage *pImage
+2=GdiplusAbort *pIAbort
+ParamCount=2
+@=dipImageSetAbort(GpImage *pImage, GdiplusAbort *pIAbort);
+[dipGraphicsSetAbort]
+1=GpGraphics *pGraphics
+2=GdiplusAbort *pIAbort
+ParamCount=2
+@=dipGraphicsSetAbort(GpGraphics *pGraphics, GdiplusAbort *pIAbort);
+[GdipBitmapConvertFormat]
+1=GpBitmap *pInputBitmap
+2=PixelFormat format
+3=DitherType dithertype
+4=PaletteType palettetype
+5=ColorPalette *palette
+6=REAL alphaThresholdPercent
+ParamCount=6
+@=GdipBitmapConvertFormat(GpBitmap *pInputBitmap, PixelFormat format, DitherType dithertype, PaletteType palettetype, ColorPalette *palette, REAL alphaThresholdPercent);
+[GdipInitializePalette]
+1=ColorPalette *palette
+2=PaletteType palettetype
+3=INT optimalColors
+4=BOOL useTransparentColor
+5=GpBitmap *bitmap
+ParamCount=5
+@=GdipInitializePalette(ColorPalette*palette, PaletteType palettetype, INT optimalColors, BOOL useTransparentColor, GpBitmap *bitmap);
+[GdipBitmapApplyEffect]
+1=GpBitmap *bitmap
+2=CGpEffect *effect
+3=RECT *roi
+4=BOOL useAuxData
+5=VOID **auxData
+6=INT *auxDataSize
+ParamCount=6
+@=GdipBitmapApplyEffect(GpBitmap *bitmap, CGpEffect *effect, RECT *roi, BOOL useAuxData, VOID **auxData, INT *auxDataSize);
+[GdipBitmapCreateApplyEffect]
+1=GpBitmap **inputBitmaps
+2=INT numInputs
+3=CGpEffect *effect
+4=RECT *roi
+5=RECT *outputRect
+6=GpBitmap **outputBitmap
+7=BOOL useAuxData
+8=VOID **auxData
+9=INT *auxDataSize
+ParamCount=9
+@=GdipBitmapCreateApplyEffect(GpBitmap **inputBitmaps, INT numInputs, CGpEffect *effect, RECT *roi, RECT *outputRect, GpBitmap **outputBitmap, BOOL useAuxData, VOID **auxData, INT *auxDataSize);
+[GdipBitmapGetHistogram]
+1=GpBitmap *bitmap
+2=HistogramFormat format
+3=UINT NumberOfEntries
+4=UINT *channel0
+5=UINT *channel1
+6=UINT *channel2
+7=UINT *channel3
+ParamCount=7
+@=GdipBitmapGetHistogram(GpBitmap *bitmap, HistogramFormat format, UINT NumberOfEntries, UINT *channel0, UINT *channel1, UINT *channel2, UINT *channel3);
+[GdipBitmapGetHistogramSize]
+1=HistogramFormat format
+2=UINT *NumberOfEntries
+ParamCount=2
+@=GdipBitmapGetHistogramSize(HistogramFormat format, UINT *NumberOfEntries);
+[GdipBitmapSetResolution]
+1=GpBitmap *bitmap
+2=REAL xdpi
+3=REAL ydpi
+ParamCount=3
+@=GdipBitmapSetResolution(GpBitmap *bitmap, REAL xdpi, REAL ydpi);
+[GdipCreateImageAttributes]
+1=GpImageAttributes **imageattr
+ParamCount=1
+@=GdipCreateImageAttributes(GpImageAttributes **imageattr);
+[GdipCloneImageAttributes]
+1=GDIPCONST GpImageAttributes*imageattr
+2=GpImageAttributes **cloneImageattr
+ParamCount=2
+@=GdipCloneImageAttributes(GDIPCONST GpImageAttributes*imageattr, GpImageAttributes **cloneImageattr);
+[GdipDisposeImageAttributes]
+1=GpImageAttributes *imageattr
+ParamCount=1
+@=GdipDisposeImageAttributes(GpImageAttributes *imageattr);
+[GdipSetImageAttributesToIdentity]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+ParamCount=2
+@=GdipSetImageAttributesToIdentity(GpImageAttributes *imageattr, ColorAdjustType type);
+[GdipResetImageAttributes]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+ParamCount=2
+@=GdipResetImageAttributes(GpImageAttributes *imageattr, ColorAdjustType type);
+[GdipSetImageAttributesColorMatrix]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=GDIPCONST ColorMatrix *colorMatrix
+5=GDIPCONST ColorMatrix *grayMatrix
+6=ColorMatrixFlags flags
+ParamCount=6
+@=GdipSetImageAttributesColorMatrix(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, GDIPCONST ColorMatrix *colorMatrix, GDIPCONST ColorMatrix *grayMatrix, ColorMatrixFlags flags);
+[GdipSetImageAttributesThreshold]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=REAL threshold
+ParamCount=4
+@=GdipSetImageAttributesThreshold(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, REAL threshold);
+[GdipSetImageAttributesGamma]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=REAL gamma
+ParamCount=4
+@=GdipSetImageAttributesGamma(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, REAL gamma);
+[GdipSetImageAttributesNoOp]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+ParamCount=3
+@=GdipSetImageAttributesNoOp(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag);
+[GdipSetImageAttributesColorKeys]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=ARGB colorLow
+5=ARGB colorHigh
+ParamCount=5
+@=GdipSetImageAttributesColorKeys(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, ARGB colorLow, ARGB colorHigh);
+[GdipSetImageAttributesOutputChannel]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=ColorChannelFlags channelFlags
+ParamCount=4
+@=GdipSetImageAttributesOutputChannel(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, ColorChannelFlags channelFlags);
+[GdipSetImageAttributesOutputChannelColorProfile]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=GDIPCONST WCHAR*colorProfileFilename
+ParamCount=4
+@=GdipSetImageAttributesOutputChannelColorProfile(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, GDIPCONST WCHAR*colorProfileFilename);
+[GdipSetImageAttributesRemapTable]
+1=GpImageAttributes *imageattr
+2=ColorAdjustType type
+3=BOOL enableFlag
+4=UINT mapSize
+5=GDIPCONST ColorMap *map
+ParamCount=5
+@=GdipSetImageAttributesRemapTable(GpImageAttributes *imageattr, ColorAdjustType type, BOOL enableFlag, UINT mapSize, GDIPCONST ColorMap *map);
+[GdipSetImageAttributesWrapMode]
+1=GpImageAttributes *imageAttr
+2=WrapMode wrap
+3=ARGB argb
+4=BOOL clamp
+ParamCount=4
+@=GdipSetImageAttributesWrapMode(GpImageAttributes *imageAttr, WrapMode wrap, ARGB argb, BOOL clamp);
+[GdipSetImageAttributesICMMode]
+1=GpImageAttributes *imageAttr
+2=BOOL on
+ParamCount=2
+@=GdipSetImageAttributesICMMode(GpImageAttributes *imageAttr, BOOL on);
+[GdipGetImageAttributesAdjustedPalette]
+1=GpImageAttributes *imageAttr
+2=ColorPalette *colorPalette
+3=ColorAdjustType colorAdjustType
+ParamCount=3
+@=GdipGetImageAttributesAdjustedPalette(GpImageAttributes *imageAttr, ColorPalette *colorPalette, ColorAdjustType colorAdjustType);
+[GdipFlush]
+1=GpGraphics *graphics
+2=GpFlushIntention intention
+ParamCount=2
+@=GdipFlush(GpGraphics *graphics, GpFlushIntention intention);
+[GdipCreateFromHDC]
+1=HDC hdc
+2=GpGraphics **graphics
+ParamCount=2
+@=GdipCreateFromHDC(HDC hdc, GpGraphics **graphics);
+[GdipCreateFromHDC2]
+1=HDC hdc
+2=HANDLE hDevice
+3=GpGraphics **graphics
+ParamCount=3
+@=GdipCreateFromHDC2(HDC hdc, HANDLE hDevice, GpGraphics **graphics);
+[GdipCreateFromHWND]
+1=HWND hwnd
+2=GpGraphics **graphics
+ParamCount=2
+@=GdipCreateFromHWND(HWND hwnd, GpGraphics **graphics);
+[GdipCreateFromHWNDICM]
+1=HWND hwnd
+2=GpGraphics **graphics
+ParamCount=2
+@=GdipCreateFromHWNDICM(HWND hwnd, GpGraphics **graphics);
+[GdipDeleteGraphics]
+1=GpGraphics *graphics
+ParamCount=1
+@=GdipDeleteGraphics(GpGraphics *graphics);
+[GdipGetDC]
+1=GpGraphics* graphics
+2=HDC *hdc
+ParamCount=2
+@=GdipGetDC(GpGraphics* graphics, HDC *hdc);
+[GdipReleaseDC]
+1=GpGraphics* graphics
+2=HDC hdc
+ParamCount=2
+@=GdipReleaseDC(GpGraphics* graphics, HDC hdc);
+[GdipSetCompositingMode]
+1=GpGraphics *graphics
+2=CompositingMode compositingMode
+ParamCount=2
+@=GdipSetCompositingMode(GpGraphics *graphics, CompositingMode compositingMode);
+[GdipGetCompositingMode]
+1=GpGraphics *graphics
+2=CompositingMode *compositingMode
+ParamCount=2
+@=GdipGetCompositingMode(GpGraphics *graphics, CompositingMode *compositingMode);
+[GdipSetRenderingOrigin]
+1=GpGraphics *graphics
+2=INT x
+3=INT y
+ParamCount=3
+@=GdipSetRenderingOrigin(GpGraphics *graphics, INT x, INT y);
+[GdipGetRenderingOrigin]
+1=GpGraphics *graphics
+2=INT *x
+3=INT *y
+ParamCount=3
+@=GdipGetRenderingOrigin(GpGraphics *graphics, INT *x, INT *y);
+[GdipSetCompositingQuality]
+1=GpGraphics *graphics
+2=CompositingQuality compositingQuality
+ParamCount=2
+@=GdipSetCompositingQuality(GpGraphics *graphics, CompositingQuality compositingQuality);
+[GdipGetCompositingQuality]
+1=GpGraphics *graphics
+2=CompositingQuality *compositingQuality
+ParamCount=2
+@=GdipGetCompositingQuality(GpGraphics *graphics, CompositingQuality *compositingQuality);
+[GdipSetSmoothingMode]
+1=GpGraphics *graphics
+2=SmoothingMode smoothingMode
+ParamCount=2
+@=GdipSetSmoothingMode(GpGraphics *graphics, SmoothingMode smoothingMode);
+[GdipGetSmoothingMode]
+1=GpGraphics *graphics
+2=SmoothingMode *smoothingMode
+ParamCount=2
+@=GdipGetSmoothingMode(GpGraphics *graphics, SmoothingMode *smoothingMode);
+[GdipSetPixelOffsetMode]
+1=GpGraphics* graphics
+2=PixelOffsetMode pixelOffsetMode
+ParamCount=2
+@=GdipSetPixelOffsetMode(GpGraphics* graphics, PixelOffsetMode pixelOffsetMode);
+[GdipGetPixelOffsetMode]
+1=GpGraphics *graphics
+2=PixelOffsetMode *pixelOffsetMode
+ParamCount=2
+@=GdipGetPixelOffsetMode(GpGraphics *graphics, PixelOffsetMode *pixelOffsetMode);
+[GdipSetTextRenderingHint]
+1=GpGraphics *graphics
+2=TextRenderingHint mode
+ParamCount=2
+@=GdipSetTextRenderingHint(GpGraphics *graphics, TextRenderingHint mode);
+[GdipGetTextRenderingHint]
+1=GpGraphics *graphics
+2=TextRenderingHint *mode
+ParamCount=2
+@=GdipGetTextRenderingHint(GpGraphics *graphics, TextRenderingHint *mode);
+[GdipSetTextContrast]
+1=GpGraphics *graphics
+2=UINT contrast
+ParamCount=2
+@=GdipSetTextContrast(GpGraphics *graphics, UINT contrast);
+[GdipGetTextContrast]
+1=GpGraphics *graphics
+2=UINT *contrast
+ParamCount=2
+@=GdipGetTextContrast(GpGraphics *graphics, UINT *contrast);
+[GdipSetInterpolationMode]
+1=GpGraphics *graphics
+2=InterpolationMode interpolationMode
+ParamCount=2
+@=GdipSetInterpolationMode(GpGraphics *graphics, InterpolationMode interpolationMode);
+[GdipGetInterpolationMode]
+1=GpGraphics *graphics
+2=InterpolationMode*interpolationMode
+ParamCount=2
+@=GdipGetInterpolationMode(GpGraphics *graphics, InterpolationMode *interpolationMode);
+[GdipSetWorldTransform]
+1=GpGraphics *graphics
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipSetWorldTransform(GpGraphics *graphics, GpMatrix *matrix);
+[GdipResetWorldTransform]
+1=GpGraphics *graphics
+ParamCount=1
+@=GdipResetWorldTransform(GpGraphics *graphics);
+[GdipMultiplyWorldTransform]
+1=GpGraphics *graphics
+2=GDIPCONST GpMatrix *matrix
+3=GpMatrixOrder order
+ParamCount=3
+@=GdipMultiplyWorldTransform(GpGraphics *graphics, GDIPCONST GpMatrix *matrix, GpMatrixOrder order);
+[GdipTranslateWorldTransform]
+1=GpGraphics *graphics
+2=REAL dx
+3=REAL dy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipTranslateWorldTransform(GpGraphics *graphics, REAL dx, REAL dy, GpMatrixOrder order);
+[GdipScaleWorldTransform]
+1=GpGraphics *graphics
+2=REAL sx
+3=REAL sy
+4=GpMatrixOrder order
+ParamCount=4
+@=GdipScaleWorldTransform(GpGraphics *graphics, REAL sx, REAL sy, GpMatrixOrder order);
+[GdipRotateWorldTransform]
+1=GpGraphics *graphics
+2=REAL angle
+3= GpMatrixOrderorder
+ParamCount=3
+@=GdipRotateWorldTransform(GpGraphics *graphics, REAL angle,  GpMatrixOrderorder);
+[GdipGetWorldTransform]
+1=GpGraphics *graphics
+2=GpMatrix *matrix
+ParamCount=2
+@=GdipGetWorldTransform(GpGraphics *graphics, GpMatrix *matrix);
+[GdipResetPageTransform]
+1=GpGraphics *graphics
+ParamCount=1
+@=GdipResetPageTransform(GpGraphics *graphics);
+[GdipGetPageUnit]
+1=GpGraphics *graphics
+2=GpUnit *unit
+ParamCount=2
+@=GdipGetPageUnit(GpGraphics *graphics, GpUnit *unit);
+[GdipGetPageScale]
+1=GpGraphics *graphics
+2=REAL *scale
+ParamCount=2
+@=GdipGetPageScale(GpGraphics *graphics, REAL *scale);
+[GdipSetPageUnit]
+1=GpGraphics *graphics
+2=GpUnit unit
+ParamCount=2
+@=GdipSetPageUnit(GpGraphics *graphics, GpUnit unit);
+[GdipSetPageScale]
+1=GpGraphics *graphics
+2=REAL scale
+ParamCount=2
+@=GdipSetPageScale(GpGraphics *graphics, REAL scale);
+[GdipGetDpiX]
+1=GpGraphics *graphics
+2=REAL* dpi
+ParamCount=2
+@=GdipGetDpiX(GpGraphics *graphics, REAL* dpi);
+[GdipGetDpiY]
+1=GpGraphics *graphics
+2=REAL* dpi
+ParamCount=2
+@=GdipGetDpiY(GpGraphics *graphics, REAL* dpi);
+[GdipTransformPoints]
+1=GpGraphics *graphics
+2=GpCoordinateSpace destSpace
+3=GpCoordinateSpace srcSpace
+4=GpPointF *points
+5=INT count
+ParamCount=5
+@=GdipTransformPoints(GpGraphics *graphics, GpCoordinateSpace destSpace, GpCoordinateSpace srcSpace, GpPointF *points, INT count);
+[GdipTransformPointsI]
+1=GpGraphics *graphics
+2=GpCoordinateSpace destSpace
+3=GpCoordinateSpace srcSpace
+4=GpPoint *points
+5=INT count
+ParamCount=5
+@=GdipTransformPointsI(GpGraphics *graphics, GpCoordinateSpace destSpace, GpCoordinateSpace srcSpace, GpPoint *points, INT count);
+[GdipGetNearestColor]
+1=GpGraphics *graphics
+2=ARGB *argb
+ParamCount=2
+@=GdipGetNearestColor(GpGraphics *graphics, ARGB *argb);
+[GdipDrawLine]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=REAL x1
+4=REAL y1
+5=REAL x2
+6=REAL y2
+ParamCount=6
+@=GdipDrawLine(GpGraphics *graphics, GpPen *pen, REAL x1, REAL y1, REAL x2, REAL y2);
+[GdipDrawLineI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=INT x1
+4=INT y1
+5=INT x2
+6=INT y2
+ParamCount=6
+@=GdipDrawLineI(GpGraphics *graphics, GpPen *pen, INT x1, INT y1, INT x2, INT y2);
+[GdipDrawLines]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+ParamCount=4
+@=GdipDrawLines(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count);
+[GdipDrawLinesI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipDrawLinesI(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count);
+[GdipDrawArc]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+7=REAL startAngle
+8=REAL sweepAngle
+ParamCount=8
+@=GdipDrawArc(GpGraphics *graphics, GpPen *pen, REAL x, REAL y, REAL width, REAL height, REAL startAngle, REAL sweepAngle);
+[GdipDrawArcI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+7=REAL startAngle
+8=REAL sweepAngle
+ParamCount=8
+@=GdipDrawArcI(GpGraphics *graphics, GpPen *pen, INT x, INT y, INT width, INT height, REAL startAngle, REAL sweepAngle);
+[GdipDrawBezier]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=REAL x1
+4=REAL y1
+5=REAL x2
+6=REAL y2
+7=REAL x3
+8=REAL y3
+9=REAL x4
+10=REAL y4
+ParamCount=10
+@=GdipDrawBezier(GpGraphics *graphics, GpPen *pen, REAL x1, REAL y1, REAL x2, REAL y2, REAL x3, REAL y3, REAL x4, REAL y4);
+[GdipDrawBezierI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=INT x1
+4=INT y1
+5=INT x2
+6=INT y2
+7=INT x3
+8=INT y3
+9=INT x4
+10=INT y4
+ParamCount=10
+@=GdipDrawBezierI(GpGraphics *graphics, GpPen *pen, INT x1, INT y1, INT x2, INT y2, INT x3, INT y3, INT x4, INT y4);
+[GdipDrawBeziers]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+ParamCount=4
+@=GdipDrawBeziers(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count);
+[GdipDrawBeziersI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipDrawBeziersI(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count);
+[GdipDrawRectangle]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+ParamCount=6
+@=GdipDrawRectangle(GpGraphics *graphics, GpPen *pen, REAL x, REAL y, REAL width, REAL height);
+[GdipDrawRectangleI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+ParamCount=6
+@=GdipDrawRectangleI(GpGraphics *graphics, GpPen *pen, INT x, INT y, INT width, INT height);
+[GdipDrawRectangles]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpRectF *rects
+4=INT count
+ParamCount=4
+@=GdipDrawRectangles(GpGraphics *graphics, GpPen *pen, GDIPCONST GpRectF *rects, INT count);
+[GdipDrawRectanglesI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpRect *rects
+4=INT count
+ParamCount=4
+@=GdipDrawRectanglesI(GpGraphics *graphics, GpPen *pen, GDIPCONST GpRect *rects, INT count);
+[GdipDrawEllipse]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+ParamCount=6
+@=GdipDrawEllipse(GpGraphics *graphics, GpPen *pen, REAL x, REAL y, REAL width, REAL height);
+[GdipDrawEllipseI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+ParamCount=6
+@=GdipDrawEllipseI(GpGraphics *graphics, GpPen *pen, INT x, INT y, INT width, INT height);
+[GdipDrawPie]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+7=REAL startAngle
+8=REAL sweepAngle
+ParamCount=8
+@=GdipDrawPie(GpGraphics *graphics, GpPen *pen, REAL x, REAL y, REAL width, REAL height, REAL startAngle, REAL sweepAngle);
+[GdipDrawPieI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+7=REAL startAngle
+8=REAL sweepAngle
+ParamCount=8
+@=GdipDrawPieI(GpGraphics *graphics, GpPen *pen, INT x, INT y, INT width, INT height, REAL startAngle, REAL sweepAngle);
+[GdipDrawPolygon]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+ParamCount=4
+@=GdipDrawPolygon(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count);
+[GdipDrawPolygonI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipDrawPolygonI(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count);
+[GdipDrawPath]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GpPath *path
+ParamCount=3
+@=GdipDrawPath(GpGraphics *graphics, GpPen *pen, GpPath *path);
+[GdipDrawCurve]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF*points
+4=INT count
+ParamCount=4
+@=GdipDrawCurve(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count);
+[GdipDrawCurveI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipDrawCurveI(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count);
+[GdipDrawCurve2]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+5=REAL tension
+ParamCount=5
+@=GdipDrawCurve2(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count, REAL tension);
+[GdipDrawCurve2I]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+5=REAL tension
+ParamCount=5
+@=GdipDrawCurve2I(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count, REAL tension);
+[GdipDrawCurve3]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+5=INT offset
+6=INT numberOfSegments
+7=REAL tension
+ParamCount=7
+@=GdipDrawCurve3(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count, INT offset, INT numberOfSegments, REAL tension);
+[GdipDrawCurve3I]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+5=INT offset
+6=INT numberOfSegments
+7=REAL tension
+ParamCount=7
+@=GdipDrawCurve3I(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count, INT offset, INT numberOfSegments, REAL tension);
+[GdipDrawClosedCurve]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+ParamCount=4
+@=GdipDrawClosedCurve(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count);
+[GdipDrawClosedCurveI]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipDrawClosedCurveI(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count);
+[GdipDrawClosedCurve2]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPointF *points
+4=INT count
+5=REAL tension
+ParamCount=5
+@=GdipDrawClosedCurve2(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPointF *points, INT count, REAL tension);
+[GdipDrawClosedCurve2I]
+1=GpGraphics *graphics
+2=GpPen *pen
+3=GDIPCONST GpPoint *points
+4=INT count
+5=REAL tension
+ParamCount=5
+@=GdipDrawClosedCurve2I(GpGraphics *graphics, GpPen *pen, GDIPCONST GpPoint *points, INT count, REAL tension);
+[GdipGraphicsClear]
+1=GpGraphics *graphics
+2=ARGB color
+ParamCount=2
+@=GdipGraphicsClear(GpGraphics *graphics, ARGB color);
+[GdipFillRectangle]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+ParamCount=6
+@=GdipFillRectangle(GpGraphics *graphics, GpBrush *brush, REAL x, REAL y, REAL width, REAL height);
+[GdipFillRectangleI]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+ParamCount=6
+@=GdipFillRectangleI(GpGraphics *graphics, GpBrush *brush, INT x, INT y, INT width, INT height);
+[GdipFillRectangles]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpRectF *rects
+4=INT count
+ParamCount=4
+@=GdipFillRectangles(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpRectF *rects, INT count);
+[GdipFillRectanglesI]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpRect *rects
+4=INT count
+ParamCount=4
+@=GdipFillRectanglesI(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpRect *rects, INT count);
+[GdipFillPolygon]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPointF *points
+4=INT count
+5=GpFillMode fillMode
+ParamCount=5
+@=GdipFillPolygon(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPointF *points, INT count, GpFillMode fillMode);
+[GdipFillPolygonI]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPoint *points
+4=INT count
+5=GpFillMode fillMode
+ParamCount=5
+@=GdipFillPolygonI(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPoint *points, INT count, GpFillMode fillMode);
+[GdipFillPolygon2]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPointF *points
+4=INT count
+ParamCount=4
+@=GdipFillPolygon2(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPointF *points, INT count);
+[GdipFillPolygon2I]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipFillPolygon2I(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPoint *points, INT count);
+[GdipFillEllipse]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+ParamCount=6
+@=GdipFillEllipse(GpGraphics *graphics, GpBrush *brush, REAL x, REAL y, REAL width, REAL height);
+[GdipFillEllipseI]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+ParamCount=6
+@=GdipFillEllipseI(GpGraphics *graphics, GpBrush *brush, INT x, INT y, INT width, INT height);
+[GdipFillPie]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+7=REAL startAngle
+8=REAL sweepAngle
+ParamCount=8
+@=GdipFillPie(GpGraphics *graphics, GpBrush *brush, REAL x, REAL y, REAL width, REAL height, REAL startAngle, REAL sweepAngle);
+[GdipFillPieI]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+7=REAL startAngle
+8=REAL sweepAngle
+ParamCount=8
+@=GdipFillPieI(GpGraphics *graphics, GpBrush *brush, INT x, INT y, INT width, INT height, REAL startAngle, REAL sweepAngle);
+[GdipFillPath]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GpPath *path
+ParamCount=3
+@=GdipFillPath(GpGraphics *graphics, GpBrush *brush, GpPath *path);
+[GdipFillClosedCurve]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPointF *points
+4=INT count
+ParamCount=4
+@=GdipFillClosedCurve(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPointF *points, INT count);
+[GdipFillClosedCurveI]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPoint *points
+4=INT count
+ParamCount=4
+@=GdipFillClosedCurveI(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPoint *points, INT count);
+[GdipFillClosedCurve2]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPointF *points
+4=INT count
+5=REAL tension
+6=GpFillMode fillMode
+ParamCount=6
+@=GdipFillClosedCurve2(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPointF *points, INT count, REAL tension, GpFillMode fillMode);
+[GdipFillClosedCurve2I]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GDIPCONST GpPoint *points
+4=INT count
+5=REAL tension
+6=GpFillMode fillMode
+ParamCount=6
+@=GdipFillClosedCurve2I(GpGraphics *graphics, GpBrush *brush, GDIPCONST GpPoint *points, INT count, REAL tension, GpFillMode fillMode);
+[GdipFillRegion]
+1=GpGraphics *graphics
+2=GpBrush *brush
+3=GpRegion *region
+ParamCount=3
+@=GdipFillRegion(GpGraphics *graphics, GpBrush *brush, GpRegion *region);
+[GdipDrawImageFX]
+1=GpGraphics *graphics
+2=GpImage *image
+3=GpRectF *source
+4=GpMatrix *xForm
+5=CGpEffect *effect
+6=GpImageAttributes *imageAttributes
+7=GpUnit srcUnit
+ParamCount=7
+@=GdipDrawImageFX(GpGraphics *graphics, GpImage *image, GpRectF *source, GpMatrix *xForm, CGpEffect *effect, GpImageAttributes *imageAttributes, GpUnit srcUnit);
+[GdipDrawImage]
+1=GpGraphics *graphics
+2=GpImage *image
+3=REAL x
+4=REAL y
+ParamCount=4
+@=GdipDrawImage(GpGraphics *graphics, GpImage *image, REAL x, REAL y);
+[GdipDrawImageI]
+1=GpGraphics *graphics
+2=GpImage *image
+3=INT x
+4=INT y
+ParamCount=4
+@=GdipDrawImageI(GpGraphics *graphics, GpImage *image, INT x, INT y);
+[GdipDrawImageRect]
+1=GpGraphics *graphics
+2=GpImage *image
+3=REAL x
+4=REAL y
+5=REAL width
+6=REAL height
+ParamCount=6
+@=GdipDrawImageRect(GpGraphics *graphics, GpImage *image, REAL x, REAL y, REAL width, REAL height);
+[GdipDrawImageRectI]
+1=GpGraphics *graphics
+2=GpImage *image
+3=INT x
+4=INT y
+5=INT width
+6=INT height
+ParamCount=6
+@=GdipDrawImageRectI(GpGraphics *graphics, GpImage *image, INT x, INT y, INT width, INT height);
+[GdipDrawImagePoints]
+1=GpGraphics *graphics
+2=GpImage *image
+3=GDIPCONST GpPointF *dstpoints
+4=INT count
+ParamCount=4
+@=GdipDrawImagePoints(GpGraphics *graphics, GpImage *image, GDIPCONST GpPointF *dstpoints, INT count);
+[GdipDrawImagePointsI]
+1=GpGraphics *graphics
+2=GpImage *image
+3=GDIPCONST GpPoint *dstpoints
+4=INT count
+ParamCount=4
+@=GdipDrawImagePointsI(GpGraphics *graphics, GpImage *image, GDIPCONST GpPoint *dstpoints, INT count);
+[GdipDrawImagePointRect]
+1=GpGraphics *graphics
+2=GpImage *image
+3=REAL x
+4=REAL y
+5=REAL srcx
+6=REAL srcy
+7=REAL srcwidth
+8=REAL srcheight
+9=GpUnit srcUnit
+ParamCount=9
+@=GdipDrawImagePointRect(GpGraphics *graphics, GpImage *image, REAL x, REAL y, REAL srcx, REAL srcy, REAL srcwidth, REAL srcheight, GpUnit srcUnit);
+[GdipDrawImagePointRectI]
+1=GpGraphics *graphics
+2=GpImage *image
+3=INT x
+4=INT y
+5=INT srcx
+6=INT srcy
+7=INT srcwidth
+8=INT srcheight
+9=GpUnit srcUnit
+ParamCount=9
+@=GdipDrawImagePointRectI(GpGraphics *graphics, GpImage *image, INT x, INT y, INT srcx, INT srcy, INT srcwidth, INT srcheight, GpUnit srcUnit);
+[GdipDrawImageRectRect]
+1=GpGraphics *graphics
+2=GpImage *image
+3=REAL dstx
+4=REAL dsty
+5=REAL dstwidth
+6=REAL dstheight
+7=REAL srcx
+8=REAL srcy
+9=REAL srcwidth
+10=REAL srcheight
+11=GpUnit srcUnit
+12=GDIPCONST GpImageAttributes *imageAttributes
+13=DrawImageAbort callback
+14=VOID *callbackData
+ParamCount=14
+@=GdipDrawImageRectRect(GpGraphics *graphics, GpImage *image, REAL dstx, REAL dsty, REAL dstwidth, REAL dstheight, REAL srcx, REAL srcy, REAL srcwidth, REAL srcheight, GpUnit srcUnit, GDIPCONST GpImageAttributes *imageAttributes, DrawImageAbort callback, VOID *callbackData);
+[GdipDrawImageRectRectI]
+1=GpGraphics *graphics
+2=GpImage *image
+3=INT dstx
+4=INT dsty
+5=INT dstwidth
+6=INT dstheight
+7=INT srcx
+8=INT srcy
+9=INT srcwidth
+10=INT srcheight
+11=GpUnit srcUnit
+12=GDIPCONST GpImageAttributes *imageAttributes
+13=DrawImageAbort callback
+14=VOID *callbackData
+ParamCount=14
+@=GdipDrawImageRectRectI(GpGraphics *graphics, GpImage *image, INT dstx, INT dsty, INT dstwidth, INT dstheight, INT srcx, INT srcy, INT srcwidth, INT srcheight, GpUnit srcUnit, GDIPCONST GpImageAttributes *imageAttributes, DrawImageAbort callback, VOID *callbackData);
+[GdipDrawImagePointsRect]
+1=GpGraphics *graphics
+2=GpImage *image
+3=GDIPCONST GpPointF *points
+4=INT count
+5=REAL srcx
+6=REAL srcy
+7=REAL srcwidth
+8=REAL srcheight
+9=GpUnit srcUnit
+10=GDIPCONST GpImageAttributes*imageAttributes
+11=DrawImageAbort callback
+12=VOID *callbackData
+ParamCount=12
+@=GdipDrawImagePointsRect(GpGraphics *graphics, GpImage *image, GDIPCONST GpPointF *points, INT count, REAL srcx, REAL srcy, REAL srcwidth, REAL srcheight, GpUnit srcUnit, GDIPCONST GpImageAttributes*imageAttributes, DrawImageAbort callback, VOID *callbackData);
+[GdipDrawImagePointsRectI]
+1=GpGraphics *graphics
+2=GpImage *image
+3=GDIPCONST GpPoint *points
+4=INT count
+5=INT srcx
+6=INT srcy
+7=INT srcwidth
+8=INT srcheight
+9=GpUnit srcUnit
+10=GDIPCONST GpImageAttributes *imageAttributes
+11=DrawImageAbort callback
+12=VOID *callbackData
+ParamCount=12
+@=GdipDrawImagePointsRectI(GpGraphics *graphics, GpImage *image, GDIPCONST GpPoint *points, INT count, INT srcx, INT srcy, INT srcwidth, INT srcheight, GpUnit srcUnit, GDIPCONST GpImageAttributes *imageAttributes, DrawImageAbort callback, VOID *callbackData);
+[GdipEnumerateMetafileDestPoint]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST PointF &destPoint
+4=EnumerateMetafileProc callback
+5=VOID *callbackData
+6=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=6
+@=GdipEnumerateMetafileDestPoint(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST PointF &destPoint, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileDestPointI]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST Point &destPoint
+4=EnumerateMetafileProc callback
+5=VOID *callbackData
+6=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=6
+@=GdipEnumerateMetafileDestPointI(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST Point &destPoint, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileDestRect]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST RectF &destRect
+4=EnumerateMetafileProc callback
+5=VOID *callbackData
+6=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=6
+@=GdipEnumerateMetafileDestRect(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST RectF &destRect, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileDestRectI]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST Rect &destRect
+4=EnumerateMetafileProc callback
+5=VOID *callbackData
+6=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=6
+@=GdipEnumerateMetafileDestRectI(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST Rect &destRect, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileDestPoints]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST PointF *destPoints
+4=INT count
+5=EnumerateMetafileProc callback
+6=VOID *callbackData
+7=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=7
+@=GdipEnumerateMetafileDestPoints(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST PointF *destPoints, INT count, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileDestPointsI]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST Point *destPoints
+4=INT count
+5=EnumerateMetafileProc callback
+6=VOID *callbackData
+7=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=7
+@=GdipEnumerateMetafileDestPointsI(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST Point *destPoints, INT count, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileSrcRectDestPoint]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST PointF &destPoint
+4=GDIPCONST RectF &srcRect
+5=Unit srcUnit
+6=EnumerateMetafileProc callback
+7=VOID *callbackData
+8=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=8
+@=GdipEnumerateMetafileSrcRectDestPoint(GpGraphics *graphics, GDIPCONST GpMetafile*metafile, GDIPCONST PointF &destPoint, GDIPCONST RectF &srcRect, Unit srcUnit, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileSrcRectDestPointI]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST Point &destPoint
+4=GDIPCONST Rect &srcRect
+5=Unit srcUnit
+6=EnumerateMetafileProc callback
+7=VOID *callbackData
+8=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=8
+@=GdipEnumerateMetafileSrcRectDestPointI(GpGraphics *graphics, GDIPCONST GpMetafile*metafile, GDIPCONST Point &destPoint, GDIPCONST Rect &srcRect, Unit srcUnit, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileSrcRectDestRect]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST RectF &destRect
+4=GDIPCONST RectF &srcRect
+5=Unit srcUnit
+6=EnumerateMetafileProc callback
+7=VOID *callbackData
+8=GDIPCONST GpImageAttributes *imageAttributes
+ParamCount=8
+@=GdipEnumerateMetafileSrcRectDestRect(GpGraphics *graphics, GDIPCONST GpMetafile*metafile, GDIPCONST RectF &destRect, GDIPCONST RectF &srcRect, Unit srcUnit, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileSrcRectDestRectI]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST Rect &destRect
+4=GDIPCONST Rect &srcRect
+5=Unit srcUnit
+6=EnumerateMetafileProc callback
+7=VOID *callbackData
+8=GDIPCONST GpImageAttributes*imageAttributes
+ParamCount=8
+@=GdipEnumerateMetafileSrcRectDestRectI(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST Rect &destRect, GDIPCONST Rect &srcRect, Unit srcUnit, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileSrcRectDestPoints]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST PointF *destPoints
+4=INT count
+5=GDIPCONST RectF &srcRect
+6=Unit srcUnit
+7=EnumerateMetafileProc callback
+8=VOID *callbackData
+9=GDIPCONST GpImageAttributes*imageAttributes
+ParamCount=9
+@=GdipEnumerateMetafileSrcRectDestPoints(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST PointF *destPoints, INT count, GDIPCONST RectF &srcRect, Unit srcUnit, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipEnumerateMetafileSrcRectDestPointsI]
+1=GpGraphics *graphics
+2=GDIPCONST GpMetafile *metafile
+3=GDIPCONST Point*destPoints
+4=INT count
+5=GDIPCONST Rect &srcRect
+6=Unit srcUnit
+7=EnumerateMetafileProc callback
+8=VOID *callbackData
+9=GDIPCONST GpImageAttributes*imageAttributes
+ParamCount=9
+@=GdipEnumerateMetafileSrcRectDestPointsI(GpGraphics *graphics, GDIPCONST GpMetafile *metafile, GDIPCONST Point *destPoints, INT count, GDIPCONST Rect &srcRect, Unit srcUnit, EnumerateMetafileProc callback, VOID *callbackData, GDIPCONST GpImageAttributes *imageAttributes);
+[GdipPlayMetafileRecord]
+1=GDIPCONST GpMetafile *metafile
+2=EmfPlusRecordType recordType
+3=UINT flags
+4=UINT dataSize
+5=GDIPCONST BYTE *data
+ParamCount=5
+@=GdipPlayMetafileRecord(GDIPCONST GpMetafile *metafile, EmfPlusRecordType recordType, UINT flags, UINT dataSize, GDIPCONST BYTE *data);
+[GdipSetClipGraphics]
+1=GpGraphics *graphics
+2=GpGraphics *srcgraphics
+3=CombineMode combineMode
+ParamCount=3
+@=GdipSetClipGraphics(GpGraphics *graphics, GpGraphics *srcgraphics, CombineMode combineMode);
+[GdipSetClipRect]
+1=GpGraphics *graphics
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+6=CombineMode combineMode
+ParamCount=6
+@=GdipSetClipRect(GpGraphics *graphics, REAL x, REAL y, REAL width, REAL height, CombineMode combineMode);
+[GdipSetClipRectI]
+1=GpGraphics *graphics
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+6=CombineMode combineMode
+ParamCount=6
+@=GdipSetClipRectI(GpGraphics *graphics, INT x, INT y, INT width, INT height, CombineMode combineMode);
+[GdipSetClipPath]
+1=GpGraphics *graphics
+2=GpPath *path
+3=CombineMode combineMode
+ParamCount=3
+@=GdipSetClipPath(GpGraphics *graphics, GpPath *path, CombineMode combineMode);
+[GdipSetClipRegion]
+1=GpGraphics *graphics
+2=GpRegion *region
+3=CombineMode combineMode
+ParamCount=3
+@=GdipSetClipRegion(GpGraphics *graphics, GpRegion *region, CombineMode combineMode);
+[GdipSetClipHrgn]
+1=GpGraphics *graphics
+2=HRGN hRgn
+3=CombineMode combineMode
+ParamCount=3
+@=GdipSetClipHrgn(GpGraphics *graphics, HRGN hRgn, CombineMode combineMode);
+[GdipResetClip]
+1=GpGraphics *graphics
+ParamCount=1
+@=GdipResetClip(GpGraphics *graphics);
+[GdipTranslateClip]
+1=GpGraphics *graphics
+2=REAL dx
+3=REAL dy
+ParamCount=3
+@=GdipTranslateClip(GpGraphics *graphics, REAL dx, REAL dy);
+[GdipTranslateClipI]
+1=GpGraphics *graphics
+2=INT dx
+3=INT dy
+ParamCount=3
+@=GdipTranslateClipI(GpGraphics *graphics, INT dx, INT dy);
+[GdipGetClip]
+1=GpGraphics *graphics
+2=GpRegion *region
+ParamCount=2
+@=GdipGetClip(GpGraphics *graphics, GpRegion *region);
+[GdipGetClipBounds]
+1=GpGraphics *graphics
+2=GpRectF *rect
+ParamCount=2
+@=GdipGetClipBounds(GpGraphics *graphics, GpRectF *rect);
+[GdipGetClipBoundsI]
+1=GpGraphics *graphics
+2=GpRect *rect
+ParamCount=2
+@=GdipGetClipBoundsI(GpGraphics *graphics, GpRect *rect);
+[GdipIsClipEmpty]
+1=GpGraphics *graphics
+2=BOOL *result
+ParamCount=2
+@=GdipIsClipEmpty(GpGraphics *graphics, BOOL *result);
+[GdipGetVisibleClipBounds]
+1=GpGraphics *graphics
+2=GpRectF *rect
+ParamCount=2
+@=GdipGetVisibleClipBounds(GpGraphics *graphics, GpRectF *rect);
+[GdipGetVisibleClipBoundsI]
+1=GpGraphics *graphics
+2=GpRect *rect
+ParamCount=2
+@=GdipGetVisibleClipBoundsI(GpGraphics *graphics, GpRect *rect);
+[GdipIsVisibleClipEmpty]
+1=GpGraphics *graphics
+2=BOOL *result
+ParamCount=2
+@=GdipIsVisibleClipEmpty(GpGraphics *graphics, BOOL *result);
+[GdipIsVisiblePoint]
+1=GpGraphics *graphics
+2=REAL x
+3=REAL y
+4=BOOL *result
+ParamCount=4
+@=GdipIsVisiblePoint(GpGraphics *graphics, REAL x, REAL y, BOOL *result);
+[GdipIsVisiblePointI]
+1=GpGraphics *graphics
+2=INT x
+3=INT y
+4=BOOL *result
+ParamCount=4
+@=GdipIsVisiblePointI(GpGraphics *graphics, INT x, INT y, BOOL *result);
+[GdipIsVisibleRect]
+1=GpGraphics *graphics
+2=REAL x
+3=REAL y
+4=REAL width
+5=REAL height
+6=BOOL *result
+ParamCount=6
+@=GdipIsVisibleRect(GpGraphics *graphics, REAL x, REAL y, REAL width, REAL height, BOOL *result);
+[GdipIsVisibleRectI]
+1=GpGraphics *graphics
+2=INT x
+3=INT y
+4=INT width
+5=INT height
+6=BOOL *result
+ParamCount=6
+@=GdipIsVisibleRectI(GpGraphics *graphics, INT x, INT y, INT width, INT height, BOOL *result);
+[GdipSaveGraphics]
+1=GpGraphics *graphics
+2=GraphicsState *state
+ParamCount=2
+@=GdipSaveGraphics(GpGraphics *graphics, GraphicsState *state);
+[GdipRestoreGraphics]
+1=GpGraphics *graphics
+2=GraphicsState state
+ParamCount=2
+@=GdipRestoreGraphics(GpGraphics *graphics, GraphicsState state);
+[GdipBeginContainer]
+1=GpGraphics *graphics
+2=GDIPCONST GpRectF *dstrect
+3=GDIPCONST GpRectF *srcrect
+4=GpUnit unit
+5= GraphicsContainer*state
+ParamCount=5
+@=GdipBeginContainer(GpGraphics *graphics, GDIPCONST GpRectF *dstrect, GDIPCONST GpRectF *srcrect, GpUnit unit,  GraphicsContainer*state);
+[GdipBeginContainerI]
+1=GpGraphics *graphics
+2=GDIPCONST GpRect *dstrect
+3=GDIPCONST GpRect *srcrect
+4=GpUnit unit
+5= GraphicsContainer*state
+ParamCount=5
+@=GdipBeginContainerI(GpGraphics *graphics, GDIPCONST GpRect *dstrect, GDIPCONST GpRect *srcrect, GpUnit unit,  GraphicsContainer*state);
+[GdipBeginContainer2]
+1=GpGraphics *graphics
+2=GraphicsContainer* state
+ParamCount=2
+@=GdipBeginContainer2(GpGraphics *graphics, GraphicsContainer* state);
+[GdipEndContainer]
+1=GpGraphics *graphics
+2=GraphicsContainer state
+ParamCount=2
+@=GdipEndContainer(GpGraphics *graphics, GraphicsContainer state);
+[fileHeaderFromWmf]
+1=HMETAFILE hWmf
+2=GDIPCONST WmfPlaceableFileHeader*wmfPlaceableFileHeader
+3=MetafileHeader *header
+ParamCount=3
+@=fileHeaderFromWmf(HMETAFILE hWmf, GDIPCONST WmfPlaceableFileHeader*wmfPlaceableFileHeader, MetafileHeader *header);
+[GdipGetMetafileHeaderFromEmf]
+1=HENHMETAFILE hEmf
+2=MetafileHeader *header
+ParamCount=2
+@=GdipGetMetafileHeaderFromEmf(HENHMETAFILE hEmf, MetafileHeader *header);
+[GdipGetMetafileHeaderFromFile]
+1=GDIPCONST WCHAR *filename
+2=MetafileHeader *header
+ParamCount=2
+@=GdipGetMetafileHeaderFromFile(GDIPCONST WCHAR *filename, MetafileHeader *header);
+[GdipGetMetafileHeaderFromStream]
+1=IStream *stream
+2=MetafileHeader *header
+ParamCount=2
+@=GdipGetMetafileHeaderFromStream(IStream *stream, MetafileHeader *header);
+[GdipGetMetafileHeaderFromMetafile]
+1=GpMetafile *metafile
+2=MetafileHeader *header
+ParamCount=2
+@=GdipGetMetafileHeaderFromMetafile(GpMetafile *metafile, MetafileHeader *header);
+[GdipGetHemfFromMetafile]
+1=GpMetafile *metafile
+2=HENHMETAFILE *hEmf
+ParamCount=2
+@=GdipGetHemfFromMetafile(GpMetafile *metafile, HENHMETAFILE *hEmf);
+[GdipCreateStreamOnFile]
+1=GDIPCONST WCHAR *filename
+2=UINT access
+3=IStream **stream
+ParamCount=3
+@=GdipCreateStreamOnFile(GDIPCONST WCHAR *filename, UINT access, IStream **stream);
+[GdipCreateMetafileFromWmf]
+1=HMETAFILE hWmf
+2=BOOL deleteWmf
+3=GDIPCONST WmfPlaceableFileHeader *wmfPlaceableFileHeader
+4=GpMetafile **metafile
+ParamCount=4
+@=GdipCreateMetafileFromWmf(HMETAFILE hWmf, BOOL deleteWmf, GDIPCONST WmfPlaceableFileHeader *wmfPlaceableFileHeader, GpMetafile **metafile);
+[GdipCreateMetafileFromEmf]
+1=HENHMETAFILE hEmf
+2=BOOL deleteEmf
+3=GpMetafile **metafile
+ParamCount=3
+@=GdipCreateMetafileFromEmf(HENHMETAFILE hEmf, BOOL deleteEmf, GpMetafile **metafile);
+[GdipCreateMetafileFromFile]
+1=GDIPCONST WCHAR *file
+2=GpMetafile **metafile
+ParamCount=2
+@=GdipCreateMetafileFromFile(GDIPCONST WCHAR *file, GpMetafile **metafile);
+[GdipCreateMetafileFromWmfFile]
+1=GDIPCONST WCHAR *file
+2=GDIPCONST WmfPlaceableFileHeader *wmfPlaceableFileHeader
+3= GpMetafile **metafile
+ParamCount=3
+@=GdipCreateMetafileFromWmfFile(GDIPCONST WCHAR *file, GDIPCONST WmfPlaceableFileHeader *wmfPlaceableFileHeader,  GpMetafile **metafile);
+[GdipCreateMetafileFromStream]
+1=IStream *stream
+2=GpMetafile **metafile
+ParamCount=2
+@=GdipCreateMetafileFromStream(IStream *stream, GpMetafile **metafile);
+[GdipRecordMetafile]
+1=HDC referenceHdc
+2=EmfType type
+3=GDIPCONST GpRectF *frameRect
+4=MetafileFrameUnit frameUnit
+5=GDIPCONST WCHAR *description
+6=GpMetafile **metafile
+ParamCount=6
+@=GdipRecordMetafile(HDC referenceHdc, EmfType type, GDIPCONST GpRectF *frameRect, MetafileFrameUnit frameUnit, GDIPCONST WCHAR *description, GpMetafile **metafile);
+[GdipRecordMetafileI]
+1=HDC referenceHdc
+2=EmfType type
+3=GDIPCONST GpRect *frameRect
+4=MetafileFrameUnit frameUnit
+5=GDIPCONST WCHAR *description
+6=GpMetafile **metafile
+ParamCount=6
+@=GdipRecordMetafileI(HDC referenceHdc, EmfType type, GDIPCONST GpRect *frameRect, MetafileFrameUnit frameUnit, GDIPCONST WCHAR *description, GpMetafile **metafile);
+[GdipRecordMetafileFileName]
+1=GDIPCONST WCHAR *fileName
+2=HDC referenceHdc
+3=EmfType type
+4=GDIPCONST GpRectF *frameRect
+5=MetafileFrameUnit frameUnit
+6=GDIPCONST WCHAR *description
+7=GpMetafile **metafile
+ParamCount=7
+@=GdipRecordMetafileFileName(GDIPCONST WCHAR *fileName, HDC referenceHdc, EmfType type, GDIPCONST GpRectF *frameRect, MetafileFrameUnit frameUnit, GDIPCONST WCHAR *description, GpMetafile **metafile);
+[GdipRecordMetafileFileNameI]
+1=GDIPCONST WCHAR *fileName
+2=HDC referenceHdc
+3=EmfType type
+4=GDIPCONST GpRect *frameRect
+5=MetafileFrameUnit frameUnit
+6=GDIPCONST WCHAR *description
+7=GpMetafile **metafile
+ParamCount=7
+@=GdipRecordMetafileFileNameI(GDIPCONST WCHAR *fileName, HDC referenceHdc, EmfType type, GDIPCONST GpRect *frameRect, MetafileFrameUnit frameUnit, GDIPCONST WCHAR *description, GpMetafile **metafile);
+[GdipRecordMetafileStream]
+1=IStream *stream
+2=HDC referenceHdc
+3=EmfType type
+4=GDIPCONST GpRectF *frameRect
+5=MetafileFrameUnit frameUnit
+6=GDIPCONST WCHAR *description
+7=GpMetafile **metafile
+ParamCount=7
+@=GdipRecordMetafileStream(IStream *stream, HDC referenceHdc, EmfType type, GDIPCONST GpRectF *frameRect, MetafileFrameUnit frameUnit, GDIPCONST WCHAR *description, GpMetafile **metafile);
+[GdipRecordMetafileStreamI]
+1=IStream *stream
+2=HDC referenceHdc
+3=EmfType type
+4=GDIPCONST GpRect *frameRect
+5=MetafileFrameUnit frameUnit
+6=GDIPCONST WCHAR *description
+7=GpMetafile **metafile
+ParamCount=7
+@=GdipRecordMetafileStreamI(IStream *stream, HDC referenceHdc, EmfType type, GDIPCONST GpRect*frameRect, MetafileFrameUnit frameUnit, GDIPCONST WCHAR *description, GpMetafile **metafile);
+[GdipSetMetafileDownLevelRasterizationLimit]
+1=GpMetafile *metafile
+2=UINT metafileRasterizationLimitDpi
+ParamCount=2
+@=GdipSetMetafileDownLevelRasterizationLimit(GpMetafile *metafile, UINT metafileRasterizationLimitDpi);
+[GdipGetMetafileDownLevelRasterizationLimit]
+1=GDIPCONST GpMetafile *metafile
+2=UINT *metafileRasterizationLimitDpi
+ParamCount=2
+@=GdipGetMetafileDownLevelRasterizationLimit(GDIPCONST GpMetafile *metafile, UINT *metafileRasterizationLimitDpi);
+[GdipGetImageDecodersSize]
+1=UINT *numDecoders
+2=UINT *size
+ParamCount=2
+@=GdipGetImageDecodersSize(UINT *numDecoders, UINT *size);
+[GdipGetImageDecoders]
+1=UINT numDecoders
+2=UINT size
+3=ImageCodecInfo *decoders
+ParamCount=3
+@=GdipGetImageDecoders(UINT numDecoders, UINT size, ImageCodecInfo *decoders);
+[GdipGetImageEncodersSize]
+1=UINT *numEncoders
+2=UINT *size
+ParamCount=2
+@=GdipGetImageEncodersSize(UINT *numEncoders, UINT *size);
+[GdipGetImageEncoders]
+1=UINT numEncoders
+2=UINT size
+3=ImageCodecInfo *encoders
+ParamCount=3
+@=GdipGetImageEncoders(UINT numEncoders, UINT size, ImageCodecInfo *encoders);
+[GdipComment]
+1=GpGraphics* graphics
+2=UINT sizeData
+3=GDIPCONST BYTE *data
+ParamCount=3
+@=GdipComment(GpGraphics* graphics, UINT sizeData, GDIPCONST BYTE *data);
+[GdipCreateFontFamilyFromName]
+1=GDIPCONST WCHAR *name
+2=GpFontCollection *fontCollection
+3=GpFontFamily **fontFamily
+ParamCount=3
+@=GdipCreateFontFamilyFromName(GDIPCONST WCHAR *name, GpFontCollection *fontCollection, GpFontFamily **fontFamily);
+[GdipDeleteFontFamily]
+1=GpFontFamily *fontFamily
+ParamCount=1
+@=GdipDeleteFontFamily(GpFontFamily *fontFamily);
+[GdipCloneFontFamily]
+1=GpFontFamily *fontFamily
+2=GpFontFamily **clonedFontFamily
+ParamCount=2
+@=GdipCloneFontFamily(GpFontFamily *fontFamily, GpFontFamily **clonedFontFamily);
+[GdipGetGenericFontFamilySansSerif]
+1=GpFontFamily **nativeFamily
+ParamCount=1
+@=GdipGetGenericFontFamilySansSerif(GpFontFamily **nativeFamily);
+[GdipGetGenericFontFamilySerif]
+1=GpFontFamily **nativeFamily
+ParamCount=1
+@=GdipGetGenericFontFamilySerif(GpFontFamily **nativeFamily);
+[GdipGetGenericFontFamilyMonospace]
+1=GpFontFamily **nativeFamily
+ParamCount=1
+@=GdipGetGenericFontFamilyMonospace(GpFontFamily **nativeFamily);
+[GdipGetFamilyName]
+1=GDIPCONST GpFontFamily *family
+2=LPWSTR name
+3=LANGID language
+ParamCount=3
+@=GdipGetFamilyName(GDIPCONST GpFontFamily *family, LPWSTR name, LANGID language);
+[GdipIsStyleAvailable]
+1=GDIPCONST GpFontFamily *family
+2=INT style
+3=BOOL *IsStyleAvailable
+ParamCount=3
+@=GdipIsStyleAvailable(GDIPCONST GpFontFamily *family, INT style,  BOOL *IsStyleAvailable);
+[GdipFontCollectionEnumerable]
+1=GpFontCollection *fontCollection
+2=GpGraphics *graphics
+3=INT *numFound
+ParamCount=3
+@=GdipFontCollectionEnumerable(GpFontCollection *fontCollection, GpGraphics *graphics, INT *numFound);
+[dipFontCollectionEnumerate]
+1=GpFontCollection *fontCollection
+2=INT numSought
+3=GpFontFamily *gpfamilies[]
+4=INT *numFound
+5=GpGraphics *graphics
+ParamCount=5
+@=dipFontCollectionEnumerate(GpFontCollection *fontCollection, INT numSought, GpFontFamily *gpfamilies[], INT *numFound, GpGraphics *graphics);
+[GdipGetEmHeight]
+1=GDIPCONST GpFontFamily *family
+2=INT style
+3=UINT16 *EmHeight
+ParamCount=3
+@=GdipGetEmHeight(GDIPCONST GpFontFamily *family, INT style, UINT16 *EmHeight);
+[GdipGetCellAscent]
+1=GDIPCONST GpFontFamily *family
+2=INT style
+3=UINT16 *CellAscent
+ParamCount=3
+@=GdipGetCellAscent(GDIPCONST GpFontFamily *family, INT style, UINT16 *CellAscent);
+[GdipGetCellDescent]
+1=GDIPCONST GpFontFamily *family
+2=INT style
+3=UINT16 *CellDescent
+ParamCount=3
+@=GdipGetCellDescent(GDIPCONST GpFontFamily *family, INT style, UINT16 *CellDescent);
+[GdipGetLineSpacing]
+1=GDIPCONST GpFontFamily *family
+2=INT style
+3=UINT16 *LineSpacing
+ParamCount=3
+@=GdipGetLineSpacing(GDIPCONST GpFontFamily *family, INT style, UINT16 *LineSpacing);
+[GdipCreateFontFromDC]
+1=HDC hdc
+2=GpFont **font
+ParamCount=2
+@=GdipCreateFontFromDC(HDC hdc, GpFont **font);
+[GdipCreateFontFromLogfontA]
+1=HDC hdc
+2=GDIPCONST LOGFONTA*logfont
+3=GpFont **font
+ParamCount=3
+@=GdipCreateFontFromLogfontA(HDC hdc, GDIPCONST LOGFONTA*logfont, GpFont **font);
+[GdipCreateFontFromLogfontW]
+1=HDC hdc
+2=GDIPCONST LOGFONTW *logfont
+3=GpFont **font
+ParamCount=3
+@=GdipCreateFontFromLogfontW(HDC hdc, GDIPCONST LOGFONTW *logfont, GpFont **font);
+[GdipCreateFont]
+1=GDIPCONST GpFontFamily *fontFamily
+2=REAL emSize
+3=INT style
+4=Unit unit
+5=GpFont **font
+ParamCount=5
+@=GdipCreateFont(GDIPCONST GpFontFamily *fontFamily, REAL emSize, INT style, Unit unit, GpFont **font);
+[GdipCloneFont]
+1=GpFont* font
+2=GpFont** cloneFont
+ParamCount=2
+@=GdipCloneFont(GpFont* font, GpFont** cloneFont);
+[GdipDeleteFont]
+1=GpFont* font
+ParamCount=1
+@=GdipDeleteFont(GpFont* font);
+[GdipGetFamily]
+1=GpFont *font
+2=GpFontFamily **family
+ParamCount=2
+@=GdipGetFamily(GpFont *font, GpFontFamily **family);
+[GdipGetFontStyle]
+1=GpFont *font
+2=INT *style
+ParamCount=2
+@=GdipGetFontStyle(GpFont *font, INT *style);
+[GdipGetFontSize]
+1=GpFont *font
+2=REAL *size
+ParamCount=2
+@=GdipGetFontSize(GpFont *font, REAL *size);
+[GdipGetFontUnit]
+1=GpFont *font
+2=Unit *unit
+ParamCount=2
+@=GdipGetFontUnit(GpFont *font, Unit *unit);
+[GdipGetFontHeight]
+1=GDIPCONST GpFont *font
+2=GDIPCONST GpGraphics *graphics
+3=REAL *height
+ParamCount=3
+@=GdipGetFontHeight(GDIPCONST GpFont *font, GDIPCONST GpGraphics *graphics, REAL *height);
+[GdipGetFontHeightGivenDPI]
+1=GDIPCONST GpFont *font
+2=REAL dpi
+3=REAL *height
+ParamCount=3
+@=GdipGetFontHeightGivenDPI(GDIPCONST GpFont *font, REAL dpi, REAL *height);
+[GdipGetLogFontA]
+1=GpFont *font
+2=GpGraphics *graphics
+3=LOGFONTA *logfontA
+ParamCount=3
+@=GdipGetLogFontA(GpFont *font, GpGraphics *graphics, LOGFONTA *logfontA);
+[GdipGetLogFontW]
+1=GpFont *font
+2=GpGraphics *graphics
+3=LOGFONTW *logfontW
+ParamCount=3
+@=GdipGetLogFontW(GpFont *font, GpGraphics *graphics, LOGFONTW *logfontW);
+[GdipNewInstalledFontCollection]
+1=GpFontCollection **fontCollection
+ParamCount=1
+@=GdipNewInstalledFontCollection(GpFontCollection **fontCollection);
+[GdipNewPrivateFontCollection]
+1=GpFontCollection **fontCollection
+ParamCount=1
+@=GdipNewPrivateFontCollection(GpFontCollection **fontCollection);
+[GdipDeletePrivateFontCollection]
+1=GpFontCollection **fontCollection
+ParamCount=1
+@=GdipDeletePrivateFontCollection(GpFontCollection **fontCollection);
+[GdipGetFontCollectionFamilyCount]
+1=GpFontCollection *fontCollection
+2=INT *numFound
+ParamCount=2
+@=GdipGetFontCollectionFamilyCount(GpFontCollection *fontCollection, INT *numFound);
+[GdipGetFontCollectionFamilyList]
+1=GpFontCollection *fontCollection
+2=INT numSought
+3=GpFontFamily *gpfamilies[]
+4=INT *numFound
+ParamCount=4
+@=GdipGetFontCollectionFamilyList(GpFontCollection *fontCollection, INT numSought, GpFontFamily *gpfamilies[], INT *numFound);
+[GdipPrivateAddFontFile]
+1=GpFontCollection *fontCollection
+2=GDIPCONST WCHAR *filename
+ParamCount=2
+@=GdipPrivateAddFontFile(GpFontCollection *fontCollection, GDIPCONST WCHAR *filename);
+[GdipPrivateAddMemoryFont]
+1=GpFontCollection *fontCollection
+2=GDIPCONST void *memory
+3=INT length
+ParamCount=3
+@=GdipPrivateAddMemoryFont(GpFontCollection *fontCollection, GDIPCONST void *memory, INT length);
+[GdipDrawString]
+1=GpGraphics *graphics
+2=GDIPCONST WCHAR *string
+3=INT length
+4=GDIPCONST GpFont *font
+5=GDIPCONST RectF *layoutRect
+6=GDIPCONST GpStringFormat *stringFormat
+7=GDIPCONST GpBrush *brush
+ParamCount=7
+@=GdipDrawString(GpGraphics *graphics, GDIPCONST WCHAR *string, INT length, GDIPCONST GpFont *font, GDIPCONST RectF *layoutRect, GDIPCONST GpStringFormat *stringFormat, GDIPCONST GpBrush *brush);
+[GdipMeasureString]
+1=GpGraphics *graphics
+2=GDIPCONST WCHAR *string
+3=INT length
+4=GDIPCONST GpFont *font
+5=GDIPCONST RectF *layoutRect
+6=GDIPCONST GpStringFormat *stringFormat
+7=RectF *boundingBox
+8=INT *codepointsFitted
+9=INT *linesFilled
+ParamCount=9
+@=GdipMeasureString(GpGraphics *graphics, GDIPCONST WCHAR *string, INT length, GDIPCONST GpFont *font, GDIPCONST RectF *layoutRect, GDIPCONST GpStringFormat *stringFormat, RectF *boundingBox, INT *codepointsFitted, INT *linesFilled);
+[GdipMeasureCharacterRanges]
+1=GpGraphics *graphics
+2=GDIPCONST WCHAR *string
+3=INT length
+4=GDIPCONST GpFont *font
+5=GDIPCONST RectF &layoutRect
+6=GDIPCONST GpStringFormat *stringFormat
+7=INT regionCount
+8=GpRegion **regions
+ParamCount=8
+@=GdipMeasureCharacterRanges(GpGraphics *graphics, GDIPCONST WCHAR *string, INT length, GDIPCONST GpFont *font, GDIPCONST RectF &layoutRect, GDIPCONST GpStringFormat *stringFormat, INT regionCount, GpRegion **regions);
+[GdipDrawDriverString]
+1=GpGraphics *graphics
+2=GDIPCONST UINT16 *text
+3=INT length
+4=GDIPCONST GpFont font
+5=GDIPCONST GpBrush *brush
+6=GDIPCONST PointF *positions
+7=INT flags
+8=GDIPCONST GpMatrix *matrix
+ParamCount=8
+@=GdipDrawDriverString(GpGraphics *graphics, GDIPCONST UINT16 *text, INT length, GDIPCONST GpFont *font, GDIPCONST GpBrush *brush, GDIPCONST PointF *positions, INT flags, GDIPCONST GpMatrix *matrix);
+[GdipMeasureDriverString]
+1=GpGraphics *graphics
+2=GDIPCONST UINT16 *text
+3=INT length
+4=GDIPCONST GpFont *font
+5=GDIPCONST PointF *positions
+6=INT flags
+7=GDIPCONST GpMatrix *matrix
+8=RectF *boundingBox
+ParamCount=8
+@=GdipMeasureDriverString(GpGraphics *graphics, GDIPCONST UINT16 *text, INT length, GDIPCONST GpFont *font, GDIPCONST PointF *positions, INT flags, GDIPCONST GpMatrix *matrix, RectF *boundingBox);
+[GdipCreateStringFormat]
+1=INT formatAttributes
+2=LANGID language
+3=GpStringFormat **format
+ParamCount=3
+@=GdipCreateStringFormat(INT formatAttributes, LANGID language, GpStringFormat **format);
+[GdipStringFormatGetGenericDefault]
+1=GpStringFormat **format
+ParamCount=1
+@=GdipStringFormatGetGenericDefault(GpStringFormat **format);
+[GdipStringFormatGetGenericTypographic]
+1=GpStringFormat **format
+ParamCount=1
+@=GdipStringFormatGetGenericTypographic(GpStringFormat **format);
+[GdipDeleteStringFormat]
+1=GpStringFormat *format
+ParamCount=1
+@=GdipDeleteStringFormat(GpStringFormat *format);
+[GdipCloneStringFormat]
+1=GDIPCONST GpStringFormat *format
+2=GpStringFormat **newFormat
+ParamCount=2
+@=GdipCloneStringFormat(GDIPCONST GpStringFormat *format, GpStringFormat **newFormat);
+[GdipSetStringFormatFlags]
+1=GpStringFormat *format
+2=INT flags
+ParamCount=2
+@=GdipSetStringFormatFlags(GpStringFormat *format, INT flags);
+[dipGetStringFormatFlags]
+1=GDIPCONST GpStringFormat *format
+2=INT *flags
+ParamCount=2
+@=dipGetStringFormatFlags(GDIPCONST GpStringFormat *format, INT *flags);
+[GdipSetStringFormatAlign]
+1=GpStringFormat *format
+2=StringAlignment align
+ParamCount=2
+@=GdipSetStringFormatAlign(GpStringFormat *format, StringAlignment align);
+[GdipGetStringFormatAlign]
+1=GDIPCONST GpStringFormat*format
+2=StringAlignment *align
+ParamCount=2
+@=GdipGetStringFormatAlign(GDIPCONST GpStringFormat*format, StringAlignment *align);
+[GdipSetStringFormatLineAlign]
+1=GpStringFormat *format
+2=StringAlignment align
+ParamCount=2
+@=GdipSetStringFormatLineAlign(GpStringFormat *format, StringAlignment align);
+[GdipGetStringFormatLineAlign]
+1=GDIPCONST GpStringFormat*format
+2=StringAlignment *align
+ParamCount=2
+@=GdipGetStringFormatLineAlign(GDIPCONST GpStringFormat*format, StringAlignment *align);
+[GdipSetStringFormatTrimming]
+1=GpStringFormat *format
+2=StringTrimming trimming
+ParamCount=2
+@=GdipSetStringFormatTrimming(GpStringFormat *format, StringTrimming trimming);
+[GdipGetStringFormatTrimming]
+1=GDIPCONST GpStringFormat*format
+2=StringTrimming *trimming
+ParamCount=2
+@=GdipGetStringFormatTrimming(GDIPCONST GpStringFormat *format, StringTrimming *trimming);
+[GdipSetStringFormatHotkeyPrefix]
+1=GpStringFormat *format
+2=INT hotkeyPrefix
+ParamCount=2
+@=GdipSetStringFormatHotkeyPrefix(GpStringFormat *format, INT hotkeyPrefix);
+[GdipGetStringFormatHotkeyPrefix]
+1=GDIPCONST GpStringFormat *format
+2=INT *hotkeyPrefix
+ParamCount=2
+@=GdipGetStringFormatHotkeyPrefix(GDIPCONST GpStringFormat *format, INT *hotkeyPrefix);
+[GdipSetStringFormatTabStops]
+1=GpStringFormat *format
+2=REAL firstTabOffset
+3=INT count
+4=GDIPCONST REAL *tabStops
+ParamCount=4
+@=GdipSetStringFormatTabStops(GpStringFormat *format, REAL firstTabOffset, INT count, GDIPCONST REAL *tabStops);
+[GdipGetStringFormatTabStops]
+1=GDIPCONST GpStringFormat *format
+2=INT count
+3=REAL *firstTabOffset
+4=REAL *tabStops
+ParamCount=4
+@=GdipGetStringFormatTabStops(GDIPCONST GpStringFormat *format, INT count, REAL *firstTabOffset, REAL *tabStops);
+[GdipGetStringFormatTabStopCount]
+1=GDIPCONST GpStringFormat *format
+2=INT *count
+ParamCount=2
+@=GdipGetStringFormatTabStopCount(GDIPCONST GpStringFormat *format, INT *count);
+[GdipSetStringFormatDigitSubstitution]
+1=GpStringFormat *format
+2=LANGID language
+3=StringDigitSubstitute substitute
+ParamCount=3
+@=GdipSetStringFormatDigitSubstitution(GpStringFormat *format, LANGID language, StringDigitSubstitute substitute);
+[GdipGetStringFormatDigitSubstitution]
+1=GDIPCONST GpStringFormat *format
+2=LANGID *language
+3=StringDigitSubstitute *substitute
+ParamCount=3
+@=GdipGetStringFormatDigitSubstitution(GDIPCONST GpStringFormat*format, LANGID *language, StringDigitSubstitute *substitute);
+[GdipGetStringFormatMeasurableCharacterRangeCount]
+1=GDIPCONST GpStringFormat *format
+2=INT *count
+ParamCount=2
+@=GdipGetStringFormatMeasurableCharacterRangeCount(GDIPCONST GpStringFormat *format, INT *count);
+[GdipSetStringFormatMeasurableCharacterRanges]
+1=GpStringFormat *format
+2=INT rangeCount
+3=GDIPCONST CharacterRange *ranges
+ParamCount=3
+@=GdipSetStringFormatMeasurableCharacterRanges(GpStringFormat *format, INT rangeCount, GDIPCONST CharacterRange *ranges);
+[GdipCreateCachedBitmap]
+1=GpBitmap *bitmap
+2=GpGraphics *graphics
+3=GpCachedBitmap **cachedBitmap
+ParamCount=3
+@=GdipCreateCachedBitmap(GpBitmap *bitmap, GpGraphics *graphics, GpCachedBitmap **cachedBitmap);
+[GdipDeleteCachedBitmap]
+1=GpCachedBitmap *cachedBitmap
+ParamCount=1
+@=GdipDeleteCachedBitmap(GpCachedBitmap *cachedBitmap);
+[GdipDrawCachedBitmap]
+1=GpGraphics *graphics
+2=GpCachedBitmap *cachedBitmap
+3=INT x
+4=INT y
+ParamCount=4
+@=GdipDrawCachedBitmap(GpGraphics *graphics, GpCachedBitmap *cachedBitmap, INT x, INT y);
+[GdipSetImageAttributesCachedBackground]
+1=GpImageAttributes *imageattr
+2=BOOL enableFlag
+ParamCount=2
+@=GdipSetImageAttributesCachedBackground(GpImageAttributes *imageattr, BOOL enableFlag);
+[GdipTestControl]
+1=GpTestControlEnum control
+2=void *param
+ParamCount=2
+@=GdipTestControl(GpTestControlEnum control, void *param);
+[GdiplusNotificationHook]
+1=ULONG_PTR *token
+ParamCount=1
+@=GdiplusNotificationHook(ULONG_PTR *token);
+[GdiplusNotificationUnhook]
+1=ULONG_PTR token
+ParamCount=1
+@=GdiplusNotificationUnhook(ULONG_PTR token);
+[GdipConvertToEmfPlus]
+1=GpGraphics *refGraphics
+2=GpMetafile *metafile
+3=INT *conversionFailureFlag
+4=EmfType emfType
+5=WCHAR *description
+6=GpMetafile **out_metafile
+ParamCount=6
+@=GdipConvertToEmfPlus(GpGraphics *refGraphics, GpMetafile *metafile, INT *conversionFailureFlag, EmfType emfType, WCHAR *description, GpMetafile **out_metafile);
+[GdipConvertToEmfPlusToFile]
+1=GpGraphics *refGraphics
+2=GpMetafile *metafile
+3=INT *conversionFailureFlag
+4=WCHAR *filename
+5=EmfType emfType
+6=WCHAR *description
+7=GpMetafile **out_metafile
+ParamCount=7
+@=GdipConvertToEmfPlusToFile(GpGraphics *refGraphics, GpMetafile *metafile, INT *conversionFailureFlag, WCHAR *filename, EmfType emfType, WCHAR *description, GpMetafile **out_metafile);
+[GdipConvertToEmfPlusToStream]
+1=GpGraphics *refGraphics
+2=GpMetafile *metafile
+3=INT *conversionFailureFlag
+4=IStream *stream
+5=EmfType emfType
+6=WCHAR *description
+7=GpMetafile **out_metafile
+ParamCount=7
+@=GdipConvertToEmfPlusToStream(GpGraphics *refGraphics, GpMetafile *metafile, INT *conversionFailureFlag, IStream *stream, EmfType emfType, WCHAR *description, GpMetafile **out_metafile);
+

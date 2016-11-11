@@ -1,0 +1,395 @@
+[DragQueryFileA]
+1=HDROP hDrop
+2=UINT iFile
+3=LPSTR lpszFile
+4=UINT cch
+ParamCount=4
+@=DragQueryFileA(HDROP hDrop, UINT iFile, LPSTR lpszFile, UINT cch);
+[DragQueryFileW]
+1=HDROP hDrop
+2=UINT iFile
+3=LPWSTR lpszFile
+4=UINT cch
+ParamCount=4
+@=DragQueryFileW(HDROP hDrop, UINT iFile, LPWSTR lpszFile, UINT cch);
+[DragQueryPoint]
+1=HDROP hDrop
+2=POINT *ppt
+ParamCount=2
+@=DragQueryPoint(HDROP hDrop, POINT *ppt);
+[DragFinish]
+1=HDROP hDrop
+ParamCount=1
+@=DragFinish(HDROP hDrop);
+[DragAcceptFiles]
+1=HWND hWnd
+2=BOOL fAccept
+ParamCount=2
+@=DragAcceptFiles(HWND hWnd, BOOL fAccept);
+[ShellExecuteA]
+1=HWND hwnd
+2=LPCSTR lpOperation
+3=LPCSTR lpFile
+4=LPCSTR lpParameters
+5=LPCSTR lpDirectory
+6=INT nShowCmd
+ParamCount=6
+@=ShellExecuteA(HWND hwnd, LPCSTR lpOperation, LPCSTR lpFile, LPCSTR lpParameters, LPCSTR lpDirectory, INT nShowCmd);
+[ShellExecuteW]
+1=HWND hwnd
+2=LPCWSTR lpOperation
+3=LPCWSTR lpFile
+4=LPCWSTR lpParameters
+5=LPCWSTR lpDirectory
+6=INT nShowCmd
+ParamCount=6
+@=ShellExecuteW(HWND hwnd, LPCWSTR lpOperation, LPCWSTR lpFile, LPCWSTR lpParameters, LPCWSTR lpDirectory, INT nShowCmd);
+[FindExecutableA]
+1=LPCSTR lpFile
+2=LPCSTR lpDirectory
+3=LPSTR lpResult
+ParamCount=3
+@=FindExecutableA(LPCSTR lpFile, LPCSTR lpDirectory, LPSTR lpResult);
+[FindExecutableW]
+1=LPCWSTR lpFile
+2=LPCWSTR lpDirectory
+3=LPWSTR lpResult
+ParamCount=3
+@=FindExecutableW(LPCWSTR lpFile, LPCWSTR lpDirectory, LPWSTR lpResult);
+[CommandLineToArgvW]
+1=LPCWSTR lpCmdLine
+2=int* pNumArgs
+ParamCount=2
+@=CommandLineToArgvW(LPCWSTR lpCmdLine, int* pNumArgs);
+[ShellAboutA]
+1=HWND hWnd
+2=LPCSTR szApp
+3=LPCSTR szOtherStuff
+4=HICON hIcon
+ParamCount=4
+@=ShellAboutA(HWND hWnd, LPCSTR szApp, LPCSTR szOtherStuff, HICON hIcon);
+[ShellAboutW]
+1=HWND hWnd
+2=LPCWSTR szApp
+3=LPCWSTR szOtherStuff
+4=HICON hIcon
+ParamCount=4
+@=ShellAboutW(HWND hWnd, LPCWSTR szApp, LPCWSTR szOtherStuff, HICON hIcon);
+[DuplicateIcon]
+1=HINSTANCE hInst
+2=HICON hIcon
+ParamCount=2
+@=DuplicateIcon(HINSTANCE hInst, HICON hIcon);
+[ExtractAssociatedIconA]
+1=HINSTANCE hInst
+2=LPSTR pszIconPath
+3=WORD *piIcon
+ParamCount=3
+@=ExtractAssociatedIconA(HINSTANCE hInst, LPSTR pszIconPath, WORD *piIcon);
+[ExtractAssociatedIconW]
+1=HINSTANCE hInst
+2=LPWSTR pszIconPath
+3=WORD *piIcon
+ParamCount=3
+@=ExtractAssociatedIconW(HINSTANCE hInst, LPWSTR pszIconPath, WORD *piIcon);
+[ExtractAssociatedIconExA]
+1=HINSTANCE hInst
+2=LPSTR pszIconPath
+3=WORD *piIconIndex
+4=WORD *piIconId
+ParamCount=4
+@=ExtractAssociatedIconExA(HINSTANCE hInst, LPSTR pszIconPath, WORD *piIconIndex, WORD *piIconId);
+[ExtractAssociatedIconExW]
+1=HINSTANCE hInst
+2=LPWSTR pszIconPath
+3=WORD *piIconIndex
+4=WORD *piIconId
+ParamCount=4
+@=ExtractAssociatedIconExW(HINSTANCE hInst, LPWSTR pszIconPath, WORD *piIconIndex, WORD *piIconId);
+[ExtractIconA]
+1=HINSTANCE hInst
+2=LPCSTR pszExeFileName
+3=UINT nIconIndex
+ParamCount=3
+@=ExtractIconA(HINSTANCE hInst, LPCSTR pszExeFileName, UINT nIconIndex);
+[ExtractIconW]
+1=HINSTANCE hInst
+2=LPCWSTR pszExeFileName
+3=UINT nIconIndex
+ParamCount=3
+@=ExtractIconW(HINSTANCE hInst, LPCWSTR pszExeFileName, UINT nIconIndex);
+[SHAppBarMessage]
+1=DWORD dwMessage
+2=PAPPBARDATA pData
+ParamCount=2
+@=SHAppBarMessage(DWORD dwMessage, PAPPBARDATA pData);
+[DoEnvironmentSubstA]
+1=LPSTR pszSrc
+2=UINT cchSrc
+ParamCount=2
+@=DoEnvironmentSubstA(LPSTR pszSrc, UINT cchSrc);
+[DoEnvironmentSubstW]
+1=LPWSTR pszSrc
+2=UINT cchSrc
+ParamCount=2
+@=DoEnvironmentSubstW(LPWSTR pszSrc, UINT cchSrc);
+[ExtractIconExA]
+1=LPCSTR lpszFile
+2=int nIconIndex
+3=HICON *phiconLarge
+4=HICON *phiconSmall
+5=UINT nIcons
+ParamCount=5
+@=ExtractIconExA(LPCSTR lpszFile, int nIconIndex, HICON *phiconLarge, HICON *phiconSmall, UINT nIcons);
+[ExtractIconExW]
+1=LPCWSTR lpszFile
+2=int nIconIndex
+3=HICON *phiconLarge
+4=HICON *phiconSmall
+5=UINT nIcons
+ParamCount=5
+@=ExtractIconExW(LPCWSTR lpszFile, int nIconIndex, HICON *phiconLarge, HICON *phiconSmall, UINT nIcons);
+[SHFileOperationA]
+1=LPSHFILEOPSTRUCTA lpFileOp
+ParamCount=1
+@=SHFileOperationA(LPSHFILEOPSTRUCTA lpFileOp);
+[SHFileOperationW]
+1=LPSHFILEOPSTRUCTW lpFileOp
+ParamCount=1
+@=SHFileOperationW(LPSHFILEOPSTRUCTW lpFileOp);
+[SHFreeNameMappings]
+1=HANDLE hNameMappings
+ParamCount=1
+@=SHFreeNameMappings(HANDLE hNameMappings);
+[ShellExecuteExA]
+1=SHELLEXECUTEINFOA *pExecInfo
+ParamCount=1
+@=ShellExecuteExA(SHELLEXECUTEINFOA *pExecInfo);
+[ShellExecuteExW]
+1=SHELLEXECUTEINFOW *pExecInfo
+ParamCount=1
+@=ShellExecuteExW(SHELLEXECUTEINFOW *pExecInfo);
+[SHCreateProcessAsUserW]
+1=PSHCREATEPROCESSINFOW pscpi
+ParamCount=1
+@=SHCreateProcessAsUserW(PSHCREATEPROCESSINFOW pscpi);
+[SHEvaluateSystemCommandTemplate]
+1=PCWSTR pszCmdTemplate
+2=PWSTR *ppszApplication
+3=PWSTR *ppszCommandLine
+4=PWSTR *ppszParameters
+ParamCount=4
+@=SHEvaluateSystemCommandTemplate(PCWSTR pszCmdTemplate, PWSTR *ppszApplication, PWSTR *ppszCommandLine, PWSTR *ppszParameters);
+[AssocCreateForClasses]
+1=ASSOCIATIONELEMENT *rgClasses
+2=ULONG cClasses
+3=REFIID riid
+4=void **ppv
+ParamCount=4
+@=AssocCreateForClasses(ASSOCIATIONELEMENT *rgClasses, ULONG cClasses, REFIID riid, void **ppv);
+[SHQueryRecycleBinA]
+1=LPCSTR pszRootPath
+2=LPSHQUERYRBINFO pSHQueryRBInfo
+ParamCount=2
+@=SHQueryRecycleBinA(LPCSTR pszRootPath, LPSHQUERYRBINFO pSHQueryRBInfo);
+[SHQueryRecycleBinW]
+1=LPCWSTR pszRootPath
+2=LPSHQUERYRBINFO pSHQueryRBInfo
+ParamCount=2
+@=SHQueryRecycleBinW(LPCWSTR pszRootPath, LPSHQUERYRBINFO pSHQueryRBInfo);
+[SHEmptyRecycleBinA]
+1=HWND hwnd
+2=LPCSTR pszRootPath
+3=DWORD dwFlags
+ParamCount=3
+@=SHEmptyRecycleBinA(HWND hwnd, LPCSTR pszRootPath, DWORD dwFlags);
+[SHEmptyRecycleBinW]
+1=HWND hwnd
+2=LPCWSTR pszRootPath
+3=DWORD dwFlags
+ParamCount=3
+@=SHEmptyRecycleBinW(HWND hwnd, LPCWSTR pszRootPath, DWORD dwFlags);
+[SHQueryUserNotificationState]
+1=QUERY_USER_NOTIFICATION_STATE *pquns
+ParamCount=1
+@=SHQueryUserNotificationState(QUERY_USER_NOTIFICATION_STATE *pquns);
+[SHGetPropertyStoreForWindow]
+1=HWND hwnd
+2=REFIID riid
+3=void** ppv
+ParamCount=3
+@=SHGetPropertyStoreForWindow(HWND hwnd, REFIID riid, void** ppv);
+[Shell_NotifyIconA]
+1=DWORD dwMessage
+2=PNOTIFYICONDATAA lpData
+ParamCount=2
+@=Shell_NotifyIconA(DWORD dwMessage, PNOTIFYICONDATAA lpData);
+[Shell_NotifyIconW]
+1=DWORD dwMessage
+2=PNOTIFYICONDATAW lpData
+ParamCount=2
+@=Shell_NotifyIconW(DWORD dwMessage, PNOTIFYICONDATAW lpData);
+[Shell_NotifyIconGetRect]
+1=NOTIFYICONIDENTIFIER* identifier
+2=RECT* iconLocation
+ParamCount=2
+@=Shell_NotifyIconGetRect(NOTIFYICONIDENTIFIER* identifier, RECT* iconLocation);
+[SHGetFileInfoA]
+1=LPCSTR pszPath
+2=DWORD dwFileAttributes
+3=SHFILEINFOA *psfi
+4=UINT cbFileInfo
+5=UINT uFlags
+ParamCount=5
+@=SHGetFileInfoA(LPCSTR pszPath, DWORD dwFileAttributes, SHFILEINFOA *psfi, UINT cbFileInfo, UINT uFlags);
+[SHGetFileInfoW]
+1=LPCWSTR pszPath
+2=DWORD dwFileAttributes
+3=SHFILEINFOW *psfi
+4=UINT cbFileInfo
+5=UINT uFlags
+ParamCount=5
+@=SHGetFileInfoW(LPCWSTR pszPath, DWORD dwFileAttributes, SHFILEINFOW *psfi, UINT cbFileInfo, UINT uFlags);
+[SHGetStockIconInfo]
+1=SHSTOCKICONID siid
+2=UINT uFlags
+3=SHSTOCKICONINFO *psii
+ParamCount=3
+@=SHGetStockIconInfo(SHSTOCKICONID siid, UINT uFlags, SHSTOCKICONINFO *psii);
+[SHGetDiskFreeSpaceExA]
+1=LPCSTR pszDirectoryName
+2=ULARGE_INTEGER* pulFreeBytesAvailableToCaller
+3=ULARGE_INTEGER* pulTotalNumberOfBytes
+4=ULARGE_INTEGER* pulTotalNumberOfFreeBytes
+ParamCount=4
+@=SHGetDiskFreeSpaceExA(LPCSTR pszDirectoryName, ULARGE_INTEGER* pulFreeBytesAvailableToCaller, ULARGE_INTEGER* pulTotalNumberOfBytes, ULARGE_INTEGER* pulTotalNumberOfFreeBytes);
+[SHGetDiskFreeSpaceExW]
+1=LPCWSTR pszDirectoryName
+2=ULARGE_INTEGER* pulFreeBytesAvailableToCaller
+3=ULARGE_INTEGER* pulTotalNumberOfBytes
+4=ULARGE_INTEGER* pulTotalNumberOfFreeBytes
+ParamCount=4
+@=SHGetDiskFreeSpaceExW(LPCWSTR pszDirectoryName, ULARGE_INTEGER* pulFreeBytesAvailableToCaller, ULARGE_INTEGER* pulTotalNumberOfBytes, ULARGE_INTEGER* pulTotalNumberOfFreeBytes);
+[SHGetNewLinkInfoA]
+1=LPCSTR pszLinkTo
+2=LPCSTR pszDir
+3=LPSTR pszName
+4=BOOL *pfMustCopy
+5=UINT uFlags
+ParamCount=5
+@=SHGetNewLinkInfoA(LPCSTR pszLinkTo, LPCSTR pszDir, LPSTR pszName, BOOL *pfMustCopy, UINT uFlags);
+[SHGetNewLinkInfoW]
+1=LPCWSTR pszLinkTo
+2=LPCWSTR pszDir
+3=LPWSTR pszName
+4=BOOL *pfMustCopy
+5=UINT uFlags
+ParamCount=5
+@=SHGetNewLinkInfoW(LPCWSTR pszLinkTo, LPCWSTR pszDir, LPWSTR pszName, BOOL *pfMustCopy, UINT uFlags);
+[SHInvokePrinterCommandA]
+1=HWND hwnd
+2=UINT uAction
+3=LPCSTR lpBuf1
+4=LPCSTR lpBuf2
+5=BOOL fModal
+ParamCount=5
+@=SHInvokePrinterCommandA(HWND hwnd, UINT uAction, LPCSTR lpBuf1, LPCSTR lpBuf2, BOOL fModal);
+[SHInvokePrinterCommandW]
+1=HWND hwnd
+2=UINT uAction
+3=LPCWSTR lpBuf1
+4=LPCWSTR lpBuf2
+5=BOOL fModal
+ParamCount=5
+@=SHInvokePrinterCommandW(HWND hwnd, UINT uAction, LPCWSTR lpBuf1, LPCWSTR lpBuf2, BOOL fModal);
+[SHLoadNonloadedIconOverlayIdentifiers]
+ParamCount=0
+@=SHLoadNonloadedIconOverlayIdentifiers();
+[SHIsFileAvailableOffline]
+1=PCWSTR pwszPath
+2=DWORD *pdwStatus
+ParamCount=2
+@=SHIsFileAvailableOffline(PCWSTR pwszPath, DWORD *pdwStatus);
+[SHSetLocalizedName]
+1=PCWSTR pszPath
+2=PCWSTR pszResModule
+3=int idsRes
+ParamCount=3
+@=SHSetLocalizedName(PCWSTR pszPath, PCWSTR pszResModule, int idsRes);
+[SHRemoveLocalizedName]
+1=PCWSTR pszPath
+ParamCount=1
+@=SHRemoveLocalizedName(PCWSTR pszPath);
+[SHGetLocalizedName]
+1=PCWSTR pszPath
+2=PWSTR pszResModule
+3=UINT cch
+4=int *pidsRes
+ParamCount=4
+@=SHGetLocalizedName(PCWSTR pszPath, PWSTR pszResModule, UINT cch, int *pidsRes);
+[IsLFNDriveA]
+1=LPCSTR pszPath
+ParamCount=1
+@=IsLFNDriveA(LPCSTR pszPath);
+[IsLFNDriveW]
+1=LPCWSTR pszPath
+ParamCount=1
+@=IsLFNDriveW(LPCWSTR pszPath);
+[SHEnumerateUnreadMailAccountsA]
+1=HKEY hKeyUser
+2=DWORD dwIndex
+3=LPSTR pszMailAddress
+4=int cchMailAddress
+ParamCount=4
+@=SHEnumerateUnreadMailAccountsA(HKEY hKeyUser, DWORD dwIndex, LPSTR pszMailAddress, int cchMailAddress);
+[SHEnumerateUnreadMailAccountsW]
+1=HKEY hKeyUser
+2=DWORD dwIndex
+3=LPWSTR pszMailAddress
+4=int cchMailAddress
+ParamCount=4
+@=SHEnumerateUnreadMailAccountsW(HKEY hKeyUser, DWORD dwIndex, LPWSTR pszMailAddress, int cchMailAddress);
+[SHGetUnreadMailCountA]
+1=HKEY hKeyUser
+2=LPCSTR pszMailAddress
+3=DWORD *pdwCount
+4=FILETIME *pFileTime
+5=LPSTR pszShellExecuteCommand
+6=int cchShellExecuteCommand
+ParamCount=6
+@=SHGetUnreadMailCountA(HKEY hKeyUser, LPCSTR pszMailAddress, DWORD *pdwCount, FILETIME *pFileTime, LPSTR pszShellExecuteCommand, int cchShellExecuteCommand);
+[SHGetUnreadMailCountW]
+1=HKEY hKeyUser
+2=LPCWSTR pszMailAddress
+3=DWORD *pdwCount
+4=FILETIME *pFileTime
+5=LPWSTR pszShellExecuteCommand
+6=int cchShellExecuteCommand
+ParamCount=6
+@=SHGetUnreadMailCountW(HKEY hKeyUser, LPCWSTR pszMailAddress, DWORD *pdwCount, FILETIME *pFileTime, LPWSTR pszShellExecuteCommand, int cchShellExecuteCommand);
+[SHSetUnreadMailCountA]
+1=LPCSTR pszMailAddress
+2=DWORD dwCount
+3=LPCSTR pszShellExecuteCommand
+ParamCount=3
+@=SHSetUnreadMailCountA(LPCSTR pszMailAddress, DWORD dwCount, LPCSTR pszShellExecuteCommand);
+[SHSetUnreadMailCountW]
+1=LPCWSTR pszMailAddress
+2=DWORD dwCount
+3=LPCWSTR pszShellExecuteCommand
+ParamCount=3
+@=SHSetUnreadMailCountW(LPCWSTR pszMailAddress, DWORD dwCount, LPCWSTR pszShellExecuteCommand);
+[SHTestTokenMembership]
+1=HANDLE hToken
+2=ULONG ulRID
+ParamCount=2
+@=SSHTestTokenMembership(HANDLE hToken, ULONG ulRID);
+[SHGetImageList]
+1=int iImageList
+2=REFIID riid
+3=void **ppvObj
+ParamCount=3
+@=SHGetImageList(int iImageList, REFIID riid, void **ppvObj);
+[InitNetworkAddressControl]
+ParamCount=0
+@=InitNetworkAddressControl();

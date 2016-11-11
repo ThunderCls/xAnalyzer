@@ -1,0 +1,1067 @@
+[RegCloseKey]
+1=HKEY hKey
+ParamCount=1
+@=RegCloseKey(HKEY hKey);
+[RegOverridePredefKey]
+1=HKEY hKey
+2=HKEY hNewHKey
+ParamCount=2
+@=RegOverridePredefKey(HKEY hKey, HKEY hNewHKey);
+[RegOpenUserClassesRoot]
+1=HANDLE hToken
+2=DWORD dwOptions
+3=REGSAM samDesired
+4=PHKEY phkResult
+ParamCount=4
+@=RegOpenUserClassesRoot(HANDLE hToken, DWORD dwOptions, REGSAM samDesired, PHKEY phkResult);
+[RegOpenCurrentUser]
+1=REGSAM samDesired
+2=PHKEY phkResult
+ParamCount=2
+@=RegOpenCurrentUser(REGSAM samDesired, PHKEY phkResult);
+[RegDisablePredefinedCache]
+ParamCount=0
+@=RegDisablePredefinedCache();
+[RegDisablePredefinedCacheEx]
+ParamCount=0
+@=RegDisablePredefinedCacheEx();
+[RegConnectRegistryA]
+1=LPCSTR lpMachineName
+2=HKEY hKey
+3=PHKEY phkResult
+ParamCount=3
+@=RegConnectRegistryA(LPCSTR lpMachineName, HKEY hKey, PHKEY phkResult);
+[RegConnectRegistryW]
+1=LPCWSTR lpMachineName
+2=HKEY hKey
+3=PHKEY phkResult
+ParamCount=3
+@=RegConnectRegistryW(LPCWSTR lpMachineName, HKEY hKey, PHKEY phkResult);
+[RegConnectRegistryExA]
+1=LPCSTR lpMachineName
+2=HKEY hKey
+3=ULONG Flags
+4=PHKEY phkResult
+ParamCount=4
+@=RegConnectRegistryExA(LPCSTR lpMachineName, HKEY hKey, ULONG Flags, PHKEY phkResult);
+[RegConnectRegistryExW]
+1=LPCWSTR lpMachineName
+2=HKEY hKey
+3=ULONG Flags
+4=PHKEY phkResult
+ParamCount=4
+@=RegConnectRegistryExW(LPCWSTR lpMachineName, HKEY hKey, ULONG Flags, PHKEY phkResult);
+[RegCreateKeyA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=PHKEY phkResult
+ParamCount=3
+@=RegCreateKeyA(HKEY hKey, LPCSTR lpSubKey, PHKEY phkResult);
+[RegCreateKeyW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=PHKEY phkResult
+ParamCount=3
+@=RegCreateKeyW(HKEY hKey, LPCWSTR lpSubKey, PHKEY phkResult);
+[RegCreateKeyExA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=DWORD Reserved
+4=LPSTR lpClass
+5=DWORD dwOptions
+6=REGSAM samDesired
+7=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+8=PHKEY phkResult
+9=LPDWORD lpdwDisposition
+ParamCount=9
+@=RegCreateKeyExA(HKEY hKey, LPCSTR lpSubKey, DWORD Reserved, LPSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition);
+[RegCreateKeyExW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=DWORD Reserved
+4=LPWSTR lpClass
+5=DWORD dwOptions
+6=REGSAM samDesired
+7=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+8=PHKEY phkResult
+9=LPDWORD lpdwDisposition
+ParamCount=9
+@=RegCreateKeyExW(HKEY hKey, LPCWSTR lpSubKey, DWORD Reserved, LPWSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition);
+[RegCreateKeyTransactedA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=DWORD Reserved
+4=LPSTR lpClass
+5=DWORD dwOptions
+6=REGSAM samDesired
+7=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+8=PHKEY phkResult
+9=LPDWORD lpdwDisposition
+10=HANDLE hTransaction
+11=PVOID pExtendedParemeter
+ParamCount=11
+@=RegCreateKeyTransactedA(HKEY hKey, LPCSTR lpSubKey, DWORD Reserved, LPSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition, HANDLE hTransaction, PVOID pExtendedParemeter);
+[RegCreateKeyTransactedW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=DWORD Reserved
+4=LPWSTR lpClass
+5=DWORD dwOptions
+6=REGSAM samDesired
+7=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+8=PHKEY phkResult
+9=LPDWORD lpdwDisposition
+10=HANDLE hTransaction
+11=PVOID pExtendedParemeter
+ParamCount=11
+@=RegCreateKeyTransactedW(HKEY hKey, LPCWSTR lpSubKey, DWORD Reserved, LPWSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition, HANDLE hTransaction, PVOID pExtendedParemeter);
+[RegDeleteKeyA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+ParamCount=2
+@=RegDeleteKeyA(HKEY hKey, LPCSTR lpSubKey);
+[RegDeleteKeyW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+ParamCount=2
+@=RegDeleteKeyW(HKEY hKey, LPCWSTR lpSubKey);
+[RegDeleteKeyExA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=REGSAM samDesired
+4=DWORD Reserved
+ParamCount=4
+@=RegDeleteKeyExA(HKEY hKey, LPCSTR lpSubKey, REGSAM samDesired, DWORD Reserved);
+[RegDeleteKeyExW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=REGSAM samDesired
+4=DWORD Reserved
+ParamCount=4
+@=RegDeleteKeyExW(HKEY hKey, LPCWSTR lpSubKey, REGSAM samDesired, DWORD Reserved);
+[RegDeleteKeyTransactedA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=REGSAM samDesired
+4=DWORD Reserved
+5=HANDLE hTransaction
+6=PVOID pExtendedParameter
+ParamCount=6
+@=RegDeleteKeyTransactedA(HKEY hKey, LPCSTR lpSubKey, REGSAM samDesired, DWORD Reserved, HANDLE hTransaction, PVOID pExtendedParameter);
+[RegDeleteKeyTransactedW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=REGSAM samDesired
+4=DWORD Reserved
+5=HANDLE hTransaction
+6=PVOID pExtendedParameter
+ParamCount=6
+@=RegDeleteKeyTransactedW(HKEY hKey, LPCWSTR lpSubKey, REGSAM samDesired, DWORD Reserved, HANDLE hTransaction, PVOID pExtendedParameter);
+[RegDisableReflectionKey]
+1=HKEY hBase
+ParamCount=1
+@=RegDisableReflectionKey(HKEY hBase);
+[RegEnableReflectionKey]
+1=HKEY hBase
+ParamCount=1
+@=RegEnableReflectionKey(HKEY hBase);
+[RegQueryReflectionKey]
+1=HKEY hBase
+2=BOOL *bIsReflectionDisabled
+ParamCount=2
+@=RegQueryReflectionKey(HKEY hBase, BOOL *bIsReflectionDisabled);
+[RegDeleteValueA]
+1=HKEY hKey
+2=LPCSTR lpValueName
+ParamCount=2
+@=RegDeleteValueA(HKEY hKey, LPCSTR lpValueName);
+[RegDeleteValueW]
+1=HKEY hKey
+2=LPCWSTR lpValueName
+ParamCount=2
+@=RegDeleteValueW(HKEY hKey, LPCWSTR lpValueName);
+[RegEnumKeyA]
+1=HKEY hKey
+2=DWORD dwIndex
+3=LPSTR lpName
+4=DWORD cchName
+ParamCount=4
+@=RegEnumKeyA(HKEY hKey, DWORD dwIndex, LPSTR lpName, DWORD cchName);
+[RegEnumKeyW]
+1=HKEY hKey
+2=DWORD dwIndex
+3=LPWSTR lpName
+4=DWORD cchName
+ParamCount=4
+@=RegEnumKeyW(HKEY hKey, DWORD dwIndex, LPWSTR lpName, DWORD cchName);
+[RegEnumKeyExA]
+1=HKEY hKey
+2=DWORD dwIndex
+3=LPSTR lpName
+4=LPDWORD lpcchName
+5=LPDWORD lpReserved
+6=LPSTR lpClass
+7=LPDWORD lpcchClass
+8=PFILETIME lpftLastWriteTime
+ParamCount=8
+@=RegEnumKeyExA(HKEY hKey, DWORD dwIndex, LPSTR lpName, LPDWORD lpcchName, LPDWORD lpReserved, LPSTR lpClass, LPDWORD lpcchClass, PFILETIME lpftLastWriteTime);
+[RegEnumKeyExW]
+1=HKEY hKey
+2=DWORD dwIndex
+3=LPWSTR lpName
+4=LPDWORD lpcchName
+5=LPDWORD lpReserved
+6=LPWSTR lpClass
+7=LPDWORD lpcchClass
+8=PFILETIME lpftLastWriteTime
+ParamCount=8
+@=RegEnumKeyExW(HKEY hKey, DWORD dwIndex, LPWSTR lpName, LPDWORD lpcchName, LPDWORD lpReserved, LPWSTR lpClass, LPDWORD lpcchClass, PFILETIME lpftLastWriteTime);
+[RegEnumValueA]
+1=HKEY hKey
+2=DWORD dwIndex
+3=LPSTR lpValueName
+4=LPDWORD lpcchValueName
+5=LPDWORD lpReserved
+6=LPDWORD lpType
+7=LPBYTE lpData
+8=LPDWORD lpcbData
+ParamCount=8
+@=RegEnumValueA(HKEY hKey, DWORD dwIndex, LPSTR lpValueName, LPDWORD lpcchValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData);
+[RegEnumValueW]
+1=HKEY hKey
+2=DWORD dwIndex
+3=LPWSTR lpValueName
+4=LPDWORD lpcchValueName
+5=LPDWORD lpReserved
+6=LPDWORD lpType
+7=LPBYTE lpData
+8=LPDWORD lpcbData
+ParamCount=8
+@=RegEnumValueW(HKEY hKey, DWORD dwIndex, LPWSTR lpValueName, LPDWORD lpcchValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData);
+[RegFlushKey]
+1=HKEY hKey
+ParamCount=1
+@=RegFlushKey(HKEY hKey);
+[RegGetKeySecurity]
+1=HKEY hKey
+2=SECURITY_INFORMATION SecurityInformation
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+4=LPDWORD lpcbSecurityDescriptor
+ParamCount=4
+@=RegGetKeySecurity(HKEY hKey, SECURITY_INFORMATION SecurityInformation, PSECURITY_DESCRIPTOR pSecurityDescriptor, LPDWORD lpcbSecurityDescriptor);
+[RegLoadKeyA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=LPCSTR lpFile
+ParamCount=3
+@=RegLoadKeyA(HKEY hKey, LPCSTR lpSubKey, LPCSTR lpFile);
+[RegLoadKeyW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=LPCWSTR lpFile
+ParamCount=3
+@=RegLoadKeyW(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpFile);
+[RegNotifyChangeKeyValue]
+1=HKEY hKey
+2=BOOL bWatchSubtree
+3=DWORD dwNotifyFilter
+4=HANDLE hEvent
+5=BOOL fAsynchronous
+ParamCount=5
+@=RegNotifyChangeKeyValue(HKEY hKey, BOOL bWatchSubtree, DWORD dwNotifyFilter, HANDLE hEvent, BOOL fAsynchronous);
+[RegOpenKeyA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=PHKEY phkResult
+ParamCount=3
+@=RegOpenKeyA(HKEY hKey, LPCSTR lpSubKey, PHKEY phkResult);
+[RegOpenKeyW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=PHKEY phkResult
+ParamCount=3
+@=RegOpenKeyW(HKEY hKey, LPCWSTR lpSubKey, PHKEY phkResult);
+[RegOpenKeyExA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=DWORD ulOptions
+4=REGSAM samDesired
+5=PHKEY phkResult
+ParamCount=5
+@=RegOpenKeyExA(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult);
+[RegOpenKeyExW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=DWORD ulOptions
+4=REGSAM samDesired
+5=PHKEY phkResult
+ParamCount=5
+@=RegOpenKeyExW(HKEY hKey, LPCWSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult);
+[RegOpenKeyTransactedA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=DWORD ulOptions
+4=REGSAM samDesired
+5=PHKEY phkResult
+6=HANDLE hTransaction
+7=PVOID pExtendedParemeter
+ParamCount=7
+@=RegOpenKeyTransactedA(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult, HANDLE hTransaction, PVOID pExtendedParemeter);
+[RegOpenKeyTransactedW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=DWORD ulOptions
+4=REGSAM samDesired
+5=PHKEY phkResult
+6=HANDLE hTransaction
+7=PVOID pExtendedParemeter
+ParamCount=7
+@=RegOpenKeyTransactedW(HKEY hKey, LPCWSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult, HANDLE hTransaction, PVOID pExtendedParemeter);
+[RegQueryInfoKeyA]
+1=HKEY hKey
+2=LPSTR lpClass
+3=LPDWORD lpcchClass
+4=LPDWORD lpReserved
+5=LPDWORD lpcSubKeys
+6=LPDWORD lpcbMaxSubKeyLen
+7=LPDWORD lpcbMaxClassLen
+8=LPDWORD lpcValues
+9=LPDWORD lpcbMaxValueNameLen
+10=LPDWORD lpcbMaxValueLen
+11=LPDWORD lpcbSecurityDescriptor
+12=PFILETIME lpftLastWriteTime
+ParamCount=12
+@=RegQueryInfoKeyA(HKEY hKey, LPSTR lpClass, LPDWORD lpcchClass, LPDWORD lpReserved, LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen, LPDWORD lpcbMaxClassLen, LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen, LPDWORD lpcbMaxValueLen, LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime);
+[RegQueryInfoKeyW]
+1=HKEY hKey
+2=LPWSTR lpClass
+3=LPDWORD lpcchClass
+4=LPDWORD lpReserved
+5=LPDWORD lpcSubKeys
+6=LPDWORD lpcbMaxSubKeyLen
+7=LPDWORD lpcbMaxClassLen
+8=LPDWORD lpcValues
+9=LPDWORD lpcbMaxValueNameLen
+10=LPDWORD lpcbMaxValueLen
+11=LPDWORD lpcbSecurityDescriptor
+12=PFILETIME lpftLastWriteTime
+ParamCount=12
+@=RegQueryInfoKeyW(HKEY hKey, LPWSTR lpClass, LPDWORD lpcchClass, LPDWORD lpReserved, LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen, LPDWORD lpcbMaxClassLen, LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen, LPDWORD lpcbMaxValueLen, LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime);
+[RegQueryValueA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=LPSTR lpData
+4=PLONG lpcbData
+ParamCount=4
+@=RegQueryValueA(HKEY hKey, LPCSTR lpSubKey, LPSTR lpData, PLONG lpcbData);
+[RegQueryValueW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=LPWSTR lpData
+4=PLONG lpcbData
+ParamCount=4
+@=RegQueryValueW(HKEY hKey, LPCWSTR lpSubKey, LPWSTR lpData, PLONG lpcbData);
+[RegQueryMultipleValuesA]
+1=HKEY hKey
+2=PVALENTA val_list
+3=DWORD num_vals
+4=LPSTR lpValueBuf
+5=LPDWORD ldwTotsize
+ParamCount=5
+@=RegQueryMultipleValuesA(HKEY hKey, PVALENTA val_list, DWORD num_vals, LPSTR lpValueBuf, LPDWORD ldwTotsize);
+[RegQueryMultipleValuesW]
+1=HKEY hKey
+2=PVALENTW val_list
+3=DWORD num_vals
+4=LPWSTR lpValueBuf
+5=LPDWORD ldwTotsize
+ParamCount=5
+@=RegQueryMultipleValuesW(HKEY hKey, PVALENTW val_list, DWORD num_vals, LPWSTR lpValueBuf, LPDWORD ldwTotsize);
+[RegQueryValueExA]
+1=HKEY hKey
+2=LPCSTR lpValueName
+3=LPDWORD lpReserved
+4=LPDWORD lpType
+5=LPBYTE lpData
+6=== NULL
+7=_When_(lpData !=NULL
+8=LPDWORD lpcbData
+ParamCount=8
+@=RegQueryValueExA(HKEY hKey, LPCSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, == NULL, _When_(lpData !=NULL, LPDWORD lpcbData);
+[RegQueryValueExW]
+1=HKEY hKey
+2=LPCWSTR lpValueName
+3=LPDWORD lpReserved
+4=LPDWORD lpType
+5=LPBYTE lpData
+6=== NULL
+7=_When_(lpData !=NULL
+8=LPDWORD lpcbData
+ParamCount=8
+@=RegQueryValueExW(HKEY hKey, LPCWSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, == NULL, _When_(lpData !=NULL, LPDWORD lpcbData);
+[RegReplaceKeyA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=LPCSTR lpNewFile
+4=LPCSTR lpOldFile
+ParamCount=4
+@=RegReplaceKeyA(HKEY hKey, LPCSTR lpSubKey, LPCSTR lpNewFile, LPCSTR lpOldFile);
+[RegReplaceKeyW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=LPCWSTR lpNewFile
+4=LPCWSTR lpOldFile
+ParamCount=4
+@=RegReplaceKeyW(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpNewFile, LPCWSTR lpOldFile);
+[RegRestoreKeyA]
+1=HKEY hKey
+2=LPCSTR lpFile
+3=DWORD dwFlags
+ParamCount=3
+@=RegRestoreKeyA(HKEY hKey, LPCSTR lpFile, DWORD dwFlags);
+[RegRestoreKeyW]
+1=HKEY hKey
+2=LPCWSTR lpFile
+3=DWORD dwFlags
+ParamCount=3
+@=RegRestoreKeyW(HKEY hKey, LPCWSTR lpFile, DWORD dwFlags);
+[RegRenameKey]
+1=HKEY hKey
+2=LPCWSTR lpSubKeyName
+3=LPCWSTR lpNewKeyName
+ParamCount=3
+@=RegRenameKey(HKEY hKey, LPCWSTR lpSubKeyName, LPCWSTR lpNewKeyName);
+[RegSaveKeyA]
+1=HKEY hKey
+2=LPCSTR lpFile
+3=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+ParamCount=3
+@=RegSaveKeyA(HKEY hKey, LPCSTR lpFile, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
+[RegSaveKeyW]
+1=HKEY hKey
+2=LPCWSTR lpFile
+3=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+ParamCount=3
+@=RegSaveKeyW(HKEY hKey, LPCWSTR lpFile, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
+[RegSetKeySecurity]
+1=HKEY hKey
+2=SECURITY_INFORMATION SecurityInformation
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=RegSetKeySecurity(HKEY hKey, SECURITY_INFORMATION SecurityInformation, PSECURITY_DESCRIPTOR pSecurityDescriptor);
+[RegSetValueA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=DWORD dwType
+4=LPCSTR lpData
+5=DWORD cbData
+ParamCount=5
+@=RegSetValueA(HKEY hKey, LPCSTR lpSubKey, DWORD dwType, LPCSTR lpData, DWORD cbData);
+[RegSetValueW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=DWORD dwType
+4=LPCWSTR lpData
+5=DWORD cbData
+ParamCount=5
+@=RegSetValueW(HKEY hKey, LPCWSTR lpSubKey, DWORD dwType, LPCWSTR lpData, DWORD cbData);
+[RegSetValueExA]
+1=HKEY hKey
+2=LPCSTR lpValueName
+3=DWORD Reserved
+4=DWORD dwType
+5=BYTE *lpData
+6=DWORD cbData
+ParamCount=6
+@=RegSetValueExA(HKEY hKey, LPCSTR lpValueName, DWORD Reserved, DWORD dwType, BYTE *lpData, DWORD cbData);
+[RegSetValueExW]
+1=HKEY hKey
+2=LPCWSTR lpValueName
+3=DWORD Reserved
+4=DWORD dwType
+5=BYTE *lpData
+6=DWORD cbData
+ParamCount=6
+@=RegSetValueExW(HKEY hKey, LPCWSTR lpValueName, DWORD Reserved, DWORD dwType, BYTE *lpData, DWORD cbData);
+[RegUnLoadKeyA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+ParamCount=2
+@=RegUnLoadKeyA(HKEY hKey, LPCSTR lpSubKey);
+[RegUnLoadKeyW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+ParamCount=2
+@=RegUnLoadKeyW(HKEY hKey, LPCWSTR lpSubKey);
+[RegDeleteKeyValueA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=LPCSTR lpValueName
+ParamCount=3
+@=RegDeleteKeyValueA(HKEY hKey, LPCSTR lpSubKey, LPCSTR lpValueName);
+[RegDeleteKeyValueW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=LPCWSTR lpValueName
+ParamCount=3
+@=RegDeleteKeyValueW(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpValueName);
+[RegSetKeyValueA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+3=LPCSTR lpValueName
+4=DWORD dwType
+5=LPCVOID lpData
+6=DWORD cbData
+ParamCount=6
+@=RegSetKeyValueA(HKEY hKey, LPCSTR lpSubKey, LPCSTR lpValueName, DWORD dwType, LPCVOID lpData, DWORD cbData);
+[RegSetKeyValueW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+3=LPCWSTR lpValueName
+4=DWORD dwType
+5=LPCVOID lpData
+6=DWORD cbData
+ParamCount=6
+@=RegSetKeyValueW(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpValueName, DWORD dwType, LPCVOID lpData, DWORD cbData);
+[RegDeleteTreeA]
+1=HKEY hKey
+2=LPCSTR lpSubKey
+ParamCount=2
+@=RegDeleteTreeA(HKEY hKey, LPCSTR lpSubKey);
+[RegDeleteTreeW]
+1=HKEY hKey
+2=LPCWSTR lpSubKey
+ParamCount=2
+@=RegDeleteTreeW(HKEY hKey, LPCWSTR lpSubKey);
+[RegCopyTreeA]
+1=HKEY hKeySrc
+2=LPCSTR lpSubKey
+3=HKEY hKeyDest
+ParamCount=3
+@=RegCopyTreeA(HKEY hKeySrc, LPCSTR lpSubKey, HKEY hKeyDest);
+[RegGetValueA]
+1=HKEY hkey
+2=LPCSTR lpSubKey
+3=LPCSTR lpValue
+4=DWORD dwFlags
+5=LPDWORD pdwType
+6=PVOID pvData
+7=LPDWORD pcbData
+ParamCount=7
+@=RegGetValueA(HKEY hkey, LPCSTR lpSubKey, LPCSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
+[RegGetValueW]
+1=HKEY hkey
+2=LPCWSTR lpSubKey
+3=LPCWSTR lpValue
+4=DWORD dwFlags
+5=LPDWORD pdwType
+6=PVOID pvData
+7=LPDWORD pcbData
+ParamCount=7
+@=RegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
+[RegCopyTreeW]
+1=HKEY hKeySrc
+2=LPCWSTR lpSubKey
+3=HKEY hKeyDest
+ParamCount=3
+@=RegCopyTreeW(HKEY hKeySrc, LPCWSTR lpSubKey, HKEY hKeyDest);
+[RegLoadMUIStringA]
+1=HKEY hKey
+2=LPCSTR pszValue
+3=LPSTR pszOutBuf
+4=DWORD cbOutBuf
+5=LPDWORD pcbData
+6=DWORD Flags
+7=LPCSTR pszDirectory
+ParamCount=7
+@=RegLoadMUIStringA(HKEY hKey, LPCSTR pszValue, LPSTR pszOutBuf, DWORD cbOutBuf, LPDWORD pcbData, DWORD Flags, LPCSTR pszDirectory);
+[RegLoadMUIStringW]
+1=HKEY hKey
+2=LPCWSTR pszValue
+3=LPWSTR pszOutBuf
+4=DWORD cbOutBuf
+5=LPDWORD pcbData
+6=DWORD Flags
+7=LPCWSTR pszDirectory
+ParamCount=7
+@=RegLoadMUIStringW(HKEY hKey, LPCWSTR pszValue, LPWSTR pszOutBuf, DWORD cbOutBuf, LPDWORD pcbData, DWORD Flags, LPCWSTR pszDirectory);
+[RegLoadAppKeyA]
+1=LPCSTR lpFile
+2=PHKEY phkResult
+3=REGSAM samDesired
+4=DWORD dwOptions
+5=DWORD Reserved
+ParamCount=5
+@=RegLoadAppKeyA(LPCSTR lpFile, PHKEY phkResult, REGSAM samDesired, DWORD dwOptions, DWORD Reserved);
+[RegLoadAppKeyW]
+1=LPCWSTR lpFile
+2=PHKEY phkResult
+3=REGSAM samDesired
+4=DWORD dwOptions
+5=DWORD Reserved
+ParamCount=5
+@=RegLoadAppKeyW(LPCWSTR lpFile, PHKEY phkResult, REGSAM samDesired, DWORD dwOptions, DWORD Reserved);
+[InitiateSystemShutdownA]
+1=LPSTR lpMachineName
+2=LPSTR lpMessage
+3=DWORD dwTimeout
+4=BOOL bForceAppsClosed
+5=BOOL bRebootAfterShutdown
+ParamCount=5
+@=InitiateSystemShutdownA(LPSTR lpMachineName, LPSTR lpMessage, DWORD dwTimeout, BOOL bForceAppsClosed, BOOL bRebootAfterShutdown);
+[InitiateSystemShutdownW]
+1=LPWSTR lpMachineName
+2=LPWSTR lpMessage
+3=DWORD dwTimeout
+4=BOOL bForceAppsClosed
+5=BOOL bRebootAfterShutdown
+ParamCount=5
+@=InitiateSystemShutdownW(LPWSTR lpMachineName, LPWSTR lpMessage, DWORD dwTimeout, BOOL bForceAppsClosed, BOOL bRebootAfterShutdown);
+[AbortSystemShutdownA]
+1=LPSTR lpMachineName
+ParamCount=1
+@=AbortSystemShutdownA(LPSTR lpMachineName);
+[AbortSystemShutdownW]
+1=LPWSTR lpMachineName
+ParamCount=1
+@=AbortSystemShutdownW(LPWSTR lpMachineName);
+[InitiateSystemShutdownExA]
+1=LPSTR lpMachineName
+2=LPSTR lpMessage
+3=DWORD dwTimeout
+4=BOOL bForceAppsClosed
+5=BOOL bRebootAfterShutdown
+6=DWORD dwReason
+ParamCount=6
+@=InitiateSystemShutdownExA(LPSTR lpMachineName, LPSTR lpMessage, DWORD dwTimeout, BOOL bForceAppsClosed, BOOL bRebootAfterShutdown, DWORD dwReason);
+[InitiateSystemShutdownExW]
+1=LPWSTR lpMachineName
+2=LPWSTR lpMessage
+3=DWORD dwTimeout
+4=BOOL bForceAppsClosed
+5=BOOL bRebootAfterShutdown
+6=DWORD dwReason
+ParamCount=6
+@=InitiateSystemShutdownExW(LPWSTR lpMachineName, LPWSTR lpMessage, DWORD dwTimeout, BOOL bForceAppsClosed, BOOL bRebootAfterShutdown, DWORD dwReason);
+[InitiateShutdownA]
+1=LPSTR lpMachineName
+2=LPSTR lpMessage
+3=DWORD dwGracePeriod
+4=DWORD dwShutdownFlags
+5=DWORD dwReason
+ParamCount=5
+@=InitiateShutdownA(LPSTR lpMachineName, LPSTR lpMessage, DWORD dwGracePeriod, DWORD dwShutdownFlags, DWORD dwReason);
+[InitiateShutdownW]
+1=LPWSTR lpMachineName
+2=LPWSTR lpMessage
+3=DWORD dwGracePeriod
+4=DWORD dwShutdownFlags
+5=DWORD dwReason
+ParamCount=5
+@=InitiateShutdownW(LPWSTR lpMachineName, LPWSTR lpMessage, DWORD dwGracePeriod, DWORD dwShutdownFlags, DWORD dwReason);
+[CheckForHiberboot]
+1=PBOOLEAN pHiberboot
+2=BOOLEAN bClearFlag
+ParamCount=2
+@=CheckForHiberboot(PBOOLEAN pHiberboot, BOOLEAN bClearFlag);
+[RegSaveKeyExA]
+1=HKEY hKey
+2=LPCSTR lpFile
+3=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+4=DWORD Flags
+ParamCount=4
+@=RegSaveKeyExA(HKEY hKey, LPCSTR lpFile, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD Flags);
+[RegSaveKeyExW]
+1=HKEY hKey
+2=LPCWSTR lpFile
+3=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+4=DWORD Flags
+ParamCount=4
+@=RegSaveKeyExW(HKEY hKey, LPCWSTR lpFile, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD Flags);
+[SERVICE_MAIN_FUNCTIONW]
+1=DWORD dwNumServicesArgs
+2=LPWSTR *lpServiceArgVectors
+ParamCount=2
+@=SERVICE_MAIN_FUNCTIONW(DWORD dwNumServicesArgs, LPWSTR *lpServiceArgVectors);
+[SERVICE_MAIN_FUNCTIONA]
+1=DWORD dwNumServicesArgs
+2=LPTSTR *lpServiceArgVectors
+ParamCount=2
+@=SERVICE_MAIN_FUNCTIONA(DWORD dwNumServicesArgs, LPTSTR *lpServiceArgVectors);
+[HANDLER_FUNCTION]
+1=DWORD dwControl
+ParamCount=1
+@=HANDLER_FUNCTION(DWORD dwControl);
+[HANDLER_FUNCTION_EX]
+1=DWORD dwControl
+2=DWORD dwEventType
+3=LPVOID lpEventData
+4=LPVOID lpContext
+ParamCount=4
+@=HANDLER_FUNCTION_EX(DWORD dwControl, DWORD dwEventType, LPVOID lpEventData, LPVOID lpContext);
+[ChangeServiceConfigA]
+1=SC_HANDLE hService
+2=DWORD dwServiceType
+3=DWORD dwStartType
+4=DWORD dwErrorControl
+5=LPCSTR lpBinaryPathName
+6=LPCSTR lpLoadOrderGroup
+7=LPDWORD lpdwTagId
+8=LPCSTR lpDependencies
+9=LPCSTR lpServiceStartName
+10=LPCSTR lpPassword
+11=LPCSTR lpDisplayName
+ParamCount=11
+@=ChangeServiceConfigA(SC_HANDLE hService, DWORD dwServiceType, DWORD dwStartType, DWORD dwErrorControl, LPCSTR lpBinaryPathName, LPCSTR lpLoadOrderGroup, LPDWORD lpdwTagId, LPCSTR lpDependencies, LPCSTR lpServiceStartName, LPCSTR lpPassword, LPCSTR lpDisplayName);
+[ChangeServiceConfigW]
+1=SC_HANDLE hService
+2=DWORD dwServiceType
+3=DWORD dwStartType
+4=DWORD dwErrorControl
+5=LPCWSTR lpBinaryPathName
+6=LPCWSTR lpLoadOrderGroup
+7=LPDWORD lpdwTagId
+8=LPCWSTR lpDependencies
+9=LPCWSTR lpServiceStartName
+10=LPCWSTR lpPassword
+11=LPCWSTR lpDisplayName
+ParamCount=11
+@=ChangeServiceConfigW(SC_HANDLE hService, DWORD dwServiceType, DWORD dwStartType, DWORD dwErrorControl, LPCWSTR lpBinaryPathName, LPCWSTR lpLoadOrderGroup, LPDWORD lpdwTagId, LPCWSTR lpDependencies, LPCWSTR lpServiceStartName, LPCWSTR lpPassword, LPCWSTR lpDisplayName);
+[ChangeServiceConfig2A]
+1=SC_HANDLE hService
+2=DWORD dwInfoLevel
+3=LPVOID lpInfo
+ParamCount=3
+@=ChangeServiceConfig2A(SC_HANDLE hService, DWORD dwInfoLevel, LPVOID lpInfo);
+[ChangeServiceConfig2W]
+1=SC_HANDLE hService
+2=DWORD dwInfoLevel
+3=LPVOID lpInfo
+ParamCount=3
+@=ChangeServiceConfig2W(SC_HANDLE hService, DWORD dwInfoLevel, LPVOID lpInfo);
+[CloseServiceHandle]
+1=SC_HANDLE hSCObject
+ParamCount=1
+@=CloseServiceHandle(SC_HANDLE hSCObject);
+[ControlService]
+1=SC_HANDLE hService
+2=DWORD dwControl
+3=LPSERVICE_STATUS lpServiceStatus
+ParamCount=3
+@=ControlService(SC_HANDLE hService, DWORD dwControl, LPSERVICE_STATUS lpServiceStatus);
+[CreateServiceA]
+1=SC_HANDLE hSCManager
+2=LPCSTR lpServiceName
+3=LPCSTR lpDisplayName
+4=DWORD dwDesiredAccess
+5=DWORD dwServiceType
+6=DWORD dwStartType
+7=DWORD dwErrorControl
+8=LPCSTR lpBinaryPathName
+9=LPCSTR lpLoadOrderGroup
+10=LPDWORD lpdwTagId
+11=LPCSTR lpDependencies
+12=LPCSTR lpServiceStartName
+13=LPCSTR lpPassword
+ParamCount=13
+@=CreateServiceA(SC_HANDLE hSCManager, LPCSTR lpServiceName, LPCSTR lpDisplayName, DWORD dwDesiredAccess, DWORD dwServiceType, DWORD dwStartType, DWORD dwErrorControl, LPCSTR lpBinaryPathName, LPCSTR lpLoadOrderGroup, LPDWORD lpdwTagId, LPCSTR lpDependencies, LPCSTR lpServiceStartName, LPCSTR lpPassword);
+[CreateServiceW]
+1=SC_HANDLE hSCManager
+2=LPCWSTR lpServiceName
+3=LPCWSTR lpDisplayName
+4=DWORD dwDesiredAccess
+5=DWORD dwServiceType
+6=DWORD dwStartType
+7=DWORD dwErrorControl
+8=LPCWSTR lpBinaryPathName
+9=LPCWSTR lpLoadOrderGroup
+10=LPDWORD lpdwTagId
+11=LPCWSTR lpDependencies
+12=LPCWSTR lpServiceStartName
+13=LPCWSTR lpPassword
+ParamCount=13
+@=CreateServiceW(SC_HANDLE hSCManager, LPCWSTR lpServiceName, LPCWSTR lpDisplayName, DWORD dwDesiredAccess, DWORD dwServiceType, DWORD dwStartType, DWORD dwErrorControl, LPCWSTR lpBinaryPathName, LPCWSTR lpLoadOrderGroup, LPDWORD lpdwTagId, LPCWSTR lpDependencies, LPCWSTR lpServiceStartName, LPCWSTR lpPassword);
+[DeleteService]
+1=SC_HANDLE hService
+ParamCount=1
+@=DeleteService(SC_HANDLE hService);
+[EnumDependentServicesA]
+1=SC_HANDLE hService
+2=DWORD dwServiceState
+3=LPENUM_SERVICE_STATUSA lpServices
+4=DWORD cbBufSize
+5=LPDWORD pcbBytesNeeded
+6=LPDWORD lpServicesReturned
+ParamCount=6
+@=EnumDependentServicesA(SC_HANDLE hService, DWORD dwServiceState, LPENUM_SERVICE_STATUSA lpServices, DWORD cbBufSize, LPDWORD pcbBytesNeeded, LPDWORD lpServicesReturned);
+[EnumDependentServicesW]
+1=SC_HANDLE hService
+2=DWORD dwServiceState
+3=LPENUM_SERVICE_STATUSW lpServices
+4=DWORD cbBufSize
+5=LPDWORD pcbBytesNeeded
+6=LPDWORD lpServicesReturned
+ParamCount=6
+@=EnumDependentServicesW(SC_HANDLE hService, DWORD dwServiceState, LPENUM_SERVICE_STATUSW lpServices, DWORD cbBufSize, LPDWORD pcbBytesNeeded, LPDWORD lpServicesReturned);
+[EnumServicesStatusA]
+1=SC_HANDLE hSCManager
+2=DWORD dwServiceType
+3=DWORD dwServiceState
+4=LPENUM_SERVICE_STATUSA lpServices
+5=DWORD cbBufSize
+6=LPDWORD pcbBytesNeeded
+7=LPDWORD lpServicesReturned
+8=LPDWORD lpResumeHandle
+ParamCount=8
+@=EnumServicesStatusA(SC_HANDLE hSCManager, DWORD dwServiceType, DWORD dwServiceState, LPENUM_SERVICE_STATUSA lpServices, DWORD cbBufSize, LPDWORD pcbBytesNeeded, LPDWORD lpServicesReturned, LPDWORD lpResumeHandle);
+[EnumServicesStatusW]
+1=SC_HANDLE hSCManager
+2=DWORD dwServiceType
+3=DWORD dwServiceState
+4=LPENUM_SERVICE_STATUSW lpServices
+5=DWORD cbBufSize
+6=LPDWORD pcbBytesNeeded
+7=LPDWORD lpServicesReturned
+8=LPDWORD lpResumeHandle
+ParamCount=8
+@=EnumServicesStatusW(SC_HANDLE hSCManager, DWORD dwServiceType, DWORD dwServiceState, LPENUM_SERVICE_STATUSW lpServices, DWORD cbBufSize, LPDWORD pcbBytesNeeded, LPDWORD lpServicesReturned, LPDWORD lpResumeHandle);
+[EnumServicesStatusExA]
+1=SC_HANDLE hSCManager
+2=SC_ENUM_TYPE InfoLevel
+3=DWORD dwServiceType
+4=DWORD dwServiceState
+5=LPBYTE lpServices
+6=DWORD cbBufSize
+7=LPDWORD pcbBytesNeeded
+8=LPDWORD lpServicesReturned
+9=LPDWORD lpResumeHandle
+10=LPCSTR pszGroupName
+ParamCount=10
+@=EnumServicesStatusExA(SC_HANDLE hSCManager, SC_ENUM_TYPE InfoLevel, DWORD dwServiceType, DWORD dwServiceState, LPBYTE lpServices, DWORD cbBufSize, LPDWORD pcbBytesNeeded, LPDWORD lpServicesReturned, LPDWORD lpResumeHandle, LPCSTR pszGroupName);
+[EnumServicesStatusExW]
+1=SC_HANDLE hSCManager
+2=SC_ENUM_TYPE InfoLevel
+3=DWORD dwServiceType
+4=DWORD dwServiceState
+5=LPBYTE lpServices
+6=DWORD cbBufSize
+7=LPDWORD pcbBytesNeeded
+8=LPDWORD lpServicesReturned
+9=LPDWORD lpResumeHandle
+10=LPCWSTR pszGroupName
+ParamCount=10
+@=EnumServicesStatusExW(SC_HANDLE hSCManager, SC_ENUM_TYPE InfoLevel, DWORD dwServiceType, DWORD dwServiceState, LPBYTE lpServices, DWORD cbBufSize, LPDWORD pcbBytesNeeded, LPDWORD lpServicesReturned, LPDWORD lpResumeHandle, LPCWSTR pszGroupName);
+[GetServiceKeyNameA]
+1=SC_HANDLE hSCManager
+2=LPCSTR lpDisplayName
+3=LPSTR lpServiceName
+4=LPDWORD lpcchBuffer
+ParamCount=4
+@=GetServiceKeyNameA(SC_HANDLE hSCManager, LPCSTR lpDisplayName, LPSTR lpServiceName, LPDWORD lpcchBuffer);
+[GetServiceKeyNameW]
+1=SC_HANDLE hSCManager
+2=LPCWSTR lpDisplayName
+3=LPWSTR lpServiceName
+4=LPDWORD lpcchBuffer
+ParamCount=4
+@=GetServiceKeyNameW(SC_HANDLE hSCManager, LPCWSTR lpDisplayName, LPWSTR lpServiceName, LPDWORD lpcchBuffer);
+[GetServiceDisplayNameA]
+1=SC_HANDLE hSCManager
+2=LPCSTR lpServiceName
+3=LPSTR lpDisplayName
+4=LPDWORD lpcchBuffer
+ParamCount=4
+@=GetServiceDisplayNameA(SC_HANDLE hSCManager, LPCSTR lpServiceName, LPSTR lpDisplayName, LPDWORD lpcchBuffer);
+[GetServiceDisplayNameW]
+1=SC_HANDLE hSCManager
+2=LPCWSTR lpServiceName
+3=LPWSTR lpDisplayName
+4=LPDWORD lpcchBuffer
+ParamCount=4
+@=GetServiceDisplayNameW(SC_HANDLE hSCManager, LPCWSTR lpServiceName, LPWSTR lpDisplayName, LPDWORD lpcchBuffer);
+[LockServiceDatabase]
+1=SC_HANDLE hSCManager
+ParamCount=1
+@=LockServiceDatabase(SC_HANDLE hSCManager);
+[NotifyBootConfigStatus]
+1=BOOL BootAcceptable
+ParamCount=1
+@=NotifyBootConfigStatus(BOOL BootAcceptable);
+[OpenSCManagerA]
+1=LPCSTR lpMachineName
+2=LPCSTR lpDatabaseName
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenSCManagerA(LPCSTR lpMachineName, LPCSTR lpDatabaseName, DWORD dwDesiredAccess);
+[OpenSCManagerW]
+1=LPCWSTR lpMachineName
+2=LPCWSTR lpDatabaseName
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenSCManagerW(LPCWSTR lpMachineName, LPCWSTR lpDatabaseName, DWORD dwDesiredAccess);
+[OpenServiceA]
+1=SC_HANDLE hSCManager
+2=LPCSTR lpServiceName
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenServiceA(SC_HANDLE hSCManager, LPCSTR lpServiceName, DWORD dwDesiredAccess);
+[OpenServiceW]
+1=SC_HANDLE hSCManager
+2=LPCWSTR lpServiceName
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenServiceW(SC_HANDLE hSCManager, LPCWSTR lpServiceName, DWORD dwDesiredAccess);
+[QueryServiceConfigA]
+1=SC_HANDLE hService
+2=LPQUERY_SERVICE_CONFIGA lpServiceConfig
+3=DWORD cbBufSize
+4=LPDWORD pcbBytesNeeded
+ParamCount=4
+@=QueryServiceConfigA(SC_HANDLE hService, LPQUERY_SERVICE_CONFIGA lpServiceConfig, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceConfigW]
+1=SC_HANDLE hService
+2=LPQUERY_SERVICE_CONFIGW lpServiceConfig
+3=DWORD cbBufSize
+4=LPDWORD pcbBytesNeeded
+ParamCount=4
+@=QueryServiceConfigW(SC_HANDLE hService, LPQUERY_SERVICE_CONFIGW lpServiceConfig, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceConfig2A]
+1=SC_HANDLE hService
+2=DWORD dwInfoLevel
+3=LPBYTE lpBuffer
+4=DWORD cbBufSize
+5=LPDWORD pcbBytesNeeded
+ParamCount=5
+@=QueryServiceConfig2A(SC_HANDLE hService, DWORD dwInfoLevel, LPBYTE lpBuffer, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceConfig2W]
+1=SC_HANDLE hService
+2=DWORD dwInfoLevel
+3=LPBYTE lpBuffer
+4=DWORD cbBufSize
+5=LPDWORD pcbBytesNeeded
+ParamCount=5
+@=QueryServiceConfig2W(SC_HANDLE hService, DWORD dwInfoLevel, LPBYTE lpBuffer, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceLockStatusA]
+1=SC_HANDLE hSCManager
+2=LPQUERY_SERVICE_LOCK_STATUSA lpLockStatus
+3=DWORD cbBufSize
+4=LPDWORD pcbBytesNeeded
+ParamCount=4
+@=QueryServiceLockStatusA(SC_HANDLE hSCManager, LPQUERY_SERVICE_LOCK_STATUSA lpLockStatus, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceLockStatusW]
+1=SC_HANDLE hSCManager
+2=LPQUERY_SERVICE_LOCK_STATUSW lpLockStatus
+3=DWORD cbBufSize
+4=LPDWORD pcbBytesNeeded
+ParamCount=4
+@=QueryServiceLockStatusW(SC_HANDLE hSCManager, LPQUERY_SERVICE_LOCK_STATUSW lpLockStatus, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceObjectSecurity]
+1=SC_HANDLE hService
+2=SECURITY_INFORMATION dwSecurityInformation
+3=PSECURITY_DESCRIPTOR lpSecurityDescriptor
+4=DWORD cbBufSize
+5=LPDWORD pcbBytesNeeded
+ParamCount=5
+@=QueryServiceObjectSecurity(SC_HANDLE hService, SECURITY_INFORMATION dwSecurityInformation, PSECURITY_DESCRIPTOR lpSecurityDescriptor, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[QueryServiceStatus]
+1=SC_HANDLE hService
+2=LPSERVICE_STATUS lpServiceStatus
+ParamCount=2
+@=QueryServiceStatus(SC_HANDLE hService, LPSERVICE_STATUS lpServiceStatus);
+[QueryServiceStatusEx]
+1=SC_HANDLE hService
+2=SC_STATUS_TYPE InfoLevel
+3=LPBYTE lpBuffer
+4=DWORD cbBufSize
+5=LPDWORD pcbBytesNeeded
+ParamCount=5
+@=QueryServiceStatusEx(SC_HANDLE hService, SC_STATUS_TYPE InfoLevel, LPBYTE lpBuffer, DWORD cbBufSize, LPDWORD pcbBytesNeeded);
+[RegisterServiceCtrlHandlerA]
+1=LPCSTR lpServiceName
+2=LPHANDLER_FUNCTION lpHandlerProc
+ParamCount=2
+@=RegisterServiceCtrlHandlerA(LPCSTR lpServiceName, LPHANDLER_FUNCTION lpHandlerProc);
+[RegisterServiceCtrlHandlerW]
+1=LPCWSTR lpServiceName
+2=LPHANDLER_FUNCTION lpHandlerProc
+ParamCount=2
+@=RegisterServiceCtrlHandlerW(LPCWSTR lpServiceName, LPHANDLER_FUNCTION lpHandlerProc);
+[RegisterServiceCtrlHandlerExA]
+1=LPCSTR lpServiceName
+2=LPHANDLER_FUNCTION_EX lpHandlerProc
+3=LPVOID lpContext
+ParamCount=3
+@=RegisterServiceCtrlHandlerExA(LPCSTR lpServiceName, LPHANDLER_FUNCTION_EX lpHandlerProc, LPVOID lpContext);
+[RegisterServiceCtrlHandlerExW]
+1=LPCWSTR lpServiceName
+2=LPHANDLER_FUNCTION_EX lpHandlerProc
+3=LPVOID lpContext
+ParamCount=3
+@=RegisterServiceCtrlHandlerExW(LPCWSTR lpServiceName, LPHANDLER_FUNCTION_EX lpHandlerProc, LPVOID lpContext);
+[SetServiceObjectSecurity]
+1=SC_HANDLE hService
+2=SECURITY_INFORMATION dwSecurityInformation
+3=PSECURITY_DESCRIPTOR lpSecurityDescriptor
+ParamCount=3
+@=SetServiceObjectSecurity(SC_HANDLE hService, SECURITY_INFORMATION dwSecurityInformation, PSECURITY_DESCRIPTOR lpSecurityDescriptor);
+[SetServiceStatus]
+1=SERVICE_STATUS_HANDLE hServiceStatus
+2=LPSERVICE_STATUS lpServiceStatus
+ParamCount=2
+@=SetServiceStatus(SERVICE_STATUS_HANDLE hServiceStatus, LPSERVICE_STATUS lpServiceStatus);
+[StartServiceCtrlDispatcherA]
+1=SERVICE_TABLE_ENTRYA *lpServiceStartTable
+ParamCount=1
+@=StartServiceCtrlDispatcherA(SERVICE_TABLE_ENTRYA *lpServiceStartTable);
+[StartServiceCtrlDispatcherW]
+1=SERVICE_TABLE_ENTRYW *lpServiceStartTable
+ParamCount=1
+@=StartServiceCtrlDispatcherW(SERVICE_TABLE_ENTRYW *lpServiceStartTable);
+[StartServiceA]
+1=SC_HANDLE hService
+2=DWORD dwNumServiceArgs
+3=LPCSTR *lpServiceArgVectors
+ParamCount=3
+@=StartServiceA(SC_HANDLE hService, DWORD dwNumServiceArgs, LPCSTR *lpServiceArgVectors);
+[StartServiceW]
+1=SC_HANDLE hService
+2=DWORD dwNumServiceArgs
+3=LPCWSTR *lpServiceArgVectors
+ParamCount=3
+@=StartServiceW(SC_HANDLE hService, DWORD dwNumServiceArgs, LPCWSTR *lpServiceArgVectors);
+[UnlockServiceDatabase]
+1=SC_LOCK ScLock
+ParamCount=1
+@=UnlockServiceDatabase(SC_LOCK ScLock);
+[NotifyServiceStatusChangeA]
+1=SC_HANDLE hService
+2=DWORD dwNotifyMask
+3=PSERVICE_NOTIFYA pNotifyBuffer
+ParamCount=3
+@=NotifyServiceStatusChangeA(SC_HANDLE hService, DWORD dwNotifyMask, PSERVICE_NOTIFYA pNotifyBuffer);
+[NotifyServiceStatusChangeW]
+1=SC_HANDLE hService
+2=DWORD dwNotifyMask
+3=PSERVICE_NOTIFYW pNotifyBuffer
+ParamCount=3
+@=NotifyServiceStatusChangeW(SC_HANDLE hService, DWORD dwNotifyMask, PSERVICE_NOTIFYW pNotifyBuffer);
+[ControlServiceExA]
+1=SC_HANDLE hService
+2=DWORD dwControl
+3=DWORD dwInfoLevel
+4=PVOID pControlParams
+ParamCount=4
+@=ControlServiceExA(SC_HANDLE hService, DWORD dwControl, DWORD dwInfoLevel, PVOID pControlParams);
+[ControlServiceExW]
+1=SC_HANDLE hService
+2=DWORD dwControl
+3=DWORD dwInfoLevel
+4=PVOID pControlParams
+ParamCount=4
+@=ControlServiceExW(SC_HANDLE hService, DWORD dwControl, DWORD dwInfoLevel, PVOID pControlParams);
+[QueryServiceDynamicInformation]
+1=SERVICE_STATUS_HANDLE hServiceStatus
+2=DWORD dwInfoLevel
+3=PVOID *ppDynamicInfo
+ParamCount=3
+@=QueryServiceDynamicInformation(SERVICE_STATUS_HANDLE hServiceStatus, DWORD dwInfoLevel, PVOID *ppDynamicInfo);

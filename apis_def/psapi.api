@@ -1,0 +1,165 @@
+[EnumProcesses]
+1=DWORD *lpidProcess
+2=DWORD cb
+3=LPDWORD lpcbNeeded
+ParamCount=3
+@=EnumProcesses(DWORD *lpidProcess, DWORD cb, LPDWORD lpcbNeeded);
+[EnumProcessModules]
+1=HANDLE hProcess
+2=HMODULE *lphModule
+3=DWORD cb
+4=LPDWORD lpcbNeeded
+ParamCount=4
+@=EnumProcessModules(HANDLE hProcess, HMODULE *lphModule, DWORD cb, LPDWORD lpcbNeeded);
+[EnumProcessModulesEx]
+1=HANDLE hProcess
+2=HMODULE *lphModule
+3=DWORD cb
+4=LPDWORD lpcbNeeded
+5=DWORD dwFilterFlag
+ParamCount=5
+@=EnumProcessModulesEx(HANDLE hProcess, HMODULE *lphModule, DWORD cb, LPDWORD lpcbNeeded, DWORD dwFilterFlag);
+[GetModuleBaseNameA]
+1=HANDLE hProcess
+2=HMODULE hModule
+3=LPSTR lpBaseName
+4=DWORD nSize
+ParamCount=4
+@=GetModuleBaseNameA(HANDLE hProcess, HMODULE hModule, LPSTR lpBaseName, DWORD nSize);
+[GetModuleBaseNameW]
+1=HANDLE hProcess
+2=HMODULE hModule
+3=LPWSTR lpBaseName
+4=DWORD nSize
+ParamCount=4
+@=GetModuleBaseNameW(HANDLE hProcess, HMODULE hModule, LPWSTR lpBaseName, DWORD nSize);
+[GetModuleFileNameExA]
+1=HANDLE hProcess
+2=HMODULE hModule
+3=LPSTR lpFilename
+4=DWORD nSize
+ParamCount=4
+@=GetModuleFileNameExA(HANDLE hProcess, HMODULE hModule, LPSTR lpFilename, DWORD nSize);
+[GetModuleFileNameExW]
+1=HANDLE hProcess
+2=HMODULE hModule
+3=LPWSTR lpFilename
+4=DWORD nSize
+ParamCount=4
+@=GetModuleFileNameExW(HANDLE hProcess, HMODULE hModule, LPWSTR lpFilename, DWORD nSize);
+[GetModuleInformation]
+1=HANDLE hProcess
+2=HMODULE hModule
+3=LPMODULEINFO lpmodinfo
+4=DWORD cb
+ParamCount=4
+@=GetModuleInformation(HANDLE hProcess, HMODULE hModule, LPMODULEINFO lpmodinfo, DWORD cb);
+[EmptyWorkingSet]
+1=HANDLE hProcess
+ParamCount=1
+@=EmptyWorkingSet(HANDLE hProcess);
+[QueryWorkingSet]
+1=HANDLE hProcess
+2=PVOID pv
+3=DWORD cb
+ParamCount=3
+@=QueryWorkingSet(HANDLE hProcess, PVOID pv, DWORD cb);
+[QueryWorkingSetEx]
+1=HANDLE hProcess
+2=PVOID pv
+3=DWORD cb
+ParamCount=3
+@=QueryWorkingSetEx(HANDLE hProcess, PVOID pv, DWORD cb);
+[InitializeProcessForWsWatch]
+1=HANDLE hProcess
+ParamCount=1
+@=InitializeProcessForWsWatch(HANDLE hProcess);
+[GetWsChanges]
+1=HANDLE hProcess
+2=PPSAPI_WS_WATCH_INFORMATION lpWatchInfo
+3=DWORD cb
+ParamCount=3
+@=GetWsChanges(HANDLE hProcess, PPSAPI_WS_WATCH_INFORMATION lpWatchInfo, DWORD cb);
+[GetWsChangesEx]
+1=HANDLE hProcess
+2=PPSAPI_WS_WATCH_INFORMATION_EX lpWatchInfoEx
+3=PDWORD cb
+ParamCount=3
+@=GetWsChangesEx(HANDLE hProcess, PPSAPI_WS_WATCH_INFORMATION_EX lpWatchInfoEx, PDWORD cb);
+[GetMappedFileNameW]
+1=HANDLE hProcess
+2=LPVOID lpv
+3=LPWSTR lpFilename
+4=DWORD nSize
+ParamCount=4
+@=GetMappedFileNameW(HANDLE hProcess, LPVOID lpv, LPWSTR lpFilename, DWORD nSize);
+[GetMappedFileNameA]
+1=HANDLE hProcess
+2=LPVOID lpv
+3=LPSTR lpFilename
+4=DWORD nSize
+ParamCount=4
+@=GetMappedFileNameA(HANDLE hProcess, LPVOID lpv, LPSTR lpFilename, DWORD nSize);
+[EnumDeviceDrivers]
+1=LPVOID *lpImageBase
+2=DWORD cb
+3=LPDWORD lpcbNeeded
+ParamCount=3
+@=EnumDeviceDrivers(LPVOID *lpImageBase, DWORD cb, LPDWORD lpcbNeeded);
+[GetDeviceDriverBaseNameA]
+1=LPVOID ImageBase
+2=LPSTR lpFilename
+3=DWORD nSize
+ParamCount=3
+@=GetDeviceDriverBaseNameA(LPVOID ImageBase, LPSTR lpFilename, DWORD nSize);
+[GetDeviceDriverBaseNameW]
+1=LPVOID ImageBase
+2=LPWSTR lpBaseName
+3=DWORD nSize
+ParamCount=3
+@=GetDeviceDriverBaseNameW(LPVOID ImageBase, LPWSTR lpBaseName, DWORD nSize);
+[GetDeviceDriverFileNameA]
+1=LPVOID ImageBase
+2=LPSTR lpFilename
+3=DWORD nSize
+ParamCount=3
+@=GetDeviceDriverFileNameA(LPVOID ImageBase, LPSTR lpFilename, DWORD nSize);
+[GetDeviceDriverFileNameW]
+1=LPVOID ImageBase
+2=LPWSTR lpFilename
+3=DWORD nSize
+ParamCount=3
+@=GetDeviceDriverFileNameW(LPVOID ImageBase, LPWSTR lpFilename, DWORD nSize);
+[GetProcessMemoryInfo]
+1=HANDLE Process
+2=ppsmemCounters
+3=DWORD cb
+ParamCount=3
+@=GetProcessMemoryInfo(HANDLE Process, ppsmemCounters, DWORD cb);
+[GetPerformanceInfo]
+1=pPerformanceInformation
+2=DWORD cb
+ParamCount=2
+@=GetPerformanceInfo(pPerformanceInformation, DWORD cb);
+[EnumPageFilesW]
+1=pCallBackRoutine
+2=LPVOID pContext
+ParamCount=2
+@=EnumPageFilesW(pCallBackRoutine, LPVOID pContext);
+[EnumPageFilesA]
+1=pCallBackRoutine
+2=LPVOID pContext
+ParamCount=2
+@=EnumPageFilesA(pCallBackRoutine, LPVOID pContext);
+[GetProcessImageFileNameA]
+1=HANDLE hProcess
+2=LPSTR lpImageFileName
+3=DWORD nSize
+ParamCount=3
+@=GetProcessImageFileNameA(HANDLE hProcess, LPSTR lpImageFileName, DWORD nSize);
+[GetProcessImageFileNameW]
+1=HANDLE hProcess
+2=LPWSTR lpImageFileName
+3=DWORD nSize
+ParamCount=3
+@=GetProcessImageFileNameW(HANDLE hProcess, LPWSTR lpImageFileName, DWORD nSize);

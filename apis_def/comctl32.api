@@ -1,0 +1,681 @@
+[InitCommonControls]
+ParamCount=0
+@=InitCommonControls();
+[InitCommonControlsEx]
+1=INITCOMMONCONTROLSEX *picce
+ParamCount=1
+@=InitCommonControlsEx(INITCOMMONCONTROLSEX *picce);
+[ImageList_Create]
+1=int cx
+2=int cy
+3=UINT flags
+4=int cInitial
+5=int cGrow
+ParamCount=5
+@=ImageList_Create(int cx, int cy, UINT flags, int cInitial, int cGrow);
+[ImageList_Destroy]
+1=HIMAGELIST himl
+ParamCount=1
+@=ImageList_Destroy(HIMAGELIST himl);
+[ImageList_GetImageCount]
+1=HIMAGELIST himl
+ParamCount=1
+@=ImageList_GetImageCount(HIMAGELIST himl);
+[ImageList_SetImageCount]
+1=HIMAGELIST himl
+2=UINT uNewCount
+ParamCount=2
+@=ImageList_SetImageCount(HIMAGELIST himl, UINT uNewCount);
+[ImageList_Add]
+1=HIMAGELIST himl
+2=HBITMAP hbmImage
+3=HBITMAP hbmMask
+ParamCount=3
+@=ImageList_Add(HIMAGELIST himl, HBITMAP hbmImage, HBITMAP hbmMask);
+[ImageList_AddIcon]
+1=HIMAGELIST himl
+2=HICON hicon
+ParamCount=2
+@=ImageList_AddIcon(HIMAGELIST himl, HICON hicon);
+[ImageList_ReplaceIcon]
+1=HIMAGELIST himl
+2=int i
+3=HICON hicon
+ParamCount=2
+@=ImageList_ReplaceIcon(HIMAGELIST himl, int i, HICON hicon);
+[ImageList_SetBkColor]
+1=HIMAGELIST himl
+2=COLORREF clrBk
+ParamCount=2
+@=ImageList_SetBkColor(HIMAGELIST himl, COLORREF clrBk);
+[ImageList_GetBkColor]
+1=HIMAGELIST himl
+ParamCount=1
+@=ImageList_GetBkColor(HIMAGELIST himl);
+[ImageList_SetOverlayImage]
+1=HIMAGELIST himl
+2=int iImage
+3=int iOverlay
+ParamCount=3
+@=ImageList_SetOverlayImage(HIMAGELIST himl, int iImage, int iOverlay);
+[ImageList_Draw]
+1=HIMAGELIST himl
+2=int i
+3=HDC hdcDst
+4=int x
+5=int y
+6=UINT fStyle
+ParamCount=6
+@=ImageList_Draw(HIMAGELIST himl, int i, HDC hdcDst, int x, int y, UINT fStyle);
+[ImageList_Replace]
+1=HIMAGELIST himl
+2=int i
+3=HBITMAP hbmImage
+4=HBITMAP hbmMask
+ParamCount=4
+@=ImageList_Replace(HIMAGELIST himl, int i, HBITMAP hbmImage, HBITMAP hbmMask);
+[ImageList_AddMasked]
+1=HIMAGELIST himl
+2=HBITMAP hbmImage
+3=COLORREF crMask
+ParamCount=3
+@=ImageList_AddMasked(HIMAGELIST himl, HBITMAP hbmImage, COLORREF crMask);
+[ImageList_DrawEx]
+1=HIMAGELIST himl
+2=int i
+3=HDC hdcDst
+4=int x
+5=int y
+6=int dx
+7=int dy
+8=COLORREF rgbBk
+9=COLORREF rgbFg
+10=UINT fStyle
+ParamCount=10
+@=ImageList_DrawEx(HIMAGELIST himl, int i, HDC hdcDst, int x, int y, int dx, int dy, COLORREF rgbBk, COLORREF rgbFg, UINT fStyle);
+[ImageList_DrawIndirect]
+1=IMAGELISTDRAWPARAMS* pimldp
+ParamCount=1
+@=ImageList_DrawIndirect(IMAGELISTDRAWPARAMS* pimldp);
+[ImageList_Remove]
+1=HIMAGELIST himl
+2=int i
+ParamCount=2
+@=ImageList_Remove(HIMAGELIST himl, int i);
+[ImageList_GetIcon]
+1=HIMAGELIST himl
+2=int i
+3=UINT flags
+ParamCount=3
+@=ImageList_GetIcon(HIMAGELIST himl, int i, UINT flags);
+[ImageList_LoadImageA]
+1=HINSTANCE hi
+2=LPCSTR lpbmp
+3=int cx
+4=int cGrow
+5=COLORREF crMask
+6=UINT uType
+7=UINT uFlags
+ParamCount=7
+@=ImageList_LoadImageA(HINSTANCE hi, LPCSTR lpbmp, int cx, int cGrow, COLORREF crMask, UINT uType, UINT uFlags);
+[ImageList_LoadImageW]
+1=HINSTANCE hi
+2=LPCWSTR lpbmp
+3=int cx
+4=int cGrow
+5=COLORREF crMask
+6=UINT uType
+7=UINT uFlags
+ParamCount=7
+@=ImageList_LoadImageW(HINSTANCE hi, LPCWSTR lpbmp, int cx, int cGrow, COLORREF crMask, UINT uType, UINT uFlags);
+[ImageList_Copy]
+1=HIMAGELIST himlDst
+2=int iDst
+3=HIMAGELIST himlSrc
+4=int iSrc
+5=UINT uFlags
+ParamCount=5
+@=ImageList_Copy(HIMAGELIST himlDst, int iDst, HIMAGELIST himlSrc, int iSrc, UINT uFlags);
+[ImageList_BeginDrag]
+1=HIMAGELIST himlTrack
+2=int iTrack
+3=int dxHotspot
+4=int dyHotspot
+ParamCount=4
+@=ImageList_BeginDrag(HIMAGELIST himlTrack, int iTrack, int dxHotspot, int dyHotspot);
+[ImageList_EndDrag]
+ParamCount=0
+@=ImageList_EndDrag();
+[ImageList_DragEnter]
+1=HWND hwndLock
+2=int x
+3=int y
+ParamCount=3
+@=ImageList_DragEnter(HWND hwndLock, int x, int y);
+[ImageList_DragLeave]
+1=HWND hwndLock
+ParamCount=1
+@=ImageList_DragLeave(HWND hwndLock);
+[ImageList_DragMove]
+1=int x
+2=int y
+ParamCount=2
+@=ImageList_DragMove(int x, int y);
+[ImageList_SetDragCursorImage]
+1=HIMAGELIST himlDrag
+2=int iDrag
+3=int dxHotspot
+4=int dyHotspot
+ParamCount=4
+@=ImageList_SetDragCursorImage(HIMAGELIST himlDrag, int iDrag, int dxHotspot, int dyHotspot);
+[ImageList_DragShowNolock]
+1=BOOL fShow
+ParamCount=1
+@=ImageList_DragShowNolock(BOOL fShow);
+[ImageList_GetDragImage]
+1=POINT *ppt
+2=POINT *pptHotspot
+ParamCount=2
+@=ImageList_GetDragImage(POINT *ppt, POINT *pptHotspot);
+[ImageList_Read]
+1=IStream *pstm
+ParamCount=1
+@=ImageList_Read(IStream *pstm);
+[ImageList_Write]
+1=HIMAGELIST himl
+2=IStream *pstm
+ParamCount=2
+@=ImageList_Write(HIMAGELIST himl, IStream *pstm);
+[ImageList_ReadEx]
+1=DWORD dwFlags
+2=IStream *pstm
+3=REFIID riid
+4=PVOID* ppv
+ParamCount=4
+@=ImageList_ReadEx(DWORD dwFlags, IStream *pstm, REFIID riid, PVOID* ppv);
+[ImageList_WriteEx]
+1=HIMAGELIST himl
+2=DWORD dwFlags
+3=IStream *pstm
+ParamCount=3
+@=ImageList_WriteEx(HIMAGELIST himl, DWORD dwFlags, IStream *pstm);
+[ImageList_GetIconSize]
+1=HIMAGELIST himl
+2=int *cx
+3=int *cy
+ParamCount=3
+@=ImageList_GetIconSize(HIMAGELIST himl, int *cx, int *cy);
+[ImageList_SetIconSize]
+1=HIMAGELIST himl
+2=int cx
+3=int cy
+ParamCount=3
+@=ImageList_SetIconSize(HIMAGELIST himl, int cx, int cy);
+[ImageList_GetImageInfo]
+1=HIMAGELIST himl
+2=int i
+3=IMAGEINFO *pImageInfo
+ParamCount=3
+@=ImageList_GetImageInfo(HIMAGELIST himl, int i, IMAGEINFO *pImageInfo);
+[ImageList_Merge]
+1=HIMAGELIST himl1
+2=int i1
+3=HIMAGELIST himl2
+4=int i2
+5=int dx
+6=int dy
+ParamCount=6
+@=ImageList_Merge(HIMAGELIST himl1, int i1, HIMAGELIST himl2, int i2, int dx, int dy);
+[ImageList_Duplicate]
+1=HIMAGELIST himl
+ParamCount=1
+@=ImageList_Duplicate(HIMAGELIST himl);
+[HIMAGELIST_QueryInterface]
+1=HIMAGELIST himl
+2=REFIID riid
+3=void** ppv
+ParamCount=3
+@=HIMAGELIST_QueryInterface(HIMAGELIST himl, REFIID riid, void** ppv);
+[CreateToolbarEx]
+1=HWND hwnd
+2=DWORD ws
+3=UINT wID
+4=int nBitmaps
+5=HINSTANCE hBMInst
+6=wBMID
+7=LPCTBBUTTON lpButtons
+8=int iNumButtons
+9=int dxButton
+10=int dyButton
+11=int dxBitmap
+12=int dyBitmap
+13=UINT uStructSize
+ParamCount=13
+@=CreateToolbarEx(HWND hwnd, DWORD ws, UINT wID, int nBitmaps, HINSTANCE hBMInst, wBMID, LPCTBBUTTON lpButtons, int iNumButtons, int dxButton, int dyButton, int dxBitmap, int dyBitmap, UINT uStructSize);
+[CreateMappedBitmap]
+1=HINSTANCE hInstance
+2=idBitmap
+3=UINT wFlags
+4=LPCOLORMAP lpColorMap
+5=int iNumMaps
+ParamCount=5
+@=CreateMappedBitmap(HINSTANCE hInstance, idBitmap, UINT wFlags, LPCOLORMAP lpColorMap, int iNumMaps);
+[DrawStatusTextA]
+1=HDC hDC
+2=LPCRECT lprc
+3=LPCSTR pszText
+4=UINT uFlags
+ParamCount=4
+@=DrawStatusTextA(HDC hDC, LPCRECT lprc, LPCSTR pszText, UINT uFlags);
+[DrawStatusTextW]
+1=HDC hDC
+2=LPCRECT lprc
+3=LPCWSTR pszText
+4=UINT uFlags
+ParamCount=4
+@=DrawStatusTextW(HDC hDC, LPCRECT lprc, LPCWSTR pszText, UINT uFlags);
+[CreateStatusWindowA]
+1=LONG style
+2=LPCSTR lpszText
+3=HWND hwndParent
+4=UINT wID
+ParamCount=4
+@=CreateStatusWindowA(LONG style, LPCSTR lpszText, HWND hwndParent, UINT wID);
+[CreateStatusWindowW]
+1=LONG style
+2=LPCWSTR lpszText
+3=HWND hwndParent
+4=UINT wID
+ParamCount=4
+@=CreateStatusWindowW(LONG style, LPCWSTR lpszText, HWND hwndParent, UINT wID);
+[MenuHelp]
+1=UINT uMsg
+2=WPARAM wParam
+3=LPARAM lParam
+4=HMENU hMainMenu
+5=HINSTANCE hInst
+6=HWND hwndStatus
+7=UINT *lpwIDs
+ParamCount=7
+@=MenuHelp(UINT uMsg, WPARAM wParam, LPARAM lParam, HMENU hMainMenu, HINSTANCE hInst, HWND hwndStatus, UINT *lpwIDs);
+[ShowHideMenuCtl]
+1=HWND hWnd
+2=UINT_PTR uFlags
+3=UINT_PTR LPINTlpInfo
+ParamCount=3
+@=ShowHideMenuCtl(HWND hWnd, UINT_PTR uFlags, UINT_PTR LPINTlpInfo);
+[GetEffectiveClientRect]
+1=HWND hWnd
+2=LPRECT lprc
+3=LPRECT constINT*lpInfo
+ParamCount=3
+@=GetEffectiveClientRect(HWND hWnd, LPRECT lprc, LPRECT constINT*lpInfo);
+[MakeDragList]
+1=HWND hLB
+ParamCount=1
+@=MakeDragList(HWND hLB);
+[DrawInsert]
+1=HWND handParent
+2=HWND hLB
+3=int nItem
+ParamCount=3
+@=DrawInsert(HWND handParent, HWND hLB, int nItem);
+[LBItemFromPt]
+1=HWND hLB
+2=POINT pt
+3=BOOL bAutoScroll
+ParamCount=3
+@=LBItemFromPt(HWND hLB, POINT pt, BOOL bAutoScroll);
+[CreateUpDownControl]
+1=DWORD dwStyle
+2=int x
+3=int y
+4=int cx
+5=int cy
+6=HWND hParent
+7=int nID
+8=HINSTANCE hInst
+9=HWND hBuddy
+10=int nUpper
+11=int nLower
+12=int nPos
+ParamCount=12
+@=CreateUpDownControl(DWORD dwStyle, int x, int y, int cx, int cy, HWND hParent, int nID, HINSTANCE hInst, HWND hBuddy, int nUpper, int nLower, int nPos);
+[TaskDialogIndirect]
+1=TASKDIALOGCONFIG *pTaskConfig
+2=int *pnButton
+3=int *pnRadioButton
+4=BOOL *pfVerificationFlagChecked
+ParamCount=4
+@=TaskDialogIndirect(TASKDIALOGCONFIG *pTaskConfig, int *pnButton, int *pnRadioButton, BOOL *pfVerificationFlagChecked);
+[TaskDialog]
+1=HWND hwndParent
+2=HINSTANCE hInstance
+3=PCWSTR pszWindowTitle
+4=PCWSTR pszMainInstruction
+5=PCWSTR pszContent
+6=dwCommonButtons
+7=PCWSTR pszIcon
+8=int *pnButton
+ParamCount=8
+@=TaskDialog(HWND hwndParent, HINSTANCE hInstance, PCWSTR pszWindowTitle, PCWSTR pszMainInstruction, PCWSTR pszContent, dwCommonButtons, PCWSTR pszIcon, int *pnButton);
+[InitMUILanguage]
+1=LANGID uiLang
+ParamCount=1
+@=InitMUILanguage(LANGID uiLang);
+[GetMUILanguage]
+ParamCount=0
+@=GetMUILanguage();
+[DSA_Create]
+1=int cbItem
+2=int cItemGrow
+ParamCount=2
+@=DSA_Create(int cbItem, int cItemGrow);
+[DSA_Destroy]
+1=HDSA hdsa
+ParamCount=1
+@=DSA_Destroy(HDSA hdsa);
+[DSA_DestroyCallback]
+1=HDSA hdsa
+2=PFNDAENUMCALLBACK pfnCB
+3=void *pData
+ParamCount=3
+@=DSA_DestroyCallback(HDSA hdsa, PFNDAENUMCALLBACK pfnCB, void *pData);
+[DSA_DeleteItem]
+1=HDSA hdsa
+2=int i
+ParamCount=2
+@=DSA_DeleteItem(HDSA hdsa, int i);
+[DSA_DeleteAllItems]
+1=HDSA hdsa
+ParamCount=1
+@=DSA_DeleteAllItems(HDSA hdsa);
+[DSA_EnumCallback]
+1=HDSA hdsa
+2=PFNDAENUMCALLBACK pfnCB
+3=void *pData
+ParamCount=3
+@=DSA_EnumCallback(HDSA hdsa, PFNDAENUMCALLBACK pfnCB, void *pData);
+[DSA_InsertItem]
+1=HDSA hdsa
+2=int i
+3=void *pitem
+ParamCount=3
+@=DSA_InsertItem(HDSA hdsa, int i, void *pitem);
+[DSA_GetItemPtr]
+1=HDSA hdsa
+2=int i
+ParamCount=2
+@=DSA_GetItemPtr(HDSA hdsa, int i);
+[DSA_GetItem]
+1=HDSA hdsa
+2=int i
+3=void *pitem
+ParamCount=3
+@=DSA_GetItem(HDSA hdsa, int i, void *pitem);
+[DSA_SetItem]
+1=HDSA hdsa
+2=int i
+3=void *pitem
+ParamCount=3
+@=DSA_SetItem(HDSA hdsa, int i, void *pitem);
+[DSA_Clone]
+1=HDSA hdsa
+ParamCount=1
+@=DSA_Clone(HDSA hdsa);
+[DSA_GetSize]
+1=HDSA hdsa
+ParamCount=1
+@=DSA_GetSize(HDSA hdsa);
+[DSA_Sort]
+1=HDSA pdsa
+2=PFNDACOMPARE pfnCompare
+3=LPARAM lParam
+ParamCount=3
+@=DSA_Sort(HDSA pdsa, PFNDACOMPARE pfnCompare, LPARAM lParam);
+[DPA_Create]
+1=int cItemGrow
+ParamCount=1
+@=DPA_Create(int cItemGrow);
+[DPA_CreateEx]
+1=int cpGrow
+2=HANDLE hheap
+ParamCount=2
+@=DPA_CreateEx(int cpGrow, HANDLE hheap);
+[DPA_Clone]
+1=HDPA hdpa
+2=HDPA hdpaNew
+ParamCount=2
+@=DPA_Clone(HDPA hdpa, HDPA hdpaNew);
+[DPA_Destroy]
+1=HDPA hdpa
+ParamCount=1
+@=DPA_Destroy(HDPA hdpa);
+[DPA_DestroyCallback]
+1=HDPA hdpa
+2=PFNDAENUMCALLBACK pfnCB
+3=void *pData
+ParamCount=3
+@=DPA_DestroyCallback(HDPA hdpa, PFNDAENUMCALLBACK pfnCB, void *pData);
+[DPA_DeletePtr]
+1=HDPA hdpa
+2=int i
+ParamCount=2
+@=DPA_DeletePtr(HDPA hdpa, int i);
+[DPA_DeleteAllPtrs]
+1=HDPA hdpa
+ParamCount=1
+@=DPA_DeleteAllPtrs(HDPA hdpa);
+[DPA_EnumCallback]
+1=HDPA hdpa
+2=PFNDAENUMCALLBACK pfnCB
+3=void *pData
+ParamCount=3
+@=DPA_EnumCallback(HDPA hdpa, PFNDAENUMCALLBACK pfnCB, void *pData);
+[DPA_Grow]
+1=HDPA pdpa
+2=int cp
+ParamCount=2
+@=DPA_Grow(HDPA pdpa, int cp);
+[DPA_InsertPtr]
+1=HDPA hdpa
+2=int i
+3=void *p
+ParamCount=3
+@=DPA_InsertPtr(HDPA hdpa, int i, void *p);
+[DPA_SetPtr]
+1=HDPA hdpa
+2=int i
+3=void *p
+ParamCount=3
+@=DPA_SetPtr(HDPA hdpa, int i, void *p);
+[DPA_GetPtr]
+1=HDPA hdpa
+2=INT_PTR i
+ParamCount=2
+@=DPA_GetPtr(HDPA hdpa, INT_PTR i);
+[DPA_GetPtrIndex]
+1=HDPA hdpa
+2=void *p
+ParamCount=2
+@=DPA_GetPtrIndex(HDPA hdpa, void *p);
+[DPA_GetSize]
+1=HDPA hdpa
+ParamCount=1
+@=DPA_GetSize(HDPA hdpa);
+[DPA_Sort]
+1=HDPA hdpa
+2=PFNDACOMPARE pfnCompare
+3=LPARAM lParam
+ParamCount=3
+@=DPA_Sort(HDPA hdpa, PFNDACOMPARE pfnCompare, LPARAM lParam);
+[DPA_LoadStream]
+1=HDPA *phdpa
+2=PFNDPASTREAM pfn
+3=IStream *pstream
+4=void *pvInstData
+ParamCount=4
+@=DPA_LoadStream(HDPA *phdpa, PFNDPASTREAM pfn, IStream *pstream, void *pvInstData);
+[DPA_SaveStream]
+1=HDPA hdpa
+2=PFNDPASTREAM pfn
+3=IStream *pstream
+4=void *pvInstData
+ParamCount=4
+@=DPA_SaveStream(HDPA hdpa, PFNDPASTREAM pfn, IStream *pstream, void *pvInstData);
+[DPA_Merge]
+1=HDPA hdpaDest
+2=HDPA hdpaSrc
+3=DWORD dwFlags
+4=PFNDACOMPARE pfnCompare
+5=PFNDPAMERGE pfnMerge
+6=LPARAM lParam
+ParamCount=6
+@=DPA_Merge(HDPA hdpaDest, HDPA hdpaSrc, DWORD dwFlags, PFNDACOMPARE pfnCompare, PFNDPAMERGE pfnMerge, LPARAM lParam);
+[DPA_Search]
+1=HDPA hdpa
+2=void *pFind
+3=int iStart
+4=PFNDACOMPARE pfnCompare
+5=LPARAM lParam
+6=UINT options
+ParamCount=6
+@=DPA_Search(HDPA hdpa, void *pFind, int iStart, PFNDACOMPARE pfnCompare, LPARAM lParam, UINT options);
+[Str_SetPtrW]
+1=LPWSTR *ppsz
+2=LPCWSTR psz
+ParamCount=2
+@=Str_SetPtrW(LPWSTR *ppsz, LPCWSTR psz);
+[_TrackMouseEvent]
+1=LPTRACKMOUSEEVENT lpEventTrack
+ParamCount=1
+@=_TrackMouseEvent(LPTRACKMOUSEEVENT lpEventTrack);
+[FlatSB_EnableScrollBar]
+1=HWND
+2=int
+3=UINT
+ParamCount=3
+@=FlatSB_EnableScrollBar(HWND, int, UINT);
+[FlatSB_ShowScrollBar]
+1=HWND
+2=int code
+3=BOOL
+ParamCount=3
+@=FlatSB_ShowScrollBar(HWND, int code, BOOL);
+[FlatSB_GetScrollRange]
+1=HWND
+2=int code
+3=LPINT
+4=LPINT
+ParamCount=4
+@=FlatSB_GetScrollRange(HWND, int code, LPINT, LPINT);
+[FlatSB_GetScrollInfo]
+1=HWND
+2=int code
+3=LPSCROLLINFO
+ParamCount=3
+@=FlatSB_GetScrollInfo(HWND, int code, LPSCROLLINFO);
+[FlatSB_GetScrollPos]
+1=HWND
+2=int code
+ParamCount=2
+@=FlatSB_GetScrollPos(HWND, int code);
+[FlatSB_GetScrollProp]
+1=HWND
+2=int propIndex
+3=LPINT
+ParamCount=3
+@=FlatSB_GetScrollProp(HWND, int propIndex, LPINT);
+[FlatSB_GetScrollPropPtr]
+1=HWND
+2=int propIndex
+3=FlatSB_GetScrollPropPtr FlatSB_GetScrollProp#endifWINCOMMCTRLAPIintWINAPIFlatSB_SetScrollPos(HWND
+4=int code
+5=int pos
+6=BOOL fRedraw
+ParamCount=6
+@=FlatSB_GetScrollPropPtr(HWND, int propIndex, FlatSB_GetScrollPropPtr FlatSB_GetScrollProp#endifWINCOMMCTRLAPIintWINAPIFlatSB_SetScrollPos(HWND, int code, int pos, BOOL fRedraw);
+[FlatSB_SetScrollInfo]
+1=HWND
+2=int code
+3=LPSCROLLINFO psi
+4=BOOL fRedraw
+ParamCount=4
+@=FlatSB_SetScrollInfo(HWND, int code, LPSCROLLINFO psi, BOOL fRedraw);
+[FlatSB_SetScrollRange]
+1=HWND
+2=int code
+3=int min
+4=int max
+5=BOOL fRedraw
+ParamCount=5
+@=FlatSB_SetScrollRange(HWND, int code, int min, int max, BOOL fRedraw);
+[FlatSB_SetScrollProp]
+1=HWND
+2=UINT index
+3=newValue
+4=BOOL
+ParamCount=4
+@=FlatSB_SetScrollProp(HWND, UINT index, newValue, BOOL);
+[InitializeFlatSB]
+1=HWND
+ParamCount=1
+@=InitializeFlatSB(HWND);
+[UninitializeFlatSB]
+1=HWND
+ParamCount=1
+@=UninitializeFlatSB(HWND);
+[SetWindowSubclass]
+1=HWND hWnd
+2=SUBCLASSPROC pfnSubclass
+3=UINT_PTR uIdSubclass
+4=DWORD_PTR dwRefData
+ParamCount=4
+@=SetWindowSubclass(HWND hWnd, SUBCLASSPROC pfnSubclass, UINT_PTR uIdSubclass, DWORD_PTR dwRefData);
+[GetWindowSubclass]
+1=HWND hWnd
+2=SUBCLASSPROC pfnSubclass
+3=UINT_PTR uIdSubclass
+4=DWORD_PTR *pdwRefData
+ParamCount=4
+@=GetWindowSubclass(HWND hWnd, SUBCLASSPROC pfnSubclass, UINT_PTR uIdSubclass, DWORD_PTR *pdwRefData);
+[RemoveWindowSubclass]
+1=HWND hWnd
+2=SUBCLASSPROC pfnSubclass
+3=UINT_PTR uIdSubclass
+ParamCount=3
+@=RemoveWindowSubclass(HWND hWnd, SUBCLASSPROC pfnSubclass, UINT_PTR uIdSubclass);
+[DefSubclassProc]
+1=HWND hWnd
+2=UINT uMsg
+3=WPARAM wParam
+4=LPARAM lParam
+ParamCount=4
+@=DefSubclassProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+[LoadIconMetric]
+1=HINSTANCE hinst
+2=PCWSTR pszName
+3=int lims
+4=HICON *phico
+ParamCount=4
+@=LoadIconMetric(HINSTANCE hinst, PCWSTR pszName, int lims, HICON *phico);
+[LoadIconWithScaleDown]
+1=HINSTANCE hinst
+2=PCWSTR pszName
+3=int cx
+4=int cy
+5=HICON *phico
+ParamCount=5
+@=LoadIconWithScaleDown(HINSTANCE hinst, PCWSTR pszName, int cx, int cy, HICON *phico);
+[DrawShadowText]
+1=HDC hdc
+2=LPCWSTR pszText
+3=UINT cch
+4=RECT* prc
+5=DWORD dwFlags
+6=COLORREF crText
+7=COLORREF crShadow
+8=int ixOffset
+9=int iyOffset
+ParamCount=9
+@=DrawShadowText(HDC hdc, LPCWSTR pszText, UINT cch, RECT* prc, DWORD dwFlags, COLORREF crText, COLORREF crShadow, int ixOffset, int iyOffset);

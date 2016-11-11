@@ -1,0 +1,2285 @@
+[AddFontResourceA]
+1=LPCSTR
+ParamCount=1
+@=AddFontResourceA(LPCSTR);
+[AddFontResourceW]
+1=LPCWSTR
+ParamCount=1
+@=AddFontResourceW(LPCWSTR);
+[AnimatePalette]
+1=HPALETTE hPal
+2=UINT iStartIndex
+3=UINT cEntries
+4=PALETTEENTRY *ppe
+ParamCount=4
+@=AnimatePalette(HPALETTE hPal, UINT iStartIndex, UINT cEntries, PALETTEENTRY *ppe);
+[Arc]
+1=HDC hdc
+2=int x1
+3=int y1
+4=int x2
+5=int y2
+6=int x3
+7=int y3
+8=int x4
+9=int y4
+ParamCount=9
+@=Arc(HDC hdc, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
+[BitBlt]
+1=HDC hdc
+2=int x
+3=int y
+4=int cx
+5=int cy
+6=HDC hdcSrc
+7=int x1
+8=int y1
+9=DWORD rop
+ParamCount=9
+@=BitBlt(HDC hdc, int x, int y, int cx, int cy, HDC hdcSrc, int x1, int y1, DWORD rop);
+[CancelDC]
+1=HDC hdc
+ParamCount=1
+@=CancelDC(HDC hdc);
+[Chord]
+1=HDC hdc
+2=int x1
+3=int y1
+4=int x2
+5=int y2
+6=int x3
+7=int y3
+8=int x4
+9=int y4
+ParamCount=9
+@=Chord(HDC hdc, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
+[ChoosePixelFormat]
+1=HDC hdc
+2=PIXELFORMATDESCRIPTOR *ppfd
+ParamCount=2
+@=ChoosePixelFormat(HDC hdc, PIXELFORMATDESCRIPTOR *ppfd);
+[CloseMetaFile]
+1=HDC hdc
+ParamCount=1
+@=CloseMetaFile(HDC hdc);
+[CombineRgn]
+1=HRGN hrgnDst
+2=HRGN hrgnSrc1
+3=HRGN hrgnSrc2
+4=int iMode
+ParamCount=4
+@=CombineRgn(HRGN hrgnDst, HRGN hrgnSrc1, HRGN hrgnSrc2, int iMode);
+[CopyMetaFileA]
+1=HMETAFILE
+2=LPCSTR
+ParamCount=2
+@=CopyMetaFileA(HMETAFILE, LPCSTR);
+[CopyMetaFileW]
+1=HMETAFILE
+2=LPCWSTR
+ParamCount=2
+@=CopyMetaFileW(HMETAFILE, LPCWSTR);
+[CreateBitmap]
+1=int nWidth
+2=int nHeight
+3=UINT nPlanes
+4=UINT nBitCount
+5=VOID *lpBits
+ParamCount=5
+@=CreateBitmap(int nWidth, int nHeight, UINT nPlanes, UINT nBitCount, VOID *lpBits);
+[CreateBitmapIndirect]
+1=BITMAP *pbm
+ParamCount=1
+@=CreateBitmapIndirect(BITMAP *pbm);
+[CreateBrushIndirect]
+1=LOGBRUSH *plbrush
+ParamCount=1
+@=CreateBrushIndirect(LOGBRUSH *plbrush);
+[CreateCompatibleBitmap]
+1=HDC hdc
+2=int cx
+3=int cy
+ParamCount=3
+@=CreateCompatibleBitmap(HDC hdc, int cx, int cy);
+[CreateDiscardableBitmap]
+1=HDC hdc
+2=int cx
+3=int cy
+ParamCount=3
+@=CreateDiscardableBitmap(HDC hdc, int cx, int cy);
+[CreateCompatibleDC]
+1=HDC hdc
+ParamCount=1
+@=CreateCompatibleDC(HDC hdc);
+[CreateDCA]
+1=LPCSTR pwszDriver
+2=LPCSTR pwszDevice
+3=LPCSTR pszPort
+4=DEVMODEA *pdm
+ParamCount=4
+@=CreateDCA(LPCSTR pwszDriver, LPCSTR pwszDevice, LPCSTR pszPort, DEVMODEA *pdm);
+[CreateDCW]
+1=LPCWSTR pwszDriver
+2=LPCWSTR pwszDevice
+3=LPCWSTR pszPort
+4=DEVMODEW *pdm
+ParamCount=4
+@=CreateDCW(LPCWSTR pwszDriver, LPCWSTR pwszDevice, LPCWSTR pszPort, DEVMODEW *pdm);
+[CreateDIBitmap]
+1=HDC hdc
+2=BITMAPINFOHEADER *pbmih
+3=DWORD flInit
+4=VOID *pjBits
+5=BITMAPINFO *pbmi
+6=UINT iUsage
+ParamCount=6
+@=CreateDIBitmap(HDC hdc, BITMAPINFOHEADER *pbmih, DWORD flInit, VOID *pjBits, BITMAPINFO *pbmi, UINT iUsage);
+[CreateDIBPatternBrush]
+1=HGLOBAL h
+2=UINT iUsage
+ParamCount=2
+@=CreateDIBPatternBrush(HGLOBAL h, UINT iUsage);
+[CreateDIBPatternBrushPt]
+1=VOID *lpPackedDIB
+2=UINT iUsage
+ParamCount=2
+@=CreateDIBPatternBrushPt(VOID *lpPackedDIB, UINT iUsage);
+[CreateEllipticRgn]
+1=int x1
+2=int y1
+3=int x2
+4=int y2
+ParamCount=4
+@=CreateEllipticRgn(int x1, int y1, int x2, int y2);
+[CreateEllipticRgnIndirect]
+1=RECT *lprect
+ParamCount=1
+@=CreateEllipticRgnIndirect(RECT *lprect);
+[CreateFontIndirectA]
+1=LOGFONTA *lplf
+ParamCount=1
+@=CreateFontIndirectA(LOGFONTA *lplf);
+[CreateFontIndirectW]
+1=LOGFONTW *lplf
+ParamCount=1
+@=CreateFontIndirectW(LOGFONTW *lplf);
+[CreateFontA]
+1=int cHeight
+2=int cWidth
+3=int cEscapement
+4=int cOrientation
+5=int cWeight
+6=DWORD bItalic
+7=DWORD bUnderline
+8=DWORD bStrikeOut
+9=DWORD iCharSet
+10=DWORD iOutPrecision
+11=DWORD iClipPrecision
+12=DWORD iQuality
+13=DWORD iPitchAndFamily
+14=LPCSTR pszFaceName
+ParamCount=14
+@=CreateFontA(int cHeight, int cWidth, int cEscapement, int cOrientation, int cWeight, DWORD bItalic, DWORD bUnderline, DWORD bStrikeOut, DWORD iCharSet, DWORD iOutPrecision, DWORD iClipPrecision, DWORD iQuality, DWORD iPitchAndFamily, LPCSTR pszFaceName);
+[CreateFontW]
+1=int cHeight
+2=int cWidth
+3=int cEscapement
+4=int cOrientation
+5=int cWeight
+6=DWORD bItalic
+7=DWORD bUnderline
+8=DWORD bStrikeOut
+9=DWORD iCharSet
+10=DWORD iOutPrecision
+11=DWORD iClipPrecision
+12=DWORD iQuality
+13=DWORD iPitchAndFamily
+14=LPCWSTR pszFaceName
+ParamCount=14
+@=CreateFontW(int cHeight, int cWidth, int cEscapement, int cOrientation, int cWeight, DWORD bItalic, DWORD bUnderline, DWORD bStrikeOut, DWORD iCharSet, DWORD iOutPrecision, DWORD iClipPrecision, DWORD iQuality, DWORD iPitchAndFamily, LPCWSTR pszFaceName);
+[CreateHatchBrush]
+1=int iHatch
+2=COLORREF color
+ParamCount=2
+@=CreateHatchBrush(int iHatch, COLORREF color);
+[CreateICA]
+1=LPCSTR pszDriver
+2=LPCSTR pszDevice
+3=LPCSTR pszPort
+4=DEVMODEA *pdm
+ParamCount=4
+@=CreateICA(LPCSTR pszDriver, LPCSTR pszDevice, LPCSTR pszPort, DEVMODEA *pdm);
+[CreateICW]
+1=LPCWSTR pszDriver
+2=LPCWSTR pszDevice
+3=LPCWSTR pszPort
+4=DEVMODEW *pdm
+ParamCount=4
+@=CreateICW(LPCWSTR pszDriver, LPCWSTR pszDevice, LPCWSTR pszPort, DEVMODEW *pdm);
+[CreateMetaFileA]
+1=LPCSTR pszFile
+ParamCount=1
+@=CreateMetaFileA(LPCSTR pszFile);
+[CreateMetaFileW]
+1=LPCWSTR pszFile
+ParamCount=1
+@=CreateMetaFileW(LPCWSTR pszFile);
+[CreatePalette]
+1=LOGPALETTE *plpal
+ParamCount=1
+@=CreatePalette(LOGPALETTE *plpal);
+[CreatePen]
+1=int iStyle
+2=int cWidth
+3=COLORREF color
+ParamCount=3
+@=CreatePen(int iStyle, int cWidth, COLORREF color);
+[CreatePenIndirect]
+1=LOGPEN *plpen
+ParamCount=1
+@=CreatePenIndirect(LOGPEN *plpen);
+[CreatePolyPolygonRgn]
+1=POINT *pptl
+2=INT *pc
+3=int cPoly
+4=int iMode
+ParamCount=4
+@=CreatePolyPolygonRgn(POINT *pptl, INT *pc, int cPoly, int iMode);
+[CreatePatternBrush]
+1=HBITMAP hbm
+ParamCount=1
+@=CreatePatternBrush(HBITMAP hbm);
+[CreateRectRgn]
+1=int x1
+2=int y1
+3=int x2
+4=int y2
+ParamCount=4
+@=CreateRectRgn(int x1, int y1, int x2, int y2);
+[CreateRectRgnIndirect]
+1=RECT *lprect
+ParamCount=1
+@=CreateRectRgnIndirect(RECT *lprect);
+[CreateRoundRectRgn]
+1=int x1
+2=int y1
+3=int x2
+4=int y2
+5=int w
+6=int h
+ParamCount=6
+@=CreateRoundRectRgn(int x1, int y1, int x2, int y2, int w, int h);
+[CreateScalableFontResourceA]
+1=DWORD fdwHidden
+2=LPCSTR lpszFont
+3=LPCSTR lpszFile
+4=LPCSTR lpszPath
+ParamCount=4
+@=CreateScalableFontResourceA(DWORD fdwHidden, LPCSTR lpszFont, LPCSTR lpszFile, LPCSTR lpszPath);
+[CreateScalableFontResourceW]
+1=DWORD fdwHidden
+2=LPCWSTR lpszFont
+3=LPCWSTR lpszFile
+4=LPCWSTR lpszPath
+ParamCount=4
+@=CreateScalableFontResourceW(DWORD fdwHidden, LPCWSTR lpszFont, LPCWSTR lpszFile, LPCWSTR lpszPath);
+[CreateSolidBrush]
+1=COLORREF color
+ParamCount=1
+@=CreateSolidBrush(COLORREF color);
+[DeleteDC]
+1=HDC hdc
+ParamCount=1
+@=DeleteDC(HDC hdc);
+[DeleteMetaFile]
+1=HMETAFILE hmf
+ParamCount=1
+@=DeleteMetaFile(HMETAFILE hmf);
+[DeleteObject]
+1=HGDIOBJ ho
+ParamCount=1
+@=DeleteObject(HGDIOBJ ho);
+[DescribePixelFormat]
+1=HDC hdc
+2=int iPixelFormat
+3=UINT nBytes
+4=LPPIXELFORMATDESCRIPTOR ppfd
+ParamCount=4
+@=DescribePixelFormat(HDC hdc, int iPixelFormat, UINT nBytes, LPPIXELFORMATDESCRIPTOR ppfd);
+[DeviceCapabilitiesA]
+1=LPCSTR pDevice
+2=LPCSTR pPort
+3=WORD fwCapability
+4=LPSTR pOutput
+5=DEVMODEA *pDevMode
+ParamCount=5
+@=DeviceCapabilitiesA(LPCSTR pDevice, LPCSTR pPort, WORD fwCapability, LPSTR pOutput, DEVMODEA *pDevMode);
+[DeviceCapabilitiesW]
+1=LPCWSTR pDevice
+2=LPCWSTR pPort
+3=WORD fwCapability
+4=LPWSTR pOutput
+5=DEVMODEW *pDevMode
+ParamCount=5
+@=DeviceCapabilitiesW(LPCWSTR pDevice, LPCWSTR pPort, WORD fwCapability, LPWSTR pOutput, DEVMODEW *pDevMode);
+[DrawEscape]
+1=HDC hdc
+2=int iEscape
+3=int cjIn
+4=LPCSTR lpIn
+ParamCount=4
+@=DrawEscape(HDC hdc, int iEscape, int cjIn, LPCSTR lpIn);
+[Ellipse]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+ParamCount=5
+@=Ellipse(HDC hdc, int left, int top, int right, int bottom);
+[EnumFontFamiliesExA]
+1=HDC hdc
+2=LPLOGFONTA lpLogfont
+3=FONTENUMPROCA lpProc
+4=LPARAM lParam
+5=DWORD dwFlags
+ParamCount=5
+@=EnumFontFamiliesExA(HDC hdc, LPLOGFONTA lpLogfont, FONTENUMPROCA lpProc, LPARAM lParam, DWORD dwFlags);
+[EnumFontFamiliesExW]
+1=HDC hdc
+2=LPLOGFONTW lpLogfont
+3=FONTENUMPROCW lpProc
+4=LPARAM lParam
+5=DWORD dwFlags
+ParamCount=5
+@=EnumFontFamiliesExW(HDC hdc, LPLOGFONTW lpLogfont, FONTENUMPROCW lpProc, LPARAM lParam, DWORD dwFlags);
+[EnumFontFamiliesA]
+1=HDC hdc
+2=LPCSTR lpLogfont
+3=FONTENUMPROCA lpProc
+4=LPARAM lParam
+ParamCount=4
+@=EnumFontFamiliesA(HDC hdc, LPCSTR lpLogfont, FONTENUMPROCA lpProc, LPARAM lParam);
+[EnumFontFamiliesW]
+1=HDC hdc
+2=LPCWSTR lpLogfont
+3=FONTENUMPROCW lpProc
+4=LPARAM lParam
+ParamCount=4
+@=EnumFontFamiliesW(HDC hdc, LPCWSTR lpLogfont, FONTENUMPROCW lpProc, LPARAM lParam);
+[EnumFontsA]
+1=HDC hdc
+2=LPCSTR lpLogfont
+3=FONTENUMPROCA lpProc
+4=LPARAM lParam
+ParamCount=4
+@=EnumFontsA(HDC hdc, LPCSTR lpLogfont, FONTENUMPROCA lpProc, LPARAM lParam);
+[EnumFontsW]
+1=HDC hdc
+2=LPCWSTR lpLogfont
+3=FONTENUMPROCW lpProc
+4=LPARAM lParam
+ParamCount=4
+@=EnumFontsW(HDC hdc, LPCWSTR lpLogfont, FONTENUMPROCW lpProc, LPARAM lParam);
+[EnumObjects]
+1=HDC hdc
+2=int nType
+3=GOBJENUMPROC lpFunc
+4=LPVOID lParam
+ParamCount=4
+@=EnumObjects(HDC hdc, int nType, GOBJENUMPROC lpFunc, LPVOID lParam);
+[EqualRgn]
+1=HRGN hrgn1
+2=HRGN hrgn2
+ParamCount=2
+@=EqualRgn(HRGN hrgn1, HRGN hrgn2);
+[Escape]
+1=HDC hdc
+2=int iEscape
+3=int cjIn
+4=LPCSTR pvIn
+5=LPVOID pvOut
+ParamCount=5
+@=Escape(HDC hdc, int iEscape, int cjIn, LPCSTR pvIn, LPVOID pvOut);
+[ExtEscape]
+1=HDC hdc
+2=int iEscape
+3=int cjInput
+4=LPCSTR lpInData
+5=int cjOutput
+6=LPSTR lpOutData
+ParamCount=6
+@=ExtEscape(HDC hdc, int iEscape, int cjInput, LPCSTR lpInData, int cjOutput, LPSTR lpOutData);
+[ExcludeClipRect]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+ParamCount=5
+@=ExcludeClipRect(HDC hdc, int left, int top, int right, int bottom);
+[ExtCreateRegion]
+1=XFORM *lpx
+2=DWORD nCount
+3=RGNDATA *lpData
+ParamCount=3
+@=ExtCreateRegion(XFORM *lpx, DWORD nCount, RGNDATA *lpData);
+[ExtFloodFill]
+1=HDC hdc
+2=int x
+3=int y
+4=COLORREF color
+5=UINT type
+ParamCount=5
+@=ExtFloodFill(HDC hdc, int x, int y, COLORREF color, UINT type);
+[FillRgn]
+1=HDC hdc
+2=HRGN hrgn
+3=HBRUSH hbr
+ParamCount=3
+@=FillRgn(HDC hdc, HRGN hrgn, HBRUSH hbr);
+[FloodFill]
+1=HDC hdc
+2=int x
+3=int y
+4=COLORREF color
+ParamCount=4
+@=FloodFill(HDC hdc, int x, int y, COLORREF color);
+[FrameRgn]
+1=HDC hdc
+2=HRGN hrgn
+3=HBRUSH hbr
+4=int w
+5=int h
+ParamCount=5
+@=FrameRgn(HDC hdc, HRGN hrgn, HBRUSH hbr, int w, int h);
+[GetROP2]
+1=HDC hdc
+ParamCount=1
+@=GetROP2(HDC hdc);
+[GetAspectRatioFilterEx]
+1=HDC hdc
+2=LPSIZE lpsize
+ParamCount=2
+@=GetAspectRatioFilterEx(HDC hdc, LPSIZE lpsize);
+[GetBkColor]
+1=HDC hdc
+ParamCount=1
+@=GetBkColor(HDC hdc);
+[GetDCBrushColor]
+1=HDC hdc
+ParamCount=1
+@=GetDCBrushColor(HDC hdc);
+[GetDCPenColor]
+1=HDC hdc
+ParamCount=1
+@=GetDCPenColor(HDC hdc);
+[GetBkMode]
+1=HDC hdc
+ParamCount=1
+@=GetBkMode(HDC hdc);
+[GetBitmapBits]
+1=HBITMAP hbit
+2=LONG cb
+3=LPVOID lpvBits
+ParamCount=3
+@=GetBitmapBits(HBITMAP hbit, LONG cb, LPVOID lpvBits);
+[GetBitmapDimensionEx]
+1=HBITMAP hbit
+2=LPSIZE lpsize
+ParamCount=2
+@=GetBitmapDimensionEx(HBITMAP hbit, LPSIZE lpsize);
+[GetBoundsRect]
+1=HDC hdc
+2=LPRECT lprect
+3=UINT flags
+ParamCount=3
+@=GetBoundsRect(HDC hdc, LPRECT lprect, UINT flags);
+[GetBrushOrgEx]
+1=HDC hdc
+2=LPPOINT lppt
+ParamCount=2
+@=GetBrushOrgEx(HDC hdc, LPPOINT lppt);
+[GetCharWidthA]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=LPINT lpBuffer
+ParamCount=4
+@=GetCharWidthA(HDC hdc, UINT iFirst, UINT iLast, LPINT lpBuffer);
+[GetCharWidthW]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=LPINT lpBuffer
+ParamCount=4
+@=GetCharWidthW(HDC hdc, UINT iFirst, UINT iLast, LPINT lpBuffer);
+[GetCharWidth32A]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=LPINT lpBuffer
+ParamCount=4
+@=GetCharWidth32A(HDC hdc, UINT iFirst, UINT iLast, LPINT lpBuffer);
+[GetCharWidth32W]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=LPINT lpBuffer
+ParamCount=4
+@=GetCharWidth32W(HDC hdc, UINT iFirst, UINT iLast, LPINT lpBuffer);
+[GetCharWidthFloatA]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=PFLOAT lpBuffer
+ParamCount=4
+@=GetCharWidthFloatA(HDC hdc, UINT iFirst, UINT iLast, PFLOAT lpBuffer);
+[GetCharWidthFloatW]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=PFLOAT lpBuffer
+ParamCount=4
+@=GetCharWidthFloatW(HDC hdc, UINT iFirst, UINT iLast, PFLOAT lpBuffer);
+[GetCharABCWidthsA]
+1=HDC hdc
+2=UINT wFirst
+3=UINT wLast
+4=LPABC lpABC
+ParamCount=4
+@=GetCharABCWidthsA(HDC hdc, UINT wFirst, UINT wLast, LPABC lpABC);
+[GetCharABCWidthsW]
+1=HDC hdc
+2=UINT wFirst
+3=UINT wLast
+4=LPABC lpABC
+ParamCount=4
+@=GetCharABCWidthsW(HDC hdc, UINT wFirst, UINT wLast, LPABC lpABC);
+[GetCharABCWidthsFloatA]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=LPABCFLOAT lpABC
+ParamCount=4
+@=GetCharABCWidthsFloatA(HDC hdc, UINT iFirst, UINT iLast, LPABCFLOAT lpABC);
+[GetCharABCWidthsFloatW]
+1=HDC hdc
+2=UINT iFirst
+3=UINT iLast
+4=LPABCFLOAT lpABC
+ParamCount=4
+@=GetCharABCWidthsFloatW(HDC hdc, UINT iFirst, UINT iLast, LPABCFLOAT lpABC);
+[GetClipBox]
+1=HDC hdc
+2=LPRECT lprect
+ParamCount=2
+@=GetClipBox(HDC hdc, LPRECT lprect);
+[GetClipRgn]
+1=HDC hdc
+2=HRGN hrgn
+ParamCount=2
+@=GetClipRgn(HDC hdc, HRGN hrgn);
+[GetMetaRgn]
+1=HDC hdc
+2=HRGN hrgn
+ParamCount=2
+@=GetMetaRgn(HDC hdc, HRGN hrgn);
+[GetCurrentObject]
+1=HDC hdc
+2=UINT type
+ParamCount=2
+@=GetCurrentObject(HDC hdc, UINT type);
+[GetCurrentPositionEx]
+1=HDC hdc
+2=LPPOINT lppt
+ParamCount=2
+@=GetCurrentPositionEx(HDC hdc, LPPOINT lppt);
+[GetDeviceCaps]
+1=HDC hdc
+2=int index
+ParamCount=2
+@=GetDeviceCaps(HDC hdc, int index);
+[GetDIBits]
+1=HDC hdc
+2=HBITMAP hbm
+3=UINT start
+4=UINT cLines
+5=LPVOID lpvBits
+6=LPBITMAPINFO lpbmi
+7=UINT usage
+ParamCount=7
+@=GetDIBits(HDC hdc, HBITMAP hbm, UINT start, UINT cLines, LPVOID lpvBits, LPBITMAPINFO lpbmi, UINT usage);
+[GetFontData]
+1=HDC hdc
+2=DWORD dwTable
+3=DWORD dwOffset
+4=PVOID pvBuffer
+5=DWORD cjBuffer
+ParamCount=5
+@=GetFontData(HDC hdc, DWORD dwTable, DWORD dwOffset, PVOID pvBuffer, DWORD cjBuffer);
+[GetGlyphOutlineA]
+1=HDC hdc
+2=UINT uChar
+3=UINT fuFormat
+4=LPGLYPHMETRICS lpgm
+5=DWORD cjBuffer
+6=LPVOID pvBuffer
+7=MAT2 *lpmat2
+ParamCount=7
+@=GetGlyphOutlineA(HDC hdc, UINT uChar, UINT fuFormat, LPGLYPHMETRICS lpgm, DWORD cjBuffer, LPVOID pvBuffer, MAT2 *lpmat2);
+[GetGlyphOutlineW]
+1=HDC hdc
+2=UINT uChar
+3=UINT fuFormat
+4=LPGLYPHMETRICS lpgm
+5=DWORD cjBuffer
+6=LPVOID pvBuffer
+7=MAT2 *lpmat2
+ParamCount=7
+@=GetGlyphOutlineW(HDC hdc, UINT uChar, UINT fuFormat, LPGLYPHMETRICS lpgm, DWORD cjBuffer, LPVOID pvBuffer, MAT2 *lpmat2);
+[GetGraphicsMode]
+1=HDC hdc
+ParamCount=1
+@=GetGraphicsMode(HDC hdc);
+[GetMapMode]
+1=HDC hdc
+ParamCount=1
+@=GetMapMode(HDC hdc);
+[GetMetaFileBitsEx]
+1=HMETAFILE hMF
+2=UINT cbBuffer
+3=LPVOID lpData
+ParamCount=3
+@=GetMetaFileBitsEx(HMETAFILE hMF, UINT cbBuffer, LPVOID lpData);
+[GetMetaFileA]
+1=LPCSTR lpName
+ParamCount=1
+@=GetMetaFileA(LPCSTR lpName);
+[GetMetaFileW]
+1=LPCWSTR lpName
+ParamCount=1
+@=GetMetaFileW(LPCWSTR lpName);
+[GetNearestColor]
+1=HDC hdc
+2=COLORREF color
+ParamCount=2
+@=GetNearestColor(HDC hdc, COLORREF color);
+[GetNearestPaletteIndex]
+1=HPALETTE h
+2=COLORREF color
+ParamCount=2
+@=GetNearestPaletteIndex(HPALETTE h, COLORREF color);
+[GetObjectType]
+1=HGDIOBJ h
+ParamCount=1
+@=GetObjectType(HGDIOBJ h);
+[GetOutlineTextMetricsA]
+1=HDC hdc
+2=UINT cjCopy
+3=LPOUTLINETEXTMETRICA potm
+ParamCount=3
+@=GetOutlineTextMetricsA(HDC hdc, UINT cjCopy, LPOUTLINETEXTMETRICA potm);
+[GetOutlineTextMetricsW]
+1=HDC hdc
+2=UINT cjCopy
+3=LPOUTLINETEXTMETRICW potm
+ParamCount=3
+@=GetOutlineTextMetricsW(HDC hdc, UINT cjCopy, LPOUTLINETEXTMETRICW potm);
+[GetPaletteEntries]
+1=HPALETTE hpal
+2=UINT iStart
+3=UINT cEntries
+4=LPPALETTEENTRY pPalEntries
+ParamCount=4
+@=GetPaletteEntries(HPALETTE hpal, UINT iStart, UINT cEntries, LPPALETTEENTRY pPalEntries);
+[GetPixel]
+1=HDC hdc
+2=int x
+3=int y
+ParamCount=3
+@=GetPixel(HDC hdc, int x, int y);
+[GetPixelFormat]
+1=HDC hdc
+ParamCount=1
+@=GetPixelFormat(HDC hdc);
+[GetPolyFillMode]
+1=HDC hdc
+ParamCount=1
+@=GetPolyFillMode(HDC hdc);
+[GetRasterizerCaps]
+1=LPRASTERIZER_STATUS lpraststat
+2=UINT cjBytes
+ParamCount=2
+@=GetRasterizerCaps(LPRASTERIZER_STATUS lpraststat, UINT cjBytes);
+[GetRandomRgn]
+1=HDC hdc
+2=HRGN hrgn
+3=INT i
+ParamCount=3
+@=GetRandomRgn(HDC hdc, HRGN hrgn, INT i);
+[GetRegionData]
+1=HRGN hrgn
+2=DWORD nCount
+3=LPRGNDATA lpRgnData
+ParamCount=3
+@=GetRegionData(HRGN hrgn, DWORD nCount, LPRGNDATA lpRgnData);
+[GetRgnBox]
+1=HRGN hrgn
+2=LPRECT lprc
+ParamCount=2
+@=GetRgnBox(HRGN hrgn, LPRECT lprc);
+[GetStockObject]
+1=int i
+ParamCount=1
+@=GetStockObject(int i);
+[GetStretchBltMode]
+1=HDC hdc
+ParamCount=1
+@=GetStretchBltMode(HDC hdc);
+[GetSystemPaletteEntries]
+1=HDC hdc
+2=UINT iStart
+3=UINT cEntries
+4=LPPALETTEENTRY pPalEntries
+ParamCount=4
+@=GetSystemPaletteEntries(HDC hdc, UINT iStart, UINT cEntries, LPPALETTEENTRY pPalEntries);
+[GetSystemPaletteUse]
+1=HDC hdc
+ParamCount=1
+@=GetSystemPaletteUse(HDC hdc);
+[GetTextCharacterExtra]
+1=HDC hdc
+ParamCount=1
+@=GetTextCharacterExtra(HDC hdc);
+[GetTextAlign]
+1=HDC hdc
+ParamCount=1
+@=GetTextAlign(HDC hdc);
+[GetTextColor]
+1=HDC hdc
+ParamCount=1
+@=GetTextColor(HDC hdc);
+[GetTextExtentPointA]
+1=HDC hdc
+2=LPCSTR lpString
+3=int c
+4=LPSIZE lpsz
+ParamCount=4
+@=GetTextExtentPointA(HDC hdc, LPCSTR lpString, int c, LPSIZE lpsz);
+[GetTextExtentPointW]
+1=HDC hdc
+2=LPCWSTR lpString
+3=int c
+4=LPSIZE lpsz
+ParamCount=4
+@=GetTextExtentPointW(HDC hdc, LPCWSTR lpString, int c, LPSIZE lpsz);
+[GetTextExtentPoint32A]
+1=HDC hdc
+2=LPCSTR lpString
+3=int c
+4=LPSIZE psizl
+ParamCount=4
+@=GetTextExtentPoint32A(HDC hdc, LPCSTR lpString, int c, LPSIZE psizl);
+[GetTextExtentPoint32W]
+1=HDC hdc
+2=LPCWSTR lpString
+3=int c
+4=LPSIZE psizl
+ParamCount=4
+@=GetTextExtentPoint32W(HDC hdc, LPCWSTR lpString, int c, LPSIZE psizl);
+[GetTextExtentExPointA]
+1=HDC hdc
+2=LPCSTR lpszString
+3=int cchString
+4=int nMaxExtent
+5=LPINT lpnFit
+6=LPINT lpnDx
+7=LPSIZE lpSize
+ParamCount=7
+@=GetTextExtentExPointA(HDC hdc, LPCSTR lpszString, int cchString, int nMaxExtent, LPINT lpnFit, LPINT lpnDx, LPSIZE lpSize);
+[GetTextExtentExPointW]
+1=HDC hdc
+2=LPCWSTR lpszString
+3=int cchString
+4=int nMaxExtent
+5=LPINT lpnFit
+6=LPINT lpnDx
+7=LPSIZE lpSize
+ParamCount=7
+@=GetTextExtentExPointW(HDC hdc, LPCWSTR lpszString, int cchString, int nMaxExtent, LPINT lpnFit, LPINT lpnDx, LPSIZE lpSize);
+[GetTextCharset]
+1=HDC hdc
+ParamCount=1
+@=GetTextCharset(HDC hdc);
+[GetTextCharsetInfo]
+1=HDC hdc
+2=LPFONTSIGNATURE lpSig
+3=DWORD dwFlags
+ParamCount=3
+@=GetTextCharsetInfo(HDC hdc, LPFONTSIGNATURE lpSig, DWORD dwFlags);
+[TranslateCharsetInfo]
+1=DWORD *lpSrc
+2=LPCHARSETINFO lpCs
+3=DWORD dwFlags
+ParamCount=3
+@=TranslateCharsetInfo(DWORD *lpSrc, LPCHARSETINFO lpCs, DWORD dwFlags);
+[GetFontLanguageInfo]
+1=HDC hdc
+ParamCount=1
+@=GetFontLanguageInfo(HDC hdc);
+[GetCharacterPlacementA]
+1=HDC hdc
+2=LPCSTR lpString
+3=int nCount
+4=int nMexExtent
+5=LPGCP_RESULTSA lpResults
+6=DWORD dwFlags
+ParamCount=6
+@=GetCharacterPlacementA(HDC hdc, LPCSTR lpString, int nCount, int nMexExtent, LPGCP_RESULTSA lpResults, DWORD dwFlags);
+[GetCharacterPlacementW]
+1=HDC hdc
+2=LPCWSTR lpString
+3=int nCount
+4=int nMexExtent
+5=LPGCP_RESULTSW lpResults
+6=DWORD dwFlags
+ParamCount=6
+@=GetCharacterPlacementW(HDC hdc, LPCWSTR lpString, int nCount, int nMexExtent, LPGCP_RESULTSW lpResults, DWORD dwFlags);
+[GetFontUnicodeRanges]
+1=HDC hdc
+2=LPGLYPHSET lpgs
+ParamCount=2
+@=GetFontUnicodeRanges(HDC hdc, LPGLYPHSET lpgs);
+[GetGlyphIndicesA]
+1=HDC hdc
+2=LPCSTR lpstr
+3=int c
+4=LPWORD pgi
+5=DWORD fl
+ParamCount=5
+@=GetGlyphIndicesA(HDC hdc, LPCSTR lpstr, int c, LPWORD pgi, DWORD fl);
+[GetGlyphIndicesW]
+1=HDC hdc
+2=LPCWSTR lpstr
+3=int c
+4=LPWORD pgi
+5=DWORD fl
+ParamCount=5
+@=GetGlyphIndicesW(HDC hdc, LPCWSTR lpstr, int c, LPWORD pgi, DWORD fl);
+[GetTextExtentPointI]
+1=HDC hdc
+2=LPWORD pgiIn
+3=int cgi
+4=LPSIZE psize
+ParamCount=4
+@=GetTextExtentPointI(HDC hdc, LPWORD pgiIn, int cgi, LPSIZE psize);
+[GetTextExtentExPointI]
+1=HDC hdc
+2=LPWORD lpwszString
+3=int cwchString
+4=int nMaxExtent
+5=LPINT lpnFit
+6=LPINT lpnDx
+7=LPSIZE lpSize
+ParamCount=7
+@=GetTextExtentExPointI(HDC hdc, LPWORD lpwszString, int cwchString, int nMaxExtent, LPINT lpnFit, LPINT lpnDx, LPSIZE lpSize);
+[GetCharWidthI]
+1=HDC hdc
+2=UINT giFirst
+3=UINT cgi
+4=LPWORD pgi
+5=LPINT piWidths
+ParamCount=5
+@=GetCharWidthI(HDC hdc, UINT giFirst, UINT cgi, LPWORD pgi, LPINT piWidths);
+[GetCharABCWidthsI]
+1=HDC hdc
+2=UINT giFirst
+3=UINT cgi
+4=LPWORD pgi
+5=LPABC pabc
+ParamCount=5
+@=GetCharABCWidthsI(HDC hdc, UINT giFirst, UINT cgi, LPWORD pgi, LPABC pabc);
+[AddFontResourceExA]
+1=LPCSTR name
+2=DWORD fl
+3=PVOID res
+ParamCount=3
+@=AddFontResourceExA(LPCSTR name, DWORD fl, PVOID res);
+[AddFontResourceExW]
+1=LPCWSTR name
+2=DWORD fl
+3=PVOID res
+ParamCount=3
+@=AddFontResourceExW(LPCWSTR name, DWORD fl, PVOID res);
+[RemoveFontResourceExA]
+1=LPCSTR name
+2=DWORD fl
+3=PVOID pdv
+ParamCount=3
+@=RemoveFontResourceExA(LPCSTR name, DWORD fl, PVOID pdv);
+[RemoveFontResourceExW]
+1=LPCWSTR name
+2=DWORD fl
+3=PVOID pdv
+ParamCount=3
+@=RemoveFontResourceExW(LPCWSTR name, DWORD fl, PVOID pdv);
+[AddFontMemResourceEx]
+1=PVOID pFileView
+2=DWORD cjSize
+3=PVOID pvResrved
+4=DWORD* pNumFonts
+ParamCount=4
+@=AddFontMemResourceEx(PVOID pFileView, DWORD cjSize, PVOID pvResrved, DWORD* pNumFonts);
+[RemoveFontMemResourceEx]
+1=HANDLE h
+ParamCount=1
+@=RemoveFontMemResourceEx(HANDLE h);
+[CreateFontIndirectExA]
+1=ENUMLOGFONTEXDVA *
+ParamCount=1
+@=CreateFontIndirectExA(ENUMLOGFONTEXDVA *);
+[CreateFontIndirectExW]
+1=ENUMLOGFONTEXDVW *
+ParamCount=1
+@=CreateFontIndirectExW(ENUMLOGFONTEXDVW *);
+[GetViewportExtEx]
+1=HDC hdc
+2=LPSIZE lpsize
+ParamCount=2
+@=GetViewportExtEx(HDC hdc, LPSIZE lpsize);
+[GetViewportOrgEx]
+1=HDC hdc
+2=LPPOINT lppoint
+ParamCount=2
+@=GetViewportOrgEx(HDC hdc, LPPOINT lppoint);
+[GetWindowExtEx]
+1=HDC hdc
+2=LPSIZE lpsize
+ParamCount=2
+@=GetWindowExtEx(HDC hdc, LPSIZE lpsize);
+[GetWindowOrgEx]
+1=HDC hdc
+2=LPPOINT lppoint
+ParamCount=2
+@=GetWindowOrgEx(HDC hdc, LPPOINT lppoint);
+[IntersectClipRect]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+ParamCount=5
+@=IntersectClipRect(HDC hdc, int left, int top, int right, int bottom);
+[InvertRgn]
+1=HDC hdc
+2=HRGN hrgn
+ParamCount=2
+@=InvertRgn(HDC hdc, HRGN hrgn);
+[LineDDA]
+1=int xStart
+2=int yStart
+3=int xEnd
+4=int yEnd
+5=LINEDDAPROC lpProc
+6=LPARAM data
+ParamCount=6
+@=LineDDA(int xStart, int yStart, int xEnd, int yEnd, LINEDDAPROC lpProc, LPARAM data);
+[LineTo]
+1=HDC hdc
+2=int x
+3=int y
+ParamCount=3
+@=LineTo(HDC hdc, int x, int y);
+[MaskBlt]
+1=HDC hdcDest
+2=int xDest
+3=int yDest
+4=int width
+5=int height
+6=HDC hdcSrc
+7=int xSrc
+8=int ySrc
+9=HBITMAP hbmMask
+10=int xMask
+11=int yMask
+12=DWORD rop
+ParamCount=12
+@=MaskBlt(HDC hdcDest, int xDest, int yDest, int width, int height, HDC hdcSrc, int xSrc, int ySrc, HBITMAP hbmMask, int xMask, int yMask, DWORD rop);
+[PlgBlt]
+1=HDC hdcDest
+2=POINT *lpPoint
+3=HDC hdcSrc
+4=int xSrc
+5=int ySrc
+6=int width
+7=int height
+8=HBITMAP hbmMask
+9=int xMask
+10=int yMask
+ParamCount=10
+@=PlgBlt(HDC hdcDest, POINT *lpPoint, HDC hdcSrc, int xSrc, int ySrc, int width, int height, HBITMAP hbmMask, int xMask, int yMask);
+[OffsetClipRgn]
+1=HDC hdc
+2=int x
+3=int y
+ParamCount=3
+@=OffsetClipRgn(HDC hdc, int x, int y);
+[OffsetRgn]
+1=HRGN hrgn
+2=int x
+3=int y
+ParamCount=3
+@=OffsetRgn(HRGN hrgn, int x, int y);
+[PatBlt]
+1=HDC hdc
+2=int x
+3=int y
+4=int w
+5=int h
+6=DWORD rop
+ParamCount=6
+@=PatBlt(HDC hdc, int x, int y, int w, int h, DWORD rop);
+[Pie]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+6=int xr1
+7=int yr1
+8=int xr2
+9=int yr2
+ParamCount=9
+@=Pie(HDC hdc, int left, int top, int right, int bottom, int xr1, int yr1, int xr2, int yr2);
+[PlayMetaFile]
+1=HDC hdc
+2=HMETAFILE hmf
+ParamCount=2
+@=PlayMetaFile(HDC hdc, HMETAFILE hmf);
+[PaintRgn]
+1=HDC hdc
+2=HRGN hrgn
+ParamCount=2
+@=PaintRgn(HDC hdc, HRGN hrgn);
+[PolyPolygon]
+1=HDC hdc
+2=POINT *apt
+3=INT *asz
+4=int csz
+ParamCount=4
+@=PolyPolygon(HDC hdc, POINT *apt, INT *asz, int csz);
+[PtInRegion]
+1=HRGN hrgn
+2=int x
+3=int y
+ParamCount=3
+@=PtInRegion(HRGN hrgn, int x, int y);
+[PtVisible]
+1=HDC hdc
+2=int x
+3=int y
+ParamCount=3
+@=PtVisible(HDC hdc, int x, int y);
+[RectInRegion]
+1=HRGN hrgn
+2=RECT *lprect
+ParamCount=2
+@=RectInRegion(HRGN hrgn, RECT *lprect);
+[RectVisible]
+1=HDC hdc
+2=RECT *lprect
+ParamCount=2
+@=RectVisible(HDC hdc, RECT *lprect);
+[Rectangle]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+ParamCount=5
+@=Rectangle(HDC hdc, int left, int top, int right, int bottom);
+[RestoreDC]
+1=HDC hdc
+2=int nSavedDC
+ParamCount=2
+@=RestoreDC(HDC hdc, int nSavedDC);
+[ResetDCA]
+1=HDC hdc
+2=DEVMODEA *lpdm
+ParamCount=2
+@=ResetDCA(HDC hdc, DEVMODEA *lpdm);
+[ResetDCW]
+1=HDC hdc
+2=DEVMODEW *lpdm
+ParamCount=2
+@=ResetDCW(HDC hdc, DEVMODEW *lpdm);
+[RealizePalette]
+1=HDC hdc
+ParamCount=1
+@=RealizePalette(HDC hdc);
+[RemoveFontResourceA]
+1=LPCSTR lpFileName
+ParamCount=1
+@=RemoveFontResourceA(LPCSTR lpFileName);
+[RemoveFontResourceW]
+1=LPCWSTR lpFileName
+ParamCount=1
+@=RemoveFontResourceW(LPCWSTR lpFileName);
+[RoundRect]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+6=int width
+7=int height
+ParamCount=7
+@=RoundRect(HDC hdc, int left, int top, int right, int bottom, int width, int height);
+[ResizePalette]
+1=HPALETTE hpal
+2=UINT n
+ParamCount=2
+@=ResizePalette(HPALETTE hpal, UINT n);
+[SaveDC]
+1=HDC hdc
+ParamCount=1
+@=SaveDC(HDC hdc);
+[SelectClipRgn]
+1=HDC hdc
+2=HRGN hrgn
+ParamCount=2
+@=SelectClipRgn(HDC hdc, HRGN hrgn);
+[ExtSelectClipRgn]
+1=HDC hdc
+2=HRGN hrgn
+3=int mode
+ParamCount=3
+@=ExtSelectClipRgn(HDC hdc, HRGN hrgn, int mode);
+[SetMetaRgn]
+1=HDC hdc
+ParamCount=1
+@=SetMetaRgn(HDC hdc);
+[SelectObject]
+1=HDC hdc
+2=HGDIOBJ h
+ParamCount=2
+@=SelectObject(HDC hdc, HGDIOBJ h);
+[SelectPalette]
+1=HDC hdc
+2=HPALETTE hPal
+3=BOOL bForceBkgd
+ParamCount=3
+@=SelectPalette(HDC hdc, HPALETTE hPal, BOOL bForceBkgd);
+[SetBkColor]
+1=HDC hdc
+2=COLORREF color
+ParamCount=2
+@=SetBkColor(HDC hdc, COLORREF color);
+[SetDCBrushColor]
+1=HDC hdc
+2=COLORREF color
+ParamCount=2
+@=SetDCBrushColor(HDC hdc, COLORREF color);
+[SetDCPenColor]
+1=HDC hdc
+2=COLORREF color
+ParamCount=2
+@=SetDCPenColor(HDC hdc, COLORREF color);
+[SetBkMode]
+1=HDC hdc
+2=int mode
+ParamCount=2
+@=SetBkMode(HDC hdc, int mode);
+[SetBoundsRect]
+1=HDC hdc
+2=RECT *lprect
+3=UINT flags
+ParamCount=3
+@=SetBoundsRect(HDC hdc, RECT *lprect, UINT flags);
+[SetDIBits]
+1=HDC hdc
+2=HBITMAP hbm
+3=UINT start
+4=UINT cLines
+5=VOID *lpBits
+6=BITMAPINFO *lpbmi
+7=UINT ColorUse
+ParamCount=7
+@=SetDIBits(HDC hdc, HBITMAP hbm, UINT start, UINT cLines, VOID *lpBits, BITMAPINFO *lpbmi, UINT ColorUse);
+[SetDIBitsToDevice]
+1=HDC hdc
+2=int xDest
+3=int yDest
+4=DWORD w
+5=DWORD h
+6=int xSrc
+7=int ySrc
+8=UINT StartScan
+9=UINT cLines
+10=VOID *lpvBits
+11=BITMAPINFO *lpbmi
+12=UINT ColorUse
+ParamCount=12
+@=SetDIBitsToDevice(HDC hdc, int xDest, int yDest, DWORD w, DWORD h, int xSrc, int ySrc, UINT StartScan, UINT cLines, VOID *lpvBits, BITMAPINFO *lpbmi, UINT ColorUse);
+[SetMapperFlags]
+1=HDC hdc
+2=DWORD flags
+ParamCount=2
+@=SetMapperFlags(HDC hdc, DWORD flags);
+[SetGraphicsMode]
+1=HDC hdc
+2=int iMode
+ParamCount=2
+@=SetGraphicsMode(HDC hdc, int iMode);
+[SetMapMode]
+1=HDC hdc
+2=int iMode
+ParamCount=2
+@=SetMapMode(HDC hdc, int iMode);
+[SetLayout]
+1=HDC hdc
+2=DWORD l
+ParamCount=2
+@=SetLayout(HDC hdc, DWORD l);
+[GetLayout]
+1=HDC hdc
+ParamCount=1
+@=GetLayout(HDC hdc);
+[SetMetaFileBitsEx]
+1=UINT cbBuffer
+2=BYTE *lpData
+ParamCount=2
+@=SetMetaFileBitsEx(UINT cbBuffer, BYTE *lpData);
+[SetPaletteEntries]
+1=HPALETTE hpal
+2=UINT iStart
+3=UINT cEntries
+4=PALETTEENTRY *pPalEntries
+ParamCount=4
+@=SetPaletteEntries(HPALETTE hpal, UINT iStart, UINT cEntries, PALETTEENTRY *pPalEntries);
+[SetPixel]
+1=HDC hdc
+2=int x
+3=int y
+4=COLORREF color
+ParamCount=4
+@=SetPixel(HDC hdc, int x, int y, COLORREF color);
+[SetPixelV]
+1=HDC hdc
+2=int x
+3=int y
+4=COLORREF color
+ParamCount=4
+@=SetPixelV(HDC hdc, int x, int y, COLORREF color);
+[SetPixelFormat]
+1=HDC hdc
+2=int format
+3=PIXELFORMATDESCRIPTOR *ppfd
+ParamCount=3
+@=SetPixelFormat(HDC hdc, int format, PIXELFORMATDESCRIPTOR *ppfd);
+[SetPolyFillMode]
+1=HDC hdc
+2=int mode
+ParamCount=2
+@=SetPolyFillMode(HDC hdc, int mode);
+[StretchBlt]
+1=HDC hdcDest
+2=int xDest
+3=int yDest
+4=int wDest
+5=int hDest
+6=HDC hdcSrc
+7=int xSrc
+8=int ySrc
+9=int wSrc
+10=int hSrc
+11=DWORD rop
+ParamCount=11
+@=StretchBlt(HDC hdcDest, int xDest, int yDest, int wDest, int hDest, HDC hdcSrc, int xSrc, int ySrc, int wSrc, int hSrc, DWORD rop);
+[SetRectRgn]
+1=HRGN hrgn
+2=int left
+3=int top
+4=int right
+5=int bottom
+ParamCount=5
+@=SetRectRgn(HRGN hrgn, int left, int top, int right, int bottom);
+[StretchDIBits]
+1=HDC hdc
+2=int xDest
+3=int yDest
+4=int DestWidth
+5=int DestHeight
+6=int xSrc
+7=int ySrc
+8=int SrcWidth
+9=int SrcHeight
+10=VOID *lpBits
+11=BITMAPINFO *lpbmi
+12=UINT iUsage
+13=DWORD rop
+ParamCount=13
+@=StretchDIBits(HDC hdc, int xDest, int yDest, int DestWidth, int DestHeight, int xSrc, int ySrc, int SrcWidth, int SrcHeight, VOID *lpBits, BITMAPINFO *lpbmi, UINT iUsage, DWORD rop);
+[SetROP2]
+1=HDC hdc
+2=int rop2
+ParamCount=2
+@=SetROP2(HDC hdc, int rop2);
+[SetStretchBltMode]
+1=HDC hdc
+2=int mode
+ParamCount=2
+@=SetStretchBltMode(HDC hdc, int mode);
+[SetSystemPaletteUse]
+1=HDC hdc
+2=UINT use
+ParamCount=2
+@=SetSystemPaletteUse(HDC hdc, UINT use);
+[SetTextCharacterExtra]
+1=HDC hdc
+2=int extra
+ParamCount=2
+@=SetTextCharacterExtra(HDC hdc, int extra);
+[SetTextColor]
+1=HDC hdc
+2=COLORREF color
+ParamCount=2
+@=SetTextColor(HDC hdc, COLORREF color);
+[SetTextAlign]
+1=HDC hdc
+2=UINT align
+ParamCount=2
+@=SetTextAlign(HDC hdc, UINT align);
+[SetTextJustification]
+1=HDC hdc
+2=int extra
+3=int count
+ParamCount=3
+@=SetTextJustification(HDC hdc, int extra, int count);
+[UpdateColors]
+1=HDC hdc
+ParamCount=1
+@=UpdateColors(HDC hdc);
+[GdiRegisterDdraw]
+1=PGDIREGISTERDDRAWPACKET pPacket
+2=GDIMARSHALLOC *ppfnGdiAlloc
+ParamCount=2
+@=GdiRegisterDdraw(PGDIREGISTERDDRAWPACKET pPacket, GDIMARSHALLOC *ppfnGdiAlloc);
+[GdiMarshalSize]
+ParamCount=0
+@=GdiMarshalSize();
+[GdiMarshal]
+1=DWORD dwProcessIdTo
+2=HGDIOBJ hGdiObj
+3=PVOID pData
+4=ULONG ulFlags
+ParamCount=4
+@=GdiMarshal(DWORD dwProcessIdTo, HGDIOBJ hGdiObj, PVOID pData, ULONG ulFlags);
+[GdiUnmarshal]
+1=PVOID pData
+2=ULONG ulFlags
+ParamCount=2
+@=GdiUnmarshal(PVOID pData, ULONG ulFlags);
+[AlphaBlend]
+1=HDC hdcDest
+2=int xoriginDest
+3=int yoriginDest
+4=int wDest
+5=int hDest
+6=HDC hdcSrc
+7=int xoriginSrc
+8=int yoriginSrc
+9=int wSrc
+10=int hSrc
+11=BLENDFUNCTION ftn
+ParamCount=11
+@=AlphaBlend(HDC hdcDest, int xoriginDest, int yoriginDest, int wDest, int hDest, HDC hdcSrc, int xoriginSrc, int yoriginSrc, int wSrc, int hSrc, BLENDFUNCTION ftn);
+[TransparentBlt]
+1=HDC hdcDest
+2=int xoriginDest
+3=int yoriginDest
+4=int wDest
+5=int hDest
+6=HDC hdcSrc
+7=int xoriginSrc
+8=int yoriginSrc
+9=int wSrc
+10=int hSrc
+11=UINT crTransparent
+ParamCount=11
+@=TransparentBlt(HDC hdcDest, int xoriginDest, int yoriginDest, int wDest, int hDest, HDC hdcSrc, int xoriginSrc, int yoriginSrc, int wSrc, int hSrc, UINT crTransparent);
+[GradientFill]
+1=HDC hdc
+2=PTRIVERTEX pVertex
+3=ULONG nVertex
+4=PVOID pMesh
+5=ULONG nMesh
+6=ULONG ulMode
+ParamCount=6
+@=GradientFill(HDC hdc, PTRIVERTEX pVertex, ULONG nVertex, PVOID pMesh, ULONG nMesh, ULONG ulMode);
+[GdiAlphaBlend]
+1=HDC hdcDest
+2=int xoriginDest
+3=int yoriginDest
+4=int wDest
+5=int hDest
+6=HDC hdcSrc
+7=int xoriginSrc
+8=int yoriginSrc
+9=int wSrc
+10=int hSrc
+11=BLENDFUNCTION ftn
+ParamCount=11
+@=GdiAlphaBlend(HDC hdcDest, int xoriginDest, int yoriginDest, int wDest, int hDest, HDC hdcSrc, int xoriginSrc, int yoriginSrc, int wSrc, int hSrc, BLENDFUNCTION ftn);
+[GdiTransparentBlt]
+1=HDC hdcDest
+2=int xoriginDest
+3=int yoriginDest
+4=int wDest
+5=int hDest
+6=HDC hdcSrc
+7=int xoriginSrc
+8=int yoriginSrc
+9=int wSrc
+10=int hSrc
+11=UINT crTransparent
+ParamCount=11
+@=GdiTransparentBlt(HDC hdcDest, int xoriginDest, int yoriginDest, int wDest, int hDest, HDC hdcSrc, int xoriginSrc, int yoriginSrc, int wSrc, int hSrc, UINT crTransparent);
+[GdiGradientFill]
+1=HDC hdc
+2=PTRIVERTEX pVertex
+3=ULONG nVertex
+4=PVOID pMesh
+5=ULONG nCount
+6=ULONG ulMode
+ParamCount=6
+@=GdiGradientFill(HDC hdc, PTRIVERTEX pVertex, ULONG nVertex, PVOID pMesh, ULONG nCount, ULONG ulMode);
+[PlayMetaFileRecord]
+1=HDC hdc
+2=LPHANDLETABLE lpHandleTable
+3=LPMETARECORD lpMR
+4=UINT noObjs
+ParamCount=4
+@=PlayMetaFileRecord(HDC hdc, LPHANDLETABLE lpHandleTable, LPMETARECORD lpMR, UINT noObjs);
+[EnumMetaFile]
+1=HDC hdc
+2=HMETAFILE hmf
+3=MFENUMPROC proc
+4=LPARAM param
+ParamCount=4
+@=EnumMetaFile(HDC hdc, HMETAFILE hmf, MFENUMPROC proc, LPARAM param);
+[CloseEnhMetaFile]
+1=HDC hdc
+ParamCount=1
+@=CloseEnhMetaFile(HDC hdc);
+[CopyEnhMetaFileA]
+1=HENHMETAFILE hEnh
+2=LPCSTR lpFileName
+ParamCount=2
+@=CopyEnhMetaFileA(HENHMETAFILE hEnh, LPCSTR lpFileName);
+[CopyEnhMetaFileW]
+1=HENHMETAFILE hEnh
+2=LPCWSTR lpFileName
+ParamCount=2
+@=CopyEnhMetaFileW(HENHMETAFILE hEnh, LPCWSTR lpFileName);
+[CreateEnhMetaFileA]
+1=HDC hdc
+2=LPCSTR lpFilename
+3=RECT *lprc
+4=LPCSTR lpDesc
+ParamCount=4
+@=CreateEnhMetaFileA(HDC hdc, LPCSTR lpFilename, RECT *lprc, LPCSTR lpDesc);
+[CreateEnhMetaFileW]
+1=HDC hdc
+2=LPCWSTR lpFilename
+3=RECT *lprc
+4=LPCWSTR lpDesc
+ParamCount=4
+@=CreateEnhMetaFileW(HDC hdc, LPCWSTR lpFilename, RECT *lprc, LPCWSTR lpDesc);
+[DeleteEnhMetaFile]
+1=HENHMETAFILE hmf
+ParamCount=1
+@=DeleteEnhMetaFile(HENHMETAFILE hmf);
+[EnumEnhMetaFile]
+1=HDC hdc
+2=HENHMETAFILE hmf
+3=ENHMFENUMPROC proc
+4=LPVOID param
+5=RECT *lpRect
+ParamCount=5
+@=EnumEnhMetaFile(HDC hdc, HENHMETAFILE hmf, ENHMFENUMPROC proc, LPVOID param, RECT *lpRect);
+[GetEnhMetaFileA]
+1=LPCSTR lpName
+ParamCount=1
+@=GetEnhMetaFileA(LPCSTR lpName);
+[GetEnhMetaFileW]
+1=LPCWSTR lpName
+ParamCount=1
+@=GetEnhMetaFileW(LPCWSTR lpName);
+[GetEnhMetaFileBits]
+1=HENHMETAFILE hEMF
+2=UINT nSize
+3=LPBYTE lpData
+ParamCount=3
+@=GetEnhMetaFileBits(HENHMETAFILE hEMF, UINT nSize, LPBYTE lpData);
+[GetEnhMetaFileDescriptionA]
+1=HENHMETAFILE hemf
+2=UINT cchBuffer
+3=LPSTR lpDescription
+ParamCount=3
+@=GetEnhMetaFileDescriptionA(HENHMETAFILE hemf, UINT cchBuffer, LPSTR lpDescription);
+[GetEnhMetaFileDescriptionW]
+1=HENHMETAFILE hemf
+2=UINT cchBuffer
+3=LPWSTR lpDescription
+ParamCount=3
+@=GetEnhMetaFileDescriptionW(HENHMETAFILE hemf, UINT cchBuffer, LPWSTR lpDescription);
+[GetEnhMetaFileHeader]
+1=HENHMETAFILE hemf
+2=UINT nSize
+3=LPENHMETAHEADER lpEnhMetaHeader
+ParamCount=3
+@=GetEnhMetaFileHeader(HENHMETAFILE hemf, UINT nSize, LPENHMETAHEADER lpEnhMetaHeader);
+[GetEnhMetaFilePaletteEntries]
+1=HENHMETAFILE hemf
+2=UINT nNumEntries
+3=LPPALETTEENTRY lpPaletteEntries
+ParamCount=3
+@=GetEnhMetaFilePaletteEntries(HENHMETAFILE hemf, UINT nNumEntries, LPPALETTEENTRY lpPaletteEntries);
+[GetEnhMetaFilePixelFormat]
+1=HENHMETAFILE hemf
+2=UINT cbBuffer
+3=PIXELFORMATDESCRIPTOR *ppfd
+ParamCount=3
+@=GetEnhMetaFilePixelFormat(HENHMETAFILE hemf, UINT cbBuffer, PIXELFORMATDESCRIPTOR *ppfd);
+[GetWinMetaFileBits]
+1=HENHMETAFILE hemf
+2=UINT cbData16
+3=LPBYTE pData16
+4=INT iMapMode
+5=HDC hdcRef
+ParamCount=5
+@=GetWinMetaFileBits(HENHMETAFILE hemf, UINT cbData16, LPBYTE pData16, INT iMapMode, HDC hdcRef);
+[PlayEnhMetaFile]
+1=HDC hdc
+2=HENHMETAFILE hmf
+3=RECT *lprect
+ParamCount=3
+@=PlayEnhMetaFile(HDC hdc, HENHMETAFILE hmf, RECT *lprect);
+[PlayEnhMetaFileRecord]
+1=HDC hdc
+2=LPHANDLETABLE pht
+3=ENHMETARECORD *pmr
+4=UINT cht
+ParamCount=4
+@=PlayEnhMetaFileRecord(HDC hdc, LPHANDLETABLE pht, ENHMETARECORD *pmr, UINT cht);
+[SetEnhMetaFileBits]
+1=UINT nSize
+2=BYTE *pb
+ParamCount=2
+@=SetEnhMetaFileBits(UINT nSize, BYTE *pb);
+[SetWinMetaFileBits]
+1=UINT nSize
+2=BYTE *lpMeta16Data
+3=HDC hdcRef
+4=METAFILEPICT *lpMFP
+ParamCount=4
+@=SetWinMetaFileBits(UINT nSize, BYTE *lpMeta16Data, HDC hdcRef, METAFILEPICT *lpMFP);
+[GdiComment]
+1=HDC hdc
+2=UINT nSize
+3=BYTE *lpData
+ParamCount=3
+@=GdiComment(HDC hdc, UINT nSize, BYTE *lpData);
+[GetTextMetricsA]
+1=HDC hdc
+2=LPTEXTMETRICA lptm
+ParamCount=2
+@=GetTextMetricsA(HDC hdc, LPTEXTMETRICA lptm);
+[GetTextMetricsW]
+1=HDC hdc
+2=LPTEXTMETRICW lptm
+ParamCount=2
+@=GetTextMetricsW(HDC hdc, LPTEXTMETRICW lptm);
+[AngleArc]
+1=HDC hdc
+2=int x
+3=int y
+4=DWORD r
+5=FLOAT StartAngle
+6=FLOAT SweepAngle
+ParamCount=6
+@=AngleArc(HDC hdc, int x, int y, DWORD r, FLOAT StartAngle, FLOAT SweepAngle);
+[PolyPolyline]
+1=HDC hdc
+2=POINT *apt
+3=DWORD *asz
+4=DWORD csz
+ParamCount=4
+@=PolyPolyline(HDC hdc, POINT *apt, DWORD *asz, DWORD csz);
+[GetWorldTransform]
+1=HDC hdc
+2=LPXFORM lpxf
+ParamCount=2
+@=GetWorldTransform(HDC hdc, LPXFORM lpxf);
+[SetWorldTransform]
+1=HDC hdc
+2=XFORM *lpxf
+ParamCount=2
+@=SetWorldTransform(HDC hdc, XFORM *lpxf);
+[ModifyWorldTransform]
+1=HDC hdc
+2=XFORM *lpxf
+3=DWORD mode
+ParamCount=3
+@=ModifyWorldTransform(HDC hdc, XFORM *lpxf, DWORD mode);
+[CombineTransform]
+1=LPXFORM lpxfOut
+2=XFORM *lpxf1
+3=XFORM *lpxf2
+ParamCount=3
+@=CombineTransform(LPXFORM lpxfOut, XFORM *lpxf1, XFORM *lpxf2);
+[CreateDIBSection]
+1=HDC hdc
+2=BITMAPINFO *lpbmi
+3=UINT usage
+4=VOID **ppvBits
+5=HANDLE hSection
+6=DWORD offset
+ParamCount=6
+@=CreateDIBSection(HDC hdc, BITMAPINFO *lpbmi, UINT usage, VOID **ppvBits, HANDLE hSection, DWORD offset);
+[GetDIBColorTable]
+1=HDC hdc
+2=UINT iStart
+3=UINT cEntries
+4=RGBQUAD *prgbq
+ParamCount=4
+@=GetDIBColorTable(HDC hdc, UINT iStart, UINT cEntries, RGBQUAD *prgbq);
+[SetDIBColorTable]
+1=HDC hdc
+2=UINT iStart
+3=UINT cEntries
+4=RGBQUAD *prgbq
+ParamCount=4
+@=SetDIBColorTable(HDC hdc, UINT iStart, UINT cEntries, RGBQUAD *prgbq);
+[SetColorAdjustment]
+1=HDC hdc
+2=COLORADJUSTMENT *lpca
+ParamCount=2
+@=SetColorAdjustment(HDC hdc, COLORADJUSTMENT *lpca);
+[GetColorAdjustment]
+1=HDC hdc
+2=LPCOLORADJUSTMENT lpca
+ParamCount=2
+@=GetColorAdjustment(HDC hdc, LPCOLORADJUSTMENT lpca);
+[CreateHalftonePalette]
+1=HDC hdc
+ParamCount=1
+@=CreateHalftonePalette(HDC hdc);
+[StartDocA]
+1=HDC hdc
+2=DOCINFOA *lpdi
+ParamCount=2
+@=StartDocA(HDC hdc, DOCINFOA *lpdi);
+[StartDocW]
+1=HDC hdc
+2=DOCINFOW *lpdi
+ParamCount=2
+@=StartDocW(HDC hdc, DOCINFOW *lpdi);
+[EndDoc]
+1=HDC hdc
+ParamCount=1
+@=EndDoc(HDC hdc);
+[StartPage]
+1=HDC hdc
+ParamCount=1
+@=StartPage(HDC hdc);
+[EndPage]
+1=HDC hdc
+ParamCount=1
+@=EndPage(HDC hdc);
+[AbortDoc]
+1=HDC hdc
+ParamCount=1
+@=AbortDoc(HDC hdc);
+[SetAbortProc]
+1=HDC hdc
+2=ABORTPROC proc
+ParamCount=2
+@=SetAbortProc(HDC hdc, ABORTPROC proc);
+[AbortPath]
+1=HDC hdc
+ParamCount=1
+@=AbortPath(HDC hdc);
+[ArcTo]
+1=HDC hdc
+2=int left
+3=int top
+4=int right
+5=int bottom
+6=int xr1
+7=int yr1
+8=int xr2
+9=int yr2
+ParamCount=9
+@=ArcTo(HDC hdc, int left, int top, int right, int bottom, int xr1, int yr1, int xr2, int yr2);
+[BeginPath]
+1=HDC hdc
+ParamCount=1
+@=BeginPath(HDC hdc);
+[CloseFigure]
+1=HDC hdc
+ParamCount=1
+@=CloseFigure(HDC hdc);
+[EndPath]
+1=HDC hdc
+ParamCount=1
+@=EndPath(HDC hdc);
+[FillPath]
+1=HDC hdc
+ParamCount=1
+@=FillPath(HDC hdc);
+[FlattenPath]
+1=HDC hdc
+ParamCount=1
+@=FlattenPath(HDC hdc);
+[GetPath]
+1=HDC hdc
+2=LPPOINT apt
+3=LPBYTE aj
+4=int cpt
+ParamCount=4
+@=GetPath(HDC hdc, LPPOINT apt, LPBYTE aj, int cpt);
+[PathToRegion]
+1=HDC hdc
+ParamCount=1
+@=PathToRegion(HDC hdc);
+[PolyDraw]
+1=HDC hdc
+2=POINT *apt
+3=BYTE *aj
+4=int cpt
+ParamCount=4
+@=PolyDraw(HDC hdc, POINT *apt, BYTE *aj, int cpt);
+[SelectClipPath]
+1=HDC hdc
+2=int mode
+ParamCount=2
+@=SelectClipPath(HDC hdc, int mode);
+[SetArcDirection]
+1=HDC hdc
+2=int dir
+ParamCount=2
+@=SetArcDirection(HDC hdc, int dir);
+[SetMiterLimit]
+1=HDC hdc
+2=FLOAT limit
+3=PFLOAT old
+ParamCount=3
+@=SetMiterLimit(HDC hdc, FLOAT limit, PFLOAT old);
+[StrokeAndFillPath]
+1=HDC hdc
+ParamCount=1
+@=StrokeAndFillPath(HDC hdc);
+[StrokePath]
+1=HDC hdc
+ParamCount=1
+@=StrokePath(HDC hdc);
+[WidenPath]
+1=HDC hdc
+ParamCount=1
+@=WidenPath(HDC hdc);
+[ExtCreatePen]
+1=DWORD iPenStyle
+2=DWORD cWidth
+3=LOGBRUSH *plbrush
+4=DWORD cStyle
+5=DWORD *pstyle
+ParamCount=5
+@=ExtCreatePen(DWORD iPenStyle, DWORD cWidth, LOGBRUSH *plbrush, DWORD cStyle, DWORD *pstyle);
+[GetMiterLimit]
+1=HDC hdc
+2=PFLOAT plimit
+ParamCount=2
+@=GetMiterLimit(HDC hdc, PFLOAT plimit);
+[GetArcDirection]
+1=HDC hdc
+ParamCount=1
+@=GetArcDirection(HDC hdc);
+[GetObjectA]
+1=HANDLE h
+2=int c
+3=LPVOID pv
+ParamCount=3
+@=GetObjectA(HANDLE h, int c, LPVOID pv);
+[GetObjectW]
+1=HANDLE h
+2=int c
+3=LPVOID pv
+ParamCount=3
+@=GetObjectW(HANDLE h, int c, LPVOID pv);
+[MoveToEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT lppt
+ParamCount=4
+@=MoveToEx(HDC hdc, int x, int y, LPPOINT lppt);
+[TextOutA]
+1=HDC hdc
+2=int x
+3=int y
+4=LPCSTR lpString
+5=int c
+ParamCount=5
+@=TextOutA(HDC hdc, int x, int y, LPCSTR lpString, int c);
+[TextOutW]
+1=HDC hdc
+2=int x
+3=int y
+4=LPCWSTR lpString
+5=int c
+ParamCount=5
+@=TextOutW(HDC hdc, int x, int y, LPCWSTR lpString, int c);
+[ExtTextOutA]
+1=HDC hdc
+2=int x
+3=int y
+4=UINT options
+5=RECT *lprect
+6=LPCSTR lpString
+7=UINT c
+8=INT *lpDx
+ParamCount=8
+@=ExtTextOutA(HDC hdc, int x, int y, UINT options, RECT *lprect, LPCSTR lpString, UINT c, INT *lpDx);
+[ExtTextOutW]
+1=HDC hdc
+2=int x
+3=int y
+4=UINT options
+5=RECT *lprect
+6=LPCWSTR lpString
+7=UINT c
+8=INT *lpDx
+ParamCount=8
+@=ExtTextOutW(HDC hdc, int x, int y, UINT options, RECT *lprect, LPCWSTR lpString, UINT c, INT *lpDx);
+[PolyTextOutA]
+1=HDC hdc
+2=POLYTEXTA *ppt
+3=int nstrings
+ParamCount=3
+@=PolyTextOutA(HDC hdc, POLYTEXTA *ppt, int nstrings);
+[PolyTextOutW]
+1=HDC hdc
+2=POLYTEXTW *ppt
+3=int nstrings
+ParamCount=3
+@=PolyTextOutW(HDC hdc, POLYTEXTW *ppt, int nstrings);
+[CreatePolygonRgn]
+1=POINT *pptl
+2=int cPoint
+3=int iMode
+ParamCount=3
+@=CreatePolygonRgn(POINT *pptl, int cPoint, int iMode);
+[DPtoLP]
+1=HDC hdc
+2=LPPOINT lppt
+3=int c
+ParamCount=3
+@=DPtoLP(HDC hdc, LPPOINT lppt, int c);
+[LPtoDP]
+1=HDC hdc
+2=LPPOINT lppt
+3=int c
+ParamCount=3
+@=LPtoDP(HDC hdc, LPPOINT lppt, int c);
+[Polygon]
+1=HDC hdc
+2=POINT *apt
+3=int cpt
+ParamCount=3
+@=Polygon(HDC hdc, POINT *apt, int cpt);
+[Polyline]
+1=HDC hdc
+2=POINT *apt
+3=int cpt
+ParamCount=3
+@=Polyline(HDC hdc, POINT *apt, int cpt);
+[PolyBezier]
+1=HDC hdc
+2=POINT *apt
+3=DWORD cpt
+ParamCount=3
+@=PolyBezier(HDC hdc, POINT *apt, DWORD cpt);
+[PolyBezierTo]
+1=HDC hdc
+2=POINT *apt
+3=DWORD cpt
+ParamCount=3
+@=PolyBezierTo(HDC hdc, POINT *apt, DWORD cpt);
+[PolylineTo]
+1=HDC hdc
+2=POINT *apt
+3=DWORD cpt
+ParamCount=3
+@=PolylineTo(HDC hdc, POINT *apt, DWORD cpt);
+[SetViewportExtEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPSIZE lpsz
+ParamCount=4
+@=SetViewportExtEx(HDC hdc, int x, int y, LPSIZE lpsz);
+[SetViewportOrgEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT lppt
+ParamCount=4
+@=SetViewportOrgEx(HDC hdc, int x, int y, LPPOINT lppt);
+[SetWindowExtEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPSIZE lpsz
+ParamCount=4
+@=SetWindowExtEx(HDC hdc, int x, int y, LPSIZE lpsz);
+[SetWindowOrgEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT lppt
+ParamCount=4
+@=SetWindowOrgEx(HDC hdc, int x, int y, LPPOINT lppt);
+[OffsetViewportOrgEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT lppt
+ParamCount=4
+@=OffsetViewportOrgEx(HDC hdc, int x, int y, LPPOINT lppt);
+[OffsetWindowOrgEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT lppt
+ParamCount=4
+@=OffsetWindowOrgEx(HDC hdc, int x, int y, LPPOINT lppt);
+[ScaleViewportExtEx]
+1=HDC hdc
+2=int xn
+3=int dx
+4=int yn
+5=int yd
+6=LPSIZE lpsz
+ParamCount=6
+@=ScaleViewportExtEx(HDC hdc, int xn, int dx, int yn, int yd, LPSIZE lpsz);
+[ScaleWindowExtEx]
+1=HDC hdc
+2=int xn
+3=int xd
+4=int yn
+5=int yd
+6=LPSIZE lpsz
+ParamCount=6
+@=ScaleWindowExtEx(HDC hdc, int xn, int xd, int yn, int yd, LPSIZE lpsz);
+[SetBitmapDimensionEx]
+1=HBITMAP hbm
+2=int w
+3=int h
+4=LPSIZE lpsz
+ParamCount=4
+@=SetBitmapDimensionEx(HBITMAP hbm, int w, int h, LPSIZE lpsz);
+[SetBrushOrgEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT lppt
+ParamCount=4
+@=SetBrushOrgEx(HDC hdc, int x, int y, LPPOINT lppt);
+[GetTextFaceA]
+1=HDC hdc
+2=int c
+3= LPSTRlpName
+ParamCount=3
+@=GetTextFaceA(HDC hdc, int c,  LPSTRlpName);
+[GetTextFaceW]
+1=HDC hdc
+2=int c
+3= LPWSTRlpName
+ParamCount=3
+@=GetTextFaceW(HDC hdc, int c,  LPWSTRlpName);
+[GetKerningPairsA]
+1=HDC hdc
+2=DWORD nPairs
+3=LPKERNINGPAIR lpKernPair
+ParamCount=3
+@=GetKerningPairsA(HDC hdc, DWORD nPairs, LPKERNINGPAIR lpKernPair);
+[GetKerningPairsW]
+1=HDC hdc
+2=DWORD nPairs
+3=LPKERNINGPAIR lpKernPair
+ParamCount=3
+@=GetKerningPairsW(HDC hdc, DWORD nPairs, LPKERNINGPAIR lpKernPair);
+[GetDCOrgEx]
+1=HDC hdc
+2=LPPOINT lppt
+ParamCount=2
+@=GetDCOrgEx(HDC hdc, LPPOINT lppt);
+[FixBrushOrgEx]
+1=HDC hdc
+2=int x
+3=int y
+4=LPPOINT ptl
+ParamCount=4
+@=FixBrushOrgEx(HDC hdc, int x, int y, LPPOINT ptl);
+[UnrealizeObject]
+1=HGDIOBJ h
+ParamCount=1
+@=UnrealizeObject(HGDIOBJ h);
+[GdiFlush]
+ParamCount=0
+@=GdiFlush();
+[GdiSetBatchLimit]
+1=DWORD dw
+ParamCount=1
+@=GdiSetBatchLimit(DWORD dw);
+[GdiGetBatchLimit]
+ParamCount=0
+@=GdiGetBatchLimit();
+[SetICMMode]
+1=HDC hdc
+2=int mode
+ParamCount=2
+@=SetICMMode(HDC hdc, int mode);
+[CheckColorsInGamut]
+1=HDC hdc
+2=LPRGBTRIPLE lpRGBTriple
+3=LPVOID dlpBuffer
+4=DWORD nCount
+ParamCount=4
+@=CheckColorsInGamut(HDC hdc, LPRGBTRIPLE lpRGBTriple, LPVOID dlpBuffer, DWORD nCount);
+[GetColorSpace]
+1=HDC hdc
+ParamCount=1
+@=GetColorSpace(HDC hdc);
+[GetLogColorSpaceA]
+1=HCOLORSPACE hColorSpace
+2=LPLOGCOLORSPACEA lpBuffer
+3=DWORD nSize
+ParamCount=3
+@=GetLogColorSpaceA(HCOLORSPACE hColorSpace, LPLOGCOLORSPACEA lpBuffer, DWORD nSize);
+[GetLogColorSpaceW]
+1=HCOLORSPACE hColorSpace
+2=LPLOGCOLORSPACEW lpBuffer
+3=DWORD nSize
+ParamCount=3
+@=GetLogColorSpaceW(HCOLORSPACE hColorSpace, LPLOGCOLORSPACEW lpBuffer, DWORD nSize);
+[CreateColorSpaceA]
+1=LPLOGCOLORSPACEA lplcs
+ParamCount=1
+@=CreateColorSpaceA(LPLOGCOLORSPACEA lplcs);
+[CreateColorSpaceW]
+1=LPLOGCOLORSPACEW lplcs
+ParamCount=1
+@=CreateColorSpaceW(LPLOGCOLORSPACEW lplcs);
+[SetColorSpace]
+1=HDC hdc
+2=HCOLORSPACE hcs
+ParamCount=2
+@=SetColorSpace(HDC hdc, HCOLORSPACE hcs);
+[DeleteColorSpace]
+1=HCOLORSPACE hcs
+ParamCount=1
+@=DeleteColorSpace(HCOLORSPACE hcs);
+[GetICMProfileA]
+1=HDC hdc
+2=LPDWORD pBufSize
+3=LPSTR pszFilename
+ParamCount=3
+@=GetICMProfileA(HDC hdc, LPDWORD pBufSize, LPSTR pszFilename);
+[GetICMProfileW]
+1=HDC hdc
+2=LPDWORD pBufSize
+3=LPWSTR pszFilename
+ParamCount=3
+@=GetICMProfileW(HDC hdc, LPDWORD pBufSize, LPWSTR pszFilename);
+[SetICMProfileA]
+1=HDC hdc
+2=LPSTR lpFileName
+ParamCount=2
+@=SetICMProfileA(HDC hdc, LPSTR lpFileName);
+[SetICMProfileW]
+1=HDC hdc
+2=LPWSTR lpFileName
+ParamCount=2
+@=SetICMProfileW(HDC hdc, LPWSTR lpFileName);
+[GetDeviceGammaRamp]
+1=HDC hdc
+2=LPVOID lpRamp
+ParamCount=2
+@=GetDeviceGammaRamp(HDC hdc, LPVOID lpRamp);
+[SetDeviceGammaRamp]
+1=HDC hdc
+2=LPVOID lpRamp
+ParamCount=2
+@=SetDeviceGammaRamp(HDC hdc, LPVOID lpRamp);
+[ColorMatchToTarget]
+1=HDC hdc
+2=HDC hdcTarget
+3=DWORD action
+ParamCount=3
+@=ColorMatchToTarget(HDC hdc, HDC hdcTarget, DWORD action);
+[EnumICMProfilesA]
+1=HDC hdc
+2=ICMENUMPROCA proc
+3=LPARAM param
+ParamCount=3
+@=EnumICMProfilesA(HDC hdc, ICMENUMPROCA proc, LPARAM param);
+[EnumICMProfilesW]
+1=HDC hdc
+2=ICMENUMPROCW proc
+3=LPARAM param
+ParamCount=3
+@=EnumICMProfilesW(HDC hdc, ICMENUMPROCW proc, LPARAM param);
+[UpdateICMRegKeyA]
+1=DWORD reserved
+2=LPSTR lpszCMID
+3=LPSTR lpszFileName
+4=UINT command
+ParamCount=4
+@=UpdateICMRegKeyA(DWORD reserved, LPSTR lpszCMID, LPSTR lpszFileName, UINT command);
+[UpdateICMRegKeyW]
+1=DWORD reserved
+2=LPWSTR lpszCMID
+3=LPWSTR lpszFileName
+4=UINT command
+ParamCount=4
+@=UpdateICMRegKeyW(DWORD reserved, LPWSTR lpszCMID, LPWSTR lpszFileName, UINT command);
+[ColorCorrectPalette]
+1=HDC hdc
+2=HPALETTE hPal
+3=DWORD deFirst
+4=DWORD num
+ParamCount=4
+@=ColorCorrectPalette(HDC hdc, HPALETTE hPal, DWORD deFirst, DWORD num);
+[wglCopyContext]
+1=HGLRC
+2=HGLRC
+3=UINT
+ParamCount=3
+@=wglCopyContext(HGLRC, HGLRC, UINT);
+[wglCreateContext]
+1=HDC
+ParamCount=1
+@=wglCreateContext(HDC);
+[wglCreateLayerContext]
+1=HDC
+2=int
+ParamCount=2
+@=wglCreateLayerContext(HDC, int);
+[wglDeleteContext]
+1=HGLRC
+ParamCount=1
+@=wglDeleteContext(HGLRC);
+[wglGetCurrentContext]
+ParamCount=0
+@=wglGetCurrentContext();
+[wglGetCurrentDC]
+ParamCount=0
+@=wglGetCurrentDC();
+[wglGetProcAddress]
+1=LPCSTR
+ParamCount=1
+@=wglGetProcAddress(LPCSTR);
+[wglMakeCurrent]
+1=HDC
+2=HGLRC
+ParamCount=2
+@=wglMakeCurrent(HDC, HGLRC);
+[wglShareLists]
+1=HGLRC
+2=HGLRC
+ParamCount=2
+@=wglShareLists(HGLRC, HGLRC);
+[wglUseFontBitmapsA]
+1=HDC
+2=DWORD
+3=DWORD
+4=DWORD
+ParamCount=4
+@=wglUseFontBitmapsA(HDC, DWORD, DWORD, DWORD);
+[wglUseFontBitmapsW]
+1=HDC
+2=DWORD
+3=DWORD
+4=DWORD
+ParamCount=4
+@=wglUseFontBitmapsW(HDC, DWORD, DWORD, DWORD);
+[SwapBuffers]
+1=HDC
+ParamCount=1
+@=SwapBuffers(HDC);
+[wglUseFontOutlinesA]
+1=HDC
+2=DWORD
+3=DWORD
+4=DWORD
+5=FLOAT
+6=FLOAT
+7=int
+8=LPGLYPHMETRICSFLOAT
+ParamCount=8
+@=wglUseFontOutlinesA(HDC, DWORD, DWORD, DWORD, FLOAT, FLOAT, int, LPGLYPHMETRICSFLOAT);
+[wglUseFontOutlinesW]
+1=HDC
+2=DWORD
+3=DWORD
+4=DWORD
+5=FLOAT
+6=FLOAT
+7=int
+8=LPGLYPHMETRICSFLOAT
+ParamCount=8
+@=wglUseFontOutlinesW(HDC, DWORD, DWORD, DWORD, FLOAT, FLOAT, int, LPGLYPHMETRICSFLOAT);
+[wglDescribeLayerPlane]
+1=HDC
+2=int
+3=int
+4=UINT
+5=LPLAYERPLANEDESCRIPTOR
+ParamCount=5
+@=wglDescribeLayerPlane(HDC, int, int, UINT, LPLAYERPLANEDESCRIPTOR);
+[wglSetLayerPaletteEntries]
+1=HDC
+2=int
+3=int
+4=int
+5=CONST COLORREF*
+ParamCount=5
+@=wglSetLayerPaletteEntries(HDC, int, int, int, CONST COLORREF*);
+[wglGetLayerPaletteEntries]
+1=HDC
+2=int
+3=int
+4=int
+5=COLORREF *
+ParamCount=5
+@=wglGetLayerPaletteEntries(HDC, int, int, int, COLORREF *);
+[wglRealizeLayerPalette]
+1=HDC
+2=int
+3=BOOL
+ParamCount=3
+@=wglRealizeLayerPalette(HDC, int, BOOL);
+[wglSwapLayerBuffers]
+1=HDC
+2=UINT
+ParamCount=2
+@=wglSwapLayerBuffers(HDC, UINT);
+[wglSwapMultipleBuffers]
+1=UINT
+2=CONST WGLSWAP*
+ParamCount=2
+@=wglSwapMultipleBuffers(UINT, CONST WGLSWAP*);
