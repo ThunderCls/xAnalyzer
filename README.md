@@ -21,7 +21,7 @@ Special thanks to @mrfearless for releasing the API definition files.
 ---
 
 Installation:
- - Copy xAnalyzer.dp32 to x32 plugins directory of x64dbg
+ - Copy xAnalyzer.dp32 file and apis_def folder to x32 plugins directory of x64dbg
  - Look under the "Plugins" menu in the main x64dbg window or in the secondary menu in the Disasm window as well
 
 ---
