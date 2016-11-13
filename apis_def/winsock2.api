@@ -1,0 +1,42 @@
+[accept]
+1=int *addrlen
+2=sockaddr *addr
+3=SOCKET s
+ParamCount=3
+@=accept
+[bind]
+1=int namelen
+2=const sockaddr *name
+3=SOCKET s
+ParamCount=3
+@=bind
+[listen]
+1=int backlog
+2=SOCKET s
+ParamCount=2
+@=listen
+[recv]
+1=int flags
+2=int len
+3=char *buf
+4=SOCKET s
+ParamCount=4
+@=recv
+[send]
+1=int flags
+2=int len
+3=const char *buf
+4=SOCKET s
+ParamCount=4
+@=send
+[socket]
+1=int protocol
+2=int type
+3=int af
+ParamCount=3
+@=socket
+[WSAStartup]
+1=LPWSADATA lpWSAData
+2=WORD wVersionRequested
+ParamCount=2
+@=WSAStartup

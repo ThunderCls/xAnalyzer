@@ -1,0 +1,1231 @@
+[CcCanIWrite]
+1=IN PFILE_OBJECT FileObject IN ULONG BytesToWrite
+2=IN BOOLEAN Wait IN BOOLEAN Retrying
+ParamCount=2
+@=CcCanIWrite
+[CcCopyRead]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN BOOLEAN Wait
+3=OUT PVOID Buffer OUT PIO_STATUS_BLOCK IoStatus
+ParamCount=3
+@=CcCopyRead
+[CcCopyWrite]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN BOOLEAN Wait
+ParamCount=2
+@=CcCopyWrite
+[CcDeferWrite]
+1=IN PFILE_OBJECT FileObject IN PCC_POST_DEFERRED_WRITE PostRoutine
+2=IN PVOID Context1 IN PVOID Context2
+3=IN ULONG BytesToWrite IN BOOLEAN Retrying
+ParamCount=3
+@=CcDeferWrite
+[CcFastCopyRead]
+1=IN PFILE_OBJECT FileObject IN ULONG FileOffset
+2=IN ULONG Length IN ULONG PageCount
+3=OUT PVOID Buffer OUT PIO_STATUS_BLOCK IoStatus
+ParamCount=3
+@=CcFastCopyRead
+[CcFastCopyWrite]
+1=IN PFILE_OBJECT FileObject IN ULONG FileOffset
+2=IN ULONG Length IN PVOID Buffer
+ParamCount=2
+@=CcFastCopyWrite
+[CcFlushCache]
+1=IN PSECTION_OBJECT_POINTERS SectionObjectPointer IN PLARGE_INTEGER FileOffset OPTIONAL
+2=IN ULONG Length OUT PIO_STATUS_BLOCK IoStatus OPTIONAL
+ParamCount=2
+@=CcFlushCache
+[CcGetDirtyPages]
+1=IN PVOID LogHandle IN PDIRTY_PAGE_ROUTINE DirtyPageRoutine
+2=IN PVOID Context1 IN PVOID Context2
+ParamCount=2
+@=CcGetDirtyPages
+[CcGetFileObjectFromBcb]
+ParamCount=0
+@=CcGetFileObjectFromBcb
+[CcGetFileObjectFromSectionPtrs]
+ParamCount=0
+@=CcGetFileObjectFromSectionPtrs
+[CcGetFlushedValidData]
+1=IN PSECTION_OBJECT_POINTERS SectionObjectPointer IN BOOLEAN BcbListHeld
+ParamCount=1
+@=CcGetFlushedValidData
+[IN PFILE_OBJECT FileObject]
+ParamCount=0
+@=IN PFILE_OBJECT FileObject
+[CcInitializeCacheMap]
+1=IN PFILE_OBJECT FileObject IN PCC_FILE_SIZES FileSizes
+2=IN BOOLEAN PinAccess IN PCACHE_MANAGER_CALLBACKS Callbacks
+ParamCount=2
+@=CcInitializeCacheMap
+[CcIsThereDirtyData]
+ParamCount=0
+@=CcIsThereDirtyData
+[CcMapData]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN BOOLEAN Wait
+3=OUT PVOID *Bcb OUT PVOID *Buffer
+ParamCount=3
+@=CcMapData
+[CcMdlRead]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length OUT PMDL *MdlChain
+ParamCount=2
+@=CcMdlRead
+[CcMdlReadComplete]
+1=IN PFILE_OBJECT FileObject IN PMDL MdlChain
+ParamCount=1
+@=CcMdlReadComplete
+[CcMdlWriteComplete]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+ParamCount=1
+@=CcMdlWriteComplete
+[CcPinMappedData]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN ULONG Flags
+3=IN BOOLEAN Wait IN OUT PVOID *Bcb
+ParamCount=3
+@=CcPinMappedData
+[CcPinRead]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN ULONG Flags
+3=IN BOOLEAN Wait OUT PVOID *Bcb
+ParamCount=3
+@=CcPinRead
+[CcPrepareMdlWrite]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length OUT PMDL *MdlChain
+ParamCount=2
+@=CcPrepareMdlWrite
+[CcPreparePinWrite]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN BOOLEAN Zero
+3=IN ULONG Flags IN BOOLEAN Wait
+4=OUT PVOID *Bcb OUT PVOID *Buffer
+ParamCount=4
+@=CcPreparePinWrite
+[CcPurgeCacheSection]
+1=IN PSECTION_OBJECT_POINTERS SectionObjectPointer IN PLARGE_INTEGER FileOffset OPTIONAL
+2=IN ULONG Length IN BOOLEAN UninitializeCacheMaps
+ParamCount=2
+@=CcPurgeCacheSection
+[CcRemapBcb]
+ParamCount=0
+@=CcRemapBcb
+[CcRepinBcb]
+ParamCount=0
+@=CcRepinBcb
+[CcScheduleReadAhead]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+ParamCount=1
+@=CcScheduleReadAhead
+[CcSetAdditionalCacheAttributes]
+1=IN PFILE_OBJECT FileObject IN BOOLEAN DisableReadAhead
+ParamCount=1
+@=CcSetAdditionalCacheAttributes
+[CcSetBcbOwnerPointer]
+1=IN PVOID Bcb IN PVOID OwnerPointer
+ParamCount=1
+@=CcSetBcbOwnerPointer
+[CcSetDirtyPageThreshold]
+1=IN PFILE_OBJECT FileObject IN ULONG DirtyPageThreshold
+ParamCount=1
+@=CcSetDirtyPageThreshold
+[CcSetDirtyPinnedData]
+1=IN PVOID BcbVoid IN PLARGE_INTEGER Lsn OPTIONAL
+ParamCount=1
+@=CcSetDirtyPinnedData
+[CcSetFileSizes]
+1=IN PFILE_OBJECT FileObject IN PCC_FILE_SIZES FileSizes
+ParamCount=1
+@=CcSetFileSizes
+[CcSetLogHandleForFile]
+1=IN PFILE_OBJECT FileObject IN PVOID LogHandle
+ParamCount=1
+@=CcSetLogHandleForFile
+[CcSetReadAheadGranularity]
+1=IN PFILE_OBJECT FileObject IN ULONG Granularity
+ParamCount=1
+@=CcSetReadAheadGranularity
+[CcUninitializeCacheMap]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER TruncateSize OPTIONAL
+ParamCount=1
+@=CcUninitializeCacheMap
+[CcUnpinData]
+ParamCount=0
+@=CcUnpinData
+[CcUnpinDataForThread]
+1=IN PVOID Bcb IN ERESOURCE_THREAD ResourceThreadId
+ParamCount=1
+@=CcUnpinDataForThread
+[CcUnpinRepinnedBcb]
+1=IN PVOID Bcb IN BOOLEAN WriteThrough
+ParamCount=1
+@=CcUnpinRepinnedBcb
+[CcWaitForCurrentLazyWriterActivity]
+1=VOID NTKERNELAPI BOOLEAN NTAPI
+2=CcZeroData IN PFILE_OBJECT FileObject
+3=IN PLARGE_INTEGER StartOffset IN PLARGE_INTEGER EndOffset
+ParamCount=3
+@=CcWaitForCurrentLazyWriterActivity
+[ExDisableResourceBoostLite]
+ParamCount=0
+@=ExDisableResourceBoostLite
+[ExQueryPoolBlockSize]
+1=IN PVOID PoolBlock OUT PBOOLEAN QuotaCharged
+ParamCount=1
+@=ExQueryPoolBlockSize
+[FsRtlAddToTunnelCache]
+1=IN PTUNNEL Cache IN ULONGLONG DirectoryKey
+2=IN PUNICODE_STRING ShortName IN PUNICODE_STRING LongName
+3=IN BOOLEAN KeyByShortName IN ULONG DataLength
+ParamCount=3
+@=FsRtlAddToTunnelCache
+[FsRtlAllocateFileLock]
+1=IN PCOMPLETE_LOCK_IRP_ROUTINE CompleteLockIrpRoutine OPTIONAL IN PUNLOCK_ROUTINE UnlockRoutine OPTIONAL
+ParamCount=1
+@=FsRtlAllocateFileLock
+[FsRtlAllocatePool]
+1=IN POOL_TYPE PoolType IN ULONG NumberOfBytes
+ParamCount=1
+@=FsRtlAllocatePool
+[FsRtlAllocatePoolWithQuota]
+1=IN POOL_TYPE PoolType IN ULONG NumberOfBytes
+ParamCount=1
+@=FsRtlAllocatePoolWithQuota
+[FsRtlAllocatePoolWithQuotaTag]
+1=IN POOL_TYPE PoolType IN ULONG NumberOfBytes
+ParamCount=1
+@=FsRtlAllocatePoolWithQuotaTag
+[FsRtlAllocatePoolWithTag]
+1=IN POOL_TYPE PoolType IN ULONG NumberOfBytes
+ParamCount=1
+@=FsRtlAllocatePoolWithTag
+[FsRtlAreNamesEqual]
+1=IN PUNICODE_STRING Name1 IN PUNICODE_STRING Name2
+2=IN BOOLEAN IgnoreCase IN PWCHAR UpcaseTable OPTIONAL
+ParamCount=2
+@=FsRtlAreNamesEqual
+[FsRtlCheckLockForReadAccess]
+1=IN PFILE_LOCK FileLock IN PIRP Irp
+ParamCount=1
+@=FsRtlCheckLockForReadAccess
+[FsRtlCheckLockForWriteAccess]
+1=IN PFILE_LOCK FileLock IN PIRP Irp
+ParamCount=1
+@=FsRtlCheckLockForWriteAccess
+[FsRtlCheckOplock]
+1=IN POPLOCK Oplock IN PIRP Irp
+2=IN PVOID Context IN POPLOCK_WAIT_COMPLETE_ROUTINE CompletionRoutine OPTIONAL
+ParamCount=2
+@=FsRtlCheckOplock
+[FsRtlCopyRead]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN BOOLEAN Wait
+3=IN ULONG LockKey OUT PVOID Buffer
+4=OUT PIO_STATUS_BLOCK IoStatus IN PDEVICE_OBJECT DeviceObject
+ParamCount=4
+@=FsRtlCopyRead
+[FsRtlCopyWrite]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN ULONG Length IN BOOLEAN Wait
+3=IN ULONG LockKey IN PVOID Buffer
+4=OUT PIO_STATUS_BLOCK IoStatus IN PDEVICE_OBJECT DeviceObject
+ParamCount=4
+@=FsRtlCopyWrite
+[FsRtlCurrentBatchOplock]
+ParamCount=0
+@=FsRtlCurrentBatchOplock
+[FsRtlDeleteKeyFromTunnelCache]
+1=IN PTUNNEL Cache IN ULONGLONG DirectoryKey
+ParamCount=1
+@=FsRtlDeleteKeyFromTunnelCache
+[FsRtlDeleteTunnelCache]
+ParamCount=0
+@=FsRtlDeleteTunnelCache
+[FsRtlDeregisterUncProvider]
+ParamCount=0
+@=FsRtlDeregisterUncProvider
+[FsRtlDoesNameContainWildCards]
+ParamCount=0
+@=FsRtlDoesNameContainWildCards
+[FsRtlFastCheckLockForRead]
+1=IN PFILE_LOCK FileLock IN PLARGE_INTEGER FileOffset
+2=IN PLARGE_INTEGER Length IN ULONG Key
+3=IN PFILE_OBJECT FileObject IN PEPROCESS Process
+ParamCount=3
+@=FsRtlFastCheckLockForRead
+[FsRtlFastCheckLockForWrite]
+1=IN PFILE_LOCK FileLock IN PLARGE_INTEGER FileOffset
+2=IN PLARGE_INTEGER Length IN ULONG Key
+3=IN PFILE_OBJECT FileObject IN PEPROCESS Process
+ParamCount=3
+@=FsRtlFastCheckLockForWrite
+[FsRtlFastUnlockAll]
+1=IN PFILE_LOCK FileLock IN PFILE_OBJECT FileObject
+2=IN PEPROCESS Process IN PVOID Context OPTIONAL
+ParamCount=2
+@=FsRtlFastUnlockAll
+[FsRtlFastUnlockAllByKey]
+1=IN PFILE_LOCK FileLock IN PFILE_OBJECT FileObject
+2=IN PEPROCESS Process IN ULONG Key
+ParamCount=2
+@=FsRtlFastUnlockAllByKey
+[FsRtlFastUnlockSingle]
+1=IN PFILE_LOCK FileLock IN PFILE_OBJECT FileObject
+2=IN PLARGE_INTEGER FileOffset IN PLARGE_INTEGER Length
+3=IN PEPROCESS Process IN ULONG Key
+4=IN PVOID Context OPTIONAL IN BOOLEAN AlreadySynchronized
+ParamCount=4
+@=FsRtlFastUnlockSingle
+[FsRtlFindInTunnelCache]
+1=IN PTUNNEL Cache IN ULONGLONG DirectoryKey
+2=IN PUNICODE_STRING Name OUT PUNICODE_STRING ShortName
+3=OUT PUNICODE_STRING LongName IN OUT PULONG DataLength
+ParamCount=3
+@=FsRtlFindInTunnelCache
+[FsRtlFreeFileLock]
+ParamCount=0
+@=FsRtlFreeFileLock
+[FsRtlGetFileSize]
+1=IN PFILE_OBJECT FileObject IN OUT PLARGE_INTEGER FileSize
+ParamCount=1
+@=FsRtlGetFileSize
+[FsRtlGetNextFileLock]
+1=IN PFILE_LOCK FileLock IN BOOLEAN Restart
+ParamCount=1
+@=FsRtlGetNextFileLock
+[FsRtlInitializeFileLock]
+1=IN PFILE_LOCK FileLock IN PCOMPLETE_LOCK_IRP_ROUTINE CompleteLockIrpRoutine OPTIONAL
+ParamCount=1
+@=FsRtlInitializeFileLock
+[FsRtlInitializeOplock]
+ParamCount=0
+@=FsRtlInitializeOplock
+[FsRtlInitializeTunnelCache]
+ParamCount=0
+@=FsRtlInitializeTunnelCache
+[FsRtlIsNameInExpression]
+1=IN PUNICODE_STRING Expression IN PUNICODE_STRING Name
+2=IN BOOLEAN IgnoreCase IN PWCHAR UpcaseTable OPTIONAL
+ParamCount=2
+@=FsRtlIsNameInExpression
+[FsRtlIsNtstatusExpected]
+ParamCount=0
+@=FsRtlIsNtstatusExpected
+[FsRtlMdlReadComplete]
+1=IN PFILE_OBJECT FileObject IN PMDL MdlChain
+ParamCount=1
+@=FsRtlMdlReadComplete
+[FsRtlMdlReadCompleteDev]
+1=IN PFILE_OBJECT FileObject IN PMDL MdlChain
+ParamCount=1
+@=FsRtlMdlReadCompleteDev
+[FsRtlMdlWriteComplete]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+ParamCount=1
+@=FsRtlMdlWriteComplete
+[FsRtlMdlWriteCompleteDev]
+1=IN PFILE_OBJECT FileObject IN PLARGE_INTEGER FileOffset
+2=IN PMDL MdlChain IN PDEVICE_OBJECT DeviceObject
+ParamCount=2
+@=FsRtlMdlWriteCompleteDev
+[FsRtlNormalizeNtstatus]
+1=IN NTSTATUS Exception IN NTSTATUS GenericException
+ParamCount=1
+@=FsRtlNormalizeNtstatus
+[FsRtlNotifyChangeDirectory]
+1=IN PNOTIFY_SYNC NotifySync IN PVOID FsContext
+2=IN PSTRING FullDirectoryName IN PLIST_ENTRY NotifyList
+3=IN BOOLEAN WatchTree IN ULONG CompletionFilter
+ParamCount=3
+@=FsRtlNotifyChangeDirectory
+[FsRtlNotifyCleanup]
+1=IN PNOTIFY_SYNC NotifySync IN PLIST_ENTRY NotifyList
+ParamCount=1
+@=FsRtlNotifyCleanup
+[FsRtlNotifyFullChangeDirectory]
+1=IN PNOTIFY_SYNC NotifySync IN PLIST_ENTRY NotifyList
+2=IN PVOID FsContext IN PSTRING FullDirectoryName
+3=IN BOOLEAN WatchTree IN BOOLEAN IgnoreBuffer
+4=IN ULONG CompletionFilter IN PIRP NotifyIrp
+5=IN PCHECK_FOR_TRAVERSE_ACCESS TraverseCallback OPTIONAL IN PSECURITY_SUBJECT_CONTEXT SubjectContext OPTIONAL
+ParamCount=5
+@=FsRtlNotifyFullChangeDirectory
+[FsRtlNotifyFullReportChange]
+1=IN PNOTIFY_SYNC NotifySync IN PLIST_ENTRY NotifyList
+2=IN PSTRING FullTargetName IN USHORT TargetNameOffset
+3=IN PSTRING StreamName OPTIONAL IN PSTRING NormalizedParentName OPTIONAL
+4=IN ULONG FilterMatch IN ULONG Action
+ParamCount=4
+@=FsRtlNotifyFullReportChange
+[FsRtlNotifyInitializeSync]
+ParamCount=0
+@=FsRtlNotifyInitializeSync
+[FsRtlNotifyReportChange]
+1=IN PNOTIFY_SYNC NotifySync IN PLIST_ENTRY NotifyList
+2=IN PSTRING FullTargetName IN PUSHORT FileNamePartLength
+ParamCount=2
+@=FsRtlNotifyReportChange
+[FsRtlNotifyUninitializeSync]
+ParamCount=0
+@=FsRtlNotifyUninitializeSync
+[FsRtlNotifyVolumeEvent]
+1=IN PFILE_OBJECT FileObject IN ULONG EventCode
+ParamCount=1
+@=FsRtlNotifyVolumeEvent
+[FsRtlOplockFsctrl]
+1=IN POPLOCK Oplock IN PIRP Irp
+ParamCount=1
+@=FsRtlOplockFsctrl
+[FsRtlOplockIsFastIoPossible]
+ParamCount=0
+@=FsRtlOplockIsFastIoPossible
+[FsRtlPrivateLock]
+1=IN PFILE_LOCK FileLock IN PFILE_OBJECT FileObject
+2=IN PLARGE_INTEGER FileOffset IN PLARGE_INTEGER Length
+3=IN PEPROCESS Process IN ULONG Key
+4=IN BOOLEAN FailImmediately IN BOOLEAN ExclusiveLock
+5=OUT PIO_STATUS_BLOCK IoStatus IN PIRP Irp OPTIONAL
+6=IN PVOID Context IN BOOLEAN AlreadySynchronized
+ParamCount=6
+@=FsRtlPrivateLock
+[FsRtlProcessFileLock]
+1=IN PFILE_LOCK FileLock IN PIRP Irp
+ParamCount=1
+@=FsRtlProcessFileLock
+[FsRtlRegisterUncProvider]
+1=IN OUT PHANDLE MupHandle IN PUNICODE_STRING RedirectorDeviceName
+ParamCount=1
+@=FsRtlRegisterUncProvider
+[FsRtlUninitializeFileLock]
+ParamCount=0
+@=FsRtlUninitializeFileLock
+[FsRtlUninitializeOplock]
+ParamCount=0
+@=FsRtlUninitializeOplock
+[HalDisplayString]
+ParamCount=0
+@=HalDisplayString
+[HalQueryRealTimeClock]
+ParamCount=0
+@=HalQueryRealTimeClock
+[HalSetRealTimeClock]
+ParamCount=0
+@=HalSetRealTimeClock
+[IoAcquireVpbSpinLock]
+ParamCount=0
+@=IoAcquireVpbSpinLock
+[IoCheckDesiredAccess]
+1=IN OUT PACCESS_MASK DesiredAccess IN ACCESS_MASK GrantedAccess
+ParamCount=1
+@=IoCheckDesiredAccess
+[IoCheckEaBufferValidity]
+1=IN PFILE_FULL_EA_INFORMATION EaBuffer IN ULONG EaLength
+ParamCount=1
+@=IoCheckEaBufferValidity
+[IoCheckFunctionAccess]
+1=IN ACCESS_MASK GrantedAccess IN UCHAR MajorFunction
+2=IN UCHAR MinorFunction IN ULONG IoControlCode
+3=IN PFILE_INFORMATION_CLASS FileInformationClass OPTIONAL IN PFS_INFORMATION_CLASS FsInformationClass OPTIONAL
+ParamCount=3
+@=IoCheckFunctionAccess
+[IoCheckQuotaBufferValidity]
+1=IN PFILE_QUOTA_INFORMATION QuotaBuffer IN ULONG QuotaLength
+ParamCount=1
+@=IoCheckQuotaBufferValidity
+[IoCreateStreamFileObject]
+1=IN PFILE_OBJECT FileObject OPTIONAL IN PDEVICE_OBJECT DeviceObject OPTIONAL
+ParamCount=1
+@=IoCreateStreamFileObject
+[IoCreateStreamFileObjectLite]
+1=IN PFILE_OBJECT FileObject OPTIONAL IN PDEVICE_OBJECT DeviceObject OPTIONAL
+ParamCount=1
+@=IoCreateStreamFileObjectLite
+[IoFastQueryNetworkAttributes]
+1=IN POBJECT_ATTRIBUTES ObjectAttributes IN ACCESS_MASK DesiredAccess
+2=IN ULONG OpenOptions OUT PIO_STATUS_BLOCK IoStatus
+ParamCount=2
+@=IoFastQueryNetworkAttributes
+[IoGetAttachedDevice]
+ParamCount=0
+@=IoGetAttachedDevice
+[IoGetBaseFileSystemDeviceObject]
+ParamCount=0
+@=IoGetBaseFileSystemDeviceObject
+[IoGetRequestorProcess]
+ParamCount=0
+@=IoGetRequestorProcess
+[IoGetRequestorProcessId]
+ParamCount=0
+@=IoGetRequestorProcessId
+[IoGetTopLevelIrp]
+1=VOID NTKERNELAPI BOOLEAN NTAPI
+2=IoIsOperationSynchronous IN PIRP Irp
+ParamCount=2
+@=IoGetTopLevelIrp
+[IoIsSystemThread]
+ParamCount=0
+@=IoIsSystemThread
+[IoIsValidNameGraftingBuffer]
+1=IN PIRP Irp IN PREPARSE_DATA_BUFFER ReparseBuffer
+ParamCount=1
+@=IoIsValidNameGraftingBuffer
+[IoPageRead]
+1=IN PFILE_OBJECT FileObject IN PMDL Mdl
+2=IN PLARGE_INTEGER Offset IN PKEVENT Event
+ParamCount=2
+@=IoPageRead
+[IoQueryFileInformation]
+1=IN PFILE_OBJECT FileObject IN FILE_INFORMATION_CLASS FileInformationClass
+2=IN ULONG Length OUT PVOID FileInformation
+ParamCount=2
+@=IoQueryFileInformation
+[IoQueryVolumeInformation]
+1=IN PFILE_OBJECT FileObject IN FS_INFORMATION_CLASS FsInformationClass
+2=IN ULONG Length OUT PVOID FsInformation
+ParamCount=2
+@=IoQueryVolumeInformation
+[IoRegisterFileSystem]
+ParamCount=0
+@=IoRegisterFileSystem
+[IoRegisterFsRegistrationChange]
+1=IN PDRIVER_OBJECT DriverObject IN PDRIVER_FS_NOTIFICATION DriverNotificationRoutine
+ParamCount=1
+@=IoRegisterFsRegistrationChange
+[IoReleaseVpbSpinLock]
+ParamCount=0
+@=IoReleaseVpbSpinLock
+[IoSetDeviceToVerify]
+1=IN PETHREAD Thread IN PDEVICE_OBJECT DeviceObject
+ParamCount=1
+@=IoSetDeviceToVerify
+[IoSetInformation]
+1=IN PFILE_OBJECT FileObject IN FILE_INFORMATION_CLASS FileInformationClass
+2=IN ULONG Length IN PVOID FileInformation
+ParamCount=2
+@=IoSetInformation
+[IoSetTopLevelIrp]
+ParamCount=0
+@=IoSetTopLevelIrp
+[IoSynchronousPageWrite]
+1=IN PFILE_OBJECT FileObject IN PMDL Mdl
+2=IN PLARGE_INTEGER FileOffset IN PKEVENT Event
+ParamCount=2
+@=IoSynchronousPageWrite
+[IoThreadToProcess]
+ParamCount=0
+@=IoThreadToProcess
+[IoUnregisterFileSystem]
+ParamCount=0
+@=IoUnregisterFileSystem
+[IoUnregisterFsRegistrationChange]
+1=IN PDRIVER_OBJECT DriverObject IN PDRIVER_FS_NOTIFICATION DriverNotificationRoutine
+ParamCount=1
+@=IoUnregisterFsRegistrationChange
+[IoVerifyVolume]
+1=IN PDEVICE_OBJECT DeviceObject IN BOOLEAN AllowRawMount
+ParamCount=1
+@=IoVerifyVolume
+[KeAttachProcess]
+ParamCount=0
+@=KeAttachProcess
+[KeDetachProcess]
+1=VOID NTKERNELAPI VOID NTAPI
+2=KeInitializeQueue IN PRKQUEUE Queue
+ParamCount=2
+@=KeDetachProcess
+[KeInsertHeadQueue]
+1=IN PRKQUEUE Queue IN PLIST_ENTRY Entry
+ParamCount=1
+@=KeInsertHeadQueue
+[KeInsertQueue]
+1=IN PRKQUEUE Queue IN PLIST_ENTRY Entry
+ParamCount=1
+@=KeInsertQueue
+[KeInsertQueueApc]
+1=IN PKAPC Apc IN PVOID SystemArgument1
+2=IN PVOID SystemArgument2 IN KPRIORITY PriorityBoost
+ParamCount=2
+@=KeInsertQueueApc
+[KeReadStateQueue]
+ParamCount=0
+@=KeReadStateQueue
+[KeRemoveQueue]
+1=IN PRKQUEUE Queue IN KPROCESSOR_MODE WaitMode
+ParamCount=1
+@=KeRemoveQueue
+[KeRundownQueue]
+ParamCount=0
+@=KeRundownQueue
+[KeStackAttachProcess]
+1=IN PKPROCESS Process OUT PKAPC_STATE ApcState
+ParamCount=1
+@=KeStackAttachProcess
+[KeUnstackDetachProcess]
+ParamCount=0
+@=KeUnstackDetachProcess
+[MmCanFileBeTruncated]
+1=IN PSECTION_OBJECT_POINTERS SectionObjectPointer IN PLARGE_INTEGER NewFileSize
+ParamCount=1
+@=MmCanFileBeTruncated
+[MmFlushImageSection]
+1=IN PSECTION_OBJECT_POINTERS SectionObjectPointer IN MMFLUSH_TYPE FlushType
+ParamCount=1
+@=MmFlushImageSection
+[MmForceSectionClosed]
+1=IN PSECTION_OBJECT_POINTERS SectionObjectPointer IN BOOLEAN DelayClose
+ParamCount=1
+@=MmForceSectionClosed
+[MmIsRecursiveIoFault]
+1=VOID NTKERNELAPI NTSTATUS NTAPI
+2=MmMapViewOfSection IN PVOID SectionObject
+3=IN PEPROCESS Process IN OUT PVOID *BaseAddress
+4=IN ULONG ZeroBits IN ULONG CommitSize
+5=IN OUT PLARGE_INTEGER SectionOffset OPTIONAL IN OUT PULONG ViewSize
+6=IN SECTION_INHERIT InheritDisposition IN ULONG AllocationType
+ParamCount=6
+@=MmIsRecursiveIoFault
+[MmSetAddressRangeModified]
+1=IN PVOID Address IN ULONG Length
+ParamCount=1
+@=MmSetAddressRangeModified
+[ObCreateObject]
+1=IN KPROCESSOR_MODE ObjectAttributesAccessMode OPTIONAL IN POBJECT_TYPE ObjectType
+2=IN POBJECT_ATTRIBUTES ObjectAttributes OPTIONAL IN KPROCESSOR_MODE AccessMode
+3=IN OUT PVOID ParseContext OPTIONAL IN ULONG ObjectSize
+4=IN ULONG PagedPoolCharge OPTIONAL IN ULONG NonPagedPoolCharge OPTIONAL
+ParamCount=4
+@=ObCreateObject
+[ObGetObjectPointerCount]
+ParamCount=0
+@=ObGetObjectPointerCount
+[ObInsertObject]
+1=IN PVOID Object IN PACCESS_STATE PassedAccessState OPTIONAL
+2=IN ACCESS_MASK DesiredAccess IN ULONG AdditionalReferences
+3=OUT PVOID *ReferencedObject OPTIONAL OUT PHANDLE Handle
+ParamCount=3
+@=ObInsertObject
+[ObMakeTemporaryObject]
+ParamCount=0
+@=ObMakeTemporaryObject
+[ObOpenObjectByPointer]
+1=IN PVOID Object IN ULONG HandleAttributes
+2=IN PACCESS_STATE PassedAccessState OPTIONAL IN ACCESS_MASK DesiredAccess OPTIONAL
+3=IN POBJECT_TYPE ObjectType OPTIONAL IN KPROCESSOR_MODE AccessMode
+ParamCount=3
+@=ObOpenObjectByPointer
+[ObQueryNameString]
+1=IN PVOID Object OUT POBJECT_NAME_INFORMATION ObjectNameInfo
+2=IN ULONG Length OUT PULONG ReturnLength
+ParamCount=2
+@=ObQueryNameString
+[ObQueryObjectAuditingByHandle]
+1=IN HANDLE Handle OUT PBOOLEAN GenerateOnClose
+ParamCount=1
+@=ObQueryObjectAuditingByHandle
+[ObReferenceObjectByName]
+1=IN PUNICODE_STRING ObjectName IN ULONG Attributes
+2=IN PACCESS_STATE PassedAccessState OPTIONAL IN ACCESS_MASK DesiredAccess OPTIONAL
+3=IN POBJECT_TYPE ObjectType IN KPROCESSOR_MODE AccessMode
+4=IN OUT PVOID ParseContext OPTIONAL OUT PVOID *Object
+ParamCount=4
+@=ObReferenceObjectByName
+[PsChargePoolQuota]
+1=IN PEPROCESS Process IN POOL_TYPE PoolType
+ParamCount=1
+@=PsChargePoolQuota
+[PsGetProcessExitTime]
+1=VOID NTKERNELAPI BOOLEAN NTAPI
+2=PsIsThreadTerminating IN PETHREAD Thread
+ParamCount=2
+@=PsGetProcessExitTime
+[PsLookupProcessByProcessId]
+1=IN PVOID ProcessId OUT PEPROCESS *Process
+ParamCount=1
+@=PsLookupProcessByProcessId
+[PsLookupProcessThreadByCid]
+1=IN PCLIENT_ID Cid OUT PEPROCESS *Process OPTIONAL
+ParamCount=1
+@=PsLookupProcessThreadByCid
+[PsLookupThreadByThreadId]
+1=IN PVOID UniqueThreadId OUT PETHREAD *Thread
+ParamCount=1
+@=PsLookupThreadByThreadId
+[PsReferenceImpersonationToken]
+1=IN PETHREAD Thread OUT PBOOLEAN CopyOnUse
+2=OUT PBOOLEAN EffectiveOnly OUT PSECURITY_IMPERSONATION_LEVEL Level
+ParamCount=2
+@=PsReferenceImpersonationToken
+[PsReferencePrimaryToken]
+ParamCount=0
+@=PsReferencePrimaryToken
+[PsReturnPoolQuota]
+1=IN PEPROCESS Process IN POOL_TYPE PoolType
+ParamCount=1
+@=PsReturnPoolQuota
+[PsRevertToSelf]
+1=VOID NTSYSAPI NTSTATUS NTAPI
+2=RtlAbsoluteToSelfRelativeSD IN PSECURITY_DESCRIPTOR AbsoluteSecurityDescriptor
+3=IN OUT PSECURITY_DESCRIPTOR SelfRelativeSecurityDescriptor IN PULONG BufferLength
+ParamCount=3
+@=PsRevertToSelf
+[RtlAllocateHeap]
+1=IN HANDLE HeapHandle IN ULONG Flags
+ParamCount=1
+@=RtlAllocateHeap
+[RtlCompressBuffer]
+1=IN USHORT CompressionFormatAndEngine IN PUCHAR UncompressedBuffer
+2=IN ULONG UncompressedBufferSize OUT PUCHAR CompressedBuffer
+3=IN ULONG CompressedBufferSize IN ULONG UncompressedChunkSize
+4=OUT PULONG FinalCompressedSize IN PVOID WorkSpace
+ParamCount=4
+@=RtlCompressBuffer
+[RtlCompressChunks]
+1=IN PUCHAR UncompressedBuffer IN ULONG UncompressedBufferSize
+2=OUT PUCHAR CompressedBuffer IN ULONG CompressedBufferSize
+3=IN OUT PCOMPRESSED_DATA_INFO CompressedDataInfo IN ULONG CompressedDataInfoLength
+ParamCount=3
+@=RtlCompressChunks
+[RtlConvertSidToUnicodeString]
+1=OUT PUNICODE_STRING DestinationString IN PSID Sid
+ParamCount=1
+@=RtlConvertSidToUnicodeString
+[RtlCopySid]
+1=IN ULONG Length IN PSID Destination
+ParamCount=1
+@=RtlCopySid
+[RtlDecompressBuffer]
+1=IN USHORT CompressionFormat OUT PUCHAR UncompressedBuffer
+2=IN ULONG UncompressedBufferSize IN PUCHAR CompressedBuffer
+3=IN ULONG CompressedBufferSize OUT PULONG FinalUncompressedSize
+ParamCount=3
+@=RtlDecompressBuffer
+[RtlDecompressChunks]
+1=OUT PUCHAR UncompressedBuffer IN ULONG UncompressedBufferSize
+2=IN PUCHAR CompressedBuffer IN ULONG CompressedBufferSize
+3=IN PUCHAR CompressedTail IN ULONG CompressedTailSize
+ParamCount=3
+@=RtlDecompressChunks
+[RtlDecompressFragment]
+1=IN USHORT CompressionFormat OUT PUCHAR UncompressedFragment
+2=IN ULONG UncompressedFragmentSize IN PUCHAR CompressedBuffer
+3=IN ULONG CompressedBufferSize IN ULONG FragmentOffset
+4=OUT PULONG FinalUncompressedSize IN PVOID WorkSpace
+ParamCount=4
+@=RtlDecompressFragment
+[RtlDescribeChunk]
+1=IN USHORT CompressionFormat IN OUT PUCHAR *CompressedBuffer
+2=IN PUCHAR EndOfCompressedBufferPlus1 OUT PUCHAR *ChunkBuffer
+ParamCount=2
+@=RtlDescribeChunk
+[RtlEqualSid]
+1=IN PSID Sid1 IN PSID Sid2
+ParamCount=1
+@=RtlEqualSid
+[RtlFillMemoryUlong]
+1=IN PVOID Destination IN ULONG Length
+ParamCount=1
+@=RtlFillMemoryUlong
+[RtlFreeHeap]
+1=IN HANDLE HeapHandle IN ULONG Flags
+ParamCount=1
+@=RtlFreeHeap
+[RtlGenerate8dot3Name]
+1=IN PUNICODE_STRING Name IN BOOLEAN AllowExtendedCharacters
+2=IN OUT PGENERATE_NAME_CONTEXT Context OUT PUNICODE_STRING Name8dot3
+ParamCount=2
+@=RtlGenerate8dot3Name
+[RtlGetCompressionWorkSpaceSize]
+1=IN USHORT CompressionFormatAndEngine OUT PULONG CompressBufferWorkSpaceSize
+ParamCount=1
+@=RtlGetCompressionWorkSpaceSize
+[RtlGetDaclSecurityDescriptor]
+1=IN PSECURITY_DESCRIPTOR SecurityDescriptor OUT PBOOLEAN DaclPresent
+2=OUT PACL *Dacl OUT PBOOLEAN DaclDefaulted
+ParamCount=2
+@=RtlGetDaclSecurityDescriptor
+[RtlGetGroupSecurityDescriptor]
+1=IN PSECURITY_DESCRIPTOR SecurityDescriptor OUT PSID *Group
+ParamCount=1
+@=RtlGetGroupSecurityDescriptor
+[RtlGetOwnerSecurityDescriptor]
+1=IN PSECURITY_DESCRIPTOR SecurityDescriptor OUT PSID *Owner
+ParamCount=1
+@=RtlGetOwnerSecurityDescriptor
+[RtlInitializeSid]
+1=IN OUT PSID Sid IN PSID_IDENTIFIER_AUTHORITY IdentifierAuthority
+ParamCount=1
+@=RtlInitializeSid
+[RtlIsNameLegalDOS8Dot3]
+1=IN PUNICODE_STRING UnicodeName IN PANSI_STRING AnsiName
+ParamCount=1
+@=RtlIsNameLegalDOS8Dot3
+[RtlLengthRequiredSid]
+ParamCount=0
+@=RtlLengthRequiredSid
+[RtlLengthSid]
+ParamCount=0
+@=RtlLengthSid
+[RtlNtStatusToDosError]
+ParamCount=0
+@=RtlNtStatusToDosError
+[RtlReserveChunk]
+1=IN USHORT CompressionFormat IN OUT PUCHAR *CompressedBuffer
+2=IN PUCHAR EndOfCompressedBufferPlus1 OUT PUCHAR *ChunkBuffer
+ParamCount=2
+@=RtlReserveChunk
+[RtlSecondsSince1970ToTime]
+1=IN ULONG SecondsSince1970 OUT PLARGE_INTEGER Time
+ParamCount=1
+@=RtlSecondsSince1970ToTime
+[RtlSelfRelativeToAbsoluteSD]
+1=IN PSECURITY_DESCRIPTOR SelfRelativeSD OUT PSECURITY_DESCRIPTOR AbsoluteSD
+2=IN PULONG AbsoluteSDSize IN PACL Dacl
+3=IN PULONG DaclSize IN PACL Sacl
+4=IN PULONG SaclSize IN PSID Owner
+5=IN PULONG OwnerSize IN PSID PrimaryGroup
+ParamCount=5
+@=RtlSelfRelativeToAbsoluteSD
+[RtlSetGroupSecurityDescriptor]
+1=IN OUT PSECURITY_DESCRIPTOR SecurityDescriptor IN PSID Group
+ParamCount=1
+@=RtlSetGroupSecurityDescriptor
+[RtlSetOwnerSecurityDescriptor]
+1=IN OUT PSECURITY_DESCRIPTOR SecurityDescriptor IN PSID Owner
+ParamCount=1
+@=RtlSetOwnerSecurityDescriptor
+[RtlSetSaclSecurityDescriptor]
+1=IN OUT PSECURITY_DESCRIPTOR SecurityDescriptor IN BOOLEAN SaclPresent
+2=IN PACL Sacl IN BOOLEAN SaclDefaulted
+ParamCount=2
+@=RtlSetSaclSecurityDescriptor
+[RtlSubAuthorityCountSid]
+ParamCount=0
+@=RtlSubAuthorityCountSid
+[RtlSubAuthoritySid]
+1=IN PSID Sid IN ULONG SubAuthority
+ParamCount=1
+@=RtlSubAuthoritySid
+[RtlValidSid]
+ParamCount=0
+@=RtlValidSid
+[SeAppendPrivileges]
+1=PACCESS_STATE AccessState PPRIVILEGE_SET Privileges
+ParamCount=1
+@=SeAppendPrivileges
+[SeAuditingFileEvents]
+1=IN BOOLEAN AccessGranted IN PSECURITY_DESCRIPTOR SecurityDescriptor
+ParamCount=1
+@=SeAuditingFileEvents
+[SeAuditingFileOrGlobalEvents]
+1=IN BOOLEAN AccessGranted IN PSECURITY_DESCRIPTOR SecurityDescriptor
+ParamCount=1
+@=SeAuditingFileOrGlobalEvents
+[SeCaptureSubjectContext]
+ParamCount=0
+@=SeCaptureSubjectContext
+[SeCreateAccessState]
+1=OUT PACCESS_STATE AccessState IN PVOID AuxData
+2=IN ACCESS_MASK AccessMask IN PGENERIC_MAPPING Mapping
+ParamCount=2
+@=SeCreateAccessState
+[SeCreateClientSecurity]
+1=IN PETHREAD Thread IN PSECURITY_QUALITY_OF_SERVICE QualityOfService
+2=IN BOOLEAN RemoteClient OUT PSECURITY_CLIENT_CONTEXT ClientContext
+ParamCount=2
+@=SeCreateClientSecurity
+[SeCreateClientSecurityFromSubjectContext]
+1=IN PSECURITY_SUBJECT_CONTEXT SubjectContext IN PSECURITY_QUALITY_OF_SERVICE QualityOfService
+2=IN BOOLEAN ServerIsRemote OUT PSECURITY_CLIENT_CONTEXT ClientContext
+ParamCount=2
+@=SeCreateClientSecurityFromSubjectContext
+[SeDeleteObjectAuditAlarm]
+1=IN PVOID Object IN HANDLE Handle
+ParamCount=1
+@=SeDeleteObjectAuditAlarm
+[SeFreePrivileges]
+ParamCount=0
+@=SeFreePrivileges
+[SeImpersonateClient]
+1=IN PSECURITY_CLIENT_CONTEXT ClientContext IN PETHREAD ServerThread OPTIONAL
+ParamCount=1
+@=SeImpersonateClient
+[SeImpersonateClientEx]
+1=IN PSECURITY_CLIENT_CONTEXT ClientContext IN PETHREAD ServerThread OPTIONAL
+ParamCount=1
+@=SeImpersonateClientEx
+[SeLockSubjectContext]
+ParamCount=0
+@=SeLockSubjectContext
+[SeMarkLogonSessionForTerminationNotification]
+ParamCount=0
+@=SeMarkLogonSessionForTerminationNotification
+[SeOpenObjectAuditAlarm]
+1=IN PUNICODE_STRING ObjectTypeName IN PVOID Object OPTIONAL
+2=IN PUNICODE_STRING AbsoluteObjectName OPTIONAL IN PSECURITY_DESCRIPTOR SecurityDescriptor
+3=IN PACCESS_STATE AccessState IN BOOLEAN ObjectCreated
+4=IN BOOLEAN AccessGranted IN KPROCESSOR_MODE AccessMode
+ParamCount=4
+@=SeOpenObjectAuditAlarm
+[SeOpenObjectForDeleteAuditAlarm]
+1=IN PUNICODE_STRING ObjectTypeName IN PVOID Object OPTIONAL
+2=IN PUNICODE_STRING AbsoluteObjectName OPTIONAL IN PSECURITY_DESCRIPTOR SecurityDescriptor
+3=IN PACCESS_STATE AccessState IN BOOLEAN ObjectCreated
+4=IN BOOLEAN AccessGranted IN KPROCESSOR_MODE AccessMode
+ParamCount=4
+@=SeOpenObjectForDeleteAuditAlarm
+[SePrivilegeCheck]
+1=IN OUT PPRIVILEGE_SET RequiredPrivileges IN PSECURITY_SUBJECT_CONTEXT SubjectContext
+ParamCount=1
+@=SePrivilegeCheck
+[SeQueryAuthenticationIdToken]
+1=IN PACCESS_TOKEN Token OUT PLUID LogonId
+ParamCount=1
+@=SeQueryAuthenticationIdToken
+[SeQueryInformationToken]
+1=IN PACCESS_TOKEN Token IN TOKEN_INFORMATION_CLASS TokenInformationClass
+ParamCount=1
+@=SeQueryInformationToken
+[SeQuerySecurityDescriptorInfo]
+1=IN PSECURITY_INFORMATION SecurityInformation OUT PSECURITY_DESCRIPTOR SecurityDescriptor
+2=IN OUT PULONG Length IN PSECURITY_DESCRIPTOR *ObjectsSecurityDescriptor
+ParamCount=2
+@=SeQuerySecurityDescriptorInfo
+[SeQuerySessionIdToken]
+1=IN PACCESS_TOKEN Token IN PULONG SessionId
+ParamCount=1
+@=SeQuerySessionIdToken
+[SeRegisterLogonSessionTerminatedRoutine]
+ParamCount=0
+@=SeRegisterLogonSessionTerminatedRoutine
+[SeReleaseSubjectContext]
+ParamCount=0
+@=SeReleaseSubjectContext
+[SeSetAccessStateGenericMapping]
+1=PACCESS_STATE AccessState PGENERIC_MAPPING GenericMapping
+ParamCount=1
+@=SeSetAccessStateGenericMapping
+[SeSetSecurityDescriptorInfo]
+1=IN PVOID Object OPTIONAL IN PSECURITY_INFORMATION SecurityInformation
+2=IN PSECURITY_DESCRIPTOR SecurityDescriptor IN OUT PSECURITY_DESCRIPTOR *ObjectsSecurityDescriptor
+3=IN POOL_TYPE PoolType IN PGENERIC_MAPPING GenericMapping
+ParamCount=3
+@=SeSetSecurityDescriptorInfo
+[SeSetSecurityDescriptorInfoEx]
+1=IN PVOID Object OPTIONAL IN PSECURITY_INFORMATION SecurityInformation
+2=IN PSECURITY_DESCRIPTOR ModificationDescriptor IN OUT PSECURITY_DESCRIPTOR *ObjectsSecurityDescriptor
+3=IN ULONG AutoInheritFlags IN POOL_TYPE PoolType
+ParamCount=3
+@=SeSetSecurityDescriptorInfoEx
+[SeTokenIsAdmin]
+ParamCount=0
+@=SeTokenIsAdmin
+[SeTokenIsRestricted]
+ParamCount=0
+@=SeTokenIsRestricted
+[SeTokenType]
+ParamCount=0
+@=SeTokenType
+[SeUnlockSubjectContext]
+ParamCount=0
+@=SeUnlockSubjectContext
+[IN PSE_LOGON_SESSION_TERMINATED_ROUTINE CallbackRoutine]
+ParamCount=0
+@=IN PSE_LOGON_SESSION_TERMINATED_ROUTINE CallbackRoutine
+[ZwAdjustPrivilegesToken]
+1=IN HANDLE TokenHandle IN BOOLEAN DisableAllPrivileges
+2=IN PTOKEN_PRIVILEGES NewState IN ULONG BufferLength
+3=OUT PTOKEN_PRIVILEGES PreviousState OPTIONAL OUT PULONG ReturnLength
+ParamCount=3
+@=ZwAdjustPrivilegesToken
+[ZwAlertThread]
+ParamCount=0
+@=ZwAlertThread
+[ZwAllocateVirtualMemory]
+1=IN HANDLE ProcessHandle IN OUT PVOID *BaseAddress
+2=IN ULONG ZeroBits IN OUT PULONG RegionSize
+3=IN ULONG AllocationType IN ULONG Protect
+ParamCount=3
+@=ZwAllocateVirtualMemory
+[ZwAccessCheckAndAuditAlarm]
+1=IN PUNICODE_STRING SubsystemName IN PVOID HandleId
+2=IN PUNICODE_STRING ObjectTypeName IN PUNICODE_STRING ObjectName
+3=IN PSECURITY_DESCRIPTOR SecurityDescriptor IN ACCESS_MASK DesiredAccess
+4=IN PGENERIC_MAPPING GenericMapping IN BOOLEAN ObjectCreation
+5=OUT PACCESS_MASK GrantedAccess OUT PBOOLEAN AccessStatus
+ParamCount=5
+@=ZwAccessCheckAndAuditAlarm
+[ZwCancelIoFile]
+1=IN HANDLE FileHandle OUT PIO_STATUS_BLOCK IoStatusBlock
+ParamCount=1
+@=ZwCancelIoFile
+[ZwClearEvent]
+ParamCount=0
+@=ZwClearEvent
+[ZwCloseObjectAuditAlarm]
+1=IN PUNICODE_STRING SubsystemName IN PVOID HandleId
+ParamCount=1
+@=ZwCloseObjectAuditAlarm
+[ZwCreateSection]
+1=OUT PHANDLE SectionHandle IN ACCESS_MASK DesiredAccess
+2=IN POBJECT_ATTRIBUTES ObjectAttributes OPTIONAL IN PLARGE_INTEGER MaximumSize OPTIONAL
+3=IN ULONG SectionPageProtection IN ULONG AllocationAttributes
+ParamCount=3
+@=ZwCreateSection
+[ZwCreateSymbolicLinkObject]
+1=OUT PHANDLE SymbolicLinkHandle IN ACCESS_MASK DesiredAccess
+2=IN POBJECT_ATTRIBUTES ObjectAttributes IN PUNICODE_STRING TargetName
+ParamCount=2
+@=ZwCreateSymbolicLinkObject
+[ZwDeleteFile]
+ParamCount=0
+@=ZwDeleteFile
+[ZwDeleteValueKey]
+1=IN HANDLE Handle IN PUNICODE_STRING Name
+ParamCount=1
+@=ZwDeleteValueKey
+[ZwDeviceIoControlFile]
+1=IN HANDLE FileHandle IN HANDLE Event OPTIONAL
+2=IN PIO_APC_ROUTINE ApcRoutine OPTIONAL IN PVOID ApcContext OPTIONAL
+3=OUT PIO_STATUS_BLOCK IoStatusBlock IN ULONG IoControlCode
+4=IN PVOID InputBuffer OPTIONAL IN ULONG InputBufferLength
+5=OUT PVOID OutputBuffer OPTIONAL IN ULONG OutputBufferLength
+ParamCount=5
+@=ZwDeviceIoControlFile
+[ZwDisplayString]
+ParamCount=0
+@=ZwDisplayString
+[ZwDuplicateObject]
+1=IN HANDLE SourceProcessHandle IN HANDLE SourceHandle
+2=IN HANDLE TargetProcessHandle OPTIONAL OUT PHANDLE TargetHandle OPTIONAL
+3=IN ACCESS_MASK DesiredAccess IN ULONG HandleAttributes
+ParamCount=3
+@=ZwDuplicateObject
+[ZwDuplicateToken]
+1=IN HANDLE ExistingTokenHandle IN ACCESS_MASK DesiredAccess
+2=IN POBJECT_ATTRIBUTES ObjectAttributes IN BOOLEAN EffectiveOnly
+3=IN TOKEN_TYPE TokenType OUT PHANDLE NewTokenHandle
+ParamCount=3
+@=ZwDuplicateToken
+[ZwFlushInstructionCache]
+1=IN HANDLE ProcessHandle IN PVOID BaseAddress OPTIONAL
+ParamCount=1
+@=ZwFlushInstructionCache
+[ZwFlushVirtualMemory]
+1=IN HANDLE ProcessHandle IN OUT PVOID *BaseAddress
+2=IN OUT PULONG FlushSize OUT PIO_STATUS_BLOCK IoStatusBlock
+ParamCount=2
+@=ZwFlushVirtualMemory
+[ZwFreeVirtualMemory]
+1=IN HANDLE ProcessHandle IN OUT PVOID *BaseAddress
+2=IN OUT PULONG RegionSize IN ULONG FreeType
+ParamCount=2
+@=ZwFreeVirtualMemory
+[ZwFsControlFile]
+1=IN HANDLE FileHandle IN HANDLE Event OPTIONAL
+2=IN PIO_APC_ROUTINE ApcRoutine OPTIONAL IN PVOID ApcContext OPTIONAL
+3=OUT PIO_STATUS_BLOCK IoStatusBlock IN ULONG FsControlCode
+4=IN PVOID InputBuffer OPTIONAL IN ULONG InputBufferLength
+5=OUT PVOID OutputBuffer OPTIONAL IN ULONG OutputBufferLength
+ParamCount=5
+@=ZwFsControlFile
+[ZwInitiatePowerAction]
+1=IN POWER_ACTION SystemAction IN SYSTEM_POWER_STATE MinSystemState
+2=IN ULONG Flags IN BOOLEAN Asynchronous
+ParamCount=2
+@=ZwInitiatePowerAction
+[ZwLoadDriver]
+ParamCount=0
+@=ZwLoadDriver
+[ZwLoadKey]
+1=IN POBJECT_ATTRIBUTES KeyObjectAttributes IN POBJECT_ATTRIBUTES FileObjectAttributes
+ParamCount=1
+@=ZwLoadKey
+[ZwNotifyChangeKey]
+1=IN HANDLE KeyHandle IN HANDLE EventHandle OPTIONAL
+2=IN PIO_APC_ROUTINE ApcRoutine OPTIONAL IN PVOID ApcContext OPTIONAL
+3=OUT PIO_STATUS_BLOCK IoStatusBlock IN ULONG NotifyFilter
+4=IN BOOLEAN WatchSubtree IN PVOID Buffer
+5=IN ULONG BufferLength IN BOOLEAN Asynchronous
+ParamCount=5
+@=ZwNotifyChangeKey
+[ZwOpenDirectoryObject]
+1=OUT PHANDLE DirectoryHandle IN ACCESS_MASK DesiredAccess
+ParamCount=1
+@=ZwOpenDirectoryObject
+[ZwOpenEvent]
+1=OUT PHANDLE EventHandle IN ACCESS_MASK DesiredAccess
+ParamCount=1
+@=ZwOpenEvent
+[ZwOpenProcess]
+1=OUT PHANDLE ProcessHandle IN ACCESS_MASK DesiredAccess
+2=IN POBJECT_ATTRIBUTES ObjectAttributes IN PCLIENT_ID ClientId OPTIONAL
+ParamCount=2
+@=ZwOpenProcess
+[ZwOpenProcessToken]
+1=IN HANDLE ProcessHandle IN ACCESS_MASK DesiredAccess
+ParamCount=1
+@=ZwOpenProcessToken
+[ZwOpenThread]
+1=OUT PHANDLE ThreadHandle IN ACCESS_MASK DesiredAccess
+2=IN POBJECT_ATTRIBUTES ObjectAttributes IN PCLIENT_ID ClientId
+ParamCount=2
+@=ZwOpenThread
+[ZwOpenThreadToken]
+1=IN HANDLE ThreadHandle IN ACCESS_MASK DesiredAccess
+2=IN BOOLEAN OpenAsSelf OUT PHANDLE TokenHandle
+ParamCount=2
+@=ZwOpenThreadToken
+[ZwPowerInformation]
+1=IN POWER_INFORMATION_LEVEL PowerInformationLevel IN PVOID InputBuffer OPTIONAL
+2=IN ULONG InputBufferLength OUT PVOID OutputBuffer OPTIONAL
+ParamCount=2
+@=ZwPowerInformation
+[ZwPulseEvent]
+1=IN HANDLE EventHandle OUT PULONG PreviousState OPTIONAL
+ParamCount=1
+@=ZwPulseEvent
+[ZwQueryDefaultLocale]
+1=IN BOOLEAN ThreadOrSystem OUT PLCID Locale
+ParamCount=1
+@=ZwQueryDefaultLocale
+[ZwQueryDirectoryFile]
+1=IN HANDLE FileHandle IN HANDLE Event OPTIONAL
+2=IN PIO_APC_ROUTINE ApcRoutine OPTIONAL IN PVOID ApcContext OPTIONAL
+3=OUT PIO_STATUS_BLOCK IoStatusBlock OUT PVOID FileInformation
+4=IN ULONG Length IN FILE_INFORMATION_CLASS FileInformationClass
+5=IN BOOLEAN ReturnSingleEntry IN PUNICODE_STRING FileName OPTIONAL
+ParamCount=5
+@=ZwQueryDirectoryFile
+[ZwQueryDirectoryObject]
+1=IN HANDLE DirectoryHandle OUT PVOID Buffer
+2=IN ULONG Length IN BOOLEAN ReturnSingleEntry
+3=IN BOOLEAN RestartScan IN OUT PULONG Context
+ParamCount=3
+@=ZwQueryDirectoryObject
+[ZwQueryEaFile]
+1=IN HANDLE FileHandle OUT PIO_STATUS_BLOCK IoStatusBlock
+2=OUT PVOID Buffer IN ULONG Length
+3=IN BOOLEAN ReturnSingleEntry IN PVOID EaList OPTIONAL
+4=IN ULONG EaListLength IN PULONG EaIndex OPTIONAL
+ParamCount=4
+@=ZwQueryEaFile
+[ZwQueryInformationProcess]
+1=IN HANDLE ProcessHandle IN PROCESSINFOCLASS ProcessInformationClass
+2=OUT PVOID ProcessInformation IN ULONG ProcessInformationLength
+ParamCount=2
+@=ZwQueryInformationProcess
+[ZwQueryInformationToken]
+1=IN HANDLE TokenHandle IN TOKEN_INFORMATION_CLASS TokenInformationClass
+2=OUT PVOID TokenInformation IN ULONG Length
+ParamCount=2
+@=ZwQueryInformationToken
+[ZwQueryObject]
+1=IN HANDLE ObjectHandle IN OBJECT_INFORMATION_CLASS ObjectInformationClass
+2=OUT PVOID ObjectInformation IN ULONG Length
+ParamCount=2
+@=ZwQueryObject
+[ZwQuerySection]
+1=IN HANDLE SectionHandle IN SECTION_INFORMATION_CLASS SectionInformationClass
+2=OUT PVOID SectionInformation IN ULONG SectionInformationLength
+ParamCount=2
+@=ZwQuerySection
+[ZwQuerySecurityObject]
+1=IN HANDLE FileHandle IN SECURITY_INFORMATION SecurityInformation
+2=OUT PSECURITY_DESCRIPTOR SecurityDescriptor IN ULONG Length
+ParamCount=2
+@=ZwQuerySecurityObject
+[ZwQuerySystemInformation]
+1=IN SYSTEM_INFORMATION_CLASS SystemInformationClass OUT PVOID SystemInformation
+2=IN ULONG Length OUT PULONG ReturnLength
+ParamCount=2
+@=ZwQuerySystemInformation
+[ZwQueryVolumeInformationFile]
+1=IN HANDLE FileHandle OUT PIO_STATUS_BLOCK IoStatusBlock
+2=OUT PVOID FsInformation IN ULONG Length
+ParamCount=2
+@=ZwQueryVolumeInformationFile
+[ZwReplaceKey]
+1=IN POBJECT_ATTRIBUTES NewFileObjectAttributes IN HANDLE KeyHandle
+ParamCount=1
+@=ZwReplaceKey
+[ZwResetEvent]
+1=IN HANDLE EventHandle OUT PULONG PreviousState OPTIONAL
+ParamCount=1
+@=ZwResetEvent
+[ZwRestoreKey]
+1=IN HANDLE KeyHandle IN HANDLE FileHandle
+ParamCount=1
+@=ZwRestoreKey
+[ZwSaveKey]
+1=IN HANDLE KeyHandle IN HANDLE FileHandle
+ParamCount=1
+@=ZwSaveKey
+[ZwSetDefaultLocale]
+1=IN BOOLEAN ThreadOrSystem IN LCID Locale
+ParamCount=1
+@=ZwSetDefaultLocale
+[ZwSetDefaultUILanguage]
+ParamCount=0
+@=ZwSetDefaultUILanguage
+[ZwSetEaFile]
+1=IN HANDLE FileHandle OUT PIO_STATUS_BLOCK IoStatusBlock
+2=OUT PVOID Buffer IN ULONG Length
+ParamCount=2
+@=ZwSetEaFile
+[ZwSetEvent]
+1=IN HANDLE EventHandle OUT PULONG PreviousState OPTIONAL
+ParamCount=1
+@=ZwSetEvent
+[ZwSetInformationObject]
+1=IN HANDLE ObjectHandle IN OBJECT_INFORMATION_CLASS ObjectInformationClass
+2=IN PVOID ObjectInformation IN ULONG ObjectInformationLength
+ParamCount=2
+@=ZwSetInformationObject
+[ZwSetInformationProcess]
+1=IN HANDLE ProcessHandle IN PROCESSINFOCLASS ProcessInformationClass
+2=IN PVOID ProcessInformation IN ULONG ProcessInformationLength
+ParamCount=2
+@=ZwSetInformationProcess
+[ZwSetSecurityObject]
+1=IN HANDLE Handle IN SECURITY_INFORMATION SecurityInformation
+ParamCount=1
+@=ZwSetSecurityObject
+[ZwSetSystemInformation]
+1=IN SYSTEM_INFORMATION_CLASS SystemInformationClass IN PVOID SystemInformation
+ParamCount=1
+@=ZwSetSystemInformation
+[ZwSetSystemTime]
+1=IN PLARGE_INTEGER NewTime OUT PLARGE_INTEGER OldTime OPTIONAL
+ParamCount=1
+@=ZwSetSystemTime
+[ZwSetVolumeInformationFile]
+1=IN HANDLE FileHandle OUT PIO_STATUS_BLOCK IoStatusBlock
+2=IN PVOID FsInformation IN ULONG Length
+ParamCount=2
+@=ZwSetVolumeInformationFile
+[ZwTerminateProcess]
+1=IN HANDLE ProcessHandle OPTIONAL IN NTSTATUS ExitStatus
+ParamCount=1
+@=ZwTerminateProcess
+[ZwUnloadDriver]
+ParamCount=0
+@=ZwUnloadDriver
+[ZwUnloadKey]
+ParamCount=0
+@=ZwUnloadKey
+[ZwWaitForSingleObject]
+1=IN HANDLE Handle IN BOOLEAN Alertable
+ParamCount=1
+@=ZwWaitForSingleObject
+[ZwWaitForMultipleObjects]
+1=IN ULONG HandleCount IN PHANDLE Handles
+2=IN WAIT_TYPE WaitType IN BOOLEAN Alertable
+ParamCount=2
+@=ZwWaitForMultipleObjects
+[ZwYieldExecution]
+1=VOID
+ParamCount=1
+@=ZwYieldExecution

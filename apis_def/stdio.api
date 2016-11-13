@@ -1,0 +1,251 @@
+[constchar *]
+ParamCount=0
+@=constchar *
+[_scanf]
+1=... char *
+ParamCount=1
+@=_scanf
+[strchr]
+1=char char
+ParamCount=1
+@=strchr
+[memcpy]
+1=size_t constvoid
+2=* void
+ParamCount=2
+@= memcpy
+[size_t]
+1=constvoid *
+2=constvoid *
+ParamCount=2
+@=size_t
+[memset]
+1=size_t int
+2=void *
+ParamCount=2
+@= memset
+[_strset]
+1=int char
+ParamCount=1
+@= _strset
+[strcpy]
+1=constchar *
+2=char *
+ParamCount=2
+@= strcpy
+[strcat]
+1=constchar *
+2=char *
+ParamCount=2
+@= strcat
+[constchar]
+1=* constchar
+2=* strcmp
+ParamCount=2
+@=constchar
+[strlen]
+1=constchar *
+ParamCount=1
+@= strlen
+[_chdir]
+1=constchar *
+ParamCount=1
+@=_chdir
+[_getcwd]
+1=int char
+ParamCount=1
+@=_getcwd
+[_mkdir]
+1=constchar *
+ParamCount=1
+@=_mkdir
+[_rmdir]
+1=constchar *
+ParamCount=1
+@=_rmdir
+[_fullpath]
+1=size_t constchar
+2=* char
+ParamCount=2
+@=_fullpath
+[_splitpath]
+1=char *
+2=char *
+3=char *
+4=char *
+5=constchar *
+ParamCount=5
+@=_splitpath
+[_makepath]
+1=constchar *
+2=constchar *
+3=constchar *
+4=constchar *
+5=char *
+ParamCount=5
+@=_makepath
+[_findfirst]
+1=struct_finddata_t *
+2=constchar *
+ParamCount=2
+@=_findfirst
+[_findnext]
+1=struct_finddata_t *
+ParamCount=1
+@=_findnext
+[_findclose]
+ParamCount=0
+@=_findclose
+[memccpy]
+1=unsignedint int
+2=constvoid *
+3=void *
+ParamCount=3
+@=memccpy
+[memicmp]
+1=unsignedint constvoid
+2=* constvoid
+ParamCount=2
+@=memicmp
+[strcmpi]
+1=constchar *
+2=constchar *
+ParamCount=2
+@=strcmpi
+[stricmp]
+1=constchar *
+2=constchar *
+ParamCount=2
+@=stricmp
+[strdup]
+1=constchar *
+ParamCount=1
+@=strdup
+[strlwr]
+1=char *
+ParamCount=1
+@=strlwr
+[strnicmp]
+1=size_t constchar
+2=* constchar
+ParamCount=2
+@=strnicmp
+[strnset]
+1=size_t int
+2=char *
+ParamCount=2
+@=strnset
+[strrev]
+1=char *
+ParamCount=1
+@=strrev
+[strset]
+1=int char
+ParamCount=1
+@=strset
+[strupr]
+1=char *
+ParamCount=1
+@=strupr
+[_strcmpi]
+1=constchar *
+2=constchar *
+ParamCount=2
+@=_strcmpi
+[_stricmp]
+1=constchar *
+2=constchar *
+ParamCount=2
+@=_stricmp
+[strcoll]
+1=constchar *
+2=constchar *
+ParamCount=2
+@=strcoll
+[_stricoll]
+1=constchar *
+2=constchar *
+ParamCount=2
+@=_stricoll
+[_strncoll]
+1=size_t constchar
+2=* constchar
+ParamCount=2
+@=_strncoll
+[_strnicoll]
+1=size_t constchar
+2=* constchar
+ParamCount=2
+@=_strnicoll
+[strcspn]
+1=constchar *
+2=constchar *
+ParamCount=2
+@= strcspn
+[_strdup]
+1=constchar *
+ParamCount=1
+@= _strdup
+[_strerror]
+1=constchar *
+ParamCount=1
+@= _strerror
+[strerror]
+ParamCount=0
+@= strerror
+[_strlwr]
+1=char *
+ParamCount=1
+@= _strlwr
+[strncat]
+1=size_t constchar
+2=* char
+ParamCount=2
+@= strncat
+[strncpy]
+1=size_t constchar
+2=* char
+ParamCount=2
+@= strncpy
+[_strnset]
+1=size_t int
+2=char *
+ParamCount=2
+@= _strnset
+[strpbrk]
+1=constchar *
+2=constchar *
+ParamCount=2
+@= strpbrk
+[strrchr]
+1=int constchar
+ParamCount=1
+@= strrchr
+[_strrev]
+1=char *
+ParamCount=1
+@= _strrev
+[strspn]
+1=constchar *
+2=constchar *
+ParamCount=2
+@= strspn
+[strstr]
+1=constchar *
+2=constchar *
+ParamCount=2
+@= strstr
+[strtok]
+1=constchar *
+2=char *
+ParamCount=2
+@= strtok
+[_strupr]
+1=char *
+ParamCount=1
+@= _strupr
+[strxfrm]
+1=size_t constchar
+2=* char
+ParamCount=2
+@= strxfrm 

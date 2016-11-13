@@ -1,0 +1,749 @@
+[PlaySound]
+1=DWORD fdwSound
+2=HMODULE hmod
+3=LPCTSTR pszSound
+ParamCount=3
+@=PlaySound
+[PlaySoundA]
+1=DWORD fdwSound
+2=HMODULE hmod
+3=LPCTSTR pszSound
+ParamCount=3
+@=PlaySoundA
+[PlaySoundW]
+1=DWORD fdwSound
+2=HMODULE hmod
+3=LPCTSTR pszSound
+ParamCount=3
+@=PlaySoundW
+[auxGetDevCaps]
+1=UINT cbCaps
+2=LPAUXCAPS lpCaps
+3=UINT_PTR uDeviceID
+ParamCount=3
+@=auxGetDevCaps
+[auxGetNumDevs]
+ParamCount=0
+@=auxGetNumDevs
+[auxGetVolume]
+1=LPDWORD lpdwVolume
+2=UINT uDeviceID
+ParamCount=2
+@=auxGetVolume
+[auxOutMessage]
+1=DWORD_PTR dwParam2
+2=DWORD_PTR dwParam1
+3=UINT uMsg
+4=UINT uDeviceID
+ParamCount=4
+@=auxOutMessage
+[auxSetVolume]
+1=DWORD dwVolume
+2=UINT uDeviceID
+ParamCount=2
+@=auxSetVolume
+[joyConfigChanged]
+1=DWORD dwFlags
+ParamCount=1
+@=joyConfigChanged
+[joyGetDevCaps]
+1=UINT cbjc
+2=LPJOYCAPS pjc
+3=UINT_PTR uJoyID
+ParamCount=3
+@=joyGetDevCaps
+[joyGetNumDevs]
+ParamCount=0
+@=joyGetNumDevs
+[joyGetPos]
+1=LPJOYINFO pji
+2=UINT uJoyID
+ParamCount=2
+@=joyGetPos
+[joyGetPosEx]
+1=LPJOYINFOEX pji
+2=UINT uJoyID
+ParamCount=2
+@=joyGetPosEx
+[joyGetThreshold]
+1=LPUINT puThreshold
+2=UINT uJoyID
+ParamCount=2
+@=joyGetThreshold
+[joyReleaseCapture]
+1=UINT uJoyID
+ParamCount=1
+@=joyReleaseCapture
+[joySetCapture]
+1=BOOL fChanged
+2=UINT uPeriod
+3=UINT uJoyID
+4=HWND hwnd
+ParamCount=4
+@=joySetCapture
+[joySetThreshold]
+1=UINT uThreshold
+2=UINT uJoyID
+ParamCount=2
+@=joySetThreshold
+[mciExecute]
+1=LPCSTR pszCommand
+ParamCount=1
+@=mciExecute
+[mciGetCreatorTask]
+1=MCIDEVICEID IDDevice
+ParamCount=1
+@=mciGetCreatorTask
+[mciGetDeviceID]
+1=LPCTSTR lpszDevice
+ParamCount=1
+@=mciGetDeviceID
+[mciGetDeviceIDFromElementID]
+1=LPCTSTR lpstrType
+2=DWORD dwElementID
+ParamCount=2
+@=mciGetDeviceIDFromElementID
+[mciGetErrorString]
+1=UINT cchErrorText
+2=LPTSTR lpszErrorText
+3=DWORD fdwError
+ParamCount=3
+@=mciGetErrorString
+[mciGetYieldProc]
+1=LPDWORD lpdwYieldData
+2=MCIDEVICEID IDDevice
+ParamCount=2
+@=mciGetYieldProc
+[mciSendCommand]
+1=DWORD_PTR dwParam
+2=DWORD fdwCommand
+3=UINT uMsg
+4=MCIDEVICEID IDDevice
+ParamCount=4
+@=mciSendCommand
+[mciSendString]
+1=HANDLE hwndCallback
+2=UINT cchReturn
+3=LPTSTR lpszReturnString
+4=LPCTSTR lpszCommand
+ParamCount=4
+@=mciSendString
+[mciSendStringA]
+1=HANDLE hwndCallback
+2=UINT uReturnLength
+3=LPTSTR IpstrReturnString
+4=LPCTSTR IpstrCommand
+ParamCount=4
+@=mciSendStringA
+[mciSendStringW]
+1=HANDLE hwndCallback
+2=UINT uReturnLength
+3=LPTSTR IpstrReturnString
+4=LPCTSTR IpstrCommand
+ParamCount=4
+@=mciSendStringW
+[mciSetYieldProc]
+1=DWORD dwYieldData
+2=YIELDPROC yp
+3=MCIDEVICEID IDDevice
+ParamCount=3
+@=mciSetYieldProc
+[midiConnect]
+1=LPVOID pReserved
+2=HMIDIOUT hmo
+3=HMIDI hMidi
+ParamCount=3
+@=midiConnect
+[midiDisconnect]
+1=LPVOID pReserved
+2=HMIDIOUT hmo
+3=HMIDI hMidi
+ParamCount=3
+@=midiDisconnect
+[midiInAddBuffer]
+1=UINT cbMidiInHdr
+2=LPMIDIHDR lpMidiInHdr
+3=HMIDIIN hMidiIn
+ParamCount=3
+@=midiInAddBuffer
+[midiInClose]
+1=HMIDIIN hMidiIn
+ParamCount=1
+@=midiInClose
+[midiInGetDevCaps]
+1=UINT cbMidiInCaps
+2=LPMIDIINCAPS lpMidiInCaps
+3=UINT_PTR uDeviceID
+ParamCount=3
+@=midiInGetDevCaps
+[midiInGetErrorText]
+1=UINT cchText
+2=LPTSTR lpText
+3=MMRESULT wError
+ParamCount=3
+@=midiInGetErrorText
+[midiInGetID]
+1=LPUINT puDeviceID
+2=HMIDIIN hmi
+ParamCount=2
+@=midiInGetID
+[midiInGetNumDevs]
+ParamCount=0
+@=midiInGetNumDevs
+[midiInMessage]
+1=DWORD_PTR dw2
+2=DWORD_PTR dw1
+3=UINT msg
+4=HMIDIIN deviceID
+ParamCount=4
+@=midiInMessage
+[midiInOpen]
+1=DWORD dwFlags
+2=DWORD_PTR dwCallbackInstance
+3=DWORD_PTR dwCallback
+4=UINT_PTR uDeviceID
+5=LPHMIDIIN lphMidiIn
+ParamCount=5
+@=midiInOpen
+[midiInPrepareHeader]
+1=UINT cbMidiInHdr
+2=LPMIDIHDR lpMidiInHdr
+3=HMIDIIN hMidiIn
+ParamCount=3
+@=midiInPrepareHeader
+[midiInReset]
+1=HMIDIIN hMidiIn
+ParamCount=1
+@=midiInReset
+[midiInStart]
+1=HMIDIIN hMidiIn
+ParamCount=1
+@=midiInStart
+[midiInStop]
+1=HMIDIIN hMidiIn
+ParamCount=1
+@=midiInStop
+[midiInUnprepareHeader]
+1=UINT cbMidiInHdr
+2=LPMIDIHDR lpMidiInHdr
+3=HMIDIIN hMidiIn
+ParamCount=3
+@=midiInUnprepareHeader
+[midiOutCacheDrumPatches]
+1=UINT wFlags
+2=WORD* lpKeyArray
+3=UINT wPatch
+4=HMIDIOUT hmo
+ParamCount=4
+@=midiOutCacheDrumPatches
+[midiOutCachePatches]
+1=UINT wFlags
+2=WORD* lpPatchArray
+3=UINT wBank
+4=HMIDIOUT hmo
+ParamCount=4
+@=midiOutCachePatches
+[midiOutClose]
+1=HMIDIOUT hmo
+ParamCount=1
+@=midiOutClose
+[midiOutGetDevCaps]
+1=UINT cbMidiOutCaps
+2=LPMIDIOUTCAPS lpMidiOutCaps
+3=UINT_PTR uDeviceID
+ParamCount=3
+@=midiOutGetDevCaps
+[midiOutGetErrorText]
+1=UINT cchText
+2=LPTSTR lpText
+3=MMRESULT mmrError
+ParamCount=3
+@=midiOutGetErrorText
+[midiOutGetID]
+1=LPUINT puDeviceID
+2=HMIDIOUT hmo
+ParamCount=2
+@=midiOutGetID
+[midiOutGetNumDevs]
+ParamCount=0
+@=midiOutGetNumDevs
+[midiOutGetVolume]
+1=LPDWORD lpdwVolume
+2=HMIDIOUT hmo
+ParamCount=2
+@=midiOutGetVolume
+[midiOutLongMsg]
+1=UINT cbMidiOutHdr
+2=LPMIDIHDR lpMidiOutHdr
+3=HMIDIOUT hmo
+ParamCount=3
+@=midiOutLongMsg
+[midiOutMessage]
+1=DWORD_PTR dw2
+2=DWORD_PTR dw1
+3=UINT msg
+4=HMIDIOUT deviceID
+ParamCount=4
+@=midiOutMessage
+[midiOutOpen]
+1=DWORD dwFlags
+2=DWORD_PTR dwCallbackInstance
+3=DWORD_PTR dwCallback
+4=UINT_PTR uDeviceID
+5=LPHMIDIOUT lphmo
+ParamCount=5
+@=midiOutOpen
+[midiOutPrepareHeader]
+1=UINT cbMidiOutHdr
+2=LPMIDIHDR lpMidiOutHdr
+3=HMIDIOUT hmo
+ParamCount=3
+@=midiOutPrepareHeader
+[midiOutReset]
+1=HMIDIOUT hmo
+ParamCount=1
+@=midiOutReset
+[midiOutSetVolume]
+1=DWORD dwVolume
+2=HMIDIOUT hmo
+ParamCount=2
+@=midiOutSetVolume
+[midiOutShortMsg]
+1=DWORD dwMsg
+2=HMIDIOUT hmo
+ParamCount=2
+@=midiOutShortMsg
+[midiOutUnprepareHeader]
+1=UINT cbMidiOutHdr
+2=LPMIDIHDR lpMidiOutHdr
+3=HMIDIOUT hmo
+ParamCount=3
+@=midiOutUnprepareHeader
+[midiStreamClose]
+1=HMIDISTRM hStream
+ParamCount=1
+@=midiStreamClose
+[midiStreamOpen]
+1=DWORD fdwOpen
+2=DWORD_PTR dwInstance
+3=DWORD_PTR dwCallback
+4=DWORD cMidi
+5=LPUINT puDeviceID
+6=LPHMIDISTRM lphStream
+ParamCount=6
+@=midiStreamOpen
+[midiStreamOut]
+1=UINT cbMidiHdr
+2=LPMIDIHDR lpMidiHdr
+3=HMIDISTRM hMidiStream
+ParamCount=3
+@=midiStreamOut
+[midiStreamPause]
+1=HMIDISTRM hms
+ParamCount=1
+@=midiStreamPause
+[midiStreamPosition]
+1=UINT cbmmt
+2=LPMMTIME pmmt
+3=HMIDISTRM hms
+ParamCount=3
+@=midiStreamPosition
+[midiStreamProperty]
+1=DWORD dwProperty
+2=LPBYTE lppropdata
+3=HMIDISTRM hm
+ParamCount=3
+@=midiStreamProperty
+[midiStreamRestart]
+1=HMIDISTRM hms
+ParamCount=1
+@=midiStreamRestart
+[midiStreamStop]
+1=HMIDISTRM hms
+ParamCount=1
+@=midiStreamStop
+[mixerClose]
+1=HMIXER hmx
+ParamCount=1
+@=mixerClose
+[mixerGetControlDetails]
+1=DWORD fdwDetails
+2=LPMIXERCONTROLDETAILS pmxcd
+3=HMIXEROBJ hmxobj
+ParamCount=3
+@=mixerGetControlDetails
+[mixerGetDevCaps]
+1=UINT cbmxcaps
+2=LPMIXERCAPS pmxcaps
+3=UINT_PTR uMxId
+ParamCount=3
+@=mixerGetDevCaps
+[mixerGetID]
+1=DWORD fdwId
+2=UINT* puMxId
+3=HMIXEROBJ hmxobj
+ParamCount=3
+@=mixerGetID
+[mixerGetLineControls]
+1=DWORD fdwControls
+2=LPMIXERLINECONTROLS pmxlc
+3=HMIXEROBJ hmxobj
+ParamCount=3
+@=mixerGetLineControls
+[mixerGetLineInfo]
+1=DWORD fdwInfo
+2=LPMIXERLINE pmxl
+3=HMIXEROBJ hmxobj
+ParamCount=3
+@=mixerGetLineInfo
+[mixerGetNumDevs]
+ParamCount=0
+@=mixerGetNumDevs
+[mixerMessage]
+1=DWORD_PTR dwParam2
+2=DWORD_PTR dwParam1
+3=UINT uMsg
+4=HMIXER driverID
+ParamCount=4
+@=mixerMessage
+[mixerOpen]
+1=DWORD fdwOpen
+2=DWORD_PTR dwInstance
+3=DWORD_PTR dwCallback
+4=UINT uMxId
+5=LPHMIXER phmx
+ParamCount=5
+@=mixerOpen
+[mixerSetControlDetails]
+1=DWORD fdwDetails
+2=LPMIXERCONTROLDETAILS pmxcd
+3=HMIXEROBJ hmxobj
+ParamCount=3
+@=mixerSetControlDetails
+[mmioAdvance]
+1=UINT wFlags
+2=LPMMIOINFO lpmmioinfo
+3=HMMIO hmmio
+ParamCount=3
+@=mmioAdvance
+[mmioAscend]
+1=UINT wFlags
+2=LPMMCKINFO lpck
+3=HMMIO hmmio
+ParamCount=3
+@=mmioAscend
+[mmioClose]
+1=UINT wFlags
+2=HMMIO hmmio
+ParamCount=2
+@=mmioClose
+[mmioCreateChunk]
+1=UINT wFlags
+2=LPMMCKINFO lpck
+3=HMMIO hmmio
+ParamCount=3
+@=mmioCreateChunk
+[mmioDescend]
+1=UINT wFlags
+2=LPMMCKINFO lpckParent
+3=LPMMCKINFO lpck
+4=HMMIO hmmio
+ParamCount=4
+@=mmioDescend
+[mmioFlush]
+1=UINT fuFlush
+2=HMMIO hmmio
+ParamCount=2
+@=mmioFlush
+[mmioGetInfo]
+1=UINT wFlags
+2=LPMMIOINFO lpmmioinfo
+3=HMMIO hmmio
+ParamCount=3
+@=mmioGetInfo
+[mmioInstallIOProc]
+1=DWORD dwFlags
+2=LPMMIOPROC pIOProc
+3=FOURCC fccIOProc
+ParamCount=3
+@=mmioInstallIOProc
+[mmioOpen]
+1=DWORD dwOpenFlags
+2=LPMMIOINFO lpmmioinfo
+3=LPTSTR szFilename
+ParamCount=3
+@=mmioOpen
+[mmioRead]
+1=LONG cch
+2=HPSTR pch
+3=HMMIO hmmio
+ParamCount=3
+@=mmioRead
+[mmioRename]
+1=DWORD dwRenameFlags
+2=const LPMMIOINFO lpmmioinfo
+3=LPCTSTR szNewFilename
+4=LPCTSTR szFilename
+ParamCount=4
+@=mmioRename
+[mmioSeek]
+1=int iOrigin
+2=LONG lOffset
+3=HMMIO hmmio
+ParamCount=3
+@=mmioSeek
+[mmioSendMessage]
+1=LPARAM lParam2
+2=LPARAM lParam1
+3=UINT wMsg
+4=HMMIO hmmio
+ParamCount=4
+@=mmioSendMessage
+[mmioSetBuffer]
+1=UINT wFlags
+2=LONG cchBuffer
+3=LPSTR pchBuffer
+4=HMMIO hmmio
+ParamCount=4
+@=mmioSetBuffer
+[mmioSetInfo]
+1=UINT wFlags
+2=LPMMIOINFO lpmmioinfo
+3=HMMIO hmmio
+ParamCount=3
+@=mmioSetInfo
+[mmioStringToFOURCC]
+1=UINT wFlags
+2=LPCTSTR sz
+ParamCount=2
+@=mmioStringToFOURCC
+[mmioWrite]
+1=LONG cch
+2=char _huge* pch
+3=HMMIO hmmio
+ParamCount=3
+@=mmioWrite
+[sndPlaySound]
+1=UINT fuSound
+2=LPCTSTR lpszSound
+ParamCount=2
+@=sndPlaySound
+[timeBeginPeriod]
+1=UINT uPeriod
+ParamCount=1
+@=timeBeginPeriod
+[timeEndPeriod]
+1=UINT uPeriod
+ParamCount=1
+@=timeEndPeriod
+[timeGetDevCaps]
+1=UINT cbtc
+2=LPTIMECAPS ptc
+ParamCount=2
+@=timeGetDevCaps
+[timeGetSystemTime]
+1=UINT cbmmt
+2=LPMMTIME pmmt
+ParamCount=2
+@=timeGetSystemTime
+[timeGetTime]
+ParamCount=0
+@=timeGetTime
+[timeKillEvent]
+1=UINT uTimerID
+ParamCount=1
+@=timeKillEvent
+[timeSetEvent]
+1=UINT fuEvent
+2=DWORD_PTR dwUser
+3=LPTIMECALLBACK lpTimeProc
+4=UINT uResolution
+5=UINT uDelay
+ParamCount=5
+@=timeSetEvent
+[waveInAddBuffer]
+1=UINT cbwh
+2=LPWAVEHDR pwh
+3=HWAVEIN hwi
+ParamCount=3
+@=waveInAddBuffer
+[waveInClose]
+1=HWAVEIN hwi
+ParamCount=1
+@=waveInClose
+[waveInGetDevCaps]
+1=UINT cbwic
+2=LPWAVEINCAPS pwic
+3=UINT_PTR uDeviceID
+ParamCount=3
+@=waveInGetDevCaps
+[waveInGetErrorText]
+1=UINT cchText
+2=LPTSTR pszText
+3=MMRESULT mmrError
+ParamCount=3
+@=waveInGetErrorText
+[waveInGetID]
+1=LPUINT puDeviceID
+2=HWAVEIN hwi
+ParamCount=2
+@=waveInGetID
+[waveInGetNumDevs]
+ParamCount=0
+@=waveInGetNumDevs
+[waveInGetPosition]
+1=UINT cbmmt
+2=LPMMTIME pmmt
+3=HWAVEIN hwi
+ParamCount=3
+@=waveInGetPosition
+[waveInMessage]
+1=DWORD_PTR dwParam2
+2=DWORD_PTR dwParam1
+3=UINT uMsg
+4=HWAVEIN deviceID
+ParamCount=4
+@=waveInMessage
+[waveInOpen]
+1=DWORD fdwOpen
+2=DWORD_PTR dwCallbackInstance
+3=DWORD_PTR dwCallback
+4=LPWAVEFORMATEX pwfx
+5=UINT_PTR uDeviceID
+6=LPHWAVEIN phwi
+ParamCount=6
+@=waveInOpen
+[waveInPrepareHeader]
+1=UINT cbwh
+2=LPWAVEHDR pwh
+3=HWAVEIN hwi
+ParamCount=3
+@=waveInPrepareHeader
+[waveInReset]
+1=HWAVEIN hwi
+ParamCount=1
+@=waveInReset
+[waveInStart]
+1=HWAVEIN hwi
+ParamCount=1
+@=waveInStart
+[waveInStop]
+1=HWAVEIN hwi
+ParamCount=1
+@=waveInStop
+[waveInUnprepareHeader]
+1=UINT cbwh
+2=LPWAVEHDR pwh
+3=HWAVEIN hwi
+ParamCount=3
+@=waveInUnprepareHeader
+[waveOutBreakLoop]
+1=HWAVEOUT hWaveOut
+ParamCount=1
+@=waveOutBreakLoop
+[waveOutClose]
+1=HWAVEOUT hWaveOut
+ParamCount=1
+@=waveOutClose
+[waveOutGetDevCaps]
+1=UINT cbwoc
+2=LPWAVEOUTCAPS pwoc
+3=UINT_PTR uDeviceID
+ParamCount=3
+@=waveOutGetDevCaps
+[waveOutGetErrorText]
+1=UINT cchText
+2=LPTSTR pszText
+3=MMRESULT mmrError
+ParamCount=3
+@=waveOutGetErrorText
+[waveOutGetID]
+1=LPUINT puDeviceID
+2=HWAVEOUT hwo
+ParamCount=2
+@=waveOutGetID
+[waveOutGetNumDevs]
+ParamCount=0
+@=waveOutGetNumDevs
+[waveOutGetPitch]
+1=LPDWORD pdwPitch
+2=HWAVEOUT hWaveOut
+ParamCount=2
+@=waveOutGetPitch
+[waveOutGetPlaybackRate]
+1=LPDWORD pdwRate
+2=HWAVEOUT hwo
+ParamCount=2
+@=waveOutGetPlaybackRate
+[waveOutGetPosition]
+1=UINT cbWaveHdr
+2=LPMMTIME lpWaveHdr
+3=HWAVEOUT hWaveOut
+ParamCount=3
+@=waveOutGetPosition
+[waveOutGetVolume]
+1=LPDWORD pdwVolume
+2=HWAVEOUT hwo
+ParamCount=2
+@=waveOutGetVolume
+[waveOutMessage]
+1=DWORD_PTR dwParam2
+2=DWORD_PTR dwParam1
+3=UINT uMsg
+4=HWAVEOUT deviceID
+ParamCount=4
+@=waveOutMessage
+[waveOutOpen]
+1=DWORD fdwOpen
+2=DWORD_PTR dwInstance
+3=DWORD_PTR dwCallback
+4=LPWAVEFORMATEX pwfx
+5=UINT_PTR uDeviceID
+6=LPHWAVEOUT phwo
+ParamCount=6
+@=waveOutOpen
+[waveOutPause]
+1=HWAVEOUT hWaveOut
+ParamCount=1
+@=waveOutPause
+[waveOutPrepareHeader]
+1=UINT cbWaveHdr
+2=LPWAVEHDR lpWaveHdr
+3=HWAVEOUT hWaveOut
+ParamCount=3
+@=waveOutPrepareHeader
+[waveOutReset]
+1=HWAVEOUT hWaveOut
+ParamCount=1
+@=waveOutReset
+[waveOutRestart]
+1=HWAVEOUT hWaveOut
+ParamCount=1
+@=waveOutRestart
+[waveOutSetPitch]
+1=DWORD dwPitch
+2=HWAVEOUT hWaveOut
+ParamCount=2
+@=waveOutSetPitch
+[waveOutSetPlaybackRate]
+1=DWORD dwRate
+2=HWAVEOUT hwo
+ParamCount=2
+@=waveOutSetPlaybackRate
+[waveOutSetVolume]
+1=DWORD dwVolume
+2=HWAVEOUT hwo
+ParamCount=2
+@=waveOutSetVolume
+[waveOutUnprepareHeader]
+1=UINT cbWaveHdr
+2=LPWAVEHDR lpWaveHdr
+3=HWAVEOUT hWaveOut
+ParamCount=3
+@=waveOutUnprepareHeader
+[waveOutWrite]
+1=UINT cbWaveHdr
+2=LPWAVEHDR lpWaveHdr
+3=HWAVEOUT hWaveOut
+ParamCount=3
+@=waveOutWrite

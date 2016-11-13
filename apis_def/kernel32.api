@@ -6350,3 +6350,2402 @@ ParamCount=2
 3=PPERFORMANCE_DATA PerformanceData
 ParamCount=3
 @=ReadThreadProfilingData(HANDLE PerformanceDataHandle, DWORD Flags, PPERFORMANCE_DATA PerformanceData);
+[AddAtom]
+1=LPCTSTR lpString
+ParamCount=1
+@=AddAtom
+[AddConsoleAlias]
+1=LPCTSTR ExeName
+2=LPCTSTR Target
+3=LPCTSTR Source
+ParamCount=3
+@=AddConsoleAlias
+[AdjustCalendarDate]
+1=INT amount
+2=CALDATETIME_DATEUNIT calUnit
+3=LPCALDATETIME lpCalDateTime
+ParamCount=3
+@=AdjustCalendarDate
+[AllocConsole]
+ParamCount=0
+@=AllocConsole
+[AttachConsole]
+1=DWORD dwProcessId
+ParamCount=1
+@=AttachConsole
+[BeginUpdateResource]
+1=BOOL bDeleteExistingResources
+2=LPCTSTR pFileName
+ParamCount=2
+@=BeginUpdateResource
+[BuildCommDCB]
+1=LPDCB lpDCB
+2=LPCTSTR lpDef
+ParamCount=2
+@=BuildCommDCB
+[BuildCommDCBAndTimeouts]
+1=LPCOMMTIMEOUTS lpCommTimeouts
+2=LPDCB lpDCB
+3=LPCTSTR lpDef
+ParamCount=3
+@=BuildCommDCBAndTimeouts
+[CheckNameLegalDOS8Dot3]
+1=PBOOL pbNameLegal
+2=PBOOL pbNameContainsSpaces
+3=DWORD OemNameSize
+4=LPSTR lpOemName
+5=LPCTSTR lpName
+ParamCount=5
+@=CheckNameLegalDOS8Dot3
+[CommConfigDialog]
+1=LPCOMMCONFIG lpCC
+2=HWND hWnd
+3=LPCTSTR lpszName
+ParamCount=3
+@=CommConfigDialog
+[CompareString]
+1=int cchCount2
+2=LPCTSTR lpString2
+3=int cchCount1
+4=LPCTSTR lpString1
+5=DWORD dwCmpFlags
+6=LCID Locale
+ParamCount=6
+@=CompareString
+[CompareStringA]
+1=int cchCount2
+2=LPCTSTR lpString2
+3=int cchCount1
+4=LPCTSTR lpString1
+5=DWORD dwCmpFlags
+6=LCID Locale
+ParamCount=6
+@=CompareStringA
+[CompareStringEx]
+1=LPARAM lParam
+2=LPVOID lpReserved
+3=LPNLSVERSIONINFO lpVersionInformation
+4=int cchCount2
+5=LPCWSTR lpString2
+6=int cchCount1
+7=LPCWSTR lpString1
+8=DWORD dwCmpFlags
+9=LPCWSTR lpLocaleName
+ParamCount=9
+@=CompareStringEx
+[CompareStringOrdinal]
+1=BOOL bIgnoreCase
+2=int cchCount2
+3=LPCWSTR lpString2
+4=int cchCount1
+5=LPCWSTR lpString1
+ParamCount=5
+@=CompareStringOrdinal
+[CompareStringW]
+1=int cchCount2
+2=LPCTSTR lpString2
+3=int cchCount1
+4=LPCTSTR lpString1
+5=DWORD dwCmpFlags
+6=LCID Locale
+ParamCount=6
+@=CompareStringW
+[ConvertCalDateTimeToSystemTime]
+1=SYSTEMTIME* lpSysTime
+2=const LPCALDATETIME lpCalDateTime
+ParamCount=2
+@=ConvertCalDateTimeToSystemTime
+[ConvertDefaultLocale]
+1=LCID Locale
+ParamCount=1
+@=ConvertDefaultLocale
+[ConvertSystemTimeToCalDateTime]
+1=LPCALDATETIME lpCalDateTime
+2=CALID calId
+3=const SYSTEMTIME lpSysTime
+ParamCount=3
+@=ConvertSystemTimeToCalDateTime
+[CopyFile]
+1=BOOL bFailIfExists
+2=LPCTSTR lpNewFileName
+3=LPCTSTR lpExistingFileName
+ParamCount=3
+@=CopyFile
+[CopyFileEx]
+1=DWORD dwCopyFlags
+2=LPBOOL pbCancel
+3=LPVOID lpData
+4=LPPROGRESS_ROUTINE lpProgressRoutine
+5=LPCTSTR lpNewFileName
+6=LPCTSTR lpExistingFileName
+ParamCount=6
+@=CopyFileEx
+[CopyFileTransacted]
+1=HANDLE hTransaction
+2=DWORD dwCopyFlags
+3=LPBOOL pbCancel
+4=LPVOID lpData
+5=LPPROGRESS_ROUTINE lpProgressRoutine
+6=LPCTSTR lpNewFileName
+7=LPCTSTR lpExistingFileName
+ParamCount=7
+@=CopyFileTransacted
+[CreateActCtx]
+1=PACTCTX pActCtx
+ParamCount=1
+@=CreateActCtx
+[CreateBoundaryDescriptor]
+1=ULONG Flags
+2=LPCTSTR Name
+ParamCount=2
+@=CreateBoundaryDescriptor
+[CreateConsoleScreenBuffer]
+1=LPVOID lpScreenBufferData
+2=DWORD dwFlags
+3=const SECURITY_ATTRIBUTES* lpSecurityAttributes
+4=DWORD dwShareMode
+5=DWORD dwDesiredAccess
+ParamCount=5
+@=CreateConsoleScreenBuffer
+[CreateDirectory]
+1=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+2=LPCTSTR lpPathName
+ParamCount=2
+@=CreateDirectory
+[CreateDirectoryEx]
+1=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+2=LPCTSTR lpNewDirectory
+3=LPCTSTR lpTemplateDirectory
+ParamCount=3
+@=CreateDirectoryEx
+[CreateDirectoryTransacted]
+1=HANDLE hTransaction
+2=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+3=LPCTSTR lpNewDirectory
+4=LPCTSTR lpTemplateDirectory
+ParamCount=4
+@=CreateDirectoryTransacted
+[CreateEvent]
+1=LPCTSTR lpName
+2=BOOL bInitialState
+3=BOOL bManualReset
+4=LPSECURITY_ATTRIBUTES lpEventAttributes
+ParamCount=4
+@=CreateEvent
+[CreateEventEx]
+1=DWORD dwDesiredAccess
+2=DWORD dwFlags
+3=LPCTSTR lpName
+4=LPSECURITY_ATTRIBUTES lpEventAttributes
+ParamCount=4
+@=CreateEventEx
+[CreateFile]
+1=HANDLE hTemplateFile
+2=DWORD dwFlagsAndAttributes
+3=DWORD dwCreationDisposition
+4=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+5=DWORD dwShareMode
+6=DWORD dwDesiredAccess
+7=LPCTSTR lpFileName
+ParamCount=7
+@=CreateFile
+[CreateFileMapping]
+1=LPCTSTR lpName
+2=DWORD dwMaximumSizeLow
+3=DWORD dwMaximumSizeHigh
+4=DWORD flProtect
+5=LPSECURITY_ATTRIBUTES lpAttributes
+6=HANDLE hFile
+ParamCount=6
+@=CreateFileMapping
+[CreateFileMappingNuma]
+1=DWORD nndPreferred
+2=LPCTSTR lpName
+3=DWORD dwMaximumSizeLow
+4=DWORD dwMaximumSizeHigh
+5=DWORD flProtect
+6=LPSECURITY_ATTRIBUTES lpFileMappingAttributes
+7=HANDLE hFile
+ParamCount=7
+@=CreateFileMappingNuma
+[CreateFileTransacted]
+1=PVOID pExtendedParameter
+2=PUSHORT pusMiniVersion
+3=HANDLE hTransaction
+4=HANDLE hTemplateFile
+5=DWORD dwFlagsAndAttributes
+6=DWORD dwCreationDisposition
+7=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+8=DWORD dwShareMode
+9=DWORD dwDesiredAccess
+10=LPCTSTR lpFileName
+ParamCount=10
+@=CreateFileTransacted
+[CreateHardLink]
+1=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+2=LPCTSTR lpExistingFileName
+3=LPCTSTR lpFileName
+ParamCount=3
+@=CreateHardLink
+[CreateHardLinkTransacted]
+1=HANDLE hTransaction
+2=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+3=LPCTSTR lpExistingFileName
+4=LPCTSTR lpFileName
+ParamCount=4
+@=CreateHardLinkTransacted
+[CreateJobObject]
+1=LPCTSTR lpName
+2=LPSECURITY_ATTRIBUTES lpJobAttributes
+ParamCount=2
+@=CreateJobObject
+[CreateMailslot]
+1=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+2=DWORD lReadTimeout
+3=DWORD nMaxMessageSize
+4=LPCTSTR lpName
+ParamCount=4
+@=CreateMailslot
+[CreateMutex]
+1=LPCTSTR lpName
+2=BOOL bInitialOwner
+3=LPSECURITY_ATTRIBUTES lpMutexAttributes
+ParamCount=3
+@=CreateMutex
+[CreateMutexEx]
+1=DWORD dwDesiredAccess
+2=DWORD dwFlags
+3=LPCTSTR lpName
+4=LPSECURITY_ATTRIBUTES lpMutexAttributes
+ParamCount=4
+@=CreateMutexEx
+[CreatePrivateNamespace]
+1=LPCTSTR lpAliasPrefix
+2=LPVOID lpBoundaryDescriptor
+3=LPSECURITY_ATTRIBUTES lpPrivateNamespaceAttributes
+ParamCount=3
+@=CreatePrivateNamespace
+[CreateProcess]
+1=LPPROCESS_INFORMATION lpProcessInformation
+2=LPSTARTUPINFO lpStartupInfo
+3=LPCTSTR lpCurrentDirectory
+4=LPVOID lpEnvironment
+5=DWORD dwCreationFlags
+6=BOOL bInheritHandles
+7=LPSECURITY_ATTRIBUTES lpThreadAttributes
+8=LPSECURITY_ATTRIBUTES lpProcessAttributes
+9=LPTSTR lpCommandLine
+10=LPCTSTR lpApplicationName
+ParamCount=10
+@=CreateProcess
+[CreateSemaphore]
+1=LPCTSTR lpName
+2=LONG lMaximumCount
+3=LONG lInitialCount
+4=LPSECURITY_ATTRIBUTES lpSemaphoreAttributes
+ParamCount=4
+@=CreateSemaphore
+[CreateSemaphoreEx]
+1=DWORD dwDesiredAccess
+2=DWORD dwFlags
+3=LPCTSTR lpName
+4=LONG lMaximumCount
+5=LONG lInitialCount
+6=LPSECURITY_ATTRIBUTES lpSemaphoreAttributes
+ParamCount=6
+@=CreateSemaphoreEx
+[CreateSymbolicLink]
+1=DWORD dwFlags
+2=LPTSTR lpTargetFileName
+3=LPTSTR lpSymlinkFileName
+ParamCount=3
+@=CreateSymbolicLink
+[CreateSymbolicLinkTransacted]
+1=HANDLE hTransaction
+2=DWORD dwFlags
+3=LPTSTR lpTargetFileName
+4=LPTSTR lpSymlinkFileName
+ParamCount=4
+@=CreateSymbolicLinkTransacted
+[CreateToolhelp32Snapshot]
+1=DWORD th32ProcessID
+2=DWORD dwFlags
+ParamCount=2
+@=CreateToolhelp32Snapshot
+[CreateWaitableTimer]
+1=LPCTSTR lpTimerName
+2=BOOL bManualReset
+3=LPSECURITY_ATTRIBUTES lpTimerAttributes
+ParamCount=3
+@=CreateWaitableTimer
+[CreateWaitableTimerEx]
+1=DWORD dwDesiredAccess
+2=DWORD dwFlags
+3=LPCTSTR lpTimerName
+4=LPSECURITY_ATTRIBUTES lpTimerAttributes
+ParamCount=4
+@=CreateWaitableTimerEx
+[DeleteFile]
+1=LPCTSTR lpFileName
+ParamCount=1
+@=DeleteFile
+[DeleteFileTransacted]
+1=HANDLE hTransaction
+2=LPCTSTR lpFileName
+ParamCount=2
+@=DeleteFileTransacted
+[DnsHostnameToComputerName]
+1=LPDWORD nSize
+2=LPTSTR ComputerName
+3=LPCTSTR Hostname
+ParamCount=3
+@=DnsHostnameToComputerName
+[EmptyWorkingSet]
+1=HANDLE hProcess
+ParamCount=1
+@=EmptyWorkingSet
+[EndUpdateResource]
+1=BOOL fDiscard
+2=HANDLE hUpdate
+ParamCount=2
+@=EndUpdateResource
+[EnumCalendarInfo]
+1=CALTYPE CalType
+2=CALID Calendar
+3=LCID Locale
+4=CALINFO_ENUMPROC pCalInfoEnumProc
+ParamCount=4
+@=EnumCalendarInfo
+[EnumCalendarInfoA]
+1=CALTYPE CalType
+2=CALID Calendar
+3=LCID Locale
+4=CALINFO_ENUMPROC lpCalInfoEnumProc
+ParamCount=4
+@=EnumCalendarInfoA
+[EnumCalendarInfoEx]
+1=CALTYPE CalType
+2=CALID Calendar
+3=LCID Locale
+4=CALINFO_ENUMPROCEX pCalInfoEnumProcEx
+ParamCount=4
+@=EnumCalendarInfoEx
+[EnumCalendarInfoExEx]
+1=LPARAM lParam
+2=CALTYPE CalType
+3=LPCWSTR lpReserved
+4=CALID Calendar
+5=LPCWSTR lpLocaleName
+6=CALINFO_ENUMPROCEXEX pCalInfoEnumProcExEx
+ParamCount=6
+@=EnumCalendarInfoExEx
+[EnumCalendarInfoW]
+1=CALTYPE CalType
+2=CALID Calendar
+3=LCID Locale
+4=CALINFO_ENUMPROC lpCalInfoEnumProc
+ParamCount=4
+@=EnumCalendarInfoW
+[EnumDateFormats]
+1=DWORD dwFlags
+2=LCID Locale
+3=DATEFMT_ENUMPROC lpDateFmtEnumProc
+ParamCount=3
+@=EnumDateFormats
+[EnumDateFormatsA]
+1=DWORD dwFlags
+2=LCID Locale
+3=DATEFMT_ENUMPROC lpDateFmtEnumProc
+ParamCount=3
+@=EnumDateFormatsA
+[EnumDateFormatsEx]
+1=DWORD dwFlags
+2=LCID Locale
+3=DATEFMT_ENUMPROCEX lpDateFmtEnumProcEx
+ParamCount=3
+@=EnumDateFormatsEx
+[EnumDateFormatsExEx]
+1=LPARAM lParam
+2=DWORD dwFlags
+3=LPCWSTR lpLocaleName
+4=DATEFMT_ENUMPROCEXEX lpDateFmtEnumProcExEx
+ParamCount=4
+@=EnumDateFormatsExEx
+[EnumDateFormatsW]
+1=DWORD dwFlags
+2=LCID Locale
+3=DATEFMT_ENUMPROC lpDateFmtEnumProc
+ParamCount=3
+@=EnumDateFormatsW
+[EnumDeviceDrivers]
+1=LPDWORD lpcbNeeded
+2=DWORD cb
+3=LPVOID* lpImageBase
+ParamCount=3
+@=EnumDeviceDrivers
+[EnumLanguageGroupLocales]
+1=LONG_PTR lParam
+2=DWORD dwFlags
+3=LGRPID LanguageGroup
+4=LANGGROUPLOCALE_ENUMPROC lpLangGroupLocaleEnumProc
+ParamCount=4
+@=EnumLanguageGroupLocales
+[EnumPageFiles]
+1=LPVOID lpContext
+2=PENUM_PAGE_CALLBACK pCallbackRoutine
+ParamCount=2
+@=EnumPageFiles
+[EnumProcessModules]
+1=LPDWORD lpcbNeeded
+2=DWORD cb
+3=HMODULE* lphModule
+4=HANDLE hProcess
+ParamCount=4
+@=EnumProcessModules
+[EnumProcessModulesEx]
+1=DWORD dwFilterFlag
+2=LPDWORD lpcbNeeded
+3=DWORD cb
+4=HMODULE* lphModule
+5=HANDLE hProcess
+ParamCount=5
+@=EnumProcessModulesEx
+[EnumProcesses]
+1=DWORD* pBytesReturned
+2=DWORD cb
+3=LPVOID pProcessIds
+ParamCount=3
+@=EnumProcesses
+[EnumResourceLanguages]
+1=LONG_PTR lParam
+2=ENUMRESLANGPROC lpEnumFunc
+3=LPCTSTR lpName
+4=LPCTSTR lpType
+5=HMODULE hModule
+ParamCount=5
+@=EnumResourceLanguages
+[EnumResourceLanguagesEx]
+1=LANGID LangId
+2=DWORD dwFlags
+3=LONG_PTR lParam
+4=ENUMRESLANGPROC lpEnumFunc
+5=LPCTSTR lpName
+6=LPCTSTR lpType
+7=HMODULE hModule
+ParamCount=7
+@=EnumResourceLanguagesEx
+[EnumResourceNames]
+1=LONG_PTR lParam
+2=ENUMRESNAMEPROC lpEnumFunc
+3=LPCTSTR lpszType
+4=HMODULE hModule
+ParamCount=4
+@=EnumResourceNames
+[EnumResourceNamesEx]
+1=LANGID LangId
+2=DWORD dwFlags
+3=LONG_PTR lParam
+4=ENUMRESNAMEPROC lpEnumFunc
+5=LPCTSTR lpszType
+6=HMODULE hModule
+ParamCount=6
+@=EnumResourceNamesEx
+[EnumResourceTypes]
+1=LONG_PTR lParam
+2=ENUMRESTYPEPROC lpEnumFunc
+3=HMODULE hModule
+ParamCount=3
+@=EnumResourceTypes
+[EnumResourceTypesEx]
+1=LANGID LangId
+2=DWORD dwFlags
+3=LONG_PTR lParam
+4=ENUMRESTYPEPROC lpEnumFunc
+5=HMODULE hModule
+ParamCount=5
+@=EnumResourceTypesEx
+[EnumSystemCodePages]
+1=DWORD dwFlags
+2=CODEPAGE_ENUMPROC lpCodePageEnumProc
+ParamCount=2
+@=EnumSystemCodePages
+[EnumSystemCodePagesA]
+1=DWORD dwFlags
+2=CODEPAGE_ENUMPROC lpCodePageEnumProc
+ParamCount=2
+@=EnumSystemCodePagesA
+[EnumSystemCodePagesW]
+1=DWORD dwFlags
+2=CODEPAGE_ENUMPROC lpCodePageEnumProc
+ParamCount=2
+@=EnumSystemCodePagesW
+[EnumSystemGeoID]
+1=GEO_ENUMPROC lpGeoEnumProc
+2=GEOID ParentGeoId
+3=GEOCLASS GeoClass
+ParamCount=3
+@=EnumSystemGeoID
+[EnumSystemLanguageGroups]
+1=LONG_PTR lParam
+2=DWORD dwFlags
+3=LANGUAGEGROUP_ENUMPROC lpLanguageGroupEnumProc
+ParamCount=3
+@=EnumSystemLanguageGroups
+[EnumSystemLocales]
+1=DWORD dwFlags
+2=LOCALE_ENUMPROC lpLocaleEnumProc
+ParamCount=2
+@=EnumSystemLocales
+[EnumSystemLocalesA]
+1=DWORD dwFlags
+2=LOCALE_ENUMPROC pLocaleEnumProc
+ParamCount=2
+@=EnumSystemLocalesA
+[EnumSystemLocalesEx]
+1=LPVOID lpReserved
+2=LPARAM lParam
+3=DWORD dwFlags
+4=LOCALE_ENUMPROCEX lpLocaleEnumProcEx
+ParamCount=4
+@=EnumSystemLocalesEx
+[EnumSystemLocalesW]
+1=DWORD dwFlags
+2=LOCALE_ENUMPROC pLocaleEnumProc
+ParamCount=2
+@=EnumSystemLocalesW
+[EnumTimeFormats]
+1=DWORD dwFlags
+2=LCID Locale
+3=TIMEFMT_ENUMPROC lpTimeFmtEnumProc
+ParamCount=3
+@=EnumTimeFormats
+[EnumTimeFormatsA]
+1=DWORD dwFlags
+2=LCID Locale
+3=TIMEFMT_ENUMPROC lpTimeFmtEnumProc
+ParamCount=3
+@=EnumTimeFormatsA
+[EnumTimeFormatsEx]
+1=LPARAM lParam
+2=DWORD dwFlags
+3=LPCWSTR lpLocaleName
+4=TIMEFMT_ENUMPROCEX lpTimeFmtEnumProcEx
+ParamCount=4
+@=EnumTimeFormatsEx
+[EnumTimeFormatsW]
+1=DWORD dwFlags
+2=LCID Locale
+3=TIMEFMT_ENUMPROC lpTimeFmtEnumProc
+ParamCount=3
+@=EnumTimeFormatsW
+[ExpandEnvironmentStrings]
+1=DWORD nSize
+2=LPTSTR lpDst
+3=LPCTSTR lpSrc
+ParamCount=3
+@=ExpandEnvironmentStrings
+[FatalAppExit]
+1=LPCTSTR lpMessageText
+2=UINT uAction
+ParamCount=2
+@=FatalAppExit
+[FillConsoleOutputAttribute]
+1=LPDWORD lpNumberOfAttrsWritten
+2=COORD dwWriteCoord
+3=DWORD nLength
+4=WORD wAttribute
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=FillConsoleOutputAttribute
+[FillConsoleOutputCharacter]
+1=LPDWORD lpNumberOfCharsWritten
+2=COORD dwWriteCoord
+3=DWORD nLength
+4=TCHAR cCharacter
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=FillConsoleOutputCharacter
+[FillConsoleOutputCharacterA]
+1=LPDWORD lpNumberOfCharsWritten
+2=COORD dwWriteCoord
+3=DWORD nLength
+4=TCHAR cCharacter
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=FillConsoleOutputCharacterA
+[FindActCtxSectionString]
+1=PACTCTX_SECTION_KEYED_DATA ReturnedData
+2=LPCTSTR lpStringToFind
+3=DWORD ulSectionId
+4=const GUID* lpExtensionGuid
+5=DWORD dwFlags
+ParamCount=5
+@=FindActCtxSectionString
+[FindAtom]
+1=LPCTSTR lpString
+ParamCount=1
+@=FindAtom
+[FindCloseChangeNotificationA]
+1=HANDLE hChangeHandle
+ParamCount=1
+@=FindCloseChangeNotificationA
+[FindCloseChangeNotificationW]
+1=HANDLE hChangeHandle
+ParamCount=1
+@=FindCloseChangeNotificationW
+[FindFirstChangeNotification]
+1=DWORD dwNotifyFilter
+2=BOOL bWatchSubtree
+3=LPCTSTR lpPathName
+ParamCount=3
+@=FindFirstChangeNotification
+[FindFirstFile]
+1=LPWIN32_FIND_DATA lpFindFileData
+2=LPCTSTR lpFileName
+ParamCount=2
+@=FindFirstFile
+[FindFirstFileEx]
+1=DWORD dwAdditionalFlags
+2=LPVOID lpSearchFilter
+3=FINDEX_SEARCH_OPS fSearchOp
+4=LPVOID lpFindFileData
+5=FINDEX_INFO_LEVELS fInfoLevelId
+6=LPCTSTR lpFileName
+ParamCount=6
+@=FindFirstFileEx
+[FindFirstFileTransacted]
+1=HANDLE hTransaction
+2=DWORD dwAdditionalFlags
+3=LPVOID lpSearchFilter
+4=FINDEX_SEARCH_OPS fSearchOp
+5=LPVOID lpFindFileData
+6=FINDEX_INFO_LEVELS fInfoLevelId
+7=LPCTSTR lpFileName
+ParamCount=7
+@=FindFirstFileTransacted
+[FindNLSString]
+1=LPINT pcchFound
+2=int cchValue
+3=LPCWSTR lpStringValue
+4=int cchSource
+5=LPCWSTR lpStringSource
+6=DWORD dwFindNLSStringFlags
+7=LCID Locale
+ParamCount=7
+@=FindNLSString
+[FindNLSStringEx]
+1=LPARAM lParam
+2=LPVOID lpReserved
+3=LPNLSVERSIONINFO lpVersionInformation
+4=LPINT pcchFound
+5=int cchValue
+6=LPCWSTR lpStringValue
+7=int cchSource
+8=LPCWSTR lpStringSource
+9=DWORD dwFindNLSStringFlags
+10=LPCWSTR lpLocaleName
+ParamCount=10
+@=FindNLSStringEx
+[FindNextFile]
+1=LPWIN32_FIND_DATA lpFindFileData
+2=HANDLE hFindFile
+ParamCount=2
+@=FindNextFile
+[FindResource]
+1=LPCTSTR lpType
+2=LPCTSTR lpName
+3=HMODULE hModule
+ParamCount=3
+@=FindResource
+[FindResourceEx]
+1=WORD wLanguage
+2=LPCTSTR lpName
+3=LPCTSTR lpType
+4=HMODULE hModule
+ParamCount=4
+@=FindResourceEx
+[FindStringOrdinal]
+1=BOOL bIgnoreCase
+2=int cchValue
+3=LPCWSTR lpStringValue
+4=int cchSource
+5=LPCWSTR lpStringSource
+6=DWORD dwFindStringOrdinalFlags
+ParamCount=6
+@=FindStringOrdinal
+[FlushConsoleInputBuffer]
+1=HANDLE hConsoleInput
+ParamCount=1
+@=FlushConsoleInputBuffer
+[FoldString]
+1=int cchDest
+2=LPTSTR lpDestStr
+3=int cchSrc
+4=LPCTSTR lpSrcStr
+5=DWORD dwMapFlags
+ParamCount=5
+@=FoldString
+[FormatMessage]
+1=va_list* Arguments
+2=DWORD nSize
+3=LPTSTR lpBuffer
+4=DWORD dwLanguageId
+5=DWORD dwMessageId
+6=LPCVOID lpSource
+7=DWORD dwFlags
+ParamCount=7
+@=FormatMessage
+[FreeConsole]
+ParamCount=0
+@=FreeConsole
+[FreeEnvironmentStrings]
+1=LPTCH lpszEnvironmentBlock
+ParamCount=1
+@=FreeEnvironmentStrings
+[GenerateConsoleCtrlEvent]
+1=DWORD dwProcessGroupId
+2=DWORD dwCtrlEvent
+ParamCount=2
+@=GenerateConsoleCtrlEvent
+[GetACP]
+ParamCount=0
+@=GetACP
+[GetAtomName]
+1=int nSize
+2=LPTSTR lpBuffer
+3=ATOM nAtom
+ParamCount=3
+@=GetAtomName
+[GetBinaryType]
+1=DWORD lpBinaryType
+2=LPCTSTR lpApplicationName
+ParamCount=2
+@=GetBinaryType
+[GetCPInfo]
+1=LPCPINFO lpCPInfo
+2=UINT CodePage
+ParamCount=2
+@=GetCPInfo
+[GetCPInfoEx]
+1=LPCPINFOEX lpCPInfoEx
+2=DWORD dwFlags
+3=UINT CodePage
+ParamCount=3
+@=GetCPInfoEx
+[GetCalendarDateFormatEx]
+1=int cchDate
+2=LPWSTR lpDateStr
+3=LPCWSTR lpFormat
+4=const LPCALDATETIME lpCalDateTime
+5=DWORD dwFlags
+6=LPCWSTR lpszLocale
+ParamCount=6
+@=GetCalendarDateFormatEx
+[GetCalendarInfo]
+1=LPDWORD lpValue
+2=int cchData
+3=LPTSTR lpCalData
+4=CALTYPE CalType
+5=CALID Calendar
+6=LCID Locale
+ParamCount=6
+@=GetCalendarInfo
+[GetCalendarInfoEx]
+1=LPDWORD lpValue
+2=int cchData
+3=LPWSTR lpCalData
+4=CALTYPE CalType
+5=LPCWSTR lpReserved
+6=CALID Calendar
+7=LPCWSTR lpLocaleName
+ParamCount=7
+@=GetCalendarInfoEx
+[GetCalendarSupportedDateRange]
+1=LPCALDATETIME lpCalMaxDateTime
+2=LPCALDATETIME lpCalMinDateTime
+3=CALID Calendar
+ParamCount=3
+@=GetCalendarSupportedDateRange
+[GetCommandLine]
+ParamCount=0
+@=GetCommandLine
+[GetCompressedFileSize]
+1=LPDWORD lpFileSizeHigh
+2=LPCTSTR lpFileName
+ParamCount=2
+@=GetCompressedFileSize
+[GetCompressedFileSizeTransacted]
+1=HANDLE hTransaction
+2=LPDWORD lpFileSizeHigh
+3=LPCTSTR lpFileName
+ParamCount=3
+@=GetCompressedFileSizeTransacted
+[GetComputerName]
+1=LPDWORD lpnSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetComputerName
+[GetComputerNameEx]
+1=LPDWORD lpnSize
+2=LPTSTR lpBuffer
+3=COMPUTER_NAME_FORMAT NameType
+ParamCount=3
+@=GetComputerNameEx
+[GetConsoleAlias]
+1=LPTSTR lpExeName
+2=DWORD TargetBufferLength
+3=LPTSTR lpTargetBuffer
+4=LPTSTR lpSource
+ParamCount=4
+@=GetConsoleAlias
+[GetConsoleAliasExes]
+1=DWORD ExeNameBufferLength
+2=LPTSTR lpExeNameBuffer
+ParamCount=2
+@=GetConsoleAliasExes
+[GetConsoleAliasExesLength]
+ParamCount=0
+@=GetConsoleAliasExesLength
+[GetConsoleAliases]
+1=LPTSTR lpExeName
+2=DWORD AliasBufferLength
+3=LPTSTR lpAliasBuffer
+ParamCount=3
+@=GetConsoleAliases
+[GetConsoleAliasesLength]
+1=LPTSTR lpExeName
+ParamCount=1
+@=GetConsoleAliasesLength
+[GetConsoleCP]
+ParamCount=0
+@=GetConsoleCP
+[GetConsoleCursorInfo]
+1=PCONSOLE_CURSOR_INFO lpConsoleCursorInfo
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=GetConsoleCursorInfo
+[GetConsoleDisplayMode]
+1=LPDWORD lpdwMode
+ParamCount=1
+@=GetConsoleDisplayMode
+[GetConsoleFontSize]
+1=DWORD nFont
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=GetConsoleFontSize
+[GetConsoleHistoryInfo]
+1=PCONSOLE_HISTORY_INFO lpConsoleHistoryInfo
+ParamCount=1
+@=GetConsoleHistoryInfo
+[GetConsoleMode]
+1=DWORD lpMode
+2=HANDLE hConsoleHandle
+ParamCount=2
+@=GetConsoleMode
+[GetConsoleOriginalTitle]
+1=DWORD nSize
+2=LPTSTR lpConsoleTitle
+ParamCount=2
+@=GetConsoleOriginalTitle
+[GetConsoleOutputCP]
+ParamCount=0
+@=GetConsoleOutputCP
+[GetConsoleProcessList]
+1=DWORD dwProcessCount
+2=LPDWORD lpdwProcessList
+ParamCount=2
+@=GetConsoleProcessList
+[GetConsoleScreenBufferInfo]
+1=PCONSOLE_SCREEN_BUFFER_INFO lpConsoleScreenBufferInfo
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=GetConsoleScreenBufferInfo
+[GetConsoleScreenBufferInfoEx]
+1=PCONSOLE_SCREEN_BUFFER_INFOEX lpConsoleScreenBufferInfoEx
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=GetConsoleScreenBufferInfoEx
+[GetConsoleSelectionInfo]
+1=PCONSOLE_SELECTION_INFO lpConsoleSelectionInfo
+ParamCount=1
+@=GetConsoleSelectionInfo
+[GetConsoleTitle]
+1=DWORD nSize
+2=LPTSTR lpConsoleTitle
+ParamCount=2
+@=GetConsoleTitle
+[GetConsoleWindow]
+ParamCount=0
+@=GetConsoleWindow
+[GetCurrencyFormat]
+1=int cchCurrency
+2=LPTSTR lpCurrencyStr
+3=const CURRENCYFMT* lpFormat
+4=LPCTSTR lpValue
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetCurrencyFormat
+[GetCurrencyFormatA]
+1=int cchCurrency
+2=LPTSTR lpCurrencyStr
+3=const CURRENCYFMT* lpFormat
+4=LPCTSTR lpValue
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetCurrencyFormatA
+[GetCurrencyFormatEx]
+1=int cchCurrency
+2=LPWSTR lpCurrencyStr
+3=const CURRENCYFMT* lpFormat
+4=LPCWSTR lpValue
+5=DWORD dwFlags
+6=LPCWSTR lpLocaleName
+ParamCount=6
+@=GetCurrencyFormatEx
+[GetCurrencyFormatW]
+1=int cchCurrency
+2=LPTSTR lpCurrencyStr
+3=const CURRENCYFMT* lpFormat
+4=LPCTSTR lpValue
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetCurrencyFormatW
+[GetCurrentConsoleFont]
+1=PCONSOLE_FONT_INFO lpConsoleCurrentFont
+2=BOOL bMaximumWindow
+3=HANDLE hConsoleOutput
+ParamCount=3
+@=GetCurrentConsoleFont
+[GetCurrentConsoleFontEx]
+1=PCONSOLE_FONT_INFOEX lpConsoleCurrentFontEx
+2=BOOL bMaximumWindow
+3=HANDLE hConsoleOutput
+ParamCount=3
+@=GetCurrentConsoleFontEx
+[GetCurrentDirectory]
+1=LPTSTR lpBuffer
+2=DWORD nBufferLength
+ParamCount=2
+@=GetCurrentDirectory
+[GetDateFormat]
+1=int cchDate
+2=LPTSTR lpDateStr
+3=LPCTSTR lpFormat
+4=const SYSTEMTIME* lpDate
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetDateFormat
+[GetDateFormatA]
+1=int cchDate
+2=LPTSTR lpDateStr
+3=LPCTSTR lpFormat
+4=const SYSTEMTIME* lpDate
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetDateFormatA
+[GetDateFormatEx]
+1=LPCWSTR lpCalendar
+2=int cchDate
+3=LPWSTR lpDateStr
+4=LPCWSTR lpFormat
+5=const SYSTEMTIME* lpDate
+6=DWORD dwFlags
+7=LPCWSTR lpLocaleName
+ParamCount=7
+@=GetDateFormatEx
+[GetDateFormatW]
+1=int cchDate
+2=LPTSTR lpDateStr
+3=LPCTSTR lpFormat
+4=const SYSTEMTIME* lpDate
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetDateFormatW
+[GetDefaultCommConfig]
+1=LPDWORD lpdwSize
+2=LPCOMMCONFIG lpCC
+3=LPCTSTR lpszName
+ParamCount=3
+@=GetDefaultCommConfig
+[GetDeviceDriverBaseName]
+1=DWORD nSize
+2=LPTSTR lpBaseName
+3=LPVOID ImageBase
+ParamCount=3
+@=GetDeviceDriverBaseName
+[GetDeviceDriverFileName]
+1=DWORD nSize
+2=LPTSTR lpFilename
+3=LPVOID ImageBase
+ParamCount=3
+@=GetDeviceDriverFileName
+[GetDiskFreeSpace]
+1=LPDWORD lpTotalNumberOfClusters
+2=LPDWORD lpNumberOfFreeClusters
+3=LPDWORD lpBytesPerSector
+4=LPDWORD lpSectorsPerCluster
+5=LPCTSTR lpRootPathName
+ParamCount=5
+@=GetDiskFreeSpace
+[GetDiskFreeSpaceEx]
+1=PULARGE_INTEGER lpTotalNumberOfFreeBytes
+2=PULARGE_INTEGER lpTotalNumberOfBytes
+3=PULARGE_INTEGER lpFreeBytesAvailable
+4=LPCTSTR lpDirectoryName
+ParamCount=4
+@=GetDiskFreeSpaceEx
+[GetDllDirectory]
+1=LPTSTR lpBuffer
+2=DWORD nBufferLength
+ParamCount=2
+@=GetDllDirectory
+[GetDurationFormat]
+1=int cchDuration
+2=LPWSTR lpDurationStr
+3=LPCWSTR lpFormat
+4=ULONGLONG ullDuration
+5=const SYSTEMTIME* lpDuration
+6=DWORD dwFlags
+7=LCID Locale
+ParamCount=7
+@=GetDurationFormat
+[GetDurationFormatEx]
+1=int cchDuration
+2=LPWSTR lpDurationStr
+3=LPCWSTR lpFormat
+4=ULONGLONG ullDuration
+5=const SYSTEMTIME* lpDuration
+6=DWORD dwFlags
+7=LPCWSTR lpLocaleName
+ParamCount=7
+@=GetDurationFormatEx
+[GetEnvironmentVariable]
+1=DWORD nSize
+2=LPTSTR lpBuffer
+3=LPCTSTR lpName
+ParamCount=3
+@=GetEnvironmentVariable
+[GetFileAttributes]
+1=LPCTSTR lpFileName
+ParamCount=1
+@=GetFileAttributes
+[GetFileAttributesEx]
+1=LPVOID lpFileInformation
+2=GET_FILEEX_INFO_LEVELS fInfoLevelId
+3=LPCTSTR lpFileName
+ParamCount=3
+@=GetFileAttributesEx
+[GetFileAttributesTransacted]
+1=HANDLE hTransaction
+2=LPVOID lpFileInformation
+3=GET_FILEEX_INFO_LEVELS fInfoLevelId
+4=LPCTSTR lpFileName
+ParamCount=4
+@=GetFileAttributesTransacted
+[GetFinalPathNameByHandle]
+1=DWORD dwFlags
+2=DWORD cchFilePath
+3=LPTSTR lpszFilePath
+4=HANDLE hFile
+ParamCount=4
+@=GetFinalPathNameByHandle
+[GetFirmwareEnvironmentVariable]
+1=DWORD nSize
+2=PVOID pBuffer
+3=LPCTSTR lpGuid
+4=LPCTSTR lpName
+ParamCount=4
+@=GetFirmwareEnvironmentVariable
+[GetFullPathName]
+1=LPTSTR* lpFilePart
+2=LPTSTR lpBuffer
+3=DWORD nBufferLength
+4=LPCTSTR lpFileName
+ParamCount=4
+@=GetFullPathName
+[GetFullPathNameTransacted]
+1=HANDLE hTransaction
+2=LPTSTR* lpFilePart
+3=LPTSTR lpBuffer
+4=DWORD nBufferLength
+5=LPCTSTR lpFileName
+ParamCount=5
+@=GetFullPathNameTransacted
+[GetGeoInfo]
+1=LANGID LangId
+2=int cchData
+3=LPTSTR lpGeoData
+4=GEOTYPE GeoType
+5=GEOID Location
+ParamCount=5
+@=GetGeoInfo
+[GetLargestConsoleWindowSize]
+1=HANDLE hConsoleOutput
+ParamCount=1
+@=GetLargestConsoleWindowSize
+[GetLocaleInfo]
+1=int cchData
+2=LPTSTR lpLCData
+3=LCTYPE LCType
+4=LCID Locale
+ParamCount=4
+@=GetLocaleInfo
+[GetLocaleInfoA]
+1=int cchData
+2=LPTSTR lpLCData
+3=LCTYPE LCType
+4=LCID Locale
+ParamCount=4
+@=GetLocaleInfoA
+[GetLocaleInfoEx]
+1=int cchData
+2=LPWSTR lpLCData
+3=LCTYPE LCType
+4=LPCWSTR lpLocaleName
+ParamCount=4
+@=GetLocaleInfoEx
+[GetLocaleInfoW]
+1=int cchData
+2=LPTSTR lpLCData
+3=LCTYPE LCType
+4=LCID Locale
+ParamCount=4
+@=GetLocaleInfoW
+[GetLongPathName]
+1=DWORD cchBuffer
+2=LPTSTR lpszLongPath
+3=LPCTSTR lpszShortPath
+ParamCount=3
+@=GetLongPathName
+[GetLongPathNameTransacted]
+1=HANDLE hTransaction
+2=DWORD cchBuffer
+3=LPTSTR lpszLongPath
+4=LPCTSTR lpszShortPath
+ParamCount=4
+@=GetLongPathNameTransacted
+[GetMappedFileName]
+1=DWORD nSize
+2=LPTSTR lpFilename
+3=LPVOID lpv
+4=HANDLE hProcess
+ParamCount=4
+@=GetMappedFileName
+[GetModuleBaseName]
+1=DWORD nSize
+2=LPTSTR lpBaseName
+3=HMODULE hModule
+4=HANDLE hProcess
+ParamCount=4
+@=GetModuleBaseName
+[GetModuleFileName]
+1=DWORD nSize
+2=LPTSTR lpFilename
+3=HMODULE hModule
+ParamCount=3
+@=GetModuleFileName
+[GetModuleFileNameEx]
+1=DWORD nSize
+2=LPTSTR lpFilename
+3=HMODULE hModule
+4=HANDLE hProcess
+ParamCount=4
+@=GetModuleFileNameEx
+[GetModuleFileNameExA]
+1=DWORD nBufferSize
+2=LPTSTR lpBuffer
+3=HMODULE hModule
+4=HANDLE hProcess
+ParamCount=4
+@=GetModuleFileNameExA
+[GetModuleFileNameExW]
+1=DWORD nBufferSize
+2=LPTSTR lpBuffer
+3=HMODULE hModule
+4=HANDLE hProcess
+ParamCount=4
+@=GetModuleFileNameExW
+[GetModuleHandle]
+1=LPCTSTR lpModuleName
+ParamCount=1
+@=GetModuleHandle
+[GetModuleHandleEx]
+1=HMODULE* phModule
+2=LPCTSTR lpModuleName
+3=DWORD dwFlags
+ParamCount=3
+@=GetModuleHandleEx
+[GetModuleInformation]
+1=DWORD dwSizemodinfo
+2=LPMODULEINFO lpmodinfo
+3=HMODULE hModule
+4=HANDLE hProcess
+ParamCount=4
+@=GetModuleInformation
+[GetNLSVersion]
+1=LPNLSVERSIONINFO lpVersionInformation
+2=LCID Locale
+3=NLS_FUNCTION Function
+ParamCount=3
+@=GetNLSVersion
+[GetNLSVersionEx]
+1=LPNLSVERSIONINFOEX lpVersionInformation
+2=LPCWSTR lpLocaleName
+3=NLS_FUNCTION function
+ParamCount=3
+@=GetNLSVersionEx
+[GetNumberFormat]
+1=int cchNumber
+2=LPTSTR lpNumberStr
+3=const NUMBERFMT* lpFormat
+4=LPCTSTR lpValue
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetNumberFormat
+[GetNumberFormatA]
+1=int cchNumber
+2=LPTSTR lpNumberStr
+3=const NUMBERFMT* lpFormat
+4=LPCTSTR lpValue
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetNumberFormatA
+[GetNumberFormatEx]
+1=int cchNumber
+2=LPWSTR lpNumberStr
+3=const NUMBERFMT* lpFormat
+4=LPCWSTR lpValue
+5=DWORD dwFlags
+6=LPCWSTR lpLocaleName
+ParamCount=6
+@=GetNumberFormatEx
+[GetNumberFormatW]
+1=int cchNumber
+2=LPTSTR lpNumberStr
+3=const NUMBERFMT* lpFormat
+4=LPCTSTR lpValue
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetNumberFormatW
+[GetNumberOfConsoleInputEvents]
+1=LPDWORD lpcNumberOfEvents
+2=HANDLE hConsoleInput
+ParamCount=2
+@=GetNumberOfConsoleInputEvents
+[GetNumberOfConsoleMouseButtons]
+1=LPDWORD lpNumberOfMouseButtons
+ParamCount=1
+@=GetNumberOfConsoleMouseButtons
+[GetOEMCP]
+ParamCount=0
+@=GetOEMCP
+[GetPerformanceInfo]
+1=DWORD cb
+2=PPERFORMANCE_INFORMATION pPerformanceInformation
+ParamCount=2
+@=GetPerformanceInfo
+[GetPrivateProfileInt]
+1=LPCTSTR lpFileName
+2=INT nDefault
+3=LPCTSTR lpKeyName
+4=LPCTSTR lpAppName
+ParamCount=4
+@=GetPrivateProfileInt
+[GetPrivateProfileSection]
+1=LPCTSTR lpFileName
+2=DWORD nSize
+3=LPTSTR lpReturnedString
+4=LPCTSTR lpAppName
+ParamCount=4
+@=GetPrivateProfileSection
+[GetPrivateProfileSectionNames]
+1=LPCTSTR lpFileName
+2=DWORD nSize
+3=LPTSTR lpszReturnBuffer
+ParamCount=3
+@=GetPrivateProfileSectionNames
+[GetPrivateProfileString]
+1=LPCTSTR lpFileName
+2=DWORD nSize
+3=LPTSTR lpReturnedString
+4=LPCTSTR lpDefault
+5=LPCTSTR lpKeyName
+6=LPCTSTR lpAppName
+ParamCount=6
+@=GetPrivateProfileString
+[GetPrivateProfileStruct]
+1=LPCTSTR szFile
+2=UINT uSizeStruct
+3=LPVOID lpStruct
+4=LPCTSTR lpszKey
+5=LPCTSTR lpszSection
+ParamCount=5
+@=GetPrivateProfileStruct
+[GetProcessImageFileName]
+1=DWORD nSize
+2=LPTSTR lpImageFileName
+3=HANDLE hProcess
+ParamCount=3
+@=GetProcessImageFileName
+[GetProcessMemoryInfo]
+1=DWORD cb
+2=PPROCESS_MEMORY_COUNTERS ppsmemCounters
+3=HANDLE Process
+ParamCount=3
+@=GetProcessMemoryInfo
+[GetProfileInt]
+1=INT nDefault
+2=LPCTSTR lpKeyName
+3=LPCTSTR lpAppName
+ParamCount=3
+@=GetProfileInt
+[GetProfileSection]
+1=DWORD nSize
+2=LPTSTR lpReturnedString
+3=LPCTSTR lpAppName
+ParamCount=3
+@=GetProfileSection
+[GetProfileString]
+1=DWORD nSize
+2=LPTSTR lpReturnedString
+3=LPCTSTR lpDefault
+4=LPCTSTR lpKeyName
+5=LPCTSTR lpAppName
+ParamCount=5
+@=GetProfileString
+[GetShortPathName]
+1=DWORD cchBuffer
+2=LPTSTR lpszShortPath
+3=LPCTSTR lpszLongPath
+ParamCount=3
+@=GetShortPathName
+[GetStartupInfo]
+1=LPSTARTUPINFO lpStartupInfo
+ParamCount=1
+@=GetStartupInfo
+[GetStringScripts]
+1=int cchScripts
+2=LPWSTR lpScripts
+3=int cchString
+4=LPCWSTR lpString
+5=DWORD dwFlags
+ParamCount=5
+@=GetStringScripts
+[GetStringTypeA]
+1=LPWORD lpCharType
+2=int cchSrc
+3=LPCSTR lpSrcStr
+4=DWORD dwInfoType
+5=LCID Locale
+ParamCount=5
+@=GetStringTypeA
+[GetStringTypeEx]
+1=LPWORD lpCharType
+2=int cchSrc
+3=LPCTSTR lpSrcStr
+4=DWORD dwInfoType
+5=LCID Locale
+ParamCount=5
+@=GetStringTypeEx
+[GetStringTypeExA]
+1=LPWORD lpCharType
+2=int cchSrc
+3=LPCTSTR lpSrcStr
+4=DWORD dwInfoType
+5=LCID Locale
+ParamCount=5
+@=GetStringTypeExA
+[GetStringTypeExW]
+1=LPWORD lpCharType
+2=int cchSrc
+3=LPCTSTR lpSrcStr
+4=DWORD dwInfoType
+5=LCID Locale
+ParamCount=5
+@=GetStringTypeExW
+[GetStringTypeW]
+1=LPWORD lpCharType
+2=LPWORD cchSrc
+3=int lpSrcStr
+4=LPCWSTR dwInfoType
+5=DWORD Locale
+ParamCount=5
+@=GetStringTypeW
+[GetSystemDefaultLCID]
+ParamCount=0
+@=GetSystemDefaultLCID
+[GetSystemDefaultLangID]
+ParamCount=0
+@=GetSystemDefaultLangID
+[GetSystemDefaultLocaleName]
+1=int cchLocaleName
+2=LPWSTR lpLocaleName
+ParamCount=2
+@=GetSystemDefaultLocaleName
+[GetSystemDirectory]
+1=UINT uSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetSystemDirectory
+[GetSystemWindowsDirectory]
+1=UINT uSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetSystemWindowsDirectory
+[GetSystemWow64Directory]
+1=UINT uSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetSystemWow64Directory
+[GetTempFileName]
+1=LPTSTR lpTempFileName
+2=UINT uUnique
+3=LPCTSTR lpPrefixString
+4=LPCTSTR lpPathName
+ParamCount=4
+@=GetTempFileName
+[GetTempPath]
+1=LPTSTR lpBuffer
+2=DWORD nBufferLength
+ParamCount=2
+@=GetTempPath
+[GetThreadLocale]
+ParamCount=0
+@=GetThreadLocale
+[GetTimeFormat]
+1=int cchTime
+2=LPTSTR lpTimeStr
+3=LPCTSTR lpFormat
+4=const SYSTEMTIME* lpTime
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetTimeFormat
+[GetTimeFormatA]
+1=int cchTime
+2=LPTSTR lpTimeStr
+3=LPCTSTR lpFormat
+4=const SYSTEMTIME* lpTime
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetTimeFormatA
+[GetTimeFormatEx]
+1=int cchTime
+2=LPWSTR lpTimeStr
+3=LPCWSTR lpFormat
+4=const SYSTEMTIME* lpTime
+5=DWORD dwFlags
+6=LPCWSTR lpLocaleName
+ParamCount=6
+@=GetTimeFormatEx
+[GetTimeFormatW]
+1=int cchTime
+2=LPTSTR lpTimeStr
+3=LPCTSTR lpFormat
+4=const SYSTEMTIME* lpTime
+5=DWORD dwFlags
+6=LCID Locale
+ParamCount=6
+@=GetTimeFormatW
+[GetUserDefaultLCID]
+ParamCount=0
+@=GetUserDefaultLCID
+[GetUserDefaultLangID]
+ParamCount=0
+@=GetUserDefaultLangID
+[GetUserDefaultLocaleName]
+1=int cchLocaleName
+2=LPWSTR lpLocaleName
+ParamCount=2
+@=GetUserDefaultLocaleName
+[GetUserGeoID]
+1=GEOCLASS GeoClass
+ParamCount=1
+@=GetUserGeoID
+[GetVersionEx]
+1=LPOSVERSIONINFO lpVersionInfo
+ParamCount=1
+@=GetVersionEx
+[GetWindowsDirectory]
+1=UINT uSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetWindowsDirectory
+[GetWsChanges]
+1=DWORD cb
+2=PPSAPI_WS_WATCH_INFORMATION lpWatchInfo
+3=HANDLE hProcess
+ParamCount=3
+@=GetWsChanges
+[GetWsChangesEx]
+1=DWORD cb
+2=PPSAPI_WS_WATCH_INFORMATION_EX lpWatchInfoEx
+3=HANDLE hProcess
+ParamCount=3
+@=GetWsChangesEx
+[GlobalAddAtom]
+1=LPCTSTR lpString
+ParamCount=1
+@=GlobalAddAtom
+[GlobalFindAtom]
+1=LPCTSTR lpString
+ParamCount=1
+@=GlobalFindAtom
+[GlobalGetAtomName]
+1=int nSize
+2=LPTSTR lpBuffer
+3=ATOM nAtom
+ParamCount=3
+@=GlobalGetAtomName
+[Heap32First]
+1=ULONG_PTR th32HeapID
+2=DWORD th32ProcessID
+3=LPHEAPENTRY32 lphe
+ParamCount=3
+@=Heap32First
+[Heap32ListFirst]
+1=LPHEAPLIST32 lphl
+2=HANDLE hSnapshot
+ParamCount=2
+@=Heap32ListFirst
+[Heap32ListNext]
+1=LPHEAPLIST32 lphl
+2=HANDLE hSnapshot
+ParamCount=2
+@=Heap32ListNext
+[Heap32Next]
+1=LPHEAPENTRY32 lphe
+ParamCount=1
+@=Heap32Next
+[InitializeProcessForWsWatch]
+1=HANDLE hProcess
+ParamCount=1
+@=InitializeProcessForWsWatch
+[IsBadStringPtr]
+1=UINT_PTR ucchMax
+2=LPCTSTR lpsz
+ParamCount=2
+@=IsBadStringPtr
+[IsCalendarLeapYear]
+1=UINT era
+2=UINT year
+3=CALID calId
+ParamCount=3
+@=IsCalendarLeapYear
+[IsDBCSLeadByte]
+1=BYTE TestChar
+ParamCount=1
+@=IsDBCSLeadByte
+[IsDBCSLeadByteEx]
+1=BYTE TestChar
+2=UINT CodePage
+ParamCount=2
+@=IsDBCSLeadByteEx
+[IsNLSDefinedString]
+1=INT cchStr
+2=LPCWSTR lpString
+3=LPNLSVERSIONINFO lpVersionInformation
+4=DWORD dwFlags
+5=NLS_FUNCTION Function
+ParamCount=5
+@=IsNLSDefinedString
+[IsValidCodePage]
+1=UINT CodePage
+ParamCount=1
+@=IsValidCodePage
+[IsValidLanguageGroup]
+1=DWORD dwFlags
+2=LGRPID LanguageGroup
+ParamCount=2
+@=IsValidLanguageGroup
+[IsValidLocale]
+1=DWORD dwFlags
+2=LCID Locale
+ParamCount=2
+@=IsValidLocale
+[IsValidLocaleName]
+1=LPCWSTR lpLocaleName
+ParamCount=1
+@=IsValidLocaleName
+[LCIDToLocaleName]
+1=DWORD dwFlags
+2=int cchName
+3=LPWSTR lpName
+4=LCID Locale
+ParamCount=4
+@=LCIDToLocaleName
+[LCMapString]
+1=int cchDest
+2=LPTSTR lpDestStr
+3=int cchSrc
+4=LPCTSTR lpSrcStr
+5=DWORD dwMapFlags
+6=LCID Locale
+ParamCount=6
+@=LCMapString
+[LCMapStringA]
+1=int cchCount2
+2=LPTSTR lpString2
+3=int cchCount1
+4=LPCTSTR lpString1
+5=DWORD dwCmpFlags
+6=LCID Locale
+ParamCount=6
+@=LCMapStringA
+[LCMapStringEx]
+1=LPARAM lParam
+2=LPVOID lpReserved
+3=LPNLSVERSIONINFO lpVersionInformation
+4=int cchDest
+5=LPWSTR lpDestStr
+6=int cchSrc
+7=LPCWSTR lpSrcStr
+8=DWORD dwMapFlags
+9=LPCWSTR lpLocaleName
+ParamCount=9
+@=LCMapStringEx
+[LCMapStringW]
+1=int cchDest
+2=LPTSTR lpDestStr
+3=int cchSrc
+4=LPCTSTR lpSrcStr
+5=DWORD dwMapFlags
+6=LCID Locale
+ParamCount=6
+@=LCMapStringW
+[LoadLibrary]
+1=LPCTSTR lpFileName
+ParamCount=1
+@=LoadLibrary
+[LoadLibraryEx]
+1=DWORD dwFlags
+2=HANDLE hFile
+3=LPCTSTR lpFileName
+ParamCount=3
+@=LoadLibraryEx
+[LocaleNameToLCID]
+1=DWORD dwFlags
+2=LPCWSTR lpName
+ParamCount=2
+@=LocaleNameToLCID
+[Module32First]
+1=LPMODULEENTRY32 lpme
+2=HANDLE hModuleSnap
+ParamCount=2
+@=Module32First
+[Module32FirstW]
+1=LPMODULEENTRY32 lpme
+2=HANDLE hSnapshot
+ParamCount=2
+@=Module32FirstW
+[Module32Next]
+1=LPMODULEENTRY32 lpme
+2=HANDLE hModuleSnap
+ParamCount=2
+@=Module32Next
+[Module32NextW]
+1=LPMODULEENTRY32 lpme
+2=HANDLE hSnapshot
+ParamCount=2
+@=Module32NextW
+[MoveFile]
+1=LPCTSTR lpNewFileName
+2=LPCTSTR lpExistingFileName
+ParamCount=2
+@=MoveFile
+[MoveFileEx]
+1=DWORD dwFlags
+2=LPCTSTR lpNewFileName
+3=LPCTSTR lpExistingFileName
+ParamCount=3
+@=MoveFileEx
+[MoveFileTransacted]
+1=HANDLE hTransaction
+2=DWORD dwFlags
+3=LPVOID lpData
+4=LPPROGRESS_ROUTINE lpProgressRoutine
+5=LPCTSTR lpNewFileName
+6=LPCTSTR lpExistingFileName
+ParamCount=6
+@=MoveFileTransacted
+[MoveFileWithProgress]
+1=DWORD dwFlags
+2=LPVOID lpData
+3=LPPROGRESS_ROUTINE lpProgressRoutine
+4=LPCTSTR lpNewFileName
+5=LPCTSTR lpExistingFileName
+ParamCount=5
+@=MoveFileWithProgress
+[MultiByteToWideChar]
+1=int nBuffer
+2=LPWSTR lpwcBuffer
+3=int cchMultiByte
+4=LPCSTR lpMultiByteStr
+5=DWORD dwFlags
+6=UINT CodePage
+ParamCount=6
+@=MultiByteToWideChar
+[NeedCurrentDirectoryForExePath]
+1=LPCTSTR ExeName
+ParamCount=1
+@=NeedCurrentDirectoryForExePath
+[OpenEvent]
+1=LPCTSTR lpName
+2=BOOL bInheritHandle
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenEvent
+[OpenFileMapping]
+1=LPCTSTR lpName
+2=BOOL bInheritHandle
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenFileMapping
+[OpenJobObject]
+1=LPCTSTR lpName
+2=BOOL bInheritHandles
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenJobObject
+[OpenMutex]
+1=LPCTSTR lpName
+2=BOOL bInheritHandle
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenMutex
+[OpenPrivateNamespace]
+1=LPCTSTR lpAliasPrefix
+2=LPVOID lpBoundaryDescriptor
+ParamCount=2
+@=OpenPrivateNamespace
+[OpenSemaphore]
+1=LPCTSTR lpName
+2=BOOL bInheritHandle
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenSemaphore
+[OpenWaitableTimer]
+1=LPCTSTR lpTimerName
+2=BOOL bInheritHandle
+3=DWORD dwDesiredAccess
+ParamCount=3
+@=OpenWaitableTimer
+[OutputDebugString]
+1=LPCTSTR lpOutputString
+ParamCount=1
+@=OutputDebugString
+[PeekConsoleInput]
+1=LPDWORD lpNumberOfEventsRead
+2=DWORD nLength
+3=PINPUT_RECORD lpBuffer
+4=HANDLE hConsoleInput
+ParamCount=4
+@=PeekConsoleInput
+[Process32First]
+1=LPPROCESSENTRY32 lppe
+2=HANDLE hSnapshot
+ParamCount=2
+@=Process32First
+[Process32FirstW]
+1=LPPROCESSENTRY32 lppe
+2=HANDLE hSnapshot
+ParamCount=2
+@=Process32FirstW
+[Process32Next]
+1=LPPROCESSENTRY32 lppe
+2=HANDLE hSnapshot
+ParamCount=2
+@=Process32Next
+[Process32NextW]
+1=LPPROCESSENTRY32 lppe
+2=HANDLE hSnapshot
+ParamCount=2
+@=Process32NextW
+[QueryFullProcessImageName]
+1=PDWORD lpdwSize
+2=LPTSTR lpExeName
+3=DWORD dwFlags
+4=HANDLE hProcess
+ParamCount=4
+@=QueryFullProcessImageName
+[QueryWorkingSet]
+1=DWORD cb
+2=PVOID pv
+3=HANDLE hProcess
+ParamCount=3
+@=QueryWorkingSet
+[QueryWorkingSetEx]
+1=DWORD cb
+2=PVOID pv
+3=HANDLE hProcess
+ParamCount=3
+@=QueryWorkingSetEx
+[ReadConsole]
+1=LPVOID pInputControl
+2=LPDWORD lpNumberOfCharsRead
+3=DWORD nNumberOfCharsToRead
+4=LPVOID lpBuffer
+5=HANDLE hConsoleInput
+ParamCount=5
+@=ReadConsole
+[ReadConsoleInput]
+1=LPDWORD lpNumberOfEventsRead
+2=DWORD nLength
+3=PINPUT_RECORD lpBuffer
+4=HANDLE hConsoleInput
+ParamCount=4
+@=ReadConsoleInput
+[ReadConsoleInputA]
+1=LPDWORD lpNumberOfEventsRead
+2=DWORD nLength
+3=PINPUT_RECORD lpInputRecord
+4=HANDLE hConsoleInput
+ParamCount=4
+@=ReadConsoleInputA
+[ReadConsoleOutput]
+1=PSMALL_RECT lpReadRegion
+2=COORD dwBufferCoord
+3=COORD dwBufferSize
+4=PCHAR_INFO lpBuffer
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=ReadConsoleOutput
+[ReadConsoleOutputAttribute]
+1=LPDWORD lpNumberOfAttrsRead
+2=COORD dwReadCoord
+3=DWORD nLength
+4=LPWORD lpAttribute
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=ReadConsoleOutputAttribute
+[ReadConsoleOutputCharacter]
+1=LPDWORD lpNumberOfCharsRead
+2=COORD dwReadCoord
+3=DWORD nLength
+4=LPTSTR lpCharacter
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=ReadConsoleOutputCharacter
+[RemoveDirectory]
+1=LPCTSTR lpPathName
+ParamCount=1
+@=RemoveDirectory
+[RemoveDirectoryTransacted]
+1=HANDLE hTransaction
+2=LPCTSTR lpPathName
+ParamCount=2
+@=RemoveDirectoryTransacted
+[ReplaceFile]
+1=LPVOID lpReserved
+2=LPVOID lpExclude
+3=DWORD dwReplaceFlags
+4=LPCTSTR lpBackupFileName
+5=LPCTSTR lpReplacementFileName
+6=LPCTSTR lpReplacedFileName
+ParamCount=6
+@=ReplaceFile
+[ResolveLocaleName]
+1=int cchLocaleName
+2=LPWSTR lpLocaleName
+3=LPCWSTR lpNameToResolve
+ParamCount=3
+@=ResolveLocaleName
+[RtlAddFunctionTable]
+1=ULONGLONG TargetGp
+2=DWORD64 BaseAddress
+3=DWORD EntryCount
+4=PRUNTIME_FUNCTION FunctionTable
+ParamCount=4
+@=RtlAddFunctionTable
+[RtlCaptureContext]
+1=PCONTEXT ContextRecord
+ParamCount=1
+@=RtlCaptureContext
+[RtlCaptureStackBackTrace]
+1=PULONG BackTraceHash
+2=PVOID* BackTrace
+3=ULONG FramesToCapture
+4=ULONG FramesToSkip
+ParamCount=4
+@=RtlCaptureStackBackTrace
+[RtlDeleteFunctionTable]
+1=PRUNTIME_FUNCTION FunctionTable
+ParamCount=1
+@=RtlDeleteFunctionTable
+[RtlInstallFunctionTableCallback]
+1=PCWSTR OutOfProcessCallbackDll
+2=PVOID Context
+3=PGET_RUNTIME_FUNCTION_CALLBACK Callback
+4=DWORD Length
+5=DWORD64 BaseAddress
+6=DWORD64 TableIdentifier
+ParamCount=6
+@=RtlInstallFunctionTableCallback
+[RtlIsValidLocaleName]
+1=ULONG Flags
+2=LPCWSTR LocaleName
+ParamCount=2
+@=RtlIsValidLocaleName
+[RtlLookupFunctionEntry]
+1=PULONGLONG TargetGp
+2=PULONGLONG ImageBase
+3=ULONGLONG ControlPC
+ParamCount=3
+@=RtlLookupFunctionEntry
+[RtlPcToFileHeader]
+1=PVOID* BaseOfImage
+2=PVOID PcValue
+ParamCount=2
+@=RtlPcToFileHeader
+[RtlRestoreContext]
+1=PEXCEPTION_RECORD ExceptionRecord
+2=PCONTEXT ContextRecord
+ParamCount=2
+@=RtlRestoreContext
+[ScrollConsoleScreenBuffer]
+1=const CHAR_INFO* lpFill
+2=COORD dwDestinationOrigin
+3=const SMALL_RECT* lpClipRectangle
+4=const SMALL_RECT* lpScrollRectangle
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=ScrollConsoleScreenBuffer
+[ScrollConsoleScreenBufferA]
+1=const CHAR_INFO* lpFill
+2=COORD dwDestinationOrigin
+3=const SMALL_RECT* lpClipRectangle
+4=const SMALL_RECT* lpScrollRectangle
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=ScrollConsoleScreenBufferA
+[SearchPath]
+1=LPTSTR* lpFilePart
+2=LPTSTR lpBuffer
+3=DWORD nBufferLength
+4=LPCTSTR lpExtension
+5=LPCTSTR lpFileName
+6=LPCTSTR lpPath
+ParamCount=6
+@=SearchPath
+[SetCalendarInfo]
+1=LPCTSTR lpCalData
+2=CALTYPE CalType
+3=CALID Calendar
+4=LCID Locale
+ParamCount=4
+@=SetCalendarInfo
+[SetComputerName]
+1=LPCTSTR lpComputerName
+ParamCount=1
+@=SetComputerName
+[SetComputerNameEx]
+1=LPCTSTR lpBuffer
+2=COMPUTER_NAME_FORMAT NameType
+ParamCount=2
+@=SetComputerNameEx
+[SetConsoleActiveScreenBuffer]
+1=HANDLE hConsoleOutput
+ParamCount=1
+@=SetConsoleActiveScreenBuffer
+[SetConsoleCP]
+1=UINT wCodePageID
+ParamCount=1
+@=SetConsoleCP
+[SetConsoleCtrlHandler]
+1=BOOL Add
+2=PHANDLER_ROUTINE hRoutine
+ParamCount=2
+@=SetConsoleCtrlHandler
+[SetConsoleCursorInfo]
+1=const CONSOLE_CURSOR_INFO* lpConsoleCursorInfo
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=SetConsoleCursorInfo
+[SetConsoleCursorPosition]
+1=COORD dwCursorPosition
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=SetConsoleCursorPosition
+[SetConsoleDisplayMode]
+1=PCOORD lpNewScreenBufferDimensions
+2=DWORD dwFlags
+3=HANDLE hConsoleOutput
+ParamCount=3
+@=SetConsoleDisplayMode
+[SetConsoleHistoryInfo]
+1=PCONSOLE_HISTORY_INFO lpConsoleHistoryInfo
+ParamCount=1
+@=SetConsoleHistoryInfo
+[SetConsoleMode]
+1=DWORD dwMode
+2=HANDLE hConsoleHandle
+ParamCount=2
+@=SetConsoleMode
+[SetConsoleOutputCP]
+1=UINT wCodePageID
+ParamCount=1
+@=SetConsoleOutputCP
+[SetConsoleScreenBufferInfoEx]
+1=PCONSOLE_SCREEN_BUFFER_INFOEX lpConsoleScreenBufferInfoEx
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=SetConsoleScreenBufferInfoEx
+[SetConsoleScreenBufferSize]
+1=COORD dwSize
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=SetConsoleScreenBufferSize
+[SetConsoleTextAttribute]
+1=WORD wAttributes
+2=HANDLE hConsoleOutput
+ParamCount=2
+@=SetConsoleTextAttribute
+[SetConsoleTitle]
+1=LPCTSTR lpConsoleTitle
+ParamCount=1
+@=SetConsoleTitle
+[SetConsoleTitleA]
+1=LPCTSTR pConsoleTitle
+ParamCount=1
+@=SetConsoleTitleA
+[SetConsoleTitleW]
+1=LPCTSTR pConsoleTitle
+ParamCount=1
+@=SetConsoleTitleW
+[SetConsoleWindowInfo]
+1=const SMALL_RECT* lpConsoleWindow
+2=BOOL bAbsolute
+3=HANDLE hConsoleOutput
+ParamCount=3
+@=SetConsoleWindowInfo
+[SetCurrentConsoleFontEx]
+1=PCONSOLE_FONT_INFOEX lpConsoleCurrentFontEx
+2=BOOL bMaximumWindow
+3=HANDLE hConsoleOutput
+ParamCount=3
+@=SetCurrentConsoleFontEx
+[SetCurrentDirectory]
+1=LPCTSTR lpPathName
+ParamCount=1
+@=SetCurrentDirectory
+[SetDefaultCommConfig]
+1=DWORD dwSize
+2=LPCOMMCONFIG lpCC
+3=LPCTSTR lpszName
+ParamCount=3
+@=SetDefaultCommConfig
+[SetDllDirectory]
+1=LPCTSTR lpPathName
+ParamCount=1
+@=SetDllDirectory
+[SetEnvironmentVariable]
+1=LPCTSTR lpValue
+2=LPCTSTR lpName
+ParamCount=2
+@=SetEnvironmentVariable
+[SetFileAttributes]
+1=DWORD dwFileAttributes
+2=LPCTSTR lpFileName
+ParamCount=2
+@=SetFileAttributes
+[SetFileAttributesTransacted]
+1=HANDLE hTransaction
+2=DWORD dwFileAttributes
+3=LPCTSTR lpFileName
+ParamCount=3
+@=SetFileAttributesTransacted
+[SetFileShortName]
+1=LPCTSTR lpShortName
+2=HANDLE hFile
+ParamCount=2
+@=SetFileShortName
+[SetFirmwareEnvironmentVariable]
+1=DWORD nSize
+2=PVOID pBuffer
+3=LPCTSTR lpGuid
+4=LPCTSTR lpName
+ParamCount=4
+@=SetFirmwareEnvironmentVariable
+[SetLocaleInfo]
+1=LPCTSTR lpLCData
+2=LCTYPE LCType
+3=LCID Locale
+ParamCount=3
+@=SetLocaleInfo
+[SetLocaleInfoA]
+1=LPCTSTR lpLCData
+2=LCTYPE LCType
+3=LCID Locale
+ParamCount=3
+@=SetLocaleInfoA
+[SetLocaleInfoW]
+1=LPCTSTR lpLCData
+2=LCTYPE LCType
+3=LCID Locale
+ParamCount=3
+@=SetLocaleInfoW
+[SetThreadLocale]
+1=LCID Locale
+ParamCount=1
+@=SetThreadLocale
+[SetThreadpoolCallbackPriority]
+1=TP_CALLBACK_PRIORITY Priority
+2=PTP_CALLBACK_ENVIRON pcbe
+ParamCount=2
+@=SetThreadpoolCallbackPriority
+[SetUserGeoID]
+1=GEOID GeoId
+ParamCount=1
+@=SetUserGeoID
+[Thread32First]
+1=LPTHREADENTRY32 lpte
+2=HANDLE hSnapshot
+ParamCount=2
+@=Thread32First
+[Thread32Next]
+1=LPTHREADENTRY32 lpte
+2=HANDLE hSnapshot
+ParamCount=2
+@=Thread32Next
+[Toolhelp32ReadProcessMemory]
+1=SIZE_T lpNumberOfBytesRead
+2=SIZE_T cbRead
+3=LPVOID lpBuffer
+4=LPCVOID lpBaseAddress
+5=DWORD th32ProcessID
+ParamCount=5
+@=Toolhelp32ReadProcessMemory
+[UpdateCalendarDayOfWeek]
+1=LPCALDATETIME lpCalDateTime
+ParamCount=1
+@=UpdateCalendarDayOfWeek
+[UpdateResource]
+1=DWORD cbData
+2=LPVOID lpData
+3=WORD wLanguage
+4=LPCTSTR lpName
+5=LPCTSTR lpType
+6=HANDLE hUpdate
+ParamCount=6
+@=UpdateResource
+[VerLanguageName]
+1=DWORD cchLang
+2=LPTSTR szLang
+3=DWORD wLang
+ParamCount=3
+@=VerLanguageName
+[VerLanguageNameA]
+1=DWORD nSize
+2=LPTSTR szLang
+3=DWORD wLang
+ParamCount=3
+@=VerLanguageNameA
+[VerLanguageNameW]
+1=DWORD nSize
+2=LPTSTR szLang
+3=DWORD wLang
+ParamCount=3
+@=VerLanguageNameW
+[VerSetConditionMask]
+1=DWORD dwConditionMask
+2=DWORD dwTypeBitMask
+3=ULONGLONG dwlConditionMask
+ParamCount=3
+@=VerSetConditionMask
+[VerifyScripts]
+1=int cchTestScripts
+2=LPCWSTR lpTestScripts
+3=int cchLocaleScripts
+4=LPCWSTR lpLocaleScripts
+5=DWORD dwFlags
+ParamCount=5
+@=VerifyScripts
+[VerifyVersionInfo]
+1=DWORDLONG dwlConditionMask
+2=DWORD dwTypeMask
+3=LPOSVERSIONINFOEX lpVersionInfo
+ParamCount=3
+@=VerifyVersionInfo
+[WerGetFlags]
+1=PDWORD pdwFlags
+2=HANDLE hProcess
+ParamCount=2
+@=WerGetFlags
+[WerRegisterFile]
+1=DWORD dwFlags
+2=WER_REGISTER_FILE_TYPE regFileType
+3=PCWSTR pwzFile
+ParamCount=3
+@=WerRegisterFile
+[WerRegisterMemoryBlock]
+1=DWORD dwSize
+2=PVOID pvAddress
+ParamCount=2
+@=WerRegisterMemoryBlock
+[WerRegisterRuntimeExceptionModule]
+1=PVOID pContext
+2=PCWSTR pwszOutOfProcessCallbackDll
+ParamCount=2
+@=WerRegisterRuntimeExceptionModule
+[WerSetFlags]
+1=DWORD dwFlags
+ParamCount=1
+@=WerSetFlags
+[WerUnregisterFile]
+1=PCWSTR pwzFilePath
+ParamCount=1
+@=WerUnregisterFile
+[WerUnregisterMemoryBlock]
+1=PVOID pvAddress
+ParamCount=1
+@=WerUnregisterMemoryBlock
+[WerUnregisterRuntimeExceptionModule]
+1=PVOID pContext
+2=PCWSTR pwszOutOfProcessCallbackDll
+ParamCount=2
+@=WerUnregisterRuntimeExceptionModule
+[WideCharToMultiByte]
+1=LPBOOL pDefaultCharUsed
+2=LPCSTR pDefaultChar
+3=int MultiByteByte
+4=LPSTR lpszBuffer
+5=int WideCharCount
+6=LPCWSTR WideCharStr
+7=DWORD Options
+8=UINT CodePage
+ParamCount=8
+@=WideCharToMultiByte
+[WriteConsole]
+1=LPVOID lpReserved
+2=LPDWORD lpNumberOfCharsWritten
+3=DWORD nNumberOfCharsToWrite
+4=LPCTSTR lpBuffer
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=WriteConsole
+[WriteConsoleInput]
+1=LPDWORD lpNumberOfEventsWritten
+2=DWORD nLength
+3=const INPUT_RECORD* lpBuffer
+4=HANDLE hConsoleInput
+ParamCount=4
+@=WriteConsoleInput
+[WriteConsoleOutput]
+1=PSMALL_RECT lpWriteRegion
+2=COORD dwBufferCoord
+3=COORD dwBufferSize
+4=const CHAR_INFO* lpBuffer
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=WriteConsoleOutput
+[WriteConsoleOutputA]
+1=PSMALL_RECT lpWriteRegion
+2=COORD dwBufferCoord
+3=COORD dwBufferSize
+4=const CHAR_INFO* lpBuffer
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=WriteConsoleOutputA
+[WriteConsoleOutputAttribute]
+1=LPDWORD lpNumberOfAttrsWritten
+2=COORD dwWriteCoord
+3=DWORD nLength
+4=const WORD* lpAttribute
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=WriteConsoleOutputAttribute
+[WriteConsoleOutputCharacter]
+1=LPDWORD lpNumberOfCharsWritten
+2=COORD dwWriteCoord
+3=DWORD nLength
+4=LPCTSTR lpCharacter
+5=HANDLE hConsoleOutput
+ParamCount=5
+@=WriteConsoleOutputCharacter
+[WriteFileW]
+1=LPOVERLAPPED lpOverlapped
+2=LPDWORD lpNumberOfBytesWritten
+3=DWORD nNumberOfBytesToWrite
+4=LPCVOID lpWriteData
+5=HANDLE hFile
+ParamCount=5
+@=WriteFileW
+[WritePrivateProfileSection]
+1=LPCTSTR lpFileName
+2=LPCTSTR lpString
+3=LPCTSTR lpAppName
+ParamCount=3
+@=WritePrivateProfileSection
+[WritePrivateProfileString]
+1=LPCTSTR lpFileName
+2=LPCTSTR lpString
+3=LPCTSTR lpKeyName
+4=LPCTSTR lpAppName
+ParamCount=4
+@=WritePrivateProfileString
+[WritePrivateProfileStruct]
+1=LPCTSTR szFile
+2=UINT uSizeStruct
+3=LPVOID lpStruct
+4=LPCTSTR lpszKey
+5=LPCTSTR lpszSection
+ParamCount=5
+@=WritePrivateProfileStruct
+[WriteProfileSection]
+1=LPCTSTR lpString
+2=LPCTSTR lpAppName
+ParamCount=2
+@=WriteProfileSection
+[WriteProfileString]
+1=LPCTSTR lpString
+2=LPCTSTR lpKeyName
+3=LPCTSTR lpAppName
+ParamCount=3
+@=WriteProfileString
+[lstrcat]
+1=LPTSTR String2
+2=LPTSTR String1
+ParamCount=2
+@=lstrcat
+[lstrcmp]
+1=LPCTSTR string2
+2=LPCTSTR string1
+ParamCount=2
+@=lstrcmp
+[lstrcmpi]
+1=LPCTSTR string2
+2=LPCTSTR string1
+ParamCount=2
+@=lstrcmpi
+[lstrcpy]
+1=LPTSTR lpString2
+2=LPTSTR lpString1
+ParamCount=2
+@=lstrcpy
+[lstrcpyn]
+1=int nBuffer
+2=LPCTSTR lpstrSrc
+3=LPTSTR lpBuffer
+ParamCount=3
+@=lstrcpyn
+[lstrlen]
+1=LPCTSTR lpString
+ParamCount=1
+@=lstrlen
+[RtlUnwind]
+1=DWORD _eax_value
+2=PEXCEPTION_RECORD pExcptRec
+3=PVOID returnAddr
+4=PEXCEPTION_REGISTRATION pRegistrationFrame
+ParamCount=4
+@=RtlUnwind

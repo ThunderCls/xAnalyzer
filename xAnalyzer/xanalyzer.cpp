@@ -49,7 +49,7 @@ void DoExtendedAnalysis()
 	DbgCmdExecDirect("anal");
 	DbgCmdExecDirect("exanal");
 	DbgCmdExecDirect("analx");
-	DbgCmdExecDirect("analadv");
+	DbgCmdExecDirect("analadv"); // "analadv" command has an axception when executing over ntdll
 	DbgCmdExecDirect("cfanal");
 	GuiAddStatusBarMessage("xAnalyzer: initial analysis completed!\r\n");
 	GuiAddStatusBarMessage("xAnalyzer: doing extended analysis...\r\n");
@@ -79,6 +79,8 @@ void GenAPIInfo()
 	ZeroMemory(szAPIModuleName, MAX_MODULE_SIZE);
 	ZeroMemory(szAPIComment, MAX_COMMENT_SIZE);
 	ZeroMemory(szMainModule, MAX_MODULE_SIZE);
+	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
 
 	DbgGetEntryExitPoints(&dwEntry, &dwExit);
 	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
@@ -139,8 +141,11 @@ void GenAPIInfo()
 					lstrcat(szAPIComment, szAPIFunction);
 					// set the argument values
 					ai.manual = true;
+
 					if (strncmp(szAPIFunction, "sub_", 4) == 0) // internal function call or sub
 					{
+						// internal subs
+						// ---------------------------------------------------------------------
 						// set the argument values
 						int arg_rva = CurrentAddress - Module::BaseFromAddr(CurrentAddress);
 						ai.rvaEnd = arg_rva;
@@ -151,8 +156,10 @@ void GenAPIInfo()
 						SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, true);
 						ClearStack(IS); // Clear stack after internal functions calls (subs)
 					}
-					else // indirect call or sub instruction
+					else 
 					{
+						// indirect call or call/!jmp
+						// ---------------------------------------------------------------------
 						DWORD indirect = DbgValFromString(IndirectCallDirection(bii.instruction));
 						if (indirect != -1)
 						{
@@ -195,6 +202,9 @@ void GenAPIInfo()
 		}
 
 		CurrentAddress += bii.size;
+
+		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+		ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
 	}
 
 	ClearStack(IS);

@@ -5463,3 +5463,1089 @@ ParamCount=0
 3=HANDLE hMediaRequestEvent
 ParamCount=3
 @=NtUserInitialize(DWORD dwVersion, HANDLE hPowerRequestEvent, HANDLE hMediaRequestEvent);
+[SetPixel]
+1=COLORREF int
+2=int HDC
+ParamCount=2
+@=SetPixel
+[LocalFree]
+1=HLOCAL hMem
+ParamCount=1
+@=LocalFree
+[GetModuleHandleA]
+1=LPCSTR lpModuleName
+ParamCount=1
+@=GetModuleHandleA
+[GetStartupInfo]
+1=LPSTARTUPINFO lpStartupInfo
+ParamCount=1
+@=GetStartupInfo
+[GetStartupInfoA]
+1=LPSTARTUPINFO lpStartupInfo
+ParamCount=1
+@=GetStartupInfoA
+[GetStartupInfoW]
+1=LPSTARTUPINFO lpStartupInfo
+ParamCount=1
+@=GetStartupInfoW
+[EditWndProc]
+1=DWORD lParam
+2=DWORD wParam
+3=DWORD uMsg
+4=DWORD hWnd
+ParamCount=4
+@=EditWndProc
+[AllowActivateDetachQueuesSetFocus]
+ParamCount=0
+@=AllowActivateDetachQueuesSetFocus
+[AppendMenu]
+1=LPCTSTR lpNewItem
+2=UINT_PTR uIDNewItem
+3=UINT uFlags
+4=HMENU hMenu
+ParamCount=4
+@=AppendMenu
+[BroadcastSystemMessageEx]
+1=PBSMINFO pBSMInfo
+2=LPARAM lParam
+3=WPARAM wParam
+4=UINT uiMessage
+5=LPDWORD lpdwRecipients
+6=DWORD dwFlags
+ParamCount=6
+@=BroadcastSystemMessageEx
+[CallMsgFilter]
+1=int nCode
+2=LPMSG lpMsg
+ParamCount=2
+@=CallMsgFilter
+[CallWindowProc]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=HWND hWnd
+5=WNDPROC lpPrevWndFunc
+ParamCount=5
+@=CallWindowProc
+[ChangeDisplaySettings]
+1=DWORD dwflags
+2=DEVMODE* lpDevMode
+ParamCount=2
+@=ChangeDisplaySettings
+[ChangeDisplaySettingsEx]
+1=LPVOID lParam
+2=DWORD dwflags
+3=HWND hwnd
+4=DEVMODE* lpDevMode
+5=LPCTSTR lpszDeviceName
+ParamCount=5
+@=ChangeDisplaySettingsEx
+[CharLower]
+1=LPTSTR lpsz
+ParamCount=1
+@=CharLower
+[CharLowerBuff]
+1=DWORD cchLength
+2=LPTSTR lpsz
+ParamCount=2
+@=CharLowerBuff
+[CharNext]
+1=LPCTSTR lpsz
+ParamCount=1
+@=CharNext
+[CharPrev]
+1=LPCTSTR lpszCurrent
+2=LPCTSTR lpszStart
+ParamCount=2
+@=CharPrev
+[CharToOem]
+1=LPSTR lpszDst
+2=LPCTSTR lpszSrc
+ParamCount=2
+@=CharToOem
+[CharToOemBuff]
+1=DWORD cchDstLength
+2=LPSTR lpszDst
+3=LPCTSTR lpszSrc
+ParamCount=3
+@=CharToOemBuff
+[CharUpper]
+1=LPTSTR lpsz
+ParamCount=1
+@=CharUpper
+[CharUpperBuff]
+1=DWORD cchLength
+2=LPTSTR lpsz
+ParamCount=2
+@=CharUpperBuff
+[CopyAcceleratorTable]
+1=int cAccelEntries
+2=LPACCEL lpAccelDst
+3=HACCEL hAccelSrc
+ParamCount=3
+@=CopyAcceleratorTable
+[CreateAcceleratorTable]
+1=int cEntries
+2=LPACCEL lpaccl
+ParamCount=2
+@=CreateAcceleratorTable
+[CreateDesktop]
+1=LPSECURITY_ATTRIBUTES lpsa
+2=DWORD dwDesiredAccess
+3=DWORD dwFlags
+4=LPDEVMODE pDevmode
+5=LPCTSTR lpszDevice
+6=LPCTSTR lpszDesktop
+ParamCount=6
+@=CreateDesktop
+[CreateDesktopEx]
+1=PVOID pvoid
+2=ULONG ulHeapSize
+3=LPSECURITY_ATTRIBUTES lpsa
+4=DWORD dwDesiredAccess
+5=DWORD dwFlags
+6=LPDEVMODE pDevmode
+7=LPCTSTR lpszDevice
+8=LPCTSTR lpszDesktop
+ParamCount=8
+@=CreateDesktopEx
+[CreateDialogIndirectParam]
+1=LPARAM lParamInit
+2=DLGPROC lpDialogFunc
+3=HWND hWndParent
+4=LPCDLGTEMPLATE lpTemplate
+5=HINSTANCE hInstance
+ParamCount=5
+@=CreateDialogIndirectParam
+[CreateDialogParam]
+1=LPARAM lParamInit
+2=DLGPROC lpDialogFunc
+3=HWND hWndParent
+4=LPCTSTR lpTemplateName
+5=HINSTANCE hInstance
+ParamCount=5
+@=CreateDialogParam
+[CreateMDIWindow]
+1=LPARAM lParam
+2=HINSTANCE hInstance
+3=HWND hWndParent
+4=int nHeight
+5=int nWidth
+6=int Y
+7=int X
+8=DWORD dwStyle
+9=LPCTSTR lpWindowName
+10=LPCTSTR lpClassName
+ParamCount=10
+@=CreateMDIWindow
+[CreateWindow]
+1=LPVOID lpParam
+2=HINSTANCE hInstance
+3=HMENU hMenu
+4=HWND hWndParent
+5=int nHeight
+6=int nWidth
+7=int y
+8=int x
+9=DWORD dwStyle
+10=LPCTSTR lpWindowName
+11=LPCTSTR lpClassName
+ParamCount=11
+@=CreateWindow
+[CreateWindowEx]
+1=LPVOID lpParam
+2=HINSTANCE hInstance
+3=HMENU hMenu
+4=HWND hWndParent
+5=int nHeight
+6=int nWidth
+7=int Y
+8=int X
+9=DWORD dwStyle
+10=LPCSTR lpWindowName
+11=LPCSTR lpClassName
+12=DWORD dwExStyle
+ParamCount=12
+@=CreateWindowEx
+[CreateWindowStation]
+1=LPSECURITY_ATTRIBUTES lpsa
+2=DWORD dwDesiredAccess
+3=DWORD dwFlags
+4=LPCTSTR lpwinsta
+ParamCount=4
+@=CreateWindowStation
+[DdeAbandonTransaction]
+1=DWORD idTransaction
+2=HCONV hConv
+3=DWORD idInst
+ParamCount=3
+@=DdeAbandonTransaction
+[DdeAccessData]
+1=LPDWORD pcbDataSize
+2=HDDEDATA hData
+ParamCount=2
+@=DdeAccessData
+[DdeAddData]
+1=DWORD cbOff
+2=DWORD cb
+3=LPBYTE pSrc
+4=HDDEDATA hData
+ParamCount=4
+@=DdeAddData
+[DdeClientTransaction]
+1=LPDWORD pdwResult
+2=DWORD dwTimeout
+3=UINT wType
+4=UINT wFmt
+5=HSZ hszItem
+6=HCONV hConv
+7=DWORD cbData
+8=LPBYTE pData
+ParamCount=8
+@=DdeClientTransaction
+[DdeCmpStringHandles]
+1=HSZ hsz2
+2=HSZ hsz1
+ParamCount=2
+@=DdeCmpStringHandles
+[DdeConnect]
+1=PCONVCONTEXT pCC
+2=HSZ hszTopic
+3=HSZ hszService
+4=DWORD idInst
+ParamCount=4
+@=DdeConnect
+[DdeConnectList]
+1=PCONVCONTEXT pCC
+2=HCONVLIST hConvList
+3=HSZ hszTopic
+4=HSZ hszService
+5=DWORD idInst
+ParamCount=5
+@=DdeConnectList
+[DdeCreateDataHandle]
+1=UINT afCmd
+2=UINT wFmt
+3=HSZ hszItem
+4=DWORD cbOff
+5=DWORD cb
+6=LPBYTE pSrc
+7=DWORD idInst
+ParamCount=7
+@=DdeCreateDataHandle
+[DdeCreateStringHandle]
+1=int iCodePage
+2=LPTSTR psz
+3=DWORD idInst
+ParamCount=3
+@=DdeCreateStringHandle
+[DdeDisconnect]
+1=HCONV hConv
+ParamCount=1
+@=DdeDisconnect
+[DdeDisconnectList]
+1=HCONVLIST hConvList
+ParamCount=1
+@=DdeDisconnectList
+[DdeEnableCallback]
+1=UINT wCmd
+2=HCONV hConv
+3=DWORD idInst
+ParamCount=3
+@=DdeEnableCallback
+[DdeFreeDataHandle]
+1=HDDEDATA hData
+ParamCount=1
+@=DdeFreeDataHandle
+[DdeFreeStringHandle]
+1=HSZ hsz
+2=DWORD idInst
+ParamCount=2
+@=DdeFreeStringHandle
+[DdeGetData]
+1=DWORD cbOff
+2=DWORD cbMax
+3=LPBYTE pDst
+4=HDDEDATA hData
+ParamCount=4
+@=DdeGetData
+[DdeGetLastError]
+1=DWORD idInst
+ParamCount=1
+@=DdeGetLastError
+[DdeImpersonateClient]
+1=HCONV hConv
+ParamCount=1
+@=DdeImpersonateClient
+[DdeInitialize]
+1=DWORD ulRes
+2=DWORD afCmd
+3=PFNCALLBACK pfnCallback
+4=LPDWORD pidInst
+ParamCount=4
+@=DdeInitialize
+[DdeKeepStringHandle]
+1=HSZ hsz
+2=DWORD idInst
+ParamCount=2
+@=DdeKeepStringHandle
+[DdeNameService]
+1=UINT afCmd
+2=UINT hsz2
+3=UINT hsz1
+4=DWORD idInst
+ParamCount=4
+@=DdeNameService
+[DdePostAdvise]
+1=HSZ hszItem
+2=HSZ hszTopic
+3=DWORD idInst
+ParamCount=3
+@=DdePostAdvise
+[DdeQueryConvInfo]
+1=PCONVINFO pConvInfo
+2=DWORD idTransaction
+3=HCONV hConv
+ParamCount=3
+@=DdeQueryConvInfo
+[DdeQueryNextServer]
+1=HCONV hConvPrev
+2=HCONVLIST hConvList
+ParamCount=2
+@=DdeQueryNextServer
+[DdeQueryString]
+1=int iCodePage
+2=DWORD cchMax
+3=LPTSTR psz
+4=HSZ hsz
+5=DWORD idInst
+ParamCount=5
+@=DdeQueryString
+[DdeReconnect]
+1=HCONV hConv
+ParamCount=1
+@=DdeReconnect
+[DdeSetQualityOfService]
+1=PSECURITY_QUALITY_OF_SERVICE pqosPrev
+2=const SECURITY_QUALITY_OF_SERVICE* pqosNew
+3=HWND hwndClient
+ParamCount=3
+@=DdeSetQualityOfService
+[DdeSetUserHandle]
+1=DWORD_PTR hUser
+2=DWORD id
+3=HCONV hConv
+ParamCount=3
+@=DdeSetUserHandle
+[DdeUnaccessData]
+1=HDDEDATA hData
+ParamCount=1
+@=DdeUnaccessData
+[DdeUninitialize]
+1=DWORD idInst
+ParamCount=1
+@=DdeUninitialize
+[DefDlgProc]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=HWND hDlg
+ParamCount=4
+@=DefDlgProc
+[DefFrameProc]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT uMsg
+4=HWND hWndMDIClient
+5=HWND hWnd
+ParamCount=5
+@=DefFrameProc
+[DefMDIChildProc]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT uMsg
+4=HWND hWnd
+ParamCount=4
+@=DefMDIChildProc
+[DefWindowProc]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=HWND hWnd
+ParamCount=4
+@=DefWindowProc
+[DialogBoxIndirectParam]
+1=LPARAM dwInitParam
+2=DLGPROC lpDialogFunc
+3=HWND hWndParent
+4=LPCDLGTEMPLATE hDialogTemplate
+5=HINSTANCE hInstance
+ParamCount=5
+@=DialogBoxIndirectParam
+[DialogBoxParam]
+1=LPARAM dwInitParam
+2=DLGPROC lpDialogFunc
+3=HWND hWndParent
+4=LPCTSTR lpTemplateName
+5=HINSTANCE hInstance
+ParamCount=5
+@=DialogBoxParam
+[DispatchMessage]
+1=const MSG *lpMsg
+ParamCount=1
+@=DispatchMessage
+[DlgDirList]
+1=UINT uFileType
+2=int nIDStaticPath
+3=int nIDListBox
+4=LPTSTR lpPathSpec
+5=HWND hDlg
+ParamCount=5
+@=DlgDirList
+[DlgDirListComboBox]
+1=UINT uFiletype
+2=int nIDStaticPath
+3=int nIDComboBox
+4=LPTSTR lpPathSpec
+5=HWND hDlg
+ParamCount=5
+@=DlgDirListComboBox
+[DlgDirSelectComboBoxEx]
+1=int nIDComboBox
+2=int nCount
+3=LPTSTR lpString
+4=HWND hDlg
+ParamCount=4
+@=DlgDirSelectComboBoxEx
+[DlgDirSelectEx]
+1=int nIDListBox
+2=int nCount
+3=LPTSTR lpString
+4=HWND hDlg
+ParamCount=4
+@=DlgDirSelectEx
+[DrawState]
+1=UINT fuFlags
+2=int cy
+3=int cx
+4=int y
+5=int x
+6=WPARAM wData
+7=LPARAM lData
+8=DRAWSTATEPROC lpOutputFunc
+9=HBRUSH hbr
+10=HDC hdc
+ParamCount=10
+@=DrawState
+[DrawText]
+1=UINT uFormat
+2=LPRECT lpRect
+3=int nCount
+4=LPCTSTR lpchText
+5=HDC hDC
+ParamCount=5
+@=DrawText
+[DrawTextEx]
+1=LPDRAWTEXTPARAMS lpDTParams
+2=UINT dwDTFormat
+3=LPRECT lprc
+4=int cchText
+5=LPTSTR lpchText
+6=HDC hdc
+ParamCount=6
+@=DrawTextEx
+[EnumDesktops]
+1=LPARAM lParam
+2=DESKTOPENUMPROC lpEnumFunc
+3=HWINSTA hwinsta
+ParamCount=3
+@=EnumDesktops
+[EnumDisplayDevices]
+1=DWORD dwFlags
+2=PDISPLAY_DEVICE pDisplayDevice
+3=DWORD iDeviceNum
+4=LPCTSTR lpReserved
+ParamCount=4
+@=EnumDisplayDevices
+[EnumDisplaySettings]
+1=DEVMODE* lpDevMode
+2=int iModeNum
+3=LPCTSTR lpszDeviceName
+ParamCount=3
+@=EnumDisplaySettings
+[EnumDisplaySettingsEx]
+1=DWORD dwFlags
+2=DEVMODE* lpDevMode
+3=DWORD iModeNum
+4=LPCTSTR lpszDeviceName
+ParamCount=4
+@=EnumDisplaySettingsEx
+[EnumProps]
+1=PROPENUMPROC lpEnumFunc
+2=HWND hWnd
+ParamCount=2
+@=EnumProps
+[EnumPropsEx]
+1=LPARAM lParam
+2=PROPENUMPROCEX lpEnumFunc
+3=HWND hWnd
+ParamCount=3
+@=EnumPropsEx
+[EnumWindowStations]
+1=LPARAM lParam
+2=WINSTAENUMPROC lpEnumFunc
+ParamCount=2
+@=EnumWindowStations
+[FindWindow]
+1=LPCTSTR lpWindowName
+2=LPCTSTR lpClassName
+ParamCount=2
+@=FindWindow
+[FindWindowEx]
+1=LPCTSTR lpszWindow
+2=LPCTSTR lpszClass
+3=HWND hwndChildAfter
+4=HWND hwndParent
+ParamCount=4
+@=FindWindowEx
+[FreeDDElParam]
+1=LPARAM lParam
+2=UINT msg
+ParamCount=2
+@=FreeDDElParam
+[GetAltTabInfo]
+1=UINT cchItemText
+2=LPTSTR pszItemText
+3=PALTTABINFO pati
+4=int iItem
+5=HWND hwnd
+ParamCount=5
+@=GetAltTabInfo
+[GetClassInfo]
+1=LPWNDCLASS lpWndClass
+2=LPCTSTR lpClassName
+3=HINSTANCE hInstance
+ParamCount=3
+@=GetClassInfo
+[GetClassInfoEx]
+1=LPWNDCLASSEX lpwcx
+2=LPCTSTR lpszClass
+3=HINSTANCE hinst
+ParamCount=3
+@=GetClassInfoEx
+[GetClassLong]
+1=int nIndex
+2=HWND hWnd
+ParamCount=2
+@=GetClassLong
+[GetClassName]
+1=int nMaxCount
+2=LPTSTR lpClassName
+3=HWND hWnd
+ParamCount=3
+@=GetClassName
+[GetClipboardFormatName]
+1=int cchMaxCount
+2=LPTSTR lpszFormatName
+3=UINT format
+ParamCount=3
+@=GetClipboardFormatName
+[GetDlgItemText]
+1=int nMaxCount
+2=LPTSTR lpString
+3=int nIDDlgItem
+4=HWND hDlg
+ParamCount=4
+@=GetDlgItemText
+[GetIconInfoEx]
+1=PICONINFOEX piconinfoex
+2=HICON hIcon
+ParamCount=2
+@=GetIconInfoEx
+[GetKeyNameText]
+1=int nSize
+2=LPTSTR lpString
+3=LONG lParam
+ParamCount=3
+@=GetKeyNameText
+[GetKeyboardLayoutName]
+1=LPTSTR pwszKLID
+ParamCount=1
+@=GetKeyboardLayoutName
+[GetMenuItemInfo]
+1=LPMENUITEMINFO lpmii
+2=BOOL fByPosition
+3=UINT uItem
+4=HMENU hMenu
+ParamCount=4
+@=GetMenuItemInfo
+[GetMenuString]
+1=UINT uFlag
+2=int nMaxCount
+3=LPTSTR lpString
+4=UINT uIDItem
+5=HMENU hMenu
+ParamCount=5
+@=GetMenuString
+[GetMessage]
+1=UINT wMsgFilterMax
+2=UINT wMsgFilterMin
+3=HWND hWnd
+4=LPMSG lpMsg
+ParamCount=4
+@=GetMessage
+[GetMonitorInfo]
+1=LPMONITORINFO lpmi
+2=HMONITOR hMonitor
+ParamCount=2
+@=GetMonitorInfo
+[GetProp]
+1=LPCTSTR lpString
+2=HWND hWnd
+ParamCount=2
+@=GetProp
+[GetRawInputDeviceInfo]
+1=PUINT pcbSize
+2=LPVOID pData
+3=UINT uiCommand
+4=HANDLE hDevice
+ParamCount=4
+@=GetRawInputDeviceInfo
+[GetTabbedTextExtent]
+1=const LPINT lpnTabStopPositions
+2=int nTabPositions
+3=int nCount
+4=LPCTSTR lpString
+5=HDC hDC
+ParamCount=5
+@=GetTabbedTextExtent
+[GetUserObjectInformation]
+1=LPDWORD lpnLengthNeeded
+2=DWORD nLength
+3=PVOID pvInfo
+4=UINT nIndex
+5=HANDLE hObj
+ParamCount=5
+@=GetUserObjectInformation
+[GetWindowLong]
+1=int nIndex
+2=HWND hWnd
+ParamCount=2
+@=GetWindowLong
+[GetWindowModuleFileName]
+1=UINT cchFileNameMax
+2=LPTSTR lpszFileName
+3=HWND hwnd
+ParamCount=3
+@=GetWindowModuleFileName
+[GetWindowText]
+1=int nMaxCount
+2=LPTSTR lpString
+3=HWND hWnd
+ParamCount=3
+@=GetWindowText
+[GetWindowTextLength]
+1=HWND hWnd
+ParamCount=1
+@=GetWindowTextLength
+[GrayString]
+1=int nHeight
+2=int nWidth
+3=int Y
+4=int X
+5=int nCount
+6=LPARAM lpData
+7=GRAYSTRINGPROC lpOutputFunc
+8=HBRUSH hBrush
+9=HDC hDC
+ParamCount=9
+@=GrayString
+[ImpersonateDdeClientWindow]
+1=HWND hWndServer
+2=HWND hWndClient
+ParamCount=2
+@=ImpersonateDdeClientWindow
+[InsertMenu]
+1=LPCTSTR lpNewItem
+2=UINT_PTR uIDNewItem
+3=UINT uFlags
+4=UINT uPosition
+5=HMENU hMenu
+ParamCount=5
+@=InsertMenu
+[InsertMenuItem]
+1=LPCMENUITEMINFO lpmii
+2=BOOL fByPosition
+3=UINT uItem
+4=HMENU hMenu
+ParamCount=4
+@=InsertMenuItem
+[IsCharAlpha]
+1=TCHAR ch
+ParamCount=1
+@=IsCharAlpha
+[IsCharAlphaNumeric]
+1=TCHAR ch
+ParamCount=1
+@=IsCharAlphaNumeric
+[IsCharLower]
+1=TCHAR ch
+ParamCount=1
+@=IsCharLower
+[IsCharUpper]
+1=TCHAR ch
+ParamCount=1
+@=IsCharUpper
+[IsDialogMessage]
+1=LPMSG lpMsg
+2=HWND hDlg
+ParamCount=2
+@=IsDialogMessage
+[LoadAccelerators]
+1=LPCSTR lpTableName
+2=HINSTANCE hInstance
+ParamCount=2
+@=LoadAccelerators
+[LoadBitmap]
+1=LPCTSTR lpBitmapName
+2=HINSTANCE hInstance
+ParamCount=2
+@=LoadBitmap
+[LoadCursor]
+1=LPCTSTR lpCursorName
+2=HINSTANCE hInstance
+ParamCount=2
+@=LoadCursor
+[LoadCursorFromFile]
+1=LPCTSTR lpFileName
+ParamCount=1
+@=LoadCursorFromFile
+[LoadIcon]
+1=LPCSTR lpIconName
+2=HINSTANCE hInstance
+ParamCount=2
+@=LoadIcon
+[LoadImage]
+1=UINT fuLoad
+2=int cyDesired
+3=int cxDesired
+4=UINT uType
+5=LPCTSTR lpszName
+6=HINSTANCE hinst
+ParamCount=6
+@=LoadImage
+[LoadKeyboardLayout]
+1=UINT Flags
+2=LPCTSTR pwszKLID
+ParamCount=2
+@=LoadKeyboardLayout
+[LoadMenu]
+1=LPCTSTR lpMenuName
+2=HINSTANCE hInstance
+ParamCount=2
+@=LoadMenu
+[LoadMenuIndirect]
+1=CONST MENUTEMPLATE* lpMenuTemplate
+ParamCount=1
+@=LoadMenuIndirect
+[LoadString]
+1=int nBufferMax
+2=LPTSTR lpBuffer
+3=UINT uID
+4=HINSTANCE hInstance
+ParamCount=4
+@=LoadString
+[MapVirtualKey]
+1=UINT uMapType
+2=UINT uCode
+ParamCount=2
+@=MapVirtualKey
+[MapVirtualKeyEx]
+1=HKL dwhkl
+2=UINT uMapType
+3=UINT uCode
+ParamCount=3
+@=MapVirtualKeyEx
+[MessageBox]
+1=UINT uType
+2=LPCTSTR lpCaption
+3=LPCTSTR lpText
+4=HWND hWnd
+ParamCount=4
+@=MessageBox
+[MessageBoxEx]
+1=WORD wLanguageId
+2=UINT uType
+3=LPCTSTR lpCaption
+4=LPCTSTR lpText
+5=HWND hWnd
+ParamCount=5
+@=MessageBoxEx
+[MessageBoxIndirect]
+1=const LPMSGBOXPARAMS lpMsgBoxParams
+ParamCount=1
+@=MessageBoxIndirect
+[MessageBoxTimeout]
+1=DWORD dwMilliseconds
+2=WORD wLanguageId
+3=UINT uType
+4=LPCTSTR lpCaption
+5=LPCTSTR lpText
+6=HWND hWnd
+ParamCount=6
+@=MessageBoxTimeout
+[ModifyMenu]
+1=LPCTSTR lpNewItem
+2=UINT_PTR uIDNewItem
+3=UINT uFlags
+4=UINT uPosition
+5=HMENU hMnu
+ParamCount=5
+@=ModifyMenu
+[OemToChar]
+1=LPTSTR lpszDst
+2=LPCSTR lpszSrc
+ParamCount=2
+@=OemToChar
+[OemToCharBuff]
+1=DWORD cchDstLength
+2=LPTSTR lpszDst
+3=LPCTSTR lpszSrc
+ParamCount=3
+@=OemToCharBuff
+[OpenDesktop]
+1=DWORD dwDesiredAccess
+2=BOOL fInherit
+3=DWORD dwFlags
+4=LPTSTR lpszDesktop
+ParamCount=4
+@=OpenDesktop
+[OpenWindowStation]
+1=DWORD dwDesiredAccess
+2=BOOL fInherit
+3=LPTSTR lpszWinSta
+ParamCount=3
+@=OpenWindowStation
+[PackDDElParam]
+1=UINT_PTR uiHi
+2=UINT_PTR uiLo
+3=UINT msg
+ParamCount=3
+@=PackDDElParam
+[PeekMessage]
+1=UINT wRemoveMsg
+2=UINT wMsgFilterMax
+3=UINT wMsgFilterMin
+4=HWND hWnd
+5=LPMSG lpMsg
+ParamCount=5
+@=PeekMessage
+[PostMessage]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=HWND hWnd
+ParamCount=4
+@=PostMessage
+[PostThreadMessage]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=DWORD idThread
+ParamCount=4
+@=PostThreadMessage
+[PrivateExtractIcons]
+1=UINT flags
+2=UINT nIcons
+3=UINT* piconid
+4=HICON* phicon
+5=int cyIcon
+6=int cxIcon
+7=int nIconIndex
+8=LPCTSTR lpszFile
+ParamCount=8
+@=PrivateExtractIcons
+[RealGetWindowClass]
+1=UINT cchType
+2=LPTSTR pszType
+3=HWND hwnd
+ParamCount=3
+@=RealGetWindowClass
+[RegisterClass]
+1=CONST WNDCLASS* lpWndClass
+ParamCount=1
+@=RegisterClass
+[RegisterClassEx]
+1=CONST WNDCLASSEX* lpwcx
+ParamCount=1
+@=RegisterClassEx
+[RegisterClipboardFormat]
+1=LPCTSTR lpszFormat
+ParamCount=1
+@=RegisterClipboardFormat
+[RegisterDeviceNotification]
+1=UINT Flags
+2=LPVOID NotificationFilter
+3=HANDLE hRecipient
+ParamCount=3
+@=RegisterDeviceNotification
+[RegisterWindowMessage]
+1=LPCTSTR lpString
+ParamCount=1
+@=RegisterWindowMessage
+[RemoveProp]
+1=LPCTSTR lpString
+2=HWND hWnd
+ParamCount=2
+@=RemoveProp
+[ReuseDDElParam]
+1=UINT_PTR uiHi
+2=UINT_PTR uiLo
+3=UINT msgOut
+4=UINT msgIn
+5=LPARAM lParam
+ParamCount=5
+@=ReuseDDElParam
+[SendDlgItemMessage]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=int nIDDlgItem
+5=HWND hDlg
+ParamCount=5
+@=SendDlgItemMessage
+[SendMessage]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=HWND hWnd
+ParamCount=4
+@=SendMessage
+[SendMessageCallback]
+1=ULONG_PTR dwData
+2=SENDASYNCPROC lpCallBack
+3=LPARAM lParam
+4=WPARAM wParam
+5=UINT Msg
+6=HWND hWnd
+ParamCount=6
+@=SendMessageCallback
+[SendMessageTimeout]
+1=PDWORD_PTR lpdwResult
+2=UINT uTimeout
+3=UINT fuFlags
+4=LPARAM lParam
+5=WPARAM wParam
+6=UINT Msg
+7=HWND hWnd
+ParamCount=7
+@=SendMessageTimeout
+[SendNotifyMessage]
+1=LPARAM lParam
+2=WPARAM wParam
+3=UINT Msg
+4=HWND hWnd
+ParamCount=4
+@=SendNotifyMessage
+[SetClassLong]
+1=LONG dwNewLong
+2=int nIndex
+3=HWND hWnd
+ParamCount=3
+@=SetClassLong
+[SetDlgItemText]
+1=LPCTSTR lpString
+2=int nIDDlgItem
+3=HWND hDlg
+ParamCount=3
+@=SetDlgItemText
+[SetMenuItemInfo]
+1=LPMENUITEMINFO lpmii
+2=BOOL fByPosition
+3=UINT uItem
+4=HMENU hMenu
+ParamCount=4
+@=SetMenuItemInfo
+[SetProp]
+1=HANDLE hData
+2=LPCTSTR lpString
+3=HWND hWnd
+ParamCount=3
+@=SetProp
+[SetUserObjectInformation]
+1=DWORD nLength
+2=PVOID pvInfo
+3=int nIndex
+4=HANDLE hObj
+ParamCount=4
+@=SetUserObjectInformation
+[SetWindowLong]
+1=LONG dwNewLong
+2=int nIndex
+3=HWND hWnd
+ParamCount=3
+@=SetWindowLong
+[SetWindowText]
+1=LPCTSTR lpString
+2=HWND hWnd
+ParamCount=2
+@=SetWindowText
+[SetWindowsHookEx]
+1=DWORD dwThreadId
+2=HINSTANCE hMod
+3=HOOKPROC lpfn
+4=int idHook
+ParamCount=4
+@=SetWindowsHookEx
+[SystemParametersInfo]
+1=long fWinIni
+2=PVOID pvParam
+3=UINT uiParam
+4=long uiAction
+ParamCount=4
+@=SystemParametersInfo
+[TabbedTextOut]
+1=int nTabOrigin
+2=const LPINT lpnTabStopPositions
+3=int nTabPositions
+4=int nCount
+5=LPCTSTR lpString
+6=int Y
+7=int X
+8=HDC hDC
+ParamCount=8
+@=TabbedTextOut
+[TranslateAccelerator]
+1=LPMSG lpMsg
+2=HACCEL hAccTable
+3=HWND hWnd
+ParamCount=3
+@=TranslateAccelerator
+[UnpackDDElParam]
+1=PUINT_PTR puiHi
+2=PUINT_PTR puiLo
+3=LPARAM lParam
+4=UINT msg
+ParamCount=4
+@=UnpackDDElParam
+[UnregisterClass]
+1=HINSTANCE hInstance
+2=LPCTSTR lpClassName
+ParamCount=2
+@=UnregisterClass
+[VkKeyScan]
+1=TCHAR ch
+ParamCount=1
+@=VkKeyScan
+[VkKeyScanEx]
+1=HKL dwhkl
+2=TCHAR ch
+ParamCount=2
+@=VkKeyScanEx
+[WinHelp]
+1=ULONG_PTR dwData
+2=UINT uCommand
+3=LPCTSTR lpszHelp
+4=HWND hWndMain
+ParamCount=4
+@=WinHelp

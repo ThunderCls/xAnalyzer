@@ -679,3 +679,136 @@ ParamCount=5
 9=int iyOffset
 ParamCount=9
 @=DrawShadowText(HDC hdc, LPCWSTR pszText, UINT cch, RECT* prc, DWORD dwFlags, COLORREF crText, COLORREF crShadow, int ixOffset, int iyOffset);
+[AddMRUStringW]
+1=HANDLE hMRU
+2=LPCTSTR szString
+ParamCount=2
+@=AddMRUStringW
+[CreateMRUListW]
+1=LPMRUINFO lpmi
+ParamCount=1
+@=CreateMRUListW
+[CreatePropertySheetPage]
+1=LPCPROPSHEETPAGE lppsp
+ParamCount=1
+@=CreatePropertySheetPage
+[CreateStatusWindow]
+1=LONG style
+2=LPCTSTR lpszText
+3=HWND hwndParent
+4=UINT wID
+ParamCount=4
+@=CreateStatusWindow
+[DestroyPropertySheetPage]
+1=HPROPSHEETPAGE hPSPage
+ParamCount=1
+@=DestroyPropertySheetPage
+[DoReaderMode]
+1=PREADERMODEINFO prmi
+ParamCount=1
+@=DoReaderMode
+[DrawStatusText]
+1=HDC hdc
+2=LPCRECT lprc
+3=LPCTSTR pszText
+4=UINT uFlags
+ParamCount=4
+@=DrawStatusText
+[DrawTextExPrivWrap]
+1=HDC hdc
+2=LPTSTR lpchText
+3=int cchText
+4=LPRECT lprc
+5=UINT dwDTFormat
+6=LPDRAWTEXTPARAMS lpDTParams
+ParamCount=6
+@=DrawTextExPrivWrap
+[DrawTextWrap]
+1=HDC hdc
+2=LPCTSTR lpString
+3=int nCount
+4=LPRECT lpRect
+5=UINT uFormat
+6=LPDRAWTEXTPARAMS lpDTParams
+ParamCount=6
+@=DrawTextWrap
+[EnumMRUListW]
+1=HANDLE hMRU
+2=int nItem
+3=void* lpData
+4=UINT uLen
+ParamCount=4
+@=EnumMRUListW
+[ExtTextOutWrap]
+1=HDC hdc
+2=int X
+3=int Y
+4=UINT uOptions
+5=const RECT* lprc
+6=LPCTSTR lpString
+7=UINT cbCount
+8=const INT* lpDx
+ParamCount=8
+@=ExtTextOutWrap
+[FlatSB_SetScrollPos]
+1=HWND hwnd
+2=int code
+3=int nPos
+4=BOOL fRedraw
+ParamCount=4
+@=FlatSB_SetScrollPos
+[FreeMRUList]
+1=HANDLE hMRU
+ParamCount=1
+@=FreeMRUList
+[GetTextExtentPoint32Wrap]
+1=HDC hdc
+2=LPCTSTR lpString
+3=UINT cbCount
+4=LPSIZE lpSize
+ParamCount=4
+@=GetTextExtentPoint32Wrap
+[ImageList_CoCreateInstance]
+1=REFCLSID rclsid
+2=const IUnknown* punkOuter
+3=REFIID riid
+4=void** ppv
+ParamCount=4
+@=ImageList_CoCreateInstance
+[ImageList_LoadImage]
+1=DWORD uFlags
+2=DWORD uType
+3=COLORREF crMask
+4=int cGrow
+5=int cx
+6=LPCTSTR lpStrbmp
+7=HINSTANCE hInstance
+ParamCount=7
+@=ImageList_LoadImage
+[ImageList_SetColorTable]
+1=RGBQUAD* prgb
+2=int len
+3=int start
+4=HIMAGELIST himl
+ParamCount=4
+@=ImageList_SetColorTable
+[MirrorIcon]
+1=HICON* phIconLarge
+2=HICON* phIconSmall
+ParamCount=2
+@=MirrorIcon
+[PropertySheet]
+1=LPCPROPSHEETHEADER lppsph
+ParamCount=1
+@=PropertySheet
+[Str_GetPtr]
+1=int cchDest
+2=LPCSTR pszDest
+3=LPCTSTR pszSource
+ParamCount=3
+@=Str_GetPtr
+[Str_SetPtr]
+1=LPCTSTR pszNew
+2=LPTSTR* ppszCurrent
+ParamCount=2
+@=Str_SetPtr

@@ -1065,3 +1065,2676 @@ ParamCount=4
 3=PVOID *ppDynamicInfo
 ParamCount=3
 @=QueryServiceDynamicInformation(SERVICE_STATUS_HANDLE hServiceStatus, DWORD dwInfoLevel, PVOID *ppDynamicInfo);
+[AbortSystemShutdown]
+1=LPTSTR lpMachineName
+ParamCount=1
+@=AbortSystemShutdown
+[AccessCheck]
+1=LPBOOL AccessStatus
+2=LPDWORD GrantedAccess
+3=LPDWORD PrivilegeSetLength
+4=PPRIVILEGE_SET PrivilegeSet
+5=PGENERIC_MAPPING GenericMapping
+6=DWORD DesiredAccess
+7=HANDLE ClientToken
+8=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=8
+@=AccessCheck
+[AccessCheckAndAuditAlarm]
+1=LPBOOL pfGenerateOnClose
+2=LPBOOL AccessStatus
+3=LPDWORD GrantedAccess
+4=BOOL ObjectCreation
+5=PGENERIC_MAPPING GenericMapping
+6=DWORD DesiredAccess
+7=PSECURITY_DESCRIPTOR SecurityDescriptor
+8=LPTSTR ObjectName
+9=LPTSTR ObjectTypeName
+10=LPVOID HandleId
+11=LPCTSTR SubsystemName
+ParamCount=11
+@=AccessCheckAndAuditAlarm
+[AccessCheckByType]
+1=LPBOOL AccessStatus
+2=LPDWORD GrantedAccess
+3=LPDWORD PrivilegeSetLength
+4=PPRIVILEGE_SET PrivilegeSet
+5=PGENERIC_MAPPING GenericMapping
+6=DWORD ObjectTypeListLength
+7=POBJECT_TYPE_LIST ObjectTypeList
+8=DWORD DesiredAccess
+9=HANDLE ClientToken
+10=PSID PrincipalSelfSid
+11=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=11
+@=AccessCheckByType
+[AddAccessAllowedAce]
+1=DWORD dwAclRevision
+2=DWORD nAclLength
+3=PACL pAcl
+ParamCount=3
+@=AddAccessAllowedAce
+[AddAccessAllowedAceEx]
+1=PSID pSid
+2=DWORD AccessMask
+3=DWORD AceFlags
+4=DWORD dwAceRevision
+5=PACL pAcl
+ParamCount=5
+@=AddAccessAllowedAceEx
+[AddAccessAllowedObjectAce]
+1=PSID pSid
+2=GUID* InheritedObjectTypeGuid
+3=GUID* ObjectTypeGuid
+4=DWORD AccessMask
+5=DWORD AceFlags
+6=DWORD dwAceRevision
+7=PACL pAcl
+ParamCount=7
+@=AddAccessAllowedObjectAce
+[AddAccessDeniedAce]
+1=PSID pSid
+2=DWORD AccessMask
+3=DWORD dwAceRevision
+4=PACL pAcl
+ParamCount=4
+@=AddAccessDeniedAce
+[AddAccessDeniedAceEx]
+1=PSID pSid
+2=DWORD AccessMask
+3=DWORD AceFlags
+4=DWORD dwAceRevision
+5=PACL pAcl
+ParamCount=5
+@=AddAccessDeniedAceEx
+[AddAccessDeniedObjectAce]
+1=PSID pSid
+2=GUID* InheritedObjectTypeGuid
+3=GUID* ObjectTypeGuid
+4=DWORD AccessMask
+5=DWORD AceFlags
+6=DWORD dwAceRevision
+7=PACL pAcl
+ParamCount=7
+@=AddAccessDeniedObjectAce
+[AddAce]
+1=DWORD nAceListLength
+2=LPVOID pAceList
+3=DWORD dwStartingAceIndex
+4=DWORD dwAceRevision
+5=PACL pAcl
+ParamCount=5
+@=AddAce
+[AddAuditAccessAce]
+1=BOOL bAuditFailure
+2=BOOL bAuditSuccess
+3=PSID pSid
+4=DWORD dwAccessMask
+5=DWORD dwAceRevision
+6=PACL pAcl
+ParamCount=6
+@=AddAuditAccessAce
+[AddAuditAccessAceEx]
+1=BOOL bAuditFailure
+2=BOOL bAuditSuccess
+3=PSID pSid
+4=DWORD dwAccessMask
+5=DWORD AceFlags
+6=DWORD dwAceRevision
+7=PACL pAcl
+ParamCount=7
+@=AddAuditAccessAceEx
+[AddAuditAccessObjectAce]
+1=BOOL bAuditFailure
+2=BOOL bAuditSuccess
+3=PSID pSid
+4=GUID* InheritedObjectTypeGuid
+5=GUID* ObjectTypeGuid
+6=DWORD AccessMask
+7=DWORD AceFlags
+8=DWORD dwAceRevision
+9=PACL pAcl
+ParamCount=9
+@=AddAuditAccessObjectAce
+[AddConditionalAce]
+1=DWORD* ReturnLength
+2=PWCHAR ConditionStr
+3=PSID pSid
+4=DWORD AccessMask
+5=UCHAR AceType
+6=DWORD AceFlags
+7=DWORD dwAceRevision
+8=PACL pAcl
+ParamCount=8
+@=AddConditionalAce
+[AddMandatoryAce]
+1=PSID pLabelSid
+2=DWORD MandatoryPolicy
+3=DWORD AceFlags
+4=DWORD dwAceRevision
+5=PACL pAcl
+ParamCount=5
+@=AddMandatoryAce
+[AddUsersToEncryptedFile]
+1=PENCRYPTION_CERTIFICATE_LIST pUsers
+2=LPCWSTR lpFileName
+ParamCount=2
+@=AddUsersToEncryptedFile
+[AdjustTokenGroups]
+1=PDWORD ReturnLength
+2=PTOKEN_GROUPS PreviousState
+3=DWORD BufferLength
+4=PTOKEN_GROUPS NewState
+5=BOOL ResetToDefault
+6=HANDLE TokenHandle
+ParamCount=6
+@=AdjustTokenGroups
+[AdjustTokenPrivileges]
+1=PDWORD ReturnLength
+2=PTOKEN_PRIVILEGES PreviousState
+3=DWORD BufferLength
+4=PTOKEN_PRIVILEGES NewState
+5=BOOL DisableAllPrivileges
+6=HANDLE TokenHandle
+ParamCount=6
+@=AdjustTokenPrivileges
+[AllocateLocallyUniqueId]
+1=PLUID Luid
+ParamCount=1
+@=AllocateLocallyUniqueId
+[AreAllAccessesGranted]
+1=DWORD DesiredAccess
+2=DWORD GrantedAccess
+ParamCount=2
+@=AreAllAccessesGranted
+[AreAnyAccessesGranted]
+1=DWORD DesiredAccess
+2=DWORD GrantedAccess
+ParamCount=2
+@=AreAnyAccessesGranted
+[AuditComputeEffectivePolicyBySid]
+1=PAUDIT_POLICY_INFORMATION* ppAuditPolicy
+2=ULONG PolicyCount
+3=const GUID* pSubCategoryGuids
+4=const PSID pSid
+ParamCount=4
+@=AuditComputeEffectivePolicyBySid
+[AuditComputeEffectivePolicyByToken]
+1=PAUDIT_POLICY_INFORMATION* ppAuditPolicy
+2=ULONG PolicyCount
+3=const GUID* pSubCategoryGuids
+4=HANDLE hTokenHandle
+ParamCount=4
+@=AuditComputeEffectivePolicyByToken
+[AuditEnumerateCategories]
+1=PULONG pCountReturned
+2=GUID** ppAuditCategoriesArray
+ParamCount=2
+@=AuditEnumerateCategories
+[AuditEnumeratePerUserPolicy]
+1=PPOLICY_AUDIT_SID_ARRAY* ppAuditSidArray
+ParamCount=1
+@=AuditEnumeratePerUserPolicy
+[AuditEnumerateSubCategories]
+1=PULONG pCountReturned
+2=GUID** ppAuditSubCategoriesArray
+3=BOOLEAN bRetrieveAllSubCategories
+4=const GUID* pAuditCategoryGuid
+ParamCount=4
+@=AuditEnumerateSubCategories
+[AuditFree]
+1=PVOID Buffer
+ParamCount=1
+@=AuditFree
+[AuditLookupCategoryGuidFromCategoryId]
+1=GUID* pAuditCategoryGuid
+2=POLICY_AUDIT_EVENT_TYPE AuditCategoryId
+ParamCount=2
+@=AuditLookupCategoryGuidFromCategoryId
+[AuditLookupCategoryIdFromCategoryGuid]
+1=PPOLICY_AUDIT_EVENT_TYPE pAuditCategoryId
+2=const GUID* pAuditCategoryGuid
+ParamCount=2
+@=AuditLookupCategoryIdFromCategoryGuid
+[AuditLookupCategoryName]
+1=PTSTR* ppszCategoryName
+2=const GUID* pAuditCategoryGuid
+ParamCount=2
+@=AuditLookupCategoryName
+[AuditLookupSubCategoryName]
+1=PTSTR* ppszSubCategoryName
+2=const GUID* pAuditSubCategoryGuid
+ParamCount=2
+@=AuditLookupSubCategoryName
+[AuditQueryPerUserPolicy]
+1=PAUDIT_POLICY_INFORMATION* ppAuditPolicy
+2=ULONG PolicyCount
+3=const GUID* pSubCategoryGuids
+4=const PSID pSid
+ParamCount=4
+@=AuditQueryPerUserPolicy
+[AuditQuerySecurity]
+1=PSECURITY_DESCRIPTOR* ppSecurityDescriptor
+2=SECURITY_INFORMATION SecurityInformation
+ParamCount=2
+@=AuditQuerySecurity
+[AuditQuerySystemPolicy]
+1=PAUDIT_POLICY_INFORMATION* ppAuditPolicy
+2=ULONG PolicyCount
+3=const GUID* pSubCategoryGuids
+ParamCount=3
+@=AuditQuerySystemPolicy
+[AuditSetPerUserPolicy]
+1=ULONG PolicyCount
+2=PCAUDIT_POLICY_INFORMATION pAuditPolicy
+3=const PSID pSid
+ParamCount=3
+@=AuditSetPerUserPolicy
+[AuditSetSecurity]
+1=PSECURITY_DESCRIPTOR pSecurityDescriptor
+2=SECURITY_INFORMATION SecurityInformation
+ParamCount=2
+@=AuditSetSecurity
+[AuditSetSystemPolicy]
+1=ULONG PolicyCount
+2=PCAUDIT_POLICY_INFORMATION pAuditPolicy
+ParamCount=2
+@=AuditSetSystemPolicy
+[BackupEventLog]
+1=LPCTSTR lpBackupFileName
+2=HANDLE hEventLog
+ParamCount=2
+@=BackupEventLog
+[BuildExplicitAccessWithName]
+1=DWORD Inheritance
+2=ACCESS_MODE AccessMode
+3=DWORD AccessPermissions
+4=LPTSTR pTrusteeName
+5=PEXPLICIT_ACCESS pExplicitAccess
+ParamCount=5
+@=BuildExplicitAccessWithName
+[BuildSecurityDescriptor]
+1=PSECURITY_DESCRIPTOR* pNewSD
+2=PULONG pSizeNewSD
+3=PSECURITY_DESCRIPTOR pOldSD
+4=PEXPLICIT_ACCESS pListOfAuditEntries
+5=ULONG cCountOfAuditEntries
+6=PEXPLICIT_ACCESS pListOfAccessEntries
+7=ULONG cCountOfAccessEntries
+8=PTRUSTEE pGroup
+9=PTRUSTEE pOwner
+ParamCount=9
+@=BuildSecurityDescriptor
+[BuildTrusteeWithName]
+1=LPTSTR pName
+2=PTRUSTEE pTrustee
+ParamCount=2
+@=BuildTrusteeWithName
+[BuildTrusteeWithObjectsAndName]
+1=LPTSTR Name
+2=LPTSTR InheritedObjectTypeName
+3=LPTSTR ObjectTypeName
+4=SE_OBJECT_TYPE ObjectType
+5=POBJECTS_AND_NAME pObjName
+6=PTRUSTEE pTrustee
+ParamCount=6
+@=BuildTrusteeWithObjectsAndName
+[BuildTrusteeWithObjectsAndSid]
+1=PSID pSid
+2=GUID* pInheritedObjectGuid
+3=GUID* pObjectGuid
+4=POBJECTS_AND_SID pObjSid
+5=PTRUSTEE pTrustee
+ParamCount=5
+@=BuildTrusteeWithObjectsAndSid
+[BuildTrusteeWithSid]
+1=PSID pSid
+2=PTRUSTEE pTrustee
+ParamCount=2
+@=BuildTrusteeWithSid
+[ChangeServiceConfig]
+1=LPCTSTR lpDisplayName
+2=LPCTSTR lpPassword
+3=LPCTSTR lpServiceStartName
+4=LPCTSTR lpDependencies
+5=LPDWORD lpdwTagId
+6=LPCTSTR lpLoadOrderGroup
+7=LPCTSTR lpBinaryPathName
+8=DWORD dwErrorControl
+9=DWORD dwStartType
+10=DWORD dwServiceType
+11=SC_HANDLE hService
+ParamCount=11
+@=ChangeServiceConfig
+[ChangeServiceConfig2]
+1=LPVOID lpInfo
+2=DWORD dwInfoLevel
+3=SC_HANDLE hService
+ParamCount=3
+@=ChangeServiceConfig2
+[CheckTokenMembership]
+1=PBOOL IsMember
+2=PSID SidToCheck
+3=HANDLE TokenHandle
+ParamCount=3
+@=CheckTokenMembership
+[ClearEventLog]
+1=LPCTSTR lpBackupFileName
+2=HANDLE hEventLog
+ParamCount=2
+@=ClearEventLog
+[CloseEncryptedFileRaw]
+1=PVOID pvContext
+ParamCount=1
+@=CloseEncryptedFileRaw
+[CloseEventLog]
+1=HANDLE hEventLog
+ParamCount=1
+@=CloseEventLog
+[CloseThreadWaitChainSession]
+1=HWCT WctHandle
+ParamCount=1
+@=CloseThreadWaitChainSession
+[CloseTrace]
+1=TRACEHANDLE TraceHandle
+ParamCount=1
+@=CloseTrace
+[ControlServiceEx]
+1=PVOID pControlParams
+2=DWORD dwInfoLevel
+3=DWORD dwControl
+4=SC_HANDLE hService
+ParamCount=4
+@=ControlServiceEx
+[ControlTrace]
+1=ULONG ControlCode
+2=PEVENT_TRACE_PROPERTIES Properties
+3=LPCTSTR SessionName
+4=TRACEHANDLE SessionHandle
+ParamCount=4
+@=ControlTrace
+[ConvertSecurityDescriptorToStringSecurityDescriptor]
+1=PULONG StringSecurityDescriptorLen
+2=LPTSTR* StringSecurityDescriptor
+3=SECURITY_INFORMATION SecurityInformation
+4=DWORD RequestedStringSDRevision
+5=PSECURITY_DESCRIPTOR SecurityDescriptor
+ParamCount=5
+@=ConvertSecurityDescriptorToStringSecurityDescriptor
+[ConvertSidToStringSid]
+1=LPTSTR* StringSid
+2=PSID Sid
+ParamCount=2
+@=ConvertSidToStringSid
+[ConvertStringSecurityDescriptorToSecurityDescriptor]
+1=PULONG SecurityDescriptorSize
+2=PSECURITY_DESCRIPTOR* SecurityDescriptor
+3=DWORD StringSDRevision
+4=LPCTSTR StringSecurityDescriptor
+ParamCount=4
+@=ConvertStringSecurityDescriptorToSecurityDescriptor
+[ConvertStringSidToSid]
+1=PSID* Sid
+2=LPCTSTR StringSid
+ParamCount=2
+@=ConvertStringSidToSid
+[ConvertToAutoInheritPrivateObjectSecurity]
+1=PGENERIC_MAPPING GenericMapping
+2=BOOLEAN IsDirectoryObject
+3=GUID* ObjectType
+4=PSECURITY_DESCRIPTOR* NewSecurityDescriptor
+5=PSECURITY_DESCRIPTOR CurrentSecurityDescriptor
+6=PSECURITY_DESCRIPTOR ParentDescriptor
+ParamCount=6
+@=ConvertToAutoInheritPrivateObjectSecurity
+[CopySid]
+1=PSID pSourceSid
+2=PSID pDestinationSid
+3=DWORD nDestinationSidLength
+ParamCount=3
+@=CopySid
+[CreatePrivateObjectSecurity]
+1=PGENERIC_MAPPING GenericMapping
+2=HANDLE Token
+3=BOOL IsDirectoryObject
+4=PSECURITY_DESCRIPTOR* NewDescriptor
+5=PSECURITY_DESCRIPTOR CreatorDescriptor
+6=PSECURITY_DESCRIPTOR ParentDescriptor
+ParamCount=6
+@=CreatePrivateObjectSecurity
+[CreatePrivateObjectSecurityEx]
+1=PGENERIC_MAPPING GenericMapping
+2=HANDLE Token
+3=DWORD AutoInheritFlags
+4=BOOL IsContainerObject
+5=GUID* ObjectType
+6=PSECURITY_DESCRIPTOR* NewDescriptor
+7=PSECURITY_DESCRIPTOR CreatorDescriptor
+8=PSECURITY_DESCRIPTOR ParentDescriptor
+ParamCount=8
+@=CreatePrivateObjectSecurityEx
+[CreatePrivateObjectSecurityWithMultipleInheritance]
+1=PGENERIC_MAPPING GenericMapping
+2=HANDLE Token
+3=DWORD AutoInheritFlags
+4=BOOL IsContainerObject
+5=ULONG GuidCount
+6=GUID** ObjectTypes
+7=PSECURITY_DESCRIPTOR* NewDescriptor
+8=PSECURITY_DESCRIPTOR CreatorDescriptor
+9=PSECURITY_DESCRIPTOR ParentDescriptor
+ParamCount=9
+@=CreatePrivateObjectSecurityWithMultipleInheritance
+[CreateProcessAsUser]
+1=LPPROCESS_INFORMATION lpProcessInformation
+2=LPSTARTUPINFO lpStartupInfo
+3=LPCTSTR lpCurrentDirectory
+4=LPVOID lpEnvironment
+5=DWORD dwCreationFlags
+6=BOOL bInheritHandles
+7=LPSECURITY_ATTRIBUTES lpThreadAttributes
+8=LPSECURITY_ATTRIBUTES lpProcessAttributes
+9=LPTSTR lpCommandLine
+10=LPCTSTR lpApplicationName
+11=HANDLE hToken
+ParamCount=11
+@=CreateProcessAsUser
+[CreateProcessWithLogonW]
+1=LPPROCESS_INFORMATION lpProcessInfo
+2=LPSTARTUPINFOW lpStartupInfo
+3=LPCWSTR lpCurrentDirectory
+4=LPVOID lpEnvironment
+5=DWORD dwCreationFlags
+6=LPWSTR lpCommandLine
+7=LPCWSTR lpApplicationName
+8=DWORD dwLogonFlags
+9=LPCWSTR lpPassword
+10=LPCWSTR lpDomain
+11=LPCWSTR lpUsername
+ParamCount=11
+@=CreateProcessWithLogonW
+[CreateProcessWithTokenW]
+1=LPPROCESS_INFORMATION lpProcessInfo
+2=LPSTARTUPINFOW lpStartupInfo
+3=LPCWSTR lpCurrentDirectory
+4=LPVOID lpEnvironment
+5=DWORD dwCreationFlags
+6=LPWSTR lpCommandLine
+7=LPCWSTR lpApplicationName
+8=DWORD dwLogonFlags
+9=HANDLE hToken
+ParamCount=9
+@=CreateProcessWithTokenW
+[CreateRestrictedToken]
+1=PHANDLE NewTokenHandle
+2=PSID_AND_ATTRIBUTES SidsToRestrict
+3=DWORD RestrictedSidCount
+4=PLUID_AND_ATTRIBUTES PrivilegesToDelete
+5=DWORD DeletePrivilegeCount
+6=PSID_AND_ATTRIBUTES SidsToDisable
+7=DWORD DisableSidCount
+8=CreateRestrictedToken Flags
+9=HANDLE ExistingTokenHandle
+ParamCount=9
+@=CreateRestrictedToken
+[CreateService]
+1=LPCTSTR lpPassword
+2=LPCTSTR lpServiceStartName
+3=LPCTSTR lpDependencies
+4=LPDWORD lpdwTagId
+5=LPCTSTR lpLoadOrderGroup
+6=LPCTSTR lpBinaryPathName
+7=DWORD dwErrorControl
+8=DWORD dwStartType
+9=DWORD dwServiceType
+10=DWORD dwDesiredAccess
+11=LPCTSTR lpDisplayName
+12=LPCTSTR lpServiceName
+13=SC_HANDLE hSCManager
+ParamCount=13
+@=CreateService
+[CreateTraceInstanceId]
+1=PEVENT_INSTANCE_INFO pInstInfo
+2=HANDLE RegHandle
+ParamCount=2
+@=CreateTraceInstanceId
+[CreateWellKnownSid]
+1=DWORD* cbSid
+2=PSID pSid
+3=PSID DomainSid
+4=WELL_KNOWN_SID_TYPE WellKnownSidType
+ParamCount=4
+@=CreateWellKnownSid
+[CredDelete]
+1=DWORD Flags
+2=DWORD Type
+3=LPCTSTR TargetName
+ParamCount=3
+@=CredDelete
+[CredEnumerate]
+1=PCREDENTIAL** Credentials
+2=DWORD* Count
+3=DWORD Flags
+4=LPCTSTR Filter
+ParamCount=4
+@=CredEnumerate
+[CredFindBestCredential]
+1=PCREDENTIAL* Credential
+2=DWORD Flags
+3=DWORD Type
+4=LPCTSTR TargetName
+ParamCount=4
+@=CredFindBestCredential
+[CredFree]
+1=PVOID Buffer
+ParamCount=1
+@=CredFree
+[CredGetSessionTypes]
+1=LPDWORD MaximumPersist
+2=DWORD MaximumPersistCount
+ParamCount=2
+@=CredGetSessionTypes
+[CredGetTargetInfo]
+1=PCREDENTIAL_TARGET_INFORMATION* TargetInfo
+2=DWORD Flags
+3=LPCTSTR TargetName
+ParamCount=3
+@=CredGetTargetInfo
+[CredIsMarshaledCredential]
+1=LPTSTR MarshaledCredential
+ParamCount=1
+@=CredIsMarshaledCredential
+[CredIsProtected]
+1=CRED_PROTECTION_TYPE* pProtectionType
+2=LPTSTR pszProtectedCredentials
+ParamCount=2
+@=CredIsProtected
+[CredMarshalCredential]
+1=LPTSTR* MarshaledCredential
+2=PVOID Credential
+3=CRED_MARSHAL_TYPE CredType
+ParamCount=3
+@=CredMarshalCredential
+[CredProtect]
+1=CRED_PROTECTION_TYPE* ProtectionType
+2=DWORD* pcchMaxChars
+3=LPTSTR pszProtectedCredentials
+4=DWORD cchCredentials
+5=LPTSTR pszCredentials
+6=BOOL fAsSelf
+ParamCount=6
+@=CredProtect
+[CredRead]
+1=PCREDENTIAL* Credential
+2=DWORD Flags
+3=DWORD Type
+4=LPCTSTR TargetName
+ParamCount=4
+@=CredRead
+[CredReadDomainCredentials]
+1=PCREDENTIAL** Credentials
+2=DWORD* Count
+3=DWORD Flags
+4=PCREDENTIAL_TARGET_INFORMATION TargetInfo
+ParamCount=4
+@=CredReadDomainCredentials
+[CredRename]
+1=DWORD Flags
+2=DWORD Type
+3=LPCTSTR NewTargetName
+4=LPCTSTR OldTargetName
+ParamCount=4
+@=CredRename
+[CredUnmarshalCredential]
+1=PVOID* Credential
+2=PCRED_MARSHAL_TYPE CredType
+3=LPCTSTR MarshaledCredential
+ParamCount=3
+@=CredUnmarshalCredential
+[CredUnprotect]
+1=DWORD* pcchMaxChars
+2=LPTSTR pszCredentials
+3=DWORD cchCredentials
+4=LPTSTR pszProtectedCredentials
+5=BOOL fAsSelf
+ParamCount=5
+@=CredUnprotect
+[CredWrite]
+1=DWORD Flags
+2=PCREDENTIAL Credential
+ParamCount=2
+@=CredWrite
+[CredWriteDomainCredentials]
+1=DWORD Flags
+2=PCREDENTIAL Credential
+3=PCREDENTIAL_TARGET_INFORMATION TargetInfo
+ParamCount=3
+@=CredWriteDomainCredentials
+[CryptAcquireContext]
+1=DWORD dwFlags
+2=DWORD dwProvType
+3=LPCTSTR pszProvider
+4=LPCTSTR pszContainer
+5=HCRYPTPROV* phProv
+ParamCount=5
+@=CryptAcquireContext
+[CryptAcquireContextW]
+1=DWORD dwFlags
+2=DWORD dwProvType
+3=LPCTSTR pszProvider
+4=LPCTSTR pszContainer
+5=HCRYPTPROV* phProv
+ParamCount=5
+@=CryptAcquireContextW
+[CryptContextAddRef]
+1=DWORD dwFlags
+2=DWORD* pdwReserved
+3=HCRYPTPROV hProv
+ParamCount=3
+@=CryptContextAddRef
+[CryptCreateHash]
+1=HCRYPTHASH* phHash
+2=DWORD dwFlags
+3=HCRYPTKEY hKey
+4=ALG_ID Algid
+5=HCRYPTPROV hProv
+ParamCount=5
+@=CryptCreateHash
+[CryptDecrypt]
+1=DWORD* pcbData
+2=BYTE* pbData
+3=DWORD dwFlags
+4=BOOL Final
+5=HCRYPTHASH hHash
+6=HCRYPTKEY hKey
+ParamCount=6
+@=CryptDecrypt
+[CryptDeriveKey]
+1=HCRYPTKEY* phKey
+2=DWORD dwFlags
+3=HCRYPTHASH hBaseData
+4=ALG_ID Algid
+5=HCRYPTPROV hProv
+ParamCount=5
+@=CryptDeriveKey
+[CryptDestroyHash]
+1=HCRYPTHASH hHash
+ParamCount=1
+@=CryptDestroyHash
+[CryptDestroyKey]
+1=HCRYPTKEY hXchgKey
+ParamCount=1
+@=CryptDestroyKey
+[CryptDuplicateHash]
+1=HCRYPTHASH* phHash
+2=DWORD dwFlags
+3=DWORD* pdwReserved
+4=HCRYPTHASH hHash
+ParamCount=4
+@=CryptDuplicateHash
+[CryptDuplicateKey]
+1=HCRYPTKEY* phKey
+2=DWORD dwFlags
+3=DWORD* pdwReserved
+4=HCRYPTKEY hKey
+ParamCount=4
+@=CryptDuplicateKey
+[CryptEncrypt]
+1=DWORD dwBufLen
+2=DWORD* pdwDataLen
+3=BYTE* pbData
+4=DWORD dwFlags
+5=BOOL Final
+6=HCRYPTHASH hHash
+7=HCRYPTKEY hKey
+ParamCount=7
+@=CryptEncrypt
+[CryptEnumProviderTypes]
+1=DWORD* pcbTypeName
+2=LPTSTR pszTypeName
+3=DWORD pdwProvType
+4=DWORD dwFlags
+5=DWORD* pdwReserved
+6=DWORD dwIndex
+ParamCount=6
+@=CryptEnumProviderTypes
+[CryptEnumProviders]
+1=DWORD* pcbProvName
+2=LPTSTR pszProvName
+3=DWORD pdwProvType
+4=DWORD dwFlags
+5=DWORD* pdwReserved
+6=DWORD dwIndex
+ParamCount=6
+@=CryptEnumProviders
+[CryptExportKey]
+1=DWORD* pdwbDataLen
+2=BYTE* pbData
+3=DWORD dwFlags
+4=DWORD dwBlobType
+5=HCRYPTKEY hExpKey
+6=HCRYPTKEY hKey
+ParamCount=6
+@=CryptExportKey
+[CryptGenKey]
+1=HCRYPTKEY* phKey
+2=DWORD dwFlags
+3=ALG_ID Algid
+4=HCRYPTPROV hProv
+ParamCount=4
+@=CryptGenKey
+[CryptGenRandom]
+1=BYTE* pbBuffer
+2=DWORD dwLen
+3=HCRYPTPROV hProv
+ParamCount=3
+@=CryptGenRandom
+[CryptGetDefaultProvider]
+1=DWORD* pcbProvName
+2=LPTSTR pszProvName
+3=DWORD dwFlags
+4=DWORD* pdwReserved
+5=DWORD dwProvType
+ParamCount=5
+@=CryptGetDefaultProvider
+[CryptGetHashParam]
+1=DWORD dwFlags
+2=DWORD* pdwDataLen
+3=BYTE* pbData
+4=DWORD dwParam
+5=HCRYPTHASH hHash
+ParamCount=5
+@=CryptGetHashParam
+[CryptGetKeyParam]
+1=DWORD dwFlags
+2=DWORD* pdwDataLen
+3=BYTE* pbData
+4=DWORD dwParam
+5=HCRYPTKEY hKey
+ParamCount=5
+@=CryptGetKeyParam
+[CryptGetProvParam]
+1=DWORD dwFlags
+2=DWORD* pdwDataLen
+3=BYTE* pbData
+4=DWORD dwParam
+5=HCRYPTPROV hProv
+ParamCount=5
+@=CryptGetProvParam
+[CryptGetUserKey]
+1=HCRYPTKEY* hKey
+2=DWORD dwKeySpec
+3=HCRYPTPROV hProv
+ParamCount=3
+@=CryptGetUserKey
+[CryptHashData]
+1=DWORD dwFlags
+2=DWORD dwDataLen
+3=BYTE* pbData
+4=HCRYPTHASH hHash
+ParamCount=4
+@=CryptHashData
+[CryptHashSessionKey]
+1=DWORD dwFlags
+2=HCRYPTKEY hKey
+3=HCRYPTHASH hHash
+ParamCount=3
+@=CryptHashSessionKey
+[CryptImportKey]
+1=HCRYPTKEY* phKey
+2=DWORD dwFlags
+3=HCRYPTKEY hPubKey
+4=DWORD dwDataLen
+5=BYTE* pbData
+6=HCRYPTPROV hProv
+ParamCount=6
+@=CryptImportKey
+[CryptReleaseContext]
+1=HCRYPTPROV hProv
+ParamCount=1
+@=CryptReleaseContext
+[CryptSetHashParam]
+1=DWORD dwFlags
+2=const BYTE* pbData
+3=DWORD dwParam
+4=HCRYPTHASH hHash
+ParamCount=4
+@=CryptSetHashParam
+[CryptSetKeyParam]
+1=DWORD dwFlags
+2=const BYTE* pbData
+3=DWORD dwParam
+4=HCRYPTKEY hKey
+ParamCount=4
+@=CryptSetKeyParam
+[CryptSetProvParam]
+1=DWORD dwFlags
+2=const BYTE* pbData
+3=DWORD dwParam
+4=HCRYPTPROV hProv
+ParamCount=4
+@=CryptSetProvParam
+[CryptSetProvider]
+1=DWORD dwProvType
+2=LPCTSTR pszProvName
+ParamCount=2
+@=CryptSetProvider
+[CryptSetProviderEx]
+1=DWORD dwFlags
+2=DWORD* pdwReserved
+3=DWORD dwProvType
+4=LPCTSTR pszProvName
+ParamCount=4
+@=CryptSetProviderEx
+[CryptSignHash]
+1=DWORD* pdwSigLen
+2=BYTE* pbSignature
+3=DWORD dwFlags
+4=LPCTSTR sDescription
+5=DWORD dwKeySpec
+6=HCRYPTHASH hHash
+ParamCount=6
+@=CryptSignHash
+[CryptVerifySignature]
+1=DWORD dwFlags
+2=LPCTSTR sDescription
+3=HCRYPTKEY hPubKey
+4=DWORD dwSigLen
+5=BYTE* pbSignature
+6=HCRYPTHASH hHash
+ParamCount=6
+@=CryptVerifySignature
+[DecryptFile]
+1=DWORD dwReserved
+2=LPCTSTR lpFileName
+ParamCount=2
+@=DecryptFile
+[DeleteAce]
+1=DWORD dwAceIndex
+2=PACL pAcl
+ParamCount=2
+@=DeleteAce
+[DeregisterEventSource]
+1=HANDLE hEventLog
+ParamCount=1
+@=DeregisterEventSource
+[DestroyPrivateObjectSecurity]
+1=PSECURITY_DESCRIPTOR* ObjectDescriptor
+ParamCount=1
+@=DestroyPrivateObjectSecurity
+[DuplicateEncryptionInfoFile]
+1=const LPSECURITY_ATTRIBUTES lpSecurityAttributes
+2=DWORD dwAttributes
+3=DWORD dwCreationDistribution
+4=LPCTSTR DstFileName
+5=LPCTSTR SrcFileName
+ParamCount=5
+@=DuplicateEncryptionInfoFile
+[DuplicateToken]
+1=PHANDLE DuplicateTokenHandle
+2=SECURITY_IMPERSONATION_LEVEL ImpersonationLevel
+3=HANDLE ExistingTokenHandle
+ParamCount=3
+@=DuplicateToken
+[DuplicateTokenEx]
+1=PHANDLE phNewToken
+2=TOKEN_TYPE TokenType
+3=SECURITY_IMPERSONATION_LEVEL ImpersonationLevel
+4=LPSECURITY_ATTRIBUTES lpTokenAttributes
+5=DWORD dwDesiredAccess
+6=HANDLE hExistingToken
+ParamCount=6
+@=DuplicateTokenEx
+[EnableTrace]
+1=TRACEHANDLE SessionHandle
+2=LPCGUID ControlGuid
+3=ULONG EnableLevel
+4=ULONG EnableFlag
+5=ULONG Enable
+ParamCount=5
+@=EnableTrace
+[EnableTraceEx]
+1=PEVENT_FILTER_DESCRIPTOR EnableFilterDesc
+2=ULONG EnableProperty
+3=ULONGLONG MatchAllKeyword
+4=ULONGLONG MatchAnyKeyword
+5=UCHAR Level
+6=ULONG IsEnabled
+7=TRACEHANDLE TraceHandle
+8=LPCGUID SourceId
+9=LPCGUID ProviderId
+ParamCount=9
+@=EnableTraceEx
+[EnableTraceEx2]
+1=PENABLE_TRACE_PARAMETERS EnableParameters
+2=ULONG Timeout
+3=ULONGLONG MatchAllKeyword
+4=ULONGLONG MatchAnyKeyword
+5=UCHAR Level
+6=ULONG ControlCode
+7=LPCGUID ProviderId
+8=TRACEHANDLE TraceHandle
+ParamCount=8
+@=EnableTraceEx2
+[EncryptFile]
+1=LPCTSTR lpFileName
+ParamCount=1
+@=EncryptFile
+[EncryptionDisable]
+1=BOOL Disable
+2=LPCWSTR DirPath
+ParamCount=2
+@=EncryptionDisable
+[EnumDependentServices]
+1=LPDWORD lpServicesReturned
+2=LPDWORD pcbBytesNeeded
+3=DWORD cbBufSize
+4=LPENUM_SERVICE_STATUS lpServices
+5=DWORD dwServiceState
+6=SC_HANDLE hService
+ParamCount=6
+@=EnumDependentServices
+[EnumServicesStatus]
+1=LPDWORD lpResumeHandle
+2=LPDWORD lpServicesReturned
+3=LPDWORD pcbBytesNeeded
+4=DWORD cbBufSize
+5=LPENUM_SERVICE_STATUS lpServices
+6=DWORD dwServiceState
+7=DWORD dwServiceType
+8=SC_HANDLE hSCManager
+ParamCount=8
+@=EnumServicesStatus
+[EnumServicesStatusEx]
+1=LPCTSTR pszGroupName
+2=LPDWORD lpResumeHandle
+3=LPDWORD lpServicesReturned
+4=LPDWORD pcbBytesNeeded
+5=DWORD cbBufSize
+6=LPBYTE lpServices
+7=DWORD dwServiceState
+8=DWORD dwServiceType
+9=SC_ENUM_TYPE InfoLevel
+10=SC_HANDLE hSCManager
+ParamCount=10
+@=EnumServicesStatusEx
+[EnumerateTraceGuids]
+1=PULONG GuidCount
+2=ULONG PropertyArrayCount
+3=PTRACE_GUID_PROPERTIES* GuidPropertiesArray
+ParamCount=3
+@=EnumerateTraceGuids
+[EnumerateTraceGuidsEx]
+1=PULONG ReturnLength
+2=ULONG OutBufferSize
+3=PVOID OutBuffer
+4=ULONG InBufferSize
+5=PVOID InBuffer
+6=TRACE_QUERY_INFO_CLASS TraceQueryInfoClass
+ParamCount=6
+@=EnumerateTraceGuidsEx
+[EqualDomainSid]
+1=BOOL* pfEqual
+2=PSID pSid2
+3=PSID pSid1
+ParamCount=3
+@=EqualDomainSid
+[EqualPrefixSid]
+1=PSID pSid2
+2=PSID pSid1
+ParamCount=2
+@=EqualPrefixSid
+[EqualSid]
+1=PSID pSid2
+2=PSID pSid1
+ParamCount=2
+@=EqualSid
+[EventAccessControl]
+1=BOOLEAN AllowOrDeny
+2=ULONG Rights
+3=PSID Sid
+4=ULONG Operation
+5=LPGUID Guid
+ParamCount=5
+@=EventAccessControl
+[EventAccessQuery]
+1=PULONG BufferSize
+2=PSECURITY_DESCRIPTOR Buffer
+3=LPGUID Guid
+ParamCount=3
+@=EventAccessQuery
+[EventAccessRemove]
+1=LPGUID Guid
+ParamCount=1
+@=EventAccessRemove
+[EventActivityIdControl]
+1=LPGUID ActivityId
+2=DWORD ControlCode
+ParamCount=2
+@=EventActivityIdControl
+[EventEnabled]
+1=PCEVENT_DESCRIPTOR EventDescriptor
+2=REGHANDLE RegHandle
+ParamCount=2
+@=EventEnabled
+[EventProviderEnabled]
+1=ULONGLONG Keyword
+2=UCHAR Level
+3=REGHANDLE RegHandle
+ParamCount=3
+@=EventProviderEnabled
+[EventRegister]
+1=PREGHANDLE RegHandle
+2=PVOID CallbackContext
+3=ENABLECALLBACK EnableCallback
+4=LPCGUID ProviderId
+ParamCount=4
+@=EventRegister
+[EventUnregister]
+1=REGHANDLE RegHandle
+ParamCount=1
+@=EventUnregister
+[EventWrite]
+1=PEVENT_DATA_DESCRIPTOR UserData
+2=ULONG UserDataCount
+3=PCEVENT_DESCRIPTOR EventDescriptor
+4=REGHANDLE RegHandle
+ParamCount=4
+@=EventWrite
+[EventWriteString]
+1=PCWSTR String
+2=ULONGLONG Keyword
+3=UCHAR Level
+4=REGHANDLE RegHandle
+ParamCount=4
+@=EventWriteString
+[EventWriteTransfer]
+1=PEVENT_DATA_DESCRIPTOR UserData
+2=ULONG UserDataCount
+3=LPCGUID RelatedActivityId
+4=LPCGUID ActivityId
+5=PCEVENT_DESCRIPTOR EventDescriptor
+6=REGHANDLE RegHandle
+ParamCount=6
+@=EventWriteTransfer
+[FileEncryptionStatus]
+1=LPDWORD lpStatus
+2=LPCTSTR lpFileName
+ParamCount=2
+@=FileEncryptionStatus
+[FindFirstFreeAce]
+1=LPVOID* pAce
+2=PACL pAcl
+ParamCount=2
+@=FindFirstFreeAce
+[FlushTrace]
+1=PEVENT_TRACE_PROPERTIES Properties
+2=LPCTSTR SessionName
+3=TRACEHANDLE SessionHandle
+ParamCount=3
+@=FlushTrace
+[FreeEncryptionCertificateHashList]
+1=PENCRYPTION_CERTIFICATE_HASH_LIST pHashes
+ParamCount=1
+@=FreeEncryptionCertificateHashList
+[FreeInheritedFromArray]
+1=PFN_OBJECT_MGR_FUNCTS pfnArray
+2=USHORT AceCnt
+3=PINHERITED_FROM pInheritArray
+ParamCount=3
+@=FreeInheritedFromArray
+[FreeSid]
+1=PSID pSid
+ParamCount=1
+@=FreeSid
+[GetAce]
+1=LPVOID* lpAce
+2=DWORD dwAceIndex
+3=PACL pAcl
+ParamCount=3
+@=GetAce
+[GetAclInformation]
+1=ACL_INFORMATION_CLASS dwAclInformationClass
+2=DWORD nAclInformationLength
+3=LPVOID pAclInformation
+4=PACL pAcl
+ParamCount=4
+@=GetAclInformation
+[GetAuditedPermissionsFromAcl]
+1=PACCESS_MASK pFailedAuditRights
+2=PACCESS_MASK pSuccessfulAuditedRights
+3=PTRUSTEE pTrustee
+4=PACL pacl
+ParamCount=4
+@=GetAuditedPermissionsFromAcl
+[GetAuditedPermissionsFromAclA]
+1=PACCESS_MASK pFailedAuditRights
+2=PACCESS_MASK pSuccessfulAuditedRights
+3=PTRUSTEE pTrustee
+4=PACL pacl
+ParamCount=4
+@=GetAuditedPermissionsFromAclA
+[GetAuditedPermissionsFromAclW]
+1=PACCESS_MASK pFailedAuditRights
+2=PACCESS_MASK pSuccessfulAuditedRights
+3=PTRUSTEE pTrustee
+4=PACL pacl
+ParamCount=4
+@=GetAuditedPermissionsFromAclW
+[GetCurrentHwProfile]
+1=LPHW_PROFILE_INFO lpHwProfileInfo
+ParamCount=1
+@=GetCurrentHwProfile
+[GetEffectiveRightsFromAcl]
+1=PACCESS_MASK pAccessRights
+2=PTRUSTEE pTrustee
+3=PACL pacl
+ParamCount=3
+@=GetEffectiveRightsFromAcl
+[GetEventLogInformation]
+1=LPDWORD pcbBytesNeeded
+2=DWORD cbBufSize
+3=LPVOID lpBuffer
+4=DWORD dwInfoLevel
+5=HANDLE hEventLog
+ParamCount=5
+@=GetEventLogInformation
+[GetExplicitEntriesFromAcl]
+1=PEXPLICIT_ACCESS* pListOfExplicitEntries
+2=PULONG pcCountOfExplicitEntries
+3=PACL pacl
+ParamCount=3
+@=GetExplicitEntriesFromAcl
+[GetFileSecurity]
+1=LPDWORD lpnLengthNeeded
+2=DWORD nLength
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+4=SECURITY_INFORMATION RequestedInformation
+5=LPCTSTR lpFileName
+ParamCount=5
+@=GetFileSecurity
+[GetInheritanceSource]
+1=PINHERITED_FROM pInheritArray
+2=PGENERIC_MAPPING pGenericMapping
+3=PFN_OBJECT_MGR_FUNCTS pfnArray
+4=PACL pAcl
+5=DWORD GuidCount
+6=GUID** pObjectClassGuids
+7=BOOL Container
+8=SECURITY_INFORMATION SecurityInfo
+9=SE_OBJECT_TYPE ObjectType
+10=LPTSTR pObjectName
+ParamCount=10
+@=GetInheritanceSource
+[GetKernelObjectSecurity]
+1=LPDWORD lpnLengthNeeded
+2=DWORD nLength
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+4=SECURITY_INFORMATION RequestedInformation
+5=HANDLE Handle
+ParamCount=5
+@=GetKernelObjectSecurity
+[GetLengthSid]
+1=PSID pSid
+ParamCount=1
+@=GetLengthSid
+[GetLocalManagedApplications]
+1=PLOCALMANAGEDAPPLICATION* prgLocalApps
+2=LPDWORD pdwApps
+3=BOOL bUserApps
+ParamCount=3
+@=GetLocalManagedApplications
+[GetManagedApplicationCategories]
+1=APPCATEGORYINFOLIST* pAppCategory
+2=DWORD dwReserved
+ParamCount=2
+@=GetManagedApplicationCategories
+[GetManagedApplications]
+1=PMANAGEDAPPLICATION* prgManagedApps
+2=LPDWORD pdwApps
+3=DWORD dwInfoLevel
+4=DWORD dwQueryFlags
+5=GUID* pCategory
+ParamCount=5
+@=GetManagedApplications
+[GetNamedSecurityInfo]
+1=PSECURITY_DESCRIPTOR* ppSecurityDescriptor
+2=PACL* ppSacl
+3=PACL* ppDacl
+4=PSID* ppsidGroup
+5=PSID* ppsidOwner
+6=SECURITY_INFORMATION SecurityInfo
+7=SE_OBJECT_TYPE ObjectType
+8=LPTSTR pObjectName
+ParamCount=8
+@=GetNamedSecurityInfo
+[GetNumberOfEventLogRecords]
+1=PDWORD NumberOfRecords
+2=HANDLE hEventLog
+ParamCount=2
+@=GetNumberOfEventLogRecords
+[GetOldestEventLogRecord]
+1=PDWORD OldestRecord
+2=HANDLE hEventLog
+ParamCount=2
+@=GetOldestEventLogRecord
+[GetPrivateObjectSecurity]
+1=PDWORD ReturnLength
+2=DWORD DescriptorLength
+3=PSECURITY_DESCRIPTOR ResultantDescriptor
+4=SECURITY_INFORMATION SecurityInformation
+5=PSECURITY_DESCRIPTOR ObjectDescriptor
+ParamCount=5
+@=GetPrivateObjectSecurity
+[GetSecurityDescriptorControl]
+1=DWORD lpdwRevision
+2=PSECURITY_DESCRIPTOR_CONTROL pControl
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=GetSecurityDescriptorControl
+[GetSecurityDescriptorDacl]
+1=LPBOOL lpbDaclDefaulted
+2=PACL* pDacl
+3=LPBOOL lpbDaclPresent
+4=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=4
+@=GetSecurityDescriptorDacl
+[GetSecurityDescriptorGroup]
+1=LPBOOL lpbGroupDefaulted
+2=PSID* pGroup
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=GetSecurityDescriptorGroup
+[GetSecurityDescriptorLength]
+1=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=1
+@=GetSecurityDescriptorLength
+[GetSecurityDescriptorOwner]
+1=LPBOOL lpbOwnerDefaulted
+2=PSID* pOwner
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=GetSecurityDescriptorOwner
+[GetSecurityDescriptorSacl]
+1=LPBOOL lpbSaclDefaulted
+2=PACL* pSacl
+3=LPBOOL lpbSaclPresent
+4=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=4
+@=GetSecurityDescriptorSacl
+[GetSecurityInfo]
+1=PSECURITY_DESCRIPTOR* ppSecurityDescriptor
+2=PACL* ppSacl
+3=PACL* ppDacl
+4=PSID* ppsidGroup
+5=PSID* ppsidOwner
+6=SECURITY_INFORMATION SecurityInfo
+7=SE_OBJECT_TYPE ObjectType
+8=HANDLE handle
+ParamCount=8
+@=GetSecurityInfo
+[GetServiceDisplayName]
+1=LPDWORD lpcchBuffer
+2=LPTSTR lpDisplayName
+3=LPCTSTR lpServiceName
+4=SC_HANDLE hSCManager
+ParamCount=4
+@=GetServiceDisplayName
+[GetServiceKeyName]
+1=LPDWORD lpcchBuffer
+2=LPTSTR lpServiceName
+3=LPCTSTR lpDisplayName
+4=SC_HANDLE hSCManager
+ParamCount=4
+@=GetServiceKeyName
+[GetSidIdentifierAuthority]
+1=PSID pSid
+ParamCount=1
+@=GetSidIdentifierAuthority
+[GetSidLengthRequired]
+1=UCHAR nSubAuthorityCount
+ParamCount=1
+@=GetSidLengthRequired
+[GetSidSubAuthority]
+1=DWORD nSubAuthority
+2=PSID pSid
+ParamCount=2
+@=GetSidSubAuthority
+[GetSidSubAuthorityCount]
+1=PSID pSid
+ParamCount=1
+@=GetSidSubAuthorityCount
+[GetThreadWaitChain]
+1=LPBOOL IsCycle
+2=PWAITCHAIN_NODE_INFO NodeInfoArray
+3=LPDWORD NodeCount
+4=DWORD ThreadId
+5=DWORD Flags
+6=DWORD_PTR Context
+7=HWCT WctHandle
+ParamCount=7
+@=GetThreadWaitChain
+[GetTokenInformation]
+1=PDWORD ReturnLength
+2=DWORD TokenInformationLength
+3=LPVOID TokenInformation
+4=TOKEN_INFORMATION_CLASS TokenInformationClass
+5=HANDLE TokenHandle
+ParamCount=5
+@=GetTokenInformation
+[GetTraceEnableFlags]
+1=TRACEHANDLE SessionHandle
+ParamCount=1
+@=GetTraceEnableFlags
+[GetTraceEnableLevel]
+1=TRACEHANDLE SessionHandle
+ParamCount=1
+@=GetTraceEnableLevel
+[GetTraceLoggerHandle]
+1=PVOID Buffer
+ParamCount=1
+@=GetTraceLoggerHandle
+[GetTrusteeForm]
+1=PTRUSTEE pTrustee
+ParamCount=1
+@=GetTrusteeForm
+[GetTrusteeName]
+1=PTRUSTEE pTrustee
+ParamCount=1
+@=GetTrusteeName
+[GetTrusteeType]
+1=PTRUSTEE pTrustee
+ParamCount=1
+@=GetTrusteeType
+[GetUserName]
+1=LPDWORD lpnSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetUserName
+[GetUserNameA]
+1=LPDWORD nBufferSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetUserNameA
+[GetUserNameW]
+1=LPDWORD nBufferSize
+2=LPTSTR lpBuffer
+ParamCount=2
+@=GetUserNameW
+[GetWindowsAccountDomainSid]
+1=DWORD* cbSid
+2=PSID ppDomainSid
+3=PSID pSid
+ParamCount=3
+@=GetWindowsAccountDomainSid
+[ImpersonateAnonymousToken]
+1=HANDLE ThreadHandle
+ParamCount=1
+@=ImpersonateAnonymousToken
+[ImpersonateLoggedOnUser]
+1=HANDLE hToken
+ParamCount=1
+@=ImpersonateLoggedOnUser
+[ImpersonateNamedPipeClient]
+1=HANDLE hNamedPipe
+ParamCount=1
+@=ImpersonateNamedPipeClient
+[ImpersonateSelf]
+1=SECURITY_IMPERSONATION_LEVEL ImpersonationLevel
+ParamCount=1
+@=ImpersonateSelf
+[InitializeAcl]
+1=DWORD dwAclRevision
+2=DWORD nAclLength
+3=PACL pAcl
+ParamCount=3
+@=InitializeAcl
+[InitializeSecurityDescriptor]
+1=DWORD dwRevision
+2=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=2
+@=InitializeSecurityDescriptor
+[InitializeSid]
+1=BYTE nSubAuthorityCount
+2=PSID_IDENTIFIER_AUTHORITY pIdentifierAuthority
+3=PSID Sid
+ParamCount=3
+@=InitializeSid
+[InitiateShutdown]
+1=DWORD dwReason
+2=DWORD dwShutdownFlags
+3=DWORD dwGracePeriod
+4=LPTSTR lpMessage
+5=LPTSTR lpMachineName
+ParamCount=5
+@=InitiateShutdown
+[InitiateSystemShutdown]
+1=BOOL bRebootAfterShutdown
+2=BOOL bForceAppsClosed
+3=DWORD dwTimeout
+4=LPTSTR lpMessage
+5=LPTSTR lpMachineName
+ParamCount=5
+@=InitiateSystemShutdown
+[InitiateSystemShutdownEx]
+1=DWORD dwReason
+2=BOOL bRebootAfterShutdown
+3=BOOL bForceAppsClosed
+4=DWORD dwTimeout
+5=LPTSTR lpMessage
+6=LPTSTR lpMachineName
+ParamCount=6
+@=InitiateSystemShutdownEx
+[InstallApplication]
+1=PINSTALLDATA* pInstallInfo
+ParamCount=1
+@=InstallApplication
+[IsTextUnicode]
+1=DWORD lpiFlag
+2=int iSize
+3=const VOID* lpStockBuffer
+ParamCount=3
+@=IsTextUnicode
+[IsTokenRestricted]
+1=HANDLE TokenHandle
+ParamCount=1
+@=IsTokenRestricted
+[IsValidAcl]
+1=PACL pAcl
+ParamCount=1
+@=IsValidAcl
+[IsValidSecurityDescriptor]
+1=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=1
+@=IsValidSecurityDescriptor
+[IsValidSid]
+1=PSID pSid
+ParamCount=1
+@=IsValidSid
+[IsWellKnownSid]
+1=WELL_KNOWN_SID_TYPE WellKnownSidType
+2=PSID pSid
+ParamCount=2
+@=IsWellKnownSid
+[LogonUser]
+1=PHANDLE phToken
+2=DWORD dwLogonProvider
+3=DWORD dwLogonType
+4=LPTSTR lpszPassword
+5=LPTSTR lpszDomain
+6=LPTSTR lpszUsername
+ParamCount=6
+@=LogonUser
+[LogonUserEx]
+1=PQUOTA_LIMITS pQuotaLimits
+2=LPDWORD pdwProfileLength
+3=PVOID* ppProfileBuffer
+4=PSID* ppLogonSid
+5=PHANDLE phToken
+6=DWORD dwLogonProvider
+7=DWORD dwLogonType
+8=LPTSTR lpszPassword
+9=LPTSTR lpszDomain
+10=LPTSTR lpszUsername
+ParamCount=10
+@=LogonUserEx
+[LogonUserExExW]
+1=PQUOTA_LIMITS pQuotaLimits
+2=LPDWORD pdwProfileLength
+3=PVOID* ppProfileBuffer
+4=PSID* ppLogonSid
+5=PHANDLE phToken
+6=DWORD dwLogonProvider
+7=PTOKEN_GROUPS pTokenGroups
+8=DWORD dwLogonType
+9=LPWSTR lpszPassword
+10=LPWSTR lpszDomain
+11=LPWSTR lpszUsername
+ParamCount=11
+@=LogonUserExExW
+[LookupAccountName]
+1=PSID_NAME_USE peUse
+2=LPDWORD cchReferencedDomainName
+3=LPTSTR ReferencedDomainName
+4=LPDWORD cbSid
+5=PSID Sid
+6=LPCTSTR lpAccountName
+7=LPCTSTR lpSystemName
+ParamCount=7
+@=LookupAccountName
+[LookupAccountSid]
+1=PSID_NAME_USE peUse
+2=LPDWORD cchReferencedDomainName
+3=LPTSTR lpReferencedDomainName
+4=LPDWORD cchName
+5=LPTSTR lpName
+6=PSID lpSid
+7=LPCTSTR lpSystemName
+ParamCount=7
+@=LookupAccountSid
+[LookupPrivilegeDisplayName]
+1=LPDWORD lpLanguageId
+2=LPDWORD cchDisplayName
+3=LPTSTR lpDisplayName
+4=LPCTSTR lpName
+5=LPCTSTR lpSystemName
+ParamCount=5
+@=LookupPrivilegeDisplayName
+[LookupPrivilegeName]
+1=LPDWORD cchName
+2=LPTSTR lpName
+3=PLUID lpLuid
+4=LPCTSTR lpSystemName
+ParamCount=4
+@=LookupPrivilegeName
+[LookupPrivilegeValue]
+1=PLUID lpLuid
+2=LPCTSTR lpName
+3=LPCTSTR lpSystemName
+ParamCount=3
+@=LookupPrivilegeValue
+[LookupPrivilegeValueW]
+1=PLUID lpLuid
+2=LPCTSTR lpName
+3=LPCTSTR lpSystemName
+ParamCount=3
+@=LookupPrivilegeValueW
+[LookupSecurityDescriptorParts]
+1=PSECURITY_DESCRIPTOR pSD
+2=PEXPLICIT_ACCESS* pListOfAuditEntries
+3=PULONG cCountOfAuditEntries
+4=PEXPLICIT_ACCESS* pListOfAccessEntries
+5=PULONG cCountOfAccessEntries
+6=PTRUSTEE* pGroup
+7=PTRUSTEE* pOwner
+ParamCount=7
+@=LookupSecurityDescriptorParts
+[LsaAddAccountRights]
+1=ULONG CountOfRights
+2=PLSA_UNICODE_STRING UserRights
+3=PSID AccountSid
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaAddAccountRights
+[LsaClose]
+1=LSA_HANDLE ObjectHandle
+ParamCount=1
+@=LsaClose
+[LsaCreateTrustedDomainEx]
+1=PLSA_HANDLE TrustedDomainHandle
+2=ACCESS_MASK DesiredAccess
+3=PTRUSTED_DOMAIN_AUTH_INFORMATION AuthenticationInformation
+4=PTRUSTED_DOMAIN_INFORMATION_EX TrustedDomainInformation
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaCreateTrustedDomainEx
+[LsaDeleteTrustedDomain]
+1=PSID TrustedDomainSid
+2=LSA_HANDLE PolicyHandle
+ParamCount=2
+@=LsaDeleteTrustedDomain
+[LsaEnumerateAccountRights]
+1=PULONG CountOfRights
+2=PLSA_UNICODE_STRING* UserRights
+3=PSID AccountSid
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaEnumerateAccountRights
+[LsaEnumerateAccountsWithUserRight]
+1=PULONG CountReturned
+2=PVOID* EnumerationBuffer
+3=PLSA_UNICODE_STRING UserRights
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaEnumerateAccountsWithUserRight
+[LsaEnumerateTrustedDomains]
+1=PULONG CountReturned
+2=ULONG PreferedMaximumLength
+3=PVOID* Buffer
+4=PLSA_ENUMERATION_HANDLE EnumerationContext
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaEnumerateTrustedDomains
+[LsaEnumerateTrustedDomainsEx]
+1=PULONG CountReturned
+2=ULONG PreferredMaximumLength
+3=PVOID* Buffer
+4=PLSA_ENUMERATION_HANDLE EnumerationContext
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaEnumerateTrustedDomainsEx
+[LsaFreeMemory]
+1=PVOID Buffer
+ParamCount=1
+@=LsaFreeMemory
+[LsaLookupNames]
+1=PLSA_TRANSLATED_SID* Sids
+2=PLSA_REFERENCED_DOMAIN_LIST* ReferencedDomains
+3=PLSA_UNICODE_STRING Names
+4=ULONG Count
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaLookupNames
+[LsaLookupNames2]
+1=PLSA_TRANSLATED_SID2* Sids
+2=PLSA_REFERENCED_DOMAIN_LIST* ReferencedDomains
+3=PLSA_UNICODE_STRING Names
+4=ULONG Count
+5=ULONG Flags
+6=LSA_HANDLE PolicyHandle
+ParamCount=6
+@=LsaLookupNames2
+[LsaLookupPrivilegeValue]
+1=PLUID Value
+2=PUNICODE_STRING Name
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaLookupPrivilegeValue
+[LsaLookupSids]
+1=PLSA_TRANSLATED_NAME* Names
+2=PLSA_REFERENCED_DOMAIN_LIST* ReferencedDomains
+3=PSID* Sids
+4=ULONG Count
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaLookupSids
+[LsaNtStatusToWinError]
+1=NTSTATUS Status
+ParamCount=1
+@=LsaNtStatusToWinError
+[LsaOpenPolicy]
+1=PLSA_HANDLE PolicyHandle
+2=ACCESS_MASK DesiredAccess
+3=PLSA_OBJECT_ATTRIBUTES ObjectAttributes
+4=PLSA_UNICODE_STRING SystemName
+ParamCount=4
+@=LsaOpenPolicy
+[LsaOpenTrustedDomainByName]
+1=PLSA_HANDLE TrustedDomainHandle
+2=ACCESS_MASK DesiredAccess
+3=PLSA_UNICODE_STRING TrustedDomainName
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaOpenTrustedDomainByName
+[LsaQueryDomainInformationPolicy]
+1=PVOID* Buffer
+2=POLICY_DOMAIN_INFORMATION_CLASS InformationClass
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaQueryDomainInformationPolicy
+[LsaQueryForestTrustInformation]
+1=PLSA_FOREST_TRUST_INFORMATION* ForestTrustInfo
+2=PLSA_UNICODE_STRING TrustedDomainName
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaQueryForestTrustInformation
+[LsaQueryInformationPolicy]
+1=PVOID* Buffer
+2=POLICY_INFORMATION_CLASS InformationClass
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaQueryInformationPolicy
+[LsaQueryTrustedDomainInfo]
+1=PVOID* Buffer
+2=TRUSTED_INFORMATION_CLASS InformationClass
+3=PSID TrustedDomainSid
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaQueryTrustedDomainInfo
+[LsaQueryTrustedDomainInfoByName]
+1=PVOID* Buffer
+2=TRUSTED_INFORMATION_CLASS InformationClass
+3=PLSA_UNICODE_STRING TrustedDomainName
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaQueryTrustedDomainInfoByName
+[LsaRemoveAccountRights]
+1=ULONG CountOfRights
+2=PLSA_UNICODE_STRING UserRights
+3=BOOLEAN AllRights
+4=PSID AccountSid
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaRemoveAccountRights
+[LsaRetrievePrivateData]
+1=PLSA_UNICODE_STRING* PrivateData
+2=PLSA_UNICODE_STRING KeyName
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaRetrievePrivateData
+[LsaSetDomainInformationPolicy]
+1=PVOID Buffer
+2=POLICY_DOMAIN_INFORMATION_CLASS InformationClass
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaSetDomainInformationPolicy
+[LsaSetForestTrustInformation]
+1=PLSA_FOREST_TRUST_COLLISION_INFORMATION* CollisionInfo
+2=BOOLEAN CheckOnly
+3=PLSA_FOREST_TRUST_INFORMATION ForestTrustInfo
+4=PLSA_UNICODE_STRING TrustedDomainName
+5=LSA_HANDLE PolicyHandle
+ParamCount=5
+@=LsaSetForestTrustInformation
+[LsaSetInformationPolicy]
+1=PVOID Buffer
+2=POLICY_INFORMATION_CLASS InformationClass
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaSetInformationPolicy
+[LsaSetTrustedDomainInfoByName]
+1=PVOID Buffer
+2=TRUSTED_INFORMATION_CLASS InformationClass
+3=PLSA_UNICODE_STRING TrustedDomainName
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaSetTrustedDomainInfoByName
+[LsaSetTrustedDomainInformation]
+1=PVOID Buffer
+2=TRUSTED_INFORMATION_CLASS InformationClass
+3=PSID TrustedDomainSid
+4=LSA_HANDLE PolicyHandle
+ParamCount=4
+@=LsaSetTrustedDomainInformation
+[LsaStorePrivateData]
+1=PLSA_UNICODE_STRING PrivateData
+2=PLSA_UNICODE_STRING KeyName
+3=LSA_HANDLE PolicyHandle
+ParamCount=3
+@=LsaStorePrivateData
+[MakeAbsoluteSD]
+1=LPDWORD lpdwPrimaryGroupSize
+2=PSID pPrimaryGroup
+3=LPDWORD lpdwOwnerSize
+4=PSID pOwner
+5=LPDWORD lpdwSaclSize
+6=PACL pSacl
+7=LPDWORD lpdwDaclSize
+8=PACL pDacl
+9=LPDWORD lpdwAbsoluteSDSize
+10=PSECURITY_DESCRIPTOR pAbsoluteSD
+11=PSECURITY_DESCRIPTOR pSelfRelativeSD
+ParamCount=11
+@=MakeAbsoluteSD
+[MakeSelfRelativeSD]
+1=LPDWORD lpdwBufferLength
+2=PSECURITY_DESCRIPTOR pSelfRelativeSD
+3=PSECURITY_DESCRIPTOR pAbsoluteSD
+ParamCount=3
+@=MakeSelfRelativeSD
+[MapGenericMask]
+1=PGENERIC_MAPPING GenericMapping
+2=PDWORD AccessMask
+ParamCount=2
+@=MapGenericMask
+[NotifyChangeEventLog]
+1=HANDLE hEvent
+2=HANDLE hEventLog
+ParamCount=2
+@=NotifyChangeEventLog
+[NotifyServiceStatusChange]
+1=PSERVICE_NOTIFY pNotifyBuffer
+2=DWORD dwNotifyMask
+3=SC_HANDLE hService
+ParamCount=3
+@=NotifyServiceStatusChange
+[ObjectCloseAuditAlarm]
+1=BOOL GenerateOnClose
+2=LPVOID HandleId
+3=LPCTSTR SubsystemName
+ParamCount=3
+@=ObjectCloseAuditAlarm
+[ObjectDeleteAuditAlarm]
+1=BOOL GenerateOnClose
+2=LPVOID HandleId
+3=LPCTSTR SubsystemName
+ParamCount=3
+@=ObjectDeleteAuditAlarm
+[ObjectOpenAuditAlarm]
+1=LPBOOL GenerateOnClose
+2=BOOL AccessGranted
+3=BOOL ObjectCreation
+4=PPRIVILEGE_SET Privileges
+5=DWORD GrantedAccess
+6=DWORD DesiredAccess
+7=HANDLE ClientToken
+8=PSECURITY_DESCRIPTOR pSecurityDescriptor
+9=LPTSTR ObjectName
+10=LPTSTR ObjectTypeName
+11=LPVOID HandleId
+12=LPCTSTR SubsystemName
+ParamCount=12
+@=ObjectOpenAuditAlarm
+[ObjectPrivilegeAuditAlarm]
+1=BOOL AccessGranted
+2=PPRIVILEGE_SET Privileges
+3=DWORD DesiredAccess
+4=HANDLE ClientToken
+5=LPVOID HandleId
+6=LPCTSTR SubsystemName
+ParamCount=6
+@=ObjectPrivilegeAuditAlarm
+[OpenBackupEventLog]
+1=LPCTSTR lpFileName
+2=LPCTSTR lpUNCServerName
+ParamCount=2
+@=OpenBackupEventLog
+[OpenEncryptedFileRaw]
+1=PVOID* pvContext
+2=ULONG ulFlags
+3=LPCTSTR lpFileName
+ParamCount=3
+@=OpenEncryptedFileRaw
+[OpenEventLog]
+1=LPCTSTR lpSourceName
+2=LPCTSTR lpUNCServerName
+ParamCount=2
+@=OpenEventLog
+[OpenProcessToken]
+1=PHANDLE TokenHandle
+2=DWORD DesiredAccess
+3=HANDLE ProcessHandle
+ParamCount=3
+@=OpenProcessToken
+[OpenSCManager]
+1=DWORD dwDesiredAccess
+2=LPCTSTR lpDatabaseName
+3=LPCTSTR lpMachineName
+ParamCount=3
+@=OpenSCManager
+[OpenService]
+1=DWORD dwDesiredAccess
+2=LPCTSTR lpServiceName
+3=SC_HANDLE hSCManager
+ParamCount=3
+@=OpenService
+[OpenThreadToken]
+1=PHANDLE TokenHandle
+2=BOOL OpenAsSelf
+3=DWORD DesiredAccess
+4=HANDLE ThreadHandle
+ParamCount=4
+@=OpenThreadToken
+[OpenThreadWaitChainSession]
+1=PWAITCHAINCALLBACK callback
+2=DWORD Flags
+ParamCount=2
+@=OpenThreadWaitChainSession
+[OpenTrace]
+1=PEVENT_TRACE_LOGFILE Logfile
+ParamCount=1
+@=OpenTrace
+[PerfCreateInstance]
+1=ULONG dwInstance
+2=LPCWSTR szInstanceName
+3=LPCGUID CounterSetGuid
+4=HANDLE hProvider
+ParamCount=4
+@=PerfCreateInstance
+[PerfDecrementULongCounterValue]
+1=ULONG lValue
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfDecrementULongCounterValue
+[PerfDecrementULongLongCounterValue]
+1=ULONGLONG llValue
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfDecrementULongLongCounterValue
+[PerfDeleteInstance]
+1=PPERF_COUNTERSET_INSTANCE InstanceBlock
+2=HANDLE hProvider
+ParamCount=2
+@=PerfDeleteInstance
+[PerfIncrementULongCounterValue]
+1=ULONG lValue
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfIncrementULongCounterValue
+[PerfIncrementULongLongCounterValue]
+1=ULONGLONG llValue
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfIncrementULongLongCounterValue
+[PerfQueryInstance]
+1=ULONG dwInstance
+2=LPCWSTR szInstance
+3=LPCGUID CounterSetGuid
+4=HANDLE hProvider
+ParamCount=4
+@=PerfQueryInstance
+[PerfSetCounterRefValue]
+1=PVOID lpAddr
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfSetCounterRefValue
+[PerfSetCounterSetInfo]
+1=ULONG dwTemplateSize
+2=PPERF_COUNTERSET_INFO pTemplate
+3=HANDLE hProvider
+ParamCount=3
+@=PerfSetCounterSetInfo
+[PerfSetULongCounterValue]
+1=ULONG lValue
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfSetULongCounterValue
+[PerfSetULongLongCounterValue]
+1=ULONGLONG llValue
+2=ULONG CounterId
+3=PPERF_COUNTERSET_INSTANCE pInstance
+4=HANDLE hProvider
+ParamCount=4
+@=PerfSetULongLongCounterValue
+[PerfStartProvider]
+1=HANDLE* phProvider
+2=PERFLIBREQUEST ControlCallback
+3=LPGUID ProviderGuid
+ParamCount=3
+@=PerfStartProvider
+[PerfStartProviderEx]
+1=HANDLE* phProvider
+2=PPERF_PROVIDER_CONTEXT ProviderContext
+3=LPGUID ProviderGuid
+ParamCount=3
+@=PerfStartProviderEx
+[PerfStopProvider]
+1=HANDLE hProvider
+ParamCount=1
+@=PerfStopProvider
+[PrivilegeCheck]
+1=LPBOOL pfResult
+2=PPRIVILEGE_SET RequiredPrivileges
+3=HANDLE ClientToken
+ParamCount=3
+@=PrivilegeCheck
+[PrivilegedServiceAuditAlarm]
+1=BOOL AccessGranted
+2=PPRIVILEGE_SET Privileges
+3=HANDLE ClientToken
+4=LPCTSTR ServiceName
+5=LPCTSTR SubsystemName
+ParamCount=5
+@=PrivilegedServiceAuditAlarm
+[ProcessTrace]
+1=LPFILETIME EndTime
+2=LPFILETIME StartTime
+3=ULONG HandleCount
+4=PTRACEHANDLE HandleArray
+ParamCount=4
+@=ProcessTrace
+[QueryAllTraces]
+1=PULONG SessionCount
+2=ULONG PropertyArrayCount
+3=PEVENT_TRACE_PROPERTIES* PropertyArray
+ParamCount=3
+@=QueryAllTraces
+[QueryRecoveryAgentsOnEncryptedFile]
+1=PENCRYPTION_CERTIFICATE_HASH_LIST* pRecoveryAgents
+2=LPCWSTR lpFileName
+ParamCount=2
+@=QueryRecoveryAgentsOnEncryptedFile
+[QuerySecurityAccessMask]
+1=LPDWORD DesiredAccess
+2=SECURITY_INFORMATION SecurityInformation
+ParamCount=2
+@=QuerySecurityAccessMask
+[QueryServiceConfig]
+1=LPDWORD pcbBytesNeeded
+2=DWORD cbBufSize
+3=LPQUERY_SERVICE_CONFIG lpServiceConfig
+4=SC_HANDLE hService
+ParamCount=4
+@=QueryServiceConfig
+[QueryServiceConfig2]
+1=LPDWORD pcbBytesNeeded
+2=DWORD cbBufSize
+3=LPBYTE lpBuffer
+4=DWORD dwInfoLevel
+5=SC_HANDLE hService
+ParamCount=5
+@=QueryServiceConfig2
+[QueryServiceLockStatus]
+1=LPDWORD pcbBytesNeeded
+2=DWORD cbBufSize
+3=LPQUERY_SERVICE_LOCK_STATUS lpLockStatus
+4=SC_HANDLE hSCManager
+ParamCount=4
+@=QueryServiceLockStatus
+[QueryTrace]
+1=PEVENT_TRACE_PROPERTIES Properties
+2=LPCTSTR SessionName
+3=TRACEHANDLE SessionHandle
+ParamCount=3
+@=QueryTrace
+[QueryUsersOnEncryptedFile]
+1=PENCRYPTION_CERTIFICATE_HASH_LIST* pUsers
+2=LPCWSTR lpFileName
+ParamCount=2
+@=QueryUsersOnEncryptedFile
+[ReadEncryptedFileRaw]
+1=PVOID pvContext
+2=PVOID pvCallbackContext
+3=PFE_EXPORT_FUNC pfExportCallback
+ParamCount=3
+@=ReadEncryptedFileRaw
+[ReadEventLog]
+1=DWORD* pnMinNumberOfBytesNeeded
+2=DWORD* pnBytesRead
+3=DWORD nNumberOfBytesToRead
+4=LPVOID lpBuffer
+5=DWORD dwRecordOffset
+6=DWORD dwReadFlags
+7=HANDLE hEventLog
+ParamCount=7
+@=ReadEventLog
+[RegConnectRegistry]
+1=PHKEY phkResult
+2=HKEY hKey
+3=LPCTSTR lpMachineName
+ParamCount=3
+@=RegConnectRegistry
+[RegCopyTree]
+1=HKEY hKeyDest
+2=LPCTSTR lpSubKey
+3=HKEY hKeySrc
+ParamCount=3
+@=RegCopyTree
+[RegCreateKey]
+1=PHKEY phkResult
+2=LPCTSTR lpSubKey
+3=HKEY hKey
+ParamCount=3
+@=RegCreateKey
+[RegCreateKeyEx]
+1=DWORD lpdwDisposition
+2=PHKEY phkResult
+3=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+4=REGSAM samDesired
+5=DWORD dwOptions
+6=LPTSTR lpClass
+7=DWORD Reserved
+8=LPCTSTR lpSubKey
+9=HKEY hKey
+ParamCount=9
+@=RegCreateKeyEx
+[RegCreateKeyTransacted]
+1=PVOID pExtendedParemeter
+2=HANDLE hTransaction
+3=DWORD lpdwDisposition
+4=PHKEY phkResult
+5=const LPSECURITY_ATTRIBUTES lpSecurityAttributes
+6=REGSAM samDesired
+7=DWORD dwOptions
+8=LPTSTR lpClass
+9=DWORD Reserved
+10=LPCTSTR lpSubKey
+11=HKEY hKey
+ParamCount=11
+@=RegCreateKeyTransacted
+[RegDeleteKey]
+1=LPCTSTR lpSubKey
+2=HKEY hKey
+ParamCount=2
+@=RegDeleteKey
+[RegDeleteKeyEx]
+1=DWORD Reserved
+2=REGSAM samDesired
+3=LPCTSTR lpSubKey
+4=HKEY hKey
+ParamCount=4
+@=RegDeleteKeyEx
+[RegDeleteKeyTransacted]
+1=PVOID pExtendedParameter
+2=HANDLE hTransaction
+3=DWORD Reserved
+4=REGSAM samDesired
+5=LPCTSTR lpSubKey
+6=HKEY hKey
+ParamCount=6
+@=RegDeleteKeyTransacted
+[RegDeleteKeyValue]
+1=LPCTSTR lpValueName
+2=LPCTSTR lpSubKey
+3=HKEY hKey
+ParamCount=3
+@=RegDeleteKeyValue
+[RegDeleteTree]
+1=LPCTSTR lpSubKey
+2=HKEY hKey
+ParamCount=2
+@=RegDeleteTree
+[RegDeleteValue]
+1=LPCTSTR lpValueName
+2=HKEY hKey
+ParamCount=2
+@=RegDeleteValue
+[RegEnumKey]
+1=DWORD cchName
+2=LPTSTR lpName
+3=DWORD dwIndex
+4=HKEY hKey
+ParamCount=4
+@=RegEnumKey
+[RegEnumKeyEx]
+1=PFILETIME lpftLastWriteTime
+2=LPDWORD lpcClass
+3=LPTSTR lpClass
+4=LPDWORD lpReserved
+5=LPDWORD lpcName
+6=LPTSTR lpName
+7=DWORD dwIndex
+8=HKEY hKey
+ParamCount=8
+@=RegEnumKeyEx
+[RegEnumValue]
+1=LPDWORD lpcbData
+2=LPBYTE lpData
+3=DWORD lpType
+4=LPDWORD lpReserved
+5=LPDWORD lpcchValueName
+6=LPTSTR lpValueName
+7=DWORD dwIndex
+8=HKEY hKey
+ParamCount=8
+@=RegEnumValue
+[RegGetValue]
+1=LPDWORD pcbData
+2=PVOID pvData
+3=DWORD pdwType
+4=DWORD dwFlags
+5=LPCTSTR lpValue
+6=LPCTSTR lpSubKey
+7=HKEY hkey
+ParamCount=7
+@=RegGetValue
+[RegLoadKey]
+1=LPCTSTR lpFile
+2=LPCTSTR lpSubKey
+3=HKEY hKey
+ParamCount=3
+@=RegLoadKey
+[RegLoadMUIString]
+1=LPCTSTR pszDirectory
+2=DWORD Flags
+3=LPDWORD pcbData
+4=DWORD cbOutBuf
+5=LPTSTR pszOutBuf
+6=LPCTSTR pszValue
+7=HKEY hKey
+ParamCount=7
+@=RegLoadMUIString
+[RegOpenKey]
+1=PHKEY phkResult
+2=LPCTSTR lpSubKey
+3=HKEY hKey
+ParamCount=3
+@=RegOpenKey
+[RegOpenKeyEx]
+1=PHKEY phkResult
+2=REGSAM samDesired
+3=DWORD ulOptions
+4=LPCTSTR lpSubKey
+5=HKEY hKey
+ParamCount=5
+@=RegOpenKeyEx
+[RegOpenKeyTransacted]
+1=PVOID pExtendedParameter
+2=HANDLE hTransaction
+3=PHKEY phkResult
+4=REGSAM samDesired
+5=DWORD ulOptions
+6=LPCTSTR lpSubKey
+7=HKEY hKey
+ParamCount=7
+@=RegOpenKeyTransacted
+[RegQueryInfoKey]
+1=PFILETIME lpftLastWriteTime
+2=LPDWORD lpcbSecurityDescriptor
+3=LPDWORD lpcMaxValueLen
+4=LPDWORD lpcMaxValueNameLen
+5=LPDWORD lpcValues
+6=LPDWORD lpcMaxClassLen
+7=LPDWORD lpcMaxSubKeyLen
+8=LPDWORD lpcSubKeys
+9=LPDWORD lpReserved
+10=LPDWORD lpcClass
+11=LPTSTR lpClass
+12=HKEY hKey
+ParamCount=12
+@=RegQueryInfoKey
+[RegQueryMultipleValues]
+1=LPDWORD ldwTotsize
+2=LPVOID lpValueBuf
+3=DWORD num_vals
+4=PVALENT val_list
+5=HKEY hKey
+ParamCount=5
+@=RegQueryMultipleValues
+[RegQueryValue]
+1=PLONG lpcbValue
+2=LPTSTR lpValue
+3=LPCTSTR lpSubKey
+4=HKEY hKey
+ParamCount=4
+@=RegQueryValue
+[RegQueryValueEx]
+1=LPDWORD lpcbData
+2=LPBYTE lpData
+3=DWORD lpType
+4=LPDWORD lpReserved
+5=LPCTSTR lpValueName
+6=HKEY hKey
+ParamCount=6
+@=RegQueryValueEx
+[RegReplaceKey]
+1=LPCTSTR lpOldFile
+2=LPCTSTR lpNewFile
+3=LPCTSTR lpSubKey
+4=HKEY hKey
+ParamCount=4
+@=RegReplaceKey
+[RegRestoreKey]
+1=DWORD dwFlags
+2=LPCTSTR lpFile
+3=HKEY hKey
+ParamCount=3
+@=RegRestoreKey
+[RegSaveKey]
+1=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+2=LPCTSTR lpFile
+3=HKEY hKey
+ParamCount=3
+@=RegSaveKey
+[RegSaveKeyEx]
+1=DWORD Flags
+2=LPSECURITY_ATTRIBUTES lpSecurityAttributes
+3=LPCTSTR lpFile
+4=HKEY hKey
+ParamCount=4
+@=RegSaveKeyEx
+[RegSetKeyValue]
+1=DWORD cbData
+2=LPCVOID lpData
+3=DWORD dwType
+4=LPCTSTR lpValueName
+5=LPCTSTR lpSubKey
+6=HKEY hKey
+ParamCount=6
+@=RegSetKeyValue
+[RegSetValue]
+1=DWORD cbData
+2=LPCTSTR lpData
+3=DWORD dwType
+4=LPCTSTR lpSubKey
+5=HKEY hKey
+ParamCount=5
+@=RegSetValue
+[RegSetValueEx]
+1=DWORD cbData
+2=const BYTE* lpData
+3=DWORD dwType
+4=DWORD Reserved
+5=LPCTSTR lpValueName
+6=HKEY hKey
+ParamCount=6
+@=RegSetValueEx
+[RegUnLoadKey]
+1=LPCTSTR lpSubKey
+2=HKEY hKey
+ParamCount=2
+@=RegUnLoadKey
+[RegisterEventSource]
+1=LPCTSTR lpSourceName
+2=LPCTSTR lpUNCServerName
+ParamCount=2
+@=RegisterEventSource
+[RegisterServiceCtrlHandler]
+1=LPHANDLER_FUNCTION lpHandlerProc
+2=LPCTSTR lpServiceName
+ParamCount=2
+@=RegisterServiceCtrlHandler
+[RegisterServiceCtrlHandlerEx]
+1=LPVOID lpContext
+2=LPHANDLER_FUNCTION_EX lpHandlerProc
+3=LPCTSTR lpServiceName
+ParamCount=3
+@=RegisterServiceCtrlHandlerEx
+[RegisterTraceGuids]
+1=PTRACEHANDLE RegistrationHandle
+2=LPCTSTR MofResourceName
+3=LPCTSTR MofImagePath
+4=PTRACE_GUID_REGISTRATION TraceGuidReg
+5=ULONG GuidCount
+6=LPCGUID ControlGuid
+7=PVOID RequestContext
+8=WMIDPREQUEST RequestAddress
+ParamCount=8
+@=RegisterTraceGuids
+[RegisterWaitChainCOMCallback]
+1=PCOGETACTIVATIONSTATE ActivationStateCallback
+2=PCOGETCALLSTATE CallStateCallback
+ParamCount=2
+@=RegisterWaitChainCOMCallback
+[RemoveTraceCallback]
+1=LPCGUID pGuid
+ParamCount=1
+@=RemoveTraceCallback
+[RemoveUsersFromEncryptedFile]
+1=PENCRYPTION_CERTIFICATE_HASH_LIST pHashes
+2=LPCWSTR lpFileName
+ParamCount=2
+@=RemoveUsersFromEncryptedFile
+[ReportEvent]
+1=LPVOID lpRawData
+2=LPCTSTR* lpStrings
+3=DWORD dwDataSize
+4=WORD wNumStrings
+5=PSID lpUserSid
+6=DWORD dwEventID
+7=WORD wCategory
+8=DWORD wType
+9=HANDLE hEventLog
+ParamCount=9
+@=ReportEvent
+[RevertToSelf]
+ParamCount=0
+@=RevertToSelf
+[SaferCloseLevel]
+1=SAFER_LEVEL_HANDLE hLevelHandle
+ParamCount=1
+@=SaferCloseLevel
+[SaferComputeTokenFromLevel]
+1=LPVOID lpReserved
+2=DWORD dwFlags
+3=PHANDLE OutAccessToken
+4=HANDLE InAccessToken
+5=SAFER_LEVEL_HANDLE LevelHandle
+ParamCount=5
+@=SaferComputeTokenFromLevel
+[SaferCreateLevel]
+1=LPVOID lpReserved
+2=SAFER_LEVEL_HANDLE* pLevelHandle
+3=DWORD OpenFlags
+4=DWORD dwLevelId
+5=DWORD dwScopeId
+ParamCount=5
+@=SaferCreateLevel
+[SaferGetLevelInformation]
+1=LPDWORD lpdwOutBufferSize
+2=DWORD dwInBufferSize
+3=LPVOID lpQueryBuffer
+4=SAFER_OBJECT_INFO_CLASS dwInfoType
+5=SAFER_LEVEL_HANDLE LevelHandle
+ParamCount=5
+@=SaferGetLevelInformation
+[SaferGetPolicyInformation]
+1=LPVOID lpReserved
+2=PDWORD InfoBufferRetSize
+3=PVOID InfoBuffer
+4=DWORD InfoBufferSize
+5=SAFER_POLICY_INFO_CLASS SaferPolicyInfoClass
+6=DWORD dwScopeId
+ParamCount=6
+@=SaferGetPolicyInformation
+[SaferIdentifyLevel]
+1=LPVOID lpReserved
+2=SAFER_LEVEL_HANDLE* pLevelHandle
+3=PSAFER_CODE_PROPERTIES pCodeProperties
+4=DWORD dwNumProperties
+ParamCount=4
+@=SaferIdentifyLevel
+[SaferRecordEventLogEntry]
+1=LPVOID lpReserved
+2=LPCWSTR szTargetPath
+3=SAFER_LEVEL_HANDLE hLevel
+ParamCount=3
+@=SaferRecordEventLogEntry
+[SaferiIsExecutableFileType]
+1=BOOLEAN bFromShellExecute
+2=LPCWSTR szFullPath
+ParamCount=2
+@=SaferiIsExecutableFileType
+[SetAclInformation]
+1=ACL_INFORMATION_CLASS dwAclInformationClass
+2=DWORD nAclInformationLength
+3=LPVOID pAclInformation
+4=PACL pAcl
+ParamCount=4
+@=SetAclInformation
+[SetEntriesInAcl]
+1=PACL* NewAcl
+2=PACL OldAcl
+3=PEXPLICIT_ACCESS pListOfExplicitEntries
+4=ULONG cCountOfExplicitEntries
+ParamCount=4
+@=SetEntriesInAcl
+[SetFileSecurity]
+1=PSECURITY_DESCRIPTOR pSecurityDescriptor
+2=SECURITY_INFORMATION SecurityInformation
+3=LPCTSTR lpFileName
+ParamCount=3
+@=SetFileSecurity
+[SetKernelObjectSecurity]
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=SECURITY_INFORMATION SecurityInformation
+3=HANDLE Handle
+ParamCount=3
+@=SetKernelObjectSecurity
+[SetNamedSecurityInfo]
+1=PACL pSacl
+2=PACL pDacl
+3=PSID psidGroup
+4=PSID psidOwner
+5=SECURITY_INFORMATION SecurityInfo
+6=SE_OBJECT_TYPE ObjectType
+7=LPTSTR pObjectName
+ParamCount=7
+@=SetNamedSecurityInfo
+[SetPrivateObjectSecurity]
+1=HANDLE Token
+2=PGENERIC_MAPPING GenericMapping
+3=PSECURITY_DESCRIPTOR* ObjectsSecurityDescriptor
+4=PSECURITY_DESCRIPTOR ModificationDescriptor
+5=SECURITY_INFORMATION SecurityInformation
+ParamCount=5
+@=SetPrivateObjectSecurity
+[SetPrivateObjectSecurityEx]
+1=HANDLE Token
+2=PGENERIC_MAPPING GenericMapping
+3=DWORD AutoInheritFlags
+4=PSECURITY_DESCRIPTOR* ObjectsSecurityDescriptor
+5=PSECURITY_DESCRIPTOR ModificationDescriptor
+6=SECURITY_INFORMATION SecurityInformation
+ParamCount=6
+@=SetPrivateObjectSecurityEx
+[SetSecurityAccessMask]
+1=LPDWORD DesiredAccess
+2=SECURITY_INFORMATION SecurityInformation
+ParamCount=2
+@=SetSecurityAccessMask
+[SetSecurityDescriptorControl]
+1=SECURITY_DESCRIPTOR_CONTROL ControlBitsToSet
+2=SECURITY_DESCRIPTOR_CONTROL ControlBitsOfInterest
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=SetSecurityDescriptorControl
+[SetSecurityDescriptorDacl]
+1=BOOL bDaclDefaulted
+2=PACL pDacl
+3=BOOL bDaclPresent
+4=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=4
+@=SetSecurityDescriptorDacl
+[SetSecurityDescriptorGroup]
+1=BOOL bGroupDefaulted
+2=PSID pGroup
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=SetSecurityDescriptorGroup
+[SetSecurityDescriptorOwner]
+1=BOOL bOwnerDefaulted
+2=PSID pOwner
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=3
+@=SetSecurityDescriptorOwner
+[SetSecurityDescriptorRMControl]
+1=PUCHAR RMControl
+2=PSECURITY_DESCRIPTOR SecurityDescriptor
+ParamCount=2
+@=SetSecurityDescriptorRMControl
+[SetSecurityDescriptorSacl]
+1=BOOL bSaclDefaulted
+2=PACL pSacl
+3=BOOL bSaclPresent
+4=PSECURITY_DESCRIPTOR pSecurityDescriptor
+ParamCount=4
+@=SetSecurityDescriptorSacl
+[SetSecurityInfo]
+1=PACL pSacl
+2=PACL pDacl
+3=PSID psidGroup
+4=PSID psidOwner
+5=SECURITY_INFORMATION SecurityInfo
+6=SE_OBJECT_TYPE ObjectType
+7=HANDLE handle
+ParamCount=7
+@=SetSecurityInfo
+[SetServiceBits]
+1=BOOL bUpdateImmediately
+2=BOOL bSetBitsOn
+3=DWORD dwServiceBits
+4=SERVICE_STATUS_HANDLE hServiceStatus
+ParamCount=4
+@=SetServiceBits
+[SetThreadToken]
+1=HANDLE Token
+2=PHANDLE Thread
+ParamCount=2
+@=SetThreadToken
+[SetTokenInformation]
+1=DWORD TokenInformationLength
+2=LPVOID TokenInformation
+3=TOKEN_INFORMATION_CLASS TokenInformationClass
+4=HANDLE TokenHandle
+ParamCount=4
+@=SetTokenInformation
+[SetTraceCallback]
+1=PEVENT_CALLBACK EventCallback
+2=LPCGUID pGuid
+ParamCount=2
+@=SetTraceCallback
+[SetUserFileEncryptionKey]
+1=PENCRYPTION_CERTIFICATE pEncryptionCertificate
+ParamCount=1
+@=SetUserFileEncryptionKey
+[StartService]
+1=LPCTSTR* lpServiceArgVectors
+2=DWORD dwNumServiceArgs
+3=SC_HANDLE hService
+ParamCount=3
+@=StartService
+[StartServiceCtrlDispatcher]
+1=const SERVICE_TABLE_ENTRY* lpServiceTable
+ParamCount=1
+@=StartServiceCtrlDispatcher
+[StartTrace]
+1=PEVENT_TRACE_PROPERTIES Properties
+2=LPCTSTR SessionName
+3=PTRACEHANDLE SessionHandle
+ParamCount=3
+@=StartTrace
+[StopTrace]
+1=PEVENT_TRACE_PROPERTIES Properties
+2=LPCTSTR SessionName
+3=TRACEHANDLE SessionHandle
+ParamCount=3
+@=StopTrace
+[TraceEvent]
+1=PEVENT_TRACE_HEADER EventTrace
+2=TRACEHANDLE SessionHandle
+ParamCount=2
+@=TraceEvent
+[TraceEventInstance]
+1=PEVENT_INSTANCE_INFO pParentInstInfo
+2=PEVENT_INSTANCE_INFO pInstInfo
+3=PEVENT_INSTANCE_HEADER EventTrace
+4=TRACEHANDLE SessionHandle
+ParamCount=4
+@=TraceEventInstance
+[TraceMessageVa]
+1=va_list MessageArgList
+2=USHORT MessageNumber
+3=LPGUID MessageGuid
+4=ULONG MessageFlags
+5=TRACEHANDLE SessionHandle
+ParamCount=5
+@=TraceMessageVa
+[TraceSetInformation]
+1=ULONG InformationLength
+2=PVOID TraceInformation
+3=TRACE_INFO_CLASS InformationClass
+4=TRACEHANDLE SessionHandle
+ParamCount=4
+@=TraceSetInformation
+[TreeResetNamedSecurityInfo]
+1=PVOID Args
+2=PROG_INVOKE_SETTING ProgressInvokeSetting
+3=FN_PROGRESS fnProgress
+4=BOOL KeepExplicit
+5=PACL pSacl
+6=PACL pDacl
+7=PSID pGroup
+8=PSID pOwner
+9=SECURITY_INFORMATION SecurityInfo
+10=SE_OBJECT_TYPE ObjectType
+11=LPTSTR pObjectName
+ParamCount=11
+@=TreeResetNamedSecurityInfo
+[TreeSetNamedSecurityInfo]
+1=PVOID Args
+2=PROG_INVOKE_SETTING ProgressInvokeSetting
+3=FN_PROGRESS fnProgress
+4=DWORD dwAction
+5=PACL pSacl
+6=PACL pDacl
+7=PSID pGroup
+8=PSID pOwner
+9=SECURITY_INFORMATION SecurityInfo
+10=SE_OBJECT_TYPE ObjectType
+11=LPTSTR pObjectName
+ParamCount=11
+@=TreeSetNamedSecurityInfo
+[UninstallApplication]
+1=DWORD dwStatus
+2=WCHAR* ProductCode
+ParamCount=2
+@=UninstallApplication
+[UnregisterTraceGuids]
+1=TRACEHANDLE RegistrationHandle
+ParamCount=1
+@=UnregisterTraceGuids
+[UpdateTrace]
+1=PEVENT_TRACE_PROPERTIES Properties
+2=LPCTSTR SessionName
+3=TRACEHANDLE SessionHandle
+ParamCount=3
+@=UpdateTrace
+[WriteEncryptedFileRaw]
+1=PVOID pvContext
+2=PVOID pvCallbackContext
+3=PFE_IMPORT_FUNC pfImportCallback
+ParamCount=3
+@=WriteEncryptedFileRaw

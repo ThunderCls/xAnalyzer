@@ -2283,3 +2283,278 @@ ParamCount=2
 2=CONST WGLSWAP*
 ParamCount=2
 @=wglSwapMultipleBuffers(UINT, CONST WGLSWAP*);
+[AddFontResource]
+1=LPCTSTR lpszFilename
+ParamCount=1
+@=AddFontResource
+[AddFontResourceEx]
+1=PVOID pdv
+2=DWORD fl
+3=LPCTSTR lpszFilename
+ParamCount=3
+@=AddFontResourceEx
+[CopyEnhMetaFile]
+1=LPCTSTR lpszFile
+2=HENHMETAFILE hemfSrc
+ParamCount=2
+@=CopyEnhMetaFile
+[CopyMetaFile]
+1=LPCTSTR lpszFile
+2=HMETAFILE hmfSrc
+ParamCount=2
+@=CopyMetaFile
+[CreateDC]
+1=const DEVMODE* lpInitData
+2=LPCTSTR lpszOutput
+3=LPCTSTR lpszDevice
+4=LPCTSTR lpszDriver
+ParamCount=4
+@=CreateDC
+[CreateEnhMetaFile]
+1=LPCTSTR lpDescription
+2=const RECT* lpRect
+3=LPCTSTR lpFilename
+4=HDC hdcRef
+ParamCount=4
+@=CreateEnhMetaFile
+[CreateFont]
+1=LPCTSTR lpszFace
+2=DWORD fdwPitchAndFamily
+3=DWORD fdwQuality
+4=DWORD fdwClipPrecision
+5=DWORD fdwOutputPrecision
+6=DWORD fdwCharSet
+7=DWORD fdwStrikeOut
+8=DWORD fdwUnderline
+9=DWORD fdwItalic
+10=DWORD fnWeight
+11=int nOrientation
+12=int nEscapement
+13=int nWidth
+14=int nHeight
+ParamCount=14
+@=CreateFont
+[CreateFontIndirect]
+1=const LOGFONT* lplf
+ParamCount=1
+@=CreateFontIndirect
+[CreateFontIndirectEx]
+1=const ENUMLOGFONTEXDV* penumlfex
+ParamCount=1
+@=CreateFontIndirectEx
+[CreateIC]
+1=const DEVMODE* lpdvmInit
+2=LPCTSTR lpszOutput
+3=LPCTSTR lpszDevice
+4=LPCTSTR lpszDriver
+ParamCount=4
+@=CreateIC
+[CreateMetaFile]
+1=LPCTSTR lpszFile
+ParamCount=1
+@=CreateMetaFile
+[CreateScalableFontResource]
+1=LPCTSTR lpszCurrentPath
+2=LPCTSTR lpszFontFile
+3=LPCTSTR lpszFontRes
+4=DWORD fdwHidden
+ParamCount=4
+@=CreateScalableFontResource
+[EnumFontFamilies]
+1=LPARAM lParam
+2=FONTENUMPROC lpEnumFontFamProc
+3=LPCTSTR lpszFamily
+4=HDC hdc
+ParamCount=4
+@=EnumFontFamilies
+[EnumFontFamiliesEx]
+1=DWORD dwFlags
+2=LPARAM lParam
+3=FONTENUMPROC lpEnumFontFamExProc
+4=LPLOGFONT lpLogfont
+5=HDC hdc
+ParamCount=5
+@=EnumFontFamiliesEx
+[EnumFonts]
+1=LPARAM lParam
+2=FONTENUMPROC lpFontFunc
+3=LPCTSTR lpFaceName
+4=HDC hdc
+ParamCount=4
+@=EnumFonts
+[ExtTextOut]
+1=const INT* lpDx
+2=UINT cbCount
+3=LPCTSTR lpString
+4=const RECT* lprc
+5=DWORD fuOptions
+6=int Y
+7=int X
+8=HDC hdc
+ParamCount=8
+@=ExtTextOut
+[GetCharABCWidths]
+1=LPABC lpabc
+2=UINT uLastChar
+3=UINT uFirstChar
+4=HDC hdc
+ParamCount=4
+@=GetCharABCWidths
+[GetCharABCWidthsFloat]
+1=LPABCFLOAT lpABCF
+2=UINT iLastChar
+3=UINT iFirstChar
+4=HDC hdc
+ParamCount=4
+@=GetCharABCWidthsFloat
+[GetCharWidth]
+1=LPINT lpBuffer
+2=UINT iLastChar
+3=UINT iFirstChar
+4=HDC hdc
+ParamCount=4
+@=GetCharWidth
+[GetCharWidth32]
+1=LPINT lpBuffer
+2=UINT iLastChar
+3=UINT iFirstChar
+4=HDC hdc
+ParamCount=4
+@=GetCharWidth32
+[GetCharWidthFloat]
+1=PFLOAT pxBuffer
+2=UINT iLastChar
+3=UINT iFirstChar
+4=HDC hdc
+ParamCount=4
+@=GetCharWidthFloat
+[GetCharacterPlacement]
+1=DWORD dwFlags
+2=LPGCP_RESULTS lpResults
+3=int nMaxExtent
+4=int nCount
+5=LPCTSTR lpString
+6=HDC hdc
+ParamCount=6
+@=GetCharacterPlacement
+[GetEnhMetaFile]
+1=LPCTSTR lpszMetaFile
+ParamCount=1
+@=GetEnhMetaFile
+[GetEnhMetaFileDescription]
+1=LPTSTR lpszDescription
+2=UINT cchBuffer
+3=HENHMETAFILE hemf
+ParamCount=3
+@=GetEnhMetaFileDescription
+[GetGlyphIndices]
+1=DWORD fl
+2=LPWORD pgi
+3=int c
+4=LPCTSTR lpstr
+5=HDC hdc
+ParamCount=5
+@=GetGlyphIndices
+[GetGlyphOutline]
+1=const MAT2* lpmat2
+2=LPVOID lpvBuffer
+3=DWORD cbBuffer
+4=LPGLYPHMETRICS lpgm
+5=DWORD uFormat
+6=UINT uChar
+7=HDC hDC
+ParamCount=7
+@=GetGlyphOutline
+[GetKerningPairs]
+1=LPKERNINGPAIR lpkrnpair
+2=DWORD nNumPairs
+3=HDC hDC
+ParamCount=3
+@=GetKerningPairs
+[GetObject]
+1=LPVOID lpvObject
+2=int cbBuffer
+3=HGDIOBJ hgdiobj
+ParamCount=3
+@=GetObject
+[GetOutlineTextMetrics]
+1=LPOUTLINETEXTMETRIC lpOTM
+2=UINT cbData
+3=HDC hdc
+ParamCount=3
+@=GetOutlineTextMetrics
+[GetTextExtentExPoint]
+1=LPSIZE lpSize
+2=LPINT alpDx
+3=LPINT lpnFit
+4=int nMaxExtent
+5=int cchString
+6=LPCTSTR lpszStr
+7=HDC hdc
+ParamCount=7
+@=GetTextExtentExPoint
+[GetTextExtentPoint]
+1=LPSIZE lpSize
+2=int cbString
+3=LPCTSTR lpString
+4=HDC hdc
+ParamCount=4
+@=GetTextExtentPoint
+[GetTextExtentPoint32]
+1=LPSIZE lpSize
+2=int c
+3=LPCTSTR lpString
+4=HDC hdc
+ParamCount=4
+@=GetTextExtentPoint32
+[GetTextFace]
+1=LPTSTR lpFaceName
+2=int nCount
+3=HDC hdc
+ParamCount=3
+@=GetTextFace
+[GetTextMetrics]
+1=LPTEXTMETRIC lptm
+2=HDC hdc
+ParamCount=2
+@=GetTextMetrics
+[PolyTextOut]
+1=int cStrings
+2=const POLYTEXT* pptxt
+3=HDC hdc
+ParamCount=3
+@=PolyTextOut
+[RemoveFontResource]
+1=LPCTSTR lpFileName
+ParamCount=1
+@=RemoveFontResource
+[RemoveFontResourceEx]
+1=PVOID pdv
+2=DWORD fl
+3=LPCTSTR lpFileName
+ParamCount=3
+@=RemoveFontResourceEx
+[ResetDC]
+1=const DEVMODE* lpInitData
+2=HDC hdc
+ParamCount=2
+@=ResetDC
+[SetBitmapBits]
+1=const VOID* lpBits
+2=DWORD cBytes
+3=HBITMAP hbmp
+ParamCount=3
+@=SetBitmapBits
+[StartDoc]
+1=const DOCINFO* lpdi
+2=HDC hdc
+ParamCount=2
+@=StartDoc
+[TextOut]
+1=int cbString
+2=LPCTSTR lpString
+3=int nYStart
+4=int nXStart
+5=HDC hdc
+ParamCount=5
+@=TextOut

@@ -732,3 +732,768 @@ ParamCount=5
 [ZwYieldExecution]
 ParamCount=0
 @=ZwYieldExecution();
+[RtlCreateUnicodeString]
+1=OUT_PUNICODE_STRING DestinationString
+2=IN_PCWSTR SourceString
+ParamCount=2
+@=RtlCreateUnicodeString
+[RtlInitEmptyUnicodeString]
+1=__OUT_PUNICODE_STRING UnicodeString
+2=__bcount_opt PWCHAR
+3=Buffer __IN_USHORT
+ParamCount=3
+@=RtlInitEmptyUnicodeString
+[RtlInitEmptyAnsiString]
+1=__OUT_PANSI_STRING AnsiString
+2=PCHAR Buffer
+3=__IN_USHORT BufferSize
+ParamCount=3
+@=RtlInitEmptyAnsiString
+[RtlInitUnicodeStringLen]
+1=__OUT_PUNICODE_STRING UnicodeString
+2=PWCHAR Buffer
+3=__IN_USHORT ToUseChars
+ParamCount=3
+@=RtlInitUnicodeStringLen
+[RtlInitAnsiStringLen]
+1=__OUT_PANSI_STRING AnsiString
+2=PCHAR Buffer
+3=__IN_USHORT ToUseChars
+ParamCount=3
+@=RtlInitAnsiStringLen
+[RtlHashUnicodeString]
+1=__IN_PCUNICODE_STRING String
+2=__IN_BOOLEAN CaseInSensitive
+3=__IN_ULONG HashAlgorithm
+4=__OUT_PULONG HashValue
+ParamCount=4
+@=RtlHashUnicodeString
+[RtlGetFullPathName_U]
+1=const WCHAR*
+2=name ULONG
+3=size WCHAR*
+4=buffer WCHAR**
+ParamCount=4
+@=RtlGetFullPathName_U
+[NtSetEvent]
+1=IN_HANDLE EventHandle
+2=OUT_PLONG PreviousState
+ParamCount=2
+@=NtSetEvent
+[NtCreateEvent]
+1=OUT_PHANDLE EventHandle
+2=IN_ACCESS_MASK DesiredAccess
+3=IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=IN_EVENT_TYPE EventType
+5=IN_BOOLEAN InitialState
+ParamCount=5
+@=NtCreateEvent
+[NtWriteFile]
+1=IN_HANDLE FileHandle
+2=IN_HANDLE Event
+3=IN_PIO_APC_ROUTINE ApcRoutine
+4=IN_PVOID ApcContext
+5=OUT_PIO_STATUS_BLOCK IoStatusBlock
+6=IN_PVOID Buffer
+7=IN_ULONG Length
+8=IN_PLARGE_INTEGER ByteOffset
+9=IN_PULONG Key
+ParamCount=9
+@=NtWriteFile
+[NtReadFile]
+1=IN_HANDLE FileHandle
+2=IN_HANDLE Event
+3=IN_PIO_APC_ROUTINE ApcRoutine
+4=IN_PVOID ApcContext
+5=OUT_PIO_STATUS_BLOCK IoStatusBlock
+6=OUT_PVOID Buffer
+7=IN_ULONG Length
+8=IN_PLARGE_INTEGER ByteOffset
+9=IN_PULONG Key
+ParamCount=9
+@=NtReadFile
+[NtTerminateThread]
+1=IN_HANDLE ThreadHandle
+2=IN_NTSTATUS ExitStatus NTSYSAPI NTSTATUS NTAPI
+3=NtAlertThread IN_HANDLE
+ParamCount=3
+@=NtTerminateThread
+[NtResumeThread]
+1=IN_HANDLE ThreadHandle
+2=OUT_PULONG SuspendCount
+ParamCount=2
+@=NtResumeThread
+[NtTerminateProcess]
+1=IN_HANDLE ProcessHandle
+ParamCount=1
+@=NtTerminateProcess
+[NtRaiseHardError]
+1=IN_NTSTATUS ErrorStatus IN_ULONG
+2=NumberOfParameters IN_ULONG
+3=UnicodeStringParameterMask IN_PULONG_PTR
+4=Parameters IN_HARDERROR_RESPONSE_OPTION
+5=ValidResponseOptions OUT_PHARDERROR_RESPONSE_OPTION
+ParamCount=5
+@=NtRaiseHardError
+[NtQueryVirtualMemory]
+1=IN_HANDLE ProcessHandle
+2=IN_PVOID BaseAddress
+3=IN_MEMORY_INFORMATION_CLASS MemoryInformationClass
+4=OUT_PVOID Buffer
+5=IN_ULONG Length
+6=OUT_PULONG ResultLength
+7=NTSYSAPI NTSTATUS NTAPI NtLockVirtualMemory
+8=IN_HANDLE ProcessHandle
+9=IN_OUT_PVOID* BaseAddress
+10=IN_PSIZE_T RegionSize
+11=IN_MEMORY_MAP_TYPE MapType
+ParamCount=11
+@=NtQueryVirtualMemory
+[NtAllocateVirtualMemory]
+1=IN_HANDLE ProcessHandle
+2=IN_OUT_PVOID *BaseAddress
+3=IN_ULONG ZeroBits
+4=IN_OUT_PSIZE_T RegionSize
+5=IN_ULONG AllocationType
+6=IN_ULONG Protect
+7=NTSYSAPI NTSTATUS NTAPI NtFreeVirtualMemory
+8=IN_HANDLE ProcessHandle
+9=IN_OUT_PVOID *BaseAddress
+10=IN_OUT_PSIZE_T RegionSize
+11=IN_ULONG FreeType
+ParamCount=11
+@=NtAllocateVirtualMemory
+[NtWriteVirtualMemory]
+1=IN_HANDLE ProcessHandle
+2=OUT_PVOID BaseAddress
+3=IN_PVOID Buffer
+4=IN_ULONG BufferSize
+5=OUT_PULONG NumberOfBytesWritten
+ParamCount=5
+@=NtWriteVirtualMemory
+[NtQueueApcThread]
+1=IN_HANDLE ThreadHandle
+2=IN_PPS_APC_ROUTINE ApcRoutine
+3=IN_PVOID ApcArgument1
+4=IN_PVOID ApcArgument2
+5=IN_PVOID ApcArgument3
+ParamCount=5
+@=NtQueueApcThread
+[RtlCompactHeap]
+1=IN_HANDLE hHeap
+2=IN_ULONG flags
+ParamCount=2
+@=RtlCompactHeap
+[RtlDestroyHeap]
+1=IN_HANDLE hHeap
+ParamCount=1
+@=RtlDestroyHeap
+[RtlEnterCriticalSection]
+1=IN_LPCRITICAL_SECTION pSection
+ParamCount=1
+@=RtlEnterCriticalSection
+[RtlLeaveCriticalSection]
+1=IN_LPCRITICAL_SECTION pSection
+ParamCount=1
+@=RtlLeaveCriticalSection
+[RtlDeleteCriticalSection]
+1=IN_LPCRITICAL_SECTION pSection
+ParamCount=1
+@=RtlDeleteCriticalSection
+[RtlSetLastWin32Error]
+1=IN_ULONG error
+ParamCount=1
+@=RtlSetLastWin32Error
+[NtQueryFullAttributesFile]
+1=IN_POBJECT_ATTRIBUTES pObjAttrs
+2=IN_OUT_PFILE_NETWORK_OPEN_INFORMATION pNetInf
+ParamCount=2
+@=NtQueryFullAttributesFile
+[NtSetInformationFile]
+1=IN_HANDLE FileHandle
+2=OUT_PIO_STATUS_BLOCK IoStatusBlock
+3=IN_PVOID FileInformation
+4=IN_ULONG Length
+5=IN_FILE_INFORMATION_CLASS FileInformationClass
+ParamCount=5
+@=NtSetInformationFile
+[NtQueryInformationFile]
+1=IN_HANDLE FileHandle
+2=OUT_PIO_STATUS_BLOCK IoStatusBlock
+3=IN_PVOID FileInformation
+4=IN_ULONG Length
+5=IN_FILE_INFORMATION_CLASS FileInformationClass
+ParamCount=5
+@=NtQueryInformationFile
+[NtCreateDirectoryObject]
+1=OUT_PHANDLE DirectoryHandle
+2=IN_ACCESS_MASK DesiredAccess
+3=IN_POBJECT_ATTRIBUTES ObjectAttributes
+ParamCount=3
+@=NtCreateDirectoryObject
+[NtOpenDirectoryObject]
+1=OUT_PHANDLE DirectoryHandle
+2=IN_ACCESS_MASK DesiredAccess
+3=IN_POBJECT_ATTRIBUTES ObjectAttributes
+ParamCount=3
+@=NtOpenDirectoryObject
+[NtQueryDirectoryObject]
+1=HANDLE DirectoryHandle
+2=PVOID Buffer
+3=ULONG Length
+4=BOOLEAN ReturnSingleEntry
+5=BOOLEAN RestartScan
+6=PULONG Context
+7=PULONG ReturnLength
+ParamCount=7
+@=NtQueryDirectoryObject
+[IN_OUT_PUNICODE_STRING]
+1=DestinationString IN_PCANSI_STRING
+2=SourceString IN_BOOLEAN
+ParamCount=2
+@=IN_OUT_PUNICODE_STRING
+[RtlCreateProcessParameters]
+1=OUT_PPROCESS_PARAMETERS_VISTA *ProcessParameters
+2=IN_PUNICODE_STRING ImageFile
+3=IN_PUNICODE_STRING DllPath
+4=IN_PUNICODE_STRING CurrentDirectory
+5=IN_PUNICODE_STRING CommandLine
+6=IN_ULONG CreationFlags
+7=IN_PUNICODE_STRING WindowTitle
+8=IN_PUNICODE_STRING Desktop
+9=IN_PUNICODE_STRING Reserved
+10=IN_PUNICODE_STRING Reserved2
+ParamCount=10
+@=RtlCreateProcessParameters
+[RtlDestroyProcessParameters]
+1=IN_PPROCESS_PARAMETERS_VISTA ProcessParameters
+ParamCount=1
+@=RtlDestroyProcessParameters
+[RtlDosPathNameToNtPathName_U]
+1=IN_PCWSTR DosName
+2=OUT_PUNICODE_STRING NtName
+3=OUT_PCWSTR *DosFilePath
+4=OUT_PUNICODE_STRING NtFilePath
+ParamCount=4
+@=RtlDosPathNameToNtPathName_U
+[RtlNtPathNameToDosPathName]
+1=IN_ULONG Flags
+2=IN_OUT_PUNICODE_STRING Path
+3=OUT_PULONG Disposition
+4=IN_OUT_ PWSTR*
+ParamCount=4
+@=RtlNtPathNameToDosPathName
+[RtlImageDirectoryEntryToData]
+1=__IN_PVOID pBaseAddress
+2=__IN_BOOLEAN bImageLoaded
+3=__IN_ULONG dwDirectory
+4=__OUT_PULONG pSize
+ParamCount=4
+@=RtlImageDirectoryEntryToData
+[RtlImageDirectoryEntryToDataEx]
+1=__IN_PVOID pBaseAddress
+2=__IN_BOOLEAN bImageLoaded
+3=__IN_ULONG dwDirectory
+4=__OUT_PULONG pSize
+5=__out_opt PIMAGE_SECTION_HEADER
+ParamCount=5
+@=RtlImageDirectoryEntryToDataEx
+[NtCreateProcess]
+1=OUT_PHANDLE ProcessHandle
+2=IN_ACCESS_MASK DesiredAccess
+3=IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=IN_HANDLE InheritFromProcessHandle
+5=IN_BOOLEAN InheritHandles
+6=IN_HANDLE SectionHandle
+7=IN_HANDLE DebugPort
+8=IN_HANDLE ExceptionPort
+ParamCount=8
+@=NtCreateProcess
+[NtCreatePort]
+1=OUT_PHANDLE PortHandle
+2=IN_POBJECT_ATTRIBUTES ObjectAttributes
+3=IN_ULONG MaxDataSize
+4=IN_ULONG MaxMessageSize
+5=IN_ULONG Reserved
+ParamCount=5
+@=NtCreatePort
+[NtCreateWaitablePort]
+1=OUT_PHANDLE PortHandle
+2=IN_POBJECT_ATTRIBUTES ObjectAttributes
+3=IN_ULONG MaxDataSize
+4=IN_ULONG MaxMessageSize
+5=IN_ULONG Reserved
+ParamCount=5
+@=NtCreateWaitablePort
+[NtReplyWaitReceivePort]
+1=IN_HANDLE PortHandle
+2=OUT_PULONG PortIdentifier
+3=IN_PPORT_MESSAGE ReplyMessage
+4=OUT_PPORT_MESSAGE Message
+ParamCount=4
+@=NtReplyWaitReceivePort
+[NtReplyPort]
+1=IN_HANDLE PortHandle
+2=IN_PPORT_MESSAGE ReplyMessage
+ParamCount=2
+@=NtReplyPort
+[NtCreateThread]
+1=OUT_PHANDLE ThreadHandle
+2=IN_ACCESS_MASK DesiredAccess
+3=IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=IN_HANDLE ProcessHandle
+5=OUT_PCLIENT_ID ClientId
+6=IN_PCONTEXT ThreadContext
+7=IN_PINITIAL_TEB UserStack
+8=IN_BOOLEAN CreateSuspended
+ParamCount=8
+@=NtCreateThread
+[NtCreateSection]
+1=__OUT_PHANDLE SectionHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__in_opt POBJECT_ATTRIBUTES
+4=ObjectAttributes __in_opt
+5=PLARGE_INTEGER MaximumSize
+6=__IN_ULONG SectionPageProtection
+7=__IN_ULONG AllocationAttributes
+8=__in_opt HANDLE
+ParamCount=8
+@=NtCreateSection
+[NtOpenSection]
+1=__OUT_PHANDLE SectionHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__IN_POBJECT_ATTRIBUTES ObjectAttributes
+ParamCount=3
+@=NtOpenSection
+[NtMapViewOfSection]
+1=__IN_HANDLE SectionHandle
+2=__IN_HANDLE ProcessHandle
+3=__inOUT_PVOID *BaseAddress
+4=__IN_ULONG_PTR ZeroBits
+5=__IN_SIZE_T CommitSize
+6=__inout_opt PLARGE_INTEGER
+7=SectionOffset __inOUT_PSIZE_T
+8=ViewSize __IN_SECTION_INHERIT
+9=InheritDisposition __IN_ULONG
+10=AllocationType __IN_ULONG
+ParamCount=10
+@=NtMapViewOfSection
+[NtUnmapViewOfSection]
+1=__IN_HANDLE ProcessHandle
+2=__in_opt PVOID
+ParamCount=2
+@=NtUnmapViewOfSection
+[LdrLoadDll]
+1=IN_PWCHAR SearchPath
+2=IN_PULONG Flags
+3=IN_PUNICODE_STRING ModuleFileName
+4=OUT_HMODULE *ModuleHandle
+5=NTSYSAPI NTSTATUS NTAPI LdrUnloadDll
+6=IN_HANDLE ModuleHandle
+ParamCount=6
+@=LdrLoadDll
+[LdrGetLoadDll]
+1=IN_PWCHAR SearchPath
+2=IN_PULONG Flags
+3=IN_PUNICODE_STRING ModuleFileName
+4=OUT_HMODULE *ModuleHandle
+5=NTSYSAPI NTSTATUS NTAPI LdrGetProcedureAddress
+6=IN_HMODULE ModuleHandle
+7=IN_PANSI_STRING FunctionName
+8=IN_WORD Oridinal
+9=OUT_PVOID *FunctionAddress
+10=NTSTATUS NTAPI NtQueryInformationProcess
+11=HANDLE ProcessHandle
+12=PROCESSINFOCLASS ProcessInformationClass
+13=PVOID ProcessInformation
+14=ULONG ProcessInformationLength
+15=PULONG ReturnLength
+ParamCount=15
+@=LdrGetLoadDll
+[NtSetInformationProcess]
+1=HANDLE ProcessHandle
+2=PROCESSINFOCLASS ProcessInformationClass
+3=PVOID ProcessInformation
+4=ULONG ProcessInformationLength
+ParamCount=4
+@=NtSetInformationProcess
+[RtlGetCurrentPeb]
+ParamCount=0
+@=RtlGetCurrentPeb
+[NtDuplicateObject]
+1=__IN_HANDLE SourceProcessHandle
+2=__IN_HANDLE SourceHandle
+3=__in_opt HANDLE
+4=TargetProcessHandle __out_opt
+5=PHANDLE TargetHandle
+6=__IN_ACCESS_MASK DesiredAccess
+7=__IN_ULONG HandleAttributes
+8=__IN_ULONG Options NTAPI
+9=RTL_AVL_COMPARE_ROUTINE __IN_struct
+10=_RTL_AVL_TABLE *Table
+11=__IN_PVOID FirstStruct
+12=__IN_PVOID SecondStruct
+ParamCount=12
+@=NtDuplicateObject
+[RTL_AVL_ALLOCATE_ROUTINE]
+1=__IN_struct _RTL_AVL_TABLE
+2=*Table __IN_CLONG
+ParamCount=2
+@=RTL_AVL_ALLOCATE_ROUTINE
+[RTL_AVL_FREE_ROUTINE]
+1=__IN_struct_RTL_AVL_TABLE *Table
+2=PVOID Buffer
+ParamCount=2
+@=RTL_AVL_FREE_ROUTINE
+[RTL_AVL_MATCH_FUNCTION]
+1=__IN_struct _RTL_AVL_TABLE
+2=*Table __IN_PVOID
+3=UserData __IN_PVOID
+ParamCount=3
+@=RTL_AVL_MATCH_FUNCTION
+[RtlInitializeGenericTableAvl]
+1=__OUT_PRTL_AVL_TABLE Table
+2=__IN_PRTL_AVL_COMPARE_ROUTINE CompareRoutine
+3=__IN_PRTL_AVL_ALLOCATE_ROUTINE AllocateRoutine
+4=__IN_PRTL_AVL_FREE_ROUTINE FreeRoutine
+5=__in_opt PVOID
+ParamCount=5
+@=RtlInitializeGenericTableAvl
+[RtlInsertElementGenericTableAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=PVOID Buffer
+3=__IN_CLONG BufferSize
+4=__out_opt PBOOLEAN
+ParamCount=4
+@=RtlInsertElementGenericTableAvl
+[RtlInsertElementGenericTableFullAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=PVOID Buffer
+3=__IN_CLONG BufferSize
+4=__out_opt PBOOLEAN
+5=NewElement __IN_PVOID
+6=NodeOrParent __IN_TABLE_SEARCH_RESULT
+ParamCount=6
+@=RtlInsertElementGenericTableFullAvl
+[RtlDeleteElementGenericTableAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__IN_PVOID Buffer
+ParamCount=2
+@=RtlDeleteElementGenericTableAvl
+[RtlLookupElementGenericTableAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__IN_PVOID Buffer
+ParamCount=2
+@=RtlLookupElementGenericTableAvl
+[RtlLookupElementGenericTableFullAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__IN_PVOID Buffer
+3=__OUT_PVOID *NodeOrParent
+4=__OUT_TABLE_SEARCH_RESULT *SearchResult
+ParamCount=4
+@=RtlLookupElementGenericTableFullAvl
+[RtlEnumerateGenericTableAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__IN_BOOLEAN Restart
+ParamCount=2
+@=RtlEnumerateGenericTableAvl
+[RtlEnumerateGenericTableWithoutSplayingAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__inOUT_PVOID *RestartKey
+ParamCount=2
+@=RtlEnumerateGenericTableWithoutSplayingAvl
+[RtlLookupFirstMatchingElementGenericTableAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__IN_PVOID Buffer
+3=__OUT_PVOID *RestartKey
+ParamCount=3
+@=RtlLookupFirstMatchingElementGenericTableAvl
+[RtlEnumerateGenericTableLikeADirectory]
+1=__IN_PRTL_AVL_TABLE Table
+2=__in_opt PRTL_AVL_MATCH_FUNCTION
+3=MatchFunction __in_opt
+4=PVOID MatchData
+5=__IN_ULONG NextFlag
+6=__inOUT_PVOID *RestartKey
+7=__inOUT_PULONG DeleteCount
+8=__IN_PVOID Buffer
+ParamCount=8
+@=RtlEnumerateGenericTableLikeADirectory
+[RtlGetElementGenericTableAvl]
+1=__IN_PRTL_AVL_TABLE Table
+2=__IN_ULONG I
+ParamCount=2
+@=RtlGetElementGenericTableAvl
+[RtlNumberGenericTableElementsAvl]
+1=__IN_PRTL_AVL_TABLE Table
+ParamCount=1
+@=RtlNumberGenericTableElementsAvl
+[RtlIsGenericTableEmptyAvl]
+1=__IN_PRTL_AVL_TABLE Table NTAPI
+2=RTL_GENERIC_COMPARE_ROUTINE __IN_struct
+3=_RTL_GENERIC_TABLE *Table
+4=__IN_PVOID FirstStruct
+5=__IN_PVOID SecondStruct
+ParamCount=5
+@=RtlIsGenericTableEmptyAvl
+[RTL_GENERIC_ALLOCATE_ROUTINE]
+1=__IN_struct _RTL_GENERIC_TABLE
+2=*Table __IN_CLONG
+ParamCount=2
+@=RTL_GENERIC_ALLOCATE_ROUTINE
+[RTL_GENERIC_FREE_ROUTINE]
+1=__IN_struct _RTL_GENERIC_TABLE
+2=*Table __IN_PVOID
+ParamCount=2
+@=RTL_GENERIC_FREE_ROUTINE
+[RtlInitializeGenericTable]
+1=__OUT_PRTL_GENERIC_TABLE Table
+2=__IN_PRTL_GENERIC_COMPARE_ROUTINE CompareRoutine
+3=__IN_PRTL_GENERIC_ALLOCATE_ROUTINE AllocateRoutine
+4=__IN_PRTL_GENERIC_FREE_ROUTINE FreeRoutine
+5=__in_opt PVOID
+ParamCount=5
+@=RtlInitializeGenericTable
+[RtlInsertElementGenericTable]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=PVOID Buffer
+3=__IN_CLONG BufferSize
+4=__out_opt PBOOLEAN
+ParamCount=4
+@=RtlInsertElementGenericTable
+[RtlInsertElementGenericTableFull]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=PVOID Buffer
+3=__IN_CLONG BufferSize
+4=__out_opt PBOOLEAN
+5=NewElement __IN_PVOID
+6=NodeOrParent __IN_TABLE_SEARCH_RESULT
+ParamCount=6
+@=RtlInsertElementGenericTableFull
+[RtlDeleteElementGenericTable]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=__IN_PVOID Buffer
+ParamCount=2
+@=RtlDeleteElementGenericTable
+[RtlLookupElementGenericTable]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=__IN_PVOID Buffer
+ParamCount=2
+@=RtlLookupElementGenericTable
+[RtlLookupElementGenericTableFull]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=__IN_PVOID Buffer
+3=__OUT_PVOID *NodeOrParent
+4=__OUT_TABLE_SEARCH_RESULT *SearchResult
+ParamCount=4
+@=RtlLookupElementGenericTableFull
+[RtlEnumerateGenericTable]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=__IN_BOOLEAN Restart
+ParamCount=2
+@=RtlEnumerateGenericTable
+[RtlEnumerateGenericTableWithoutSplaying]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=__inOUT_PVOID *RestartKey
+ParamCount=2
+@=RtlEnumerateGenericTableWithoutSplaying
+[RtlGetElementGenericTable]
+1=__IN_PRTL_GENERIC_TABLE Table
+2=__IN_ULONG I
+ParamCount=2
+@=RtlGetElementGenericTable
+[RtlNumberGenericTableElements]
+1=__IN_PRTL_GENERIC_TABLE Table
+ParamCount=1
+@=RtlNumberGenericTableElements
+[RtlIsGenericTableEmpty]
+1=__IN_PRTL_GENERIC_TABLE Table
+ParamCount=1
+@=RtlIsGenericTableEmpty
+[NtCreateKey]
+1=__OUT_PHANDLE KeyHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=__reserved ULONG
+5=TitleIndex __in_opt
+6=PUNICODE_STRING Class
+7=__IN_ULONG CreateOptions
+8=__out_opt PULONG
+ParamCount=8
+@=NtCreateKey
+[__OUT_PHANDLE]
+1=KeyHandle __IN_ACCESS_MASK
+2=DesiredAccess __IN_POBJECT_ATTRIBUTES
+3=ObjectAttributes __reserved
+4=ULONG TitleIndex
+5=__in_opt PUNICODE_STRING
+6=Class __IN_ULONG
+7=CreateOptions __IN_HANDLE
+8=TransactionHandle __out_opt
+9=PULONG Disposition
+ParamCount=9
+@=__OUT_PHANDLE
+[NtOpenKey]
+1=__OUT_PHANDLE KeyHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__IN_POBJECT_ATTRIBUTES ObjectAttributes
+ParamCount=3
+@=NtOpenKey
+[NtOpenKeyEx]
+1=__OUT_PHANDLE KeyHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=__IN_ULONG OpenOptions
+ParamCount=4
+@=NtOpenKeyEx
+[NtOpenKeyTransacted]
+1=__OUT_PHANDLE KeyHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=__IN_HANDLE TransactionHandle
+ParamCount=4
+@=NtOpenKeyTransacted
+[NtOpenKeyTransactedEx]
+1=__OUT_PHANDLE KeyHandle
+2=__IN_ACCESS_MASK DesiredAccess
+3=__IN_POBJECT_ATTRIBUTES ObjectAttributes
+4=__IN_ULONG OpenOptions
+5=__IN_HANDLE TransactionHandle
+ParamCount=5
+@=NtOpenKeyTransactedEx
+[NtDeleteKey]
+1=__IN_HANDLE KeyHandle
+ParamCount=1
+@=NtDeleteKey
+[NtDeleteValueKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_PUNICODE_STRING ValueName
+ParamCount=2
+@=NtDeleteValueKey
+[NtEnumerateKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_ULONG Index
+3=__IN_KEY_INFORMATION_CLASS KeyInformationClass
+4=PVOID KeyInformation
+5=__IN_ULONG Length
+6=__OUT_PULONG ResultLength
+ParamCount=6
+@=NtEnumerateKey
+[NtEnumerateValueKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_ULONG Index
+3=__IN_KEY_VALUE_INFORMATION_CLASS KeyValueInformationClass
+4=PVOID KeyValueInformation
+5=__IN_ULONG Length
+6=__OUT_PULONG ResultLength
+ParamCount=6
+@=NtEnumerateValueKey
+[NtFlushKey]
+1=__IN_HANDLE KeyHandle
+ParamCount=1
+@=NtFlushKey
+[NtNotifyChangeMultipleKeys]
+1=__IN_HANDLE MasterKeyHandle
+2=__in_opt ULONG
+3=Count OBJECT_ATTRIBUTES
+4=SubordinateObjects[] __in_opt
+5=HANDLE Event
+6=__in_opt PIO_APC_ROUTINE
+7=ApcRoutine __in_opt
+8=PVOID ApcContext
+9=__OUT_PIO_STATUS_BLOCK IoStatusBlock
+10=__IN_ULONG CompletionFilter
+11=__IN_BOOLEAN WatchTree
+12=PVOID Buffer
+13=__IN_ULONG BufferSize
+14=__IN_BOOLEAN Asynchronous
+ParamCount=14
+@=NtNotifyChangeMultipleKeys
+[NtQueryMultipleValueKey]
+1=__IN_HANDLE KeyHandle
+2=PKEY_VALUE_ENTRY ValueEntries
+3=__IN_ULONG EntryCount
+4=PVOID ValueBuffer
+5=__inOUT_PULONG BufferLength
+6=__out_opt PULONG
+ParamCount=6
+@=NtQueryMultipleValueKey
+[NtQueryKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_KEY_INFORMATION_CLASS KeyInformationClass
+3=PVOID KeyInformation
+4=__IN_ULONG Length
+5=__OUT_PULONG ResultLength
+ParamCount=5
+@=NtQueryKey
+[NtQueryValueKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_PUNICODE_STRING ValueName
+3=__IN_KEY_VALUE_INFORMATION_CLASS KeyValueInformationClass
+4=PVOID KeyValueInformation
+5=__IN_ULONG Length
+6=__OUT_PULONG ResultLength
+ParamCount=6
+@=NtQueryValueKey
+[NtRenameKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_PUNICODE_STRING NewName
+ParamCount=2
+@=NtRenameKey
+[NtSetInformationKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_KEY_SET_INFORMATION_CLASS KeySetInformationClass
+3=PVOID KeySetInformation
+4=__IN_ULONG KeySetInformationLength
+ParamCount=4
+@=NtSetInformationKey
+[NtSetValueKey]
+1=__IN_HANDLE KeyHandle
+2=__IN_PUNICODE_STRING ValueName
+3=__in_opt ULONG
+4=TitleIndex __IN_ULONG
+5=Type PVOID
+6=Data __IN_ULONG
+ParamCount=6
+@=NtSetValueKey
+[_vsnprintf]
+1=LPSTR size_t
+2=const CHAR*
+ParamCount=2
+@=_vsnprintf
+[_vsnwprintf]
+1=LPWSTR size_t
+2=const WCHAR*
+ParamCount=2
+@=_vsnwprintf
+[_snprintf]
+1=LPSTR size_t
+2=const CHAR*
+ParamCount=2
+@=_snprintf
+[_snwprintf]
+1=LPWSTR size_t
+2=const WCHAR*
+ParamCount=2
+@=_snwprintf
+[_sscanf]
+1=LPSTR buffer
+2=CHAR* format
+ParamCount=2
+@=_sscanf
+[long]
+1=wcstoul LPCWSTR
+2=buffer WCHAR**
+3=ppEndChar int
+ParamCount=3
+@=long
+[__int64]
+1=_wcstoui64 LPCWSTR
+2=buffer WCHAR**
+3=ppEndChar int
+ParamCount=3
+@=__int64
+[_wtoi64]
+1=LPCWSTR buffer
+ParamCount=1
+@=_wtoi64
