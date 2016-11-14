@@ -812,3 +812,7 @@ ParamCount=3
 2=LPTSTR* ppszCurrent
 ParamCount=2
 @=Str_SetPtr
+[TrackMouseEvent]
+1=LPTRACKMOUSEEVENT pTrackMouseEvent
+ParamCount=1
+@=TrackMouseEvent

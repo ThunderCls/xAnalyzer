@@ -8712,6 +8712,50 @@ ParamCount=2
 3=LPCTSTR lpAppName
 ParamCount=3
 @=WriteProfileString
+[hread]
+1=DWORD nBufferSize
+2=DWORD lpBuffer
+3=HFILE hFile
+ParamCount=3
+@=hread
+[hwrite]
+1=DWORD nBufferSize
+2=DWORD lpBuffer
+3=HFILE hFile
+ParamCount=3
+@=hwrite
+[lclose]
+1=HFILE hFile
+ParamCount=1
+@=lclose
+[lcreat]
+1=DWORD iAttribute
+2=LPCSTR lpPathName
+ParamCount=2
+@=lcreat
+[llseek]
+1=int iOrigin
+2=LONG lOffset
+3=HFILE hFile
+ParamCount=3
+@=llseek
+[lopen]
+1=int iReadWrite
+2=LPCSTR lpPathName
+ParamCount=2
+@=lopen
+[lread]
+1=UINT nBufferSize
+2=LPVOID lpBuffer
+3=HFILE hFile
+ParamCount=3
+@=lread
+[lwrite]
+1=UINT nBufferSize
+2=LPVOID lpBuffer
+3=HFILE hFile
+ParamCount=3
+@=lwrite
 [lstrcat]
 1=LPTSTR String2
 2=LPTSTR String1

@@ -1,10 +1,10 @@
 [constchar *]
 ParamCount=0
 @=constchar *
-[_scanf]
+[scanf]
 1=... char *
 ParamCount=1
-@=_scanf
+@=scanf
 [strchr]
 1=char char
 ParamCount=1
@@ -47,55 +47,55 @@ ParamCount=2
 1=constchar *
 ParamCount=1
 @= strlen
-[_chdir]
+[chdir]
 1=constchar *
 ParamCount=1
-@=_chdir
-[_getcwd]
+@=chdir
+[getcwd]
 1=int char
 ParamCount=1
-@=_getcwd
-[_mkdir]
+@=getcwd
+[mkdir]
 1=constchar *
 ParamCount=1
-@=_mkdir
-[_rmdir]
+@=mkdir
+[rmdir]
 1=constchar *
 ParamCount=1
-@=_rmdir
-[_fullpath]
+@=rmdir
+[fullpath]
 1=size_t constchar
 2=* char
 ParamCount=2
-@=_fullpath
-[_splitpath]
+@=fullpath
+[splitpath]
 1=char *
 2=char *
 3=char *
 4=char *
 5=constchar *
 ParamCount=5
-@=_splitpath
-[_makepath]
+@=splitpath
+[makepath]
 1=constchar *
 2=constchar *
 3=constchar *
 4=constchar *
 5=char *
 ParamCount=5
-@=_makepath
-[_findfirst]
+@=makepath
+[findfirst]
 1=struct_finddata_t *
 2=constchar *
 ParamCount=2
-@=_findfirst
-[_findnext]
+@=findfirst
+[findnext]
 1=struct_finddata_t *
 ParamCount=1
-@=_findnext
-[_findclose]
+@=findnext
+[findclose]
 ParamCount=0
-@=_findclose
+@=findclose
 [memccpy]
 1=unsignedint int
 2=constvoid *
@@ -147,36 +147,26 @@ ParamCount=1
 1=char *
 ParamCount=1
 @=strupr
-[_strcmpi]
-1=constchar *
-2=constchar *
-ParamCount=2
-@=_strcmpi
-[_stricmp]
-1=constchar *
-2=constchar *
-ParamCount=2
-@=_stricmp
 [strcoll]
 1=constchar *
 2=constchar *
 ParamCount=2
 @=strcoll
-[_stricoll]
+[stricoll]
 1=constchar *
 2=constchar *
 ParamCount=2
-@=_stricoll
-[_strncoll]
+@=stricoll
+[strncoll]
 1=size_t constchar
 2=* constchar
 ParamCount=2
-@=_strncoll
-[_strnicoll]
+@=strncoll
+[strnicoll]
 1=size_t constchar
 2=* constchar
 ParamCount=2
-@=_strnicoll
+@=strnicoll
 [strcspn]
 1=constchar *
 2=constchar *

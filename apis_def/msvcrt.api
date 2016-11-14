@@ -1,9 +1,9 @@
-[_AfxChildWindowFromPoint]
+[AfxChildWindowFromPoint]
 1=DWORD point
 2=DWORD hWnd
 ParamCount=2
-@=_AfxChildWindowFromPoint
-[_AfxDispatchCmdMsg]
+@=AfxChildWindowFromPoint
+[AfxDispatchCmdMsg]
 1=DWORD pHandleInfo
 2=DWORD nSig
 3=DWORD pExtra
@@ -12,50 +12,50 @@ ParamCount=2
 6=DWORD nID
 7=DWORD pTarget
 ParamCount=7
-@=_AfxDispatchCmdMsg
-[_AfxHandleActivate]
+@=AfxDispatchCmdMsg
+[AfxHandleActivate]
 1=DWORD pWndOther
 2=DWORD nState
 3=DWORD pWnd
 ParamCount=3
-@=_AfxHandleActivate
-[_AfxHandleSetCursor]
+@=AfxHandleActivate
+[AfxHandleSetCursor]
 1=DWORD lParam
 2=DWORD lParam
 3=DWORD pWnd
 ParamCount=3
-@=_AfxHandleSetCursor
-[_AfxModifyStyle]
+@=AfxHandleSetCursor
+[AfxModifyStyle]
 1=DWORD nFlags
 2=DWORD dwAdd
 3=DWORD dwRemove
 4=DWORD hWnd
 ParamCount=4
-@=_AfxModifyStyle
-[_AfxPostInitDialog]
+@=AfxModifyStyle
+[AfxPostInitDialog]
 1=DWORD dwStyleOld
 2=DWORD rectOld
 3=DWORD pWnd
 ParamCount=3
-@=_AfxPostInitDialog
-[_AfxPreInitDialog]
+@=AfxPostInitDialog
+[AfxPreInitDialog]
 1=DWORD dwStyleOld
 2=DWORD rectOld
 3=DWORD pWnd
 ParamCount=3
-@=_AfxPreInitDialog
-[_CIpow]
+@=AfxPreInitDialog
+[CIpow]
 ParamCount=0
-@=_CIpow
-[_CRT_RTC_INIT]
+@=CIpow
+[CRT_RTC_INIT]
 1=DWORD res4
 2=DWORD res3
 3=DWORD res2
 4=DWORD res1
 5=DWORD res0
 ParamCount=5
-@=_CRT_RTC_INIT
-[_Createsorteddata]
+@=CRT_RTC_INIT
+[Createsorteddata]
 1=DWORD lpdestfunc
 2=DWORD lpsortfunc
 3=DWORD nmax
@@ -63,63 +63,63 @@ ParamCount=5
 5=DWORD strName
 6=DWORD lp_SortedData
 ParamCount=6
-@=_Createsorteddata
-[_Decompress]
+@=Createsorteddata
+[Decompress]
 1=DWORD nbufout
 2=DWORD strBufout
 3=DWORD nbufin
 4=DWORD strBufin
 ParamCount=4
-@=_Decompress
-[_Defaultbar]
+@=Decompress
+[Defaultbar]
 1=DWORD lpt_bar
 ParamCount=1
-@=_Defaultbar
-[_Deleteruntrace]
+@=Defaultbar
+[Deleteruntrace]
 ParamCount=0
-@=_Deleteruntrace
-[_Deletesorteddatarange]
+@=Deleteruntrace
+[Deletesorteddatarange]
 1=DWORD AddrTwo
 2=DWORD AddrOne
 3=DWORD lpSortedData
 ParamCount=3
-@=_Deletesorteddatarange
-[_Destroysorteddata]
+@=Deletesorteddatarange
+[Destroysorteddata]
 1=DWORD lp_SortedData
 ParamCount=1
-@=_Destroysorteddata
-[_Dumpbackup]
+@=Destroysorteddata
+[Dumpbackup]
 1=DWORD iAction
 2=DWORD lpt_dump
 ParamCount=2
-@=_Dumpbackup
-[_Findmodule]
+@=Dumpbackup
+[Findmodule]
 1=DWORD Addr
 ParamCount=1
-@=_Findmodule
-[_Findthread]
+@=Findmodule
+[Findthread]
 1=DWORD threadid
 ParamCount=1
-@=_Findthread
-[_Readcommand]
+@=Findthread
+[Readcommand]
 1=DWORD strCmd
 2=DWORD ip
 ParamCount=2
-@=_Readcommand
-[_Tablefunction]
+@=Readcommand
+[Tablefunction]
 1=DWORD lParam
 2=DWORD wParam
 3=DWORD msg
 4=DWORD hwnd
 5=DWORD lpt_table
 ParamCount=5
-@=_Tablefunction
-[_XcptFilter]
+@=Tablefunction
+[XcptFilter]
 1=DWORD ExceptionInformation
 2=DWORD ExceptionCode
 ParamCount=2
-@=_XcptFilter
-[_beginthreadex]
+@=XcptFilter
+[beginthreadex]
 1=DWORD thrdaddr
 2=DWORD initflag
 3=DWORD arglist
@@ -127,144 +127,144 @@ ParamCount=2
 5=DWORD stack_size
 6=DWORD security
 ParamCount=6
-@=_beginthreadex
-[_filelength]
+@=beginthreadex
+[filelength]
 1=DWORD handle
 ParamCount=1
-@=_filelength
-[_fileno]
+@=filelength
+[fileno]
 1=DWORD stream
 ParamCount=1
-@=_fileno
-[_getch]
+@=fileno
+[getch]
 ParamCount=0
-@=_getch
-[_getpid]
+@=getch
+[getpid]
 ParamCount=0
-@=_getpid
-[_initterm]
+@=getpid
+[initterm]
 1=DWORD pfend
 2=DWORD pfbegin
 ParamCount=2
-@=_initterm
-[_isatty]
+@=initterm
+[isatty]
 1=DWORD handle
 ParamCount=1
-@=_isatty
-[_itoa]
+@=isatty
+[itoa]
 1=DWORD dwSize
 2=DWORD lpBuffer
 3=DWORD value
 ParamCount=3
-@=_itoa
-[_lock]
+@=itoa
+[lock]
 1=DWORD arg1
 ParamCount=1
-@=_lock
-[_mbscat]
+@=lock
+[mbscat]
 1=DWORD src
 2=DWORD dest
 ParamCount=2
-@=_mbscat
-[_mbscmp]
+@=mbscat
+[mbscmp]
 1=DWORD string2
 2=DWORD string1
 ParamCount=2
-@=_mbscmp
-[_mbscpy]
+@=mbscmp
+[mbscpy]
 1=DWORD string
 2=DWORD lpBuffer
 ParamCount=2
-@=_mbscpy
-[_mbsdup]
+@=mbscpy
+[mbsdup]
 1=DWORD string
 ParamCount=1
-@=_mbsdup
-[_mbsicoll]
+@=mbsdup
+[mbsicoll]
 1=DWORD szString2
 2=DWORD szString1
 ParamCount=2
-@=_mbsicoll
-[_mbsinc]
+@=mbsicoll
+[mbsinc]
 1=DWORD string
 ParamCount=1
-@=_mbsinc
-[_mbsrchr]
+@=mbsinc
+[mbsrchr]
 1=DWORD char
 2=DWORD szStr
 ParamCount=2
-@=_mbsrchr
-[_msize]
+@=mbsrchr
+[msize]
 1=DWORD ptr
 ParamCount=1
-@=_msize
-[_onexit]
+@=msize
+[onexit]
 1=DWORD Func
 ParamCount=1
-@=_onexit
-[_open]
+@=onexit
+[open]
 1=DWORD iReadWrite
 2=DWORD lpPathName
 ParamCount=2
-@=_open
-[_parse_cmdline]
+@=open
+[parse_cmdline]
 1=DWORD argv
 2=DWORD argc
 ParamCount=2
-@=_parse_cmdline
-[_read]
+@=parse_cmdline
+[read]
 1=DWORD nBufferSize
 2=DWORD lpBuffer
 3=DWORD handle
 ParamCount=3
-@=_read
-[_setmbcp]
+@=read
+[setmbcp]
 1=DWORD CodePage
 ParamCount=1
-@=_setmbcp
-[_setmode]
+@=setmbcp
+[setmode]
 1=DWORD mode
 2=DWORD handle
 ParamCount=2
-@=_setmode
-[_snprintf]
+@=setmode
+[snprintf]
 1=DWORD Arg1
 2=DWORD szformat
 3=DWORD nSize
 4=DWORD lpBuffer
 ParamCount=4
-@=_snprintf
-[_strcmpi]
+@=snprintf
+[strcmpi]
 1=DWORD lpString2
 2=DWORD lpString1
 ParamCount=2
-@=_strcmpi
-[_unlink]
+@=strcmpi
+[unlink]
 1=DWORD szPathName
 ParamCount=1
-@=_unlink
-[_unlock]
+@=unlink
+[unlock]
 1=DWORD arg1
 ParamCount=1
-@=_unlock
-[_write]
+@=unlock
+[write]
 1=DWORD handle DWORD szBuffer
 2=DWORD nbyte
 ParamCount=2
-@=_write
-[___crtGetEnvironmentStringsA]
+@=write
+[__crtGetEnvironmentStringsA]
 ParamCount=0
-@=___crtGetEnvironmentStringsA
-[___initmbctable]
+@=__crtGetEnvironmentStringsA
+[__initmbctable]
 ParamCount=0
-@=___initmbctable
-[___initstdio]
+@=__initmbctable
+[__initstdio]
 ParamCount=0
-@=___initstdio
-[__cinit]
+@=__initstdio
+[_cinit]
 ParamCount=0
-@=__cinit
-[__crtCompareStringA]
+@=_cinit
+[_crtCompareStringA]
 1=DWORD cchCount2
 2=DWORD lpString2
 3=DWORD cchCount1
@@ -272,62 +272,62 @@ ParamCount=0
 5=DWORD dwCmpFlags
 6=DWORD Locale
 ParamCount=6
-@=__crtCompareStringA
-[__dllonexit]
+@=_crtCompareStringA
+[_dllonexit]
 1=DWORD arg3
 2=DWORD arg2
 3=DWORD arg1
 ParamCount=3
-@=__dllonexit
-[__fpmath]
+@=_dllonexit
+[_fpmath]
 ParamCount=0
-@=__fpmath
-[__getmainargs]
+@=_fpmath
+[_getmainargs]
 1=DWORD lpUser
 2=DWORD lpCommand
 3=DWORD argCount
 ParamCount=3
-@=__getmainargs
-[__initptd]
+@=_getmainargs
+[_initptd]
 1=DWORD ptd
 ParamCount=1
-@=__initptd
-[__ioinit]
+@=_initptd
+[_ioinit]
 ParamCount=0
-@=__ioinit
-[__mtinit]
+@=_ioinit
+[_mtinit]
 ParamCount=0
-@=__mtinit
-[__p__commode]
+@=_mtinit
+[_p__commode]
 ParamCount=0
-@=__p__commode
-[__p__fmode]
+@=_p__commode
+[_p__fmode]
 ParamCount=0
-@=__p__fmode
-[__set_app_type]
+@=_p__fmode
+[_set_app_type]
 1=DWORD Type
 ParamCount=1
-@=__set_app_type
-[__setargv]
+@=_set_app_type
+[_setargv]
 1=DWORD argv
 2=DWORD argc
 ParamCount=2
-@=__setargv
-[__setenvp]
+@=_setargv
+[_setenvp]
 ParamCount=0
-@=__setenvp
-[__setmbcp]
+@=_setenvp
+[_setmbcp]
 1=DWORD codepage
 ParamCount=1
-@=__setmbcp
-[__threadid]
+@=_setmbcp
+[_threadid]
 ParamCount=0
-@=__threadid
-[__wgetmainargs]
+@=_threadid
+[_wgetmainargs]
 1=DWORD startinfo
 2=DWORD dowildcard
 3=DWORD envp
 4=DWORD argv
 5=DWORD argc
 ParamCount=5
-@=__wgetmainargs
+@=_wgetmainargs

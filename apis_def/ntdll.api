@@ -1321,7 +1321,7 @@ ParamCount=1
 8=__out_opt PULONG
 ParamCount=8
 @=NtCreateKey
-[__OUT_PHANDLE]
+[_OUT_PHANDLE]
 1=KeyHandle __IN_ACCESS_MASK
 2=DesiredAccess __IN_POBJECT_ATTRIBUTES
 3=ObjectAttributes __reserved
@@ -1332,7 +1332,7 @@ ParamCount=8
 8=TransactionHandle __out_opt
 9=PULONG Disposition
 ParamCount=9
-@=__OUT_PHANDLE
+@=_OUT_PHANDLE
 [NtOpenKey]
 1=__OUT_PHANDLE KeyHandle
 2=__IN_ACCESS_MASK DesiredAccess
@@ -1456,44 +1456,44 @@ ParamCount=4
 6=Data __IN_ULONG
 ParamCount=6
 @=NtSetValueKey
-[_vsnprintf]
+[vsnprintf]
 1=LPSTR size_t
 2=const CHAR*
 ParamCount=2
-@=_vsnprintf
-[_vsnwprintf]
+@=vsnprintf
+[vsnwprintf]
 1=LPWSTR size_t
 2=const WCHAR*
 ParamCount=2
-@=_vsnwprintf
-[_snprintf]
+@=vsnwprintf
+[snprintf]
 1=LPSTR size_t
 2=const CHAR*
 ParamCount=2
-@=_snprintf
-[_snwprintf]
+@=snprintf
+[snwprintf]
 1=LPWSTR size_t
 2=const WCHAR*
 ParamCount=2
-@=_snwprintf
-[_sscanf]
+@=snwprintf
+[sscanf]
 1=LPSTR buffer
 2=CHAR* format
 ParamCount=2
-@=_sscanf
+@=sscanf
 [long]
 1=wcstoul LPCWSTR
 2=buffer WCHAR**
 3=ppEndChar int
 ParamCount=3
 @=long
-[__int64]
+[_int64]
 1=_wcstoui64 LPCWSTR
 2=buffer WCHAR**
 3=ppEndChar int
 ParamCount=3
-@=__int64
-[_wtoi64]
+@=_int64
+[wtoi64]
 1=LPCWSTR buffer
 ParamCount=1
-@=_wtoi64
+@=wtoi64

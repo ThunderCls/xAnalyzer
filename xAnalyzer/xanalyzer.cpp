@@ -73,14 +73,18 @@ void GenAPIInfo()
 	Argument::ArgumentInfo ai;
 	
 	char szAPIModuleName[MAX_MODULE_SIZE];
+	char szAPIModuleNameSearch[MAX_MODULE_SIZE];
 	char szAPIComment[MAX_COMMENT_SIZE];
 	char szMainModule[MAX_MODULE_SIZE];
 
 	ZeroMemory(szAPIModuleName, MAX_MODULE_SIZE);
+	ZeroMemory(szAPIModuleNameSearch, MAX_MODULE_SIZE);
 	ZeroMemory(szAPIComment, MAX_COMMENT_SIZE);
 	ZeroMemory(szMainModule, MAX_MODULE_SIZE);
 	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
+
+	char *vc = "msvcrt\0";
 
 	DbgGetEntryExitPoints(&dwEntry, &dwExit);
 	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
@@ -110,7 +114,13 @@ void GenAPIInfo()
 					Module::NameFromAddr(JmpDestination, szAPIModuleName);
 					TruncateString(szAPIModuleName, '.'); // strip .dll from module name
 
-					if (!SearchApiFileForDefinition(szAPIModuleName, szAPIFunction, szAPIDefinition))
+					// handle vc versioning dlls
+					if (strncmp(szAPIModuleName, vc, 5) == 0)
+						strcpy_s(szAPIModuleNameSearch, vc);
+					else
+						strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
+
+					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition))
 					{
 						lstrcpy(szAPIComment, szAPIModuleName); // if no definition found use "module:function"
 						lstrcat(szAPIComment, ":");
@@ -126,7 +136,7 @@ void GenAPIInfo()
 					ai.manual = true;
 					ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
 
-					SetFunctionParams(&ai, szAPIModuleName);
+					SetFunctionParams(&ai, szAPIModuleNameSearch);
 
 					//ClearStack(IS); // reset instruction stack for the next call
 					// avoid reseting here to allow nested calls
@@ -166,11 +176,17 @@ void GenAPIInfo()
 							Module::NameFromAddr(indirect, szAPIModuleName);
 							TruncateString(szAPIModuleName, '.'); // strip .dll from module name
 
+							// handle vc versioning dlls
+							if (strncmp(szAPIModuleName, vc, 5) == 0)
+								strcpy_s(szAPIModuleNameSearch, vc);
+							else
+								strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
+
 							// save data for the argument
 							ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
 
 							SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, true);
-							SetFunctionParams(&ai, szAPIModuleName);
+							SetFunctionParams(&ai, szAPIModuleNameSearch);
 						}
 					}
 
@@ -187,7 +203,7 @@ void GenAPIInfo()
 					strcmp((char*)(bii.instruction + 5), "ebp") != 0 &&
 					strcmp((char*)(bii.instruction + 5), "esp") != 0 &&
 					strcmp((char*)(bii.instruction + 5), "ds") != 0 &&
-					strcmp((char*)(bii.instruction + 5), "es") != 0)// only push instruction / excluding unusual instructions
+					strcmp((char*)(bii.instruction + 5), "es") != 0) // only push instruction / excluding unusual instructions
 				{
 					if (IS.size() < INSTRUCTIONSTACK_MAXSIZE)
 					{
