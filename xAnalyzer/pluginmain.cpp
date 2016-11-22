@@ -35,7 +35,7 @@ PLUG_EXPORT bool pluginit(PLUG_INITSTRUCT* initStruct)
     pluginHandle = initStruct->pluginHandle;
 
 	GetCurrentDirectory(MAX_PATH, szCurrentDirectory);
-	lstrcat(szCurrentDirectory, "\\");
+	strcat_s(szCurrentDirectory, "\\");
 
     return pluginInit(initStruct);
 }

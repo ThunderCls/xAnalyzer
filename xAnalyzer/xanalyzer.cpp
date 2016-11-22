@@ -75,19 +75,13 @@ void GenAPIInfo()
 	duint dwExit;
 	Argument::ArgumentInfo ai;
 	
-	char szAPIModuleName[MAX_MODULE_SIZE];
-	char szAPIModuleNameSearch[MAX_MODULE_SIZE];
-	char szAPIComment[MAX_COMMENT_SIZE];
-	char szMainModule[MAX_MODULE_SIZE];
-	char szDisasmText[GUI_MAX_DISASSEMBLY_SIZE];
-	char szAPIDefinition[MAX_PATH];
+	char szAPIModuleName[MAX_MODULE_SIZE] = "";
+	char szAPIModuleNameSearch[MAX_MODULE_SIZE] = "";
+	char szAPIComment[MAX_COMMENT_SIZE] = "";
+	char szMainModule[MAX_MODULE_SIZE] = "";
+	char szDisasmText[GUI_MAX_DISASSEMBLY_SIZE] = "";
+	char szAPIDefinition[MAX_PATH] = "";
 
-	ZeroMemory(szAPIModuleName, MAX_MODULE_SIZE);
-	ZeroMemory(szAPIModuleNameSearch, MAX_MODULE_SIZE);
-	ZeroMemory(szAPIComment, MAX_COMMENT_SIZE);
-	ZeroMemory(szMainModule, MAX_MODULE_SIZE);
-	ZeroMemory(szDisasmText, GUI_MAX_DISASSEMBLY_SIZE);
-	ZeroMemory(szAPIDefinition, MAX_PATH);
 	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
 
@@ -131,17 +125,17 @@ void GenAPIInfo()
 					{
 						if (!recursive) // if it's the same module don't use "module:function"
 						{
-							lstrcpy(szAPIComment, szAPIModuleName); // if no definition found use "module:function"
-							lstrcat(szAPIComment, ":");
-							lstrcat(szAPIComment, szAPIFunction);
+							strcpy_s(szAPIComment, szAPIModuleName); // if no definition found use "module:function"
+							strcat_s(szAPIComment, ":");
+							strcat_s(szAPIComment, szAPIFunction);
 						}
 						else
-							lstrcpy(szAPIComment, szAPIFunction);
+							strcpy_s(szAPIComment, szAPIFunction);
 
-						SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, true);
+						SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
 					}
 					else
-						SetAutoCommentIfCommentIsEmpty(inst, szAPIDefinition, true);
+						SetAutoCommentIfCommentIsEmpty(inst, szAPIDefinition, _countof(szAPIDefinition), true);
 
 					// save data for the argument
 					ai.manual = true;
@@ -168,14 +162,14 @@ void GenAPIInfo()
 						ai.rvaStart = arg_rva;
 						Argument::Add(&ai);
 
-						SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, true);
+						SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 						ClearStack(IS); // Clear stack after internal functions calls (subs)
 					}
 					else 
 					{
 						// indirect call or call/!jmp
 						// ---------------------------------------------------------------------
-						duint api = DbgValFromString(CallDirection(&bii));
+						duint api = DbgValFromString(CallDirection(&bii).c_str());
 						if (api > 0)
 						{
 							Module::NameFromAddr(api, szAPIModuleName);
@@ -193,22 +187,22 @@ void GenAPIInfo()
 							// save data for the argument
 							ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
 
-							SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, true);
+							SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							SetFunctionParams(&ai, szAPIModuleNameSearch);
 						}
-						else if (strlen(szAPIFunction) != 0) // in case it couldnt get the value try looking recursive
+						else if (*szAPIFunction) // in case it couldnt get the value try looking recursive
 						{
 							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, true)) // try to get the correct file definition file
 							{
 								// save data for the argument
 								ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
 
-								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, true);
+								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 								SetFunctionParams(&ai, szAPIModuleNameSearch);
 							}
 							else  // in case of direct call with no definition just set the comment on it
 							{
-								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, true);
+								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 								ai.instructioncount = 1;
 								ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress);
 								ai.rvaStart = ai.rvaEnd;
@@ -255,8 +249,8 @@ void GenAPIInfo()
 void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit)
 {
 	duint entry;
-	duint start;
-	duint end;
+	duint start = 0;
+	duint end = 0;
 	char modname[MAX_MODULE_SIZE];
 	Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
 
@@ -319,7 +313,7 @@ void SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 					ai->rvaStart = LowerMemoryRVAAddress;					
 
 				if (GetFunctionParam(szAPIModuleName, szAPIFunction, CurrentParam, szAPIFunctionParameter))
-					SetAutoCommentIfCommentIsEmpty(&inst, szAPIFunctionParameter, false);
+					SetAutoCommentIfCommentIsEmpty(&inst, szAPIFunctionParameter, _countof(szAPIFunctionParameter), false);
 
 				CurrentParam++;
 			}
@@ -396,7 +390,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 // ------------------------------------------------------------------------------------
 // Set Auto Comment only if a comment isn't already set
 // ------------------------------------------------------------------------------------
-void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString, bool apiCALL)
+void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString, size_t CommentStringCount, bool apiCALL)
 {
 	char szComment[MAX_COMMENT_SIZE] = { 0 };
 
@@ -410,15 +404,15 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 	{
 		if (DbgGetCommentAt(inst->Address, szComment))
 		{
-			if (lstrlen(szComment) != 0)
+			if (*szComment)
 			{
 				DbgClearAutoCommentRange(inst->Address, inst->Address); // Delete the prev comment 
-				lstrcat(CommentString, " = ");
-				lstrcat(CommentString, szComment);
+				strcat_s(CommentString, CommentStringCount, " = ");
+				strcat_s(CommentString, CommentStringCount, szComment);
 			}
 		}
 
-		if (lstrlen(szComment) == 0)
+		if (!*szComment)
 		{
 			// if no prev comment and is a push copy then the argument
 			if (!apiCALL)
@@ -426,8 +420,8 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 				char *inst_source = GetInstructionSource(inst->Instruction);
 				if (ishex(inst_source)) // get constants as value of argument / excluding push memory, registers, etc
 				{
-					lstrcat(CommentString, " = ");
-					lstrcat(CommentString, inst_source);
+					strcat_s(CommentString, CommentStringCount, " = ");
+					strcat_s(CommentString, CommentStringCount, inst_source);
 				}
 			}
 		}		
@@ -445,19 +439,19 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 {
 	bool success = false;
 
-	if (lpszApiModule == NULL && lpszApiFunction == NULL)
+	if (lpszApiModule == NULL || lpszApiFunction == NULL)
 	{
 		*lpszApiDefinition = 0;
 		return success;
 	}
 
-	lstrcpy(szApiFile, szCurrentDirectory);
-	lstrcat(szApiFile, "apis_def\\");
+	strcpy_s(szApiFile, szCurrentDirectory);
+	strcat_s(szApiFile, "apis_def\\");
 	
 	if (!recursive)
 	{
-		lstrcat(szApiFile, lpszApiModule);
-		lstrcat(szApiFile, ".api");
+		strcat_s(szApiFile, lpszApiModule);
+		strcat_s(szApiFile, ".api");
 		return GetApiFileDefinition(lpszApiFunction, lpszApiDefinition, szApiFile);
 	}
 	else
@@ -466,7 +460,7 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 		WIN32_FIND_DATA fd;
 
 		strcpy_s(szFile, szApiFile);
-		lstrcat(szFile, "*.*");
+		strcat_s(szFile, "*.*");
 
 		HANDLE hFind = FindFirstFile(szFile, &fd);
 		if (hFind != INVALID_HANDLE_VALUE)
@@ -476,11 +470,10 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 				// , delete '!' read other 2 default folder . and ..
 				if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
 					strcpy_s(szFile, szApiFile);
-					lstrcat(szFile, fd.cFileName);
+					strcat_s(szFile, fd.cFileName);
 					if (GetApiFileDefinition(lpszApiFunction, lpszApiDefinition, szFile))
 					{
 						success = true;
-						ZeroMemory(lpszApiModule, MAX_MODULE_SIZE);
 						strcpy_s(lpszApiModule, MAX_MODULE_SIZE, fd.cFileName); // save the correct file definition name
 						TruncateString(lpszApiModule, '.'); // strip .api from file name
 						break;
@@ -517,10 +510,10 @@ int GetFunctionParamCount(LPSTR lpszApiModule, LPSTR lpszApiFunction)
 	if (lpszApiModule == NULL && lpszApiFunction == NULL)
 		return -1;
 
-	lstrcpy(szApiFile, szCurrentDirectory);
-	lstrcat(szApiFile, "apis_def\\");
-	lstrcat(szApiFile, lpszApiModule);
-	lstrcat(szApiFile, ".api");
+	strcpy_s(szApiFile, szCurrentDirectory);
+	strcat_s(szApiFile, "apis_def\\");
+	strcat_s(szApiFile, lpszApiModule);
+	strcat_s(szApiFile, ".api");
 
 	return GetPrivateProfileInt(lpszApiFunction, "ParamCount", 0, szApiFile);
 }
@@ -538,10 +531,10 @@ bool GetFunctionParam(LPSTR lpszApiModule, LPSTR lpszApiFunction, duint dwParamN
 		return false;
 	}
 
-	lstrcpy(szApiFile, szCurrentDirectory);
-	lstrcat(szApiFile, "apis_def\\");
-	lstrcat(szApiFile, lpszApiModule);
-	lstrcat(szApiFile, ".api");
+	strcpy_s(szApiFile, szCurrentDirectory);
+	strcat_s(szApiFile, "apis_def\\");
+	strcat_s(szApiFile, lpszApiModule);
+	strcat_s(szApiFile, ".api");
 
 	int result = GetPrivateProfileString(lpszApiFunction, argument[dwParamNo - 1].c_str(), ":", lpszApiFunctionParameter, MAX_COMMENT_SIZE, szApiFile);
 	if (result <= 1) // just got nothing or the colon and nothing else
@@ -581,12 +574,12 @@ void TruncateString(LPSTR str, char value)
 // ------------------------------------------------------------------------------------
 // Return the indirection part of the instruction
 // ------------------------------------------------------------------------------------
-char *CallDirection(BASIC_INSTRUCTION_INFO *bii)
+std::string CallDirection(BASIC_INSTRUCTION_INFO *bii)
 {
 	char mnemonic[MAX_MNEMONIC_SIZE * 4] = { "[" };
 	char *pch;
 #ifdef _WIN64
-	if (strlen(bii->memory.mnemonic) != 0) // indirect call
+	if (*bii->memory.mnemonic) // indirect call
 	{		
 		strcat_s(mnemonic, bii->memory.mnemonic);
 		strcat_s(mnemonic, "]");
@@ -643,8 +636,6 @@ bool IsArgumentRegister(const char *destination)
 		// stack argument (>4 args or XMM0, XMM1, XMM2, XMM3 included)
 		strstr(destination, "[rsp + ") != NULL
 		);
-
-	return false;
 }
 #endif
 
@@ -655,7 +646,7 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
 {
 #ifdef _WIN64
 	bool IsArgument = false;
-	char *next_token;
+	char *next_token = nullptr;
 	char instruction[MAX_MNEMONIC_SIZE * 4] = { 0 };
 
 	strcpy_s(instruction, bii->instruction);
@@ -736,7 +727,7 @@ char *GetInstructionSource(char *instruction)
 void GetDestRegister(char *instruction, char *destRegister)
 {
 #ifdef _WIN64
-	char *next_token;
+	char *next_token = nullptr;
 
 	char *pch = strtok_s(instruction, ",", &next_token); // get the string of the left operand of the instruction
 	if (pch != NULL)
