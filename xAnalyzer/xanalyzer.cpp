@@ -346,7 +346,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 	int index = 0;
 	int index_cpy = 0;
 
-	while (lpszCallText[index] != '.' && lpszCallText[index] != '&')
+	while (lpszCallText[index] != '.' && lpszCallText[index] != '&' && lpszCallText[index] != ':')
 	{
 		if (lpszCallText[index] == 0)
 		{
@@ -360,7 +360,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 	++index; // jump over the "." or the "&"
 	if (!isalpha(lpszCallText[index])) // if not Api name
 	{
-		while (lpszCallText[index] != '_' && lpszCallText[index] != '?') // get the initial bracket
+		while (lpszCallText[index] != '_' && lpszCallText[index] != '?' && lpszCallText[index] != '(' && lpszCallText[index] != '[') // get the initial bracket
 		{
 			if (lpszCallText[index] == 0)
 			{
