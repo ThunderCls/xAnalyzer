@@ -394,50 +394,50 @@ ParamCount=3
 ParamCount=0
 @=InitNetworkAddressControl();
 [AssocGetDetailsOfPropKey]
-1=BOOL* pfFoundPropKey
-2=VARIANT* pv
+1=IShellFolder* psf
+2=PCUITEMID_CHILD pidl
 3=PROPERTYKEY* pkey
-4=PCUITEMID_CHILD pidl
-5=IShellFolder* psf
+4=VARIANT* pv
+5=BOOL* pfFoundPropKey
 ParamCount=5
 @=AssocGetDetailsOfPropKey
 [CDefFolderMenu_Create2]
-1=IContextMenu** ppcm
-2=const HKEY* ahkeys
-3=UINT nKeys
-4=LPFNDFMCALLBACK lpfn
+1=PCIDLIST_ABSOLUTE pidlFolder
+2=HWND hwnd
+3=UINT cidl
+4=PCUITEMID_CHILD_ARRAY* apidl
 5=IShellFolder* psf
-6=PCUITEMID_CHILD_ARRAY* apidl
-7=UINT cidl
-8=HWND hwnd
-9=PCIDLIST_ABSOLUTE pidlFolder
+6=LPFNDFMCALLBACK lpfn
+7=UINT nKeys
+8=const HKEY* ahkeys
+9=IContextMenu** ppcm
 ParamCount=9
 @=CDefFolderMenu_Create2
 [CIDLData_CreateFromIDArray]
-1=IDataObject** ppdtobj
-2=PCUIDLIST_RELATIVE_ARRAY apidl
-3=UINT cidl
-4=PCIDLIST_ABSOLUTE pidlFolder
+1=PCIDLIST_ABSOLUTE pidlFolder
+2=UINT cidl
+3=PCUIDLIST_RELATIVE_ARRAY apidl
+4=IDataObject** ppdtobj
 ParamCount=4
 @=CIDLData_CreateFromIDArray
 [CallCPLEntry16]
-1=LPARAM lParam2
-2=LPARAM lParam1
-3=UINT msg
-4=HWND hwndCPL
-5=FARPROC16 lpfnEntry
-6=HINSTANCE hInst
+1=HINSTANCE hInst
+2=FARPROC16 lpfnEntry
+3=HWND hwndCPL
+4=UINT msg
+5=LPARAM lParam1
+6=LPARAM lParam2
 ParamCount=6
 @=CallCPLEntry16
 [DAD_AutoScroll]
-1=const POINT* pptNow
+1=HWND hwnd
 2=AUTO_SCROLL_DATA* pad
-3=HWND hwnd
+3=const POINT* pptNow
 ParamCount=3
 @=DAD_AutoScroll
 [DAD_DragEnterEx]
-1=const POINT ptStart
-2=HWND hwndTarget
+1=HWND hwndTarget
+2=const POINT ptStart
 ParamCount=2
 @=DAD_DragEnterEx
 [DAD_DragLeave]
@@ -448,8 +448,8 @@ ParamCount=0
 ParamCount=1
 @=DAD_DragMove
 [DAD_SetDragImage]
-1=POINT* pptOffset
-2=HIMAGELIST him
+1=HIMAGELIST him
+2=POINT* pptOffset
 ParamCount=2
 @=DAD_SetDragImage
 [DAD_ShowDragImage]
@@ -461,15 +461,15 @@ ParamCount=1
 ParamCount=1
 @=DllGetVersion
 [DoEnvironmentSubst]
-1=UINT cchString
-2=LPTSTR pszString
+1=LPTSTR pszString
+2=UINT cchString
 ParamCount=2
 @=DoEnvironmentSubst
 [DragQueryFile]
-1=UINT nBuffer
-2=LPTSTR lpBuffer
-3=UINT iFile
-4=HDROP hDrop
+1=HDROP hDrop
+2=UINT iFile
+3=LPTSTR lpBuffer
+4=UINT nBuffer
 ParamCount=4
 @=DragQueryFile
 [DriveType]
@@ -477,30 +477,30 @@ ParamCount=4
 ParamCount=1
 @=DriveType
 [ExtractAssociatedIcon]
-1=LPWORD lpiIcon
+1=HINSTANCE hInst
 2=LPTSTR lpIconPath
-3=HINSTANCE hInst
+3=LPWORD lpiIcon
 ParamCount=3
 @=ExtractAssociatedIcon
 [ExtractAssociatedIconEx]
-1=LPWORD lpiIconId
-2=LPWORD lpiIconIndex
-3=LPTSTR lpIconPath
-4=HINSTANCE hInst
+1=HINSTANCE hInst
+2=LPTSTR lpIconPath
+3=LPWORD lpiIconIndex
+4=LPWORD lpiIconId
 ParamCount=4
 @=ExtractAssociatedIconEx
 [ExtractIcon]
-1=DWORD nIconIndex
+1=DWORD hInst
 2=DWORD lpszExeFileName
-3=DWORD hInst
+3=DWORD nIconIndex
 ParamCount=3
 @=ExtractIcon
 [ExtractIconEx]
-1=UINT nIcons
-2=HICON* phiconSmall
+1=LPCTSTR lpszFile
+2=int nIconIndex
 3=HICON* phiconLarge
-4=int nIconIndex
-5=LPCTSTR lpszFile
+4=HICON* phiconSmall
+5=UINT nIcons
 ParamCount=5
 @=ExtractIconEx
 [FileIconInit]
@@ -508,14 +508,14 @@ ParamCount=5
 ParamCount=1
 @=FileIconInit
 [FindExecutable]
-1=LPTSTR lpResult
+1=LPCTSTR lpFile
 2=LPCTSTR lpDirectory
-3=LPCTSTR lpFile
+3=LPTSTR lpResult
 ParamCount=3
 @=FindExecutable
 [GUIDFromString]
-1=LPGUID pguid
-2=LPCTSTR psz
+1=LPCTSTR psz
+2=LPGUID pguid
 ParamCount=2
 @=GUIDFromString
 [GetCurrentProcessExplicitAppUserModelID]
@@ -523,19 +523,19 @@ ParamCount=2
 ParamCount=1
 @=GetCurrentProcessExplicitAppUserModelID
 [GetFileNameFromBrowse]
-1=LPCWSTR szTitle
-2=LPCWSTR pszFilters
-3=LPCWSTR pszDefExt
+1=HWND hwnd
+2=LPWSTR pszFilePath
+3=UINT cchFilePath
 4=LPCWSTR pszWorkingDir
-5=UINT cchFilePath
-6=LPWSTR pszFilePath
-7=HWND hwnd
+5=LPCWSTR pszDefExt
+6=LPCWSTR pszFilters
+7=LPCWSTR szTitle
 ParamCount=7
 @=GetFileNameFromBrowse
 [ILAppendID]
-1=BOOL fAppend
+1=PIDLIST_RELATIVE pidl
 2=LPSHITEMID pmkid
-3=PIDLIST_RELATIVE pidl
+3=BOOL fAppend
 ParamCount=3
 @=ILAppendID
 [ILClone]
@@ -547,8 +547,8 @@ ParamCount=1
 ParamCount=1
 @=ILCloneFirst
 [ILCombine]
-1=PCUIDLIST_RELATIVE pidl2
-2=PCIDLIST_ABSOLUTE pidl1
+1=PCIDLIST_ABSOLUTE pidl1
+2=PCUIDLIST_RELATIVE pidl2
 ParamCount=2
 @=ILCombine
 [ILCreateFromPath]
@@ -556,8 +556,8 @@ ParamCount=2
 ParamCount=1
 @=ILCreateFromPath
 [ILFindChild]
-1=PCIDLIST_ABSOLUTE pidlChild
-2=PCIDLIST_ABSOLUTE pidlParent
+1=PCIDLIST_ABSOLUTE pidlParent
+2=PCIDLIST_ABSOLUTE pidlChild
 ParamCount=2
 @=ILFindChild
 [ILFindLastID]
@@ -577,19 +577,19 @@ ParamCount=1
 ParamCount=1
 @=ILGetSize
 [ILIsEqual]
-1=PCIDLIST_ABSOLUTE pidl2
-2=PCIDLIST_ABSOLUTE pidl1
+1=PCIDLIST_ABSOLUTE pidl1
+2=PCIDLIST_ABSOLUTE pidl2
 ParamCount=2
 @=ILIsEqual
 [ILIsParent]
-1=BOOL fImmediate
+1=PCIDLIST_ABSOLUTE pidl1
 2=PCIDLIST_ABSOLUTE pidl2
-3=PCIDLIST_ABSOLUTE pidl1
+3=BOOL fImmediate
 ParamCount=3
 @=ILIsParent
 [ILLoadFromStream]
-1=PIDLIST_RELATIVE* pidl
-2=IStream* pstm
+1=IStream* pstm
+2=PIDLIST_RELATIVE* pidl
 ParamCount=2
 @=ILLoadFromStream
 [ILRemoveLastID]
@@ -597,8 +597,8 @@ ParamCount=2
 ParamCount=1
 @=ILRemoveLastID
 [ILSaveToStream]
-1=PCUIDLIST_RELATIVE pidl
-2=IStream* pstm
+1=IStream* pstm
+2=PCUIDLIST_RELATIVE pidl
 ParamCount=2
 @=ILSaveToStream
 [IsNetDrive]
@@ -619,31 +619,31 @@ ParamCount=0
 ParamCount=1
 @=NTSHChangeNotifyDeregister
 [NTSHChangeNotifyRegister]
-1=SHChangeNotifyEntry* pfsne
-2=int cEntries
-3=UINT wMsg
-4=LONG fEvents
-5=int fSources
-6=HWND hwnd
+1=HWND hwnd
+2=int fSources
+3=LONG fEvents
+4=UINT wMsg
+5=int cEntries
+6=SHChangeNotifyEntry* pfsne
 ParamCount=6
 @=NTSHChangeNotifyRegister
 [OpenRegStream]
-1=DWORD grfMode
-2=LPCWSTR pszValue
-3=LPCWSTR pszSubkey
-4=HKEY hkey
+1=HKEY hkey
+2=LPCWSTR pszSubkey
+3=LPCWSTR pszValue
+4=DWORD grfMode
 ParamCount=4
 @=OpenRegStream
 [ParseField]
-1=int iBufLen
-2=LPTSTR* szBuf
-3=it n
-4=LPCTSTR* szData
+1=LPCTSTR* szData
+2=it n
+3=LPTSTR* szBuf
+4=int iBufLen
 ParamCount=4
 @=ParseField
 [PathCleanupSpec]
-1=LPWSTR pszSpec
-2=LPCWSTR pszDir
+1=LPCWSTR pszDir
+2=LPWSTR pszSpec
 ParamCount=2
 @=PathCleanupSpec
 [PathGetShortPath]
@@ -655,110 +655,110 @@ ParamCount=1
 ParamCount=1
 @=PathIsExe
 [PathIsSlow]
-1=DWORD dwFileAttr
-2=LPCTSTR pszFile
+1=LPCTSTR pszFile
+2=DWORD dwFileAttr
 ParamCount=2
 @=PathIsSlow
 [PathMakeUniqueName]
-1=LPCWSTR pszDir
-2=LPCWSTR pszLongPlate
+1=LPWSTR pszUniqueName
+2=UINT cchMax
 3=LPCWSTR pszTemplate
-4=UINT cchMax
-5=LPWSTR pszUniqueName
+4=LPCWSTR pszLongPlate
+5=LPCWSTR pszDir
 ParamCount=5
 @=PathMakeUniqueName
 [PathProcessCommand]
-1=DWORD dwFlags
-2=int iDestMax
-3=LPWSTR lpDest
-4=LPCWSTR lpSrc
+1=LPCWSTR lpSrc
+2=LPWSTR lpDest
+3=int iDestMax
+4=DWORD dwFlags
 ParamCount=4
 @=PathProcessCommand
 [PathResolve]
-1=UINT fFlags
+1=LPWSTR pszPath
 2=LPCWSTR* dirs
-3=LPWSTR pszPath
+3=UINT fFlags
 ParamCount=3
 @=PathResolve
 [PathYetAnotherMakeUniqueName]
-1=LPCWSTR pszFileSpec
-2=LPCWSTR pszShort
-3=LPCWSTR pszPath
-4=LPWSTR pszUniqueName
+1=LPWSTR pszUniqueName
+2=LPCWSTR pszPath
+3=LPCWSTR pszShort
+4=LPCWSTR pszFileSpec
 ParamCount=4
 @=PathYetAnotherMakeUniqueName
 [PickIconDlg]
-1=int* piIconIndex
-2=UINT cchIconPath
-3=LPWSTR pszIconPath
-4=HWND hwnd
+1=HWND hwnd
+2=LPWSTR pszIconPath
+3=UINT cchIconPath
+4=int* piIconIndex
 ParamCount=4
 @=PickIconDlg
 [PifMgr_CloseProperties]
-1=UINT flOpt
-2=HANDLE hProps
+1=HANDLE hProps
+2=UINT flOpt
 ParamCount=2
 @=PifMgr_CloseProperties
 [PifMgr_GetProperties]
-1=UINT flOpt
-2=int cbProps
+1=HANDLE hProps
+2=LPCSTR pszGroup
 3=VOID* lpProps
-4=LPCSTR pszGroup
-5=HANDLE hProps
+4=int cbProps
+5=UINT flOpt
 ParamCount=5
 @=PifMgr_GetProperties
 [PifMgr_OpenProperties]
-1=UINT flOpt
-2=UINT hInf
-3=LPCWSTR lpszPIF
-4=LPCWSTR pszApp
+1=LPCWSTR pszApp
+2=LPCWSTR lpszPIF
+3=UINT hInf
+4=UINT flOpt
 ParamCount=4
 @=PifMgr_OpenProperties
 [PifMgr_SetProperties]
-1=UINT flOpt
-2=int cbProps
+1=HANDLE hProps
+2=LPCSTR pszGroup
 3=VOID* lpProps
-4=LPCSTR pszGroup
-5=HANDLE hProps
+4=int cbProps
+5=UINT flOpt
 ParamCount=5
 @=PifMgr_SetProperties
 [ReadCabinetState]
-1=int cLength
-2=CABINETSTATE* pcs
+1=CABINETSTATE* pcs
+2=int cLength
 ParamCount=2
 @=ReadCabinetState
 [RealDriveType]
-1=BOOL fOKToHitNet
-2=int iDrive
+1=int iDrive
+2=BOOL fOKToHitNet
 ParamCount=2
 @=RealDriveType
 [RestartDialog]
-1=DWORD dwFlags
+1=HWND hParent
 2=LPCWSTR pszPrompt
-3=HWND hParent
+3=DWORD dwFlags
 ParamCount=3
 @=RestartDialog
 [RestartDialogEx]
-1=HWND dwReasonCode
-2=DWORD dwFlags
-3=LPCWSTR pszPrompt
-4=HWND hParent
+1=HWND hParent
+2=LPCWSTR pszPrompt
+3=DWORD dwFlags
+4=HWND dwReasonCode
 ParamCount=4
 @=RestartDialogEx
 [SHAddDefaultPropertiesByExt]
-1=IPropertyStore* pPropStore
-2=PCWSTR pszExt
+1=PCWSTR pszExt
+2=IPropertyStore* pPropStore
 ParamCount=2
 @=SHAddDefaultPropertiesByExt
 [SHAddFromPropSheetExtArray]
-1=LPARAM lParam
+1=HPSXA hpsxa
 2=LPFNADDPROPSHEETPAGE lpfnAddPage
-3=HPSXA hpsxa
+3=LPARAM lParam
 ParamCount=3
 @=SHAddFromPropSheetExtArray
 [SHAddToRecentDocs]
-1=LPCVOID pv
-2=UINT uFlags
+1=UINT uFlags
+2=LPCVOID pv
 ParamCount=2
 @=SHAddToRecentDocs
 [SHAlloc]
@@ -766,38 +766,38 @@ ParamCount=2
 ParamCount=1
 @=SHAlloc
 [SHAssocEnumHandlers]
-1=IEnumAssocHandlers** ppEnumHandler
+1=LPCWSTR pszExtra
 2=ASSOC_FILTER afFilter
-3=LPCWSTR pszExtra
+3=IEnumAssocHandlers** ppEnumHandler
 ParamCount=3
 @=SHAssocEnumHandlers
 [SHAssocEnumHandlersForProtocolByApplication]
-1=void** enumHandlers
+1=PCWSTR protocol
 2=REFIID riid
-3=PCWSTR protocol
+3=void** enumHandlers
 ParamCount=3
 @=SHAssocEnumHandlersForProtocolByApplication
 [SHBindToFolderIDListParent]
-1=PCUITEMID_CHILD* ppidlLast
-2=void** ppv
+1=IShellFolder* psfRoot
+2=PCUIDLIST_RELATIVE pidl
 3=REFIID riid
-4=PCUIDLIST_RELATIVE pidl
-5=IShellFolder* psfRoot
+4=void** ppv
+5=PCUITEMID_CHILD* ppidlLast
 ParamCount=5
 @=SHBindToFolderIDListParent
 [SHBindToObject]
-1=void** ppv
-2=REFIID riid
+1=IShellFolder* psf
+2=PCUIDLIST_RELATIVE pidl
 3=IBindCtx* pbc
-4=PCUIDLIST_RELATIVE pidl
-5=IShellFolder* psf
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=SHBindToObject
 [SHBindToParent]
-1=PCUITEMID_CHILD* ppidlLast
-2=VOID** ppv
-3=REFIID riid
-4=PCIDLIST_ABSOLUTE pidl
+1=PCIDLIST_ABSOLUTE pidl
+2=REFIID riid
+3=VOID** ppv
+4=PCUITEMID_CHILD* ppidlLast
 ParamCount=4
 @=SHBindToParent
 [SHBrowseForFolder]
@@ -805,15 +805,15 @@ ParamCount=4
 ParamCount=1
 @=SHBrowseForFolder
 [SHCLSIDFromString]
-1=CLSID* pclsid
-2=LPCWSTR psz
+1=LPCWSTR psz
+2=CLSID* pclsid
 ParamCount=2
 @=SHCLSIDFromString
 [SHChangeNotification_Lock]
-1=LONG* plEvent
-2=PIDLIST_ABSOLUTE** pppidl
-3=DWORD dwProcId
-4=HANDLE hChange
+1=HANDLE hChange
+2=DWORD dwProcId
+3=PIDLIST_ABSOLUTE** pppidl
+4=LONG* plEvent
 ParamCount=4
 @=SHChangeNotification_Lock
 [SHChangeNotification_Unlock]
@@ -821,10 +821,10 @@ ParamCount=4
 ParamCount=1
 @=SHChangeNotification_Unlock
 [SHChangeNotify]
-1=LPCVOID dwItem2
-2=LPCVOID dwItem1
-3=DWORD uFlags
-4=DWORD wEventId
+1=DWORD wEventId
+2=DWORD uFlags
+3=LPCVOID dwItem1
+4=LPCVOID dwItem2
 ParamCount=4
 @=SHChangeNotify
 [SHChangeNotifyDeregister]
@@ -832,12 +832,12 @@ ParamCount=4
 ParamCount=1
 @=SHChangeNotifyDeregister
 [SHChangeNotifyRegister]
-1=const SHChangeNotifyEntry* pshcne
-2=int cEntries
-3=UINT wMsg
-4=LONG fEvents
-5=int fSources
-6=HWND hwnd
+1=HWND hwnd
+2=int fSources
+3=LONG fEvents
+4=UINT wMsg
+5=int cEntries
+6=const SHChangeNotifyEntry* pshcne
 ParamCount=6
 @=SHChangeNotifyRegister
 [SHChangeNotifyRegisterThread]
@@ -845,108 +845,108 @@ ParamCount=6
 ParamCount=1
 @=SHChangeNotifyRegisterThread
 [SHCloneSpecialIDList]
-1=BOOL fCreate
+1=HWND hwndOwner
 2=DWORD csidl
-3=HWND hwndOwner
+3=BOOL fCreate
 ParamCount=3
 @=SHCloneSpecialIDList
 [SHCoCreateInstance]
-1=void** ppv
-2=REFIID riid
+1=LPCWSTR pszCLSID
+2=const CLSID* pclsid
 3=IUnknown* pUnkOuter
-4=const CLSID* pclsid
-5=LPCWSTR pszCLSID
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=SHCoCreateInstance
 [SHCreateAssociationRegistration]
-1=void** ppv
-2=REFIID riid
+1=REFIID riid
+2=void** ppv
 ParamCount=2
 @=SHCreateAssociationRegistration
 [SHCreateDataObject]
-1=void** ppv
-2=REFIID riid
-3=IDataObject* pdtInner
-4=PCUITEMID_CHILD_ARRAY apidl
-5=UINT cidl
-6=PCIDLIST_ABSOLUTE pidlFolder
+1=PCIDLIST_ABSOLUTE pidlFolder
+2=UINT cidl
+3=PCUITEMID_CHILD_ARRAY apidl
+4=IDataObject* pdtInner
+5=REFIID riid
+6=void** ppv
 ParamCount=6
 @=SHCreateDataObject
 [SHCreateDefaultContextMenu]
-1=void** ppv
+1=const DEFCONTEXTMENU* pdcm
 2=REFIID riid
-3=const DEFCONTEXTMENU* pdcm
+3=void** ppv
 ParamCount=3
 @=SHCreateDefaultContextMenu
 [SHCreateDefaultExtractIcon]
-1=void** ppv
-2=REFIID riid
+1=REFIID riid
+2=void** ppv
 ParamCount=2
 @=SHCreateDefaultExtractIcon
 [SHCreateDefaultPropertiesOp]
-1=IFileOperation** ppFileOp
-2=IShellItem* psi
+1=IShellItem* psi
+2=IFileOperation** ppFileOp
 ParamCount=2
 @=SHCreateDefaultPropertiesOp
 [SHCreateDirectory]
-1=LPCWSTR pszPath
-2=HWND hwnd
+1=HWND hwnd
+2=LPCWSTR pszPath
 ParamCount=2
 @=SHCreateDirectory
 [SHCreateDirectoryEx]
-1=const SECURITY_ATTRIBUTES* psa
+1=HWND hwnd
 2=LPCTSTR pszPath
-3=HWND hwnd
+3=const SECURITY_ATTRIBUTES* psa
 ParamCount=3
 @=SHCreateDirectoryEx
 [SHCreateFileExtractIconW]
-1=void** ppv
-2=REFIID riid
-3=DWORD dwFileAttributes
-4=LPCWSTR pszFile
+1=LPCWSTR pszFile
+2=DWORD dwFileAttributes
+3=REFIID riid
+4=void** ppv
 ParamCount=4
 @=SHCreateFileExtractIconW
 [SHCreateItemFromIDList]
-1=void** ppv
+1=PCIDLIST_ABSOLUTE pidl
 2=REFIID riid
-3=PCIDLIST_ABSOLUTE pidl
+3=void** ppv
 ParamCount=3
 @=SHCreateItemFromIDList
 [SHCreateItemFromParsingName]
-1=void** ppv
-2=REFIID riid
-3=IBindCtx* pbc
-4=PCWSTR pszPath
+1=PCWSTR pszPath
+2=IBindCtx* pbc
+3=REFIID riid
+4=void** ppv
 ParamCount=4
 @=SHCreateItemFromParsingName
 [SHCreateItemFromRelativeName]
-1=void** ppv
-2=REFIID riid
+1=IShellItem* psiParent
+2=PCWSTR pszName
 3=IBindCtx* pbc
-4=PCWSTR pszName
-5=IShellItem* psiParent
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=SHCreateItemFromRelativeName
 [SHCreateItemInKnownFolder]
-1=void** ppv
-2=REFIID riid
+1=REFKNOWNFOLDERID kfid
+2=KNOWN_FOLDER_FLAG dwKFFlags
 3=PCWSTR pszItem
-4=KNOWN_FOLDER_FLAG dwKFFlags
-5=REFKNOWNFOLDERID kfid
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=SHCreateItemInKnownFolder
 [SHCreateItemWithParent]
-1=void** ppvItem
-2=REFIID riid
+1=PCIDLIST_ABSOLUTE pidlParent
+2=IShellFolder* psfParent
 3=PCUITEMID_CHILD pidl
-4=IShellFolder* psfParent
-5=PCIDLIST_ABSOLUTE pidlParent
+4=REFIID riid
+5=void** ppvItem
 ParamCount=5
 @=SHCreateItemWithParent
 [SHCreatePropSheetExtArray]
-1=UINT max_iface
+1=HKEY hkey
 2=LPCWSTR pszSubkey
-3=HKEY hkey
+3=UINT max_iface
 ParamCount=3
 @=SHCreatePropSheetExtArray
 [SHCreateQueryCancelAutoPlayMoniker]
@@ -954,60 +954,60 @@ ParamCount=3
 ParamCount=1
 @=SHCreateQueryCancelAutoPlayMoniker
 [SHCreateShellFolderView]
-1=IShellView** ppsv
-2=const SFV_CREATE* pcsfv
+1=const SFV_CREATE* pcsfv
+2=IShellView** ppsv
 ParamCount=2
 @=SHCreateShellFolderView
 [SHCreateShellFolderViewEx]
-1=IShellView** ppsv
-2=LPCSFV pcsfv
+1=LPCSFV pcsfv
+2=IShellView** ppsv
 ParamCount=2
 @=SHCreateShellFolderViewEx
 [SHCreateShellItem]
-1=IShellItem** ppsi
-2=PCUITEMID_CHILD pidl
-3=IShellFolder* psfParent
-4=PCIDLIST_ABSOLUTE pidlParent
+1=PCIDLIST_ABSOLUTE pidlParent
+2=IShellFolder* psfParent
+3=PCUITEMID_CHILD pidl
+4=IShellItem** ppsi
 ParamCount=4
 @=SHCreateShellItem
 [SHCreateShellItemArray]
-1=IShellItemArray** ppsiItemArray
-2=PCUITEMID_CHILD_ARRAY ppidl
+1=PCIDLIST_ABSOLUTE pidlParent
+2=IShellFolder* psf
 3=UINT cidl
-4=IShellFolder* psf
-5=PCIDLIST_ABSOLUTE pidlParent
+4=PCUITEMID_CHILD_ARRAY ppidl
+5=IShellItemArray** ppsiItemArray
 ParamCount=5
 @=SHCreateShellItemArray
 [SHCreateShellItemArrayFromDataObject]
-1=void** ppv
+1=IDataObject* pdo
 2=REFIID riid
-3=IDataObject* pdo
+3=void** ppv
 ParamCount=3
 @=SHCreateShellItemArrayFromDataObject
 [SHCreateShellItemArrayFromIDLists]
-1=IShellItemArray** ppsiItemArray
+1=UINT cidl
 2=PCIDLIST_ABSOLUTE_ARRAY rgpidl
-3=UINT cidl
+3=IShellItemArray** ppsiItemArray
 ParamCount=3
 @=SHCreateShellItemArrayFromIDLists
 [SHCreateShellItemArrayFromShellItem]
-1=void** ppv
+1=IShellItem* psi
 2=REFIID riid
-3=IShellItem* psi
+3=void** ppv
 ParamCount=3
 @=SHCreateShellItemArrayFromShellItem
 [SHCreateStdEnumFmtEtc]
-1=IEnumFORMATETC** ppenumFormatEtc
-2=UINT cfmt
+1=UINT cfmt
+2=IEnumFORMATETC** ppenumFormatEtc
 ParamCount=2
 @=SHCreateStdEnumFmtEtc
 [SHDefExtractIcon]
-1=UINT nIconSize
-2=HICON* phiconSmall
-3=HICON* phiconLarge
-4=UINT uFlags
-5=int iIndex
-6=LPCTSTR pszIconFile
+1=LPCTSTR pszIconFile
+2=int iIndex
+3=UINT uFlags
+4=HICON* phiconLarge
+5=HICON* phiconSmall
+6=UINT nIconSize
 ParamCount=6
 @=SHDefExtractIcon
 [SHDestroyPropSheetExtArray]
@@ -1015,28 +1015,28 @@ ParamCount=6
 ParamCount=1
 @=SHDestroyPropSheetExtArray
 [SHDoDragDrop]
-1=DWORD* pdwEffect
-2=DWORD dwEffect
+1=HWND hwnd
+2=IDataObject* pdtobj
 3=IDropSource* pdsrc
-4=IDataObject* pdtobj
-5=HWND hwnd
+4=DWORD dwEffect
+5=DWORD* pdwEffect
 ParamCount=5
 @=SHDoDragDrop
 [SHEmptyRecycleBin]
-1=DWORD dwFlags
+1=HWND hwnd
 2=LPCTSTR pszRootPath
-3=HWND hwnd
+3=DWORD dwFlags
 ParamCount=3
 @=SHEmptyRecycleBin
 [SHExtractIconsW]
-1=UINT flags
-2=UINT nIcons
-3=UINT* pIconId
-4=HICON* phIcon
-5=int cyIcon
-6=int cxIcon
-7=int nIconIndex
-8=LPCWSTR pszFileName
+1=LPCWSTR pszFileName
+2=int nIconIndex
+3=int cxIcon
+4=int cyIcon
+5=HICON* phIcon
+6=UINT* pIconId
+7=UINT nIcons
+8=UINT flags
 ParamCount=8
 @=SHExtractIconsW
 [SHFileOperation]
@@ -1044,15 +1044,15 @@ ParamCount=8
 ParamCount=1
 @=SHFileOperation
 [SHFindFiles]
-1=PCIDLIST_ABSOLUTE pidlSaveFile
-2=PCIDLIST_ABSOLUTE pidlFolder
+1=PCIDLIST_ABSOLUTE pidlFolder
+2=PCIDLIST_ABSOLUTE pidlSaveFile
 ParamCount=2
 @=SHFindFiles
 [SHFind_InitMenuPopup]
-1=UINT idCmdLast
-2=UINT idCmdFirst
-3=HWND hwnd
-4=HMENU hmenu
+1=HMENU hmenu
+2=HWND hwnd
+3=UINT idCmdFirst
+4=UINT idCmdLast
 ParamCount=4
 @=SHFind_InitMenuPopup
 [SHFlushClipboard]
@@ -1062,10 +1062,10 @@ ParamCount=0
 ParamCount=0
 @=SHFlushSFCache
 [SHFormatDrive]
-1=UINT options
-2=UINT fmtID
-3=UINT drive
-4=HWND hwnd
+1=HWND hwnd
+2=UINT drive
+3=UINT fmtID
+4=UINT options
 ParamCount=4
 @=SHFormatDrive
 [SHFree]
@@ -1073,18 +1073,18 @@ ParamCount=4
 ParamCount=1
 @=SHFree
 [SHGetAttributesFromDataObject]
-1=UINT* pcItems
-2=DWORD* pdwAttributes
-3=DWORD dwAttributeMask
-4=IDataObject* pdo
+1=IDataObject* pdo
+2=DWORD dwAttributeMask
+3=DWORD* pdwAttributes
+4=UINT* pcItems
 ParamCount=4
 @=SHGetAttributesFromDataObject
 [SHGetDataFromIDList]
-1=int cb
-2=PVOID pv
+1=IShellFolder* psf
+2=PCUITEMID_CHILD pidl
 3=DWORD nFormat
-4=PCUITEMID_CHILD pidl
-5=IShellFolder* psf
+4=PVOID pv
+5=int cb
 ParamCount=5
 @=SHGetDataFromIDList
 [SHGetDesktopFolder]
@@ -1092,81 +1092,81 @@ ParamCount=5
 ParamCount=1
 @=SHGetDesktopFolder
 [SHGetDiskFreeSpace]
-1=ULARGE_INTEGER* pqwFree
-2=ULARGE_INTEGER* pqwTot
-3=ULARGE_INTEGER* pqwFreeCaller
-4=LPCTSTR pszVolume
+1=LPCTSTR pszVolume
+2=ULARGE_INTEGER* pqwFreeCaller
+3=ULARGE_INTEGER* pqwTot
+4=ULARGE_INTEGER* pqwFree
 ParamCount=4
 @=SHGetDiskFreeSpace
 [SHGetDiskFreeSpaceEx]
-1=ULARGE_INTEGER* pqwFree
-2=ULARGE_INTEGER* pqwTot
-3=ULARGE_INTEGER* pqwFreeCaller
-4=LPCTSTR pszVolume
+1=LPCTSTR pszVolume
+2=ULARGE_INTEGER* pqwFreeCaller
+3=ULARGE_INTEGER* pqwTot
+4=ULARGE_INTEGER* pqwFree
 ParamCount=4
 @=SHGetDiskFreeSpaceEx
 [SHGetDriveMedia]
-1=DWORD* pdwMediaContent
-2=LPCWSTR pszDrive
+1=LPCWSTR pszDrive
+2=DWORD* pdwMediaContent
 ParamCount=2
 @=SHGetDriveMedia
 [SHGetFileInfo]
-1=UINT uFlags
-2=UINT cbFileInfo
+1=LPCTSTR szPath
+2=DWORD dwFileAttributes
 3=SHFILEINFO* pSFileInfo
-4=DWORD dwFileAttributes
-5=LPCTSTR szPath
+4=UINT cbFileInfo
+5=UINT uFlags
 ParamCount=5
 @=SHGetFileInfo
 [SHGetFolderLocation]
-1=PIDLIST_ABSOLUTE* ppidl
-2=DWORD dwReserved
+1=HWND hwndOwner
+2=DWORD nFolder
 3=HANDLE hToken
-4=DWORD nFolder
-5=HWND hwndOwner
+4=DWORD dwReserved
+5=PIDLIST_ABSOLUTE* ppidl
 ParamCount=5
 @=SHGetFolderLocation
 [SHGetFolderPath]
-1=LPTSTR pszPath
-2=DWORD dwFlags
+1=HWND hwndOwner
+2=int nFolder
 3=HANDLE hToken
-4=int nFolder
-5=HWND hwndOwner
+4=DWORD dwFlags
+5=LPTSTR pszPath
 ParamCount=5
 @=SHGetFolderPath
 [SHGetFolderPathA]
-1=LPTSTR lpBuffer
-2=DWORD dwReserved
+1=HWND hwndOwner
+2=int nFolder
 3=HANDLE hToken
-4=int nFolder
-5=HWND hwndOwner
+4=DWORD dwReserved
+5=LPTSTR lpBuffer
 ParamCount=5
 @=SHGetFolderPathA
 [SHGetFolderPathAndSubDir]
-1=LPTSTR pszPath
-2=LPCTSTR pszSubDir
-3=DWORD dwFlags
-4=HANDLE hToken
-5=DWORD csidl
-6=HWND hwnd
+1=HWND hwnd
+2=DWORD csidl
+3=HANDLE hToken
+4=DWORD dwFlags
+5=LPCTSTR pszSubDir
+6=LPTSTR pszPath
 ParamCount=6
 @=SHGetFolderPathAndSubDir
 [SHGetFolderPathW]
-1=LPTSTR lpBuffer
-2=DWORD dwReserved
+1=HWND hwndOwner
+2=int nFolder
 3=HANDLE hToken
-4=int nFolder
-5=HWND hwndOwner
+4=DWORD dwReserved
+5=LPTSTR lpBuffer
 ParamCount=5
 @=SHGetFolderPathW
 [SHGetIDListFromObject]
-1=PIDLIST_ABSOLUTE* ppidl
-2=IUnknown* punk
+1=IUnknown* punk
+2=PIDLIST_ABSOLUTE* ppidl
 ParamCount=2
 @=SHGetIDListFromObject
 [SHGetIconOverlayIndex]
-1=int iIconIndex
-2=LPCTSTR pszIconPath
+1=LPCTSTR pszIconPath
+2=int iIconIndex
 ParamCount=2
 @=SHGetIconOverlayIndex
 [SHGetInstanceExplorer]
@@ -1174,38 +1174,38 @@ ParamCount=2
 ParamCount=1
 @=SHGetInstanceExplorer
 [SHGetItemFromDataObject]
-1=void** ppv
-2=REFIID riid
-3=DATAOBJ_GET_ITEM_FLAGS dwFlags
-4=IDataObject* pdtobj
+1=IDataObject* pdtobj
+2=DATAOBJ_GET_ITEM_FLAGS dwFlags
+3=REFIID riid
+4=void** ppv
 ParamCount=4
 @=SHGetItemFromDataObject
 [SHGetItemFromObject]
-1=void** ppv
+1=IUnknown* punk
 2=REFIID riid
-3=IUnknown* punk
+3=void** ppv
 ParamCount=3
 @=SHGetItemFromObject
 [SHGetKnownFolderIDList]
-1=PIDLIST_ABSOLUTE* ppidl
-2=HANDLE hToken
-3=KNOWN_FOLDER_FLAG dwFlags
-4=REFKNOWNFOLDERID rfid
+1=REFKNOWNFOLDERID rfid
+2=KNOWN_FOLDER_FLAG dwFlags
+3=HANDLE hToken
+4=PIDLIST_ABSOLUTE* ppidl
 ParamCount=4
 @=SHGetKnownFolderIDList
 [SHGetKnownFolderItem]
-1=void** ppv
-2=REFIID riid
+1=REFKNOWNFOLDERID rfid
+2=KNOWN_FOLDER_FLAG dwFlags
 3=HANDLE hToken
-4=KNOWN_FOLDER_FLAG dwFlags
-5=REFKNOWNFOLDERID rfid
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=SHGetKnownFolderItem
 [SHGetKnownFolderPath]
-1=PWSTR* ppszPath
-2=HANDLE hToken
-3=DWORD dwFlags
-4=REFKNOWNFOLDERID rfid
+1=REFKNOWNFOLDERID rfid
+2=DWORD dwFlags
+3=HANDLE hToken
+4=PWSTR* ppszPath
 ParamCount=4
 @=SHGetKnownFolderPath
 [SHGetMalloc]
@@ -1213,113 +1213,113 @@ ParamCount=4
 ParamCount=1
 @=SHGetMalloc
 [SHGetNameFromIDList]
-1=PWSTR* ppszName
+1=PCIDLIST_ABSOLUTE pidl
 2=SIGDN sigdnName
-3=PCIDLIST_ABSOLUTE pidl
+3=PWSTR* ppszName
 ParamCount=3
 @=SHGetNameFromIDList
 [SHGetNameFromPropertyKey]
-1=PWSTR* ppszCanonicalName
-2=REFPROPERTYKEY propkey
+1=REFPROPERTYKEY propkey
+2=PWSTR* ppszCanonicalName
 ParamCount=2
 @=SHGetNameFromPropertyKey
 [SHGetNewLinkInfo]
-1=UINT uFlags
-2=BOOL* pfMustCopy
+1=LPCTSTR pszLinkTo
+2=LPCTSTR pszDir
 3=LPTSTR pszName
-4=LPCTSTR pszDir
-5=LPCTSTR pszLinkTo
+4=BOOL* pfMustCopy
+5=UINT uFlags
 ParamCount=5
 @=SHGetNewLinkInfo
 [SHGetPathFromIDList]
-1=LPTSTR pszPath
-2=PCIDLIST_ABSOLUTE pidl
+1=PCIDLIST_ABSOLUTE pidl
+2=LPTSTR pszPath
 ParamCount=2
 @=SHGetPathFromIDList
 [SHGetPathFromIDListEx]
-1=GPFIDL_FLAGS uOpts
-2=DWORD cchPath
-3=PWSTR pszPath
-4=PCIDLIST_ABSOLUTE pidl
+1=PCIDLIST_ABSOLUTE pidl
+2=PWSTR pszPath
+3=DWORD cchPath
+4=GPFIDL_FLAGS uOpts
 ParamCount=4
 @=SHGetPathFromIDListEx
 [SHGetPathFromIDListW]
-1=LPTSTR pszPath
-2=PCIDLIST_ABSOLUTE pidlTarget
+1=PCIDLIST_ABSOLUTE pidlTarget
+2=LPTSTR pszPath
 ParamCount=2
 @=SHGetPathFromIDListW
 [SHGetPropertyStoreFromIDList]
-1=void** ppv
-2=REFIID riid
-3=GETPROPERTYSTOREFLAGS flags
-4=PCIDLIST_ABSOLUTE pidl
+1=PCIDLIST_ABSOLUTE pidl
+2=GETPROPERTYSTOREFLAGS flags
+3=REFIID riid
+4=void** ppv
 ParamCount=4
 @=SHGetPropertyStoreFromIDList
 [SHGetPropertyStoreFromParsingName]
-1=void** ppv
-2=REFIID riid
+1=PCWSTR pszPath
+2=IBindCtx* pbc
 3=GETPROPERTYSTOREFLAGS flags
-4=IBindCtx* pbc
-5=PCWSTR pszPath
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=SHGetPropertyStoreFromParsingName
 [SHGetRealIDL]
-1=PITEMID_CHILD* ppidlReal
+1=IShellFolder* psf
 2=PCUITEMID_CHILD pidlSimple
-3=IShellFolder* psf
+3=PITEMID_CHILD* ppidlReal
 ParamCount=3
 @=SHGetRealIDL
 [SHGetSetFolderCustomSettings]
-1=DWORD dwReadWrite
+1=LPSHFOLDERCUSTOMSETTINGS pfcs
 2=LPCTSTR pszPath
-3=LPSHFOLDERCUSTOMSETTINGS pfcs
+3=DWORD dwReadWrite
 ParamCount=3
 @=SHGetSetFolderCustomSettings
 [SHGetSetSettings]
-1=BOOL bSet
+1=LPSHELLSTATE lpss
 2=DWORD dwMask
-3=LPSHELLSTATE lpss
+3=BOOL bSet
 ParamCount=3
 @=SHGetSetSettings
 [SHGetSettings]
-1=DWORD dwMask
-2=LPSHELLFLAGSTATE lpsfs
+1=LPSHELLFLAGSTATE lpsfs
+2=DWORD dwMask
 ParamCount=2
 @=SHGetSettings
 [SHGetShellStyleHInstance]
 ParamCount=0
 @=SHGetShellStyleHInstance
 [SHGetSpecialFolderLocation]
-1=PIDLIST_ABSOLUTE* pidl
+1=HWND hwndOwner
 2=DWORD nFolder
-3=HWND hwndOwner
+3=PIDLIST_ABSOLUTE* pidl
 ParamCount=3
 @=SHGetSpecialFolderLocation
 [SHGetSpecialFolderPath]
-1=BOOL fCreate
-2=DWORD csidl
-3=LPTSTR lpszPath
-4=HWND hwndOwner
+1=HWND hwndOwner
+2=LPTSTR lpszPath
+3=DWORD csidl
+4=BOOL fCreate
 ParamCount=4
 @=SHGetSpecialFolderPath
 [SHGetSpecialFolderPathA]
-1=BOOL fCreate
-2=DWORD csidl
-3=LPTSTR pszPath
-4=HWND hwnd
+1=HWND hwnd
+2=LPTSTR pszPath
+3=DWORD csidl
+4=BOOL fCreate
 ParamCount=4
 @=SHGetSpecialFolderPathA
 [SHGetSpecialFolderPathW]
-1=BOOL fCreate
-2=DWORD csidl
-3=LPTSTR pszPath
-4=HWND hwnd
+1=HWND hwnd
+2=LPTSTR pszPath
+3=DWORD csidl
+4=BOOL fCreate
 ParamCount=4
 @=SHGetSpecialFolderPathW
 [SHGetTemporaryPropertyForItem]
-1=PROPVARIANT* ppropvarInk
+1=IShellItem* psi
 2=REFPROPERTYKEY pk
-3=IShellItem* psi
+3=PROPVARIANT* ppropvarInk
 ParamCount=3
 @=SHGetTemporaryPropertyForItem
 [SHHandleUpdateImage]
@@ -1327,22 +1327,22 @@ ParamCount=3
 ParamCount=1
 @=SHHandleUpdateImage
 [SHILCreateFromPath]
-1=DWORD* rgflnOut
+1=LPCWSTR pszPath
 2=PIDLIST_ABSOLUTE* ppidl
-3=LPCWSTR pszPath
+3=DWORD* rgflnOut
 ParamCount=3
 @=SHILCreateFromPath
 [SHInvokePrinterCommand]
-1=BOOL fModal
-2=LPCTSTR lpBuf2
+1=HWND hwnd
+2=UINT uAction
 3=LPCTSTR lpBuf1
-4=UINT uAction
-5=HWND hwnd
+4=LPCTSTR lpBuf2
+5=BOOL fModal
 ParamCount=5
 @=SHInvokePrinterCommand
 [SHLimitInputEdit]
-1=IShellFolder* psf
-2=HWND hwndEdit
+1=HWND hwndEdit
+2=IShellFolder* psf
 ParamCount=2
 @=SHLimitInputEdit
 [SHLoadInProc]
@@ -1354,110 +1354,110 @@ ParamCount=1
 ParamCount=1
 @=SHLoadOLE
 [SHLocalStrDup]
-1=LPWSTR* ppsz
-2=LPCWSTR psz
+1=LPCWSTR psz
+2=LPWSTR* ppsz
 ParamCount=2
 @=SHLocalStrDup
 [SHMapIDListToImageListIndexAsync]
-1=int* piIndexSel
-2=int* piIndex
-3=void* pvHint
-4=void* pvData
+1=IShellTaskScheduler* pts
+2=IShellFolder* psf
+3=LPCITEMIDLIST pidl
+4=UINT flags
 5=PFNASYNCICONTASKBALLBACK pfn
-6=UINT flags
-7=LPCITEMIDLIST pidl
-8=IShellFolder* psf
-9=IShellTaskScheduler* pts
+6=void* pvData
+7=void* pvHint
+8=int* piIndex
+9=int* piIndexSel
 ParamCount=9
 @=SHMapIDListToImageListIndexAsync
 [SHMapPIDLToSystemImageListIndex]
-1=int* piIndex
+1=IShellFolder* psf
 2=PCUITEMID_CHILD pidl
-3=IShellFolder* psf
+3=int* piIndex
 ParamCount=3
 @=SHMapPIDLToSystemImageListIndex
 [SHMultiFileProperties]
-1=DWORD dwFlags
-2=IDataObject* pdtobj
+1=IDataObject* pdtobj
+2=DWORD dwFlags
 ParamCount=2
 @=SHMultiFileProperties
 [SHObjectProperties]
-1=PCWSTR pszPropertyPage
-2=PCWSTR pszObjectName
-3=DWORD shopObjectType
-4=HWND hwnd
+1=HWND hwnd
+2=DWORD shopObjectType
+3=PCWSTR pszObjectName
+4=PCWSTR pszPropertyPage
 ParamCount=4
 @=SHObjectProperties
 [SHOpenFolderAndSelectItems]
-1=DWORD dwFlags
-2=PCUITEMID_CHILD_ARRAY* apidl
-3=UINT cidl
-4=PCIDLIST_ABSOLUTE pidlFolder
+1=PCIDLIST_ABSOLUTE pidlFolder
+2=UINT cidl
+3=PCUITEMID_CHILD_ARRAY* apidl
+4=DWORD dwFlags
 ParamCount=4
 @=SHOpenFolderAndSelectItems
 [SHOpenPropSheetW]
-1=LPCWSTR pStartPage
-2=IShellBrowser* psb
-3=IDataObject* pdtobj
-4=const CLSID* pclsidDef
-5=UINT ckeys
-6=LPCWSTR pszCaption
+1=LPCWSTR pszCaption
+2=UINT ckeys
+3=const CLSID* pclsidDef
+4=IDataObject* pdtobj
+5=IShellBrowser* psb
+6=LPCWSTR pStartPage
 ParamCount=6
 @=SHOpenPropSheetW
 [SHOpenWithDialog]
-1=const OPENASINFO* poainfo
-2=HWND hwndParent
+1=HWND hwndParent
+2=const OPENASINFO* poainfo
 ParamCount=2
 @=SHOpenWithDialog
 [SHParseDisplayName]
-1=SFGAOF* psfgaoOut
-2=SFGAOF sfgaoIn
+1=LPCWSTR pszName
+2=IBindCtx* pbc
 3=PIDLIST_ABSOLUTE* ppidl
-4=IBindCtx* pbc
-5=LPCWSTR pszName
+4=SFGAOF sfgaoIn
+5=SFGAOF* psfgaoOut
 ParamCount=5
 @=SHParseDisplayName
 [SHPathPrepareForWrite]
-1=DWORD dwFlags
-2=LPCTSTR pszPath
-3=IUnknown* punkEnableModless
-4=HWND hwnd
+1=HWND hwnd
+2=IUnknown* punkEnableModless
+3=LPCTSTR pszPath
+4=DWORD dwFlags
 ParamCount=4
 @=SHPathPrepareForWrite
 [SHPropStgCreate]
-1=UINT* puCodePage
-2=IPropertyStorage** ppstg
-3=DWORD dwDisposition
-4=DWORD grfMode
-5=DWORD grfFlags
-6=const CLSID* pclsid
-7=REFFMTID fmtid
-8=IPropertySetStorage* psstg
+1=IPropertySetStorage* psstg
+2=REFFMTID fmtid
+3=const CLSID* pclsid
+4=DWORD grfFlags
+5=DWORD grfMode
+6=DWORD dwDisposition
+7=IPropertyStorage** ppstg
+8=UINT* puCodePage
 ParamCount=8
 @=SHPropStgCreate
 [SHPropStgReadMultiple]
-1=ULONG cpspec
+1=IPropertyStorage* pps
 2=UINT uCodePage
-3=IPropertyStorage* pps
+3=ULONG cpspec
 ParamCount=3
 @=SHPropStgReadMultiple
 [SHPropStgWriteMultiple]
-1=PROPID propidNameFirst
-2=ULONG cpspec
-3=UINT* uCodePage
-4=IPropertyStorage* pps
+1=IPropertyStorage* pps
+2=UINT* uCodePage
+3=ULONG cpspec
+4=PROPID propidNameFirst
 ParamCount=4
 @=SHPropStgWriteMultiple
 [SHQueryRecycleBin]
-1=LPSHQUERYRBINFO pSHQueryRBInfo
-2=LPCTSTR pszRootPath
+1=LPCTSTR pszRootPath
+2=LPSHQUERYRBINFO pSHQueryRBInfo
 ParamCount=2
 @=SHQueryRecycleBin
 [SHReplaceFromPropSheetExtArray]
-1=LPARAM lParam
-2=LPFNADDPROPSHEETPAGE lpfnReplaceWith
-3=UINT uPageID
-4=HPSXA hpsxa
+1=HPSXA hpsxa
+2=UINT uPageID
+3=LPFNADDPROPSHEETPAGE lpfnReplaceWith
+4=LPARAM lParam
 ParamCount=4
 @=SHReplaceFromPropSheetExtArray
 [SHResolveLibrary]
@@ -1469,22 +1469,22 @@ ParamCount=1
 ParamCount=1
 @=SHRestricted
 [SHRunControlPanel]
-1=HWND hwndMsgParent
-2=LPCWSTR lpcszCmdLine
+1=LPCWSTR lpcszCmdLine
+2=HWND hwndMsgParent
 ParamCount=2
 @=SHRunControlPanel
 [SHSetDefaultProperties]
-1=IFileOperationProgressSink* pfops
-2=DWORD dwFileOpFlags
-3=IShellItem* psi
-4=HWND hwnd
+1=HWND hwnd
+2=IShellItem* psi
+3=DWORD dwFileOpFlags
+4=IFileOperationProgressSink* pfops
 ParamCount=4
 @=SHSetDefaultProperties
 [SHSetFolderPath]
-1=LPCTSTR pszPath
-2=DWORD dwFlags
-3=HANDLE hToken
-4=DWORD csidl
+1=DWORD csidl
+2=HANDLE hToken
+3=DWORD dwFlags
+4=LPCTSTR pszPath
 ParamCount=4
 @=SHSetFolderPath
 [SHSetInstanceExplorer]
@@ -1492,30 +1492,30 @@ ParamCount=4
 ParamCount=1
 @=SHSetInstanceExplorer
 [SHSetKnownFolderPath]
-1=PCWSTR pszPath
-2=HANDLE hToken
-3=DWORD dwFlags
-4=REFKNOWNFOLDERID rfid
+1=REFKNOWNFOLDERID rfid
+2=DWORD dwFlags
+3=HANDLE hToken
+4=PCWSTR pszPath
 ParamCount=4
 @=SHSetKnownFolderPath
 [SHSetTemporaryPropertyForItem]
-1=REFPROPVARIANT propvar
+1=IShellItem* psi
 2=REFPROPERTYKEY propkey
-3=IShellItem* psi
+3=REFPROPVARIANT propvar
 ParamCount=3
 @=SHSetTemporaryPropertyForItem
 [SHShellFolderView_Message]
-1=LPARAM lparam
+1=HWND hwnd
 2=UINT uMsg
-3=HWND hwnd
+3=LPARAM lparam
 ParamCount=3
 @=SHShellFolderView_Message
 [SHShowManageLibraryUI]
-1=LIBRARYMANAGEDIALOGOPTIONS lmdOptions
-2=LPCWSTR pszInstruction
+1=IShellItem* psiLibrary
+2=HWND hwndOwner
 3=LPCWSTR pszTitle
-4=HWND hwndOwner
-5=IShellItem* psiLibrary
+4=LPCWSTR pszInstruction
+5=LIBRARYMANAGEDIALOGOPTIONS lmdOptions
 ParamCount=5
 @=SHShowManageLibraryUI
 [SHSimpleIDListFromPath]
@@ -1523,9 +1523,9 @@ ParamCount=5
 ParamCount=1
 @=SHSimpleIDListFromPath
 [SHStartNetConnectionDialogW]
-1=DWORD dwType
+1=HWND hwnd
 2=LPCWSTR pszRemoteName
-3=HWND hwnd
+3=DWORD dwType
 ParamCount=3
 @=SHStartNetConnectionDialogW
 [SHUnlockShared]
@@ -1533,16 +1533,16 @@ ParamCount=3
 ParamCount=1
 @=SHUnlockShared
 [SHUpdateImage]
-1=int iImageIndex
-2=UINT uFlags
-3=int iIndex
-4=LPCTSTR pszHashItem
+1=LPCTSTR pszHashItem
+2=int iIndex
+3=UINT uFlags
+4=int iImageIndex
 ParamCount=4
 @=SHUpdateImage
 [SHValidateUNC]
-1=UINT fConnect
+1=HWND hwndOwner
 2=LPWSTR pszFile
-3=HWND hwndOwner
+3=UINT fConnect
 ParamCount=3
 @=SHValidateUNC
 [SetCurrentProcessExplicitAppUserModelID]
@@ -1550,19 +1550,19 @@ ParamCount=3
 ParamCount=1
 @=SetCurrentProcessExplicitAppUserModelID
 [ShellAbout]
-1=HICON hIcon
-2=LPCTSTR szOtherStuff
-3=LPCTSTR szApp
-4=HWND hWnd
+1=HWND hWnd
+2=LPCTSTR szApp
+3=LPCTSTR szOtherStuff
+4=HICON hIcon
 ParamCount=4
 @=ShellAbout
 [ShellExecute]
-1=INT nShowCmd
-2=LPCTSTR lpDirectory
-3=LPCTSTR lpParameters
-4=LPCTSTR lpFile
-5=LPCTSTR lpOperation
-6=HWND hwnd
+1=HWND hwnd
+2=LPCTSTR lpOperation
+3=LPCTSTR lpFile
+4=LPCTSTR lpParameters
+5=LPCTSTR lpDirectory
+6=INT nShowCmd
 ParamCount=6
 @=ShellExecute
 [ShellExecuteEx]
@@ -1570,28 +1570,28 @@ ParamCount=6
 ParamCount=1
 @=ShellExecuteEx
 [Shell_GetCachedImageIndex]
-1=UINT uIconFlags
+1=LPCWSTR pwszIconPath
 2=int iIconIndex
-3=LPCWSTR pwszIconPath
+3=UINT uIconFlags
 ParamCount=3
 @=Shell_GetCachedImageIndex
 [Shell_GetImageLists]
-1=HIMAGELIST* phimlSmall
-2=HIMAGELIST* phiml
+1=HIMAGELIST* phiml
+2=HIMAGELIST* phimlSmall
 ParamCount=2
 @=Shell_GetImageLists
 [Shell_MergeMenus]
-1=ULONG uFlags
-2=UINT uIDAdjustMax
-3=UINT uIDAdjust
-4=UINT uInsert
-5=HMENU hmSrc
-6=HMENU hmDst
+1=HMENU hmDst
+2=HMENU hmSrc
+3=UINT uInsert
+4=UINT uIDAdjust
+5=UINT uIDAdjustMax
+6=ULONG uFlags
 ParamCount=6
 @=Shell_MergeMenus
 [Shell_NotifyIcon]
-1=PNOTIFYICONDATA pnid
-2=DWORD dwMessage
+1=DWORD dwMessage
+2=PNOTIFYICONDATA pnid
 ParamCount=2
 @=Shell_NotifyIcon
 [SignalFileOpen]
@@ -1599,21 +1599,21 @@ ParamCount=2
 ParamCount=1
 @=SignalFileOpen
 [StgMakeUniqueName]
-1=void** ppv
-2=REFIID riid
+1=IStorage* pstgParent
+2=PCWSTR pszFileSpec
 3=DWORD grfMode
-4=PCWSTR pszFileSpec
-5=IStorage* pstgParent
+4=REFIID riid
+5=void** ppv
 ParamCount=5
 @=StgMakeUniqueName
 [WOWShellExecute]
-1=void* lpfnCBWinExec
-2=INT nShowCmd
-3=LPCTSTR lpDirectory
+1=HWND hwnd
+2=LPCTSTR lpOperation
+3=LPCTSTR lpFile
 4=LPCTSTR lpParameters
-5=LPCTSTR lpFile
-6=LPCTSTR lpOperation
-7=HWND hwnd
+5=LPCTSTR lpDirectory
+6=INT nShowCmd
+7=void* lpfnCBWinExec
 ParamCount=7
 @=WOWShellExecute
 [Win32DeleteFile]

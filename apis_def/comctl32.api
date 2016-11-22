@@ -776,25 +776,25 @@ ParamCount=4
 ParamCount=4
 @=ImageList_CoCreateInstance
 [ImageList_LoadImage]
-1=DWORD uFlags
-2=DWORD uType
-3=COLORREF crMask
+1=HINSTANCE hInstance
+2=LPCTSTR lpStrbmp
+3=int cx
 4=int cGrow
-5=int cx
-6=LPCTSTR lpStrbmp
-7=HINSTANCE hInstance
+5=COLORREF crMask
+6=DWORD uType
+7=DWORD uFlags
 ParamCount=7
 @=ImageList_LoadImage
 [ImageList_SetColorTable]
-1=RGBQUAD* prgb
-2=int len
-3=int start
-4=HIMAGELIST himl
+1=HIMAGELIST himl
+2=int start
+3=int len
+4=RGBQUAD* prgb
 ParamCount=4
 @=ImageList_SetColorTable
 [MirrorIcon]
-1=HICON* phIconLarge
-2=HICON* phIconSmall
+1=HICON* phIconSmall
+2=HICON* phIconLarge
 ParamCount=2
 @=MirrorIcon
 [PropertySheet]
@@ -802,14 +802,14 @@ ParamCount=2
 ParamCount=1
 @=PropertySheet
 [Str_GetPtr]
-1=int cchDest
+1=LPCTSTR pszSource
 2=LPCSTR pszDest
-3=LPCTSTR pszSource
+3=int cchDest
 ParamCount=3
 @=Str_GetPtr
 [Str_SetPtr]
-1=LPCTSTR pszNew
-2=LPTSTR* ppszCurrent
+1=LPTSTR* ppszCurrent
+2=LPCTSTR pszNew
 ParamCount=2
 @=Str_SetPtr
 [TrackMouseEvent]

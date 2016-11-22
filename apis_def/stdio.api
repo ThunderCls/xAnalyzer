@@ -2,45 +2,45 @@
 ParamCount=0
 @=constchar *
 [scanf]
-1=... char *
+1=char * format
 ParamCount=1
 @=scanf
 [strchr]
-1=char char
+1=char *
 ParamCount=1
 @=strchr
 [memcpy]
-1=size_t constvoid
-2=* void
+1=void *
+2=constvoid *
 ParamCount=2
 @= memcpy
 [size_t]
-1=constvoid *
-2=constvoid *
+1=* memcmp
+2=* constvoid
 ParamCount=2
 @=size_t
 [memset]
-1=size_t int
-2=void *
+1=void *
+2=size_t int
 ParamCount=2
 @= memset
 [_strset]
-1=int char
+1=char *
 ParamCount=1
 @= _strset
 [strcpy]
-1=constchar *
-2=char *
+1=char *
+2=constchar *
 ParamCount=2
 @= strcpy
 [strcat]
-1=constchar *
-2=char *
+1=char *
+2=constchar *
 ParamCount=2
 @= strcat
 [constchar]
-1=* constchar
-2=* strcmp
+1=* strcmp
+2=* constchar
 ParamCount=2
 @=constchar
 [strlen]
@@ -52,7 +52,7 @@ ParamCount=1
 ParamCount=1
 @=chdir
 [getcwd]
-1=int char
+1=char *
 ParamCount=1
 @=getcwd
 [mkdir]
@@ -64,47 +64,47 @@ ParamCount=1
 ParamCount=1
 @=rmdir
 [fullpath]
-1=size_t constchar
-2=* char
+1=char *
+2=constchar *
 ParamCount=2
 @=fullpath
 [splitpath]
-1=char *
+1=constchar *
 2=char *
 3=char *
 4=char *
-5=constchar *
+5=char *
 ParamCount=5
 @=splitpath
 [makepath]
-1=constchar *
+1=char *
 2=constchar *
 3=constchar *
 4=constchar *
-5=char *
+5=constchar *
 ParamCount=5
 @=makepath
 [findfirst]
-1=struct_finddata_t *
-2=constchar *
+1=constchar *
+2=struct_finddata_t *
 ParamCount=2
 @=findfirst
 [findnext]
-1=struct_finddata_t *
+1=* long
 ParamCount=1
 @=findnext
 [findclose]
 ParamCount=0
 @=findclose
 [memccpy]
-1=unsignedint int
+1=void *
 2=constvoid *
-3=void *
+3=unsignedint int
 ParamCount=3
 @=memccpy
 [memicmp]
-1=unsignedint constvoid
-2=* constvoid
+1=constvoid *
+2=constvoid *
 ParamCount=2
 @=memicmp
 [strcmpi]
@@ -126,13 +126,13 @@ ParamCount=1
 ParamCount=1
 @=strlwr
 [strnicmp]
-1=size_t constchar
-2=* constchar
+1=constchar *
+2=constchar *
 ParamCount=2
 @=strnicmp
 [strnset]
-1=size_t int
-2=char *
+1=char *
+2=size_t int
 ParamCount=2
 @=strnset
 [strrev]
@@ -140,7 +140,7 @@ ParamCount=2
 ParamCount=1
 @=strrev
 [strset]
-1=int char
+1=char *
 ParamCount=1
 @=strset
 [strupr]
@@ -158,13 +158,13 @@ ParamCount=2
 ParamCount=2
 @=stricoll
 [strncoll]
-1=size_t constchar
-2=* constchar
+1=constchar *
+2=constchar *
 ParamCount=2
 @=strncoll
 [strnicoll]
-1=size_t constchar
-2=* constchar
+1=constchar *
+2=constchar *
 ParamCount=2
 @=strnicoll
 [strcspn]
@@ -188,18 +188,18 @@ ParamCount=0
 ParamCount=1
 @= _strlwr
 [strncat]
-1=size_t constchar
-2=* char
+1=char *
+2=constchar *
 ParamCount=2
 @= strncat
 [strncpy]
-1=size_t constchar
-2=* char
+1=char *
+2=constchar *
 ParamCount=2
 @= strncpy
 [_strnset]
-1=size_t int
-2=char *
+1=char *
+2=size_t int
 ParamCount=2
 @= _strnset
 [strpbrk]
@@ -208,7 +208,7 @@ ParamCount=2
 ParamCount=2
 @= strpbrk
 [strrchr]
-1=int constchar
+1=constchar *
 ParamCount=1
 @= strrchr
 [_strrev]
@@ -226,8 +226,8 @@ ParamCount=2
 ParamCount=2
 @= strstr
 [strtok]
-1=constchar *
-2=char *
+1=char *
+2=constchar *
 ParamCount=2
 @= strtok
 [_strupr]
@@ -235,7 +235,7 @@ ParamCount=2
 ParamCount=1
 @= _strupr
 [strxfrm]
-1=size_t constchar
-2=* char
+1=char *
+2=constchar *
 ParamCount=2
 @= strxfrm 
