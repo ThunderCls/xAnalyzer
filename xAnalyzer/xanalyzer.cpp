@@ -80,7 +80,7 @@ void GenAPIInfo()
 	char szAPIComment[MAX_COMMENT_SIZE] = "";
 	char szMainModule[MAX_MODULE_SIZE] = "";
 	char szDisasmText[GUI_MAX_DISASSEMBLY_SIZE] = "";
-	char szAPIDefinition[MAX_PATH] = "";
+	char szAPIDefinition[MAX_COMMENT_SIZE] = "";
 
 	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
