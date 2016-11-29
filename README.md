@@ -1,19 +1,19 @@
 # xAnalyzer
 xAnalyzer plugin for x64dbg
 
-xAnalyzer v1 plugin by ThunderCls - 2016
-
+Coded by ThunderCls - 2016
 Blog: http://reversec0de.wordpress.com
 
 
-xAnalyzer is a plugin for the x86/x64 x64dbg debugger by @mrexodia. This plugin is based on the code by @mrfearless APIInfo-Plugin-x86 (https://github.com/mrfearless/APIInfo-Plugin-x86) although some improvements and additions have been made. xAnalyzer is capable of calling internal commands of x64dbg to make all kind of analysis and also integrates one of his own. This plugin is going to make an extensive function calls analysis to add complementary information, something close at what you get with OllyDbg.
+xAnalyzer is a plugin for the x86/x64 x64dbg debugger by @mrexodia. This plugin is based on the code by @mrfearless APIInfo-Plugin-x86 although some improvements and additions have been made. xAnalyzer is capable of calling internal commands of x64dbg to make various types of analysis and also integrates its own algorithms. This plugin is going to make extensive API functions call detections to add functions definitions, arguments and data types as well as any other complementary information, something close at what you get with OllyDbg.
 
 Some of the functions and improvements are:
-- Extended WINAPI calls analysis with arguments added
-- Analysis of indirect calls
-- Analysis of nested calls
+- Extended Functions/WINAPI calls analysis with added arguments, data types and additional debugging info
+- Automatic Loops detection
+- Detection of defined/undefined function calls and "smart or generic arguments" addition
+- User maintained definition files
 
-Once the debugged application is loaded and reaches the Entrypoint, xAnalyzer is going to launch a mix of different analysis over the static code to make it even more comprehensible to the user just before starting the debuggin task.
+Once the debugged application is loaded and has reached the Entrypoint, xAnalyzer is going to launch a mix of different analysis algorithms over the static code to make it even more comprehensible to the user just before starting the debuggin task.
 
 Plugin based on: APIInfo-Plugin-x86 (https://github.com/mrfearless/APIInfo-Plugin-x86)
 Special thanks to @mrfearless and @tr4ceflow for releasing the API definition files.
