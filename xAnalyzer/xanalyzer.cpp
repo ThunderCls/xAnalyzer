@@ -11,12 +11,15 @@ using namespace Script;
 
 // ------------------------------------------------------------------------------------
 
+bool IsPrologCall = false; // control undefined calls on function prologues
+duint addressFunctionStart = 0;
 char szCurrentDirectory[MAX_PATH];
 char szAPIFunction[MAX_PATH];
 char szApiFile[MAX_PATH];
 char szAPIFunctionParameter[MAX_COMMENT_SIZE];
-stack <INSTRUCTIONSTACK*> IS;
 char *vc = "msvcrt\0";
+stack <INSTRUCTIONSTACK*> IS;
+stack <LOOPSTACK*> LS;
 
 // ------------------------------------------------------------------------------------
 void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
@@ -49,13 +52,12 @@ void DoExtendedAnalysis()
 	DbgCmdExecDirect("cfanal");
 	DbgCmdExecDirect("exanal");
 	DbgCmdExecDirect("analx");
-	//DbgCmdExecDirect("analadv"); // "analadv" command launch an axception when executing outside main module code in x86
 	DbgCmdExecDirect("anal");
 
 	GuiAddStatusBarMessage("[xAnalyzer]: initial analysis completed!\r\n");
 	GuiAddStatusBarMessage("[xAnalyzer]: doing extended analysis...\r\n");
 
-	GenAPIInfo(); // call my own function to get extended analysis
+	ExtraAnalysis(); // call my own function to get extended analysis
 
 	GuiAddStatusBarMessage("[xAnalyzer]: extended analysis completed!\r\n");
 	GuiAddLogMessage("[xAnalyzer]: analysis completed!\r\n");
@@ -64,7 +66,7 @@ void DoExtendedAnalysis()
 // ------------------------------------------------------------------------------------
 // GenAPIInfo Main Procedure
 // ------------------------------------------------------------------------------------
-void GenAPIInfo()
+void ExtraAnalysis()
 {
 	duint CurrentAddress;
 	duint CallDestination;
@@ -80,7 +82,8 @@ void GenAPIInfo()
 	char szAPIComment[MAX_COMMENT_SIZE] = "";
 	char szMainModule[MAX_MODULE_SIZE] = "";
 	char szDisasmText[GUI_MAX_DISASSEMBLY_SIZE] = "";
-	char szAPIDefinition[MAX_PATH] = "";
+	char szJmpDisasmText[GUI_MAX_DISASSEMBLY_SIZE] = "";
+	char szAPIDefinition[MAX_COMMENT_SIZE] = "";
 
 	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
@@ -88,6 +91,7 @@ void GenAPIInfo()
 	DbgGetEntryExitPoints(&dwEntry, &dwExit);
 	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
 	Argument::DeleteRange(dwEntry, dwExit, true); // clear all arguments
+	DbgCmdExecDirect("loopclear"); // clear all prev loops
 	GuiUpdateDisassemblyView();
 
 	// get main module name for arguments struct
@@ -98,16 +102,21 @@ void GenAPIInfo()
 	while (CurrentAddress < dwExit)
 	{
 		INSTRUCTIONSTACK *inst = new INSTRUCTIONSTACK;
-		
+		inst->Address = CurrentAddress; // save address of instruction
+
 		DbgDisasmFastAt(CurrentAddress, &bii);
 		if (bii.call == 1 && bii.branch == 1) //  we have call statement
 		{
+			CallDestination = bii.addr;
+			DbgDisasmFastAt(CallDestination, &cbii);
 			GuiGetDisassembly(CurrentAddress, szDisasmText);
-			inst->Address = CurrentAddress;
-			if (Strip_x64dbg_calls(szDisasmText, szAPIFunction))
+			GuiGetDisassembly(bii.addr, szJmpDisasmText); // Detect function name on call scheme: CALL -> JMP -> JMP -> API
+
+			// save data for the argument
+			ai.manual = true;
+			ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last		
+			if (Strip_x64dbg_calls(szDisasmText, szAPIFunction) || (cbii.branch == 1 && Strip_x64dbg_calls(szJmpDisasmText, szAPIFunction)))
 			{
-				CallDestination = bii.addr;
-				DbgDisasmFastAt(CallDestination, &cbii);
 				if (cbii.branch == 1) // direct call/jump => api
 				{
 					JmpDestination = DbgGetBranchDestination(CallDestination);
@@ -121,7 +130,7 @@ void GenAPIInfo()
 						strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
 
 					bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0); // if it's main module search recursive
-					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive)) 
+					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive))
 					{
 						if (!recursive) // if it's the same module don't use "module:function"
 						{
@@ -132,38 +141,24 @@ void GenAPIInfo()
 						else
 							strcpy_s(szAPIComment, szAPIFunction);
 
-						SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
+						if (SetSubParams(&ai)) // when no definition use generic arguments
+							SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
 					}
 					else
-						SetAutoCommentIfCommentIsEmpty(inst, szAPIDefinition, _countof(szAPIDefinition), true);
-
-					// save data for the argument
-					ai.manual = true;
-					ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
-
-					SetFunctionParams(&ai, szAPIModuleNameSearch);
+					{
+						if (SetFunctionParams(&ai, szAPIModuleNameSearch)) // set arguments for defined function
+							SetAutoCommentIfCommentIsEmpty(inst, szAPIDefinition, _countof(szAPIDefinition), true);
+					}
 				}
 				else
 				{
-					DbgGetLabelAt(CurrentAddress, SEG_DEFAULT, szAPIFunction);
-					// skip arguments for internal functions calls
-					inst->Address = CurrentAddress;
-					// set the argument values
-					ai.manual = true;
-
+					DbgGetLabelAt(CurrentAddress, SEG_DEFAULT, szAPIFunction); // get label if any as function name
 					if (strncmp(szAPIFunction, "sub_", 4) == 0) // internal function call or sub
 					{
 						// internal subs
 						// ---------------------------------------------------------------------
-						// set the argument values
-						duint arg_rva = CurrentAddress - Module::BaseFromAddr(CurrentAddress);
-						ai.rvaEnd = arg_rva;
-						ai.instructioncount = 1;
-						ai.rvaStart = arg_rva;
-						Argument::Add(&ai);
-
-						SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
-						ClearStack(IS); // Clear stack after internal functions calls (subs)
+						if(SetSubParams(&ai))
+							SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 					}
 					else 
 					{
@@ -182,31 +177,29 @@ void GenAPIInfo()
 								strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
 
 							bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0);
-							SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive); // get the correct file definition file
-							
-							// save data for the argument
-							ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
+							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive)) // just to get the correct definition file .api
+							{
+								if(SetFunctionParams(&ai, szAPIModuleNameSearch))
+									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+							}
+							else
+							{
+								if(SetSubParams(&ai))
+									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+							}
 
-							SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
-							SetFunctionParams(&ai, szAPIModuleNameSearch);
 						}
 						else if (*szAPIFunction) // in case it couldnt get the value try looking recursive
 						{
-							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, true)) // try to get the correct file definition file
+							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, true)) // just to get the correct definition file .api
 							{
-								// save data for the argument
-								ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last
-
-								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
-								SetFunctionParams(&ai, szAPIModuleNameSearch);
+								if(SetFunctionParams(&ai, szAPIModuleNameSearch))
+									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							}
-							else  // in case of direct call with no definition just set the comment on it
+							else  // in case of direct call with no definition just set the comment on it and set saved arguments
 							{
-								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
-								ai.instructioncount = 1;
-								ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress);
-								ai.rvaStart = ai.rvaEnd;
-								Argument::Add(&ai);
+								if(SetSubParams(&ai))
+									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							}
 						}
 					}
@@ -219,18 +212,34 @@ void GenAPIInfo()
 			{
 				if (IS.size() < INSTRUCTIONSTACK_MAXSIZE) // save instruction into stack
 				{
-					inst->Address = CurrentAddress; // save address of argument instruction
 					strcpy_s(inst->Instruction, bii.instruction); // save instruction string
 					GetDestRegister(bii.instruction, inst->destRegister); // save destination registry
 					IS.push(inst); // save instruction
 				}
+				else
+					ClearStack(IS);
 			}
-			else if (IsProlog(&bii) || IsEpilog(&bii)) // reset instruction stack for the next call
+			else if (IsProlog(&bii, CurrentAddress) || IsEpilog(&bii)) // reset instruction stack for the next call
 				ClearStack(IS); 
 		}
 		else if (bii.call != 1 && bii.branch == 1) // if this is a jump then clear stack
 		{
 			ClearStack(IS);
+			IsPrologCall = false; // no jumps in prolog so we're ok
+			IsLoopJump(&bii, CurrentAddress); // check if jump is a loop
+		}
+
+		// save function prolog address as a reference for loops detection
+		if (IsProlog(&bii, CurrentAddress))
+		{
+			addressFunctionStart = CurrentAddress;
+			IsPrologCall = true;
+		}
+		if (IsEpilog(&bii)) // if end of function set function start to zero
+		{
+			addressFunctionStart = 0;
+			SetFunctionLoops();
+			ClearLoopStack(LS);
 		}
 
 		CurrentAddress += bii.size;
@@ -276,9 +285,9 @@ void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit)
 }
 
 // ------------------------------------------------------------------------------------
-// Set (push) params for the current call
+// Set params for the current call
 // ------------------------------------------------------------------------------------
-void SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
+bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 {
 	duint CurrentParam;
 	duint ParamCount;
@@ -292,11 +301,11 @@ void SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 			ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
 
 			// create the arguments list
-			vector <INSTRUCTIONSTACK> arguments(IS.size());
+			vector <INSTRUCTIONSTACK*> argum(IS.size());
 			CurrentParam = 0;
 			while (!IS.empty())
 			{ 
-				arguments[CurrentParam] = *IS.top(); // get last/first element
+				argum[CurrentParam] = IS.top(); // get last/first element
 				IS.pop(); // remove element on top
 
 				CurrentParam++;
@@ -304,29 +313,128 @@ void SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 
 			CurrentParam = 1;
 			duint LowerMemoryRVAAddress = 0;
-			ai->rvaStart = arguments[0].Address - Module::BaseFromAddr(arguments[0].Address); // first argument line
+			ai->rvaStart = argum[0]->Address - Module::BaseFromAddr(argum[0]->Address); // first argument line
 			while (CurrentParam <= ParamCount)
 			{
-				GetArgument(CurrentParam, arguments, inst); // get arguments in order. 64 bits may have different argument order				
-				LowerMemoryRVAAddress = inst.Address - Module::BaseFromAddr(inst.Address);
-				if (LowerMemoryRVAAddress < ai->rvaStart)
-					ai->rvaStart = LowerMemoryRVAAddress;					
+				GetArgument(CurrentParam, argum, inst); // get arguments in order. 64 bits may have different argument order
+				if (inst.Address > 0)
+				{
+					LowerMemoryRVAAddress = inst.Address - Module::BaseFromAddr(inst.Address);
+					if (LowerMemoryRVAAddress < ai->rvaStart)
+						ai->rvaStart = LowerMemoryRVAAddress;
 
-				if (GetFunctionParam(szAPIModuleName, szAPIFunction, CurrentParam, szAPIFunctionParameter))
-					SetAutoCommentIfCommentIsEmpty(&inst, szAPIFunctionParameter, _countof(szAPIFunctionParameter), false);
+					if (GetFunctionParam(szAPIModuleName, szAPIFunction, CurrentParam, szAPIFunctionParameter))
+						SetAutoCommentIfCommentIsEmpty(&inst, szAPIFunctionParameter, _countof(szAPIFunctionParameter), false);
+				}
 
+				ZeroMemory(&inst, sizeof(INSTRUCTIONSTACK));
 				CurrentParam++;
 			}
 
 			Argument::Add(ai); // set arguments of current call
+
+			if (IsPrologCall)
+				IsPrologCall = false;
+			else
+			{
+				// put back to the stack the instructions not used
+				duint startbak = 0; // if x64 
+				duint endbak = 0;
+#ifndef _WIN64
+				startbak = argum.size() - 1; // if x86 save back only the unused instructions
+				endbak = ParamCount - 1;
+#endif // !_WIN64
+				for (duint i = startbak; i > endbak; i--)
+					IS.push(argum[i]);
+				argum.clear();
+			}
+
+			return true;
 		}
 	}
-	else if (ParamCount == 0) // add 1 param bracket when no arguments
+
+	if (IsPrologCall)
 	{
-		ai->instructioncount = 1;
-		ai->rvaStart = ai->rvaEnd;
-		Argument::Add(ai);
+		ClearStack(IS);
+		IsPrologCall = false;
 	}
+
+	return false;
+}
+
+// ------------------------------------------------------------------------------------
+// Set params for the current call (sub)
+// ------------------------------------------------------------------------------------
+bool SetSubParams(Argument::ArgumentInfo *ai)
+{
+	duint ParamCount = 0;
+	INSTRUCTIONSTACK inst;
+
+	if (!IsPrologCall && !IS.empty())
+	{
+		// create the arguments list
+		vector <INSTRUCTIONSTACK*> argum(IS.size());
+		while (!IS.empty())
+		{
+			argum[ParamCount] = IS.top(); // get last/first element
+			IS.pop(); // remove element on top
+
+			ParamCount++;
+		}
+
+#ifdef _WIN64
+		// In x64 can't be defined the amount of arguments of an unknown function or sub
+		// so only four main arguments (RCX, RDX, R8, R9) will be displayed if there are more in stack
+		if (ParamCount > 4)
+			ParamCount = 4;
+#endif // _WIN64
+
+		duint CurrentParam = 1;
+		duint LowerMemoryRVAAddress = 0;
+
+		ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
+		ai->rvaStart = argum[0]->Address - Module::BaseFromAddr(argum[0]->Address); // first argument line
+
+		while (CurrentParam <= ParamCount)
+		{
+			GetArgument(CurrentParam, argum, inst); // get arguments in order. 64 bits may have different argument order				
+			if (inst.Address > 0)
+			{
+				LowerMemoryRVAAddress = inst.Address - Module::BaseFromAddr(inst.Address);
+				if (LowerMemoryRVAAddress < ai->rvaStart)
+					ai->rvaStart = LowerMemoryRVAAddress;
+
+				sprintf_s(szAPIFunctionParameter, _countof(szAPIFunctionParameter), "Arg%d", CurrentParam);
+				SetAutoCommentIfCommentIsEmpty(&inst, szAPIFunctionParameter, _countof(szAPIFunctionParameter), false);
+			}
+
+			ZeroMemory(&inst, sizeof(INSTRUCTIONSTACK));
+			CurrentParam++;
+		}
+
+		Argument::Add(ai); // set arguments of current call
+
+		// put back to the stack the instructions not used
+		duint startbak = 0; // if x64 
+		duint endbak = 0;
+#ifndef _WIN64
+		startbak = argum.size() - 1; // if x86 save back only the unused instructions
+		endbak = CurrentParam - 1;
+#endif // _WIN64
+ 		for (duint i = startbak; i > endbak; i--)
+ 			IS.push(argum[i]);
+ 		argum.clear();
+
+		return true;
+	}
+
+	if (IsPrologCall)
+	{
+		ClearStack(IS);
+		IsPrologCall = false;
+	}
+
+	return false;
 }
 
 // ------------------------------------------------------------------------------------
@@ -335,11 +443,21 @@ void SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 // Returns true if succesful and lpszAPIFunction will contain the stripped api function 
 // name, otherwise false and lpszAPIFunction will be a null string
 // ------------------------------------------------------------------------------------
-bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
+bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction/*, bool findDynamic*/)
 {
 	int index = 0;
 	int index_cpy = 0;
+	char funct[MAX_MNEMONIC_SIZE] = "";
 
+	// in case of undefined: CALL {REGISTER}, CALL {REGISTER + DISPLACEMENT}
+	if (GetDynamicUndefinedCall(lpszCallText, funct))
+	{
+		sprintf_s(lpszAPIFunction, MAX_PATH, "sub_[%s]", funct);
+		return true;
+	}
+
+	// parse the function: module.function
+	// -------------------------------------------------------
 	while (lpszCallText[index] != '.' && lpszCallText[index] != '&' && lpszCallText[index] != ':')
 	{
 		if (lpszCallText[index] == 0)
@@ -348,11 +466,11 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 			return false;
 		}
 
-		index++;
+		index++; // sub_undefined
 	}
 
 	++index; // jump over the "." or the "&"
-	if (!isalpha(lpszCallText[index])) // if not Api name
+	if (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index])) // if not function name
 	{
 		while (lpszCallText[index] != '_' && lpszCallText[index] != '?' && lpszCallText[index] != '(' && lpszCallText[index] != '[') // get the initial bracket
 		{
@@ -366,17 +484,17 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 		}
 	}
 
-	// delete all underscores left
-	while (!isalpha(lpszCallText[index]))
+	// delete all underscores left or other non letter or digits chars
+	while (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index]))
 		index++;
 
-	while (lpszCallText[index] != '@' && lpszCallText[index] != '>' && lpszCallText[index] != ')')
+	while (lpszCallText[index] != '@' && lpszCallText[index] != '>' && lpszCallText[index] != ')' && lpszCallText[index] != ']')
 	{
-		if (lpszCallText[index] == 0)
-		{
-			*lpszAPIFunction = 0;
-			return false;
-		}
+ 		if (lpszCallText[index] == 0)
+ 		{
+ 			*lpszAPIFunction = 0;
+ 			return false;
+ 		}
 		
 		lpszAPIFunction[index_cpy] = lpszCallText[index];
 		index++;
@@ -384,7 +502,76 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 	}
 
 	lpszAPIFunction[index_cpy] = 0x00;
+
+	// in case of undefined: CALL [0x007FF154]
+	strcpy_s(funct, MAX_MNEMONIC_SIZE, lpszAPIFunction);
+	if (ishex(funct) || HasRegister(funct))
+		sprintf_s(lpszAPIFunction, MAX_PATH, "sub_[%s]", funct);
+
 	return true;
+}
+
+// ------------------------------------------------------------------------------------
+// Check if a given string has a register inside
+// ------------------------------------------------------------------------------------
+bool HasRegister(LPSTR reg)
+{
+	return(
+#ifdef _WIN64
+		// CALL {REGISTER}
+		strncmp(reg, "rax", 3) == 0 ||
+		strncmp(reg, "rcx", 3) == 0 ||
+		strncmp(reg, "rdx", 3) == 0 ||
+		strncmp(reg, "rbx", 3) == 0 ||
+		strncmp(reg, "rsp", 3) == 0 ||
+		strncmp(reg, "rbp", 3) == 0 ||
+		strncmp(reg, "rsi", 3) == 0 ||
+		strncmp(reg, "rdi", 3) == 0 ||
+		strncmp(reg, "rip", 3) == 0 ||
+
+		strncmp(reg, "r8", 2) == 0 ||
+		strncmp(reg, "r9", 2) == 0 ||
+		strncmp(reg, "r10", 3) == 0 ||
+		strncmp(reg, "r11", 3) == 0 ||
+		strncmp(reg, "r12", 3) == 0 ||
+		strncmp(reg, "r13", 3) == 0 ||
+		strncmp(reg, "r14", 3) == 0 ||
+		strncmp(reg, "r15", 3) == 0);
+#else
+		// CALL {REGISTER}
+		strncmp(reg, "eax", 3) == 0 ||
+		strncmp(reg, "ecx", 3) == 0 ||
+		strncmp(reg, "edx", 3) == 0 ||
+		strncmp(reg, "ebx", 3) == 0 ||
+		strncmp(reg, "esp", 3) == 0 ||
+		strncmp(reg, "ebp", 3) == 0 ||
+		strncmp(reg, "esi", 3) == 0 ||
+		strncmp(reg, "edi", 3) == 0 ||
+		strncmp(reg, "eip", 3) == 0);
+#endif
+}
+
+// ------------------------------------------------------------------------------------
+// for dynamic call schemes like:
+// - CALL DWORD PTR [0x115934C]
+// - CALL EAX, CALL RDX
+// ------------------------------------------------------------------------------------
+bool GetDynamicUndefinedCall(LPSTR lpszCallText, LPSTR dest)
+{
+	char *pch = NULL;
+
+	pch = strchr(lpszCallText, ' ');
+	if (pch != NULL)
+	{
+		pch++;
+		if (HasRegister(pch))
+		{
+			strcpy_s(dest, MAX_MNEMONIC_SIZE, pch);
+			return true;
+		}
+	}
+
+	return false;
 }
 
 // ------------------------------------------------------------------------------------
@@ -492,7 +679,7 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 // ------------------------------------------------------------------------------------
 bool GetApiFileDefinition(LPSTR lpszApiFunction, LPSTR lpszApiDefinition, LPSTR szFile)
 {
-	int result = GetPrivateProfileString(lpszApiFunction, "@", ":", lpszApiDefinition, MAX_COMMENT_SIZE, szFile);
+	duint result = GetPrivateProfileString(lpszApiFunction, "@", ":", lpszApiDefinition, MAX_COMMENT_SIZE, szFile);
 	if (result == 0 || result == 1) // just got nothing or the colon and nothing else
 	{
 		*lpszApiDefinition = 0;
@@ -551,7 +738,7 @@ bool GetFunctionParam(LPSTR lpszApiModule, LPSTR lpszApiFunction, duint dwParamN
 // ------------------------------------------------------------------------------------
 bool ishex(LPCTSTR str)
 {
-	int value;
+	duint value;
 
 	if (str != NULL)
 		return (1 == sscanf_s(str, "%li", &value));
@@ -607,6 +794,22 @@ std::string CallDirection(BASIC_INSTRUCTION_INFO *bii)
 void ClearStack(stack<INSTRUCTIONSTACK*> &q)
 {
 	stack<INSTRUCTIONSTACK*> empty;
+	while (!q.empty())
+	{
+		delete q.top();
+		q.pop();
+	}
+	swap(q, empty);
+}
+
+void ClearLoopStack(stack<LOOPSTACK*> &q)
+{
+	stack<LOOPSTACK*> empty;
+	while (!q.empty())
+	{
+		delete q.top();
+		q.pop();
+	}
 	swap(q, empty);
 }
 
@@ -682,14 +885,31 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
 // ------------------------------------------------------------------------------------
 // True if instruction is part of the function prolog
 // ------------------------------------------------------------------------------------
-bool IsProlog(const BASIC_INSTRUCTION_INFO *bii)
+bool IsProlog(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
+	bool callRef = false;
+	XREF_INFO info;
+	
+	if (DbgXrefGet(CurrentAddress, &info) && info.refcount > 0)
+	{
+		for (duint i = 0; i < info.refcount; i++)
+		{
+			if (info.references[i].type == XREF_CALL) // if it has at least one reference from a CALL
+			{
+				callRef = true; // it is a function start
+				break;
+			}
+		}
+	}
+
 	return (
 #ifdef _WIN64
-		strncmp(bii->instruction, "sub rsp, ", 9) == 0);
+		strncmp(bii->instruction, "sub rsp, ", 9) == 0 ||
+		callRef);
 #else
 		strncmp(bii->instruction, "push ebp", 8) == 0 ||
-		strncmp(bii->instruction, "enter 0", 7) == 0);
+		strncmp(bii->instruction, "enter 0", 7) == 0 ||
+		callRef);
 #endif
 }
 
@@ -752,7 +972,7 @@ void GetDestRegister(char *instruction, char *destRegister)
 // ------------------------------------------------------------------------------------
 // Gets the correct argument index from the stack 
 // ------------------------------------------------------------------------------------
-void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRUCTIONSTACK &arg)
+void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTRUCTIONSTACK &arg)
 {
 #ifdef _WIN64
 	int del_index = 0;
@@ -762,13 +982,13 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRU
 	case 1:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i].destRegister, "rcx", 3) == 0 ||
-				strncmp(arguments[i].destRegister, "ecx", 3) == 0 ||
-				strncmp(arguments[i].destRegister, "cx", 2) == 0 ||
-				strncmp(arguments[i].destRegister, "ch", 2) == 0 ||
-				strncmp(arguments[i].destRegister, "cl", 2) == 0)
+			if (strncmp(arguments[i]->destRegister, "rcx", 3) == 0 ||
+				strncmp(arguments[i]->destRegister, "ecx", 3) == 0 ||
+				strncmp(arguments[i]->destRegister, "cx", 2) == 0 ||
+				strncmp(arguments[i]->destRegister, "ch", 2) == 0 ||
+				strncmp(arguments[i]->destRegister, "cl", 2) == 0)
 			{
-				arg = arguments[i];
+				arg = *arguments[i];
 				del_index = i;
 				break;
 			}
@@ -777,13 +997,13 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRU
 	case 2:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i].destRegister, "rdx", 3) == 0 ||
-				strncmp(arguments[i].destRegister, "edx", 3) == 0 ||
-				strncmp(arguments[i].destRegister, "dx", 2) == 0 ||
-				strncmp(arguments[i].destRegister, "dh", 2) == 0 ||
-				strncmp(arguments[i].destRegister, "dl", 2) == 0)
+			if (strncmp(arguments[i]->destRegister, "rdx", 3) == 0 ||
+				strncmp(arguments[i]->destRegister, "edx", 3) == 0 ||
+				strncmp(arguments[i]->destRegister, "dx", 2) == 0 ||
+				strncmp(arguments[i]->destRegister, "dh", 2) == 0 ||
+				strncmp(arguments[i]->destRegister, "dl", 2) == 0)
 			{
-				arg = arguments[i];
+				arg = *arguments[i];
 				del_index = i;
 				break;
 			}
@@ -792,9 +1012,9 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRU
 	case 3:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i].destRegister, "r8", 2) == 0)
+			if (strncmp(arguments[i]->destRegister, "r8", 2) == 0)
 			{
-				arg = arguments[i];
+				arg = *arguments[i];
 				del_index = i;
 				break;
 			}
@@ -803,23 +1023,57 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRU
 	case 4:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i].destRegister, "r9", 2) == 0)
+			if (strncmp(arguments[i]->destRegister, "r9", 2) == 0)
 			{
-				arg = arguments[i];
+				arg = *arguments[i];
 				del_index = i;
 				break;
 			}
 		}
 		break;
 	default: // the rest of stack-related arguments
-		arg = arguments[0];
+		arg = *arguments[0];
 		del_index = 0;
 		break;
 	}
 
 	if (arguments.size() > 0)
+	{
+		delete arguments[del_index];
 		arguments.erase(arguments.begin() + del_index); // take out the parameter from list
+	}
 #else
-	arg = arguments[CurrentParam - 1]; // x86 doesn't have arguments order changes
+	arg = *arguments[CurrentParam - 1]; // x86 doesn't have arguments order changes
 #endif
+}
+
+// ------------------------------------------------------------------------------------
+// Check if given jump is part of a loop
+// ------------------------------------------------------------------------------------
+void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
+{
+	if (addressFunctionStart != 0 && bii->addr > addressFunctionStart && bii->addr < CurrentAddress)
+	{
+		LOOPSTACK *loop = new LOOPSTACK;
+		loop->dwStartAddress = bii->addr;
+		loop->dwEndAddress = CurrentAddress;
+
+		LS.push(loop);
+	}
+}
+
+// ------------------------------------------------------------------------------------
+// Set all loops stored in the stack inside the current function
+// (Loops are only allowed to be set from the outside to the inside, that's why the loops stack)
+// ------------------------------------------------------------------------------------
+void SetFunctionLoops()
+{
+	LOOPSTACK *loop;
+
+	while (!LS.empty())
+	{
+		loop = LS.top();
+		DbgLoopAdd(loop->dwStartAddress, loop->dwEndAddress);
+		LS.pop();
+	}
 }
