@@ -24,8 +24,9 @@ typedef struct stLOOPSTACK{
 	duint dwEndAddress;
 }LOOPSTACK;
 
+extern bool extendedAnal;
 extern char szCurrentDirectory[MAX_PATH];
-extern char szAPIFunction[MAX_PATH];
+extern char szAPIFunction[MAX_COMMENT_SIZE];
 extern char szApiFile[MAX_PATH];
 extern char szAPIFunctionParameter[MAX_COMMENT_SIZE];
 extern duint addressFunctionStart;
@@ -59,6 +60,7 @@ void GetDestRegister(char *instruction, char *destRegister);
 void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTRUCTIONSTACK &arg);
 void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress);
 void SetFunctionLoops();
+bool FileDbExists();
 #ifdef _WIN64
 bool IsArgumentRegister(const char *destination);
 #endif

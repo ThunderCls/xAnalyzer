@@ -5,11 +5,11 @@
 enum
 {
 	MENU_ANALYZE,
+	MENU_ANALYZE_EXT,
 	MENU_ANALYZE_DISASM,
+	MENU_ANALYZE_DISASM_EXT,
 	MENU_ABOUT
 };
-
-//char *dbgExe;
 
 /*====================================================================================
 CBINITDEBUG - Called by debugger when a program is debugged - needs to be EXPORTED
@@ -68,17 +68,28 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
     {
 		case MENU_ANALYZE:
 		case MENU_ANALYZE_DISASM:
+			extendedAnal = false;
 			DbgCmdExec("ExtendedAnalysis");
+			break;
+		case MENU_ANALYZE_EXT:
+		case MENU_ANALYZE_DISASM_EXT:
+			if (MessageBox(hwndDlg, "Do you wish to continue and analyze the entire code section?.\n\n"
+				"Doing this may take some time to complete and amounts of RAM\n"
+				"memory depending on the size of the section.",
+				"Extended Analysis?", MB_ICONINFORMATION + MB_YESNO) == IDYES)
+			{
+				extendedAnal = true;
+				DbgCmdExec("ExtendedAnalysis");
+			}
 			break;
 		case MENU_ABOUT:
 			MessageBox(hwndDlg, "---------------------------------------------------------\n"
-				"\t             [ xAnalyzer v1 ]\n"
-				"           Extended analysis for the static code \n\n"
+				"\t                [ xAnalyzer ]\n"
+				"                Extended analysis for static code \n\n"
 				"                  Coded By: ThunderCls - 2016\n"
 				"         http://github.com/ThunderCls/xAnalyzer\n"
-				"              http://reversec0de.wordpress.com\n\n"
+				"              http://reversec0de.wordpress.com\n"
 				"           Base code: APIInfo Plugin by mrfearless\n"
-				"   https://github.com/mrfearless/APIInfo-Plugin-x86"
 				"\n---------------------------------------------------------",
 				PLUGIN_NAME, MB_ICONINFORMATION);
 			break;
@@ -118,12 +129,14 @@ void pluginSetup()
 
 	// Plugin Menu
 	_plugin_menuseticon(hMenu, &menu_icon);
-	_plugin_menuaddentry(hMenu, MENU_ANALYZE, "&Extended analysis");
+	_plugin_menuaddentry(hMenu, MENU_ANALYZE, "&Normal analysis");
+	_plugin_menuaddentry(hMenu, MENU_ANALYZE_EXT, "&Extended analysis");
 	_plugin_menuaddseparator(hMenu);
 	_plugin_menuaddentry(hMenu, MENU_ABOUT, "&About...");
 
 	_plugin_menuseticon(hMenuDisasm, &menu_icon);
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Extended analysis");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Normal analysis");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_EXT, "&Extended analysis");
 
 }
 //--------------------------------------------------------------------------------------

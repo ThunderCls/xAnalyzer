@@ -3,10 +3,11 @@
 #include "xanalyzer.h"
 
 // Variables
-const char *szprojectnameInfo = "xAnalyzer Plugin by ThunderCls 2016\n"
-								"Extended analysis for the static code\n"
-								"code: http://github.com/ThunderCls/xAnalyzer\n"
-								"blog: http://reversec0de.wordpress.com\n";
+const char *szprojectnameInfo = "\nxAnalyzer Plugin by ThunderCls 2016\n"
+								"Extended analysis for static code\n"
+								"-> For latest release, issues, etc....\n"
+								"-> code: http://github.com/ThunderCls/xAnalyzer\n"
+								"-> blog: http://reversec0de.wordpress.com\n\n";
 
 int pluginHandle;
 HWND hwndDlg;

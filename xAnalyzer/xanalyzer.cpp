@@ -1,26 +1,31 @@
 #include "xanalyzer.h"
+#include "Shlwapi.h"
 #include <psapi.h>
 #include <tchar.h>
 #include <stack>
 #include <vector>
 
 #pragma comment(lib, "Psapi.lib")
+#pragma comment(lib, "Shlwapi.lib")
 
 using namespace std;
 using namespace Script;
 
 // ------------------------------------------------------------------------------------
-
+bool extendedAnal;
 bool IsPrologCall = false; // control undefined calls on function prologues
 duint addressFunctionStart = 0;
 char szCurrentDirectory[MAX_PATH];
-char szAPIFunction[MAX_PATH];
+char szAPIFunction[MAX_COMMENT_SIZE];
 char szApiFile[MAX_PATH];
 char szAPIFunctionParameter[MAX_COMMENT_SIZE];
 char *vc = "msvcrt\0";
 stack <INSTRUCTIONSTACK*> IS;
 stack <LOOPSTACK*> LS;
+// ------------------------------------------------------------------------------------
 
+// ------------------------------------------------------------------------------------
+// On breakpoint function
 // ------------------------------------------------------------------------------------
 void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 {
@@ -29,10 +34,21 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 	Module::InfoFromAddr(bpInfo->breakpoint->addr, &mi);
 	if (mi.entry == bpInfo->breakpoint->addr) // if we hit the EP
 	{
-		DoExtendedAnalysis();
+		if (!FileDbExists())
+		{
+			extendedAnal = false; // execute lower analysis depth
+			DoExtendedAnalysis();
+		}
+		else
+		{
+			GuiAddLogMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
+			GuiAddStatusBarMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
+		}
 	}
 }
 
+// ------------------------------------------------------------------------------------
+// Extended analysis caller
 // ------------------------------------------------------------------------------------
 bool cbExtendedAnalysis(int argc, char* argv[])
 {
@@ -45,8 +61,8 @@ bool cbExtendedAnalysis(int argc, char* argv[])
 // ------------------------------------------------------------------------------------
 void DoExtendedAnalysis()
 {
-	GuiAddLogMessage("[xAnalyzer]: doing analysis, waiting...\r\n");
-	GuiAddStatusBarMessage("[xAnalyzer]: doing initial analysis...\r\n");
+	GuiAddLogMessage("[xAnalyzer]: Doing analysis, please wait...\r\n");
+	GuiAddStatusBarMessage("[xAnalyzer]: Doing initial analysis...\r\n");
 
 	// do some analysis algorithms to get as much extra info as possible
 	DbgCmdExecDirect("cfanal");
@@ -54,13 +70,9 @@ void DoExtendedAnalysis()
 	DbgCmdExecDirect("analx");
 	DbgCmdExecDirect("anal");
 
-	GuiAddStatusBarMessage("[xAnalyzer]: initial analysis completed!\r\n");
-	GuiAddStatusBarMessage("[xAnalyzer]: doing extended analysis...\r\n");
-
+	GuiAddStatusBarMessage("[xAnalyzer]: Initial analysis completed!\r\n");
 	ExtraAnalysis(); // call my own function to get extended analysis
-
-	GuiAddStatusBarMessage("[xAnalyzer]: extended analysis completed!\r\n");
-	GuiAddLogMessage("[xAnalyzer]: analysis completed!\r\n");
+	GuiAddLogMessage("[xAnalyzer]: Analysis completed!\r\n");
 }
 
 // ------------------------------------------------------------------------------------
@@ -68,13 +80,13 @@ void DoExtendedAnalysis()
 // ------------------------------------------------------------------------------------
 void ExtraAnalysis()
 {
-	duint CurrentAddress;
-	duint CallDestination;
-	duint JmpDestination;
+	duint CurrentAddress = 0;
+	duint CallDestination = 0;
+	duint JmpDestination = 0;
+	duint dwEntry = 0;
+	duint dwExit = 0;
 	BASIC_INSTRUCTION_INFO bii; // basic
 	BASIC_INSTRUCTION_INFO cbii; // call destination
-	duint dwEntry;
-	duint dwExit;
 	Argument::ArgumentInfo ai;
 	
 	char szAPIModuleName[MAX_MODULE_SIZE] = "";
@@ -84,23 +96,32 @@ void ExtraAnalysis()
 	char szDisasmText[GUI_MAX_DISASSEMBLY_SIZE] = "";
 	char szJmpDisasmText[GUI_MAX_DISASSEMBLY_SIZE] = "";
 	char szAPIDefinition[MAX_COMMENT_SIZE] = "";
+	char progress_perc[MAX_PATH] = "";
 
 	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
 
 	DbgGetEntryExitPoints(&dwEntry, &dwExit);
+	DbgCmdExecDirect("loopclear"); // clear all prev loops
 	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
 	Argument::DeleteRange(dwEntry, dwExit, true); // clear all arguments
-	DbgCmdExecDirect("loopclear"); // clear all prev loops
 	GuiUpdateDisassemblyView();
 
 	// get main module name for arguments struct
 	Module::NameFromAddr(dwEntry, szMainModule);
 	strcpy_s(ai.mod, szMainModule);
 
+	duint progress_total = dwExit - dwEntry;
+	duint progress_actual = 0;
+	duint progress = 0;
 	CurrentAddress = dwEntry;
 	while (CurrentAddress < dwExit)
 	{
+		// progress percentage update
+		progress = (progress_actual * 100) / progress_total;
+		sprintf_s(progress_perc, _countof(progress_perc), "[xAnalyzer]: Doing extended analysis...%d%%\r\n", progress);
+		GuiAddStatusBarMessage(progress_perc);
+
 		INSTRUCTIONSTACK *inst = new INSTRUCTIONSTACK;
 		inst->Address = CurrentAddress; // save address of instruction
 
@@ -129,7 +150,7 @@ void ExtraAnalysis()
 					else
 						strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
 
-					bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0); // if it's main module search recursive
+					bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0); // if it's the main module search recursive
 					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive))
 					{
 						if (!recursive) // if it's the same module don't use "module:function"
@@ -243,6 +264,7 @@ void ExtraAnalysis()
 		}
 
 		CurrentAddress += bii.size;
+		progress_actual += bii.size;
 
 		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 		ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
@@ -250,6 +272,7 @@ void ExtraAnalysis()
 
 	ClearStack(IS);
 	GuiUpdateDisassemblyView();
+	GuiAddStatusBarMessage("[xAnalyzer]: Extended analysis completed!\r\n");
 }
 
 // ------------------------------------------------------------------------------------
@@ -260,28 +283,56 @@ void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit)
 	duint entry;
 	duint start = 0;
 	duint end = 0;
-	char modname[MAX_MODULE_SIZE];
-	Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
+	duint dwModSize;
+	duint baseaddress;
+	HANDLE hProcess;
+	HMODULE base;
+	HMODULE hModule;
+	MODULEINFO modinfo;
+	PROCESS_INFORMATION *pi;
 
+	char modname[MAX_MODULE_SIZE] = "";
+	char modbasename[MAX_MODULE_SIZE] = "";
+
+	Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
 
 	entry = GetContextData(UE_CIP);
 	Module::NameFromAddr(entry, modname);
 
-	duint entryp = Module::EntryFromAddr(entry);
-
-	int index = 0;
-	while (SectionFromName(modname, index, modInfo))
+	
+	if (extendedAnal)
 	{
-		start = modInfo->addr;
-		end = start + modInfo->size;
+		// Process the entire code section
+		duint entryp = Module::EntryFromAddr(entry);
 
-		if (entryp >= start && entryp <= end) 
-			break; // entry is into the section boundaries
-		index++;
+		int index = 0;
+		while (SectionFromName(modname, index, modInfo))
+		{
+			start = modInfo->addr;
+			end = start + modInfo->size;
+
+			if (entryp >= start && entryp <= end)
+				break; // entry is into the section boundaries
+			index++;
+		}
+
+		*lpdwEntry = start; // first address of section
+		*lpdwExit = end; // last address of section
 	}
+	else
+	{
+		// Process only STARTING in the Entrypoint to end of code section
+		base = (HMODULE)DbgModBaseFromName(modname);
+		pi = TitanGetProcessInformation();
+		hProcess = pi->hProcess;
+		GetModuleBaseName(hProcess, base, modbasename, MAX_MODULE_SIZE);
+		hModule = GetModuleHandle(modbasename);
+		GetModuleInformation(hProcess, hModule, &modinfo, sizeof(MODULEINFO));
+		baseaddress = DbgMemFindBaseAddr((duint)modinfo.EntryPoint, &dwModSize);
 
-	*lpdwEntry = start; // first address of section
-	*lpdwExit = end; // last address of section
+		*lpdwEntry = (duint)modinfo.EntryPoint;
+		*lpdwExit = (dwModSize + baseaddress) - 0x2D;
+	}
 }
 
 // ------------------------------------------------------------------------------------
@@ -443,16 +494,16 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 // Returns true if succesful and lpszAPIFunction will contain the stripped api function 
 // name, otherwise false and lpszAPIFunction will be a null string
 // ------------------------------------------------------------------------------------
-bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction/*, bool findDynamic*/)
+bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 {
 	int index = 0;
 	int index_cpy = 0;
-	char funct[MAX_MNEMONIC_SIZE] = "";
+	char funct[MAX_COMMENT_SIZE] = "";
 
 	// in case of undefined: CALL {REGISTER}, CALL {REGISTER + DISPLACEMENT}
 	if (GetDynamicUndefinedCall(lpszCallText, funct))
 	{
-		sprintf_s(lpszAPIFunction, MAX_PATH, "sub_[%s]", funct);
+		sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_[%s]", funct);
 		return true;
 	}
 
@@ -504,9 +555,9 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction/*, bool findDy
 	lpszAPIFunction[index_cpy] = 0x00;
 
 	// in case of undefined: CALL [0x007FF154]
-	strcpy_s(funct, MAX_MNEMONIC_SIZE, lpszAPIFunction);
+	strcpy_s(funct, MAX_COMMENT_SIZE, lpszAPIFunction);
 	if (ishex(funct) || HasRegister(funct))
-		sprintf_s(lpszAPIFunction, MAX_PATH, "sub_[%s]", funct);
+		sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_[%s]", funct);
 
 	return true;
 }
@@ -566,7 +617,7 @@ bool GetDynamicUndefinedCall(LPSTR lpszCallText, LPSTR dest)
 		pch++;
 		if (HasRegister(pch))
 		{
-			strcpy_s(dest, MAX_MNEMONIC_SIZE, pch);
+			strcpy_s(dest, MAX_COMMENT_SIZE, pch);
 			return true;
 		}
 	}
@@ -589,13 +640,21 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 	}
 	else
 	{
+		// avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
+		duint spaceleft = MAX_COMMENT_SIZE - strlen(CommentString);
+		if (spaceleft <= 1)
+			return;
+
 		if (DbgGetCommentAt(inst->Address, szComment))
 		{
 			if (*szComment)
 			{
 				DbgClearAutoCommentRange(inst->Address, inst->Address); // Delete the prev comment 
-				strcat_s(CommentString, CommentStringCount, " = ");
-				strcat_s(CommentString, CommentStringCount, szComment);
+				if ((strlen(szComment) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
+				{
+					strcat_s(CommentString, CommentStringCount, " = ");
+					strcat_s(CommentString, CommentStringCount, szComment);
+				}
 			}
 		}
 
@@ -607,8 +666,11 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 				char *inst_source = GetInstructionSource(inst->Instruction);
 				if (ishex(inst_source)) // get constants as value of argument / excluding push memory, registers, etc
 				{
-					strcat_s(CommentString, CommentStringCount, " = ");
-					strcat_s(CommentString, CommentStringCount, inst_source);
+					if ((strlen(inst_source) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
+					{
+						strcat_s(CommentString, CommentStringCount, " = ");
+						strcat_s(CommentString, CommentStringCount, inst_source);
+					}
 				}
 			}
 		}		
@@ -1076,4 +1138,29 @@ void SetFunctionLoops()
 		DbgLoopAdd(loop->dwStartAddress, loop->dwEndAddress);
 		LS.pop();
 	}
+}
+
+// ------------------------------------------------------------------------------------
+// Check if the current module backup database is present
+// ------------------------------------------------------------------------------------
+bool FileDbExists()
+{
+	char mod_name[MAX_MODULE_SIZE] = "";
+	char db_path[MAX_PATH] = "";
+
+	strcpy_s(db_path, szCurrentDirectory);
+	PathRemoveFileSpec(db_path);
+	PathRemoveFileSpec(db_path);
+
+	strcat_s(db_path, "\\db\\");
+	Module::GetMainModuleName(mod_name);
+	strcat_s(db_path, mod_name);
+
+#ifdef _WIN64
+	strcat_s(db_path, ".dd64");
+#else
+	strcat_s(db_path, ".dd32");
+#endif // _WIN64
+
+	return GetFileAttributes(db_path) != INVALID_FILE_ATTRIBUTES;
 }
