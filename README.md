@@ -20,15 +20,21 @@ Special thanks to @mrfearless and @tr4ceflow for releasing the API definition fi
 
 ---
 
-Installation:
+Installation:-
+ - Download the latest version of x64dbg
  - Copy xAnalyzer.dp32 and/or xAnalyzer.dp64 files and apis_def folder to x32/x64 plugins directory of x64dbg
  - Look under the "Plugins" menu in the main x64dbg window or in the secondary menu in the Disasm window as well
 
 ---
 
 Features & Usage:
- - The plugin launches automatically, no config, no nothing. 
- - If by any means you need to re-analyze the code, you can make right clic on the disassembler window and choose the option at the end "xAnalyzer"/"Extended analysis"
+ - The plugin launches automatically in case no backup database is found when the debugged application reaches the EP
+ - There are two types of analysis that xAnalyzer can make:
+   
+   1- **Normal analysis**: The automatic/standar type of analysis, is launched when EP is reached. It might be less resource consuming
+   
+   2- **Extended analysis**: The most complete but also the most intensive type (CPU/RAM usage). It will process the entire code section of the executable, so depending on the size of it, may take some time to complete and might use large amounts of RAM memory as well.
+ - If by any means you need to re-analyze the code or use another type of analysis, you can make right clic on the disassembler window and choose the option at the end of "xAnalyzer" entry, or just do it through the menu bar.
  
  ---
  
