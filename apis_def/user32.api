@@ -4376,12 +4376,10 @@ ParamCount=2
 ParamCount=2
 @=NtUserSetRipFlags(DWORD dwRipFlags, DWORD PID);
 [NtUserSetDbgTag]
-1=
+1=AUTO Arg1
 2=DWORD dwBitFlags
 ParamCount=2
-@=NtUserSetDbgTag(
- inttag, DWORD dwBitFlags);
- inttag
+@=NtUserSetDbgTag(inttag, DWORD dwBitFlags);
 [NtUserThunkedMenuItemInfo]
 1=HMENU hMenu
 2=UINT nPosition
@@ -4409,18 +4407,6 @@ ParamCount=3
 4=RECT *lprcTo
 ParamCount=4
 @=NtUserDrawAnimatedRects(HWND hwnd, int idAni, RECT *lprcFrom, RECT *lprcTo);
-[NtUserLoadIcoCur]
-1=HANDLE hIcon
-2=DWORD cxNew
-3=DWORD cyNew
-4=
-5=HDC hdc
-6=RECT *lprc
-7=UINT flags
-ParamCount=7
-@=NtUserLoadIcoCur(HANDLE hIcon, DWORD cxNew, DWORD cyNew, 
- NTAPINtUserDrawCaption(INHWNDhwnd, HDC hdc, RECT *lprc, UINT flags);
- NTAPINtUserDrawCaption(INHWNDhwnd
 [NtUserFlashWindowEx]
 1=PFLASHWINFO pfwi
 ParamCount=1

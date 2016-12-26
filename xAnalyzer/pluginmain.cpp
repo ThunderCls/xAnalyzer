@@ -1,15 +1,15 @@
 #include "pluginmain.h"
 #include "plugin.h"
-#include "xanalyzer.h"
 
 // Variables
-const char *szprojectnameInfo = "\nxAnalyzer Plugin by ThunderCls 2016\n"
+const char *szprojectnameInfo = "\n"PLUGIN_NAME " " PLUGIN_VERSION_STR" Plugin by ThunderCls 2016\n"
 								"Extended analysis for static code\n"
 								"-> For latest release, issues, etc....\n"
 								"-> code: http://github.com/ThunderCls/xAnalyzer\n"
 								"-> blog: http://reversec0de.wordpress.com\n\n";
 
 int pluginHandle;
+HMODULE pluginHInstance;
 HWND hwndDlg;
 int hMenu;
 int hMenuDisasm;
@@ -34,9 +34,6 @@ PLUG_EXPORT bool pluginit(PLUG_INITSTRUCT* initStruct)
     initStruct->sdkVersion = PLUG_SDKVERSION;
     strncpy_s(initStruct->pluginName, PLUGIN_NAME, _TRUNCATE);
     pluginHandle = initStruct->pluginHandle;
-
-	GetCurrentDirectory(MAX_PATH, szCurrentDirectory);
-	strcat_s(szCurrentDirectory, "\\");
 
     return pluginInit(initStruct);
 }
@@ -87,5 +84,6 @@ BOOL WINAPI DllMain(
     _In_ LPVOID    lpvReserved
 )
 {
+	pluginHInstance = hinstDLL;
     return TRUE;
 }

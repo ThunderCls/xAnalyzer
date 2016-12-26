@@ -1,31 +1,41 @@
 #include "xanalyzer.h"
 #include "Shlwapi.h"
+#include "ini.h"
+#include "Utf8Ini/Utf8Ini.h"
 #include <psapi.h>
 #include <tchar.h>
 #include <stack>
 #include <vector>
+#include <ctime>
 
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "Shlwapi.lib")
 
 using namespace std;
 using namespace Script;
+using namespace Gui;
 
 // ------------------------------------------------------------------------------------
-bool extendedAnal;
+CONFIG conf;
+bool selectionAnal = false;
+bool singleFunctionAnal = false;
+bool completeAnal = false;
 bool IsPrologCall = false; // control undefined calls on function prologues
 duint addressFunctionStart = 0;
+duint mEntryPoint = 0;
+duint mSectionLowerLimit = 0;
 char szCurrentDirectory[MAX_PATH];
 char szAPIFunction[MAX_COMMENT_SIZE];
-char szApiFile[MAX_PATH];
 char szAPIFunctionParameter[MAX_COMMENT_SIZE];
+char config_path[MAX_PATH];
 char *vc = "msvcrt\0";
 stack <INSTRUCTIONSTACK*> IS;
 stack <LOOPSTACK*> LS;
+unordered_map<string, Utf8Ini*> apiDefinitionFiles;
 // ------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------
-// On breakpoint function
+// Executed when a BP is hitted 
 // ------------------------------------------------------------------------------------
 void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 {
@@ -34,61 +44,152 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 	Module::InfoFromAddr(bpInfo->breakpoint->addr, &mi);
 	if (mi.entry == bpInfo->breakpoint->addr) // if we hit the EP
 	{
-		if (!FileDbExists())
+		if (conf.auto_analysis)
 		{
-			extendedAnal = false; // execute lower analysis depth
-			DoExtendedAnalysis();
+			if (!FileDbExists())
+				DoExtendedAnalysis();
+			else
+			{
+				GuiAddLogMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
+				GuiAddStatusBarMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
+			}
 		}
 		else
 		{
-			GuiAddLogMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
-			GuiAddStatusBarMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
+			GuiAddLogMessage("[xAnalyzer]: Automatic mode is deactivated...skipping automatic analysis\r\n");
+			GuiAddStatusBarMessage("[xAnalyzer]: Automatic mode is deactivated...skipping automatic analysis\r\n");
 		}
 	}
 }
 
 // ------------------------------------------------------------------------------------
-// Extended analysis caller
+// Execute when a windows event is fired
 // ------------------------------------------------------------------------------------
-bool cbExtendedAnalysis(int argc, char* argv[])
+void OnWinEvent(PLUG_CB_WINEVENT *info)
 {
-	DoExtendedAnalysis();
-	return true;
+	auto msg = info->message;
+	if (msg->message == WM_KEYDOWN && info->result)
+	{
+		switch (msg->wParam)
+		{
+		case 'X':
+		case 'x':
+			// analyze function
+			if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1))
+			{
+				singleFunctionAnal = true;
+				DbgCmdExec("xanalyze");
+			}
+			else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
+ 			{
+				completeAnal = true;
+				DbgCmdExec("xanalyze");
+ 			}
+			else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze selection
+			{
+				if (IsMultipleSelection())
+				{
+					selectionAnal = true;
+					DbgCmdExec("xanalyze");
+				}
+			}
+		break;
+		default:break;
+		}
+	}
 }
+
+ //------------------------------------------------------------------------------------
+ //Extended analysis caller (this executes in a new thread)
+ //------------------------------------------------------------------------------------
+ bool cbExtendedAnalysis(int argc, char* argv[])
+ {
+	DoExtendedAnalysis();
+ 	return true;
+ }
+
+ //------------------------------------------------------------------------------------
+ //Extended analysis remove caller (this executes in a new thread)
+ //------------------------------------------------------------------------------------
+ bool cbExtendedAnalysisRemove(int argc, char* argv[])
+ {
+	RemoveAnalysis();
+	return true;
+ }
 
 // ------------------------------------------------------------------------------------
 // Extended analysis
 // ------------------------------------------------------------------------------------
 void DoExtendedAnalysis()
 {
+	clock_t start_t;
+	clock_t end_t;
+	char message[MAX_PATH] = "";
+
 	GuiAddLogMessage("[xAnalyzer]: Doing analysis, please wait...\r\n");
-	GuiAddStatusBarMessage("[xAnalyzer]: Doing initial analysis...\r\n");
+	start_t = clock();
+	// make complete x64dbg analysis if asked or if doing function analysis with
+	// the undefined function analysis activated
+	if (completeAnal)
+		DoInitialAnalysis();
 
-	// do some analysis algorithms to get as much extra info as possible
-	DbgCmdExecDirect("cfanal");
-	DbgCmdExecDirect("exanal");
-	DbgCmdExecDirect("analx");
-	DbgCmdExecDirect("anal");
-
-	GuiAddStatusBarMessage("[xAnalyzer]: Initial analysis completed!\r\n");
 	ExtraAnalysis(); // call my own function to get extended analysis
-	GuiAddLogMessage("[xAnalyzer]: Analysis completed!\r\n");
+	end_t = clock();
+
+	sprintf_s(message, "[xAnalyzer]: Analysis completed in %f secs\r\n", (double)(end_t - start_t) / CLOCKS_PER_SEC); // elapsed time
+	GuiAddStatusBarMessage(message);
+	GuiAddLogMessage(message);
+	GuiAddStatusBarMessage(message);
+	//GuiAddLogMessage("[xAnalyzer]: Analysis completed!\r\n");
+	ResetGlobals();
 }
 
 // ------------------------------------------------------------------------------------
-// GenAPIInfo Main Procedure
+// Full Extra Analysis Procedure
 // ------------------------------------------------------------------------------------
 void ExtraAnalysis()
 {
-	duint CurrentAddress = 0;
-	duint CallDestination = 0;
-	duint JmpDestination = 0;
 	duint dwEntry = 0;
 	duint dwExit = 0;
+	clock_t start_t;
+	clock_t end_t;
+	char message[MAX_PATH] = "";
+
+	GetAnalysisBoundaries(); // get the analysis lower address limit points
+	DbgGetEntryExitPoints(&dwEntry, &dwExit);
+	if (dwEntry != 0 && dwExit != 0)
+	{
+		ClearPrevAnalysis(dwEntry, dwExit);
+
+		GuiAddLogMessage("[xAnalyzer]: Doing extended analysis...\r\n");
+		GuiUpdateDisassemblyView();
+
+		start_t = clock();
+		AnalyzeBytesRange(dwEntry, dwExit);
+		end_t = clock();
+
+		sprintf_s(message, "[xAnalyzer]: Extended analysis completed in %f secs\r\n", (double)(end_t - start_t) / CLOCKS_PER_SEC); // elapsed time
+		GuiUpdateDisassemblyView();
+		GuiAddLogMessage(message);
+	}
+}
+
+// ------------------------------------------------------------------------------------
+// Analysis Procedure
+// ------------------------------------------------------------------------------------
+void AnalyzeBytesRange(duint dwEntry, duint dwExit)
+{
+	duint CallDestination = 0;
+	duint JmpDestination = 0;
+	duint CurrentAddress = 0;
+	duint actual_progress = 0;
+	duint progress = 0;
 	BASIC_INSTRUCTION_INFO bii; // basic
 	BASIC_INSTRUCTION_INFO cbii; // call destination
 	Argument::ArgumentInfo ai;
-	
+	bool prolog = false;
+	bool epilog = false;
+
 	char szAPIModuleName[MAX_MODULE_SIZE] = "";
 	char szAPIModuleNameSearch[MAX_MODULE_SIZE] = "";
 	char szAPIComment[MAX_COMMENT_SIZE] = "";
@@ -98,36 +199,36 @@ void ExtraAnalysis()
 	char szAPIDefinition[MAX_COMMENT_SIZE] = "";
 	char progress_perc[MAX_PATH] = "";
 
-	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
-	ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
-
-	DbgGetEntryExitPoints(&dwEntry, &dwExit);
-	DbgCmdExecDirect("loopclear"); // clear all prev loops
-	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
-	Argument::DeleteRange(dwEntry, dwExit, true); // clear all arguments
-	GuiUpdateDisassemblyView();
-
 	// get main module name for arguments struct
 	Module::NameFromAddr(dwEntry, szMainModule);
 	strcpy_s(ai.mod, szMainModule);
 
-	duint progress_total = dwExit - dwEntry;
-	duint progress_actual = 0;
-	duint progress = 0;
+	duint total_progress = dwExit - dwEntry;
 	CurrentAddress = dwEntry;
-	while (CurrentAddress < dwExit)
+	while (CurrentAddress <= dwExit)
 	{
-		// progress percentage update
-		progress = (progress_actual * 100) / progress_total;
+		// PROGRESS PERCENTAGE UPDATE
+		// --------------------------------------------------------------------------------------
+		progress = (actual_progress * 100) / total_progress;
 		sprintf_s(progress_perc, _countof(progress_perc), "[xAnalyzer]: Doing extended analysis...%d%%\r\n", progress);
 		GuiAddStatusBarMessage(progress_perc);
+		// --------------------------------------------------------------------------------------
+
+		// clean previous values
+		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+		ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
 
 		INSTRUCTIONSTACK *inst = new INSTRUCTIONSTACK;
 		inst->Address = CurrentAddress; // save address of instruction
 
 		DbgDisasmFastAt(CurrentAddress, &bii);
-		if (bii.call == 1 && bii.branch == 1) //  we have call statement
+		prolog = IsProlog(&bii, CurrentAddress); // function prolog flag
+		epilog = IsEpilog(&bii); // function epilog flag
+		if (bii.call && bii.branch)
 		{
+			// --------------------------------------------------------------------------------------
+			// CALL INSTRUCTION
+			// --------------------------------------------------------------------------------------
 			CallDestination = bii.addr;
 			DbgDisasmFastAt(CallDestination, &cbii);
 			GuiGetDisassembly(CurrentAddress, szDisasmText);
@@ -136,34 +237,34 @@ void ExtraAnalysis()
 			// save data for the argument
 			ai.manual = true;
 			ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last		
-			if (Strip_x64dbg_calls(szDisasmText, szAPIFunction) || (cbii.branch == 1 && Strip_x64dbg_calls(szJmpDisasmText, szAPIFunction)))
+			if (Strip_x64dbg_calls(szDisasmText, szAPIFunction) || (cbii.branch && Strip_x64dbg_calls(szJmpDisasmText, szAPIFunction)))
 			{
-				if (cbii.branch == 1) // direct call/jump => api
+				if (cbii.branch) // direct call/jump => api
 				{
 					JmpDestination = DbgGetBranchDestination(CallDestination);
 					Module::NameFromAddr(JmpDestination, szAPIModuleName);
 					TruncateString(szAPIModuleName, '.'); // strip .dll from module name
 
-					// handle different vc dll versions
-					if (strncmp(szAPIModuleName, vc, 5) == 0)
-						strcpy_s(szAPIModuleNameSearch, vc);
-					else
-						strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
+					// get the correct dll module name to lookup 
+					GetModuleNameSearch(szAPIModuleName, szAPIModuleNameSearch);
 
 					bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0); // if it's the main module search recursive
 					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive))
 					{
-						if (!recursive) // if it's the same module don't use "module:function"
+						if (conf.undef_funtion_analysis)
 						{
-							strcpy_s(szAPIComment, szAPIModuleName); // if no definition found use "module:function"
-							strcat_s(szAPIComment, ":");
-							strcat_s(szAPIComment, szAPIFunction);
-						}
-						else
-							strcpy_s(szAPIComment, szAPIFunction);
+							if (!recursive) // if it's the same module don't use "module:function"
+							{
+								strcpy_s(szAPIComment, szAPIModuleName); // if no definition found use "module.function"
+								strcat_s(szAPIComment, ".");
+								strcat_s(szAPIComment, szAPIFunction);
+							}
+							else
+								strcpy_s(szAPIComment, szAPIFunction);
 
-						if (SetSubParams(&ai)) // when no definition use generic arguments
-							SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
+							if (SetSubParams(&ai)) // when no definition use generic arguments
+								SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
+						}
 					}
 					else
 					{
@@ -176,58 +277,66 @@ void ExtraAnalysis()
 					DbgGetLabelAt(CurrentAddress, SEG_DEFAULT, szAPIFunction); // get label if any as function name
 					if (strncmp(szAPIFunction, "sub_", 4) == 0) // internal function call or sub
 					{
-						// internal subs
-						// ---------------------------------------------------------------------
-						if(SetSubParams(&ai))
-							SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+						if (conf.undef_funtion_analysis)
+						{
+							// internal subs
+							if (SetSubParams(&ai))
+								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+						}
 					}
-					else 
+					else
 					{
 						// indirect call or call/!jmp
-						// ---------------------------------------------------------------------
 						duint api = DbgValFromString(CallDirection(&bii).c_str());
 						if (api > 0)
 						{
 							Module::NameFromAddr(api, szAPIModuleName);
 							TruncateString(szAPIModuleName, '.'); // strip .dll from module name
 
-							// handle vc dlls versions
-							if (strncmp(szAPIModuleName, vc, 5) == 0)
-								strcpy_s(szAPIModuleNameSearch, vc);
-							else
-								strcpy_s(szAPIModuleNameSearch, szAPIModuleName);
+							// get the correct dll module name to lookup 
+							GetModuleNameSearch(szAPIModuleName, szAPIModuleNameSearch);
 
 							bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0);
 							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive)) // just to get the correct definition file .api
 							{
-								if(SetFunctionParams(&ai, szAPIModuleNameSearch))
+								if (SetFunctionParams(&ai, szAPIModuleNameSearch))
 									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							}
-							else
+							else if (conf.undef_funtion_analysis)
 							{
-								if(SetSubParams(&ai))
+								if (SetSubParams(&ai))
 									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							}
 
 						}
-						else if (*szAPIFunction) // in case it couldnt get the value try looking recursive
+						else if (*szAPIFunction) // in case it couldn't get the value try looking recursive
 						{
 							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, true)) // just to get the correct definition file .api
 							{
-								if(SetFunctionParams(&ai, szAPIModuleNameSearch))
+								if (SetFunctionParams(&ai, szAPIModuleNameSearch))
 									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							}
-							else  // in case of direct call with no definition just set the comment on it and set saved arguments
+							else if (conf.undef_funtion_analysis)// in case of direct call with no definition just set the comment on it and set saved arguments
 							{
-								if(SetSubParams(&ai))
+								if (SetSubParams(&ai))
 									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
 							}
 						}
 					}
-				}				
+				}
+			}
+
+			// check if it was the first call after the function prolog
+			if (IsPrologCall)
+			{
+				ClearStack(IS);
+				IsPrologCall = false;
 			}
 		}
-		else if (bii.branch != 1) // call arguments instructions
+		// --------------------------------------------------------------------------------------
+		// ARGUMENT INSTRUCTION
+		// --------------------------------------------------------------------------------------
+		else if (!bii.branch)
 		{
 			if (IsArgumentInstruction(&bii)) // only arguments instruction / excluding unusual instructions
 			{
@@ -240,39 +349,45 @@ void ExtraAnalysis()
 				else
 					ClearStack(IS);
 			}
-			else if (IsProlog(&bii, CurrentAddress) || IsEpilog(&bii)) // reset instruction stack for the next call
-				ClearStack(IS); 
+			else if (!selectionAnal && (prolog || epilog)) // reset instruction stack for the next call
+				ClearStack(IS);
 		}
-		else if (bii.call != 1 && bii.branch == 1) // if this is a jump then clear stack
+		// --------------------------------------------------------------------------------------
+		// JUMP INSTRUCTION
+		// --------------------------------------------------------------------------------------
+		else if (!bii.call && bii.branch) // if this is a jump then clear stack
 		{
 			ClearStack(IS);
 			IsPrologCall = false; // no jumps in prolog so we're ok
 			IsLoopJump(&bii, CurrentAddress); // check if jump is a loop
 		}
 
-		// save function prolog address as a reference for loops detection
-		if (IsProlog(&bii, CurrentAddress))
-		{
-			addressFunctionStart = CurrentAddress;
-			IsPrologCall = true;
-		}
-		if (IsEpilog(&bii)) // if end of function set function start to zero
+		// --------------------------------------------------------------------------------------
+		// PROLOG/EPILOG/LOOPS CONTROL FUNCTIONS
+		// --------------------------------------------------------------------------------------
+ 		// save function prolog address as a reference for loops detection
+		if (prolog || (selectionAnal && (CurrentAddress == dwEntry)))
+ 		{
+ 			addressFunctionStart = CurrentAddress;
+			// if prolog/first selected line is a jump then process 
+			// undefined first call IsPrologCall remains false
+			if (!bii.branch)
+ 				IsPrologCall = true;
+ 		}
+		// if end of function or selection set function start reference to zero
+		if (epilog || (selectionAnal && (CurrentAddress == dwExit)))
 		{
 			addressFunctionStart = 0;
-			SetFunctionLoops();
+			SetFunctionLoops(); // setup loops for this block
 			ClearLoopStack(LS);
 		}
 
 		CurrentAddress += bii.size;
-		progress_actual += bii.size;
-
-		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
-		ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
+		actual_progress += bii.size;
 	}
 
 	ClearStack(IS);
-	GuiUpdateDisassemblyView();
-	GuiAddStatusBarMessage("[xAnalyzer]: Extended analysis completed!\r\n");
+	ClearLoopStack(LS);
 }
 
 // ------------------------------------------------------------------------------------
@@ -281,58 +396,175 @@ void ExtraAnalysis()
 void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit)
 {
 	duint entry;
-	duint start = 0;
-	duint end = 0;
-	duint dwModSize;
-	duint baseaddress;
-	HANDLE hProcess;
-	HMODULE base;
-	HMODULE hModule;
-	MODULEINFO modinfo;
-	PROCESS_INFORMATION *pi;
-
 	char modname[MAX_MODULE_SIZE] = "";
-	char modbasename[MAX_MODULE_SIZE] = "";
 
-	Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
-
-	entry = GetContextData(UE_CIP);
-	Module::NameFromAddr(entry, modname);
-
-	
-	if (extendedAnal)
+	if (completeAnal)
 	{
-		// Process the entire code section
-		duint entryp = Module::EntryFromAddr(entry);
+		// Analyze entire executable
+		// -----------------------------------------------------
+		Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
+		entry = GetContextData(UE_CIP);
+		Module::NameFromAddr(entry, modname);
 
-		int index = 0;
-		while (SectionFromName(modname, index, modInfo))
-		{
-			start = modInfo->addr;
-			end = start + modInfo->size;
-
-			if (entryp >= start && entryp <= end)
-				break; // entry is into the section boundaries
-			index++;
-		}
-
-		*lpdwEntry = start; // first address of section
-		*lpdwExit = end; // last address of section
+		if (conf.extended_analysis)
+			GetExtendedAnalysisRange(lpdwEntry, lpdwExit, entry, modname, modInfo);
+		else
+			GetRegularAnalysisRange(lpdwEntry, lpdwExit, modname);
+		
+		delete modInfo;
 	}
 	else
 	{
-		// Process only STARTING in the Entrypoint to end of code section
-		base = (HMODULE)DbgModBaseFromName(modname);
-		pi = TitanGetProcessInformation();
-		hProcess = pi->hProcess;
-		GetModuleBaseName(hProcess, base, modbasename, MAX_MODULE_SIZE);
-		hModule = GetModuleHandle(modbasename);
-		GetModuleInformation(hProcess, hModule, &modinfo, sizeof(MODULEINFO));
-		baseaddress = DbgMemFindBaseAddr((duint)modinfo.EntryPoint, &dwModSize);
+		// Analyze single function
+		// -----------------------------------------------------
+		if (singleFunctionAnal)
+		{
+			char cmd[50] = "";
 
-		*lpdwEntry = (duint)modinfo.EntryPoint;
-		*lpdwExit = (dwModSize + baseaddress) - 0x2D;
+			DbgCmdExecDirect("analx"); // these are NEEDED references for detecting functions boundaries
+
+			GetFunctionAnalysisRange(lpdwEntry, lpdwExit, Disassembly::SelectionGetStart());
+
+			// Call a second time these functions for the next main analysis
+			if (conf.undef_funtion_analysis)
+				//DoInitialAnalysis(); // if undef function analysis setting then get as much info as possible
+				DbgCmdExecDirect("anal"); // if wanted undef function get all subs names
+
+			// create extra analysis for single function
+			sprintf_s(cmd, "analr %X", *lpdwEntry);
+			DbgCmdExecDirect(cmd); // this cmd will erase the current references
+			DbgCmdExecDirect("analx"); // get all references again for detecting functions boundaries
+		}
+
+		// Analyze selection
+		// -----------------------------------------------------
+		if (selectionAnal)
+		{
+			if (conf.undef_funtion_analysis) // if analyze undefined functions option ON, get subs labels
+				DbgCmdExecDirect("anal");
+			GetDisasmRange(lpdwEntry, lpdwExit);
+		}
 	}
+}
+
+// ------------------------------------------------------------------------------------
+// Gets the whole code section start/end addresses
+// ------------------------------------------------------------------------------------
+void GetExtendedAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint entry, char *modname, Module::ModuleSectionInfo *modInfo)
+{
+	duint start = 0;
+	duint end = 0;
+
+	// Process the entire code section
+	duint entryp = Module::EntryFromAddr(entry);
+
+	int index = 0;
+	while (Module::SectionFromName(modname, index, modInfo))
+	{
+		start = modInfo->addr;
+		end = start + modInfo->size;
+
+		if (entryp >= start && entryp <= end)
+			break; // entry is into the section boundaries
+		index++;
+	}
+
+	*lpdwEntry = start; // first address of section
+	*lpdwExit = end; // last address of section
+}
+
+// ------------------------------------------------------------------------------------
+// Gets the start/end addresses of the code section starting at the executable EP
+// ------------------------------------------------------------------------------------
+void GetRegularAnalysisRange(duint *lpdwEntry, duint *lpdwExit, char *modname)
+{
+	duint baseaddress;
+	duint dwModSize;
+	HMODULE base;
+	HMODULE hModule;
+	HANDLE hProcess;
+	MODULEINFO modinfo;
+	PROCESS_INFORMATION *pi;
+
+	// Process only STARTING in the Entrypoint to end of code section
+	char modbasename[MAX_MODULE_SIZE] = "";
+
+	base = (HMODULE)DbgModBaseFromName(modname);
+	pi = TitanGetProcessInformation();
+	hProcess = pi->hProcess;
+	GetModuleBaseName(hProcess, base, modbasename, MAX_MODULE_SIZE);
+	hModule = GetModuleHandle(modbasename);
+	GetModuleInformation(hProcess, hModule, &modinfo, sizeof(MODULEINFO));
+	baseaddress = DbgMemFindBaseAddr((duint)modinfo.EntryPoint, &dwModSize);
+
+	*lpdwEntry = (duint)modinfo.EntryPoint;
+	*lpdwExit = (dwModSize + baseaddress) - 0x2D;
+}
+
+// ------------------------------------------------------------------------------------
+// Gets function boundaries from a selected address
+// ------------------------------------------------------------------------------------
+void GetFunctionAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint selectedAddr)
+{
+	bool finished = false;
+	bool startFound = false;
+	duint currentAddr;
+	duint start = 0;
+	duint end = 0;
+	BASIC_INSTRUCTION_INFO bii; // basic
+
+	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+
+	currentAddr = selectedAddr;
+	while (!finished)
+	{
+		DbgDisasmFastAt(currentAddr, &bii);
+
+		if (!startFound)
+		{
+			// make backward disassembling relying in the xrefs for the begining of the function
+			// it'll backtrace until a byte reference is found or an EP or the begining of the code section is reached 
+			if (IsProlog(&bii, currentAddr) || (currentAddr == mEntryPoint) || (currentAddr == mSectionLowerLimit))
+			{
+				startFound = true;
+				start = currentAddr;
+				currentAddr = selectedAddr + 1; // reset the pointer to the select address
+			}
+			currentAddr--;
+		}
+		else
+		{
+			if (IsEpilog(&bii))
+			{
+				finished = true;
+				end = currentAddr;
+			}
+			currentAddr += bii.size;
+		}
+
+		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+	}
+
+	*lpdwEntry = start;
+	*lpdwExit = end;
+}
+
+// ------------------------------------------------------------------------------------
+// Gets the current analysis address limits
+// ------------------------------------------------------------------------------------
+void GetAnalysisBoundaries()
+{
+	duint entry;
+	duint lpdwExit;
+	char modname[MAX_MODULE_SIZE] = "";
+
+	Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
+	entry = GetContextData(UE_CIP);
+	Module::NameFromAddr(entry, modname);
+	mEntryPoint = Module::EntryFromAddr(entry); // gets the EP
+	GetExtendedAnalysisRange(&mSectionLowerLimit, &lpdwExit, entry, modname, modInfo); // gets the first address of code section
+
+	delete modInfo;
 }
 
 // ------------------------------------------------------------------------------------
@@ -404,12 +636,6 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 		}
 	}
 
-	if (IsPrologCall)
-	{
-		ClearStack(IS);
-		IsPrologCall = false;
-	}
-
 	return false;
 }
 
@@ -477,12 +703,6 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
  		argum.clear();
 
 		return true;
-	}
-
-	if (IsPrologCall)
-	{
-		ClearStack(IS);
-		IsPrologCall = false;
 	}
 
 	return false;
@@ -649,11 +869,15 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 		{
 			if (*szComment)
 			{
+				char *ptrComment = szComment;
+				if (ptrComment[0] == 0x01) // get rid of the '\1' preceding char
+					ptrComment++;
+
 				DbgClearAutoCommentRange(inst->Address, inst->Address); // Delete the prev comment 
-				if ((strlen(szComment) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
+				if ((strlen(ptrComment) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 				{
 					strcat_s(CommentString, CommentStringCount, " = ");
-					strcat_s(CommentString, CommentStringCount, szComment);
+					strcat_s(CommentString, CommentStringCount, ptrComment);
 				}
 			}
 		}
@@ -668,8 +892,11 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 				{
 					if ((strlen(inst_source) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 					{
-						strcat_s(CommentString, CommentStringCount, " = ");
-						strcat_s(CommentString, CommentStringCount, inst_source);
+						ToUpperHex(inst_source);
+						sprintf_s(szComment, "%s = %s", CommentString, inst_source);
+						strcpy_s(CommentString, CommentStringCount, szComment);
+// 						strcat_s(CommentString, CommentStringCount, " = ");						
+// 						strcat_s(CommentString, CommentStringCount, inst_source);
 					}
 				}
 			}
@@ -694,42 +921,35 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 		return success;
 	}
 
-	strcpy_s(szApiFile, szCurrentDirectory);
-	strcat_s(szApiFile, "apis_def\\");
-	
 	if (!recursive)
 	{
-		strcat_s(szApiFile, lpszApiModule);
-		strcat_s(szApiFile, ".api");
-		return GetApiFileDefinition(lpszApiFunction, lpszApiDefinition, szApiFile);
+		auto search = apiDefinitionFiles.find(lpszApiModule);
+		if (search != apiDefinitionFiles.end())
+		{
+			Utf8Ini *defApiFile = search->second;
+			string apiFunction = defApiFile->GetValue(lpszApiFunction, "@");
+			// check if key is found
+			if (!apiFunction.empty())
+			{
+				strcpy_s(lpszApiDefinition, MAX_COMMENT_SIZE, apiFunction.c_str());
+				success = true;
+			}
+		}
 	}
 	else
 	{	// if recursive lookup throughout the entire directory of api definitions files
-		char szFile[MAX_PATH] = { 0 };
-		WIN32_FIND_DATA fd;
-
-		strcpy_s(szFile, szApiFile);
-		strcat_s(szFile, "*.*");
-
-		HANDLE hFind = FindFirstFile(szFile, &fd);
-		if (hFind != INVALID_HANDLE_VALUE)
+		for (const auto &api : apiDefinitionFiles)
 		{
-			do {
-				// read all (real) files in current folder
-				// , delete '!' read other 2 default folder . and ..
-				if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-					strcpy_s(szFile, szApiFile);
-					strcat_s(szFile, fd.cFileName);
-					if (GetApiFileDefinition(lpszApiFunction, lpszApiDefinition, szFile))
-					{
-						success = true;
-						strcpy_s(lpszApiModule, MAX_MODULE_SIZE, fd.cFileName); // save the correct file definition name
-						TruncateString(lpszApiModule, '.'); // strip .api from file name
-						break;
-					}
-				}
-			} while (FindNextFile(hFind, &fd));
-			FindClose(hFind);
+			Utf8Ini *defApiFile = api.second;
+			string apiFunction = defApiFile->GetValue(lpszApiFunction, "@");
+			// check if key is found
+			if (!apiFunction.empty())
+			{
+				strcpy_s(lpszApiDefinition, MAX_COMMENT_SIZE, apiFunction.c_str()); // save the API definition 
+				strcpy_s(lpszApiModule, MAX_MODULE_SIZE, api.first.c_str()); // save the correct file definition name
+				success = true;
+				break;
+			}
 		}
 	}
 
@@ -737,34 +957,24 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 }
 
 // ------------------------------------------------------------------------------------
-// Returns true if the api function is found in the given definition file
-// ------------------------------------------------------------------------------------
-bool GetApiFileDefinition(LPSTR lpszApiFunction, LPSTR lpszApiDefinition, LPSTR szFile)
-{
-	duint result = GetPrivateProfileString(lpszApiFunction, "@", ":", lpszApiDefinition, MAX_COMMENT_SIZE, szFile);
-	if (result == 0 || result == 1) // just got nothing or the colon and nothing else
-	{
-		*lpszApiDefinition = 0;
-		return false;
-	}
-
-	return true;
-}
-
-// ------------------------------------------------------------------------------------
 // Returns parameters for function in.api file, or - 1 if not found
 // ------------------------------------------------------------------------------------
 int GetFunctionParamCount(LPSTR lpszApiModule, LPSTR lpszApiFunction)
 {
-	if (lpszApiModule == NULL && lpszApiFunction == NULL)
+	if (lpszApiModule == NULL || lpszApiFunction == NULL)
 		return -1;
 
-	strcpy_s(szApiFile, szCurrentDirectory);
-	strcat_s(szApiFile, "apis_def\\");
-	strcat_s(szApiFile, lpszApiModule);
-	strcat_s(szApiFile, ".api");
+	auto search = apiDefinitionFiles.find(lpszApiModule);
+	if (search != apiDefinitionFiles.end())
+	{
+		Utf8Ini *defApiFile = search->second;
+		string params = defApiFile->GetValue(lpszApiFunction, "ParamCount");
+		// check if key is found
+		if (!params.empty() && ishex(params.c_str()))
+			return atoi(params.c_str());
+	}
 
-	return GetPrivateProfileInt(lpszApiFunction, "ParamCount", 0, szApiFile);
+	return 0;
 }
 
 // ------------------------------------------------------------------------------------
@@ -780,19 +990,21 @@ bool GetFunctionParam(LPSTR lpszApiModule, LPSTR lpszApiFunction, duint dwParamN
 		return false;
 	}
 
-	strcpy_s(szApiFile, szCurrentDirectory);
-	strcat_s(szApiFile, "apis_def\\");
-	strcat_s(szApiFile, lpszApiModule);
-	strcat_s(szApiFile, ".api");
-
-	int result = GetPrivateProfileString(lpszApiFunction, argument[dwParamNo - 1].c_str(), ":", lpszApiFunctionParameter, MAX_COMMENT_SIZE, szApiFile);
-	if (result <= 1) // just got nothing or the colon and nothing else
+	auto search = apiDefinitionFiles.find(lpszApiModule);
+	if (search != apiDefinitionFiles.end())
 	{
-		*lpszApiFunctionParameter = 0;
-		return false;
+		Utf8Ini *defApiFile = search->second;
+		string apiParameter = defApiFile->GetValue(lpszApiFunction, argument[dwParamNo - 1]);
+		// check if key is found
+		if (!apiParameter.empty())
+		{
+			strcpy_s(lpszApiFunctionParameter, MAX_COMMENT_SIZE, apiParameter.c_str()); // save the API parameter 
+			return true;
+		}
 	}
 
-	return true;
+	*lpszApiFunctionParameter = 0;
+	return false;	
 }
 
 // ------------------------------------------------------------------------------------
@@ -818,6 +1030,96 @@ void TruncateString(LPSTR str, char value)
 	pch = strchr(str, value);
 	if (pch != NULL)
 		*pch = 0; // truncate at value
+}
+
+// ------------------------------------------------------------------------------------
+// Make Hex value all UPPERCASE
+// ------------------------------------------------------------------------------------
+void ToUpperHex(char *str)
+{
+	duint size = strlen(str);
+	size++;
+	char *str_cpy = new char[size];
+	strcpy_s(str_cpy, size, str);
+
+	for (duint i = 0; i < size - 1; i++)
+	{
+		if (isalpha(str_cpy[i]) && str_cpy[i] != 'x')
+			str[i] = toupper(str_cpy[i]);
+	}
+
+	delete[] str_cpy;
+}
+
+// ------------------------------------------------------------------------------------
+// Call x64dbg core analysis to get as much info as possible
+// ------------------------------------------------------------------------------------
+void DoInitialAnalysis()
+{
+	GuiAddStatusBarMessage("[xAnalyzer]: Doing initial analysis...\r\n");
+
+	// do some analysis algorithms to get as much extra info as possible
+	DbgCmdExecDirect("cfanal");
+	DbgCmdExecDirect("exanal");
+	DbgCmdExecDirect("analx");
+	DbgCmdExecDirect("anal");
+
+	GuiAddStatusBarMessage("[xAnalyzer]: Initial analysis completed!\r\n");
+}
+
+// ------------------------------------------------------------------------------------
+// Clear previous analysis information
+// ------------------------------------------------------------------------------------
+void ClearPrevAnalysis(const duint dwEntry, const duint dwExit, bool clear_user_comments)
+{
+	// clear 
+	if (completeAnal)
+		DbgCmdExecDirect("loopclear"); // clear all prev loops
+	else
+		ClearLoopsRange(dwEntry, dwExit); // clear prev loops in the given range
+
+	// ask if clear user comments as well
+	if (clear_user_comments)
+		DbgClearCommentRange(dwEntry, dwExit + 1);
+
+	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
+	Argument::DeleteRange(dwEntry, dwExit, true); // clear all arguments
+}
+
+// ------------------------------------------------------------------------------------
+// Get selected instructions range
+// ------------------------------------------------------------------------------------
+void GetDisasmRange(duint *selstart, duint *selend, duint raw_start, duint raw_end)
+{
+	duint start = 0;
+	duint end = 0;
+	BASIC_INSTRUCTION_INFO bii;
+
+	if (raw_start == 0 || raw_end == 0)
+	{
+		start = Disassembly::SelectionGetStart();
+		end = Disassembly::SelectionGetEnd();
+	}
+	else
+	{
+		start = raw_start;
+		end = raw_end;
+	}
+
+	duint ptrIndex = start;
+	do 
+	{
+		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+		DbgDisasmFastAt(ptrIndex, &bii);
+
+		if (ptrIndex + bii.size > end)
+			break;
+
+		ptrIndex += bii.size;		
+	} while (ptrIndex < end);
+
+	*selstart = start;
+	*selend = ptrIndex;
 }
 
 // ------------------------------------------------------------------------------------
@@ -950,13 +1252,14 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
 bool IsProlog(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
 	bool callRef = false;
+	bool prologInstr = false;
 	XREF_INFO info;
 	
 	if (DbgXrefGet(CurrentAddress, &info) && info.refcount > 0)
 	{
 		for (duint i = 0; i < info.refcount; i++)
 		{
-			if (info.references[i].type == XREF_CALL) // if it has at least one reference from a CALL
+			if (info.references[i].type != /*== XREF_CALL*/XREF_JMP) // if it has at least one reference from a CALL/DATA
 			{
 				callRef = true; // it is a function start
 				break;
@@ -964,15 +1267,13 @@ bool IsProlog(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 		}
 	}
 
-	return (
 #ifdef _WIN64
-		strncmp(bii->instruction, "sub rsp, ", 9) == 0 ||
-		callRef);
+	prologInstr = strncmp(bii->instruction, "sub rsp, ", 9) == 0;
 #else
-		strncmp(bii->instruction, "push ebp", 8) == 0 ||
-		strncmp(bii->instruction, "enter 0", 7) == 0 ||
-		callRef);
+	prologInstr = strncmp(bii->instruction, "push ebp", 8) == 0 ||
+				  strncmp(bii->instruction, "enter 0,", 8) == 0;
 #endif
+	return (prologInstr || callRef);
 }
 
 // ------------------------------------------------------------------------------------
@@ -1114,7 +1415,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 // ------------------------------------------------------------------------------------
 void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
-	if (addressFunctionStart != 0 && bii->addr > addressFunctionStart && bii->addr < CurrentAddress)
+	if (addressFunctionStart != 0 && bii->addr >= addressFunctionStart && bii->addr < CurrentAddress)
 	{
 		LOOPSTACK *loop = new LOOPSTACK;
 		loop->dwStartAddress = bii->addr;
@@ -1141,6 +1442,27 @@ void SetFunctionLoops()
 }
 
 // ------------------------------------------------------------------------------------
+// Give the correct module name to lookup from different dll versions and variants
+// ------------------------------------------------------------------------------------
+void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch)
+{
+	char main_mod[MAX_MODULE_SIZE] = "";
+
+	// check for vc dll version
+	if (strncmp(szAPIModuleName, vc, 5) == 0)
+		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, vc);
+	else if (strcmp(szAPIModuleName, "kernelbase") == 0)
+	{
+		// if the module is kernelbase.dll the it'll be searched recursively
+		// throughout all definition files
+		Module::GetMainModuleName(main_mod);
+		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, main_mod);
+	}
+	else
+		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, szAPIModuleName);		
+}
+
+// ------------------------------------------------------------------------------------
 // Check if the current module backup database is present
 // ------------------------------------------------------------------------------------
 bool FileDbExists()
@@ -1163,4 +1485,173 @@ bool FileDbExists()
 #endif // _WIN64
 
 	return GetFileAttributes(db_path) != INVALID_FILE_ATTRIBUTES;
+}
+
+// ------------------------------------------------------------------------------------
+// Load the configuration file with the settings of the plugin
+// ------------------------------------------------------------------------------------
+void LoadConfig()
+{
+ 	IniManager iniReader(config_path);
+	conf.undef_funtion_analysis = iniReader.ReadBoolean("settings", "analysis_undefunctions", false);
+	conf.auto_analysis = iniReader.ReadBoolean("settings", "analysis_auto", false);
+	conf.extended_analysis = iniReader.ReadBoolean("settings", "analysis_extended", false);
+}
+
+// ------------------------------------------------------------------------------------
+// Save the configuration file for the settings of the plugin
+// ------------------------------------------------------------------------------------
+void SaveConfig()
+{
+	IniManager iniWriter(config_path);
+	iniWriter.WriteBoolean("settings", "analysis_extended", conf.extended_analysis);
+	iniWriter.WriteBoolean("settings", "analysis_undefunctions", conf.undef_funtion_analysis);
+	iniWriter.WriteBoolean("settings", "analysis_manual", conf.auto_analysis);
+
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_EXT, conf.extended_analysis);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_UNDEF, conf.undef_funtion_analysis);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_AUTO, conf.auto_analysis);
+}
+
+// ------------------------------------------------------------------------------------
+// Load all the definition files found
+// ------------------------------------------------------------------------------------
+ bool LoadDefinitionFiles(string &faultyFile, int &errorLine)
+ {
+ 	char szAllFiles[MAX_PATH] = "";
+ 	bool result = false;
+ 	WIN32_FIND_DATA fd;
+ 
+ 	apiDefinitionFiles.clear();
+ 	
+ 	strcpy_s(szAllFiles, szCurrentDirectory);
+ 	strcat_s(szAllFiles, "apis_def\\*.*");
+ 
+ 	string defDir = szCurrentDirectory;
+ 	defDir.append("apis_def\\");
+ 
+ 	HANDLE hFind = FindFirstFile(szAllFiles, &fd);
+ 	if (hFind != INVALID_HANDLE_VALUE)
+ 	{
+ 		do {
+ 			// read all (real) files in current folder
+ 			// , delete '!' read other 2 default folder . and ..
+ 			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) 
+ 			{
+ 				string currentFile = defDir + fd.cFileName;
+ 				auto hFile = CreateFile(currentFile.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+ 				if (hFile != INVALID_HANDLE_VALUE)
+ 				{
+ 					auto size = GetFileSize(hFile, nullptr);
+ 					if (size)
+ 					{
+ 						vector<char> iniData(size + 1, '\0');
+ 						DWORD read = 0;
+ 						if (ReadFile(hFile, iniData.data(), size, &read, nullptr))
+ 						{
+ 							Utf8Ini *file = new Utf8Ini();
+ 							if (file->Deserialize(iniData.data(), errorLine))
+ 							{
+ 								size_t fnsize = strlen(fd.cFileName) + 1;
+ 								char *api = new char[fnsize];
+ 								strcpy_s(api, fnsize, fd.cFileName);
+ 								TruncateString(api, '.'); // strip .api from file name
+ 								string apiName = api;
+ 
+ 								// Add to map of def files
+ 								apiDefinitionFiles.insert({ apiName, file });
+ 
+ 								result = true;
+ 								delete[] api;
+ 							}
+ 							else
+ 							{	// if there is any malformed definition file dont load
+ 								faultyFile = currentFile;
+ 								result = false;
+ 								CloseHandle(hFile);
+ 								break;
+ 							}
+ 						}
+ 					}
+ 					CloseHandle(hFile);
+ 				}
+ 			}
+ 		} while (FindNextFile(hFind, &fd));
+ 		FindClose(hFind);
+ 	}
+ 
+ 	return result;
+ }
+
+// ------------------------------------------------------------------------------------
+// Clear all loops in a given range
+// ------------------------------------------------------------------------------------
+void ClearLoopsRange(const duint start, const duint end, duint depth)
+{
+	duint loop_start = 0;
+	duint loop_end = 0;
+	BASIC_INSTRUCTION_INFO bii;
+
+	ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+	duint ptrIndex = start;
+	do
+	{
+		DbgDisasmFastAt(ptrIndex, &bii);
+
+		DbgLoopGet(0, ptrIndex, &loop_start, &loop_end);
+		if (loop_start != 0)
+		{
+			DbgLoopDel(0, loop_start);
+			ptrIndex = loop_end; // jump to the end of the loop
+			DbgDisasmFastAt(ptrIndex, &bii);
+		}
+
+		loop_start = 0;
+		loop_end = 0;
+		ptrIndex += bii.size;
+	} while (ptrIndex < end);
+}
+
+// ------------------------------------------------------------------------------------
+// Returns true if there are multiple lines selected in the disasm window
+// ------------------------------------------------------------------------------------
+bool IsMultipleSelection()
+{
+	duint start = 0;
+	duint end = 0;
+
+	GetDisasmRange(&start, &end);
+	return (start != end);
+}
+
+// ------------------------------------------------------------------------------------
+// Removes the analysis in the given case
+// ------------------------------------------------------------------------------------
+void RemoveAnalysis()
+{
+	duint start = 0;
+	duint end = 0;
+
+	DbgGetEntryExitPoints(&start, &end);
+	if (start != 0 && end != 0)
+	{
+		bool clear_user_comments = (MessageBox(hwndDlg, "Would you like to also clear all the comments in the given range?",
+									"Clear Comments!", MB_ICONWARNING + MB_YESNO) == IDYES);
+		ClearPrevAnalysis(start, end, clear_user_comments);
+	}
+	ResetGlobals();
+}
+
+// ------------------------------------------------------------------------------------
+// Removes the analysis in the given case
+// ------------------------------------------------------------------------------------
+void ResetGlobals()
+{
+	// reset analysis menus flags
+	selectionAnal = false;
+	singleFunctionAnal = false;
+	completeAnal = false;
+
+	// reset global flags
+	IsPrologCall = false;
 }

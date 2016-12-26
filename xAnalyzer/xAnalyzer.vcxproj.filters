@@ -287,6 +287,12 @@
     <ClInclude Include="xanalyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ini.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="pluginsdk\x32bridge.lib">
@@ -354,5 +360,14 @@
     <ClCompile Include="xanalyzer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ini.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xAnalyzer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\mainicon_big.ico" />
   </ItemGroup>
 </Project>

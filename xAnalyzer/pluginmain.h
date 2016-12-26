@@ -55,6 +55,7 @@
 
 //superglobal variables
 extern int pluginHandle;
+extern HMODULE pluginHInstance;
 extern HWND hwndDlg;
 extern int hMenu;
 extern int hMenuDisasm;
