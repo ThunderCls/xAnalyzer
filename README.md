@@ -76,7 +76,7 @@ xAnalyzer has an expandable system of API definition files, these files are pres
 
 - "*filename*": This is the name of the module on which the API function is located in.
 
-- "*.api*" extension: Specifies that it's a definition file, no other extension will be recognized (kernel32.api, shell32.api, etc)
+- "*.api*" extension: Specifies that it is a definition file, no other extension will be recognized (kernel32.api, shell32.api, etc)
 
 All these ini files contain important information for the plugin such as, the functions prototypes, argument types, etc. All of this information is used by xAnalyzer in order the set the extra information on the static code. A single entry in any of these files would be like:
 ````
@@ -89,7 +89,7 @@ ParamCount=4
 @=MessageBoxA(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType);
 ````
 
-If you find that a certain API call definition is not being detected or not detected correctly by xAnalyzer it might mean that itâ€™s not present in the definition files or that it is defined incorrectly, so in this case an addition or modification could be made to include any missing function or arguments as long as the same structure is followed it may be 100% customizable.
+If you find that a certain API call definition is not being detected or not detected correctly by xAnalyzer it might mean that it's not present in the definition files or that it is defined incorrectly, so in this case an addition or modification could be made to include any missing function or arguments as long as the same structure is followed it may be 100% customizable.
 
 ## Known issues and limitations
 
@@ -123,6 +123,6 @@ Contributions of all kinds are welcome, not only in the form of code but also wi
 
 Please keep the following in mind:
 
-- **Bug Reports**:  Make sure you're running the latest version of the plugin and of x64dbg. If the issue(s) still persist: please open a clearly documented issue with a clear title and as much information as possible in order to replicate the issue and give it solution.
+- **Bug Reports**:  Make sure you're running the latest versions of the plugin and x64dbg, also make sure you have no other plugins loaded but xAnalyzer plugin. If the issue(s) still persist: please open a clearly documented issue with a clear title and as much information as possible in order to replicate the issue and give it solution.
 
 Thanks for using xAnalyzer plugin...and Happy Reversing to All!
