@@ -111,7 +111,7 @@ If you find that a certain API call definition is not being detected or not dete
 
 - Add entropy analysis
 
-- Add an API's constants recognition system for each API constant argument used (MB_OK, INVALID_HANDLE_VALUE, GENERIC_READ, etc)
+- Add an API's constants recognition system for each API constant/enum argument used (MB_OK, INVALID_HANDLE_VALUE, GENERIC_READ, etc)
 
 - Flow analysis scanning instead of linear (trace emulation)
 
