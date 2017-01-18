@@ -124,8 +124,11 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 			DbgCmdExec("xanalyze");
 			break;
 		case MENU_ANALYZE_DISASM_SELEC:
-			selectionAnal = true;
-			DbgCmdExec("xanalyze");
+			if (IsMultipleSelection())
+			{
+				selectionAnal = true;
+				DbgCmdExec("xanalyze");
+			}
 			break;
 		case MENU_REM_ANALYSIS_DISASM_SELEC:
 			selectionAnal = true;
@@ -149,7 +152,7 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 bool pluginInit(PLUG_INITSTRUCT* initStruct)
 {
 	string faultyFile;
-	int errorLine;
+	int errorLine = -1;
 	char message[MAX_COMMENT_SIZE] = "";
 
 	GetCurrentDirectory(MAX_PATH, szCurrentDirectory);
@@ -157,8 +160,12 @@ bool pluginInit(PLUG_INITSTRUCT* initStruct)
 
  	if (!LoadDefinitionFiles(faultyFile, errorLine))
  	{
- 		sprintf_s(message, "[" PLUGIN_NAME "] Failed to load API definitions in file: \n%s - Line: %d\r\n"
- 							"Check the malformed file/line and try again...exiting plugin initialization!\n", faultyFile.c_str(), errorLine);
+		if (errorLine != -1)
+			sprintf_s(message, "[" PLUGIN_NAME "] Failed to load API definitions in file: \n%s - Line: %d\r\n"
+ 						"Check the malformed file/line and try again...exiting plugin initialization!\r\n", faultyFile.c_str(), errorLine);
+		else
+			sprintf_s(message, "[" PLUGIN_NAME "] Failed to locate API definitions files.\r\n"
+						"Check that 'apis_def' folder and definition files are present and try again...exiting plugin initialization!\r\n");
  		_plugin_logprintf(message);
  		return false;
  	}
@@ -228,8 +235,8 @@ void pluginSetup()
 	
 	// disasm window menu
 	_plugin_menuseticon(hMenuDisasm, &menu_icon);
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection\tCtrl+X");
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function\tCtrl+Shift+X");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection\tCtrl+Shift+X");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function\tCtrl+X");
 	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze Executable\tCtrl+Alt+X");
 	_plugin_menuaddseparator(hMenuDisasm);
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_SELEC, "&Remove analysis from selection");

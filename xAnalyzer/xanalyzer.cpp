@@ -73,25 +73,24 @@ void OnWinEvent(PLUG_CB_WINEVENT *info)
 		switch (msg->wParam)
 		{
 		case 'X':
-		case 'x':
-			// analyze function
-			if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1))
-			{
-				singleFunctionAnal = true;
-				DbgCmdExec("xanalyze");
-			}
-			else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
- 			{
-				completeAnal = true;
-				DbgCmdExec("xanalyze");
- 			}
-			else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze selection
+		case 'x':			
+			if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze selection
 			{
 				if (IsMultipleSelection())
 				{
 					selectionAnal = true;
 					DbgCmdExec("xanalyze");
 				}
+			}
+			else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
+ 			{
+				completeAnal = true;
+				DbgCmdExec("xanalyze");
+ 			}
+			else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze function
+			{
+				singleFunctionAnal = true;
+				DbgCmdExec("xanalyze");
 			}
 		break;
 		default:break;
