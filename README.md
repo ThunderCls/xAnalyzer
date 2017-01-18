@@ -42,7 +42,7 @@ xAnalyzer has some options to choose from in order to personalize even more the 
 
 - **Automatic Analysis**: When this option is ON, the plugin is going to launch a full automatic analysis over the executable code every time it reaches the entry point when loading on the debugger. By using this option you get the more closer OllyDbg initial analysis behavior on x64dbg.
 
-- **Extended Analysis**: This option it's going to force xAnalyzer to make an extended analysis over the entire code section of the debugged executable. 
+- **Extended Analysis**: This option is going to force xAnalyzer to make an extended analysis over the entire code section of the debugged executable. 
 *WARNING!!! By enabling this option the analysis process may take much more time and resources to complete, also larges amount of RAM memory might be used by x64dbg depending on the size of the section and the amount of extra data added to the debugged executable static disassembly*
 
 - **Analyze Undefined Functions**: By selecting this option xAnalyzer will use generic analysis and argument types for all of those API Calls/Functions that are not defined in the api definition files and also calls like:
