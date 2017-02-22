@@ -1505,7 +1505,7 @@ void SaveConfig()
 	IniManager iniWriter(config_path);
 	iniWriter.WriteBoolean("settings", "analysis_extended", conf.extended_analysis);
 	iniWriter.WriteBoolean("settings", "analysis_undefunctions", conf.undef_funtion_analysis);
-	iniWriter.WriteBoolean("settings", "analysis_manual", conf.auto_analysis);
+	iniWriter.WriteBoolean("settings", "analysis_auto", conf.auto_analysis);
 
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_EXT, conf.extended_analysis);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_UNDEF, conf.undef_funtion_analysis);
