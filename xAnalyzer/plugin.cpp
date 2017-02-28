@@ -237,9 +237,9 @@ void pluginSetup()
 	
 	// disasm window menu
 	_plugin_menuseticon(hMenuDisasm, &menu_icon);
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection\tCtrl+Shift+X");
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function\tCtrl+X");
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze Executable\tCtrl+Alt+X");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection");//\tCtrl+Shift+X
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function");//\tCtrl+X
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze Executable");//\tCtrl+Alt+X
 	_plugin_menuaddseparator(hMenuDisasm);
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_SELEC, "&Remove analysis from selection");
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_FUNCT, "&Remove analysis from function");
