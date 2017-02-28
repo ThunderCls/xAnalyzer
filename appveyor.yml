@@ -14,6 +14,7 @@ only_commits:
 build_script:
 - cmd: >-
     msbuild.exe xAnalyzer.sln /verbosity:minimal /t:Build /p:Configuration=Release;Platform=Win32
+    
     msbuild.exe xAnalyzer.sln /verbosity:minimal /t:Build /p:Configuration=Release;Platform=x64
 artifacts:
 - path: bin\x32\xAnalyzer.dp32
@@ -25,7 +26,7 @@ artifacts:
 deploy:
 - provider: GitHub
   tag: $(appveyor_build_version)
-  release: "xAnalyzer x86x64"
+  release: xAnalyzer x86x64
   auth_token:
     secure: e0tpvY9RhIn1LUvJjU0ast63hPNRCuXk/PbmXengsaugqMIm3a+2CSh/vGFbZDC/
   artifact: xAnalyzer.dp32,xAnalyzer.dp64,apis_def
