@@ -1,4 +1,4 @@
-version: 2.3.{build}
+version: 2.4.{build}
 skip_tags: true
 image: Visual Studio 2013
 configuration: Release
@@ -25,7 +25,7 @@ artifacts:
 deploy:
 - provider: GitHub
   tag: $(appveyor_build_version)
-  release: xAnalyzer x86x64
+  release: "xAnalyzer x86x64"
   auth_token:
     secure: e0tpvY9RhIn1LUvJjU0ast63hPNRCuXk/PbmXengsaugqMIm3a+2CSh/vGFbZDC/
   artifact: xAnalyzer.dp32,xAnalyzer.dp64,apis_def
