@@ -5,20 +5,22 @@
 ## Table Of Contents
 
 - [Features](#features)
+- [Download](#download)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [API Definition Files](#api-definition-files)
 - [Known issues and limitations](#known-issues-and-limitations)
 - [To-Do Long-Term](#to-do-long-term)
+- [Version History](#version-history)
 - [Contributing Guidelines](#contributing-guidelines)
 
 ## Features
 Some of the main features and improvements include:
 
-- Extended function calls analysis (defined/undefined) 
+- Extended function calls analysis (over 13,000 API’s definitions from almost 200 DLL’s)
 
-- Defined and/or generic arguments, data types and additional debugging info.
+- Defined and generic functions, arguments, data types and additional debugging info recognition.
 
 - Automatic loops detection.
 
@@ -30,8 +32,11 @@ Before xAnalyzer
 After xAnalyzer
 <p align="center"><img width=80% height=80% src ="images/after_analysis.png" /></p>
 
+## Download
+Download [HERE](https://github.com/ThunderCls/xAnalyzer/releases/latest) the latest release of the binaries
+
 ## Installation
-1. Download the latest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/tag/snapshot)
+1. Download the latest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/latest)
 
 2. Copy *xAnalyzer.dp32/xAnalyzer.dp64* files and *apis_def* folder to x32/x64 respective plugins directories of x64dbg
 
@@ -56,38 +61,65 @@ CALL {DYNAMIC_POINTER}
 xAnalyzer has some commands and menu options to choose from when working with an executable:
 
 ### Analyze Selection
-By making a selection of several instructions in the disassembly windows of x64dbg and selecting this menu, a fast analysis will be made over the selected lines. You can also use the hotkeys *Ctrl+X* for launching this option.
+By making a selection of several instructions in the disassembly windows of x64dbg and selecting this menu, a fast analysis will be made over the selected lines. You can also use the hotkeys *Ctrl+Shift+X* for launching this option.
 
 <p align="center"><img width=80% height=80% src ="images/selection_analysis.gif" /></p>
 
 ### Analyze Function
-If you are in the middle of some function you could use this menu entry to analyze that entire function and only that function. Taking your single selected instruction as a reference xAnalyzer will process from there all the lines inside a block of code. You could also use the hotkeys *Ctrl+Shift+X* for launching this type of analysis
+If you are in the middle of some function you could use this menu entry to analyze that entire function and only that function. Taking your single selected instruction as a reference xAnalyzer will process from there all the lines inside a block of code. You could also use the hotkeys *Ctrl+X* for launching this type of analysis
 
 <p align="center"><img width=80% height=80% src ="images/function_analysis.gif" /></p>
 
 ### Analyze Executable
-This command it's going to launch a full analysis over the entire executable. This feature takes the **Extended Analysis** option into consideration for the depth of analysis to be used.
+This command it's going to launch a full analysis over the entire executable. This feature takes the **Extended Analysis** option into consideration for the depth of analysis to be used. You could use the hotkeys *Ctrl+Alt+X* to execute it as well
 
 ### Remove Analysis Menus
 In these cases, all of these menus are going to make the opposite of what the previous commands did. In case you want to get rid of the analysis extra information in some parts of the code or in the entire executable if wished.
 
 ## API Definition Files
-xAnalyzer has an expandable system of API definition files, these files are present in the folder *api_def* which should contain all the files with a .ini structure and with the norm of:
+xAnalyzer has an expandable system of API definition files, these files are present in the folders *"api_def"* and *"api_def/headers"* which should contain all the files with a .ini structure and with the norm of:
 
 - "*filename*": This is the name of the module on which the API function is located in.
+
+- "*filename.h*": This is the header containing type data (flags and enums) related information
 
 - "*.api*" extension: Specifies that it is a definition file, no other extension will be recognized (kernel32.api, shell32.api, etc)
 
 All these ini files contain important information for the plugin such as, the functions prototypes, argument types, etc. All of this information is used by xAnalyzer in order the set the extra information on the static code. A single entry in any of these files would be like:
+
+File user32.api
 ````
-[MessageBoxA]
-1=HWND hWnd
-2=LPCSTR lpText
-3=LPCSTR lpCaption
-4=UINT uType
+[MessageBox]
+1=HANDLE hWnd
+2=LPCTSTR lpText
+3=LPCTSTR lpCaption
+4=[MessageBoxType] uType
 ParamCount=4
-@=MessageBoxA(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType);
+Header=shell.h.api;
+@=MessageBox
 ````
+
+File shell.h.api
+````
+[MessageBoxType]
+TypeDisplay=UINT
+Base=UINT
+Type=Flag
+Const1=MB_ABORTRETRYIGNORE
+Value1=0x00000002
+Const2=MB_CANCELTRYCONTINUE
+Value2=0x00000006
+Const3=MB_HELP
+Value3=0x00004000
+Const4=MB_OK
+Value4=0x00000000
+Const5=MB_OKCANCEL
+...
+````
+
+Any argument between brackets means that this is an specific data type (enum or binary flags) and that this will be defined in the proper .h header file specified in the key "*Header*". 
+
+As for the header file the scheme is pretty much the same just a couple of keys there, like "*TypeDisplay*". This specify the proper data type to display in the dbg comment, then it comes "*Base*", and it will point to the base data type used by the main entry, in case there´s a linked data type, this could be between brackets as well. "*Type*" key is the type of data structure this is and it can be "Flag" or "Enum". Finally all the variable names and values come along.
 
 If you find that a certain API call definition is not being detected or not detected correctly by xAnalyzer it might mean that it's not present in the definition files or that it is defined incorrectly, so in this case an addition or modification could be made to include any missing function or arguments as long as the same structure is followed it may be 100% customizable.
 
@@ -98,10 +130,14 @@ If you find that a certain API call definition is not being detected or not dete
 - Some "uncommon" functions have arguments among jumps, so according to the actual desgin of the plugin (no jumps among functions arguments) these calls won't be processed, since each time a jump is found the instructions in the stack are cleaned.
 
 - Nested calls will work correctly only when:
-  a- Inner call is defined
-  b- If inner undefined call takes no more arguments of the stack than the arguments needed by the outter call
+  
+  1-) Inner call is defined
+  2-) If inner undefined call takes no more arguments of the stack than the arguments needed by the outter call
+
 
 - It only detects loops inside functions (function boundaries Prologs/RETs). If a function contains a RET in the middle of its code it will be detected as a function end and the loops stack is cleared.
+
+- Analysis could fail if the executable being debugged has multiple dots it´s name
 
 - Incorrect loop detection for a section with an non-conditional jump inside it (See [#7](https://github.com/ThunderCls/xAnalyzer/issues/7))
 
@@ -111,15 +147,89 @@ If you find that a certain API call definition is not being detected or not dete
 
 - Add entropy analysis
 
-- Add an API's constants recognition system for each API constant/enum argument used (MB_OK, INVALID_HANDLE_VALUE, GENERIC_READ, etc)
-
 - Flow analysis scanning instead of linear (trace emulation)
 
 - Case-Switch detection
 
+## Version History
+
+***xAnalyzer 2.4***
+*- New and improved API definition files with a slightly modified scheme (13,000 API’s from almost 200 DLL’s)*
+*- Symbols recognition system for each API definition argument used (1000+ enums data types and 800+ flags)*
+*- Recognition of params data types (BOOL, NUMERIC, NON-NUMERIC)*
+*- VB "DllFunctionCall" stubs detection*
+*- Strings passed as arguments are cleaner now (debugger comments now have the address part stripped)*
+*- Execution Summary added to log window*
+*- Various bugs fixed*
+
+***xAnalyzer 2.3.1***
+*- Fixed bug when launching "Analyze Selection" menu with a single line
+selected, what caused an abrupt dbg exception (thanks to @blaquee)*
+*- Check if the definition files folder "apis_def" and definition files
+exist inside it before loading the plugin*
+*- Changed hot keys to Ctrl+Shift+X for selection and Ctrl+X for
+functions*
+
+***xAnalyzer 2.3***
+*- Added option "Analyze undefined functions". (OFF by default, anything that's not in definition files is not analyzed)*
+*- Added option "Automatic analysis" (OFF by default, make analysis on launch at EP of debugged executable)*
+*- Added feature "Analyze Selection" (Makes a selected instructions analysis, it supports multiple selected calls)*
+*- Added feature "Analyze Function" (Makes an automatic discovery and analysis of the current function from the selected address)*
+*- Added feature "Remove Analysis" from Selection/Function/Executable*
+*- Added command shortcuts*
+*- Added new icons*
+*- Added saving configuration to .ini file*
+*- Added capitalization of hexadecimal argument values*
+*- Restructured feature "Analyze Executable" (Makes a full analysis of the current executable)*
+*- Restructured menus*
+*- New about dialog now shows the version number to keep track of updates*
+*- Some small bug fixes*
+*- Fixed and merged some API definition files*
+*- Speed and stability improvements*
+
+***xAnalyzer 2.2***
+*- Added analysis progress indicator*
+*- Added new analysis depth mode*
+*-Now automatic analysis is only executed if no backup database is present*
+*- Bugs fixed*
+
+***xAnalyzer 2.1***
+*- Generic arguments for undefined functions and internal subs*
+*- Smart function comments and arguments (only functions with arguments on stack are being processed). This allows xAnalyzer to give a cleaner sight of the code by just processing and commenting those functions with actual arguments*
+*- Detection of indirect function calls with scheme CALL -> DYNAMIC_MEMORY -> API*
+*- Detection of indirect function calls with scheme CALL -> REGISTER/REGISTER + DISPLACEMENT -> API*
+*- Detection of indirect function calls with scheme CALL -> JMP -> JMP -> API*
+*- Automatic loops detection*
+*- Fixed minors bugs*
+*- Code rearrangements*
+
+***xAnalyzer 2.0***
+*- Support for x64 bits*
+*- Support API call arguments order changes in x64 bits*
+*- Support PDB files extra info in API calls*
+*- Support of direct/indirect API calls*
+*- Support of static API functions calls to main module code*
+*- Fixed several wrong API calls arguments order in definition files. More calls can now be detected and commented properly*
+*- Some improvements and better written code*
+*- Various bugs solved*
+
+***xAnalyzer 1.2***
+*- Updated the API's definition files*
+*- Added support to vc6+ executables*
+
+***xAnalyzer 1.1***
+*- Fixed issue that didn't show API's info on VC++ executables due to not
+properly cleaning BASIC_INSTRUCTION_INFO structures before/after using
+them in a loop*
+*- Added/Updated the API's definition files*
+*- Bugs fixed*
+
+***xAnalyzer 1.0***
+*- Initial Release*
+
 ## Contributing Guidelines
 
-Contributions of all kinds are welcome, not only in the form of code but also with regards bug reports and documentation.
+Contributions of all kinds are welcome, not only as PR but also as bugs reporting, documentation, etc.
 
 Please keep the following in mind:
 

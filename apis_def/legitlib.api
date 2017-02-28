@@ -1,0 +1,14 @@
+[GetLastErrors]
+1=WCHAR** ppwszTrace
+ParamCount=1
+@=GetLastErrors
+[IsAlreadyGenuine]
+ParamCount=0
+@=IsAlreadyGenuine
+[LegitCheck]
+ParamCount=0
+@=LegitCheck
+[SetPartnerID]
+1=int nPartnerID
+ParamCount=1
+@=SetPartnerID

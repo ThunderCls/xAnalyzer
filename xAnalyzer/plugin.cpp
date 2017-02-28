@@ -99,18 +99,18 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 			SaveConfig();
 			break;
 		case MENU_ABOUT:
-			ZeroMemory(&mbp, sizeof(MSGBOXPARAMS));
-			mbp.cbSize = sizeof(MSGBOXPARAMS);
-			mbp.hInstance = pluginHInstance;
-			mbp.lpszCaption = "About...";
-			mbp.lpszText = "["PLUGIN_NAME " " PLUGIN_VERSION_STR"]\n"
-							"Extended analysis for static code \n\n"
-							"http://github.com/ThunderCls/xAnalyzer\n"
-							"Coded By : ThunderCls - 2016\n"
-							"Based on: APIInfo Plugin by mrfearless";
-			mbp.dwStyle = MB_USERICON | MB_OK;
-			mbp.lpszIcon = MAKEINTRESOURCE(IDI_ICON1);
-			MessageBoxIndirect(&mbp);
+ 			ZeroMemory(&mbp, sizeof(MSGBOXPARAMS));
+ 			mbp.cbSize = sizeof(MSGBOXPARAMS);
+ 			mbp.hInstance = pluginHInstance;
+ 			mbp.lpszCaption = "About...";
+ 			mbp.lpszText = "["PLUGIN_NAME " " PLUGIN_VERSION_STR"]\n"
+ 							"Extended analysis for static code \n\n"
+ 							"http://github.com/ThunderCls/xAnalyzer\n"
+ 							"Coded By : ThunderCls - 2016\n"
+ 							"Based on: APIInfo Plugin by mrfearless";
+ 			mbp.dwStyle = MB_USERICON | MB_OK;
+ 			mbp.lpszIcon = MAKEINTRESOURCE(IDI_ICON1);
+ 			MessageBoxIndirect(&mbp);
 			break;
 		
 		// COMMANDS MENUS
@@ -152,26 +152,28 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 bool pluginInit(PLUG_INITSTRUCT* initStruct)
 {
 	string faultyFile;
+	string folder;
 	int errorLine = -1;
 	char message[MAX_COMMENT_SIZE] = "";
 
 	GetCurrentDirectory(MAX_PATH, szCurrentDirectory);
 	strcat_s(szCurrentDirectory, "\\");
 
- 	if (!LoadDefinitionFiles(faultyFile, errorLine))
+	if (!LoadDefinitionFiles(folder, faultyFile, errorLine))
  	{
 		if (errorLine != -1)
 			sprintf_s(message, "[" PLUGIN_NAME "] Failed to load API definitions in file: \n%s - Line: %d\r\n"
- 						"Check the malformed file/line and try again...exiting plugin initialization!\r\n", faultyFile.c_str(), errorLine);
+ 						"            Check the malformed file/line and try again...exiting plugin initialization!\r\n", faultyFile.c_str(), errorLine);
 		else
 			sprintf_s(message, "[" PLUGIN_NAME "] Failed to locate API definitions files.\r\n"
-						"Check that 'apis_def' folder and definition files are present and try again...exiting plugin initialization!\r\n");
+			"            Check that the folder: %s\r\n"
+			"            and definition files are present and try again...exiting plugin initialization!\r\n", folder.c_str());
  		_plugin_logprintf(message);
  		return false;
  	}
 
-	strcpy_s(config_path, szCurrentDirectory);
-	strcat_s(config_path, "xanalyzer.ini");
+	config_path = szCurrentDirectory + string("xanalyzer.ini");
+
 
 	// this will make this functions to execute in a non gui thread
 	_plugin_registercommand(pluginHandle, "xanalyze", cbExtendedAnalysis, true);

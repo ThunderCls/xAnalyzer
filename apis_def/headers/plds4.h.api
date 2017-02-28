@@ -1,0 +1,16 @@
+[PLHashFunction]
+Base=LPVOID
+[PLHashComparator]
+Base=LPVOID
+[PLHashEnumerator]
+Base=LPVOID
+[PLHashNumber]
+Base=PRUint32
+[PLHashAllocOps*]
+Base=LPVOID
+[PLHashEntry*]
+Base=PLHashEntry
+[PLHashEntry**]
+Base=PLHashEntry*
+[PLHashTable*]
+Base=PLHashTable

@@ -1,0 +1,6 @@
+[SfcGetFiles]
+1=[PPROTECT_FILE_ENTRY*] ProtFileData
+2=PULONG FileCount
+ParamCount=2
+Header=sfcfiles.h.api;
+@=SfcGetFiles

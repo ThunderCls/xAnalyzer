@@ -1,95 +1,54 @@
-[GetOpenFileNameA]
-1=LPOPENFILENAMEA
+[ChooseColor]
+1=[LPCHOOSECOLOR] lpcc
 ParamCount=1
-@=GetOpenFileNameA(LPOPENFILENAMEA);
-[GetOpenFileNameW]
-1=LPOPENFILENAMEW
+Header=gdi.h.api;
+@=ChooseColor
+[ChooseFont]
+1=[LPCHOOSEFONT] lpcf
 ParamCount=1
-@=GetOpenFileNameW(LPOPENFILENAMEW);
-[GetSaveFileNameA]
-1=LPOPENFILENAMEA
-ParamCount=1
-@=GetSaveFileNameA(LPOPENFILENAMEA);
-[GetSaveFileNameW]
-1=LPOPENFILENAMEW
-ParamCount=1
-@=GetSaveFileNameW(LPOPENFILENAMEW);
-[GetFileTitleA]
-1=LPCSTR
-2=LPSTR Buf
-3=WORD cchSize
-ParamCount=3
-@=GetFileTitleA(LPCSTR, LPSTR Buf, WORD cchSize);
-[GetFileTitleW]
-1=LPCWSTR
-2=LPWSTR Buf
-3=WORD cchSize
-ParamCount=3
-@=GetFileTitleW(LPCWSTR, LPWSTR Buf, WORD cchSize);
-[ChooseColorA]
-1=LPCHOOSECOLORA
-ParamCount=1
-@=ChooseColorA(LPCHOOSECOLORA);
-[ChooseColorW]
-1=LPCHOOSECOLORW
-ParamCount=1
-@=ChooseColorW(LPCHOOSECOLORW);
-[FindTextA]
-1=LPFINDREPLACEA
-ParamCount=1
-@=FindTextA(LPFINDREPLACEA);
-[FindTextW]
-1=LPFINDREPLACEW
-ParamCount=1
-@=FindTextW(LPFINDREPLACEW);
-[ReplaceTextA]
-1=LPFINDREPLACEA
-ParamCount=1
-@=ReplaceTextA(LPFINDREPLACEA);
-[ReplaceTextW]
-1=LPFINDREPLACEW
-ParamCount=1
-@=ReplaceTextW(LPFINDREPLACEW);
-[AfxReplaceTextA]
-1=LPFINDREPLACEA
-ParamCount=1
-@=AfxReplaceTextA(LPFINDREPLACEA);
-[AfxReplaceTextW]
-1=LPFINDREPLACEW
-ParamCount=1
-@=AfxReplaceTextW(LPFINDREPLACEW);
-[ChooseFontA]
-1=LPCHOOSEFONTA
-ParamCount=1
-@=ChooseFontA(LPCHOOSEFONTA);
-[ChooseFontW]
-1=LPCHOOSEFONTW
-ParamCount=1
-@=ChooseFontW(LPCHOOSEFONTW);
-[PrintDlgA]
-1=LPPRINTDLGA pPD
-ParamCount=1
-@=PrintDlgA(LPPRINTDLGA pPD);
-[PrintDlgW]
-1=LPPRINTDLGW pPD
-ParamCount=1
-@=PrintDlgW(LPPRINTDLGW pPD);
-[PrintDlgExA]
-1=LPPRINTDLGEXA pPD
-ParamCount=1
-@=PrintDlgExA(LPPRINTDLGEXA pPD);
-[PrintDlgExW]
-1=LPPRINTDLGEXW pPD
-ParamCount=1
-@=PrintDlgExW(LPPRINTDLGEXW pPD);
+Header=gdi.h.api;
+@=ChooseFont
 [CommDlgExtendedError]
 ParamCount=0
-@=CommDlgExtendedError();
-[PageSetupDlgA]
-1=LPPAGESETUPDLGA
+@=CommDlgExtendedError
+[FindText]
+1=[LPFINDREPLACE] lpfr
 ParamCount=1
-@=PageSetupDlgA(LPPAGESETUPDLGA);
-[PageSetupDlgW]
-1=LPPAGESETUPDLGW
+Header=gdi.h.api;
+@=FindText
+[GetFileTitle]
+1=LPCTSTR lpszFile
+2=LPTSTR lpszTitle
+3=WORD cbBuf
+ParamCount=3
+@=GetFileTitle
+[GetOpenFileName]
+1=[LPOPENFILENAME] lpofn
 ParamCount=1
-@=PageSetupDlgW(LPPAGESETUPDLGW);
+Header=gdi.h.api;
+@=GetOpenFileName
+[GetSaveFileName]
+1=[LPOPENFILENAME] lpofn
+ParamCount=1
+Header=gdi.h.api;
+@=GetSaveFileName
+[PageSetupDlg]
+1=[LPPAGESETUPDLG] lppsd
+ParamCount=1
+Header=gdi.h.api;
+@=PageSetupDlg
+[PrintDlg]
+1=[LPPRINTDLG] lppd
+ParamCount=1
+Header=gdi.h.api;
+@=PrintDlg
+[PrintDlgEx]
+1=[LPPRINTDLGEX] lppd
+ParamCount=1
+Header=gdi.h.api;
+@=PrintDlgEx
+[ReplaceText]
+1=[LPFINDREPLACE] lpfr
+ParamCount=1
+Header=gdi.h.api;
+@=ReplaceText

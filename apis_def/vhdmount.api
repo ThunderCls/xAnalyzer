@@ -1,0 +1,17 @@
+[GetSCSIAddress]
+1=PWCHAR VHDFileName
+2=ULONG Flags
+3=ULONG SCSIAddressLength
+4=PWCHAR SCSIAddress
+ParamCount=4
+@=GetSCSIAddress
+[MountVHD]
+1=PWCHAR VHDFileName
+2=ULONG Flags
+ParamCount=2
+@=MountVHD
+[UnmountVHD]
+1=PWCHAR VHDFileName
+2=ULONG Flags
+ParamCount=2
+@=UnmountVHD

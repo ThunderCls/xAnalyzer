@@ -1,0 +1,609 @@
+[CoEnterApplicationThreadLifetimeLoop]
+ParamCount=0
+@=CoEnterApplicationThreadLifetimeLoop
+[CoGetApplicationThreadReference]
+1=IUnknown** ppThreadReference
+ParamCount=1
+@=CoGetApplicationThreadReference
+[CoWaitForMultipleObjects]
+1=DWORD dwFlags
+2=DWORD dwTimeout
+3=ULONG cHandles
+4=[LPHANDLE] pHandles
+5=LPDWORD lpdwIndex
+ParamCount=5
+Header=windows.h.api;
+@=CoWaitForMultipleObjects
+[GetRestrictedErrorInfo]
+1=IRestrictedErrorInfo** ppRestrictedErrorInfo
+ParamCount=1
+@=GetRestrictedErrorInfo
+[SetRestrictedErrorInfo]
+1=IRestrictedErrorInfo* pRestrictedErrorInfo
+ParamCount=1
+@=SetRestrictedErrorInfo
+[CoDecodeProxy]
+1=DWORD dwClientPid
+2=UINT64 ui64ProxyAddress
+3=[PServerInformation] pServerInformation
+ParamCount=3
+Header=combase.h.api;
+@=CoDecodeProxy
+[HSTRING_UserFree]
+1=ULONG* pFlags
+2=[HSTRING*] ppidl
+ParamCount=2
+Header=runtime.h.api;
+@=HSTRING_UserFree
+[HSTRING_UserFree64]
+1=ULONG* pFlags
+2=[HSTRING*] ppidl
+ParamCount=2
+Header=runtime.h.api;
+@=HSTRING_UserFree64
+[HSTRING_UserMarshal]
+1=ULONG* pFlags
+2=UCHAR* pBuffer
+3=[HSTRING*] ppidl
+ParamCount=3
+Header=runtime.h.api;
+@=HSTRING_UserMarshal
+[HSTRING_UserMarshal64]
+1=ULONG* pFlags
+2=UCHAR* pBuffer
+3=[HSTRING*] ppidl
+ParamCount=3
+Header=runtime.h.api;
+@=HSTRING_UserMarshal64
+[HSTRING_UserSize]
+1=ULONG* pFlags
+2=ULONG StartingSize
+3=[HSTRING*] ppidl
+ParamCount=3
+Header=runtime.h.api;
+@=HSTRING_UserSize
+[HSTRING_UserSize64]
+1=ULONG* pFlags
+2=ULONG StartingSize
+3=[HSTRING*] ppidl
+ParamCount=3
+Header=runtime.h.api;
+@=HSTRING_UserSize64
+[HSTRING_UserUnmarshal]
+1=ULONG* pFlags
+2=UCHAR* pBuffer
+3=[HSTRING*] ppidl
+ParamCount=3
+Header=runtime.h.api;
+@=HSTRING_UserUnmarshal
+[HSTRING_UserUnmarshal64]
+1=ULONG* pFlags
+2=UCHAR* pBuffer
+3=[HSTRING*] ppidl
+ParamCount=3
+Header=runtime.h.api;
+@=HSTRING_UserUnmarshal64
+[RoActivateInstance]
+1=[HSTRING] activatableClassId
+2=IInspectable** instance
+ParamCount=2
+Header=runtime.h.api;
+@=RoActivateInstance
+[RoCaptureErrorContext]
+1=HRESULT hrError
+ParamCount=1
+@=RoCaptureErrorContext
+[RoFailFastWithErrorContext]
+1=HRESULT hrError
+ParamCount=1
+@=RoFailFastWithErrorContext
+[RoFreeParameterizedTypeExtra]
+1=[ROPARAMIIDHANDLE] extra
+ParamCount=1
+Header=combase.h.api;
+@=RoFreeParameterizedTypeExtra
+[RoGetActivatableClassRegistration]
+1=[HSTRING] activatableClassId
+2=[PActivatableClassRegistration*] activatableClassRegistration
+ParamCount=2
+Header=combase.h.api;runtime.h.api;
+@=RoGetActivatableClassRegistration
+[RoGetActivationFactory]
+1=[HSTRING] activatableClassId
+2=[REFIID] iid
+3=void** factory
+ParamCount=3
+Header=runtime.h.api;windows.h.api;
+@=RoGetActivationFactory
+[RoGetApartmentIdentifier]
+1=UINT64* apartmentIdentifier
+ParamCount=1
+@=RoGetApartmentIdentifier
+[RoGetErrorReportingFlags]
+1=[RO_ERROR_REPORTING_FLAGS*] pflags
+ParamCount=1
+Header=combase.h.api;
+@=RoGetErrorReportingFlags
+[RoGetParameterizedTypeInstanceIID]
+1=UINT32 nameElementCount
+2=PCWSTR* nameElements
+3=[IRoMetaDataLocator&] metaDataLocator
+4=[GUID*] iid
+5=[ROPARAMIIDHANDLE*] pExtra
+ParamCount=5
+Header=combase.h.api;windows.h.api;
+@=RoGetParameterizedTypeInstanceIID
+[RoGetServerActivatableClasses]
+1=[HSTRING] serverName
+2=[HSTRING**] activatableClassIds
+3=DWORD* count
+ParamCount=3
+Header=runtime.h.api;
+@=RoGetServerActivatableClasses
+[RoInitialize]
+1=[RO_INIT_TYPE] initType
+ParamCount=1
+Header=combase.h.api;
+@=RoInitialize
+[RoOriginateError]
+1=HRESULT error
+2=[HSTRING] message
+ParamCount=2
+Header=runtime.h.api;
+@=RoOriginateError
+[RoOriginateErrorW]
+1=HRESULT error
+2=UINT cchMax
+3=PCWSTR message
+ParamCount=3
+@=RoOriginateErrorW
+[RoParameterizedTypeExtraGetTypeSignature]
+1=[ROPARAMIIDHANDLE] extra
+ParamCount=1
+Header=combase.h.api;
+@=RoParameterizedTypeExtraGetTypeSignature
+[RoRegisterActivationFactories]
+1=[HSTRING*] activatableClassIds
+2=[PFNGETACTIVATIONFACTORY*] activationFactoryCallbacks
+3=UINT32 count
+4=[RO_REGISTRATION_COOKIE*] cookie
+ParamCount=4
+Header=combase.h.api;runtime.h.api;
+@=RoRegisterActivationFactories
+[RoRegisterForApartmentShutdown]
+1=IApartmentShutdown* callbackObject
+2=UINT64* apartmentIdentifier
+3=[APARTMENT_SHUTDOWN_REGISTRATION_COOKIE*] regCookie
+ParamCount=3
+Header=combase.h.api;
+@=RoRegisterForApartmentShutdown
+[RoResolveRestrictedErrorInfoReference]
+1=PCWSTR reference
+2=IRestrictedErrorInfo** ppRestrictedErrorInfo
+ParamCount=2
+@=RoResolveRestrictedErrorInfoReference
+[RoRevokeActivationFactories]
+1=[RO_REGISTRATION_COOKIE] cookie
+ParamCount=1
+Header=combase.h.api;
+@=RoRevokeActivationFactories
+[RoSetErrorReportingFlags]
+1=[RO_ERROR_REPORTING_FLAGS] flags
+ParamCount=1
+Header=combase.h.api;
+@=RoSetErrorReportingFlags
+[RoTransformError]
+1=HRESULT oldError
+2=HRESULT newError
+3=[HSTRING] message
+ParamCount=3
+Header=runtime.h.api;
+@=RoTransformError
+[RoTransformErrorW]
+1=HRESULT oldError
+2=HRESULT newError
+3=UINT cchMax
+4=PCWSTR message
+ParamCount=4
+@=RoTransformErrorW
+[RoUninitialize]
+ParamCount=0
+@=RoUninitialize
+[RoUnregisterForApartmentShutdown]
+1=[APARTMENT_SHUTDOWN_REGISTRATION_COOKIE] regCookie
+ParamCount=1
+Header=combase.h.api;
+@=RoUnregisterForApartmentShutdown
+[WindowsCompareStringOrdinal]
+1=[HSTRING] string1
+2=[HSTRING] string2
+3=INT32* result
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsCompareStringOrdinal
+[WindowsConcatString]
+1=[HSTRING] string1
+2=[HSTRING] string2
+3=[HSTRING*] newString
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsConcatString
+[WindowsCreateString]
+1=LPCWSTR sourceString
+2=UINT32 length
+3=[HSTRING*] string
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsCreateString
+[WindowsCreateStringReference]
+1=PCWSTR sourceString
+2=UINT32 length
+3=[HSTRING_HEADER*] hstringHeader
+4=[HSTRING*] string
+ParamCount=4
+Header=runtime.h.api;
+@=WindowsCreateStringReference
+[WindowsDeleteString]
+1=[HSTRING] string
+ParamCount=1
+Header=runtime.h.api;
+@=WindowsDeleteString
+[WindowsDeleteStringBuffer]
+1=[HSTRING_BUFFER] bufferHandle
+ParamCount=1
+Header=runtime.h.api;
+@=WindowsDeleteStringBuffer
+[WindowsDuplicateString]
+1=[HSTRING] string
+2=[HSTRING*] newString
+ParamCount=2
+Header=runtime.h.api;
+@=WindowsDuplicateString
+[WindowsGetStringLen]
+1=[HSTRING] string
+ParamCount=1
+Header=runtime.h.api;
+@=WindowsGetStringLen
+[WindowsGetStringRawBuffer]
+1=[HSTRING] string
+2=UINT32* length
+ParamCount=2
+Header=runtime.h.api;
+@=WindowsGetStringRawBuffer
+[WindowsInspectString]
+1=UINT_PTR targetHString
+2=USHORT machine
+3=[PINSPECT_HSTRING_CALLBACK] callback
+4=void* context
+5=UINT32* length
+6=UINT_PTR* targetStringAddress
+ParamCount=6
+Header=combase.h.api;
+@=WindowsInspectString
+[WindowsIsStringEmpty]
+1=[HSTRING] string
+ParamCount=1
+Header=runtime.h.api;
+@=WindowsIsStringEmpty
+[WindowsPreallocateStringBuffer]
+1=UINT32 length
+2=WCHAR** mutableBuffer
+3=[HSTRING_BUFFER*] bufferHandle
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsPreallocateStringBuffer
+[WindowsPromoteStringBuffer]
+1=[HSTRING_BUFFER] bufferHandle
+2=[HSTRING*] string
+ParamCount=2
+Header=runtime.h.api;
+@=WindowsPromoteStringBuffer
+[WindowsReplaceString]
+1=[HSTRING] string
+2=[HSTRING] stringReplaced
+3=[HSTRING] stringReplaceWith
+4=[HSTRING*] newString
+ParamCount=4
+Header=runtime.h.api;
+@=WindowsReplaceString
+[WindowsStringHasEmbeddedNull]
+1=[HSTRING] string
+2=BOOL* hasEmbedNull
+ParamCount=2
+Header=runtime.h.api;
+@=WindowsStringHasEmbeddedNull
+[WindowsSubstring]
+1=[HSTRING] string
+2=UINT32 startIndex
+3=[HSTRING*] newString
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsSubstring
+[WindowsSubstringWithSpecifiedLength]
+1=[HSTRING] string
+2=UINT32 startIndex
+3=UINT32 length
+4=[HSTRING*] newString
+ParamCount=4
+Header=runtime.h.api;
+@=WindowsSubstringWithSpecifiedLength
+[WindowsTrimStringEnd]
+1=[HSTRING] string
+2=[HSTRING] trimString
+3=[HSTRING*] newString
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsTrimStringEnd
+[WindowsTrimStringStart]
+1=[HSTRING] string
+2=[HSTRING] trimString
+3=[HSTRING*] newString
+ParamCount=3
+Header=runtime.h.api;
+@=WindowsTrimStringStart
+[CoAllowUnmarshalerCLSID]
+1=[REFCLSID] clsid
+ParamCount=1
+Header=windows.h.api;
+@=CoAllowUnmarshalerCLSID
+[CLSIDFromProgID]
+ParamCount=0
+@=CLSIDFromProgID
+[CLSIDFromString]
+ParamCount=0
+@=CLSIDFromString
+[CoAddRefServerProcess]
+ParamCount=0
+@=CoAddRefServerProcess
+[CoCancelCall]
+ParamCount=0
+@=CoCancelCall
+[CoCopyProxy]
+ParamCount=0
+@=CoCopyProxy
+[CoCreateFreeThreadedMarshaler]
+ParamCount=0
+@=CoCreateFreeThreadedMarshaler
+[CoCreateGuid]
+ParamCount=0
+@=CoCreateGuid
+[CoCreateInstance]
+ParamCount=0
+@=CoCreateInstance
+[CoCreateInstanceEx]
+ParamCount=0
+@=CoCreateInstanceEx
+[CoCreateInstanceFromApp]
+ParamCount=0
+@=CoCreateInstanceFromApp
+[CoDecrementMTAUsage]
+ParamCount=0
+@=CoDecrementMTAUsage
+[CoDisableCallCancellation]
+ParamCount=0
+@=CoDisableCallCancellation
+[CoDisconnectContext]
+ParamCount=0
+@=CoDisconnectContext
+[CoDisconnectObject]
+ParamCount=0
+@=CoDisconnectObject
+[CoEnableCallCancellation]
+ParamCount=0
+@=CoEnableCallCancellation
+[CoFreeUnusedLibraries]
+ParamCount=0
+@=CoFreeUnusedLibraries
+[CoFreeUnusedLibrariesEx]
+ParamCount=0
+@=CoFreeUnusedLibrariesEx
+[CoGetApartmentType]
+ParamCount=0
+@=CoGetApartmentType
+[CoGetCallContext]
+ParamCount=0
+@=CoGetCallContext
+[CoGetCallerTID]
+ParamCount=0
+@=CoGetCallerTID
+[CoGetCancelObject]
+ParamCount=0
+@=CoGetCancelObject
+[CoGetClassObject]
+ParamCount=0
+@=CoGetClassObject
+[CoGetContextToken]
+ParamCount=0
+@=CoGetContextToken
+[CoGetCurrentLogicalThreadId]
+ParamCount=0
+@=CoGetCurrentLogicalThreadId
+[CoGetCurrentProcess]
+ParamCount=0
+@=CoGetCurrentProcess
+[CoGetInstanceFromFile]
+ParamCount=0
+@=CoGetInstanceFromFile
+[CoGetInstanceFromIStorage]
+ParamCount=0
+@=CoGetInstanceFromIStorage
+[CoGetInterfaceAndReleaseStream]
+ParamCount=0
+@=CoGetInterfaceAndReleaseStream
+[CoGetMalloc]
+ParamCount=0
+@=CoGetMalloc
+[CoGetMarshalSizeMax]
+ParamCount=0
+@=CoGetMarshalSizeMax
+[CoGetModuleType]
+ParamCount=0
+@=CoGetModuleType
+[CoGetObjectContext]
+ParamCount=0
+@=CoGetObjectContext
+[CoGetPSClsid]
+ParamCount=0
+@=CoGetPSClsid
+[CoGetStandardMarshal]
+ParamCount=0
+@=CoGetStandardMarshal
+[CoGetStdMarshalEx]
+ParamCount=0
+@=CoGetStdMarshalEx
+[CoGetTreatAsClass]
+ParamCount=0
+@=CoGetTreatAsClass
+[CoImpersonateClient]
+ParamCount=0
+@=CoImpersonateClient
+[CoIncrementMTAUsage]
+ParamCount=0
+@=CoIncrementMTAUsage
+[CoInitializeEx]
+ParamCount=0
+@=CoInitializeEx
+[CoInitializeSecurity]
+ParamCount=0
+@=CoInitializeSecurity
+[CoInvalidateRemoteMachineBindings]
+ParamCount=0
+@=CoInvalidateRemoteMachineBindings
+[CoIsHandlerConnected]
+ParamCount=0
+@=CoIsHandlerConnected
+[CoLockObjectExternal]
+ParamCount=0
+@=CoLockObjectExternal
+[CoMarshalHresult]
+ParamCount=0
+@=CoMarshalHresult
+[CoMarshalInterface]
+ParamCount=0
+@=CoMarshalInterface
+[CoMarshalInterThreadInterfaceInStream]
+ParamCount=0
+@=CoMarshalInterThreadInterfaceInStream
+[CoQueryAuthenticationServices]
+ParamCount=0
+@=CoQueryAuthenticationServices
+[CoQueryClientBlanket]
+ParamCount=0
+@=CoQueryClientBlanket
+[CoQueryProxyBlanket]
+ParamCount=0
+@=CoQueryProxyBlanket
+[CoRegisterClassObject]
+ParamCount=0
+@=CoRegisterClassObject
+[CoRegisterInitializeSpy]
+ParamCount=0
+@=CoRegisterInitializeSpy
+[CoRegisterMallocSpy]
+ParamCount=0
+@=CoRegisterMallocSpy
+[CoRegisterMessageFilter]
+ParamCount=0
+@=CoRegisterMessageFilter
+[CoRegisterPSClsid]
+ParamCount=0
+@=CoRegisterPSClsid
+[CoRegisterSurrogate]
+ParamCount=0
+@=CoRegisterSurrogate
+[CoReleaseMarshalData]
+ParamCount=0
+@=CoReleaseMarshalData
+[CoReleaseServerProcess]
+ParamCount=0
+@=CoReleaseServerProcess
+[CoResumeClassObjects]
+ParamCount=0
+@=CoResumeClassObjects
+[CoRevertToSelf]
+ParamCount=0
+@=CoRevertToSelf
+[CoRevokeClassObject]
+ParamCount=0
+@=CoRevokeClassObject
+[CoRevokeInitializeSpy]
+ParamCount=0
+@=CoRevokeInitializeSpy
+[CoRevokeMallocSpy]
+ParamCount=0
+@=CoRevokeMallocSpy
+[CoSetCancelObject]
+ParamCount=0
+@=CoSetCancelObject
+[CoSetProxyBlanket]
+ParamCount=0
+@=CoSetProxyBlanket
+[CoSuspendClassObjects]
+ParamCount=0
+@=CoSuspendClassObjects
+[CoSwitchCallContext]
+ParamCount=0
+@=CoSwitchCallContext
+[CoTaskMemAlloc]
+ParamCount=0
+@=CoTaskMemAlloc
+[CoTaskMemFree]
+ParamCount=0
+@=CoTaskMemFree
+[CoTaskMemRealloc]
+ParamCount=0
+@=CoTaskMemRealloc
+[CoTestCancel]
+ParamCount=0
+@=CoTestCancel
+[CoUninitialize]
+ParamCount=0
+@=CoUninitialize
+[CoUnmarshalHresult]
+ParamCount=0
+@=CoUnmarshalHresult
+[CoUnmarshalInterface]
+ParamCount=0
+@=CoUnmarshalInterface
+[CoWaitForMultipleHandles]
+ParamCount=0
+@=CoWaitForMultipleHandles
+[CreateStreamOnHGlobal]
+ParamCount=0
+@=CreateStreamOnHGlobal
+[FreePropVariantArray]
+ParamCount=0
+@=FreePropVariantArray
+[GetHGlobalFromStream]
+ParamCount=0
+@=GetHGlobalFromStream
+[IIDFromString]
+ParamCount=0
+@=IIDFromString
+[ProgIDFromCLSID]
+ParamCount=0
+@=ProgIDFromCLSID
+[PropVariantClear]
+ParamCount=0
+@=PropVariantClear
+[PropVariantCopy]
+ParamCount=0
+@=PropVariantCopy
+[StringFromCLSID]
+ParamCount=0
+@=StringFromCLSID
+[StringFromGUID2]
+ParamCount=0
+@=StringFromGUID2
+[StringFromIID]
+ParamCount=0
+@=StringFromIID
+[CreateErrorInfo]
+ParamCount=0
+@=CreateErrorInfo
+[GetErrorInfo]
+ParamCount=0
+@=GetErrorInfo
+[SetErrorInfo]
+ParamCount=0
+@=SetErrorInfo

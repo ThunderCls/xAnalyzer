@@ -1,0 +1,18 @@
+[InternetDeInitializeAutoProxyDll]
+1=LPSTR lpszMime
+2=DWORD dwReserved
+ParamCount=2
+@=InternetDeInitializeAutoProxyDll
+[InternetGetProxyInfo]
+1=LPCSTR lpszUrl
+2=DWORD dwUrlLength
+3=LPSTR lpszUrlHostName
+4=DWORD dwUrlHostNameLength
+5=LPSTR* lplpszProxyHostName
+6=LPDWORD lpdwProxyHostNameLength
+ParamCount=6
+@=InternetGetProxyInfo
+[InternetInitializeAutoProxyDll]
+1=DWORD dwReserved
+ParamCount=1
+@=InternetInitializeAutoProxyDll

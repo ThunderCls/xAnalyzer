@@ -1,0 +1,15 @@
+[BeginIdleDetection]
+1=[_IDLECALLBACK] pfnCallback
+2=DWORD dwIdleMin
+3=DWORD dwReserved
+ParamCount=3
+Header=msidle.h.api;
+@=BeginIdleDetection
+[EndIdleDetection]
+1=DWORD dwReserved
+ParamCount=1
+@=EndIdleDetection
+[GetIdleMinutes]
+1=DWORD dwReserved
+ParamCount=1
+@=GetIdleMinutes

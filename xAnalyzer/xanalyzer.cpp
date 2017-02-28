@@ -7,6 +7,8 @@
 #include <stack>
 #include <vector>
 #include <ctime>
+#include <string>
+#include <algorithm>
 
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "Shlwapi.lib")
@@ -16,22 +18,28 @@ using namespace Script;
 using namespace Gui;
 
 // ------------------------------------------------------------------------------------
-CONFIG conf;
-bool selectionAnal = false;
-bool singleFunctionAnal = false;
-bool completeAnal = false;
+CONFIG conf; // confg file struct
+PROCSUMMARY procSummary; // execution summary struct
+bool selectionAnal = false; // analysis type flag
+bool singleFunctionAnal = false; // analysis type flag
+bool completeAnal = false; // analysis type flag
 bool IsPrologCall = false; // control undefined calls on function prologues
 duint addressFunctionStart = 0;
 duint mEntryPoint = 0;
 duint mSectionLowerLimit = 0;
-char szCurrentDirectory[MAX_PATH];
-char szAPIFunction[MAX_COMMENT_SIZE];
-char szAPIFunctionParameter[MAX_COMMENT_SIZE];
-char config_path[MAX_PATH];
-char *vc = "msvcrt\0";
-stack <INSTRUCTIONSTACK*> IS;
-stack <LOOPSTACK*> LS;
-unordered_map<string, Utf8Ini*> apiDefinitionFiles;
+string config_path;
+string szAPIFunction;
+string szOriginalCharsetAPIFunction; // bak of the original charset function name
+char szCurrentDirectory[MAX_PATH] = "";
+char szAPIFunctionParameter[MAX_COMMENT_SIZE] = "";
+char *vc = "msvcrxx\0";
+char *vcrt = "vcruntime\0";
+char *ucrt = "ucrtbase\0";
+stack <INSTRUCTIONSTACK*> IS; // global instructions stack
+stack <LOOPSTACK*> LS; // global loops instructions stack
+unordered_map<string, Utf8Ini*>::const_iterator apiDefPointer; // pointer to the current def file
+unordered_map<string, Utf8Ini*> apiFiles; // map of main def files
+unordered_map<string, Utf8Ini*> apiHFiles; // map of headers def files
 // ------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------
@@ -67,35 +75,35 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 // ------------------------------------------------------------------------------------
 void OnWinEvent(PLUG_CB_WINEVENT *info)
 {
-	auto msg = info->message;
-	if (msg->message == WM_KEYDOWN && info->result)
-	{
-		switch (msg->wParam)
-		{
-		case 'X':
-		case 'x':			
-			if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze selection
-			{
-				if (IsMultipleSelection())
-				{
-					selectionAnal = true;
-					DbgCmdExec("xanalyze");
-				}
-			}
-			else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
- 			{
-				completeAnal = true;
-				DbgCmdExec("xanalyze");
- 			}
-			else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze function
-			{
-				singleFunctionAnal = true;
-				DbgCmdExec("xanalyze");
-			}
-		break;
-		default:break;
-		}
-	}
+	//auto msg = info->message;
+	//if (msg->message == WM_KEYDOWN && info->result)
+	//{
+	//	switch (msg->wParam)
+	//	{
+	//	case 'X':
+	//	case 'x':			
+	//		if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze selection
+	//		{
+	//			if (IsMultipleSelection())
+	//			{
+	//				selectionAnal = true;
+	//				DbgCmdExec("xanalyze");
+	//			}
+	//		}
+	//		else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
+ //			{
+	//			completeAnal = true;
+	//			DbgCmdExec("xanalyze");
+ //			}
+	//		else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze function
+	//		{
+	//			singleFunctionAnal = true;
+	//			DbgCmdExec("xanalyze");
+	//		}
+	//	break;
+	//	default:break;
+	//	}
+	//}
 }
 
  //------------------------------------------------------------------------------------
@@ -136,10 +144,11 @@ void DoExtendedAnalysis()
 	end_t = clock();
 
 	sprintf_s(message, "[xAnalyzer]: Analysis completed in %f secs\r\n", (double)(end_t - start_t) / CLOCKS_PER_SEC); // elapsed time
-	GuiAddStatusBarMessage(message);
+
+	//GuiAddStatusBarMessage(message);
 	GuiAddLogMessage(message);
+	PrintExecLogSummary();
 	GuiAddStatusBarMessage(message);
-	//GuiAddLogMessage("[xAnalyzer]: Analysis completed!\r\n");
 	ResetGlobals();
 }
 
@@ -164,6 +173,10 @@ void ExtraAnalysis()
 		GuiUpdateDisassemblyView();
 
 		start_t = clock();
+		// if a VB executable detect and label all dllfunctioncall stubs in the range
+		if (IsVBExecutable())
+			ProcessDllFunctionCalls(dwEntry, dwExit);
+
 		AnalyzeBytesRange(dwEntry, dwExit);
 		end_t = clock();
 
@@ -216,6 +229,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		// clean previous values
 		ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
 		ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
+		szAPIFunction = ""; // clear prev api function name
 
 		INSTRUCTIONSTACK *inst = new INSTRUCTIONSTACK;
 		inst->Address = CurrentAddress; // save address of instruction
@@ -236,19 +250,24 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			// save data for the argument
 			ai.manual = true;
 			ai.rvaEnd = CurrentAddress - Module::BaseFromAddr(CurrentAddress); // call address is the last		
-			if (Strip_x64dbg_calls(szDisasmText, szAPIFunction) || (cbii.branch && Strip_x64dbg_calls(szJmpDisasmText, szAPIFunction)))
+			if (Strip_x64dbg_calls(szDisasmText) || (cbii.branch && Strip_x64dbg_calls(szJmpDisasmText)))
 			{
+				szOriginalCharsetAPIFunction = szAPIFunction;
+				// transform charsets search
+				if (szAPIFunction.back() == 'A' || szAPIFunction.back() == 'W')
+					szAPIFunction.pop_back();
+
 				if (cbii.branch) // direct call/jump => api
 				{
 					JmpDestination = DbgGetBranchDestination(CallDestination);
-					Module::NameFromAddr(JmpDestination, szAPIModuleName);
+					Module::NameFromAddr(JmpDestination, szAPIModuleName); 
 					TruncateString(szAPIModuleName, '.'); // strip .dll from module name
 
 					// get the correct dll module name to lookup 
 					GetModuleNameSearch(szAPIModuleName, szAPIModuleNameSearch);
 
 					bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0); // if it's the main module search recursive
-					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive))
+					if (!SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, recursive))
 					{
 						if (conf.undef_funtion_analysis)
 						{
@@ -256,10 +275,10 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 							{
 								strcpy_s(szAPIComment, szAPIModuleName); // if no definition found use "module.function"
 								strcat_s(szAPIComment, ".");
-								strcat_s(szAPIComment, szAPIFunction);
+								strcat_s(szAPIComment, szAPIFunction.c_str());
 							}
 							else
-								strcpy_s(szAPIComment, szAPIFunction);
+								strcpy_s(szAPIComment, szAPIFunction.c_str());
 
 							if (SetSubParams(&ai)) // when no definition use generic arguments
 								SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
@@ -273,14 +292,20 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 				}
 				else
 				{
-					DbgGetLabelAt(CurrentAddress, SEG_DEFAULT, szAPIFunction); // get label if any as function name
-					if (strncmp(szAPIFunction, "sub_", 4) == 0) // internal function call or sub
+					char szLabelAPIFunction[MAX_COMMENT_SIZE] = "";
+					DbgGetLabelAt(CurrentAddress, SEG_DEFAULT, szLabelAPIFunction); // get label if any as function name
+					if (*szLabelAPIFunction)
+						szAPIFunction = szLabelAPIFunction; // save the API function name
+					else
+						strcpy_s(szLabelAPIFunction, szAPIFunction.c_str());
+
+					if (strncmp(szLabelAPIFunction, "sub_", 4) == 0) // internal function call or sub
 					{
 						if (conf.undef_funtion_analysis)
 						{
 							// internal subs
 							if (SetSubParams(&ai))
-								SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+								SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 						}
 					}
 					else
@@ -296,29 +321,29 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 							GetModuleNameSearch(szAPIModuleName, szAPIModuleNameSearch);
 
 							bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0);
-							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, recursive)) // just to get the correct definition file .api
+							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, recursive)) // just to get the correct definition file .api
 							{
 								if (SetFunctionParams(&ai, szAPIModuleNameSearch))
-									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 							}
 							else if (conf.undef_funtion_analysis)
 							{
 								if (SetSubParams(&ai))
-									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 							}
 
 						}
-						else if (*szAPIFunction) // in case it couldn't get the value try looking recursive
+						else if (*szLabelAPIFunction) // in case it couldn't get the value try looking recursive
 						{
-							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIFunction, szAPIDefinition, true)) // just to get the correct definition file .api
+							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, true)) // just to get the correct definition file .api
 							{
 								if (SetFunctionParams(&ai, szAPIModuleNameSearch))
-									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 							}
 							else if (conf.undef_funtion_analysis)// in case of direct call with no definition just set the comment on it and set saved arguments
 							{
 								if (SetSubParams(&ai))
-									SetAutoCommentIfCommentIsEmpty(inst, szAPIFunction, _countof(szAPIFunction), true);
+									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 							}
 						}
 					}
@@ -326,7 +351,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			}
 
 			// check if it was the first call after the function prolog
-			if (IsPrologCall)
+			if (IsPrologCall && conf.undef_funtion_analysis)
 			{
 				ClearStack(IS);
 				IsPrologCall = false;
@@ -575,11 +600,12 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 	duint ParamCount;
 	INSTRUCTIONSTACK inst;
 
-	ParamCount = GetFunctionParamCount(szAPIModuleName, szAPIFunction);
+	ParamCount = GetFunctionParamCount(szAPIModuleName, szAPIFunction.c_str());
 	if (ParamCount > 0) // make sure we are only checked for functions that are succesfully found in api file and have 1 or more parameters
 	{
 		if (ParamCount <= IS.size()) // make sure we have enough in our stack to check for parameters
  		{
+			procSummary.defCallsDetected++; // get record of defined calls amount
 			ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
 
 			// create the arguments list
@@ -646,8 +672,11 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 	duint ParamCount = 0;
 	INSTRUCTIONSTACK inst;
 
+	ZeroMemory(&inst, sizeof(INSTRUCTIONSTACK));
 	if (!IsPrologCall && !IS.empty())
 	{
+		procSummary.undefCallsDetected++; // get record of undefined calls amount
+
 		// create the arguments list
 		vector <INSTRUCTIONSTACK*> argum(IS.size());
 		while (!IS.empty())
@@ -713,16 +742,18 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 // Returns true if succesful and lpszAPIFunction will contain the stripped api function 
 // name, otherwise false and lpszAPIFunction will be a null string
 // ------------------------------------------------------------------------------------
-bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
+bool Strip_x64dbg_calls(LPSTR lpszCallText)
 {
 	int index = 0;
 	int index_cpy = 0;
 	char funct[MAX_COMMENT_SIZE] = "";
+	char lpszAPIFunction[MAX_COMMENT_SIZE];
 
 	// in case of undefined: CALL {REGISTER}, CALL {REGISTER + DISPLACEMENT}
 	if (GetDynamicUndefinedCall(lpszCallText, funct))
 	{
 		sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_[%s]", funct);
+		szAPIFunction = lpszAPIFunction;
 		return true;
 	}
 
@@ -733,6 +764,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 		if (lpszCallText[index] == 0)
 		{
 			*lpszAPIFunction = 0;
+			szAPIFunction = lpszAPIFunction;
 			return false;
 		}
 
@@ -747,6 +779,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 			if (lpszCallText[index] == 0)
 			{
 				*lpszAPIFunction = 0;
+				szAPIFunction = lpszAPIFunction;
 				return false;
 			}
 
@@ -763,6 +796,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
  		if (lpszCallText[index] == 0)
  		{
  			*lpszAPIFunction = 0;
+			szAPIFunction = lpszAPIFunction;
  			return false;
  		}
 		
@@ -778,13 +812,14 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction)
 	if (ishex(funct) || HasRegister(funct))
 		sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_[%s]", funct);
 
+	szAPIFunction = lpszAPIFunction;
 	return true;
 }
 
 // ------------------------------------------------------------------------------------
 // Check if a given string has a register inside
 // ------------------------------------------------------------------------------------
-bool HasRegister(LPSTR reg)
+bool HasRegister(const char *reg)
 {
 	return(
 #ifdef _WIN64
@@ -847,18 +882,22 @@ bool GetDynamicUndefinedCall(LPSTR lpszCallText, LPSTR dest)
 // ------------------------------------------------------------------------------------
 // Set Auto Comment only if a comment isn't already set
 // ------------------------------------------------------------------------------------
-void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString, size_t CommentStringCount, bool apiCALL)
+void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString, size_t CommentStringCount, bool apiCALL)
 {
-	char szComment[MAX_COMMENT_SIZE] = { 0 };
+	char szComment[MAX_COMMENT_SIZE] = "";
+	char szConstComment[MAX_COMMENT_SIZE] = "";
+	bool isHeaderConst = false;
 
-	if (apiCALL)
+	if (apiCALL) // set the API name definition comment
 	{
-		// strip arguments list from API name in CALLs
-		TruncateString(CommentString, '(');
-		DbgSetCommentAt(inst->Address, CommentString);
+		DbgSetCommentAt(inst->Address, szOriginalCharsetAPIFunction.c_str());
+		procSummary.totalCommentsSet++; // get record of comments amount
 	}
-	else
+	else // set the API param comment
 	{
+		char *inst_source = GetInstructionSource(inst->Instruction);
+		isHeaderConst = IsHeaderConstant(CommentString, szConstComment, inst_source);
+
 		// avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 		duint spaceleft = MAX_COMMENT_SIZE - strlen(CommentString);
 		if (spaceleft <= 1)
@@ -868,41 +907,502 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 		{
 			if (*szComment)
 			{
-				char *ptrComment = szComment;
-				if (ptrComment[0] == 0x01) // get rid of the '\1' preceding char
-					ptrComment++;
-
+				StripDbgCommentAddress(szComment); // get rid of the comment address id used by the dbg
 				DbgClearAutoCommentRange(inst->Address, inst->Address); // Delete the prev comment 
-				if ((strlen(ptrComment) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
+				if ((strlen(szComment) + 10) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 				{
-					strcat_s(CommentString, CommentStringCount, " = ");
-					strcat_s(CommentString, CommentStringCount, ptrComment);
+					if (isHeaderConst)
+					{
+						strcpy_s(CommentString, CommentStringCount, szConstComment);
+						if (CommentString[strlen(CommentString) - 1] == ' ') // if comment is of the form "TYPE varName = "
+							strcat_s(CommentString, CommentStringCount, szComment);
+					}
+					else
+					{
+						strcat_s(CommentString, CommentStringCount, " = ");
+						strcat_s(CommentString, CommentStringCount, szComment);
+					}
 				}
 			}
 		}
-
+		
 		if (!*szComment)
 		{
 			// if no prev comment and is a push copy then the argument
 			if (!apiCALL)
-			{
-				char *inst_source = GetInstructionSource(inst->Instruction);
-				if (ishex(inst_source)) // get constants as value of argument / excluding push memory, registers, etc
+			{				
+				char *nullstr = "NULL\0";
+				string boolstr[] = { "TRUE", "FALSE" };
+
+				if (inst_source != NULL && ((strlen(inst_source) + 10) <= spaceleft - 1)) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 				{
-					if ((strlen(inst_source) + 3) <= spaceleft - 1) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
-					{
+					bool instHex = ishex(inst_source);
+					if (instHex) // get constants as value of argument / excluding push memory, registers, etc
 						ToUpperHex(inst_source);
-						sprintf_s(szComment, "%s = %s", CommentString, inst_source);
-						strcpy_s(CommentString, CommentStringCount, szComment);
-// 						strcat_s(CommentString, CommentStringCount, " = ");						
-// 						strcat_s(CommentString, CommentStringCount, inst_source);
+
+					// check if param is an enum or flag
+					if (isHeaderConst)
+					{
+						strcpy_s(CommentString, CommentStringCount, szConstComment);
+						if (CommentString[strlen(CommentString) - 1] == ' ') // if the actual comment is like "TYPE varName = "
+						{
+							if (instHex)
+							{
+								string paramType = ToUpper(CommentString);
+
+								// resolve BOOL types
+								if (strncmp(paramType.c_str(), "BOOL", 4) == 0)
+								{
+									if (strcmp(inst_source, "0") == 0)
+										sprintf_s(szConstComment, "%s%s", CommentString, boolstr[1].c_str());
+									else
+										sprintf_s(szConstComment, "%s%s", CommentString, boolstr[0].c_str());
+								}
+								else if (!IsNumericParam(paramType))
+								{
+									// resolve zero arguments values as NULL
+									if (strcmp(inst_source, "0") == 0)
+										sprintf_s(szConstComment, "%s%s", CommentString, nullstr);
+									else
+										sprintf_s(szConstComment, "%s%s", CommentString, inst_source);
+								}
+								else
+									sprintf_s(szConstComment, "%s%s", CommentString, inst_source);
+
+								strcpy_s(CommentString, CommentStringCount, szConstComment);
+							}
+						}
+					}
+					// param is a plain value
+					else if (instHex)
+					{
+						string paramType = ToUpper(CommentString);
+
+						// resolve BOOL types
+						if (strncmp(paramType.c_str(), "BOOL", 4) == 0)
+						{
+							if(strcmp(inst_source, "0") == 0)
+								sprintf_s(szConstComment, "%s = %s", CommentString, boolstr[1].c_str());
+							else
+								sprintf_s(szConstComment, "%s = %s", CommentString, boolstr[0].c_str());
+						}
+						else if (!IsNumericParam(paramType))
+						{
+							// resolve zero arguments values as NULL
+							if (strcmp(inst_source, "0") == 0)
+								sprintf_s(szConstComment, "%s = %s", CommentString, nullstr);
+							else
+								sprintf_s(szConstComment, "%s = %s", CommentString, inst_source);
+						}
+						else
+							sprintf_s(szConstComment, "%s = %s", CommentString, inst_source);
+
+						strcpy_s(CommentString, CommentStringCount, szConstComment);
 					}
 				}
 			}
 		}		
 		
 		DbgSetAutoCommentAt(inst->Address, CommentString);
+		//DbgSetCommentAt(inst->Address, CommentString); // debugging purposes
+		procSummary.totalCommentsSet++; // get record of comments amount
 	}
+}
+
+// ------------------------------------------------------------------------------------
+// Determine if the given parameter is a numeric type
+// ------------------------------------------------------------------------------------
+bool IsNumericParam(string paramType)
+{
+	string numericDataTypes[] = { "BYTE", "CHAR", "DWORD", "DWORDLONG", "DWORD32", "DWORD64",
+		"FLOAT", "INT", "INT8", "INT16", "INT32", "INT64", "LONG", "LONGLONG", "LONG32", "LONG64",
+		"QWORD", "SHORT", "UINT", "UINT8", "UINT16", "UINT32", "UINT64", "ULONG", "ULONGLONG", "ULONG32",
+		"ULONG64", "USHORT", "WORD" };
+
+	char szParam[MAX_PATH] = "";
+	strcpy_s(szParam, paramType.c_str());
+	TruncateString(szParam, ' ');
+
+	for (auto typ : numericDataTypes)
+	{ 
+		if (strcmp(szParam, typ.c_str()) == 0)
+			return true;
+	}
+	
+	return false;
+}
+
+// ------------------------------------------------------------------------------------
+// Check if the current executable is a VB
+// ------------------------------------------------------------------------------------
+bool IsVBExecutable()
+{
+	duint entryVB6 = 0;
+	duint entryVB5 = 0;
+
+	entryVB6 = Module::EntryFromName("msvbvm60");
+	entryVB5 = Module::EntryFromName("msvbvm50");
+	return (entryVB6 != 0 || entryVB5 != 0);
+}
+
+// ------------------------------------------------------------------------------------
+// Finds the VB DllFunctionCalls stubs in the specified range
+// Based on: https://github.com/JohnTroony/Plugme-OllyDBGv1.0/blob/master/OllyVBHelper%20v0.1/ollyvbhelper.c
+// ------------------------------------------------------------------------------------
+void ProcessDllFunctionCalls(duint startAddr, duint size)
+{
+	Module::ModuleInfo mi;
+	Module::ModuleSectionInfo msi;
+	BASIC_INSTRUCTION_INFO bii;
+	string DllFunctionCallPattern = "A1????????0BC07402FFE0"; // pattern of stub	
+
+	// if no addr specified then process the whole code section
+	if (startAddr == -1 || size == -1)
+	{
+		ZeroMemory(&mi, sizeof(Module::ModuleInfo));
+		ZeroMemory(&msi, sizeof(Module::ModuleSectionInfo));
+
+		Module::GetMainModuleInfo(&mi);
+		Module::SectionFromName(mi.name, 0, &msi);
+
+		// pass executable section address and its size
+		LabelDllFunctionCalls(msi.addr, msi.size, DllFunctionCallPattern);
+	}
+	else
+	{
+		// walk the calls in the given range
+		while (startAddr <= size)
+		{
+			ZeroMemory(&bii, sizeof(BASIC_INSTRUCTION_INFO));
+			DbgDisasmFastAt(startAddr, &bii);
+			if (bii.call)
+				LabelDllFunctionCalls(bii.addr, VB_STUB_SIZE, DllFunctionCallPattern); // size of 0x20 bytes for a single stub size
+
+			startAddr += bii.size;
+		}
+	}
+}
+
+// ------------------------------------------------------------------------------------
+// Label the VB DllFunctionCalls stubs with the API proper name in the given range
+// ------------------------------------------------------------------------------------
+void LabelDllFunctionCalls(duint rvaCodeSection, duint sectionSize, string DllFunctionCallPattern)
+{
+	char stubApiString[MAX_LABEL_SIZE] = "";
+	char stubApiStringLabel[MAX_LABEL_SIZE] = "";
+
+	duint ptrStub = 0;
+	duint startRVA = rvaCodeSection;
+
+	do{
+		ptrStub = Pattern::FindMem(rvaCodeSection, sectionSize, DllFunctionCallPattern.c_str());
+		if (ptrStub == 0 || ptrStub == -1)
+			break;
+
+		rvaCodeSection = ptrStub + VB_STUB_SIZE; // size of 0x20 bytes max for a single stub size
+		duint ptrApi = 0;
+		// Read Memory		
+		if (DbgMemRead(ptrStub - VB_STUB_APISTR_POINTER, &ptrApi, sizeof(duint))) // read the api name string pointer
+		{
+			if (DbgMemRead(ptrApi, stubApiString, MAX_LABEL_SIZE)) // read the string
+			{
+				if (strlen(stubApiString) > 0)
+				{
+					strcpy_s(stubApiStringLabel, "[<");
+					strcat_s(stubApiStringLabel, stubApiString);
+					strcat_s(stubApiStringLabel, ">]");
+					DbgSetAutoLabelAt(ptrStub, stubApiStringLabel);
+					//DbgSetLabelAt(ptrStub, stubApiStringLabel); // debugging purposes
+					procSummary.DllFunctionCallsDetected++; // get record of dllfunctioncalls stubs amount
+					procSummary.totalLabelsSet++; // get record of labels amount
+					ZeroMemory(stubApiStringLabel, MAX_LABEL_SIZE);
+				}
+			}
+		}
+
+		// recalculate section size
+		sectionSize = sectionSize - (rvaCodeSection - startRVA);
+		startRVA = rvaCodeSection;
+	} while (ptrStub > 0);
+}
+
+// ------------------------------------------------------------------------------------
+// Traverse the linked tree of headers return the correct base and defApiHFile
+// ------------------------------------------------------------------------------------
+void TraverseHFilesTree(string &base, string header, string &htype, char *lpszApiConstant, Utf8Ini *defApiHFile, bool getTypeDisplay)
+{
+	char szApiConstant[MAX_PATH] = "";
+	char lpszHeaders[MAX_PATH] = "";
+	char *next_token = NULL;
+	unordered_map<string, Utf8Ini*>::const_iterator apiPointer; // pointer to the current def file
+
+	string newBase = base;
+	string newHtype = htype;
+	Utf8Ini *newdefApiHFile = defApiHFile;
+	strcpy_s(szApiConstant, lpszApiConstant);
+
+	while (newBase != "")
+	{
+		GetConstantValue(szApiConstant, newBase.c_str()); // strip brackets if any
+		if (*szApiConstant)
+		{
+			newBase = newdefApiHFile->GetValue(szApiConstant, "Base"); // search for the next constant in the same header file
+			newHtype = newdefApiHFile->GetValue(szApiConstant, "Type"); // search for the next type in the same header file
+			if (newBase == "" && header != "") 
+			{	// search in the next header file
+				strcpy_s(lpszHeaders, MAX_PATH, header.c_str());
+				// search through the headers files for the constant
+				char *token = strtok_s(lpszHeaders, ";", &next_token);
+				while (token)
+				{
+					char singlefile[MAX_PATH] = "";
+					strcpy_s(singlefile, token);
+					TruncateString(singlefile, '.'); // strip the .api part
+
+					apiPointer = apiFiles.find(singlefile); // saves pointer to correct def filename
+					if (apiPointer != apiFiles.end())
+					{
+						newdefApiHFile = apiPointer->second; // overwrite the prev HFile with the correct
+						newBase = newdefApiHFile->GetValue(szApiConstant, "Base"); // search for the next constant in the same header file
+						if (newBase != "") // if base is found in the current header 
+						{
+							if (newdefApiHFile != NULL)
+								defApiHFile = newdefApiHFile;
+							break; // exit headers loop
+						}
+					}
+
+					// advance to the next header file
+					token = strtok_s(NULL, ";", &next_token);
+				}
+
+				header = newdefApiHFile->GetValue(szApiConstant, "Header"); // get new headers if any
+			}
+
+			if (getTypeDisplay) // walk the entire link chain
+			{
+				if (newBase != "")
+				{
+					strcpy_s(lpszApiConstant, MAX_PATH, szApiConstant);
+					ZeroMemory(szApiConstant, MAX_PATH);
+					base = newBase;
+					htype = newHtype;
+				}
+			}
+			else // get only the current given base
+			{
+				strcpy_s(lpszApiConstant, MAX_PATH, szApiConstant);
+				ZeroMemory(szApiConstant, MAX_PATH);
+				base = newBase;
+				htype = newHtype;
+				break;
+			}
+		}
+	}
+}
+
+// ------------------------------------------------------------------------------------
+// Determine if the given parameter is a constant (ENUM or FLAG)
+// ------------------------------------------------------------------------------------
+bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_source)
+{
+	char lpszHeaders[MAX_PATH] = "";
+	char lpszApiConstant[MAX_PATH] = "";
+	char szConstantComment[MAX_COMMENT_SIZE] = "";
+	char valueIndex[MAX_PATH] = "";
+	char *next_token = nullptr;
+	bool found = false;
+	bool result = false;
+	bool instHex = false;
+	duint instConst = 0;
+	duint fileConst = 0;
+
+ 	if (CommentString[0] == '[')
+ 	{
+		// extract the constant identifier
+		GetConstantValue(lpszApiConstant, CommentString);
+		const char *ptrVarName = strchr(CommentString, ']');
+		if (ptrVarName != NULL)
+			ptrVarName++; // get the pointer to the var name
+
+		if (inst_source != NULL)
+		{
+			if(instHex = ishex(inst_source))
+				instConst = hextoduint(inst_source);
+		}
+
+		// get the headers files list where to search the constant
+		Utf8Ini *defApiFile = apiDefPointer->second;
+		string header = defApiFile->GetValue(szAPIFunction, "Header");
+		if (header.length() == 0)
+			return false;
+
+		strcpy_s(lpszHeaders, MAX_PATH, header.c_str());
+		// search through the headers files for the constant
+		char *token = strtok_s(lpszHeaders, ";", &next_token);
+		while (token || !found)
+		{
+			char singlefile[MAX_PATH] = "";
+			strcpy_s(singlefile, token);
+			TruncateString(singlefile, '.'); // strip the .api part
+
+			auto search = apiHFiles.find(singlefile);
+			if (search != apiHFiles.end())
+			{
+				Utf8Ini *defApiHFile = search->second;
+
+				string base = defApiHFile->GetValue(lpszApiConstant, "Base");
+				string htype = defApiHFile->GetValue(lpszApiConstant, "Type");
+				string hheader = defApiHFile->GetValue(lpszApiConstant, "Header");
+				if (base.length() != 0) // if this header file contains the constant
+				{
+					result = true;
+					// Uncomment to get the final TypeDisplay to show as data type
+ 					string typeParam = defApiHFile->GetValue(lpszApiConstant, "TypeDisplay"); // if enum or flag already then take TypeDisplay value
+ 					if (typeParam == "")
+ 					{
+ 						TraverseHFilesTree(base, hheader, htype, lpszApiConstant, defApiHFile, true); // if not TypeDisplay walk the tree to get the correct base
+						typeParam = base;
+ 					}
+
+					strcpy_s(szComment, MAX_COMMENT_SIZE, typeParam.c_str());
+					strcat_s(szComment, MAX_COMMENT_SIZE, ptrVarName);
+					if (instHex) // only add '=' if there exist a numeric parameter, otherwise just exit here
+						strcat_s(szComment, MAX_COMMENT_SIZE, " = ");
+					else
+						break;
+
+					// start testing the values and apply constant name accordingly
+					string value;
+					int index = 1;
+					bool orOperator = false;
+					do
+					{
+						sprintf_s(valueIndex, "Value%d", index);
+						value = defApiHFile->GetValue(lpszApiConstant, valueIndex);
+						if (value.length() != 0) // if value found
+						{
+							// check if value in def file is base16 or base10 to convert accordingly
+							if (value.substr(0, 2) == "0x")
+								fileConst = stoul(value.c_str(), 0, 16);
+							else
+								fileConst = stoul(value.c_str());
+							//sscanf_s(value.c_str(), "%li", &fileConst);
+
+							// if is Enum search the exact same values
+							if (htype == "Enum")
+							{
+								if (orOperator) // enums only may be one single value at a time
+									break;
+
+								// check the state the Enum variable
+								if (instConst == fileConst)
+								{
+									sprintf_s(valueIndex, "Const%d", index);
+									string constant = defApiHFile->GetValue(lpszApiConstant, valueIndex);
+									strcat_s(szConstantComment, MAX_COMMENT_SIZE, constant.c_str());
+									orOperator = true;
+								}
+							}
+							// if is Flag make bits testing
+							else if (htype == "Flag")
+							{
+								// tests if all bits in fileConst are present in mask instConst
+								if ((instConst & fileConst) == fileConst)
+								{
+									sprintf_s(valueIndex, "Const%d", index);
+									string constant = defApiHFile->GetValue(lpszApiConstant, valueIndex);
+
+									// if we got ALL ACCESS replace flags and get out
+									if (constant.length() > 11 && constant.substr(constant.length() - 11) == "_ALL_ACCESS")
+									// if (instConst == fileConst)
+									{
+										strcpy_s(szConstantComment, constant.c_str());
+										break;
+									}
+
+									if (orOperator)
+										strcat_s(szConstantComment, MAX_COMMENT_SIZE, " | ");
+
+									strcat_s(szConstantComment, MAX_COMMENT_SIZE, constant.c_str());
+									orOperator = true;
+								}
+							}
+						}
+						else if (!*szConstantComment)// if no prev values found get the next constants in the headers tree
+						{
+							TraverseHFilesTree(base, hheader, htype, lpszApiConstant, defApiHFile);
+							index = 0;
+						}
+						else
+							base = "";
+
+						index++;
+					} while (base.length() != 0);
+				}
+
+				found = true;
+			}
+
+			// advance to the next header file
+			token = strtok_s(NULL, ";", &next_token);
+		}
+
+		strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
+	}
+	
+	return result;
+}
+
+// ------------------------------------------------------------------------------------
+// Strip the address identifier from the string
+// ------------------------------------------------------------------------------------
+void StripDbgCommentAddress(char *szComment)
+{
+	char lpszComment[MAX_COMMENT_SIZE] = "";
+	char lpszCommentBak[MAX_COMMENT_SIZE] = "";
+	bool found = false;
+	char *token = NULL;
+
+	char *ptrComment = szComment;
+	if (ptrComment[0] == 0x01) // get rid of the '\1' preceding char
+		ptrComment++;
+
+	strcpy_s(lpszComment, ptrComment);
+	strcpy_s(lpszCommentBak, ptrComment); // keep a backup to return required sanitized string
+	
+	// searches for " and '
+	token = strchr(lpszComment, 0x27); // '
+	if (token == NULL)
+		token = strchr(lpszComment, 0x22); // "
+
+	if (token != NULL)
+	{
+		ZeroMemory(szComment, MAX_COMMENT_SIZE);
+		strcpy_s(szComment, MAX_COMMENT_SIZE, token);
+		return;
+	}
+
+	strcpy_s(szComment, MAX_COMMENT_SIZE, lpszCommentBak);
+}
+
+// ------------------------------------------------------------------------------------
+// Extracts the constant identifier from the string
+// ------------------------------------------------------------------------------------
+void GetConstantValue(char *lpszApiConstant, const char *CommentString)
+{
+	int index = 0;
+	int indexConst = 0;
+
+	ZeroMemory(lpszApiConstant, MAX_PATH);
+	if (CommentString[indexConst] == '[')
+		indexConst++;
+
+	do{
+		lpszApiConstant[index] = CommentString[indexConst];
+		index++;
+		indexConst++;
+	} while (CommentString[indexConst] != ']' /*&& CommentString[indexConst] != ' ' */&& CommentString[indexConst] != '\0');
 }
 
 // ------------------------------------------------------------------------------------
@@ -910,11 +1410,12 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString,
 // describes the api function, and return the definition value
 // eg.Module = kernel32, api filename will be 'kernel32.api'
 // ------------------------------------------------------------------------------------
-bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPSTR lpszApiDefinition, bool recursive)
+bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bool recursive)
 {
 	bool success = false;
+	apiDefPointer = apiFiles.end(); // reset pointer to end
 
-	if (lpszApiModule == NULL || lpszApiFunction == NULL)
+	if (lpszApiModule == NULL || szAPIFunction.length() == 0)
 	{
 		*lpszApiDefinition = 0;
 		return success;
@@ -922,11 +1423,18 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 
 	if (!recursive)
 	{
-		auto search = apiDefinitionFiles.find(lpszApiModule);
-		if (search != apiDefinitionFiles.end())
+		apiDefPointer = apiFiles.find(lpszApiModule); // saves pointer to correct def filename
+		if (apiDefPointer != apiFiles.end())
 		{
-			Utf8Ini *defApiFile = search->second;
-			string apiFunction = defApiFile->GetValue(lpszApiFunction, "@");
+			Utf8Ini *defApiFile = apiDefPointer->second;			
+			// lookup for the original name (A/W)
+			string apiFunction = defApiFile->GetValue(szOriginalCharsetAPIFunction, "@");
+			if (apiFunction == "")
+				// if not found search for the standard
+				apiFunction = defApiFile->GetValue(szAPIFunction, "@");
+			else
+				szAPIFunction = szOriginalCharsetAPIFunction; // save the correct name
+
 			// check if key is found
 			if (!apiFunction.empty())
 			{
@@ -937,13 +1445,21 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 	}
 	else
 	{	// if recursive lookup throughout the entire directory of api definitions files
-		for (const auto &api : apiDefinitionFiles)
+		for (const auto &api : apiFiles)
 		{
 			Utf8Ini *defApiFile = api.second;
-			string apiFunction = defApiFile->GetValue(lpszApiFunction, "@");
+			// lookup for the original name (A/W)
+			string apiFunction = defApiFile->GetValue(szOriginalCharsetAPIFunction, "@");
+			if (apiFunction == "")
+				// if not found search for the standard
+				apiFunction = defApiFile->GetValue(szAPIFunction, "@");
+			else
+				szAPIFunction = szOriginalCharsetAPIFunction; // save the correct name
+
 			// check if key is found
 			if (!apiFunction.empty())
 			{
+				apiDefPointer = apiFiles.find(api.first); // saves pointer to correct def filename
 				strcpy_s(lpszApiDefinition, MAX_COMMENT_SIZE, apiFunction.c_str()); // save the API definition 
 				strcpy_s(lpszApiModule, MAX_MODULE_SIZE, api.first.c_str()); // save the correct file definition name
 				success = true;
@@ -958,13 +1474,13 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPST
 // ------------------------------------------------------------------------------------
 // Returns parameters for function in.api file, or - 1 if not found
 // ------------------------------------------------------------------------------------
-int GetFunctionParamCount(LPSTR lpszApiModule, LPSTR lpszApiFunction)
+int GetFunctionParamCount(LPSTR lpszApiModule, string lpszApiFunction)
 {
-	if (lpszApiModule == NULL || lpszApiFunction == NULL)
+	if (lpszApiModule == NULL || lpszApiFunction.length() == 0)
 		return -1;
 
-	auto search = apiDefinitionFiles.find(lpszApiModule);
-	if (search != apiDefinitionFiles.end())
+	auto search = apiFiles.find(lpszApiModule);
+	if (search != apiFiles.end())
 	{
 		Utf8Ini *defApiFile = search->second;
 		string params = defApiFile->GetValue(lpszApiFunction, "ParamCount");
@@ -979,18 +1495,18 @@ int GetFunctionParamCount(LPSTR lpszApiModule, LPSTR lpszApiFunction)
 // ------------------------------------------------------------------------------------
 // Returns parameter type and name for a specified parameter of a function in a api file
 // ------------------------------------------------------------------------------------
-bool GetFunctionParam(LPSTR lpszApiModule, LPSTR lpszApiFunction, duint dwParamNo, LPSTR lpszApiFunctionParameter)
+bool GetFunctionParam(LPSTR lpszApiModule, string lpszApiFunction, duint dwParamNo, LPSTR lpszApiFunctionParameter)
 {
 	const string argument[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" };
 
-	if (lpszApiModule == NULL || lpszApiFunction == NULL || dwParamNo > 24)
+	if (lpszApiModule == NULL || lpszApiFunction.length() == 0 || dwParamNo > 24)
 	{
 		*lpszApiFunctionParameter = 0;
 		return false;
 	}
 
-	auto search = apiDefinitionFiles.find(lpszApiModule);
-	if (search != apiDefinitionFiles.end())
+	auto search = apiFiles.find(lpszApiModule);
+	if (search != apiFiles.end())
 	{
 		Utf8Ini *defApiFile = search->second;
 		string apiParameter = defApiFile->GetValue(lpszApiFunction, argument[dwParamNo - 1]);
@@ -1009,22 +1525,48 @@ bool GetFunctionParam(LPSTR lpszApiModule, LPSTR lpszApiFunction, duint dwParamN
 // ------------------------------------------------------------------------------------
 // Returns true if the specified string is a valid hex value
 // ------------------------------------------------------------------------------------
-bool ishex(LPCTSTR str)
+bool ishex(const char *str)
 {
-	duint value;
+	duint index = 0;
 
-	if (str != NULL)
-		return (1 == sscanf_s(str, "%li", &value));
+	// process negative values as valid hex
+	if (str[0] == '-')
+		return true;
 
-	return false;
+	duint lenStr = strlen(str);
+ 	if (*str && !HasRegister(str)) 
+ 	{
+		if (lenStr >= 3 && str[1] == 'x') // check if 0x prefix already exist
+			str += 2; // skip the 0x prefix
+		
+		lenStr = strlen(str); // get the new len
+		while (str[index] != '\n' && isxdigit(str[index]))
+			index++;
+
+		return (lenStr == index);
+ 	}
+ 
+ 	return false;
 }
 
+// ------------------------------------------------------------------------------------
+// Returns the specified string to its valid DUINT value
+// ------------------------------------------------------------------------------------
+duint hextoduint(LPCTSTR str)
+{
+	duint value = 0;
+
+	if (str != NULL)
+		sscanf_s(str, "%li", &value);
+
+	return value;
+}
 // ------------------------------------------------------------------------------------
 // Truncate a given string by the given char value
 // ------------------------------------------------------------------------------------
 void TruncateString(LPSTR str, char value)
 {
-	char * pch;
+	char *pch;
 
 	pch = strchr(str, value);
 	if (pch != NULL)
@@ -1051,6 +1593,16 @@ void ToUpperHex(char *str)
 }
 
 // ------------------------------------------------------------------------------------
+// Return a given string in an UPPERCASE copy
+// ------------------------------------------------------------------------------------
+string ToUpper(const char *str)
+{
+	string upperStr = str;
+	transform(upperStr.begin(), upperStr.end(), upperStr.begin(), toupper);
+	return upperStr;
+}
+
+// ------------------------------------------------------------------------------------
 // Call x64dbg core analysis to get as much info as possible
 // ------------------------------------------------------------------------------------
 void DoInitialAnalysis()
@@ -1062,6 +1614,10 @@ void DoInitialAnalysis()
 	DbgCmdExecDirect("exanal");
 	DbgCmdExecDirect("analx");
 	DbgCmdExecDirect("anal");
+
+	// if a VB executable detect and label all dllfunctioncall stubs
+	if (IsVBExecutable())
+		ProcessDllFunctionCalls();
 
 	GuiAddStatusBarMessage("[xAnalyzer]: Initial analysis completed!\r\n");
 }
@@ -1082,6 +1638,7 @@ void ClearPrevAnalysis(const duint dwEntry, const duint dwExit, bool clear_user_
 		DbgClearCommentRange(dwEntry, dwExit + 1);
 
 	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
+	DbgClearAutoLabelRange(dwEntry, dwExit); // clear ONLY labels (not user regular labels)
 	Argument::DeleteRange(dwEntry, dwExit, true); // clear all arguments
 }
 
@@ -1338,6 +1895,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 {
 #ifdef _WIN64
 	int del_index = 0;
+	bool found = false;
 
 	switch (CurrentParam)
 	{
@@ -1352,10 +1910,11 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 			{
 				arg = *arguments[i];
 				del_index = i;
+				found = true;
 				break;
 			}
 		}
-		break;
+		if (found) break;
 	case 2:
 		for (int i = 0; i < arguments.size(); i++)
 		{
@@ -1367,10 +1926,11 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 			{
 				arg = *arguments[i];
 				del_index = i;
+				found = true;
 				break;
 			}
 		}
-		break;
+		if (found) break;
 	case 3:
 		for (int i = 0; i < arguments.size(); i++)
 		{
@@ -1378,10 +1938,11 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 			{
 				arg = *arguments[i];
 				del_index = i;
+				found = true;
 				break;
 			}
 		}
-		break;
+		if (found) break;
 	case 4:
 		for (int i = 0; i < arguments.size(); i++)
 		{
@@ -1389,10 +1950,11 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 			{
 				arg = *arguments[i];
 				del_index = i;
+				found = true;
 				break;
 			}
 		}
-		break;
+		if (found) break;
 	default: // the rest of stack-related arguments
 		arg = *arguments[0];
 		del_index = 0;
@@ -1436,6 +1998,7 @@ void SetFunctionLoops()
 	{
 		loop = LS.top();
 		DbgLoopAdd(loop->dwStartAddress, loop->dwEndAddress);
+		procSummary.loopsDetected++; // get record of loops amount
 		LS.pop();
 	}
 }
@@ -1447,8 +2010,10 @@ void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch)
 {
 	char main_mod[MAX_MODULE_SIZE] = "";
 
-	// check for vc dll version
-	if (strncmp(szAPIModuleName, vc, 5) == 0)
+	// check for vc dll version "msvcxxx" and runtimes "vcruntime, ucrtbase"
+	if (strncmp(szAPIModuleName, vc, 5) == 0 || 
+		strncmp(szAPIModuleName, vcrt, strlen(vcrt)) == 0 || 
+		strncmp(szAPIModuleName, ucrt, strlen(ucrt)) == 0)
 		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, vc);
 	else if (strcmp(szAPIModuleName, "kernelbase") == 0)
 	{
@@ -1513,74 +2078,96 @@ void SaveConfig()
 }
 
 // ------------------------------------------------------------------------------------
-// Load all the definition files found
+// Load all the definition files
 // ------------------------------------------------------------------------------------
- bool LoadDefinitionFiles(string &faultyFile, int &errorLine)
- {
+bool LoadDefinitionFiles(string &defDir, string &faultyFile, int &errorLine)
+{
  	char szAllFiles[MAX_PATH] = "";
- 	bool result = false;
- 	WIN32_FIND_DATA fd;
- 
- 	apiDefinitionFiles.clear();
+	defDir = "";
+
+ 	apiFiles.clear();
+	apiHFiles.clear();
  	
- 	strcpy_s(szAllFiles, szCurrentDirectory);
- 	strcat_s(szAllFiles, "apis_def\\*.*");
- 
- 	string defDir = szCurrentDirectory;
- 	defDir.append("apis_def\\");
- 
- 	HANDLE hFind = FindFirstFile(szAllFiles, &fd);
- 	if (hFind != INVALID_HANDLE_VALUE)
- 	{
- 		do {
- 			// read all (real) files in current folder
- 			// , delete '!' read other 2 default folder . and ..
- 			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) 
- 			{
- 				string currentFile = defDir + fd.cFileName;
- 				auto hFile = CreateFile(currentFile.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
- 				if (hFile != INVALID_HANDLE_VALUE)
- 				{
- 					auto size = GetFileSize(hFile, nullptr);
- 					if (size)
- 					{
- 						vector<char> iniData(size + 1, '\0');
- 						DWORD read = 0;
- 						if (ReadFile(hFile, iniData.data(), size, &read, nullptr))
- 						{
- 							Utf8Ini *file = new Utf8Ini();
- 							if (file->Deserialize(iniData.data(), errorLine))
- 							{
- 								size_t fnsize = strlen(fd.cFileName) + 1;
- 								char *api = new char[fnsize];
- 								strcpy_s(api, fnsize, fd.cFileName);
- 								TruncateString(api, '.'); // strip .api from file name
- 								string apiName = api;
- 
- 								// Add to map of def files
- 								apiDefinitionFiles.insert({ apiName, file });
- 
- 								result = true;
- 								delete[] api;
- 							}
- 							else
- 							{	// if there is any malformed definition file dont load
- 								faultyFile = currentFile;
- 								result = false;
- 								CloseHandle(hFile);
- 								break;
- 							}
- 						}
- 					}
- 					CloseHandle(hFile);
- 				}
- 			}
- 		} while (FindNextFile(hFind, &fd));
- 		FindClose(hFind);
- 	}
- 
- 	return result;
- }
+	defDir = szCurrentDirectory + string("apis_def\\");
+
+	// Load api definition files
+	strcpy_s(szAllFiles, szCurrentDirectory);
+	strcat_s(szAllFiles, "apis_def\\*.*");
+	if (!LoadApiFiles(&apiFiles, szAllFiles, defDir, faultyFile, errorLine))
+		return false;
+
+	// Load api definition files headers
+	errorLine = -1; // restart error line flag
+	defDir = szCurrentDirectory + string("apis_def\\headers\\");
+	ZeroMemory(szAllFiles, MAX_PATH);
+	strcpy_s(szAllFiles, szCurrentDirectory);
+	strcat_s(szAllFiles, "apis_def\\headers\\*.*");
+	if (!LoadApiFiles(&apiHFiles, szAllFiles, defDir, faultyFile, errorLine))
+		return false;
+
+	return true;
+}
+
+// ------------------------------------------------------------------------------------
+// Load the given definition files directory into a global unordered_map
+// ------------------------------------------------------------------------------------
+bool LoadApiFiles(unordered_map<string, Utf8Ini*> *filesMap, char *szAllFiles, string defDir, string &faultyFile, int &errorLine)
+{
+	bool result = false;
+	WIN32_FIND_DATA fd;
+
+	HANDLE hFind = FindFirstFile(szAllFiles, &fd);
+	if (hFind != INVALID_HANDLE_VALUE)
+	{
+		do {
+			// read all (real) files in current folder
+			// , delete '!' read other 2 default folder . and ..
+			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
+			{
+				string currentFile = defDir + fd.cFileName;
+				auto hFile = CreateFile(currentFile.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+				if (hFile != INVALID_HANDLE_VALUE)
+				{
+					auto size = GetFileSize(hFile, nullptr);
+					if (size)
+					{
+						vector<char> iniData(size + 1, '\0');
+						DWORD read = 0;
+						if (ReadFile(hFile, iniData.data(), size, &read, nullptr))
+						{
+							Utf8Ini *file = new Utf8Ini();
+							if (file->Deserialize(iniData.data(), errorLine))
+							{
+								size_t fnsize = strlen(fd.cFileName) + 1;
+								char *api = new char[fnsize];
+								strcpy_s(api, fnsize, fd.cFileName);
+								TruncateString(api, '.'); // strip .api from file name
+								string apiName = api;
+
+								// Add to map of def files
+								filesMap->insert({ apiName, file });
+
+								result = true;
+								delete[] api;
+							}
+							else
+							{	// if there is any malformed definition file dont load
+								faultyFile = currentFile;
+								result = false;
+								CloseHandle(hFile);
+								break;
+							}
+						}
+					}
+					CloseHandle(hFile);
+				}
+			}
+		} while (FindNextFile(hFind, &fd));
+		FindClose(hFind);
+	}
+
+	return result;
+}
 
 // ------------------------------------------------------------------------------------
 // Clear all loops in a given range
@@ -1653,4 +2240,34 @@ void ResetGlobals()
 
 	// reset global flags
 	IsPrologCall = false;
+
+	ZeroMemory(&procSummary, sizeof(stPROCSUMMARY));
+}
+
+// ------------------------------------------------------------------------------------
+// Prints an analysis summary to log
+// ------------------------------------------------------------------------------------
+void PrintExecLogSummary()
+{
+	char summaryMsg[512] = "";
+
+	sprintf_s(summaryMsg, "[xAnalyzer]: Execution Summary\r\n"
+							"-------------------------------\r\n"
+							" - Defined Functions Detected: %d\r\n"
+							" - Undefined Functions Detected: %d\r\n"
+							" - VB DllFunctionCalls Stubs Detected: %d\r\n"
+							" - Total Functions Detected: %d\r\n"
+							" - Total Loops Detected: %d\r\n"
+							" - Total Comments Set: %d\r\n"
+							" - Total Labels Set: %d\r\n"
+							"-------------------------------\r\n",
+							procSummary.defCallsDetected,
+							procSummary.undefCallsDetected,
+							procSummary.DllFunctionCallsDetected,
+							procSummary.defCallsDetected + procSummary.undefCallsDetected,
+							procSummary.loopsDetected,
+							procSummary.totalCommentsSet,
+							procSummary.totalLabelsSet);
+
+	GuiAddLogMessage(summaryMsg);
 }

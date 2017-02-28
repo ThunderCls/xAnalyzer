@@ -1,0 +1,10 @@
+[LoadPerfCounterTextStrings]
+1=LPCTSTR commandLine
+2=BOOL bQuietModeArg
+ParamCount=2
+@=LoadPerfCounterTextStrings
+[UnloadPerfCounterTextStrings]
+1=LPCTSTR commandLine
+2=BOOL bQuietModeArg
+ParamCount=2
+@=UnloadPerfCounterTextStrings

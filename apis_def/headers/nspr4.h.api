@@ -1,0 +1,14 @@
+[void (*)(void*)]
+Base=LPVOID
+[PrAddressFamily]
+TypeDisplay=PRIntn
+Base=PRIntn
+Type=Enum
+Const1=PR_AF_UNSPEC
+Value1=0
+Const2=PR_AF_LOCAL
+Value2=1
+Const3=PR_AF_INET
+Value3=2
+Const4=PR_AF_INET6
+Value4=100

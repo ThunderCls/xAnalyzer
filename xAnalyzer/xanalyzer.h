@@ -5,10 +5,13 @@
 
 #include "plugin.h"
 #include <stack>
+#include "Utf8Ini/Utf8Ini.h"
 
 
 #define INSTRUCTIONSTACK_MAXSIZE 50
 #define REGISTER_MAXSIZE 10
+#define VB_STUB_SIZE 32
+#define VB_STUB_APISTR_POINTER 20
 
 using namespace std;
 using namespace Script;
@@ -30,14 +33,23 @@ typedef struct stCONFIG{
 	bool extended_analysis;
 }CONFIG;
 
+typedef struct stPROCSUMMARY{
+	duint defCallsDetected;
+	duint undefCallsDetected;
+	duint DllFunctionCallsDetected;
+	duint loopsDetected;
+	duint totalCommentsSet;
+	duint totalLabelsSet;
+}PROCSUMMARY;
+
 extern CONFIG conf;
 extern bool selectionAnal;
 extern bool singleFunctionAnal;
 extern bool completeAnal;
+extern string config_path;
+extern string szAPIFunction;
 extern char szCurrentDirectory[MAX_PATH];
-extern char szAPIFunction[MAX_COMMENT_SIZE];
 extern char szAPIFunctionParameter[MAX_COMMENT_SIZE];
-extern char config_path[MAX_PATH];
 extern duint addressFunctionStart;
 extern stack <INSTRUCTIONSTACK*> IS;
 
@@ -49,17 +61,24 @@ void GetExtendedAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint entry, ch
 void GetRegularAnalysisRange(duint *lpdwEntry, duint *lpdwExit, char *modname);
 void GetFunctionAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint selectedAddr);
 void GetAnalysisBoundaries();
-bool Strip_x64dbg_calls(LPSTR lpszCallText, LPSTR lpszAPIFunction);
+bool Strip_x64dbg_calls(LPSTR lpszCallText);
+void StripDbgCommentAddress(char *szComment);
 bool GetDynamicUndefinedCall(LPSTR lpszCallText, LPSTR dest);
-bool HasRegister(LPSTR reg);
-void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, LPSTR CommentString, size_t CommentStringCount, bool apiCALL = false);
-bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiFunction, LPSTR lpszApiDefinition, bool recursive);
-int GetFunctionParamCount(LPSTR lpszApiModule, LPSTR lpszApiFunction);
-bool GetFunctionParam(LPSTR lpszApiModule, LPSTR lpszApiFunction, duint dwParamNo, LPSTR lpszApiFunctionParameter);
-bool ishex(LPCTSTR str);
+bool HasRegister(const char *reg);
+void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString, size_t CommentStringCount, bool apiCALL = false);
+bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bool recursive);
+int GetFunctionParamCount(LPSTR lpszApiModule, string lpszApiFunction);
+bool GetFunctionParam(LPSTR lpszApiModule, string lpszApiFunction, duint dwParamNo, LPSTR lpszApiFunctionParameter);
+bool ishex(const char *str);
+duint hextoduint(LPCTSTR str);
 void DoInitialAnalysis();
+void ProcessDllFunctionCalls(duint startAddr = -1, duint size = -1);
+void LabelDllFunctionCalls(duint rvaCodeSection, duint sectionSize, string DllFunctionCallPattern);
+bool IsVBExecutable();
+void PrintExecLogSummary();
 void TruncateString(LPSTR str, char value);
 void ToUpperHex(char *str);
+string ToUpper(const char *str);
 void GetDisasmRange(duint *selstart, duint *selend, duint raw_start = 0, duint raw_end = 0);
 bool IsMultipleSelection();
 void ExtraAnalysis();
@@ -70,6 +89,10 @@ void ClearStack(stack<INSTRUCTIONSTACK*> &q);
 void ClearLoopStack(stack<LOOPSTACK*> &q);
 string CallDirection(BASIC_INSTRUCTION_INFO *bii);
 bool SetFunctionParams(Script::Argument::ArgumentInfo *ai, char *szAPIModuleName);
+bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_source = NULL);
+bool IsNumericParam(string paramType);
+void TraverseHFilesTree(string &base, string header, string &htype, char *lpszApiConstant, Utf8Ini *defApiHFile, bool getTypeDisplay = false);
+void GetConstantValue(char *lpszApiConstant, const char *CommentString);
 bool SetSubParams(Argument::ArgumentInfo *ai);
 bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii);
 bool IsProlog(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress);
@@ -82,7 +105,8 @@ void SetFunctionLoops();
 bool FileDbExists();
 void LoadConfig();
 void SaveConfig();
-bool LoadDefinitionFiles(string &faultyFile, int &errorLine);
+bool LoadDefinitionFiles(string &folder, string &faultyFile, int &errorLine);
+bool LoadApiFiles(unordered_map<string, Utf8Ini*> *filesMap, char *szAllFiles, string defDir, string &faultyFile, int &errorLine);
 void RemoveAnalysis();
 void ResetGlobals();
 void ClearLoopsRange(const duint start, const duint end, duint depth = 0);

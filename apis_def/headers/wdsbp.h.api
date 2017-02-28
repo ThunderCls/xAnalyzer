@@ -1,0 +1,16 @@
+[WDSBP_PK_TYPE]
+TypeDisplay=BYTE
+Base=BYTE
+Type=Flag
+Const1=WDSBP_PK_TYPE_DHCP
+Value1=1
+Const2=WDSBP_PK_TYPE_WDSNBP
+Value2=2
+Const3=WDSBP_PK_TYPE_BCD
+Value3=4
+Const4=WDSBP_PK_TYPE_DHCPV6
+Value4=8
+[WDSBP_PK_TYPE*]
+TypeDisplay=PBYTE
+Base=[WDSBP_PK_TYPE]
+Header=wdsbp.h.api;

@@ -1,0 +1,8 @@
+[CreateAsmNameObjFlags]
+TypeDisplay=DWORD
+Base=DWORD
+Type=Flag
+Const1=CANOF_PARSE_DISPLAY_NAME
+Value1=0x1
+Const2=CANOF_SET_DEFAULT_VALUES
+Value2=0x2

@@ -1,0 +1,25 @@
+[DownlevelGetParentLocaleLCID]
+1=[LCID] Locale
+ParamCount=1
+Header=windows.h.api;
+@=DownlevelGetParentLocaleLCID
+[DownlevelGetParentLocaleName]
+1=[LCID] Locale
+2=LPWSTR lpName
+3=int cchName
+ParamCount=3
+Header=windows.h.api;
+@=DownlevelGetParentLocaleName
+[DownlevelLCIDToLocaleName]
+1=[LCID] Locale
+2=LPWSTR lpName
+3=int cchName
+4=DWORD dwFlags
+ParamCount=4
+Header=windows.h.api;
+@=DownlevelLCIDToLocaleName
+[DownlevelLocaleNameToLCID]
+1=LPWSTR lpName
+2=DWORD dwFlags
+ParamCount=2
+@=DownlevelLocaleNameToLCID

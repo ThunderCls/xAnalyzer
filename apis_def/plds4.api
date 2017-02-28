@@ -1,0 +1,55 @@
+[PL_NewHashTable]
+1=PRUint32 numBuckets
+2=[PLHashFunction] keyHash
+3=[PLHashComparator] keyCompare
+4=[PLHashComparator] valueCompare
+5=[PLHashAllocOps*] allocOps
+6=void* allocPriv
+ParamCount=6
+Header=plds4.h.api;
+@=PL_NewHashTable
+[PL_HashTableDestroy]
+1=[PLHashTable*] ht
+ParamCount=1
+Header=plds4.h.api;
+@=PL_HashTableDestroy
+[PL_HashTableAdd]
+1=[PLHashTable*] ht
+2=const void* key
+3=void* value
+ParamCount=3
+Header=plds4.h.api;
+@=PL_HashTableAdd
+[PL_HashTableRemove]
+1=[PLHashTable*] ht
+2=const void* key
+ParamCount=2
+Header=plds4.h.api;
+@=PL_HashTableRemove
+[PL_HashTableLookup]
+1=[PLHashTable*] ht
+2=const void* key
+ParamCount=2
+Header=plds4.h.api;
+@=PL_HashTableLookup
+[PL_HashTableEnumerateEntries]
+1=[PLHashTable*] ht
+2=[PLHashEnumerator] f
+3=void* arg
+ParamCount=3
+Header=plds4.h.api;
+@=PL_HashTableEnumerateEntries
+[PL_HashString]
+1=const void* key
+ParamCount=1
+@=PL_HashString
+[PL_CompareStrings]
+1=const char* v1
+2=const char* v2
+ParamCount=2
+@=PL_CompareStrings
+[PL_CompareValues]
+1=void* v1
+2=const void* v2
+ParamCount=2
+@=PL_CompareValues

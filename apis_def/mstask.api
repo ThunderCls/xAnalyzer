@@ -1,0 +1,12 @@
+[GetNetScheduleAccountInformation]
+1=LPCWSTR pwszServerName
+2=DWORD ccAccount
+3=WCHAR [] wszAccount
+ParamCount=3
+@=GetNetScheduleAccountInformation
+[SetNetScheduleAccountInformation]
+1=LPCWSTR pwszServerName
+2=LPCWSTR pwszAccount
+3=LPCWSTR pwszPassword
+ParamCount=3
+@=SetNetScheduleAccountInformation

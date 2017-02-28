@@ -1,0 +1,9 @@
+[WL_DISPLAY_PAGES]
+Base=UINT
+Type=Enum
+Const1=WLConnectionPage
+Value1=0
+Const2=WLSecurityPage
+Value2=1
+Const3=WLAdvPage
+Value3=2

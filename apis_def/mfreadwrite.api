@@ -1,0 +1,31 @@
+[MFCreateSinkWriterFromMediaSink]
+1=IMFMediaSink* pMediaSink
+2=IMFAttributes* pAttributes
+3=IMFSinkWriter** ppSinkWriter
+ParamCount=3
+@=MFCreateSinkWriterFromMediaSink
+[MFCreateSinkWriterFromURL]
+1=LPCWSTR pwszOutputURL
+2=IMFByteStream* pByteStream
+3=IMFAttributes* pAttributes
+4=IMFSinkWriter** ppSinkWriter
+ParamCount=4
+@=MFCreateSinkWriterFromURL
+[MFCreateSourceReaderFromByteStream]
+1=IMFByteStream* pByteStream
+2=IMFAttributes* pAttributes
+3=IMFSourceReader** ppSourceReader
+ParamCount=3
+@=MFCreateSourceReaderFromByteStream
+[MFCreateSourceReaderFromMediaSource]
+1=IMFMediaSource* pMediaSource
+2=IMFAttributes* pAttributes
+3=IMFSourceReader** ppSourceReader
+ParamCount=3
+@=MFCreateSourceReaderFromMediaSource
+[MFCreateSourceReaderFromURL]
+1=LPCWSTR pwszURL
+2=IMFAttributes* pAttributes
+3=IMFSourceReader** ppSourceReader
+ParamCount=3
+@=MFCreateSourceReaderFromURL
