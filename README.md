@@ -137,7 +137,7 @@ If you find that a certain API call definition is not being detected or not dete
 
 - It only detects loops inside functions (function boundaries Prologs/RETs). If a function contains a RET in the middle of its code it will be detected as a function end and the loops stack is cleared.
 
-- Analysis could fail if the executable being debugged has multiple dots it´s name
+- Analysis could fail if the executable being debugged has multiple dots in its name
 
 - Incorrect loop detection for a section with an non-conditional jump inside it (See [#7](https://github.com/ThunderCls/xAnalyzer/issues/7))
 
@@ -152,6 +152,20 @@ If you find that a certain API call definition is not being detected or not dete
 - Case-Switch detection
 
 ## Version History
+
+***xAnalyzer 2.4.1***<br/>
+*- Added a new hotkeys scheme*<br/>
+*- Added new options to control which previous analysis data should be erased. (This gives the possibility to work seamlessly with map loader plugins like SwissArmyKnife, etc).*<br/>
+*- Added new commands (old ones have been deprecated)*<br/>
+  *xanal selection : Performs a selection analysis*<br/>
+  *xanal function : Performs a function analysis*<br/>
+  *xanal exe : Performs an entire executable analysis*<br/>
+  *xanalremove selection : Removes a previous selection analysis*<br/>
+  *xanalremove function : Removes a previous function analysis*<br/>
+  *xanalremove exe : Removes a previous entire executable analysis*<br/>
+  *xanal help : Brings up to the log window some help text*<br/>
+*- Fixed automatic analysis not launching on startup (Closes #18 )*<br/>
+*- Fixed various api definition files (Closes #17 )*<br/>
 
 ***xAnalyzer 2.4***<br/>
 *- New and improved API definition files with a slightly modified scheme (13,000 API’s from almost 200 DLL’s)*<br/>
