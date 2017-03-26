@@ -2,9 +2,10 @@
 #include "plugin.h"
 
 // Variables
-const char *szprojectnameInfo = "\n"PLUGIN_NAME " " PLUGIN_VERSION_STR" Plugin by ThunderCls 2016\n"
+const char *szprojectnameInfo = "\n"PLUGIN_NAME " " PLUGIN_VERSION_STR" Plugin by ThunderCls 2017\n"
 								"Extended analysis for static code\n"
 								"-> For latest release, issues, etc....\n"
+								"-> For help type command \"xanal help\"\n"
 								"-> code: http://github.com/ThunderCls/xAnalyzer\n"
 								"-> blog: http://reversec0de.wordpress.com\n\n";
 

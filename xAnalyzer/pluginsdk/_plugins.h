@@ -206,6 +206,23 @@ typedef struct
     bool retval;
 } PLUG_CB_ADDRINFO;
 
+typedef struct
+{
+    const char* string;
+    duint value;
+    int* value_size;
+    bool* isvar;
+    bool* hexonly;
+    bool retval;
+} PLUG_CB_VALFROMSTRING;
+
+typedef struct
+{
+    const char* string;
+    duint value;
+    bool retval;
+} PLUG_CB_VALTOSTRING;
+
 //enums
 typedef enum
 {
@@ -237,6 +254,8 @@ typedef enum
     CB_SELCHANGED, //PLUG_CB_SELCHANGED
     CB_ANALYZE, //PLUG_CB_ANALYZE
     CB_ADDRINFO, //PLUG_CB_ADDRINFO
+    CB_VALFROMSTRING, //PLUG_CB_VALFROMSTRING
+    CB_VALTOSTRING, //PLUG_CB_VALTOSTRING
     CB_LAST
 } CBTYPE;
 
@@ -245,6 +264,7 @@ typedef void (*CBPLUGIN)(CBTYPE cbType, void* callbackInfo);
 typedef bool (*CBPLUGINCOMMAND)(int argc, char** argv);
 typedef void (*CBPLUGINSCRIPT)();
 typedef duint(*CBPLUGINEXPRFUNCTION)(int argc, duint* argv, void* userdata);
+typedef bool(*CBPLUGINFORMATFUNCTION)(char* dest, size_t destCount, int argc, char* argv[], duint value, void* userdata);
 
 //exports
 #ifdef __cplusplus
@@ -258,6 +278,7 @@ PLUG_IMPEXP bool _plugin_registercommand(int pluginHandle, const char* command, 
 PLUG_IMPEXP bool _plugin_unregistercommand(int pluginHandle, const char* command);
 PLUG_IMPEXP void _plugin_logprintf(const char* format, ...);
 PLUG_IMPEXP void _plugin_logputs(const char* text);
+PLUG_IMPEXP void _plugin_logprint(const char* text);
 PLUG_IMPEXP void _plugin_debugpause();
 PLUG_IMPEXP void _plugin_debugskipexceptions(bool skip);
 PLUG_IMPEXP int _plugin_menuadd(int hMenu, const char* title);
@@ -267,6 +288,10 @@ PLUG_IMPEXP bool _plugin_menuclear(int hMenu);
 PLUG_IMPEXP void _plugin_menuseticon(int hMenu, const ICONDATA* icon);
 PLUG_IMPEXP void _plugin_menuentryseticon(int pluginHandle, int hEntry, const ICONDATA* icon);
 PLUG_IMPEXP void _plugin_menuentrysetchecked(int pluginHandle, int hEntry, bool checked);
+PLUG_IMPEXP void _plugin_menusetvisible(int pluginHandle, int hMenu, bool visible);
+PLUG_IMPEXP void _plugin_menuentrysetvisible(int pluginHandle, int hEntry, bool visible);
+PLUG_IMPEXP void _plugin_menusetname(int pluginHandle, int hMenu, const char* name);
+PLUG_IMPEXP void _plugin_menuentrysetname(int pluginHandle, int hEntry, const char* name);
 PLUG_IMPEXP void _plugin_startscript(CBPLUGINSCRIPT cbScript);
 PLUG_IMPEXP bool _plugin_waituntilpaused();
 PLUG_IMPEXP bool _plugin_registerexprfunction(int pluginHandle, const char* name, int argc, CBPLUGINEXPRFUNCTION cbFunction, void* userdata);
@@ -274,6 +299,8 @@ PLUG_IMPEXP bool _plugin_unregisterexprfunction(int pluginHandle, const char* na
 PLUG_IMPEXP bool _plugin_unload(const char* pluginName);
 PLUG_IMPEXP bool _plugin_load(const char* pluginName);
 PLUG_IMPEXP duint _plugin_hash(const void* data, duint size);
+PLUG_IMPEXP bool _plugin_registerformatfunction(int pluginHandle, const char* type, CBPLUGINFORMATFUNCTION cbFunction, void* userdata);
+PLUG_IMPEXP bool _plugin_unregisterformatfunction(int pluginHandle, const char* type);
 
 #ifdef __cplusplus
 }

@@ -1,9 +1,9 @@
 [SystemFunction036]
-ParamCount=0
+SourceModule=advapi32.api
 @=SystemFunction036
 [SystemFunction040]
-ParamCount=0
+SourceModule=advapi32.api
 @=SystemFunction040
 [SystemFunction041]
-ParamCount=0
+SourceModule=advapi32.api
 @=SystemFunction041

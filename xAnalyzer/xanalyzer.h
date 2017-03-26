@@ -31,6 +31,10 @@ typedef struct stCONFIG{
 	bool undef_funtion_analysis;
 	bool auto_analysis;
 	bool extended_analysis;
+	bool clear_usercomments;
+	bool clear_autocomments;
+	bool clear_userlabels;
+	bool clear_autolabels;
 }CONFIG;
 
 typedef struct stPROCSUMMARY{
@@ -55,7 +59,7 @@ extern stack <INSTRUCTIONSTACK*> IS;
 
 void AnalyzeBytesRange(duint dwEntry, duint dwExit);
 void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo);
-void OnWinEvent(PLUG_CB_WINEVENT *info);
+//void OnWinEvent(PLUG_CB_WINEVENT *info);
 void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit);
 void GetExtendedAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint entry, char *modname, Module::ModuleSectionInfo *modInfo);
 void GetRegularAnalysisRange(duint *lpdwEntry, duint *lpdwExit, char *modname);
@@ -103,6 +107,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress);
 void SetFunctionLoops();
 bool FileDbExists();
+void DisplayHelp();
 void LoadConfig();
 void SaveConfig();
 bool LoadDefinitionFiles(string &folder, string &faultyFile, int &errorLine);
@@ -110,7 +115,7 @@ bool LoadApiFiles(unordered_map<string, Utf8Ini*> *filesMap, char *szAllFiles, s
 void RemoveAnalysis();
 void ResetGlobals();
 void ClearLoopsRange(const duint start, const duint end, duint depth = 0);
-void ClearPrevAnalysis(const duint start, const duint end, bool clear_user_comments = false);
+void ClearPrevAnalysis(const duint start, const duint end);
 void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch);
 #ifdef _WIN64
 bool IsArgumentRegister(const char *destination);

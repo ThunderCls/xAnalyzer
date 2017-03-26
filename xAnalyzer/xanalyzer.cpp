@@ -17,6 +17,7 @@ using namespace std;
 using namespace Script;
 using namespace Gui;
 
+// global vars
 // ------------------------------------------------------------------------------------
 CONFIG conf; // confg file struct
 PROCSUMMARY procSummary; // execution summary struct
@@ -43,6 +44,42 @@ unordered_map<string, Utf8Ini*> apiHFiles; // map of headers def files
 // ------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------
+// Execute when a windows event is fired
+// ------------------------------------------------------------------------------------
+// void OnWinEvent(PLUG_CB_WINEVENT *info)
+// {
+// 	auto msg = info->message;
+// 	if (msg->message == WM_KEYDOWN && info->result)
+// 	{
+// 		switch (msg->wParam)
+// 		{
+// 		case 'X':
+// 		case 'x':			
+// 			if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze selection
+// 			{
+// 				if (IsMultipleSelection())
+// 				{
+// 					selectionAnal = true;
+// 					DbgCmdExec("xanalyze");
+// 				}
+// 			}
+// 			else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
+//  			{
+// 				completeAnal = true;
+// 				DbgCmdExec("xanalyze");
+//  			}
+// 			else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze function
+// 			{
+// 				singleFunctionAnal = true;
+// 				DbgCmdExec("xanalyze");
+// 			}
+// 		break;
+// 		default:break;
+// 		}
+// 	}
+// }
+
+// ------------------------------------------------------------------------------------
 // Executed when a BP is hitted 
 // ------------------------------------------------------------------------------------
 void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
@@ -55,7 +92,7 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 		if (conf.auto_analysis)
 		{
 			if (!FileDbExists())
-				DoExtendedAnalysis();
+				DbgCmdExec("xanal exe");
 			else
 			{
 				GuiAddLogMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
@@ -70,59 +107,105 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 	}
 }
 
-// ------------------------------------------------------------------------------------
-// Execute when a windows event is fired
-// ------------------------------------------------------------------------------------
-void OnWinEvent(PLUG_CB_WINEVENT *info)
+//------------------------------------------------------------------------------------
+// Extended analysis caller command "xanal" (this executes in a new thread)
+// This handles the different arguments for the different types of analysis
+//------------------------------------------------------------------------------------
+bool cbExtendedAnalysis(int argc, char* argv[])
 {
-	//auto msg = info->message;
-	//if (msg->message == WM_KEYDOWN && info->result)
-	//{
-	//	switch (msg->wParam)
-	//	{
-	//	case 'X':
-	//	case 'x':			
-	//		if ((GetAsyncKeyState(VK_LSHIFT) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze selection
-	//		{
-	//			if (IsMultipleSelection())
-	//			{
-	//				selectionAnal = true;
-	//				DbgCmdExec("xanalyze");
-	//			}
-	//		}
-	//		else if ((GetAsyncKeyState(VK_MENU) & 1) && (GetAsyncKeyState(VK_LCONTROL) & 1)) // analyze entire exe
- //			{
-	//			completeAnal = true;
-	//			DbgCmdExec("xanalyze");
- //			}
-	//		else if (GetAsyncKeyState(VK_LCONTROL) & 1)	// analyze function
-	//		{
-	//			singleFunctionAnal = true;
-	//			DbgCmdExec("xanalyze");
-	//		}
-	//	break;
-	//	default:break;
-	//	}
-	//}
+	 if (argc < 2)
+		 return false;
+
+	 if (strcmp(argv[1], "selection") == 0) // cmd "xanal selection"
+	 {
+		 if (IsMultipleSelection())
+		 {
+			 selectionAnal = true;
+			 DoExtendedAnalysis();
+			 return true;
+		 }
+		 else
+			 return false;
+	 }
+
+	 if (strcmp(argv[1], "function") == 0) // cmd "xanal function"
+	 {
+		 singleFunctionAnal = true;
+		 DoExtendedAnalysis();
+		 return true;
+	 }
+
+	 if (strcmp(argv[1], "exe") == 0) // cmd "xanal exe"
+	 {
+		 completeAnal = true;
+		 DoExtendedAnalysis();
+		 return true;
+	 }
+
+	 if (strcmp(argv[1], "help") == 0) // cmd "xanal help"
+	 {
+		 DisplayHelp();
+		 GuiAddStatusBarMessage("[xAnalyzer]: Check the log window in order to get an extended help text");
+	 }
+
+	 return true;
 }
 
- //------------------------------------------------------------------------------------
- //Extended analysis caller (this executes in a new thread)
- //------------------------------------------------------------------------------------
- bool cbExtendedAnalysis(int argc, char* argv[])
- {
-	DoExtendedAnalysis();
- 	return true;
- }
+//------------------------------------------------------------------------------------
+//Extended analysis remove caller  command "xanalremove" (this executes in a new thread)
+// This handles the different arguments for the different types of analysis removal
+//------------------------------------------------------------------------------------
+bool cbExtendedAnalysisRemove(int argc, char* argv[])
+{
+	if (argc < 2)
+		return false;
 
- //------------------------------------------------------------------------------------
- //Extended analysis remove caller (this executes in a new thread)
- //------------------------------------------------------------------------------------
- bool cbExtendedAnalysisRemove(int argc, char* argv[])
- {
-	RemoveAnalysis();
+	if (strcmp(argv[1], "selection") == 0) // cmd "xanalremove selection"
+	{
+		if (IsMultipleSelection())
+		{
+			selectionAnal = true;
+			RemoveAnalysis();
+			return true;
+		}
+		else
+			return false;
+	}
+
+	if (strcmp(argv[1], "function") == 0) // cmd "xanalremove function"
+	{
+		singleFunctionAnal = true;
+		RemoveAnalysis();
+		return true;
+	}
+
+	if (strcmp(argv[1], "exe") == 0) // cmd "xanalremove exe"
+	{
+		completeAnal = true;
+		RemoveAnalysis();
+		return true;
+	}
+
 	return true;
- }
+}
+
+// ------------------------------------------------------------------------------------
+// Removes the analysis in the given case
+// ------------------------------------------------------------------------------------
+void RemoveAnalysis()
+{
+	duint start = 0;
+	duint end = 0;
+
+	GuiAddLogMessage("[xAnalyzer]: Removing analysis, please wait...\r\n");
+	DbgGetEntryExitPoints(&start, &end);
+	if (start != 0 && end != 0)
+		ClearPrevAnalysis(start, end);
+
+	GuiAddLogMessage("[xAnalyzer]: Analysis removed successfully!\r\n");
+	GuiAddStatusBarMessage("[xAnalyzer]: Analysis removed successfully!\r\n");
+	ResetGlobals();
+}
 
 // ------------------------------------------------------------------------------------
 // Extended analysis
@@ -446,7 +529,6 @@ void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit)
 			char cmd[50] = "";
 
 			DbgCmdExecDirect("analx"); // these are NEEDED references for detecting functions boundaries
-
 			GetFunctionAnalysisRange(lpdwEntry, lpdwExit, Disassembly::SelectionGetStart());
 
 			// Call a second time these functions for the next main analysis
@@ -805,7 +887,15 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText)
 		index_cpy++;
 	}
 
-	lpszAPIFunction[index_cpy] = 0x00;
+	// check if the current call has a params definition into parenthesis
+	char *funct_parenthesis = strchr(lpszAPIFunction, '(');
+	if (funct_parenthesis == NULL)
+		lpszAPIFunction[index_cpy] = 0x00;
+	else
+	{
+		lpszAPIFunction[index_cpy] = ')';
+		lpszAPIFunction[index_cpy + 1] = 0x00;
+	}
 
 	// in case of undefined: CALL [0x007FF154]
 	strcpy_s(funct, MAX_COMMENT_SIZE, lpszAPIFunction);
@@ -1287,7 +1377,6 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 								fileConst = stoul(value.c_str(), 0, 16);
 							else
 								fileConst = stoul(value.c_str());
-							//sscanf_s(value.c_str(), "%li", &fileConst);
 
 							// if is Enum search the exact same values
 							if (htype == "Enum")
@@ -1427,6 +1516,7 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bo
 		if (apiDefPointer != apiFiles.end())
 		{
 			Utf8Ini *defApiFile = apiDefPointer->second;			
+
 			// lookup for the original name (A/W)
 			string apiFunction = defApiFile->GetValue(szOriginalCharsetAPIFunction, "@");
 			if (apiFunction == "")
@@ -1438,6 +1528,17 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bo
 			// check if key is found
 			if (!apiFunction.empty())
 			{
+				// check if definition lies in another .api file
+				string sourceModule = defApiFile->GetValue(apiFunction, "SourceModule");
+				if (sourceModule.length() != 0)
+				{
+					size_t pos = sourceModule.find(".");
+					string searchModule = sourceModule.substr(0, pos);
+					apiDefPointer = apiFiles.find(searchModule); // saves pointer to correct def filename
+					if (apiDefPointer != apiFiles.end())
+						strcpy_s(lpszApiModule, MAX_MODULE_SIZE, apiDefPointer->first.c_str()); // save the correct file definition name
+				}
+				
 				strcpy_s(lpszApiDefinition, MAX_COMMENT_SIZE, apiFunction.c_str());
 				success = true;
 			}
@@ -1459,9 +1560,23 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bo
 			// check if key is found
 			if (!apiFunction.empty())
 			{
-				apiDefPointer = apiFiles.find(api.first); // saves pointer to correct def filename
+				// check if definition lies in another .api file
+				string sourceModule = defApiFile->GetValue(apiFunction, "SourceModule");
+				if (sourceModule.length() != 0)
+				{
+					size_t pos = sourceModule.find(".");
+					string searchModule = sourceModule.substr(0, pos);
+					apiDefPointer = apiFiles.find(searchModule); // saves pointer to correct def filename
+					if (apiDefPointer != apiFiles.end())
+						strcpy_s(lpszApiModule, MAX_MODULE_SIZE, apiDefPointer->first.c_str()); // save the correct file definition name
+				}
+				else
+				{
+					apiDefPointer = apiFiles.find(api.first); // saves pointer to correct def filename
+					strcpy_s(lpszApiModule, MAX_MODULE_SIZE, api.first.c_str()); // save the correct file definition name
+				}
+
 				strcpy_s(lpszApiDefinition, MAX_COMMENT_SIZE, apiFunction.c_str()); // save the API definition 
-				strcpy_s(lpszApiModule, MAX_MODULE_SIZE, api.first.c_str()); // save the correct file definition name
 				success = true;
 				break;
 			}
@@ -1625,7 +1740,7 @@ void DoInitialAnalysis()
 // ------------------------------------------------------------------------------------
 // Clear previous analysis information
 // ------------------------------------------------------------------------------------
-void ClearPrevAnalysis(const duint dwEntry, const duint dwExit, bool clear_user_comments)
+void ClearPrevAnalysis(const duint dwEntry, const duint dwExit)
 {
 	// clear 
 	if (completeAnal)
@@ -1633,12 +1748,16 @@ void ClearPrevAnalysis(const duint dwEntry, const duint dwExit, bool clear_user_
 	else
 		ClearLoopsRange(dwEntry, dwExit); // clear prev loops in the given range
 
-	// ask if clear user comments as well
-	if (clear_user_comments)
+	// check what prev data to clear
+	if (conf.clear_usercomments)
 		DbgClearCommentRange(dwEntry, dwExit + 1);
+	if (conf.clear_userlabels)
+		DbgClearLabelRange(dwEntry, dwExit + 1);
+	if (conf.clear_autocomments)
+		DbgClearAutoCommentRange(dwEntry, dwExit);	// clear autocomments (not user regular comments)
+	if (conf.clear_autolabels)
+		DbgClearAutoLabelRange(dwEntry, dwExit); // clear autolabels (not user regular labels)
 
-	DbgClearAutoCommentRange(dwEntry, dwExit);	// clear ONLY autocomments (not user regular comments)
-	DbgClearAutoLabelRange(dwEntry, dwExit); // clear ONLY labels (not user regular labels)
 	Argument::DeleteRange(dwEntry, dwExit, true); // clear all arguments
 }
 
@@ -2008,20 +2127,11 @@ void SetFunctionLoops()
 // ------------------------------------------------------------------------------------
 void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch)
 {
-	char main_mod[MAX_MODULE_SIZE] = "";
-
 	// check for vc dll version "msvcxxx" and runtimes "vcruntime, ucrtbase"
 	if (strncmp(szAPIModuleName, vc, 5) == 0 || 
 		strncmp(szAPIModuleName, vcrt, strlen(vcrt)) == 0 || 
 		strncmp(szAPIModuleName, ucrt, strlen(ucrt)) == 0)
 		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, vc);
-	else if (strcmp(szAPIModuleName, "kernelbase") == 0)
-	{
-		// if the module is kernelbase.dll the it'll be searched recursively
-		// throughout all definition files
-		Module::GetMainModuleName(main_mod);
-		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, main_mod);
-	}
 	else
 		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, szAPIModuleName);		
 }
@@ -2060,6 +2170,10 @@ void LoadConfig()
 	conf.undef_funtion_analysis = iniReader.ReadBoolean("settings", "analysis_undefunctions", false);
 	conf.auto_analysis = iniReader.ReadBoolean("settings", "analysis_auto", false);
 	conf.extended_analysis = iniReader.ReadBoolean("settings", "analysis_extended", false);
+	conf.clear_usercomments = iniReader.ReadBoolean("settings", "clear_usercomments", false);
+	conf.clear_userlabels = iniReader.ReadBoolean("settings", "clear_userlabels", false);
+	conf.clear_autocomments = iniReader.ReadBoolean("settings", "clear_autocomments", false);
+	conf.clear_autolabels = iniReader.ReadBoolean("settings", "clear_autolabels", false);
 }
 
 // ------------------------------------------------------------------------------------
@@ -2071,10 +2185,18 @@ void SaveConfig()
 	iniWriter.WriteBoolean("settings", "analysis_extended", conf.extended_analysis);
 	iniWriter.WriteBoolean("settings", "analysis_undefunctions", conf.undef_funtion_analysis);
 	iniWriter.WriteBoolean("settings", "analysis_auto", conf.auto_analysis);
+	iniWriter.WriteBoolean("settings", "clear_usercomments", conf.clear_usercomments);
+	iniWriter.WriteBoolean("settings", "clear_userlabels", conf.clear_userlabels);
+	iniWriter.WriteBoolean("settings", "clear_autocomments", conf.clear_autocomments);
+	iniWriter.WriteBoolean("settings", "clear_autolabels", conf.clear_autolabels);
 
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_EXT, conf.extended_analysis);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_UNDEF, conf.undef_funtion_analysis);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_AUTO, conf.auto_analysis);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_CMTS, conf.clear_usercomments);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_LBLS, conf.clear_userlabels);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ACMTS, conf.clear_autocomments);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ALBLS, conf.clear_autolabels);
 }
 
 // ------------------------------------------------------------------------------------
@@ -2213,24 +2335,6 @@ bool IsMultipleSelection()
 // ------------------------------------------------------------------------------------
 // Removes the analysis in the given case
 // ------------------------------------------------------------------------------------
-void RemoveAnalysis()
-{
-	duint start = 0;
-	duint end = 0;
-
-	DbgGetEntryExitPoints(&start, &end);
-	if (start != 0 && end != 0)
-	{
-		bool clear_user_comments = (MessageBox(hwndDlg, "Would you like to also clear all the comments in the given range?",
-									"Clear Comments!", MB_ICONWARNING + MB_YESNO) == IDYES);
-		ClearPrevAnalysis(start, end, clear_user_comments);
-	}
-	ResetGlobals();
-}
-
-// ------------------------------------------------------------------------------------
-// Removes the analysis in the given case
-// ------------------------------------------------------------------------------------
 void ResetGlobals()
 {
 	// reset analysis menus flags
@@ -2270,4 +2374,22 @@ void PrintExecLogSummary()
 							procSummary.totalLabelsSet);
 
 	GuiAddLogMessage(summaryMsg);
+}
+
+//------------------------------------------------------------------------------------
+// This command displays a brief commands help for the plugin usage
+//------------------------------------------------------------------------------------
+void DisplayHelp()
+{
+	const char *pluginHelp = "\n[xAnalyzer]: Available Commands:\r\n"
+							 "--------------------------------\r\n"
+							 "xanal selection : Performs a selection analysis\r\n"
+							 "xanal function : Performs a function analysis\r\n"
+							 "xanal exe : Performs an entire executable analysis\r\n"
+							 "xanalremove selection : Removes a previous selection analysis\r\n"
+							 "xanalremove function : Removes a previous function analysis\r\n"
+							 "xanalremove exe : Removes a previous entire executable analysis\r\n"
+							 "xanal help : Brings up this help text\r\n\n";
+
+	GuiAddLogMessage(pluginHelp);
 }

@@ -46,10 +46,10 @@ The szFileName item contains name of file being debugged.
 //{
 //}
 
-PLUG_EXPORT void CBWINEVENT(CBTYPE cbType, PLUG_CB_WINEVENT* info)
+/*PLUG_EXPORT void CBWINEVENT(CBTYPE cbType, PLUG_CB_WINEVENT* info)
 {
 	OnWinEvent(info);
-}
+}*/
 
 PLUG_EXPORT void CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo)
 {
@@ -98,6 +98,22 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 			}
 			SaveConfig();
 			break;
+		case MENU_ANALYZE_CLEAR_CMTS:
+			conf.clear_usercomments = !conf.clear_usercomments;
+			SaveConfig();
+			break;
+		case MENU_ANALYZE_CLEAR_LBLS:
+			conf.clear_userlabels = !conf.clear_userlabels;
+			SaveConfig();
+			break;
+		case MENU_ANALYZE_CLEAR_ACMTS:
+			conf.clear_autocomments = !conf.clear_autocomments;
+			SaveConfig();
+			break;
+		case MENU_ANALYZE_CLEAR_ALBLS:
+			conf.clear_autolabels = !conf.clear_autolabels;
+			SaveConfig();
+			break;
 		case MENU_ABOUT:
  			ZeroMemory(&mbp, sizeof(MSGBOXPARAMS));
  			mbp.cbSize = sizeof(MSGBOXPARAMS);
@@ -116,31 +132,22 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 		// COMMANDS MENUS
 		// ------------------------------------------------------------------------
 		case MENU_ANALYZE_DISASM:
-			completeAnal = true;
-			DbgCmdExec("xanalyze");
+			DbgCmdExec("xanal exe");
 			break;
 		case MENU_ANALYZE_DISASM_FUNCT:
-			singleFunctionAnal = true;
-			DbgCmdExec("xanalyze");
+			DbgCmdExec("xanal function");
 			break;
 		case MENU_ANALYZE_DISASM_SELEC:
-			if (IsMultipleSelection())
-			{
-				selectionAnal = true;
-				DbgCmdExec("xanalyze");
-			}
+				DbgCmdExec("xanal selection");
 			break;
 		case MENU_REM_ANALYSIS_DISASM_SELEC:
-			selectionAnal = true;
-			DbgCmdExec("xanalysisremove");
+			DbgCmdExec("xanalremove selection");
 			break;
 		case MENU_REM_ANALYSIS_DISASM_FUNCT:
-			singleFunctionAnal = true;
-			DbgCmdExec("xanalysisremove");
+			DbgCmdExec("xanalremove function");
 			break;
 		case MENU_REM_ANALYSIS_DISASM:
-			completeAnal = true;
-			DbgCmdExec("xanalysisremove");
+			DbgCmdExec("xanalremove exe");
 			break;
 		default:
 			break;
@@ -176,8 +183,8 @@ bool pluginInit(PLUG_INITSTRUCT* initStruct)
 
 
 	// this will make this functions to execute in a non gui thread
-	_plugin_registercommand(pluginHandle, "xanalyze", cbExtendedAnalysis, true);
-	_plugin_registercommand(pluginHandle, "xanalysisremove", cbExtendedAnalysisRemove, true);
+	_plugin_registercommand(pluginHandle, "xanal", cbExtendedAnalysis, true);
+	_plugin_registercommand(pluginHandle, "xanalremove", cbExtendedAnalysisRemove, true);
     return true; //Return false to cancel loading the plugin.
 }
 
@@ -185,8 +192,8 @@ bool pluginInit(PLUG_INITSTRUCT* initStruct)
 //Deinitialize your plugin data here (clearing menus optional).
 bool pluginStop()
 {
-	_plugin_unregistercommand(pluginHandle, "xanalyze");
-	_plugin_unregistercommand(pluginHandle, "xanalysisremove");
+	_plugin_unregistercommand(pluginHandle, "xanal");
+	_plugin_unregistercommand(pluginHandle, "xanalremove");
 
     _plugin_menuclear(hMenu);
     _plugin_menuclear(hMenuDisasm);
@@ -232,14 +239,19 @@ void pluginSetup()
 	_plugin_menuaddentry(hMenu, MENU_ANALYZE_AUTO, "&Automatic Analysis");
 	_plugin_menuaddentry(hMenu, MENU_ANALYZE_EXT, "&Extended Analysis");
 	_plugin_menuaddentry(hMenu, MENU_ANALYZE_UNDEF, "&Analyze Undefined Functions");
+	int clearprevmnu = _plugin_menuadd(hMenu, "Clear Previous Data");
+	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_CMTS, "User Comments");
+	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_LBLS, "User Labels");
+	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_ACMTS, "AutoComments");	
+	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_ALBLS, "AutoLabels");
 	_plugin_menuaddseparator(hMenu);
-	_plugin_menuaddentry(hMenu, MENU_ABOUT, "&About...");	
+	_plugin_menuaddentry(hMenu, MENU_ABOUT, "&About...");
 	
 	// disasm window menu
 	_plugin_menuseticon(hMenuDisasm, &menu_icon);
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection");//\tCtrl+Shift+X
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function");//\tCtrl+X
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze Executable");//\tCtrl+Alt+X
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze Executable");
 	_plugin_menuaddseparator(hMenuDisasm);
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_SELEC, "&Remove analysis from selection");
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_FUNCT, "&Remove analysis from function");
@@ -257,6 +269,10 @@ void pluginSetup()
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_EXT, conf.extended_analysis);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_UNDEF, conf.undef_funtion_analysis);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_AUTO, conf.auto_analysis);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_CMTS, conf.clear_usercomments);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_LBLS, conf.clear_userlabels);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ACMTS, conf.clear_autocomments);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ALBLS, conf.clear_autolabels);
 
 }
 //--------------------------------------------------------------------------------------

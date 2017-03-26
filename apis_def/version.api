@@ -58,8 +58,8 @@ Header=version.h.api;
 ParamCount=4
 @=VerQueryValue
 [VerLanguageNameA]
-ParamCount=0
+SourceModule=kernel32.api
 @=VerLanguageNameA
 [VerLanguageNameW]
-ParamCount=0
+SourceModule=kernel32.api
 @=VerLanguageNameW
