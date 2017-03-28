@@ -153,6 +153,10 @@ If you find that a certain API call definition is not being detected or not dete
 
 ## Version History
 
+***xAnalyzer 2.4.2***<br/>
+*- Fixed BoF when argument flags comment overpassed MAX_COMMENT_SIZE*<br/>
+*- Fixed function name search bug when definition lies in a second .api file*<br/>
+
 ***xAnalyzer 2.4.1***<br/>
 *- Added a new hotkeys scheme*<br/>
 *- Added new options to control which previous analysis data should be erased. (This gives the possibility to work seamlessly with map loader plugins like SwissArmyKnife, etc).*<br/>
