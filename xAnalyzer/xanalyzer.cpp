@@ -1306,6 +1306,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 	bool instHex = false;
 	duint instConst = 0;
 	duint fileConst = 0;
+	const int safety_chars = 5;
 
  	if (CommentString[0] == '[')
  	{
@@ -1410,10 +1411,15 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 										break;
 									}
 
-									if (orOperator)
-										strcat_s(szConstantComment, MAX_COMMENT_SIZE, " | ");
+									int chars_left = MAX_COMMENT_SIZE - (strlen(szConstantComment) + constant.length() + 5);								
+									// check length to avoid BoF
+									if (chars_left >= safety_chars) // 5 chars left for safety
+									{
+										if (orOperator)
+											strcat_s(szConstantComment, MAX_COMMENT_SIZE, " | ");
 
-									strcat_s(szConstantComment, MAX_COMMENT_SIZE, constant.c_str());
+										strcat_s(szConstantComment, MAX_COMMENT_SIZE, constant.c_str());
+									}
 									orOperator = true;
 								}
 							}
@@ -1437,7 +1443,15 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 			token = strtok_s(NULL, ";", &next_token);
 		}
 
-		strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
+		// check length to avoid BoF
+		int chars_left = MAX_COMMENT_SIZE - (strlen(szComment) + safety_chars);
+		if (chars_left >= (int)strlen(szConstantComment)) // 5 chars left for safety
+			strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
+		else
+		{
+			strcpy_s(&szConstantComment[chars_left], MAX_COMMENT_SIZE, "...\0");
+			strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
+		}
 	}
 	
 	return result;
@@ -1537,6 +1551,10 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bo
 					apiDefPointer = apiFiles.find(searchModule); // saves pointer to correct def filename
 					if (apiDefPointer != apiFiles.end())
 						strcpy_s(lpszApiModule, MAX_MODULE_SIZE, apiDefPointer->first.c_str()); // save the correct file definition name
+
+					// transform charsets search
+					if (szAPIFunction.back() == 'A' || szAPIFunction.back() == 'W')
+						szAPIFunction.pop_back();
 				}
 				
 				strcpy_s(lpszApiDefinition, MAX_COMMENT_SIZE, apiFunction.c_str());
@@ -1569,6 +1587,10 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bo
 					apiDefPointer = apiFiles.find(searchModule); // saves pointer to correct def filename
 					if (apiDefPointer != apiFiles.end())
 						strcpy_s(lpszApiModule, MAX_MODULE_SIZE, apiDefPointer->first.c_str()); // save the correct file definition name
+
+					// transform charsets search
+					if (szAPIFunction.back() == 'A' || szAPIFunction.back() == 'W')
+						szAPIFunction.pop_back();
 				}
 				else
 				{
