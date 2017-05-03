@@ -1,5 +1,13 @@
 <p align="center"><img src ="images/header.png" /></p>
 
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ThunderCls/xAnalyzer/issues)
+[![Build Status](https://ci.appveyor.com/api/projects/status/6uabw25xqmkw6tat?svg=true)](https://ci.appveyor.com/project/ThunderCls/xanalyzer)
+[![GitHub release](https://img.shields.io/github/release/ThunderCls/xAnalyzer.svg?label=latest+release&maxAge=60)](https://github.com/ThunderCls/xAnalyzer/releases/latest)
+[![Github Releases](https://img.shields.io/github/downloads/ThunderCls/xAnalyzer/latest/total.svg?label=latest+downloads)](https://github.com/ThunderCls/xAnalyzer/releases/latest)
+[![Github All Releases](https://img.shields.io/github/downloads/ThunderCls/xAnalyzer/total.svg?label=total+downloads)](https://github.com/ThunderCls/xAnalyzer/releases)
+[![GitHub stars](https://img.shields.io/github/stars/ThunderCls/xAnalyzer.svg?style=flat&label=stars)](https://github.com/ThunderCls/xAnalyzer/stargazers)
+[![license](https://img.shields.io/github/license/ThunderCls/xAnalyzer.svg?label=license&maxAge=86400)](https://github.com/ThunderCls/xAnalyzer/blob/master/LICENSE)
+
 **xAnalyzer** is a plugin for the x86/x64 x64dbg debugger by @mrexodia. This plugin is based on [APIInfo Plugin](https://github.com/mrfearless/APIInfo-Plugin-x86) by @mrfearless, although some improvements and additions have been made. **xAnalyzer** is capable of doing various types of analysis over the static code of the debugged application to give more extra information to the user. This plugin is going to make an extensive API functions call detections to add functions definitions, arguments and data types as well as any other complementary information, something close at what you get with OllyDbg analysis engine, in order to make it even more comprehensible to the user just before starting the debuggin task.
 
 ## Table Of Contents
