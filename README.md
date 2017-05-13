@@ -44,7 +44,7 @@ After xAnalyzer
 Download [HERE](https://github.com/ThunderCls/xAnalyzer/releases/latest) the latest release of the binaries
 
 ## Installation
-1. Download the latest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/latest)
+1. Download the latest version of [x64dbg](http://snapshots.x64dbg.com/)
 
 2. Copy *xAnalyzer.dp32/xAnalyzer.dp64* files and *apis_def* folder to x32/x64 respective plugins directories of x64dbg
 
