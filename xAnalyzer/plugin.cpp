@@ -119,7 +119,7 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
  			mbp.cbSize = sizeof(MSGBOXPARAMS);
  			mbp.hInstance = pluginHInstance;
  			mbp.lpszCaption = "About...";
- 			mbp.lpszText = "["PLUGIN_NAME " " PLUGIN_VERSION_STR"]\n"
+ 			mbp.lpszText = "[" PLUGIN_NAME " " PLUGIN_VERSION_STR"]\n"
  							"Extended analysis for static code \n\n"
  							"http://github.com/ThunderCls/xAnalyzer\n"
  							"Coded By : ThunderCls - 2016\n"
