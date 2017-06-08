@@ -905,7 +905,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText)
 
 	// in case of undefined: CALL [0x007FF154]
 	strcpy_s(funct, MAX_COMMENT_SIZE, lpszAPIFunction);
-	if (ishex(funct) || HasRegister(funct))
+	if (IsHex(funct) || HasRegister(funct))
 		sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_[%s]", funct);
 
 	szAPIFunction = lpszAPIFunction;
@@ -1015,8 +1015,11 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 					}
 					else
 					{
-						strcat_s(CommentString, CommentStringCount, " => ");
-						strcat_s(CommentString, CommentStringCount, szComment);
+						if (strstr(szComment, CommentString) == nullptr)
+						{
+							strcat_s(CommentString, CommentStringCount, " => ");
+							strcat_s(CommentString, CommentStringCount, szComment);
+						}
 					}
 				}
 			}
@@ -1032,7 +1035,7 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 
 				if (inst_source != NULL && ((strlen(inst_source) + 10) <= spaceleft - 1)) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 				{
-					bool instHex = ishex(inst_source);
+					bool instHex = IsHex(inst_source);
 					if (instHex) // get constants as value of argument / excluding push memory, registers, etc
 						ToUpperHex(inst_source);
 
@@ -1346,7 +1349,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 
 		if (inst_source != NULL)
 		{
-			if(instHex = ishex(inst_source))
+			if(instHex = IsHex(inst_source))
 				instConst = hextoduint(inst_source);
 		}
 
@@ -1650,7 +1653,7 @@ int GetFunctionParamCount(LPSTR lpszApiModule, string lpszApiFunction)
 		Utf8Ini *defApiFile = search->second;
 		string params = defApiFile->GetValue(lpszApiFunction, "ParamCount");
 		// check if key is found
-		if (!params.empty() && ishex(params.c_str()))
+		if (!params.empty() && IsHex(params.c_str()))
 			return atoi(params.c_str());
 	}
 

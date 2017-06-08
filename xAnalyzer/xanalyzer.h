@@ -73,7 +73,7 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bool recursive);
 int GetFunctionParamCount(LPSTR lpszApiModule, string lpszApiFunction);
 bool GetFunctionParam(LPSTR lpszApiModule, string lpszApiFunction, duint dwParamNo, LPSTR lpszApiFunctionParameter);
-bool ishex(const char *str);
+bool IsHex(const char *str);
 duint hextoduint(LPCTSTR str);
 void DoInitialAnalysis();
 void ProcessDllFunctionCalls(duint startAddr = -1, duint size = -1);
