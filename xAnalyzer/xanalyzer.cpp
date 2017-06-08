@@ -328,7 +328,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			CallDestination = bii.addr;
 			DbgDisasmFastAt(CallDestination, &cbii);
 			GuiGetDisassembly(CurrentAddress, szDisasmText);
-			GuiGetDisassembly(bii.addr, szJmpDisasmText); // Detect function name on call scheme: CALL -> JMP -> JMP -> API
+			GuiGetDisassembly(CallDestination, szJmpDisasmText); // Detect function name on call scheme: CALL -> JMP -> JMP -> API
 
 			// save data for the argument
 			ai.manual = true;
@@ -336,6 +336,12 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			if (Strip_x64dbg_calls(szDisasmText) || (cbii.branch && Strip_x64dbg_calls(szJmpDisasmText)))
 			{
 				szOriginalCharsetAPIFunction = szAPIFunction;
+
+				// Remove Stub suffix from function names if found
+				auto stub = szAPIFunction.find("Stub");
+				if (stub != std::string::npos)
+					szAPIFunction = szAPIFunction.substr(0, stub);
+
 				// transform charsets search
 				if (szAPIFunction.back() == 'A' || szAPIFunction.back() == 'W')
 					szAPIFunction.pop_back();
@@ -1939,7 +1945,11 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
 		strcmp((char*)(bii->instruction + 5), "ebp") != 0 &&
 		strcmp((char*)(bii->instruction + 5), "esp") != 0 &&
 		strcmp((char*)(bii->instruction + 5), "ds") != 0 &&
-		strcmp((char*)(bii->instruction + 5), "es") != 0);
+		strcmp((char*)(bii->instruction + 5), "es") != 0 || 
+		(strstr(bii->instruction, "mov") != 0 && // mov* [esp*], ... or mov [ebp*], ...
+		 strstr(bii->instruction, "esp") != 0 ||
+		 strstr(bii->instruction, "ebp") != 0)
+		);
 #endif
 }
 
