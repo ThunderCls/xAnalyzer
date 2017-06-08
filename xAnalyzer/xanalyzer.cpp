@@ -451,7 +451,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		// --------------------------------------------------------------------------------------
 		else if (!bii.branch)
 		{
-			if (IsArgumentInstruction(&bii)) // only arguments instruction / excluding unusual instructions
+			if (IsArgumentInstruction(&bii, CurrentAddress)) // only arguments instruction / excluding unusual instructions
 			{
 				if (IS.size() < INSTRUCTIONSTACK_MAXSIZE) // save instruction into stack
 				{
@@ -1015,7 +1015,7 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 					}
 					else
 					{
-						strcat_s(CommentString, CommentStringCount, " = ");
+						strcat_s(CommentString, CommentStringCount, " => ");
 						strcat_s(CommentString, CommentStringCount, szComment);
 					}
 				}
@@ -1125,6 +1125,28 @@ bool IsNumericParam(string paramType)
 			return true;
 	}
 	
+	return false;
+}
+
+// ------------------------------------------------------------------------------------
+// Returns true if instruction is a mov manipulating esp or ebp, excluding epilog, prolog
+// otherwise returns false
+// ------------------------------------------------------------------------------------
+bool IsMovStack(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
+{
+	auto isMovInstruction = strstr(bii->instruction, "mov") != nullptr;
+
+	if (isMovInstruction && !IsProlog(bii, CurrentAddress) && !IsEpilog(bii)) // Is a mov instruction excluding prolog and epilog
+	{
+		char *next_token = NULL;
+		auto movDestination = strtok_s((char*)bii->instruction, ",", &next_token); // Get the left part of ,
+		auto isMovDestinationEsp = strstr(movDestination, "esp") != nullptr;
+		auto isMovDestinationEbp = strstr(movDestination, "ebp") != nullptr;
+
+		if(movDestination != nullptr && (isMovDestinationEsp || isMovDestinationEbp)) // If instruction manipulate [esp*] or [ebp*], its valid
+			return true;
+	}
+
 	return false;
 }
 
@@ -1668,7 +1690,7 @@ bool GetFunctionParam(LPSTR lpszApiModule, string lpszApiFunction, duint dwParam
 // ------------------------------------------------------------------------------------
 // Returns true if the specified string is a valid hex value
 // ------------------------------------------------------------------------------------
-bool ishex(const char *str)
+bool IsHex(const char *str)
 {
 	duint index = 0;
 
@@ -1912,7 +1934,7 @@ bool IsArgumentRegister(const char *destination)
 // ------------------------------------------------------------------------------------
 // True if instruction is a valid argument instruction
 // ------------------------------------------------------------------------------------
-bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
+bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
 #ifdef _WIN64
 	bool IsArgument = false;
@@ -1941,15 +1963,13 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
 	return IsArgument;
 
 #else
-	return (strncmp(bii->instruction, "push ", 5) == 0 &&
+	auto validPushInstruction = strncmp(bii->instruction, "push ", 5) == 0 &&
 		strcmp((char*)(bii->instruction + 5), "ebp") != 0 &&
 		strcmp((char*)(bii->instruction + 5), "esp") != 0 &&
 		strcmp((char*)(bii->instruction + 5), "ds") != 0 &&
-		strcmp((char*)(bii->instruction + 5), "es") != 0 || 
-		(strstr(bii->instruction, "mov") != 0 && // mov* [esp*], ... or mov [ebp*], ...
-		 strstr(bii->instruction, "esp") != 0 ||
-		 strstr(bii->instruction, "ebp") != 0)
-		);
+		strcmp((char*)(bii->instruction + 5), "es") != 0;
+
+	return (validPushInstruction || IsMovStack(bii, CurrentAddress));
 #endif
 }
 
