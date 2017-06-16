@@ -1015,11 +1015,8 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 					}
 					else
 					{
-						if (strstr(szComment, CommentString) == nullptr)
-						{
-							strcat_s(CommentString, CommentStringCount, " => ");
-							strcat_s(CommentString, CommentStringCount, szComment);
-						}
+						strcat_s(CommentString, CommentStringCount, " = ");
+						strcat_s(CommentString, CommentStringCount, szComment);
 					}
 				}
 			}
