@@ -328,7 +328,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			CallDestination = bii.addr;
 			DbgDisasmFastAt(CallDestination, &cbii);
 			GuiGetDisassembly(CurrentAddress, szDisasmText);
-			GuiGetDisassembly(bii.addr, szJmpDisasmText); // Detect function name on call scheme: CALL -> JMP -> JMP -> API
+			GuiGetDisassembly(CallDestination, szJmpDisasmText); // Detect function name on call scheme: CALL -> JMP -> JMP -> API
 
 			// save data for the argument
 			ai.manual = true;
@@ -336,6 +336,12 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			if (Strip_x64dbg_calls(szDisasmText) || (cbii.branch && Strip_x64dbg_calls(szJmpDisasmText)))
 			{
 				szOriginalCharsetAPIFunction = szAPIFunction;
+
+				// Remove Stub suffix from function names if found
+				auto stub = szAPIFunction.find("Stub");
+				if (stub != std::string::npos)
+					szAPIFunction = szAPIFunction.substr(0, stub);
+
 				// transform charsets search
 				if (szAPIFunction.back() == 'A' || szAPIFunction.back() == 'W')
 					szAPIFunction.pop_back();
@@ -445,7 +451,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		// --------------------------------------------------------------------------------------
 		else if (!bii.branch)
 		{
-			if (IsArgumentInstruction(&bii)) // only arguments instruction / excluding unusual instructions
+			if (IsArgumentInstruction(&bii, CurrentAddress)) // only arguments instruction / excluding unusual instructions
 			{
 				if (IS.size() < INSTRUCTIONSTACK_MAXSIZE) // save instruction into stack
 				{
@@ -899,7 +905,7 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText)
 
 	// in case of undefined: CALL [0x007FF154]
 	strcpy_s(funct, MAX_COMMENT_SIZE, lpszAPIFunction);
-	if (ishex(funct) || HasRegister(funct))
+	if (IsHex(funct) || HasRegister(funct))
 		sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_[%s]", funct);
 
 	szAPIFunction = lpszAPIFunction;
@@ -1026,7 +1032,7 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 
 				if (inst_source != NULL && ((strlen(inst_source) + 10) <= spaceleft - 1)) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 				{
-					bool instHex = ishex(inst_source);
+					bool instHex = IsHex(inst_source);
 					if (instHex) // get constants as value of argument / excluding push memory, registers, etc
 						ToUpperHex(inst_source);
 
@@ -1119,6 +1125,28 @@ bool IsNumericParam(string paramType)
 			return true;
 	}
 	
+	return false;
+}
+
+// ------------------------------------------------------------------------------------
+// Returns true if instruction is a mov manipulating esp or ebp, excluding epilog, prolog
+// otherwise returns false
+// ------------------------------------------------------------------------------------
+bool IsMovStack(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
+{
+	auto isMovInstruction = strstr(bii->instruction, "mov") != nullptr;
+
+	if (isMovInstruction && !IsProlog(bii, CurrentAddress) && !IsEpilog(bii)) // Is a mov instruction excluding prolog and epilog
+	{
+		char *next_token = NULL;
+		auto movDestination = strtok_s((char*)bii->instruction, ",", &next_token); // Get the left part of ,
+		auto isMovDestinationEsp = strstr(movDestination, "esp") != nullptr;
+		auto isMovDestinationEbp = strstr(movDestination, "ebp") != nullptr;
+
+		if(movDestination != nullptr && (isMovDestinationEsp || isMovDestinationEbp)) // If instruction manipulate [esp*] or [ebp*], its valid
+			return true;
+	}
+
 	return false;
 }
 
@@ -1318,7 +1346,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 
 		if (inst_source != NULL)
 		{
-			if(instHex = ishex(inst_source))
+			if(instHex = IsHex(inst_source))
 				instConst = hextoduint(inst_source);
 		}
 
@@ -1622,7 +1650,7 @@ int GetFunctionParamCount(LPSTR lpszApiModule, string lpszApiFunction)
 		Utf8Ini *defApiFile = search->second;
 		string params = defApiFile->GetValue(lpszApiFunction, "ParamCount");
 		// check if key is found
-		if (!params.empty() && ishex(params.c_str()))
+		if (!params.empty() && IsHex(params.c_str()))
 			return atoi(params.c_str());
 	}
 
@@ -1662,7 +1690,7 @@ bool GetFunctionParam(LPSTR lpszApiModule, string lpszApiFunction, duint dwParam
 // ------------------------------------------------------------------------------------
 // Returns true if the specified string is a valid hex value
 // ------------------------------------------------------------------------------------
-bool ishex(const char *str)
+bool IsHex(const char *str)
 {
 	duint index = 0;
 
@@ -1906,7 +1934,7 @@ bool IsArgumentRegister(const char *destination)
 // ------------------------------------------------------------------------------------
 // True if instruction is a valid argument instruction
 // ------------------------------------------------------------------------------------
-bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
+bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
 #ifdef _WIN64
 	bool IsArgument = false;
@@ -1935,11 +1963,13 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii)
 	return IsArgument;
 
 #else
-	return (strncmp(bii->instruction, "push ", 5) == 0 &&
+	auto validPushInstruction = strncmp(bii->instruction, "push ", 5) == 0 &&
 		strcmp((char*)(bii->instruction + 5), "ebp") != 0 &&
 		strcmp((char*)(bii->instruction + 5), "esp") != 0 &&
 		strcmp((char*)(bii->instruction + 5), "ds") != 0 &&
-		strcmp((char*)(bii->instruction + 5), "es") != 0);
+		strcmp((char*)(bii->instruction + 5), "es") != 0;
+
+	return (validPushInstruction || IsMovStack(bii, CurrentAddress));
 #endif
 }
 
