@@ -161,6 +161,12 @@ If you find that a certain API call definition is not being detected or not dete
 
 ## Version History
 
+***xAnalyzer 2.4.3***<br/>
+*- Added recognition of MOV instructions on x86*<br/>
+*- Added recognition of functions with "Stub" suffix*<br/>
+*- Fixed bug on "auto analysis" (added more EP check conditions)*<br/>
+*- Clear Auto Comments/Auto Labels options checked now by default*<br/>
+
 ***xAnalyzer 2.4.2***<br/>
 *- Fixed BoF when argument flags comment overpassed MAX_COMMENT_SIZE*<br/>
 *- Fixed function name search bug when definition lies in a second .api file*<br/>
