@@ -87,7 +87,10 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 	Module::ModuleInfo mi;
 
 	Module::InfoFromAddr(bpInfo->breakpoint->addr, &mi);
-	if (mi.entry == bpInfo->breakpoint->addr) // if we hit the EP
+	// if we hit the EP with a dbg one-shot EP BP
+	if (bpInfo->breakpoint->type == bp_normal &&
+		mi.entry == bpInfo->breakpoint->addr &&		
+		strcmp(bpInfo->breakpoint->name, "entry breakpoint") == 0)
 	{
 		if (conf.auto_analysis)
 		{
@@ -1134,12 +1137,15 @@ bool IsNumericParam(string paramType)
 // ------------------------------------------------------------------------------------
 bool IsMovStack(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
-	auto isMovInstruction = strstr(bii->instruction, "mov") != nullptr;
+	char instr[MAX_MNEMONIC_SIZE * 4];
+
+	strcpy_s(instr, bii->instruction); // keep original instruction string unchanged
+	auto isMovInstruction = strstr(instr, "mov") != nullptr;
 
 	if (isMovInstruction && !IsProlog(bii, CurrentAddress) && !IsEpilog(bii)) // Is a mov instruction excluding prolog and epilog
 	{
 		char *next_token = NULL;
-		auto movDestination = strtok_s((char*)bii->instruction, ",", &next_token); // Get the left part of ,
+		auto movDestination = strtok_s(instr, ",", &next_token); // Get the left part of ,
 		auto isMovDestinationEsp = strstr(movDestination, "esp") != nullptr;
 		auto isMovDestinationEbp = strstr(movDestination, "ebp") != nullptr;
 
@@ -2027,7 +2033,24 @@ char *GetInstructionSource(char *instruction)
 
 	return ret; // return trimmed instruction source
 #else
-	return instruction += 5; // for push {constant}
+	// for push {constant}
+	if (strncmp(instruction, "push ", 5) == 0)
+		return instruction += 5; 
+	// for mov esp/ebp, {constant}
+	else if (strncmp(instruction, "mov", 3) == 0)
+	{
+		char *ret = strstr(instruction, ",");
+		if (ret)
+		{
+			ret++; // avoid comma
+			if (ret[0] == ' ') // avoid blank space
+				ret++;
+		}
+
+		return ret;
+	}
+
+	return NULL;
 #endif
 }
 
@@ -2224,8 +2247,8 @@ void LoadConfig()
 	conf.extended_analysis = iniReader.ReadBoolean("settings", "analysis_extended", false);
 	conf.clear_usercomments = iniReader.ReadBoolean("settings", "clear_usercomments", false);
 	conf.clear_userlabels = iniReader.ReadBoolean("settings", "clear_userlabels", false);
-	conf.clear_autocomments = iniReader.ReadBoolean("settings", "clear_autocomments", false);
-	conf.clear_autolabels = iniReader.ReadBoolean("settings", "clear_autolabels", false);
+	conf.clear_autocomments = iniReader.ReadBoolean("settings", "clear_autocomments", true);
+	conf.clear_autolabels = iniReader.ReadBoolean("settings", "clear_autolabels", true);
 }
 
 // ------------------------------------------------------------------------------------

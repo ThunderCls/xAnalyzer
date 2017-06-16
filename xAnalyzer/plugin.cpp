@@ -122,7 +122,7 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
  			mbp.lpszText = "[" PLUGIN_NAME " " PLUGIN_VERSION_STR"]\n"
  							"Extended analysis for static code \n\n"
  							"http://github.com/ThunderCls/xAnalyzer\n"
- 							"Coded By : ThunderCls - 2016\n"
+ 							"Coded By : ThunderCls - 2017\n"
  							"Based on: APIInfo Plugin by mrfearless";
  			mbp.dwStyle = MB_USERICON | MB_OK;
  			mbp.lpszIcon = MAKEINTRESOURCE(IDI_ICON1);
@@ -242,8 +242,8 @@ void pluginSetup()
 	int clearprevmnu = _plugin_menuadd(hMenu, "Clear Previous Data");
 	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_CMTS, "User Comments");
 	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_LBLS, "User Labels");
-	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_ACMTS, "AutoComments");	
-	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_ALBLS, "AutoLabels");
+	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_ACMTS, "Auto Comments");	
+	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_ALBLS, "Auto Labels");
 	_plugin_menuaddseparator(hMenu);
 	_plugin_menuaddentry(hMenu, MENU_ABOUT, "&About...");
 	
