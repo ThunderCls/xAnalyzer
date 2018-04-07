@@ -161,6 +161,15 @@ If you find that a certain API call definition is not being detected or not dete
 
 ## Version History
 
+***xAnalyzer 2.5.0***<br/>
+*-Removed [EBP+/-] instructions as possible function caller arguments*<br/>
+*-Removed prefix "0x" of all function arguments values since hexadecimal is inferred*<br/>
+*-Fixed arguments where pointer variables wouldn't show correctly as pointers but as base data type instead*<br/>
+*-Added recognition of stack pointer usage (ESP) as possible argument for function calls (x86)*<br/>
+*-Added use of accurate data type name in arguments instead of generic/base data type name*<br/>
+*-Added function smart tracking feature (Smart prediction and recognition of indirect function calls like: CALL {REGISTER}, CALL {POINTER})*<br/>
+*-Added name of function pointers as parameters (the entire function name, if detected, will be used instead of just the address)*<br/>
+
 ***xAnalyzer 2.4.3***<br/>
 *- Added recognition of MOV instructions on x86*<br/>
 *- Added recognition of functions with "Stub" suffix*<br/>
