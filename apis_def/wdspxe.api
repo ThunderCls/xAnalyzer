@@ -132,18 +132,18 @@ ParamCount=1
 Header=windows.h.api;
 @=PxeProviderEnumClose
 [PxeProviderEnumFirst]
-1=[HANDLE*] phEnum
+1=HANDLE* phEnum
 ParamCount=1
 Header=windows.h.api;
 @=PxeProviderEnumFirst
 [PxeProviderEnumNext]
 1=HANDLE hEnum
-2=[PPXE_PROVIDER*] ppProvider
+2=PPXE_PROVIDER* ppProvider
 ParamCount=2
 Header=wdspxe.h.api;windows.h.api;
 @=PxeProviderEnumNext
 [PxeProviderFreeInfo]
-1=[PPXE_PROVIDER] pProvider
+1=PPXE_PROVIDER pProvider
 ParamCount=1
 Header=wdspxe.h.api;
 @=PxeProviderFreeInfo
@@ -157,7 +157,7 @@ ParamCount=2
 2=LPCWSTR pszModulePath
 3=[PXE_REG_INDEX] Index
 4=BOOL bIsCritical
-5=[PHKEY] phProviderKey
+5=PHKEY phProviderKey
 ParamCount=5
 Header=wdspxe.h.api;registry.h.api;
 @=PxeProviderRegister
@@ -185,7 +185,7 @@ Header=wdspxe.h.api;windows.h.api;
 1=HANDLE hClientRequest
 2=PVOID pPacket
 3=ULONG uPacketLen
-4=[PXE_ADDRESS*] pAddress
+4=PXE_ADDRESS* pAddress
 ParamCount=4
 Header=wdspxe.h.api;windows.h.api;
 @=PxeSendReply
@@ -199,7 +199,7 @@ Header=wdspxe.h.api;windows.h.api;
 [PxeDhcpv6ParseRelayForw]
 1=PVOID pRelayForwPacket
 2=ULONG uRelayForwPacketLen
-3=[PPXE_DHCPV6_NESTED_RELAY_MESSAGE] pRelayMessages
+3=PPXE_DHCPV6_NESTED_RELAY_MESSAGE pRelayMessages
 4=ULONG nRelayMessages
 5=PULONG pnRelayMessages
 6=PBYTE* ppInnerPacket
@@ -208,7 +208,7 @@ ParamCount=7
 Header=wdspxe.h.api;
 @=PxeDhcpv6ParseRelayForw
 [PxeDhcpv6CreateRelayRepl]
-1=[PPXE_DHCPV6_NESTED_RELAY_MESSAGE] pRelayMessages
+1=PPXE_DHCPV6_NESTED_RELAY_MESSAGE pRelayMessages
 2=ULONG nRelayMessages
 3=PBYTE pInnerPacket
 4=ULONG cbInnerPacket

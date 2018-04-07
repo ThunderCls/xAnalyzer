@@ -9,7 +9,7 @@ ParamCount=1
 1=DWORD dwFlags
 2=DWORD dwTimeout
 3=ULONG cHandles
-4=[LPHANDLE] pHandles
+4=LPHANDLE pHandles
 5=LPDWORD lpdwIndex
 ParamCount=5
 Header=windows.h.api;
@@ -25,69 +25,69 @@ ParamCount=1
 [CoDecodeProxy]
 1=DWORD dwClientPid
 2=UINT64 ui64ProxyAddress
-3=[PServerInformation] pServerInformation
+3=PServerInformation pServerInformation
 ParamCount=3
 Header=combase.h.api;
 @=CoDecodeProxy
 [HSTRING_UserFree]
 1=ULONG* pFlags
-2=[HSTRING*] ppidl
+2=HSTRING* ppidl
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserFree
 [HSTRING_UserFree64]
 1=ULONG* pFlags
-2=[HSTRING*] ppidl
+2=HSTRING* ppidl
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserFree64
 [HSTRING_UserMarshal]
 1=ULONG* pFlags
 2=UCHAR* pBuffer
-3=[HSTRING*] ppidl
+3=HSTRING* ppidl
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserMarshal
 [HSTRING_UserMarshal64]
 1=ULONG* pFlags
 2=UCHAR* pBuffer
-3=[HSTRING*] ppidl
+3=HSTRING* ppidl
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserMarshal64
 [HSTRING_UserSize]
 1=ULONG* pFlags
 2=ULONG StartingSize
-3=[HSTRING*] ppidl
+3=HSTRING* ppidl
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserSize
 [HSTRING_UserSize64]
 1=ULONG* pFlags
 2=ULONG StartingSize
-3=[HSTRING*] ppidl
+3=HSTRING* ppidl
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserSize64
 [HSTRING_UserUnmarshal]
 1=ULONG* pFlags
 2=UCHAR* pBuffer
-3=[HSTRING*] ppidl
+3=HSTRING* ppidl
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserUnmarshal
 [HSTRING_UserUnmarshal64]
 1=ULONG* pFlags
 2=UCHAR* pBuffer
-3=[HSTRING*] ppidl
+3=HSTRING* ppidl
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=HSTRING_UserUnmarshal64
 [RoActivateInstance]
-1=[HSTRING] activatableClassId
+1=HSTRING activatableClassId
 2=IInspectable** instance
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=RoActivateInstance
 [RoCaptureErrorContext]
 1=HRESULT hrError
@@ -98,22 +98,22 @@ ParamCount=1
 ParamCount=1
 @=RoFailFastWithErrorContext
 [RoFreeParameterizedTypeExtra]
-1=[ROPARAMIIDHANDLE] extra
+1=ROPARAMIIDHANDLE extra
 ParamCount=1
 Header=combase.h.api;
 @=RoFreeParameterizedTypeExtra
 [RoGetActivatableClassRegistration]
-1=[HSTRING] activatableClassId
-2=[PActivatableClassRegistration*] activatableClassRegistration
+1=HSTRING activatableClassId
+2=PActivatableClassRegistration* activatableClassRegistration
 ParamCount=2
-Header=combase.h.api;runtime.h.api;
+Header=combase.h.api;
 @=RoGetActivatableClassRegistration
 [RoGetActivationFactory]
-1=[HSTRING] activatableClassId
-2=[REFIID] iid
+1=HSTRING activatableClassId
+2=REFIID iid
 3=void** factory
 ParamCount=3
-Header=runtime.h.api;windows.h.api;
+Header=windows.h.api;
 @=RoGetActivationFactory
 [RoGetApartmentIdentifier]
 1=UINT64* apartmentIdentifier
@@ -127,18 +127,18 @@ Header=combase.h.api;
 [RoGetParameterizedTypeInstanceIID]
 1=UINT32 nameElementCount
 2=PCWSTR* nameElements
-3=[IRoMetaDataLocator&] metaDataLocator
-4=[GUID*] iid
-5=[ROPARAMIIDHANDLE*] pExtra
+3=IRoMetaDataLocator& metaDataLocator
+4=GUID* iid
+5=ROPARAMIIDHANDLE* pExtra
 ParamCount=5
 Header=combase.h.api;windows.h.api;
 @=RoGetParameterizedTypeInstanceIID
 [RoGetServerActivatableClasses]
-1=[HSTRING] serverName
-2=[HSTRING**] activatableClassIds
+1=HSTRING serverName
+2=HSTRING** activatableClassIds
 3=DWORD* count
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=RoGetServerActivatableClasses
 [RoInitialize]
 1=[RO_INIT_TYPE] initType
@@ -147,9 +147,9 @@ Header=combase.h.api;
 @=RoInitialize
 [RoOriginateError]
 1=HRESULT error
-2=[HSTRING] message
+2=HSTRING message
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=RoOriginateError
 [RoOriginateErrorW]
 1=HRESULT error
@@ -158,22 +158,22 @@ Header=runtime.h.api;
 ParamCount=3
 @=RoOriginateErrorW
 [RoParameterizedTypeExtraGetTypeSignature]
-1=[ROPARAMIIDHANDLE] extra
+1=ROPARAMIIDHANDLE extra
 ParamCount=1
 Header=combase.h.api;
 @=RoParameterizedTypeExtraGetTypeSignature
 [RoRegisterActivationFactories]
-1=[HSTRING*] activatableClassIds
-2=[PFNGETACTIVATIONFACTORY*] activationFactoryCallbacks
+1=HSTRING* activatableClassIds
+2=PFNGETACTIVATIONFACTORY* activationFactoryCallbacks
 3=UINT32 count
-4=[RO_REGISTRATION_COOKIE*] cookie
+4=RO_REGISTRATION_COOKIE* cookie
 ParamCount=4
-Header=combase.h.api;runtime.h.api;
+Header=combase.h.api;
 @=RoRegisterActivationFactories
 [RoRegisterForApartmentShutdown]
 1=IApartmentShutdown* callbackObject
 2=UINT64* apartmentIdentifier
-3=[APARTMENT_SHUTDOWN_REGISTRATION_COOKIE*] regCookie
+3=APARTMENT_SHUTDOWN_REGISTRATION_COOKIE* regCookie
 ParamCount=3
 Header=combase.h.api;
 @=RoRegisterForApartmentShutdown
@@ -183,7 +183,7 @@ Header=combase.h.api;
 ParamCount=2
 @=RoResolveRestrictedErrorInfoReference
 [RoRevokeActivationFactories]
-1=[RO_REGISTRATION_COOKIE] cookie
+1=RO_REGISTRATION_COOKIE cookie
 ParamCount=1
 Header=combase.h.api;
 @=RoRevokeActivationFactories
@@ -195,9 +195,9 @@ Header=combase.h.api;
 [RoTransformError]
 1=HRESULT oldError
 2=HRESULT newError
-3=[HSTRING] message
+3=HSTRING message
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=RoTransformError
 [RoTransformErrorW]
 1=HRESULT oldError
@@ -210,70 +210,70 @@ ParamCount=4
 ParamCount=0
 @=RoUninitialize
 [RoUnregisterForApartmentShutdown]
-1=[APARTMENT_SHUTDOWN_REGISTRATION_COOKIE] regCookie
+1=APARTMENT_SHUTDOWN_REGISTRATION_COOKIE regCookie
 ParamCount=1
 Header=combase.h.api;
 @=RoUnregisterForApartmentShutdown
 [WindowsCompareStringOrdinal]
-1=[HSTRING] string1
-2=[HSTRING] string2
+1=HSTRING string1
+2=HSTRING string2
 3=INT32* result
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsCompareStringOrdinal
 [WindowsConcatString]
-1=[HSTRING] string1
-2=[HSTRING] string2
-3=[HSTRING*] newString
+1=HSTRING string1
+2=HSTRING string2
+3=HSTRING* newString
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsConcatString
 [WindowsCreateString]
 1=LPCWSTR sourceString
 2=UINT32 length
-3=[HSTRING*] string
+3=HSTRING* string
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsCreateString
 [WindowsCreateStringReference]
 1=PCWSTR sourceString
 2=UINT32 length
-3=[HSTRING_HEADER*] hstringHeader
-4=[HSTRING*] string
+3=HSTRING_HEADER* hstringHeader
+4=HSTRING* string
 ParamCount=4
-Header=runtime.h.api;
+Header=
 @=WindowsCreateStringReference
 [WindowsDeleteString]
-1=[HSTRING] string
+1=HSTRING string
 ParamCount=1
-Header=runtime.h.api;
+Header=
 @=WindowsDeleteString
 [WindowsDeleteStringBuffer]
-1=[HSTRING_BUFFER] bufferHandle
+1=HSTRING_BUFFER bufferHandle
 ParamCount=1
-Header=runtime.h.api;
+Header=
 @=WindowsDeleteStringBuffer
 [WindowsDuplicateString]
-1=[HSTRING] string
-2=[HSTRING*] newString
+1=HSTRING string
+2=HSTRING* newString
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=WindowsDuplicateString
 [WindowsGetStringLen]
-1=[HSTRING] string
+1=HSTRING string
 ParamCount=1
-Header=runtime.h.api;
+Header=
 @=WindowsGetStringLen
 [WindowsGetStringRawBuffer]
-1=[HSTRING] string
+1=HSTRING string
 2=UINT32* length
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=WindowsGetStringRawBuffer
 [WindowsInspectString]
 1=UINT_PTR targetHString
 2=USHORT machine
-3=[PINSPECT_HSTRING_CALLBACK] callback
+3=PINSPECT_HSTRING_CALLBACK callback
 4=void* context
 5=UINT32* length
 6=UINT_PTR* targetStringAddress
@@ -281,68 +281,68 @@ ParamCount=6
 Header=combase.h.api;
 @=WindowsInspectString
 [WindowsIsStringEmpty]
-1=[HSTRING] string
+1=HSTRING string
 ParamCount=1
-Header=runtime.h.api;
+Header=
 @=WindowsIsStringEmpty
 [WindowsPreallocateStringBuffer]
 1=UINT32 length
 2=WCHAR** mutableBuffer
-3=[HSTRING_BUFFER*] bufferHandle
+3=HSTRING_BUFFER* bufferHandle
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsPreallocateStringBuffer
 [WindowsPromoteStringBuffer]
-1=[HSTRING_BUFFER] bufferHandle
-2=[HSTRING*] string
+1=HSTRING_BUFFER bufferHandle
+2=HSTRING* string
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=WindowsPromoteStringBuffer
 [WindowsReplaceString]
-1=[HSTRING] string
-2=[HSTRING] stringReplaced
-3=[HSTRING] stringReplaceWith
-4=[HSTRING*] newString
+1=HSTRING string
+2=HSTRING stringReplaced
+3=HSTRING stringReplaceWith
+4=HSTRING* newString
 ParamCount=4
-Header=runtime.h.api;
+Header=
 @=WindowsReplaceString
 [WindowsStringHasEmbeddedNull]
-1=[HSTRING] string
+1=HSTRING string
 2=BOOL* hasEmbedNull
 ParamCount=2
-Header=runtime.h.api;
+Header=
 @=WindowsStringHasEmbeddedNull
 [WindowsSubstring]
-1=[HSTRING] string
+1=HSTRING string
 2=UINT32 startIndex
-3=[HSTRING*] newString
+3=HSTRING* newString
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsSubstring
 [WindowsSubstringWithSpecifiedLength]
-1=[HSTRING] string
+1=HSTRING string
 2=UINT32 startIndex
 3=UINT32 length
-4=[HSTRING*] newString
+4=HSTRING* newString
 ParamCount=4
-Header=runtime.h.api;
+Header=
 @=WindowsSubstringWithSpecifiedLength
 [WindowsTrimStringEnd]
-1=[HSTRING] string
-2=[HSTRING] trimString
-3=[HSTRING*] newString
+1=HSTRING string
+2=HSTRING trimString
+3=HSTRING* newString
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsTrimStringEnd
 [WindowsTrimStringStart]
-1=[HSTRING] string
-2=[HSTRING] trimString
-3=[HSTRING*] newString
+1=HSTRING string
+2=HSTRING trimString
+3=HSTRING* newString
 ParamCount=3
-Header=runtime.h.api;
+Header=
 @=WindowsTrimStringStart
 [CoAllowUnmarshalerCLSID]
-1=[REFCLSID] clsid
+1=REFCLSID clsid
 ParamCount=1
 Header=windows.h.api;
 @=CoAllowUnmarshalerCLSID

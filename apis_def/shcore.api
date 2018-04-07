@@ -1,7 +1,7 @@
 [CreateRandomAccessStreamOnFile]
 1=PCWSTR filePath
 2=[FileAccessMode] accessMode
-3=[REFIID] riid
+3=REFIID riid
 4=void** ppv
 ParamCount=4
 Header=shcore.h.api;windows.h.api;
@@ -9,14 +9,14 @@ Header=shcore.h.api;windows.h.api;
 [CreateRandomAccessStreamOverStream]
 1=IStream* stream
 2=[BSOS_OPTIONS] options
-3=[REFIID] riid
+3=REFIID riid
 4=void** ppv
 ParamCount=4
 Header=shcore.h.api;windows.h.api;
 @=CreateRandomAccessStreamOverStream
 [CreateStreamOverRandomAccessStream]
 1=IUnknown* randomAccessStream
-2=[REFIID] riid
+2=REFIID riid
 3=void** ppv
 ParamCount=3
 Header=windows.h.api;
@@ -28,7 +28,7 @@ Header=shcore.h.api;
 @=GetScaleFactorForDevice
 [RegisterScaleChangeNotifications]
 1=[DISPLAY_DEVICE_TYPE] displayDevice
-2=[HWND] hwndNotify
+2=HWND hwndNotify
 3=UINT uMsgNotify
 4=DWORD* pdwCookie
 ParamCount=4

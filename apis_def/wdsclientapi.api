@@ -1,8 +1,8 @@
 [WdsCliAuthorizeSession]
 1=HANDLE hSession
-2=[PWDS_CLI_CRED] pCred
+2=PWDS_CLI_CRED pCred
 ParamCount=2
-Header=wdsclientapi.h.api;windows.h.api;
+Header=windows.h.api;
 @=WdsCliAuthorizeSession
 [WdsCliCancelTransfer]
 1=HANDLE hTransfer
@@ -16,14 +16,14 @@ Header=windows.h.api;
 @=WdsCliClose
 [WdsCliCreateSession]
 1=PWSTR pwszServer
-2=[PWDS_CLI_CRED] pCred
-3=[PHANDLE] phSession
+2=PWDS_CLI_CRED pCred
+3=PHANDLE phSession
 ParamCount=3
-Header=wdsclientapi.h.api;windows.h.api;
+Header=windows.h.api;
 @=WdsCliCreateSession
 [WdsCliFindFirstImage]
 1=HANDLE hSession
-2=[PHANDLE] phFindHandle
+2=PHANDLE phFindHandle
 ParamCount=2
 Header=windows.h.api;
 @=WdsCliFindFirstImage
@@ -77,13 +77,13 @@ Header=windows.h.api;
 @=WdsCliGetImageHalName
 [WdsCliGetImageHandleFromFindHandle]
 1=HANDLE FindHandle
-2=[PHANDLE] phImageHandle
+2=PHANDLE phImageHandle
 ParamCount=2
 Header=windows.h.api;
 @=WdsCliGetImageHandleFromFindHandle
 [WdsCliGetImageHandleFromTransferHandle]
 1=HANDLE hTransfer
-2=[PHANDLE] phImageHandle
+2=PHANDLE phImageHandle
 ParamCount=2
 Header=windows.h.api;
 @=WdsCliGetImageHandleFromTransferHandle
@@ -108,7 +108,7 @@ Header=windows.h.api;
 @=WdsCliGetImageLanguages
 [WdsCliGetImageLastModifiedTime]
 1=HANDLE hIfh
-2=[PSYSTEMTIME*] ppSysTimeValue
+2=PSYSTEMTIME* ppSysTimeValue
 ParamCount=2
 Header=windows.h.api;
 @=WdsCliGetImageLastModifiedTime
@@ -164,9 +164,9 @@ ParamCount=3
 Header=windows.h.api;
 @=WdsCliLog
 [WdsCliRegisterTrace]
-1=[PFN_WdsCliTraceFunction] pfn
+1=PFN_WdsCliTraceFunction pfn
 ParamCount=1
-Header=wdsclientapi.h.api;
+Header=
 @=WdsCliRegisterTrace
 [WdsCliTransferFile]
 1=PCWSTR pwszServer
@@ -175,22 +175,22 @@ Header=wdsclientapi.h.api;
 4=PCWSTR pwszLocalFilePath
 5=DWORD dwFlags
 6=DWORD dwReserved
-7=[PFN_WdsCliCallback] pfnWdsCliCallback
+7=PFN_WdsCliCallback pfnWdsCliCallback
 8=PVOID pvUserData
-9=[PHANDLE] phTransfer
+9=PHANDLE phTransfer
 ParamCount=9
-Header=wdsclientapi.h.api;windows.h.api;
+Header=windows.h.api;
 @=WdsCliTransferFile
 [WdsCliTransferImage]
 1=HANDLE hImage
 2=PWSTR pwszLocalPath
 3=DWORD dwFlags
 4=DWORD dwReserved
-5=[PFN_WdsCliCallback] pfnWdsCliCallback
+5=PFN_WdsCliCallback pfnWdsCliCallback
 6=PVOID pvUserData
-7=[PHANDLE] phTransfer
+7=PHANDLE phTransfer
 ParamCount=7
-Header=wdsclientapi.h.api;windows.h.api;
+Header=windows.h.api;
 @=WdsCliTransferImage
 [WdsCliWaitForTransfer]
 1=HANDLE hTransfer

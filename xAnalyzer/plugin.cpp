@@ -114,6 +114,10 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 			conf.clear_autolabels = !conf.clear_autolabels;
 			SaveConfig();
 			break;
+		case MENU_ANALYZE_TRACK_UNDEF:
+			conf.track_undef_functions = !conf.track_undef_functions;
+			SaveConfig();
+			break;
 		case MENU_ABOUT:
  			ZeroMemory(&mbp, sizeof(MSGBOXPARAMS));
  			mbp.cbSize = sizeof(MSGBOXPARAMS);
@@ -122,7 +126,7 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
  			mbp.lpszText = "[" PLUGIN_NAME " " PLUGIN_VERSION_STR"]\n"
  							"Extended analysis for static code \n\n"
  							"http://github.com/ThunderCls/xAnalyzer\n"
- 							"Coded By : ThunderCls - 2017\n"
+ 							"Coded By : ThunderCls - 2018\n"
  							"Based on: APIInfo Plugin by mrfearless";
  			mbp.dwStyle = MB_USERICON | MB_OK;
  			mbp.lpszIcon = MAKEINTRESOURCE(IDI_ICON1);
@@ -175,16 +179,17 @@ bool pluginInit(PLUG_INITSTRUCT* initStruct)
 			sprintf_s(message, "[" PLUGIN_NAME "] Failed to locate API definitions files.\r\n"
 			"            Check that the folder: %s\r\n"
 			"            and definition files are present and try again...exiting plugin initialization!\r\n", folder.c_str());
+
  		_plugin_logprintf(message);
  		return false;
  	}
 
 	config_path = szCurrentDirectory + string("xanalyzer.ini");
 
-
 	// this will make this functions to execute in a non gui thread
 	_plugin_registercommand(pluginHandle, "xanal", cbExtendedAnalysis, true);
 	_plugin_registercommand(pluginHandle, "xanalremove", cbExtendedAnalysisRemove, true);
+
     return true; //Return false to cancel loading the plugin.
 }
 
@@ -239,6 +244,7 @@ void pluginSetup()
 	_plugin_menuaddentry(hMenu, MENU_ANALYZE_AUTO, "&Automatic Analysis");
 	_plugin_menuaddentry(hMenu, MENU_ANALYZE_EXT, "&Extended Analysis");
 	_plugin_menuaddentry(hMenu, MENU_ANALYZE_UNDEF, "&Analyze Undefined Functions");
+	_plugin_menuaddentry(hMenu, MENU_ANALYZE_TRACK_UNDEF, "&Function Smart Tracking");
 	int clearprevmnu = _plugin_menuadd(hMenu, "Clear Previous Data");
 	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_CMTS, "User Comments");
 	_plugin_menuaddentry(clearprevmnu, MENU_ANALYZE_CLEAR_LBLS, "User Labels");
@@ -273,6 +279,7 @@ void pluginSetup()
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_LBLS, conf.clear_userlabels);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ACMTS, conf.clear_autocomments);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ALBLS, conf.clear_autolabels);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_TRACK_UNDEF, conf.track_undef_functions);
 
 }
 //--------------------------------------------------------------------------------------

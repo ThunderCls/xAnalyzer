@@ -18,7 +18,7 @@ ParamCount=1
 @=LZInit
 [LZOpenFile]
 1=LPTSTR lpFileName
-2=[LPOFSTRUCT] lpReOpenBuf
+2=LPOFSTRUCT lpReOpenBuf
 3=[OpenFlags] wStyle
 ParamCount=3
 Header=lz32.h.api;windows.h.api;

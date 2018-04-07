@@ -1,10 +1,10 @@
 [DsBackupClose]
-1=[HBC] hbc
+1=HBC hbc
 ParamCount=1
 Header=ntdsbcli.h.api;
 @=DsBackupClose
 [DsBackupEnd]
-1=[HBC] hbc
+1=HBC hbc
 ParamCount=1
 Header=ntdsbcli.h.api;
 @=DsBackupEnd
@@ -13,24 +13,24 @@ Header=ntdsbcli.h.api;
 ParamCount=1
 @=DsBackupFree
 [DsBackupGetBackupLogs]
-1=[HBC] hbc
+1=HBC hbc
 2=LPTSTR* pszBackupLogFiles
 3=LPDWORD pcbSize
 ParamCount=3
 Header=ntdsbcli.h.api;
 @=DsBackupGetBackupLogs
 [DsBackupGetDatabaseNames]
-1=[HBC] hbc
+1=HBC hbc
 2=LPTSTR* pszAttachmentInfo
 3=LPDWORD pcbSize
 ParamCount=3
 Header=ntdsbcli.h.api;
 @=DsBackupGetDatabaseNames
 [DsBackupOpenFile]
-1=[HBC] hbc
+1=HBC hbc
 2=LPCTSTR szAttachmentName
 3=DWORD cbReadHintSize
-4=[LARGE_INTEGER*] pliFileSize
+4=LARGE_INTEGER* pliFileSize
 ParamCount=4
 Header=ntdsbcli.h.api;windows.h.api;
 @=DsBackupOpenFile
@@ -40,12 +40,12 @@ Header=ntdsbcli.h.api;windows.h.api;
 3=[NtdsBackupType] btBackupType
 4=PVOID* ppvExpiryToken
 5=LPDWORD pcbExpiryTokenSize
-6=[HBC*] phbc
+6=HBC* phbc
 ParamCount=6
 Header=ntdsbcli.h.api;
 @=DsBackupPrepare
 [DsBackupRead]
-1=[HBC] hbc
+1=HBC hbc
 2=PVOID pvBuffer
 3=DWORD cbBuffer
 4=PDWORD pcbRead
@@ -53,7 +53,7 @@ ParamCount=4
 Header=ntdsbcli.h.api;
 @=DsBackupRead
 [DsBackupTruncateLogs]
-1=[HBC] hbc
+1=HBC hbc
 ParamCount=1
 Header=ntdsbcli.h.api;
 @=DsBackupTruncateLogs
@@ -63,12 +63,12 @@ Header=ntdsbcli.h.api;
 ParamCount=2
 @=DsIsNTDSOnline
 [DsRestoreEnd]
-1=[HBC] hbc
+1=HBC hbc
 ParamCount=1
 Header=ntdsbcli.h.api;
 @=DsRestoreEnd
 [DsRestoreGetDatabaseLocations]
-1=[HBC] hbc
+1=HBC hbc
 2=LPWSTR* pszDatabaseLocationList
 3=LPDWORD pcbSize
 ParamCount=3
@@ -79,12 +79,12 @@ Header=ntdsbcli.h.api;
 2=[NtdsRestoreType] rtFlag
 3=PVOID pvExpiryToken
 4=DWORD cbExpiryTokenSize
-5=[HBC*] phbc
+5=HBC* phbc
 ParamCount=5
 Header=ntdsbcli.h.api;
 @=DsRestorePrepare
 [DsRestoreRegister]
-1=[HBC] hbc
+1=HBC hbc
 2=LPCTSTR szCheckPointFilePath
 3=LPCTSTR szLogPath
 4=LONG crstmap
@@ -95,7 +95,7 @@ ParamCount=7
 Header=ntdsbcli.h.api;
 @=DsRestoreRegister
 [DsRestoreRegisterComplete]
-1=[HBC] hbc
+1=HBC hbc
 2=HRESULT hrRestoreState
 ParamCount=2
 Header=ntdsbcli.h.api;

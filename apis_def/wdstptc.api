@@ -15,7 +15,7 @@ Header=windows.h.api;
 [WdsTransportClientCompleteReceive]
 1=HANDLE hSessionKey
 2=HANDLE ulSize
-3=[PULARGE_INTEGER] pullOffset
+3=PULARGE_INTEGER pullOffset
 ParamCount=3
 Header=windows.h.api;
 @=WdsTransportClientCompleteReceive
@@ -23,9 +23,9 @@ Header=windows.h.api;
 ParamCount=0
 @=WdsTransportClientInitialize
 [WdsTransportClientInitializeSession]
-1=[PWDS_TRANSPORTCLIENT_REQUEST] pSessionRequest
+1=PWDS_TRANSPORTCLIENT_REQUEST pSessionRequest
 2=PVOID pCallerData
-3=[PHANDLE] hSessionKey
+3=PHANDLE hSessionKey
 ParamCount=3
 Header=wdstptc.h.api;windows.h.api;
 @=WdsTransportClientInitializeSession

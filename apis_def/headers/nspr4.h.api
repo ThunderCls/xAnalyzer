@@ -1,5 +1,3 @@
-[void (*)(void*)]
-Base=LPVOID
 [PrAddressFamily]
 TypeDisplay=PRIntn
 Base=PRIntn

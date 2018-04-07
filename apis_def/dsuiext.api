@@ -1,7 +1,7 @@
 [DsBrowseForContainer]
-1=[PDSBROWSEINFO] pInfo
+1=PDSBROWSEINFO pInfo
 ParamCount=1
-Header=dsuiext.h.api;
+Header=
 @=DsBrowseForContainer
 [DsGetFriendlyClassName]
 1=LPWSTR pszObjectClass

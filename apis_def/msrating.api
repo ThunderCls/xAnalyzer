@@ -1,5 +1,5 @@
 [RatingAccessDeniedDialog]
-1=[HWND] hDlg
+1=HWND hDlg
 2=LPCTSTR pszUsername
 3=LPCTSTR pszContentDescription
 4=VOID* pRatingDetails
@@ -7,7 +7,7 @@ ParamCount=4
 Header=windows.h.api;
 @=RatingAccessDeniedDialog
 [RatingAccessDeniedDialog2]
-1=[HWND] hDlg
+1=HWND hDlg
 2=LPCSTR pszUsername
 3=VOID* pRatingDetails
 ParamCount=3
@@ -23,7 +23,7 @@ Header=windows.h.api;
 ParamCount=6
 @=RatingCheckUserAccess
 [RatingEnable]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=LPCSTR pszUsername
 3=BOOL fEnable
 ParamCount=3
@@ -47,12 +47,12 @@ Header=windows.h.api;
 3=DWORD dwUserData
 4=HRESULT hr
 5=LPCTSTR pszRating
-6=[HANDLE*] phRatingObtainQuery
+6=HANDLE* phRatingObtainQuery
 ParamCount=6
 Header=windows.h.api;
 @=RatingObtainQuery
 [RatingSetupUI]
-1=[HWND] hDlg
+1=HWND hDlg
 2=LPCSTR pszUsername
 ParamCount=2
 Header=windows.h.api;

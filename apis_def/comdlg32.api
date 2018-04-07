@@ -1,10 +1,10 @@
 [ChooseColor]
-1=[LPCHOOSECOLOR] lpcc
+1=LPCHOOSECOLOR lpcc
 ParamCount=1
 Header=gdi.h.api;
 @=ChooseColor
 [ChooseFont]
-1=[LPCHOOSEFONT] lpcf
+1=LPCHOOSEFONT lpcf
 ParamCount=1
 Header=gdi.h.api;
 @=ChooseFont
@@ -12,7 +12,7 @@ Header=gdi.h.api;
 ParamCount=0
 @=CommDlgExtendedError
 [FindText]
-1=[LPFINDREPLACE] lpfr
+1=LPFINDREPLACE lpfr
 ParamCount=1
 Header=gdi.h.api;
 @=FindText
@@ -23,32 +23,32 @@ Header=gdi.h.api;
 ParamCount=3
 @=GetFileTitle
 [GetOpenFileName]
-1=[LPOPENFILENAME] lpofn
+1=LPOPENFILENAME lpofn
 ParamCount=1
 Header=gdi.h.api;
 @=GetOpenFileName
 [GetSaveFileName]
-1=[LPOPENFILENAME] lpofn
+1=LPOPENFILENAME lpofn
 ParamCount=1
 Header=gdi.h.api;
 @=GetSaveFileName
 [PageSetupDlg]
-1=[LPPAGESETUPDLG] lppsd
+1=LPPAGESETUPDLG lppsd
 ParamCount=1
 Header=gdi.h.api;
 @=PageSetupDlg
 [PrintDlg]
-1=[LPPRINTDLG] lppd
+1=LPPRINTDLG lppd
 ParamCount=1
 Header=gdi.h.api;
 @=PrintDlg
 [PrintDlgEx]
-1=[LPPRINTDLGEX] lppd
+1=LPPRINTDLGEX lppd
 ParamCount=1
 Header=gdi.h.api;
 @=PrintDlgEx
 [ReplaceText]
-1=[LPFINDREPLACE] lpfr
+1=LPFINDREPLACE lpfr
 ParamCount=1
 Header=gdi.h.api;
 @=ReplaceText

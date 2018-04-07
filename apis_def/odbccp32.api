@@ -1,5 +1,5 @@
 [SQLConfigDataSource]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=[ODBC_DSN_REQUEST] fRequest
 3=LPCTSTR lpszDriver
 4=LPCTSTR lpszAttributes
@@ -7,7 +7,7 @@ ParamCount=4
 Header=odbc.h.api;windows.h.api;
 @=SQLConfigDataSource
 [SQLConfigDriver]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=[ODBC_DRIVER_REQUEST] fRequest
 3=LPCTSTR lpszDriver
 4=LPCTSTR lpszArgs
@@ -18,7 +18,7 @@ ParamCount=7
 Header=odbc.h.api;windows.h.api;
 @=SQLConfigDriver
 [SQLCreateDataSource]
-1=[HWND] hwnd
+1=HWND hwnd
 2=LPTSTR lpszDS
 ParamCount=2
 Header=windows.h.api;
@@ -44,7 +44,7 @@ ParamCount=3
 ParamCount=6
 @=SQLGetPrivateProfileString
 [SQLGetTranslator]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=LPTSTR lpszName
 3=WORD cbNameMax
 4=WORD* pcbNameOut
@@ -103,7 +103,7 @@ ParamCount=8
 ParamCount=7
 @=SQLInstallTranslatorEx
 [SQLManageDataSources]
-1=[HWND] hwnd
+1=HWND hwnd
 ParamCount=1
 Header=windows.h.api;
 @=SQLManageDataSources

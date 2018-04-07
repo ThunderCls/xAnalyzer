@@ -111,5 +111,3 @@ Const54=IS_XML
 Value54=-4
 Const55=IS_ENUMSTRING
 Value55=-5
-[InputScope*]
-Base=InputScope

@@ -14,13 +14,13 @@ ParamCount=3
 ParamCount=1
 @=DavInvalidateCache
 [DavRegisterAuthCallback]
-1=[PFNDAVAUTHCALLBACK] CallBack
+1=PFNDAVAUTHCALLBACK CallBack
 2=ULONG Version
 ParamCount=2
-Header=davclnt.h.api;
+Header=
 @=DavRegisterAuthCallback
 [DavUnregisterAuthCallback]
-1=[OPAQUE_HANDLE] hCallback
+1=OPAQUE_HANDLE hCallback
 ParamCount=1
-Header=davclnt.h.api;
+Header=
 @=DavUnregisterAuthCallback

@@ -1,5 +1,5 @@
 [CreateVPNConnection]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwWizardType
 3=DWORD dwContextFlags
 4=DWORD dwUserFlags
@@ -9,7 +9,7 @@ ParamCount=6
 Header=windows.h.api;
 @=CreateVPNConnection
 [GetInternetConnected]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwWizardType
 3=DWORD dwContextFlags
 4=DWORD dwUserFlags
@@ -19,7 +19,7 @@ ParamCount=6
 Header=windows.h.api;
 @=GetInternetConnected
 [GetNetworkConnected]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwWizardType
 3=DWORD dwContextFlags
 4=DWORD dwUserFlags
@@ -29,7 +29,7 @@ ParamCount=6
 Header=windows.h.api;
 @=GetNetworkConnected
 [GetVPNConnected]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwWizardType
 3=DWORD dwContextFlags
 4=DWORD dwUserFlags
@@ -42,8 +42,8 @@ Header=windows.h.api;
 ParamCount=0
 @=IsInternetConnected
 [RegisterPageWithPage]
-1=[GUID*] pguidParentPage
-2=[GUID*] pguidChildPage
+1=GUID* pguidParentPage
+2=GUID* pguidChildPage
 3=LPWSTR pszChildModuleFileName
 4=LPWSTR pszFriendlyName
 5=DWORD dwBehaviorFlags
@@ -53,14 +53,14 @@ ParamCount=7
 Header=windows.h.api;
 @=RegisterPageWithPage
 [UnregisterPage]
-1=[GUID*] pguidPage
+1=GUID* pguidPage
 2=BOOL fUnregisterFromCOM
 ParamCount=2
 Header=windows.h.api;
 @=UnregisterPage
 [UnregisterPagesLink]
-1=[GUID*] pguidParentPage
-2=[GUID*] pguidChildPage
+1=GUID* pguidParentPage
+2=GUID* pguidChildPage
 ParamCount=2
 Header=windows.h.api;
 @=UnregisterPagesLink

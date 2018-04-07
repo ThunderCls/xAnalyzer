@@ -3,7 +3,7 @@
 ParamCount=1
 @=InetIsOffline
 [MIMEAssociationDialog]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwInFlags
 3=LPCTSTR pcszFile
 4=LPCTSTR pcszMIMEContentType
@@ -19,7 +19,7 @@ Header=windows.h.api;
 ParamCount=3
 @=TranslateURL
 [URLAssociationDialog]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwInFlags
 3=LPCTSTR pcszFile
 4=LPCTSTR pcszURL

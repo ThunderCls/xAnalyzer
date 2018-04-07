@@ -1,25 +1,25 @@
 [LookupAccountNameLocal]
 1=LPCTSTR lpAccountName
-2=[PSID] Sid
+2=PSID Sid
 3=LPDWORD cbSid
 4=LPTSTR ReferencedDomainName
 5=LPDWORD cchReferencedDomainName
-6=[PSID_NAME_USE] peUse
+6=PSID_NAME_USE peUse
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=LookupAccountNameLocal
 [LookupAccountSidLocal]
-1=[PSID] lpSid
+1=PSID lpSid
 2=LPTSTR lpName
 3=LPDWORD cchName
 4=LPTSTR lpReferencedDomainName
 5=LPDWORD cchReferencedDomainName
-6=[PSID_NAME_USE] peUse
+6=PSID_NAME_USE peUse
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=LookupAccountSidLocal
 [LsaLookupClose]
-1=[LSA_LOOKUP_HANDLE] ObjectHandle
+1=LSA_LOOKUP_HANDLE ObjectHandle
 ParamCount=1
 Header=sechost.h.api;
 @=LsaLookupClose
@@ -28,35 +28,35 @@ Header=sechost.h.api;
 ParamCount=1
 @=LsaLookupFreeMemory
 [LsaLookupGetDomainInfo]
-1=[LSA_LOOKUP_HANDLE] PolicyHandle
+1=LSA_LOOKUP_HANDLE PolicyHandle
 2=[LSA_LOOKUP_DOMAIN_INFO_CLASS] DomainInfoClass
 3=PVOID* DomainInfo
 ParamCount=3
 Header=sechost.h.api;
 @=LsaLookupGetDomainInfo
 [LsaLookupOpenLocalPolicy]
-1=[PLSA_OBJECT_ATTRIBUTES] ObjectAttributes
+1=PLSA_OBJECT_ATTRIBUTES ObjectAttributes
 2=[ACCESS_MASK] AccessMask
-3=[PLSA_LOOKUP_HANDLE] PolicyHandle
+3=PLSA_LOOKUP_HANDLE PolicyHandle
 ParamCount=3
 Header=sechost.h.api;advapi32.h.api;windows.h.api;
 @=LsaLookupOpenLocalPolicy
 [LsaLookupTranslateNames]
-1=[LSA_LOOKUP_HANDLE] PolicyHandle
+1=LSA_LOOKUP_HANDLE PolicyHandle
 2=ULONG Flags
 3=ULONG Count
-4=[PLSA_UNICODE_STRING] Names
-5=[PLSA_REFERENCED_DOMAIN_LIST*] ReferencedDomains
-6=[PLSA_TRANSLATED_SID2*] Sids
+4=PLSA_UNICODE_STRING Names
+5=PLSA_REFERENCED_DOMAIN_LIST* ReferencedDomains
+6=PLSA_TRANSLATED_SID2* Sids
 ParamCount=6
 Header=sechost.h.api;advapi32.h.api;network.h.api;
 @=LsaLookupTranslateNames
 [LsaLookupTranslateSids]
-1=[LSA_LOOKUP_HANDLE] PolicyHandle
+1=LSA_LOOKUP_HANDLE PolicyHandle
 2=ULONG Count
-3=[PSID*] Sids
-4=[PLSA_REFERENCED_DOMAIN_LIST*] ReferencedDomains
-5=[PLSA_TRANSLATED_NAME*] Names
+3=PSID* Sids
+4=PLSA_REFERENCED_DOMAIN_LIST* ReferencedDomains
+5=PLSA_TRANSLATED_NAME* Names
 ParamCount=5
 Header=sechost.h.api;advapi32.h.api;network.h.api;windows.h.api;
 @=LsaLookupTranslateSids

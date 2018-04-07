@@ -1,13 +1,13 @@
 [EnumEnabledLayoutOrTip]
 1=LPCWSTR pszUserSidString
-2=[LAYOUTORTIPPROFILE*] pLayoutOrTipProfile
+2=LAYOUTORTIPPROFILE* pLayoutOrTipProfile
 3=UINT uBufLength
 ParamCount=3
 Header=input.h.api;
 @=EnumEnabledLayoutOrTip
 [EnumLayoutOrTipForSetup]
 1=UINT uBufLength
-2=[LAYOUTORTIP*] pLayoutOrTip
+2=LAYOUTORTIP* pLayoutOrTip
 3=UINT uBufLength
 4=DWORD dwFlags
 ParamCount=4
@@ -42,13 +42,13 @@ ParamCount=2
 ParamCount=5
 @=QueryLayoutOrTipStringUserReg
 [SaveDefaultUserInputSettings]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=[HKEY] hSourceRegKey
 ParamCount=2
 Header=registry.h.api;windows.h.api;
 @=SaveDefaultUserInputSettings
 [SaveSystemAcctInputSettings]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=[HKEY] hSourceRegKey
 ParamCount=2
 Header=registry.h.api;windows.h.api;

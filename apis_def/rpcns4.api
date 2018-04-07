@@ -1,80 +1,80 @@
 [RpcNsBindingExport]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_HANDLE] IfSpec
-4=[RPC_BINDING_VECTOR*] BindingVec
-5=[UUID_VECTOR*] ObjectUuidVec
+3=RPC_IF_HANDLE IfSpec
+4=RPC_BINDING_VECTOR* BindingVec
+5=UUID_VECTOR* ObjectUuidVec
 ParamCount=5
 Header=rpc.h.api;
 @=RpcNsBindingExport
 [RpcNsBindingExportPnP]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_HANDLE] IfSpec
-4=[UUID_VECTOR*] ObjectUuidVec
+3=RPC_IF_HANDLE IfSpec
+4=UUID_VECTOR* ObjectUuidVec
 ParamCount=4
 Header=rpc.h.api;
 @=RpcNsBindingExportPnP
 [RpcNsBindingImportBegin]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_HANDLE] IfSpec
-4=[UUID*] ObjUuid
-5=[RPC_NS_HANDLE*] ImportContext
+3=RPC_IF_HANDLE IfSpec
+4=UUID* ObjUuid
+5=RPC_NS_HANDLE* ImportContext
 ParamCount=5
 Header=rpc.h.api;windows.h.api;
 @=RpcNsBindingImportBegin
 [RpcNsBindingImportDone]
-1=[RPC_NS_HANDLE*] ImportContext
+1=RPC_NS_HANDLE* ImportContext
 ParamCount=1
 Header=rpc.h.api;
 @=RpcNsBindingImportDone
 [RpcNsBindingImportNext]
-1=[RPC_NS_HANDLE] ImportContext
-2=[RPC_BINDING_HANDLE*] Binding
+1=RPC_NS_HANDLE ImportContext
+2=RPC_BINDING_HANDLE* Binding
 ParamCount=2
 Header=rpc.h.api;
 @=RpcNsBindingImportNext
 [RpcNsBindingLookupBegin]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_HANDLE] IfSpec
-4=[UUID*] ObjUuid
+3=RPC_IF_HANDLE IfSpec
+4=UUID* ObjUuid
 5=unsigned long BindingMaxCount
-6=[RPC_NS_HANDLE*] LookupContext
+6=RPC_NS_HANDLE* LookupContext
 ParamCount=6
 Header=rpc.h.api;windows.h.api;
 @=RpcNsBindingLookupBegin
 [RpcNsBindingLookupDone]
-1=[RPC_NS_HANDLE*] LookupContext
+1=RPC_NS_HANDLE* LookupContext
 ParamCount=1
 Header=rpc.h.api;
 @=RpcNsBindingLookupDone
 [RpcNsBindingLookupNext]
-1=[RPC_NS_HANDLE] LookupContext
-2=[RPC_BINDING_VECTOR**] BindingVec
+1=RPC_NS_HANDLE LookupContext
+2=RPC_BINDING_VECTOR** BindingVec
 ParamCount=2
 Header=rpc.h.api;
 @=RpcNsBindingLookupNext
 [RpcNsBindingSelect]
-1=[RPC_BINDING_VECTOR*] BindingVec
-2=[RPC_BINDING_HANDLE*] Binding
+1=RPC_BINDING_VECTOR* BindingVec
+2=RPC_BINDING_HANDLE* Binding
 ParamCount=2
 Header=rpc.h.api;
 @=RpcNsBindingSelect
 [RpcNsBindingUnexport]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_HANDLE] IfSpec
-4=[UUID_VECTOR*] ObjectUuidVec
+3=RPC_IF_HANDLE IfSpec
+4=UUID_VECTOR* ObjectUuidVec
 ParamCount=4
 Header=rpc.h.api;
 @=RpcNsBindingUnexport
 [RpcNsBindingUnexportPnP]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_HANDLE] IfSpec
-4=[UUID_VECTOR*] ObjectUuidVec
+3=RPC_IF_HANDLE IfSpec
+4=UUID_VECTOR* ObjectUuidVec
 ParamCount=4
 Header=rpc.h.api;
 @=RpcNsBindingUnexportPnP
@@ -87,18 +87,18 @@ ParamCount=3
 [RpcNsEntryObjectInqBegin]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_NS_HANDLE*] InquiryContext
+3=RPC_NS_HANDLE* InquiryContext
 ParamCount=3
 Header=rpc.h.api;
 @=RpcNsEntryObjectInqBegin
 [RpcNsEntryObjectInqDone]
-1=[RPC_NS_HANDLE*] InquiryContext
+1=RPC_NS_HANDLE* InquiryContext
 ParamCount=1
 Header=rpc.h.api;
 @=RpcNsEntryObjectInqDone
 [RpcNsEntryObjectInqNext]
-1=[RPC_NS_HANDLE] InquiryContext
-2=[UUID*] ObjUuid
+1=RPC_NS_HANDLE InquiryContext
+2=UUID* ObjUuid
 ParamCount=2
 Header=rpc.h.api;windows.h.api;
 @=RpcNsEntryObjectInqNext
@@ -118,17 +118,17 @@ ParamCount=4
 1=unsigned long GroupNameSyntax
 2=unsigned char* GroupName
 3=unsigned long MemberNameSyntax
-4=[RPC_NS_HANDLE*] InquiryContext
+4=RPC_NS_HANDLE* InquiryContext
 ParamCount=4
 Header=rpc.h.api;
 @=RpcNsGroupMbrInqBegin
 [RpcNsGroupMbrInqDone]
-1=[RPC_NS_HANDLE*] InquiryContext
+1=RPC_NS_HANDLE* InquiryContext
 ParamCount=1
 Header=rpc.h.api;
 @=RpcNsGroupMbrInqDone
 [RpcNsGroupMbrInqNext]
-1=[RPC_NS_HANDLE] InquiryContext
+1=RPC_NS_HANDLE InquiryContext
 2=unsigned char** MemberName
 ParamCount=2
 Header=rpc.h.api;
@@ -143,9 +143,9 @@ ParamCount=4
 [RpcNsMgmtBindingUnexport]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_ID*] IfId
+3=RPC_IF_ID* IfId
 4=unsigned long VersOption
-5=[UUID_VECTOR*] ObjectUuidVec
+5=UUID_VECTOR* ObjectUuidVec
 ParamCount=5
 Header=rpc.h.api;
 @=RpcNsMgmtBindingUnexport
@@ -162,12 +162,12 @@ ParamCount=2
 [RpcNsMgmtEntryInqIfIds]
 1=unsigned long EntryNameSyntax
 2=unsigned char* EntryName
-3=[RPC_IF_ID_VECTOR**] IfIdVec
+3=RPC_IF_ID_VECTOR** IfIdVec
 ParamCount=3
 Header=rpc.h.api;
 @=RpcNsMgmtEntryInqIfIds
 [RpcNsMgmtHandleSetExpAge]
-1=[RPC_NS_HANDLE] NsHandle
+1=RPC_NS_HANDLE NsHandle
 2=unsigned long ExpirationAge
 ParamCount=2
 Header=rpc.h.api;
@@ -188,7 +188,7 @@ ParamCount=2
 [RpcNsProfileEltAdd]
 1=unsigned long ProfileNameSyntax
 2=unsigned char* ProfileName
-3=[RPC_IF_ID*] IfId
+3=RPC_IF_ID* IfId
 4=unsigned long MemberNameSyntax
 5=unsigned char* MemberName
 6=unsigned long Priority
@@ -200,22 +200,22 @@ Header=rpc.h.api;
 1=unsigned long ProfileNameSyntax
 2=unsigned char* ProfileName
 3=unsigned long InquiryType
-4=[RPC_IF_ID*] IfId
+4=RPC_IF_ID* IfId
 5=unsigned long VersOption
 6=unsigned long MemberNameSyntax
 7=unsigned char* MemberName
-8=[RPC_NS_HANDLE*] InquiryContext
+8=RPC_NS_HANDLE* InquiryContext
 ParamCount=8
 Header=rpc.h.api;
 @=RpcNsProfileEltInqBegin
 [RpcNsProfileEltInqDone]
-1=[RPC_NS_HANDLE*] InquiryContext
+1=RPC_NS_HANDLE* InquiryContext
 ParamCount=1
 Header=rpc.h.api;
 @=RpcNsProfileEltInqDone
 [RpcNsProfileEltInqNext]
-1=[RPC_NS_HANDLE] InquiryContext
-2=[RPC_IF_ID*] IfId
+1=RPC_NS_HANDLE InquiryContext
+2=RPC_IF_ID* IfId
 3=unsigned char** MemberName
 4=unsigned long* Priority
 5=unsigned char** Annotation
@@ -225,7 +225,7 @@ Header=rpc.h.api;
 [RpcNsProfileEltRemove]
 1=unsigned long ProfileNameSyntax
 2=unsigned char* ProfileName
-3=[RPC_IF_ID*] IfId
+3=RPC_IF_ID* IfId
 4=unsigned long MemberNameSyntax
 5=unsigned char* MemberName
 ParamCount=5

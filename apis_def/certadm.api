@@ -1,66 +1,66 @@
 [CertSrvBackupClose]
-1=[HCSBC] hbc
+1=HCSBC hbc
 ParamCount=1
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupClose
 [CertSrvBackupEnd]
-1=[HCSBC] hbc
+1=HCSBC hbc
 ParamCount=1
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupEnd
 [CertSrvBackupFree]
 1=VOID* pv
 ParamCount=1
 @=CertSrvBackupFree
 [CertSrvBackupGetBackupLogsW]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=WCHAR** ppwszzBackupLogFiles
 3=DWORD* pcbSize
 ParamCount=3
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupGetBackupLogsW
 [CertSrvBackupGetDatabaseNamesW]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=WCHAR** ppwszzAttachmentInformation
 3=DWORD* pcbSize
 ParamCount=3
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupGetDatabaseNamesW
 [CertSrvBackupGetDynamicFileListW]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=WCHAR** ppwszzFileList
 3=DWORD* pcbSize
 ParamCount=3
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupGetDynamicFileListW
 [CertSrvBackupOpenFileW]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=const WCHAR* pwszAttachmentName
 3=DWORD cbReadHintSize
-4=[LARGE_INTEGER*] pliFileSize
+4=LARGE_INTEGER* pliFileSize
 ParamCount=4
-Header=certadm.h.api;windows.h.api;
+Header=windows.h.api;
 @=CertSrvBackupOpenFileW
 [CertSrvBackupPrepareW]
 1=const WCHAR* pwszServerName
 2=ULONG grbitJet
 3=ULONG dwBackupFlags
-4=[HCSBC*] phbc
+4=HCSBC* phbc
 ParamCount=4
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupPrepareW
 [CertSrvBackupRead]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=VOID* pvBuffer
 3=DWORD cbBuffer
 4=DWORD* pcbRead
 ParamCount=4
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupRead
 [CertSrvBackupTruncateLogs]
-1=[HCSBC] hbc
+1=HCSBC hbc
 ParamCount=1
-Header=certadm.h.api;
+Header=
 @=CertSrvBackupTruncateLogs
 [CertSrvIsServerOnlineW]
 1=const WCHAR* pwszServerName
@@ -68,26 +68,26 @@ Header=certadm.h.api;
 ParamCount=2
 @=CertSrvIsServerOnlineW
 [CertSrvRestoreEnd]
-1=[HCSBC] hbc
+1=HCSBC hbc
 ParamCount=1
-Header=certadm.h.api;
+Header=
 @=CertSrvRestoreEnd
 [CertSrvRestoreGetDatabaseLocationsW]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=WCHAR** ppwszzDatabaseLocationList
 3=DWORD* pcbSize
 ParamCount=3
-Header=certadm.h.api;
+Header=
 @=CertSrvRestoreGetDatabaseLocationsW
 [CertSrvRestorePrepareW]
 1=const WCHAR* pwszServerName
 2=ULONG dwRestoreFlags
-3=[HCSBC*] phbc
+3=HCSBC* phbc
 ParamCount=3
-Header=certadm.h.api;
+Header=
 @=CertSrvRestorePrepareW
 [CertSrvRestoreRegisterW]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=const WCHAR* pwszCheckPointFilePath
 3=const WCHAR* pwszLogPath
 4=CSEDB_RSTMAP [] rgrstmap
@@ -96,16 +96,16 @@ Header=certadm.h.api;
 7=ULONG genLow
 8=ULONG genHigh
 ParamCount=8
-Header=certadm.h.api;
+Header=
 @=CertSrvRestoreRegisterW
 [CertSrvRestoreRegisterComplete]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=HRESULT hrRestoreState
 ParamCount=2
-Header=certadm.h.api;
+Header=
 @=CertSrvRestoreRegisterComplete
 [CertSrvRestoreRegisterThroughFile]
-1=[HCSBC] hbc
+1=HCSBC hbc
 2=const WCHAR* pwszCheckPointFilePath
 3=const WCHAR* pwszLogPath
 4=CSEDB_RSTMAP [] rgrstmap
@@ -114,7 +114,7 @@ Header=certadm.h.api;
 7=ULONG genLow
 8=ULONG genHigh
 ParamCount=8
-Header=certadm.h.api;
+Header=
 @=CertSrvRestoreRegisterThroughFile
 [CertSrvServerControlW]
 1=const WCHAR* pwszServerName

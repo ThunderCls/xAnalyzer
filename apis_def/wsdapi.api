@@ -44,7 +44,7 @@ ParamCount=2
 @=WSDCreateDiscoveryProvider
 [WSDCreateDiscoveryProvider2]
 1=IWSDXMLContext* pContext
-2=[WSD_CONFIG_PARAM*] pConfigParams
+2=WSD_CONFIG_PARAM* pConfigParams
 3=DWORD dwConfigParamCount
 4=IWSDiscoveryProvider** ppProvider
 ParamCount=4
@@ -57,7 +57,7 @@ ParamCount=2
 @=WSDCreateDiscoveryPublisher
 [WSDCreateDiscoveryPublisher2]
 1=IWSDXMLContext* pContext
-2=[WSD_CONFIG_PARAM*] pConfigParams
+2=WSD_CONFIG_PARAM* pConfigParams
 3=DWORD dwConfigParamCount
 4=IWSDiscoveryPublisher** ppPublisher
 ParamCount=4
@@ -97,16 +97,16 @@ ParamCount=1
 3=LPCWSTR pszReason
 4=LPCWSTR pszDetail
 5=IWSDXMLContext* pContext
-6=[WSD_SOAP_FAULT**] ppFault
+6=WSD_SOAP_FAULT** ppFault
 ParamCount=6
 Header=wsdapi.h.api;
 @=WSDGenerateFault
 [WSDGenerateFaultEx]
-1=[WSDXML_NAME*] pCode
-2=[WSDXML_NAME*] pSubCode
-3=[WSD_LOCALIZED_STRING_LIST*] pReasons
+1=WSDXML_NAME* pCode
+2=WSDXML_NAME* pSubCode
+3=WSD_LOCALIZED_STRING_LIST* pReasons
 4=LPCWSTR pszDetail
-5=[WSD_SOAP_FAULT**] ppFault
+5=WSD_SOAP_FAULT** ppFault
 ParamCount=5
 Header=wsdapi.h.api;
 @=WSDGenerateFaultEx
@@ -137,26 +137,26 @@ ParamCount=4
 ParamCount=4
 @=WSDUriEncode
 [WSDXMLAddChild]
-1=[WSDXML_ELEMENT*] pParent
-2=[WSDXML_ELEMENT*] pChild
+1=WSDXML_ELEMENT* pParent
+2=WSDXML_ELEMENT* pChild
 ParamCount=2
 Header=wsdapi.h.api;
 @=WSDXMLAddChild
 [WSDXMLAddSibling]
-1=[WSDXML_ELEMENT*] pFirst
-2=[WSDXML_ELEMENT*] pSecond
+1=WSDXML_ELEMENT* pFirst
+2=WSDXML_ELEMENT* pSecond
 ParamCount=2
 Header=wsdapi.h.api;
 @=WSDXMLAddSibling
 [WSDXMLBuildAnyForSingleElement]
-1=[WSDXML_NAME*] pElementName
+1=WSDXML_NAME* pElementName
 2=LPCWSTR pszText
-3=[WSDXML_ELEMENT**] ppAny
+3=WSDXML_ELEMENT** ppAny
 ParamCount=3
 Header=wsdapi.h.api;
 @=WSDXMLBuildAnyForSingleElement
 [WSDXMLCleanupElement]
-1=[WSDXML_ELEMENT*] pAny
+1=WSDXML_ELEMENT* pAny
 ParamCount=1
 Header=wsdapi.h.api;
 @=WSDXMLCleanupElement
@@ -167,14 +167,14 @@ ParamCount=1
 [WSDXMLGetNameFromBuiltinNamespace]
 1=LPCWSTR pszNamespace
 2=LPCWSTR pszName
-3=[WSDXML_NAME**] ppName
+3=WSDXML_NAME** ppName
 ParamCount=3
 Header=wsdapi.h.api;
 @=WSDXMLGetNameFromBuiltinNamespace
 [WSDXMLGetValueFromAny]
 1=const WCHAR* pszNamespace
 2=const WCHAR* pszName
-3=[WSDXML_ELEMENT*] pAny
+3=WSDXML_ELEMENT* pAny
 4=LPCWSTR* ppszValue
 ParamCount=4
 Header=wsdapi.h.api;

@@ -1,5 +1,3 @@
-[NORM_FORM]
-Base=LPVOID
 [IdnFlags]
 TypeDisplay=DWORD
 Base=DWORD

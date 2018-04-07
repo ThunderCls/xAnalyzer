@@ -10,7 +10,7 @@ Header=windows.h.api;
 ParamCount=3
 @=EnumDeviceDrivers
 [EnumPageFiles]
-1=[PENUM_PAGE_CALLBACK] pCallbackRoutine
+1=PENUM_PAGE_CALLBACK pCallbackRoutine
 2=LPVOID lpContext
 ParamCount=2
 Header=processes.h.api;
@@ -77,13 +77,13 @@ Header=windows.h.api;
 [GetModuleInformation]
 1=[ProcessHandle] hProcess
 2=HMODULE hModule
-3=[LPMODULEINFO] lpmodinfo
+3=LPMODULEINFO lpmodinfo
 4=DWORD cb
 ParamCount=4
 Header=processes.h.api;windows.h.api;
 @=GetModuleInformation
 [GetPerformanceInfo]
-1=[PPERFORMANCE_INFORMATION] pPerformanceInformation
+1=PPERFORMANCE_INFORMATION pPerformanceInformation
 2=DWORD cb
 ParamCount=2
 Header=processes.h.api;
@@ -97,21 +97,21 @@ Header=windows.h.api;
 @=GetProcessImageFileName
 [GetProcessMemoryInfo]
 1=HANDLE Process
-2=[PPROCESS_MEMORY_COUNTERS] ppsmemCounters
+2=PPROCESS_MEMORY_COUNTERS ppsmemCounters
 3=DWORD cb
 ParamCount=3
 Header=processes.h.api;windows.h.api;
 @=GetProcessMemoryInfo
 [GetWsChanges]
 1=[ProcessHandle] hProcess
-2=[PPSAPI_WS_WATCH_INFORMATION] lpWatchInfo
+2=PPSAPI_WS_WATCH_INFORMATION lpWatchInfo
 3=DWORD cb
 ParamCount=3
 Header=processes.h.api;windows.h.api;
 @=GetWsChanges
 [GetWsChangesEx]
 1=[ProcessHandle] hProcess
-2=[PPSAPI_WS_WATCH_INFORMATION_EX] lpWatchInfoEx
+2=PPSAPI_WS_WATCH_INFORMATION_EX lpWatchInfoEx
 3=DWORD cb
 ParamCount=3
 Header=processes.h.api;windows.h.api;

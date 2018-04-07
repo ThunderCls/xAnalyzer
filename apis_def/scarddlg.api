@@ -1,5 +1,5 @@
 [GetOpenCardName]
-1=[LPOPENCARDNAME] pDlgStruc
+1=LPOPENCARDNAME pDlgStruc
 ParamCount=1
 Header=scarddlg.h.api;
 @=GetOpenCardName
@@ -7,7 +7,7 @@ Header=scarddlg.h.api;
 ParamCount=0
 @=SCardDlgExtendedError
 [SCardUIDlgSelectCard]
-1=[LPOPENCARDNAME_EX] pDlgStruc
+1=LPOPENCARDNAME_EX pDlgStruc
 ParamCount=1
 Header=scarddlg.h.api;
 @=SCardUIDlgSelectCard

@@ -5,8 +5,8 @@
 ParamCount=3
 @=SHAllocShared
 [ShellMessageBox]
-1=[HINSTANCE] hInst
-2=[HWND] hWnd
+1=HINSTANCE hInst
+2=HWND hWnd
 3=LPCTSTR pszMsg
 4=LPCTSTR pszTitle
 5=[MessageBoxType] fuStyle
@@ -14,16 +14,16 @@ ParamCount=5
 Header=shell.h.api;windows.h.api;
 @=ShellMessageBox
 [SHGetViewStatePropertyBag]
-1=[PCIDLIST_ABSOLUTE] pidl
+1=PCIDLIST_ABSOLUTE pidl
 2=LPCWSTR pszBagName
 3=DWORD dwFlags
-4=[REFIID] riid
+4=REFIID riid
 5=void** ppv
 ParamCount=5
 Header=shell.h.api;windows.h.api;
 @=SHGetViewStatePropertyBag
 [SHLockShared]
-1=[HANDLE*] hData
+1=HANDLE* hData
 2=DWORD dwOtherProcId
 ParamCount=2
 Header=windows.h.api;
@@ -72,7 +72,7 @@ ParamCount=4
 Header=gdi.h.api;
 @=ColorRGBToHLS
 [SHCreateShellPalette]
-1=[HDC] hdc
+1=HDC hdc
 ParamCount=1
 Header=gdi.h.api;
 @=SHCreateShellPalette
@@ -118,7 +118,7 @@ ParamCount=3
 ParamCount=3
 @=PathCommonPrefix
 [PathCompactPath]
-1=[HDC] hDC
+1=HDC hDC
 2=LPTSTR lpszPath
 3=UINT dx
 ParamCount=3
@@ -167,7 +167,7 @@ ParamCount=2
 @=PathFindOnPath
 [PathFindSuffixArray]
 1=LPCTSTR pszPath
-2=[LPCTSTR*] apszSuffix
+2=LPCTSTR* apszSuffix
 3=int iArraySize
 ParamCount=3
 Header=shlwapi.h.api;
@@ -319,7 +319,7 @@ ParamCount=2
 ParamCount=3
 @=PathSearchAndQualify
 [PathSetDlgItemPath]
-1=[HWND] hDlg
+1=HWND hDlg
 2=int id
 3=LPCSTR pszPath
 ParamCount=3
@@ -357,7 +357,7 @@ ParamCount=1
 @=PathUnquoteSpaces
 [SHSkipJunction]
 1=IBindCtx* pbc
-2=[CLSID*] pclsid
+2=CLSID* pclsid
 ParamCount=2
 Header=windows.h.api;
 @=SHSkipJunction
@@ -465,16 +465,16 @@ ParamCount=4
 ParamCount=2
 @=UrlUnescapeInPlace
 [AssocCreate]
-1=[CLSID] clsid
-2=[REFIID] riid
+1=CLSID clsid
+2=REFIID riid
 3=void** ppv
 ParamCount=3
 Header=windows.h.api;
 @=AssocCreate
 [AssocGetPerceivedType]
 1=PCWSTR pszExt
-2=[PERCEIVED*] ptype
-3=[PERCEIVEDFLAG*] pflag
+2=PERCEIVED* ptype
+3=PERCEIVEDFLAG* pflag
 4=PWSTR* ppszType
 ParamCount=4
 Header=shell.h.api;
@@ -488,7 +488,7 @@ ParamCount=1
 2=[ASSOCKEY] key
 3=LPCTSTR pszAssoc
 4=LPCTSTR pszExtra
-5=[HKEY*] phkeyOut
+5=HKEY* phkeyOut
 ParamCount=5
 Header=registry.h.api;shell.h.api;
 @=AssocQueryKey
@@ -604,28 +604,28 @@ ParamCount=6
 Header=registry.h.api;
 @=SHQueryValueEx
 [SHRegCloseUSKey]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 ParamCount=1
 Header=shlwapi.h.api;
 @=SHRegCloseUSKey
 [SHRegCreateUSKey]
 1=LPCTSTR pszPath
 2=[REGSAM] samDesired
-3=[HUSKEY] hRelativeUSKey
-4=[PHUSKEY] phNewUSKey
+3=HUSKEY hRelativeUSKey
+4=PHUSKEY phNewUSKey
 5=[ShRegSetFlags] dwFlags
 ParamCount=5
 Header=shlwapi.h.api;registry.h.api;
 @=SHRegCreateUSKey
 [SHRegDeleteEmptyUSKey]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=LPCSTR pszValue
 3=[SHREGDEL_FLAGS] delRegFlags
 ParamCount=3
 Header=shlwapi.h.api;
 @=SHRegDeleteEmptyUSKey
 [SHRegDeleteUSValue]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=LPCTSTR pszValue
 3=[SHREGDEL_FLAGS] delRegFlags
 ParamCount=3
@@ -637,7 +637,7 @@ ParamCount=1
 Header=registry.h.api;
 @=SHRegDuplicateHKey
 [SHRegEnumUSKey]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=DWORD dwIndex
 3=LPTSTR pszName
 4=LPDWORD pcchName
@@ -646,7 +646,7 @@ ParamCount=5
 Header=shlwapi.h.api;
 @=SHRegEnumUSKey
 [SHRegEnumUSValue]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=DWORD dwIndex
 3=LPTSTR pszValueName
 4=LPDWORD pcchValueNameLen
@@ -705,14 +705,14 @@ Header=shlwapi.h.api;registry.h.api;
 [SHRegOpenUSKey]
 1=LPCTSTR pszPath
 2=[REGSAM] samDesired
-3=[HUSKEY] hRelativeUSKey
-4=[PHUSKEY] phNewUSKey
+3=HUSKEY hRelativeUSKey
+4=PHUSKEY phNewUSKey
 5=BOOL fIgnoreHKCU
 ParamCount=5
 Header=shlwapi.h.api;registry.h.api;
 @=SHRegOpenUSKey
 [SHRegQueryInfoUSKey]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=LPDWORD pcSubKeys
 3=LPDWORD pcchMaxSubKeyLen
 4=LPDWORD pcValues
@@ -722,7 +722,7 @@ ParamCount=6
 Header=shlwapi.h.api;
 @=SHRegQueryInfoUSKey
 [SHRegQueryUSValue]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=LPCTSTR pszValue
 3=[RegType*] pdwType
 4=LPVOID pvData
@@ -763,7 +763,7 @@ ParamCount=7
 Header=shlwapi.h.api;registry.h.api;
 @=SHRegSetValue
 [SHRegWriteUSValue]
-1=[HUSKEY] hUSKey
+1=HUSKEY hUSKey
 2=LPCTSTR pszValue
 3=DWORD dwType
 4=LPVOID pvData
@@ -814,7 +814,7 @@ ParamCount=2
 [GetDateFormatWrapW]
 1=[LCID] Locale
 2=DWORD dwFlags
-3=[SYSTEMTIME*] lpDate
+3=SYSTEMTIME* lpDate
 4=LPCWSTR pwzFormat
 5=LPWSTR pwzDateStr
 6=int cchDate
@@ -824,7 +824,7 @@ Header=windows.h.api;
 [GetTimeFormatWrapW]
 1=[LCID] Locale
 2=DWORD dwFlags
-3=[SYSTEMTIME*] lpTime
+3=SYSTEMTIME* lpTime
 4=LPCWSTR pwzFormat
 5=LPWSTR pwzTimeStr
 6=int cchTime
@@ -1058,23 +1058,23 @@ ParamCount=3
 ParamCount=3
 @=StrRChrI
 [StrRetToBSTR]
-1=[STRRET*] pstr
-2=[PCUITEMID_CHILD] pidl
-3=[BSTR*] pbstr
+1=STRRET* pstr
+2=PCUITEMID_CHILD pidl
+3=BSTR* pbstr
 ParamCount=3
 Header=shell.h.api;windows.h.api;
 @=StrRetToBSTR
 [StrRetToBuf]
-1=[STRRET*] pstr
-2=[PCUITEMID_CHILD] pidl
+1=STRRET* pstr
+2=PCUITEMID_CHILD pidl
 3=LPTSTR pszBuf
 4=UINT cchBuf
 ParamCount=4
 Header=shell.h.api;
 @=StrRetToBuf
 [StrRetToStr]
-1=[STRRET*] pstr
-2=[PCUITEMID_CHILD] pidl
+1=STRRET* pstr
+2=PCUITEMID_CHILD pidl
 3=LPTSTR* ppszName
 ParamCount=3
 Header=shell.h.api;
@@ -1138,7 +1138,7 @@ ParamCount=4
 @=wvnsprintf
 [ConnectToConnectionPoint]
 1=IUnknown* punk
-2=[REFIID] riidEvent
+2=REFIID riidEvent
 3=BOOL fConnect
 4=IUnknown* punkTarget
 5=DWORD* pdwCookie
@@ -1158,7 +1158,7 @@ ParamCount=2
 ParamCount=3
 @=FindResourceWrapW
 [GetMenuPosFromID]
-1=[HMENU] hmenu
+1=HMENU hmenu
 2=UINT id
 ParamCount=2
 Header=gdi.h.api;
@@ -1172,7 +1172,7 @@ ParamCount=4
 @=HashData
 [GUIDFromString]
 1=LPCTSTR psz
-2=[LPGUID] pguid
+2=LPGUID pguid
 ParamCount=2
 Header=windows.h.api;
 @=GUIDFromString
@@ -1197,7 +1197,7 @@ ParamCount=3
 @=IStream_Read
 [IStream_ReadPidl]
 1=IStream* pstm
-2=[PIDLIST_RELATIVE*] ppidlOut
+2=PIDLIST_RELATIVE* ppidlOut
 ParamCount=2
 Header=shell.h.api;
 @=IStream_ReadPidl
@@ -1212,7 +1212,7 @@ ParamCount=1
 @=IStream_Reset
 [IStream_Size]
 1=IStream* pstm
-2=[ULARGE_INTEGER*] pui
+2=ULARGE_INTEGER* pui
 ParamCount=2
 Header=windows.h.api;
 @=IStream_Size
@@ -1224,7 +1224,7 @@ ParamCount=3
 @=IStream_Write
 [IStream_WritePidl]
 1=IStream* pstm
-2=[PCUIDLIST_RELATIVE] pidlWrite
+2=PCUIDLIST_RELATIVE pidlWrite
 ParamCount=2
 Header=shell.h.api;
 @=IStream_WritePidl
@@ -1239,21 +1239,21 @@ ParamCount=1
 @=IUnknown_AtomicRelease
 [IUnknown_GetSite]
 1=IUnknown* punk
-2=[REFIID] riid
+2=REFIID riid
 3=VOID** ppvSite
 ParamCount=3
 Header=windows.h.api;
 @=IUnknown_GetSite
 [IUnknown_GetWindow]
 1=IUnknown* punk
-2=[HWND*] phwnd
+2=HWND* phwnd
 ParamCount=2
 Header=windows.h.api;
 @=IUnknown_GetWindow
 [IUnknown_QueryService]
 1=IUnknown* punk
-2=[REFGUID] guidService
-3=[REFIID] riid
+2=REFGUID guidService
+3=REFIID riid
 4=void** ppvOut
 ParamCount=4
 Header=windows.h.api;
@@ -1279,7 +1279,7 @@ ParamCount=1
 ParamCount=3
 @=MLLoadLibrary
 [MLHtmlHelp]
-1=[HWND] hwndCaller
+1=HWND hwndCaller
 2=LPCTSTR pszFile
 3=UINT uCommand
 4=DWORD_PTR dwData
@@ -1288,7 +1288,7 @@ ParamCount=5
 Header=windows.h.api;
 @=MLHtmlHelp
 [MLWinHelp]
-1=[HWND] hWndMain
+1=HWND hWndMain
 2=LPCTSTR lpszHelp
 3=UINT uCommand
 4=DWORD_PTR dwData
@@ -1297,14 +1297,14 @@ Header=windows.h.api;
 @=MLWinHelp
 [ParseURL]
 1=LPCTSTR pcszUrl
-2=[PARSEDURL*] ppu
+2=PARSEDURL* ppu
 ParamCount=2
 Header=shlwapi.h.api;
 @=ParseURL
 [QISearch]
 1=void* that
-2=[LPCQITAB] pqit
-3=[REFIID] riid
+2=LPCQITAB pqit
+3=REFIID riid
 4=void** ppv
 ParamCount=4
 Header=shlwapi.h.api;windows.h.api;
@@ -1322,7 +1322,7 @@ ParamCount=3
 ParamCount=3
 @=SHAnsiToUnicode
 [SHAutoComplete]
-1=[HWND] hwndEdit
+1=HWND hwndEdit
 2=DWORD dwFlags
 ParamCount=2
 Header=windows.h.api;
@@ -1350,10 +1350,10 @@ ParamCount=6
 Header=ole.h.api;
 @=SHCreateStreamOnFileEx
 [SHCreateThread]
-1=[LPTHREAD_START_ROUTINE] pfnThreadProc
+1=LPTHREAD_START_ROUTINE pfnThreadProc
 2=void* pData
 3=[SHCT_FLAGS] dwFlags
-4=[LPTHREAD_START_ROUTINE] pfnCallback
+4=LPTHREAD_START_ROUTINE pfnCallback
 ParamCount=4
 Header=shlwapi.h.api;windows.h.api;
 @=SHCreateThread
@@ -1363,16 +1363,16 @@ Header=shlwapi.h.api;windows.h.api;
 ParamCount=2
 @=SHCreateThreadRef
 [SHCreateThreadWithHandle]
-1=[LPTHREAD_START_ROUTINE] pfnThreadProc
+1=LPTHREAD_START_ROUTINE pfnThreadProc
 2=void* pData
 3=[SHCT_FLAGS] flags
-4=[LPTHREAD_START_ROUTINE] pfnCallback
-5=[HANDLE*] pHandle
+4=LPTHREAD_START_ROUTINE pfnCallback
+5=HANDLE* pHandle
 ParamCount=5
 Header=shlwapi.h.api;windows.h.api;
 @=SHCreateThreadWithHandle
 [SHFormatDateTime]
-1=[FILETIME*] pft
+1=FILETIME* pft
 2=DWORD* pdwFlags
 3=LPTSTR pszBuf
 4=UINT cchBuf
@@ -1406,8 +1406,8 @@ ParamCount=1
 Header=shlwapi.h.api;
 @=SHGlobalCounterIncrement
 [SHIsChildOrSelf]
-1=[HWND] hwndParent
-2=[HWND] hwnd
+1=HWND hwndParent
+2=HWND hwnd
 ParamCount=2
 Header=windows.h.api;
 @=SHIsChildOrSelf
@@ -1416,7 +1416,7 @@ Header=windows.h.api;
 ParamCount=1
 @=SHIsLowMemoryMachine
 [SHMessageBoxCheck]
-1=[HWND] hwnd
+1=HWND hwnd
 2=LPCTSTR pszText
 3=LPCTSTR pszCaption
 4=UINT uType
@@ -1427,8 +1427,8 @@ Header=windows.h.api;
 @=SHMessageBoxCheck
 [SHSendMessageBroadcast]
 1=UINT uMsg
-2=[WPARAM] wParam
-3=[LPARAM] lParam
+2=WPARAM wParam
+3=LPARAM lParam
 ParamCount=3
 Header=windows.h.api;
 @=SHSendMessageBroadcast
@@ -1466,7 +1466,7 @@ ParamCount=1
 ParamCount=1
 @=SetProcessReference
 [SHRunIndirectRegClientCommand]
-1=[HWND] hwnd
+1=HWND hwnd
 2=LPCWSTR pszClientType
 ParamCount=2
 Header=windows.h.api;
@@ -1492,13 +1492,13 @@ ParamCount=1
 @=IUnknown_RemoveBackReferences
 [IUnknown_TranslateAcceleratorGlobal]
 1=IUnknown* pUnk
-2=[MSG*] pMsg
+2=MSG* pMsg
 ParamCount=2
 Header=windows.h.api;
 @=IUnknown_TranslateAcceleratorGlobal
 [IUnknown_TranslateAcceleratorIO]
 1=IUnknown* pUnk
-2=[MSG*] pMsg
+2=MSG* pMsg
 ParamCount=2
 Header=windows.h.api;
 @=IUnknown_TranslateAcceleratorIO
@@ -1533,7 +1533,7 @@ ParamCount=3
 1=[HKEY] hKey
 2=LPCWSTR pwszSubKey
 3=BOOL shouldCreate
-4=[REFIID] riid
+4=REFIID riid
 5=LPVOID* ppInterface
 ParamCount=5
 Header=registry.h.api;windows.h.api;
@@ -1543,7 +1543,7 @@ Header=registry.h.api;windows.h.api;
 2=LPCWSTR pwszSubKey
 3=BOOL shouldCreate
 4=[ACCESS_MASK] amDesired
-5=[REFIID] riid
+5=REFIID riid
 6=LPVOID* ppInterface
 ParamCount=6
 Header=registry.h.api;windows.h.api;
@@ -1555,8 +1555,8 @@ Header=registry.h.api;windows.h.api;
 ParamCount=3
 @=SHAnsiToUnicodeCPAlloc
 [SHAreIconsEqual]
-1=[HICON] hIcon1
-2=[HICON] hIcon2
+1=HICON hIcon1
+2=HICON hIcon2
 ParamCount=2
 Header=gdi.h.api;
 @=SHAreIconsEqual
@@ -1568,7 +1568,7 @@ Header=shell.h.api;
 @=SHBoolSystemParametersInfo
 [SHCreatePropertyBagOnMemory]
 1=PVOID pUnused
-2=[REFIID] riid
+2=REFIID riid
 3=PVOID* ppv
 ParamCount=3
 Header=windows.h.api;
@@ -1577,7 +1577,7 @@ Header=windows.h.api;
 1=IXMLDOMNode* pXmlDomNode
 2=[STGM_FLAGS] grfMode
 3=IPropertyBag* pPropBagInit
-4=[REFIID] riid
+4=REFIID riid
 5=PVOID* ppv
 ParamCount=5
 Header=ole.h.api;windows.h.api;
@@ -1604,9 +1604,9 @@ ParamCount=2
 [SHForwardContextMenuMsg]
 1=IUnknown* pUnk
 2=UINT uMsg
-3=[WPARAM] wParam
-4=[LPARAM] lParam
-5=[LRESULT*] pResult
+3=WPARAM wParam
+4=LPARAM lParam
+5=LRESULT* pResult
 6=BOOL useIContextMenu2
 ParamCount=6
 Header=windows.h.api;
@@ -1616,7 +1616,7 @@ Header=windows.h.api;
 ParamCount=1
 @=SHGetSizeShared
 [SHInvokeCommandOnContextMenu]
-1=[HWND] hwnd
+1=HWND hwnd
 2=IObjectWithSite* pSite
 3=IContextMenu* pCtxMenu
 4=[CMIC_Mask] fMask
@@ -1626,7 +1626,7 @@ ParamCount=6
 Header=shell.h.api;windows.h.api;
 @=SHInvokeCommandOnContextMenu
 [SHInvokeCommandOnContextMenuEx]
-1=[HWND] hwnd
+1=HWND hwnd
 2=IObjectWithSite* pSite
 3=IContextMenu* pCtxMenu
 4=[CMIC_Mask] fMask
@@ -1637,17 +1637,17 @@ ParamCount=7
 Header=shell.h.api;windows.h.api;
 @=SHInvokeCommandOnContextMenuEx
 [SHInvokeCommandWithFlagsAndSite]
-1=[HWND] hwnd
+1=HWND hwnd
 2=IObjectWithSite* pSite
 3=IShellFolder* pShellFolder
-4=[LPITEMIDLIST] pidl
+4=LPITEMIDLIST pidl
 5=[CMIC_Mask] fMask
 6=LPCSTR pszVerb
 ParamCount=6
 Header=shell.h.api;windows.h.api;
 @=SHInvokeCommandWithFlagsAndSite
 [SHInvokeCommandsOnContextMenuEx]
-1=[HWND] hwnd
+1=HWND hwnd
 2=IObjectWithSite* pSite
 3=IContextMenu* pCtxMenu
 4=[CMIC_Mask] fMask

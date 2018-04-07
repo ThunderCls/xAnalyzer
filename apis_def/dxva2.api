@@ -20,7 +20,7 @@ Header=windows.h.api;
 @=GetMonitorCapabilities
 [GetMonitorColorTemperature]
 1=HANDLE hMonitor
-2=[LPMC_COLOR_TEMPERATURE] pctCurrentColorTemperature
+2=LPMC_COLOR_TEMPERATURE pctCurrentColorTemperature
 ParamCount=2
 Header=dxva2.h.api;windows.h.api;
 @=GetMonitorColorTemperature
@@ -70,7 +70,7 @@ Header=dxva2.h.api;windows.h.api;
 @=GetMonitorRedGreenOrBlueGain
 [GetMonitorTechnologyType]
 1=HANDLE hMonitor
-2=[LPMC_DISPLAY_TECHNOLOGY_TYPE] pdtyDisplayTechnologyType
+2=LPMC_DISPLAY_TECHNOLOGY_TYPE pdtyDisplayTechnologyType
 ParamCount=2
 Header=dxva2.h.api;windows.h.api;
 @=GetMonitorTechnologyType
@@ -150,14 +150,14 @@ Header=windows.h.api;
 @=GetCapabilitiesStringLength
 [GetTimingReport]
 1=HANDLE hMonitor
-2=[LPMC_TIMING_REPORT] pmtrMonitorTimingReport
+2=LPMC_TIMING_REPORT pmtrMonitorTimingReport
 ParamCount=2
 Header=dxva2.h.api;windows.h.api;
 @=GetTimingReport
 [GetVCPFeatureAndVCPFeatureReply]
 1=HANDLE hMonitor
 2=BYTE bVCPCode
-3=[LPMC_VCP_CODE_TYPE] pvct
+3=LPMC_VCP_CODE_TYPE pvct
 4=LPDWORD pdwCurrentValue
 5=LPDWORD pdwMaximumValue
 ParamCount=5
@@ -182,12 +182,12 @@ Header=windows.h.api;
 @=DestroyPhysicalMonitor
 [DestroyPhysicalMonitors]
 1=DWORD dwPhysicalMonitorArraySize
-2=[LPPHYSICAL_MONITOR] pPhysicalMonitorArray
+2=LPPHYSICAL_MONITOR pPhysicalMonitorArray
 ParamCount=2
 Header=dxva2.h.api;
 @=DestroyPhysicalMonitors
 [GetNumberOfPhysicalMonitorsFromHMONITOR]
-1=[HMONITOR] hMonitor
+1=HMONITOR hMonitor
 2=LPDWORD pdwNumberOfPhysicalMonitors
 ParamCount=2
 Header=gdi.h.api;
@@ -198,16 +198,16 @@ Header=gdi.h.api;
 ParamCount=2
 @=GetNumberOfPhysicalMonitorsFromIDirect3DDevice9
 [GetPhysicalMonitorsFromHMONITOR]
-1=[HMONITOR] hMonitor
+1=HMONITOR hMonitor
 2=DWORD dwPhysicalMonitorArraySize
-3=[LPPHYSICAL_MONITOR] pPhysicalMonitorArray
+3=LPPHYSICAL_MONITOR pPhysicalMonitorArray
 ParamCount=3
 Header=dxva2.h.api;gdi.h.api;
 @=GetPhysicalMonitorsFromHMONITOR
 [GetPhysicalMonitorsFromIDirect3DDevice9]
 1=IDirect3DDevice9* pDirect3DDevice9
 2=DWORD dwPhysicalMonitorArraySize
-3=[LPPHYSICAL_MONITOR] pPhysicalMonitorArray
+3=LPPHYSICAL_MONITOR pPhysicalMonitorArray
 ParamCount=3
 Header=dxva2.h.api;
 @=GetPhysicalMonitorsFromIDirect3DDevice9
@@ -218,16 +218,16 @@ ParamCount=2
 @=DXVA2CreateDirect3DDeviceManager9
 [DXVA2CreateVideoService]
 1=IDirect3DDevice9* pDD
-2=[REFIID] riid
+2=REFIID riid
 3=void** ppService
 ParamCount=3
 Header=windows.h.api;
 @=DXVA2CreateVideoService
 [DXVAHD_CreateDevice]
 1=IDirect3DDevice9Ex* pD3DDevice
-2=[DXVAHD_CONTENT_DESC*] pContentDesc
+2=DXVAHD_CONTENT_DESC* pContentDesc
 3=[DXVAHD_DEVICE_USAGE] Usage
-4=[PDXVAHDSW_Plugin] pPlugin
+4=PDXVAHDSW_Plugin pPlugin
 5=IDXVAHD_Device** ppDevice
 ParamCount=5
 Header=directx.h.api;

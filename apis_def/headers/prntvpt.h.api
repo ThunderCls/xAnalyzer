@@ -1,7 +1,3 @@
-[HPTPROVIDER]
-Base=HANDLE
-[HPTPROVIDER*]
-Base=HPTPROVIDER
 [EDefaultDevmodeType]
 Base=UINT
 Type=Enum

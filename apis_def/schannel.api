@@ -2,9 +2,9 @@
 1=PUCHAR pbCertificate
 2=DWORD dwCertificate
 3=DWORD dwFlags
-4=[PX509Certificate*] ppCertificate
+4=PX509Certificate* ppCertificate
 ParamCount=4
-Header=schannel.h.api;
+Header=
 @=SslCrackCertificate
 [SslEmptyCache]
 1=LPSTR pszTargetName
@@ -12,9 +12,9 @@ Header=schannel.h.api;
 ParamCount=2
 @=SslEmptyCache
 [SslFreeCertificate]
-1=[PX509Certificate] pCertificate
+1=PX509Certificate pCertificate
 ParamCount=1
-Header=schannel.h.api;
+Header=
 @=SslFreeCertificate
 [SslGetServerIdentity]
 1=PBYTE ClientHello

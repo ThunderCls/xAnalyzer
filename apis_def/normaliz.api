@@ -26,14 +26,14 @@ ParamCount=5
 Header=normaliz.h.api;
 @=IdnToUnicode
 [IsNormalizedString]
-1=[NORM_FORM] NormForm
+1=NORM_FORM NormForm
 2=LPCWSTR lpString
 3=int cwLength
 ParamCount=3
 Header=normaliz.h.api;
 @=IsNormalizedString
 [NormalizeString]
-1=[NORM_FORM] NormForm
+1=NORM_FORM NormForm
 2=LPCWSTR lpSrcString
 3=int cwSrcLength
 4=LPWSTR lpDstString

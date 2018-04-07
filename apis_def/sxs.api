@@ -4,7 +4,7 @@
 ParamCount=2
 @=CreateAssemblyCache
 [CreateAssemblyNameObject]
-1=[LPASSEMBLYNAME*] ppAssemblyNameObj
+1=LPASSEMBLYNAME* ppAssemblyNameObj
 2=LPCWSTR szAssemblyName
 3=[CreateAsmNameObjFlags] dwFlags
 4=LPVOID pvReserved

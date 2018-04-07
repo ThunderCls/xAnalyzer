@@ -6,14 +6,14 @@ ParamCount=2
 [ADsBuildVarArrayInt]
 1=LPDWORD lpdwObjectTypes
 2=DWORD dwObjectTypes
-3=[VARIANT*] pVar
+3=VARIANT* pVar
 ParamCount=3
 Header=ole.h.api;
 @=ADsBuildVarArrayInt
 [ADsBuildVarArrayStr]
 1=LPWSTR* lppPathNames
 2=DWORD dwPathNames
-3=[VARIANT*] pVar
+3=VARIANT* pVar
 ParamCount=3
 Header=ole.h.api;
 @=ADsBuildVarArrayStr
@@ -26,7 +26,7 @@ ParamCount=3
 [ADsEnumerateNext]
 1=IEnumVARIANT* pEnumVariant
 2=ULONG cElements
-3=[VARIANT*] pvar
+3=VARIANT* pvar
 4=ULONG* pcElementsFetched
 ParamCount=4
 Header=ole.h.api;
@@ -45,7 +45,7 @@ ParamCount=5
 @=ADsGetLastError
 [ADsGetObject]
 1=LPWSTR lpszPathName
-2=[REFIID] riid
+2=REFIID riid
 3=VOID** ppObject
 ParamCount=3
 Header=windows.h.api;
@@ -55,7 +55,7 @@ Header=windows.h.api;
 2=LPWSTR lpszUserName
 3=LPWSTR lpszPassword
 4=DWORD dwReserved
-5=[REFIID] riid
+5=REFIID riid
 6=VOID** ppObject
 ParamCount=6
 Header=windows.h.api;

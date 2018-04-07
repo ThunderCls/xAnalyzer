@@ -1,6 +1,0 @@
-[PFN_WdsCliTraceFunction]
-Base=LPVOID
-[PFN_WdsCliCallback]
-Base=LPVOID
-[PWDS_CLI_CRED]
-Base=WDS_CLI_CRED

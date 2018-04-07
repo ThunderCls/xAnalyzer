@@ -1,7 +1,3 @@
-[COLOR16]
-Base=USHORT
-[PTRIVERTEX]
-Base=TRIVERTEX
 [GradientFillMode]
 TypeDisplay=ULONG
 Base=ULONG

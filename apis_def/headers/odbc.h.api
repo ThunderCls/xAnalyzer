@@ -1,7 +1,3 @@
-[RETCODE]
-Base=short
-[RETCODE*]
-Base=RETCODE
 [ODBC_DSN_REQUEST]
 TypeDisplay=WORD
 Base=WORD

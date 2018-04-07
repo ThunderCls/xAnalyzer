@@ -1,4 +1,0 @@
-[PX509Certificate]
-Base=LPVOID
-[PX509Certificate*]
-Base=PX509Certificate

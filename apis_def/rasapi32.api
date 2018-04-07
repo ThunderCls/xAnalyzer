@@ -17,7 +17,7 @@ ParamCount=3
 Header=rasapi32.h.api;windows.h.api;
 @=RasConnectionNotification
 [RasCreatePhonebookEntry]
-1=[HWND] hwnd
+1=HWND hwnd
 2=LPCTSTR lpszPhonebook
 ParamCount=2
 Header=windows.h.api;
@@ -34,17 +34,17 @@ ParamCount=2
 ParamCount=3
 @=RasDeleteSubEntry
 [RasDial]
-1=[LPRASDIALEXTENSIONS] lpRasDialExtensions
+1=LPRASDIALEXTENSIONS lpRasDialExtensions
 2=LPCTSTR lpszPhonebook
-3=[LPRASDIALPARAMS] lpRasDialParams
+3=LPRASDIALPARAMS lpRasDialParams
 4=DWORD dwNotifierType
 5=LPVOID lpvNotifier
-6=[LPHRASCONN] lphRasConn
+6=LPHRASCONN lphRasConn
 ParamCount=6
 Header=rasapi32.h.api;
 @=RasDial
 [RasEditPhonebookEntry]
-1=[HWND] hwnd
+1=HWND hwnd
 2=LPCTSTR lpszPhonebook
 3=LPCTSTR lpszEntryName
 ParamCount=3
@@ -57,14 +57,14 @@ Header=windows.h.api;
 ParamCount=3
 @=RasEnumAutodialAddresses
 [RasEnumConnections]
-1=[LPRASCONN] lprasconn
+1=LPRASCONN lprasconn
 2=LPDWORD lpcb
 3=LPDWORD lpcConnections
 ParamCount=3
 Header=rasapi32.h.api;
 @=RasEnumConnections
 [RasEnumDevices]
-1=[LPRASDEVINFO] lpRasDevInfo
+1=LPRASDEVINFO lpRasDevInfo
 2=LPDWORD lpcb
 3=LPDWORD lpcDevices
 ParamCount=3
@@ -73,21 +73,21 @@ Header=rasapi32.h.api;
 [RasEnumEntries]
 1=LPCTSTR reserved
 2=LPCTSTR lpszPhonebook
-3=[LPRASENTRYNAME] lprasentryname
+3=LPRASENTRYNAME lprasentryname
 4=LPDWORD lpcb
 5=LPDWORD lpcEntries
 ParamCount=5
 Header=rasapi32.h.api;
 @=RasEnumEntries
 [RasFreeEapUserIdentity]
-1=[LPRASEAPUSERIDENTITY] pRasEapUserIdentity
+1=LPRASEAPUSERIDENTITY pRasEapUserIdentity
 ParamCount=1
 Header=rasapi32.h.api;
 @=RasFreeEapUserIdentity
 [RasGetAutodialAddress]
 1=LPCTSTR lpszAddress
 2=LPDWORD lpdwReserved
-3=[LPRASAUTODIALENTRY] lpAutoDialEntries
+3=LPRASAUTODIALENTRY lpAutoDialEntries
 4=LPDWORD lpdwcbAutoDialEntries
 5=LPDWORD lpdwcAutoDialEntries
 ParamCount=5
@@ -106,18 +106,18 @@ ParamCount=3
 @=RasGetAutodialParam
 [RasGetConnectionStatistics]
 1=[HRASCONN] hRasConn
-2=[RAS_STATS*] lpStatistics
+2=RAS_STATS* lpStatistics
 ParamCount=2
 Header=rasapi32.h.api;
 @=RasGetConnectionStatistics
 [RasGetConnectStatus]
 1=[HRASCONN] hrasconn
-2=[LPRASCONNSTATUS] lprasconnstatus
+2=LPRASCONNSTATUS lprasconnstatus
 ParamCount=2
 Header=rasapi32.h.api;
 @=RasGetConnectStatus
 [RasGetCountryInfo]
-1=[LPRASCTRYINFO] lpRasCtryInfo
+1=LPRASCTRYINFO lpRasCtryInfo
 2=LPDWORD lpdwSize
 ParamCount=2
 Header=rasapi32.h.api;
@@ -125,7 +125,7 @@ Header=rasapi32.h.api;
 [RasGetCredentials]
 1=LPCTSTR lpszPhonebook
 2=LPCTSTR lpszEntry
-3=[LPRASCREDENTIALS] lpCredentials
+3=LPRASCREDENTIALS lpCredentials
 ParamCount=3
 Header=rasapi32.h.api;
 @=RasGetCredentials
@@ -149,14 +149,14 @@ Header=windows.h.api;
 1=LPCSTR pszPhonebook
 2=LPCSTR pszEntry
 3=DWORD dwFlags
-4=[HWND] hwnd
-5=[LPRASEAPUSERIDENTITY*] ppRasEapUserIdentity
+4=HWND hwnd
+5=LPRASEAPUSERIDENTITY* ppRasEapUserIdentity
 ParamCount=5
 Header=rasapi32.h.api;windows.h.api;
 @=RasGetEapUserIdentity
 [RasGetEntryDialParams]
 1=LPCTSTR lpszPhonebook
-2=[LPRASDIALPARAMS] lprasdialparams
+2=LPRASDIALPARAMS lprasdialparams
 3=LPBOOL lpfPassword
 ParamCount=3
 Header=rasapi32.h.api;
@@ -164,7 +164,7 @@ Header=rasapi32.h.api;
 [RasGetEntryProperties]
 1=LPCTSTR lpszPhonebook
 2=LPCTSTR lpszEntry
-3=[LPRASENTRY] lpRasEntry
+3=LPRASENTRY lpRasEntry
 4=LPDWORD lpdwEntryInfoSize
 5=LPBYTE lpbDeviceInfo
 6=LPDWORD lpdwDeviceInfoSize
@@ -180,13 +180,13 @@ ParamCount=3
 [RasGetLinkStatistics]
 1=[HRASCONN] hRasConn
 2=DWORD dwSubEntry
-3=[RAS_STATS*] lpStatistics
+3=RAS_STATS* lpStatistics
 ParamCount=3
 Header=rasapi32.h.api;
 @=RasGetLinkStatistics
 [RasGetNapStatus]
 1=[HRASCONN] hRasConn
-2=[LPRASNAPSTATE] pNapState
+2=LPRASNAPSTATE pNapState
 ParamCount=2
 Header=rasapi32.h.api;
 @=RasGetNapStatus
@@ -200,21 +200,21 @@ Header=rasapi32.h.api;
 @=RasGetProjectionInfo
 [RasGetProjectionInfoEx]
 1=[HRASCONN] Hrasconn
-2=[PRAS_PROJECTION_INFO] pRasProjection
+2=PRAS_PROJECTION_INFO pRasProjection
 3=LPDWORD lpdwSize
 ParamCount=3
 Header=rasapi32.h.api;
 @=RasGetProjectionInfoEx
 [RasGetQuarantineConnectionId]
 1=[HRASCONN] hRasConn
-2=[ConnectionId*] lpConnectionId
+2=ConnectionId* lpConnectionId
 ParamCount=2
 Header=rasapi32.h.api;
 @=RasGetQuarantineConnectionId
 [RasGetSubEntryHandle]
 1=[HRASCONN] hRasConn
 2=DWORD dwSubEntry
-3=[LPHRASCONN] lphRasConn
+3=LPHRASCONN lphRasConn
 ParamCount=3
 Header=rasapi32.h.api;
 @=RasGetSubEntryHandle
@@ -222,7 +222,7 @@ Header=rasapi32.h.api;
 1=LPCTSTR lpszPhonebook
 2=LPCTSTR lpszEntry
 3=DWORD dwSubEntry
-4=[LPRASSUBENTRY] lpRasSubEntry
+4=LPRASSUBENTRY lpRasSubEntry
 5=LPDWORD lpdwcb
 6=LPBYTE lpbDeviceConfig
 7=LPDWORD lpcbDeviceConfig
@@ -237,8 +237,8 @@ Header=rasapi32.h.api;
 [RasInvokeEapUI]
 1=[HRASCONN] hRasConn
 2=DWORD dwSubEntry
-3=[LPRASDIALEXTENSIONS] lpExtensions
-4=[HWND] hwnd
+3=LPRASDIALEXTENSIONS lpExtensions
+4=HWND hwnd
 ParamCount=4
 Header=rasapi32.h.api;windows.h.api;
 @=RasInvokeEapUI
@@ -251,7 +251,7 @@ ParamCount=3
 [RasSetAutodialAddress]
 1=LPCTSTR lpszAddress
 2=DWORD dwReserved
-3=[LPRASAUTODIALENTRY] lpAutoDialEntries
+3=LPRASAUTODIALENTRY lpAutoDialEntries
 4=DWORD dwcbAutoDialEntries
 5=DWORD dwcAutoDialEntries
 ParamCount=5
@@ -271,7 +271,7 @@ ParamCount=3
 [RasSetCredentials]
 1=LPCTSTR lpszPhonebook
 2=LPCTSTR lpszEntry
-3=[LPRASCREDENTIALS] lpCredentials
+3=LPRASCREDENTIALS lpCredentials
 4=BOOL fClearCredentials
 ParamCount=4
 Header=rasapi32.h.api;
@@ -294,7 +294,7 @@ Header=windows.h.api;
 @=RasSetEapUserData
 [RasSetEntryDialParams]
 1=LPCTSTR lpszPhonebook
-2=[LPRASDIALPARAMS] lprasdialparams
+2=LPRASDIALPARAMS lprasdialparams
 3=BOOL fRemovePassword
 ParamCount=3
 Header=rasapi32.h.api;
@@ -302,7 +302,7 @@ Header=rasapi32.h.api;
 [RasSetEntryProperties]
 1=LPCTSTR lpszPhonebook
 2=LPCTSTR lpszEntry
-3=[LPRASENTRY] lpRasEntry
+3=LPRASENTRY lpRasEntry
 4=DWORD dwEntryInfoSize
 5=LPBYTE lpbDeviceInfo
 6=DWORD dwDeviceInfoSize
@@ -313,7 +313,7 @@ Header=rasapi32.h.api;
 1=LPCTSTR lpszPhonebook
 2=LPCTSTR lpszEntry
 3=DWORD dwSubEntry
-4=[LPRASSUBENTRY] lpRasSubEntry
+4=LPRASSUBENTRY lpRasSubEntry
 5=DWORD dwcbRasSubEntry
 6=LPBYTE lpbDeviceConfig
 7=DWORD dwcbDeviceConfig
@@ -322,7 +322,7 @@ Header=rasapi32.h.api;
 @=RasSetSubEntryProperties
 [RasUpdateConnection]
 1=[HRASCONN] hrasconn
-2=[LPRASUPDATECONN] lprasupdateconn
+2=LPRASUPDATECONN lprasupdateconn
 ParamCount=2
 Header=rasapi32.h.api;
 @=RasUpdateConnection

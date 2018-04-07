@@ -1,10 +1,10 @@
 [AlphaBlend]
-1=[HDC] hdcDest
+1=HDC hdcDest
 2=int xoriginDest
 3=int yoriginDest
 4=int wDest
 5=int hDest
-6=[HDC] hdcSrc
+6=HDC hdcSrc
 7=int xoriginSrc
 8=int yoriginSrc
 9=int wSrc
@@ -14,8 +14,8 @@ ParamCount=11
 Header=gdi.h.api;
 @=AlphaBlend
 [GradientFill]
-1=[HDC] hdc
-2=[PTRIVERTEX] pVertex
+1=HDC hdc
+2=PTRIVERTEX pVertex
 3=ULONG nVertex
 4=PVOID pMesh
 5=ULONG nMesh
@@ -24,12 +24,12 @@ ParamCount=6
 Header=msimg32.h.api;gdi.h.api;
 @=GradientFill
 [TransparentBlt]
-1=[HDC] hdcDest
+1=HDC hdcDest
 2=int xoriginDest
 3=int yoriginDest
 4=int wDest
 5=int hDest
-6=[HDC] hdcSrc
+6=HDC hdcSrc
 7=int xoriginSrc
 8=int yoriginSrc
 9=int wSrc

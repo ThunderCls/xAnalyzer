@@ -1,41 +1,41 @@
 [OpenPersonalTrustDBDialog]
-1=[HWND] hwndParent
+1=HWND hwndParent
 ParamCount=1
 Header=windows.h.api;
 @=OpenPersonalTrustDBDialog
 [OpenPersonalTrustDBDialogEx]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD dwFlags
 3=PVOID* pvReserved
 ParamCount=3
 Header=windows.h.api;
 @=OpenPersonalTrustDBDialogEx
 [CryptCATCDFClose]
-1=[CRYPTCATCDF*] pCDF
+1=CRYPTCATCDF* pCDF
 ParamCount=1
 Header=cryptography.h.api;
 @=CryptCATCDFClose
 [CryptCATCDFEnumAttributesWithCDFTag]
-1=[CRYPTCATCDF*] pCDF
+1=CRYPTCATCDF* pCDF
 2=LPWSTR pwszMemberTag
-3=[CRYPTCATMEMBER*] pMember
-4=[CRYPTCATATTRIBUTE*] pPrevAttr
-5=[PFN_CDF_PARSE_ERROR_CALLBACK] pfnParseError
+3=CRYPTCATMEMBER* pMember
+4=CRYPTCATATTRIBUTE* pPrevAttr
+5=PFN_CDF_PARSE_ERROR_CALLBACK pfnParseError
 ParamCount=5
 Header=wintrust.h.api;cryptography.h.api;
 @=CryptCATCDFEnumAttributesWithCDFTag
 [CryptCATCDFEnumCatAttributes]
-1=[CRYPTCATCDF*] pCDF
-2=[CRYPTCATATTRIBUTE*] pPrevAttr
-3=[PFN_CDF_PARSE_ERROR_CALLBACK] pfnParseError
+1=CRYPTCATCDF* pCDF
+2=CRYPTCATATTRIBUTE* pPrevAttr
+3=PFN_CDF_PARSE_ERROR_CALLBACK pfnParseError
 ParamCount=3
 Header=wintrust.h.api;cryptography.h.api;
 @=CryptCATCDFEnumCatAttributes
 [CryptCATCDFEnumMembersByCDFTagEx]
-1=[CRYPTCATCDF*] pCDF
+1=CRYPTCATCDF* pCDF
 2=LPWSTR pwszPrevCDFTag
-3=[PFN_CDF_PARSE_ERROR_CALLBACK] pfnParseError
-4=[CRYPTCATMEMBER**] ppMember
+3=PFN_CDF_PARSE_ERROR_CALLBACK pfnParseError
+4=CRYPTCATMEMBER** ppMember
 5=BOOL fContinueOnError
 6=LPVOID pvReserved
 ParamCount=6
@@ -43,19 +43,19 @@ Header=wintrust.h.api;cryptography.h.api;
 @=CryptCATCDFEnumMembersByCDFTagEx
 [CryptCATCDFOpen]
 1=LPWSTR pwszFilePath
-2=[PFN_CDF_PARSE_ERROR_CALLBACK] pfnParseError
+2=PFN_CDF_PARSE_ERROR_CALLBACK pfnParseError
 ParamCount=2
 Header=wintrust.h.api;
 @=CryptCATCDFOpen
 [CryptCATAdminAcquireContext]
-1=[HCATADMIN*] phCatAdmin
-2=[GUID*] pgSubsystem
+1=HCATADMIN* phCatAdmin
+2=GUID* pgSubsystem
 3=DWORD dwFlags
 ParamCount=3
 Header=cryptography.h.api;windows.h.api;
 @=CryptCATAdminAcquireContext
 [CryptCATAdminAddCatalog]
-1=[HCATADMIN] hCatAdmin
+1=HCATADMIN hCatAdmin
 2=WCHAR* pwszCatalogFile
 3=WCHAR* pwszSelectBaseName
 4=DWORD dwFlags
@@ -63,16 +63,16 @@ ParamCount=4
 Header=cryptography.h.api;
 @=CryptCATAdminAddCatalog
 [CryptCATAdminEnumCatalogFromHash]
-1=[HCATADMIN] hCatAdmin
+1=HCATADMIN hCatAdmin
 2=BYTE* pbHash
 3=DWORD cbHash
 4=DWORD dwFlags
-5=[HCATINFO*] phPrevCatInfo
+5=HCATINFO* phPrevCatInfo
 ParamCount=5
 Header=wintrust.h.api;cryptography.h.api;
 @=CryptCATAdminEnumCatalogFromHash
 [CryptCATAdminRemoveCatalog]
-1=[HCATADMIN] hCatAdmin
+1=HCATADMIN hCatAdmin
 2=LPCWSTR pwszCatalogFile
 3=DWORD dwFlags
 ParamCount=3
@@ -87,29 +87,29 @@ ParamCount=4
 Header=windows.h.api;
 @=CryptCATAdminCalcHashFromFileHandle
 [CryptCATAdminReleaseCatalogContext]
-1=[HCATADMIN] hCatAdmin
-2=[HCATINFO] hCatInfo
+1=HCATADMIN hCatAdmin
+2=HCATINFO hCatInfo
 3=DWORD dwFlags
 ParamCount=3
 Header=wintrust.h.api;cryptography.h.api;
 @=CryptCATAdminReleaseCatalogContext
 [CryptCATAdminReleaseContext]
-1=[HCATADMIN] hCatAdmin
+1=HCATADMIN hCatAdmin
 2=DWORD dwFlags
 ParamCount=2
 Header=cryptography.h.api;
 @=CryptCATAdminReleaseContext
 [CryptCATAdminResolveCatalogPath]
-1=[HCATADMIN] hCatAdmin
+1=HCATADMIN hCatAdmin
 2=WCHAR* pwszCatalogFile
-3=[CATALOG_INFO*] psCatInfo
+3=CATALOG_INFO* psCatInfo
 4=DWORD dwFlags
 ParamCount=4
 Header=wintrust.h.api;cryptography.h.api;
 @=CryptCATAdminResolveCatalogPath
 [CryptCATCatalogInfoFromContext]
-1=[HCATINFO] hCatInfo
-2=[CATALOG_INFO*] psCatInfo
+1=HCATINFO hCatInfo
+2=CATALOG_INFO* psCatInfo
 3=DWORD dwFlags
 ParamCount=3
 Header=wintrust.h.api;
@@ -122,7 +122,7 @@ Header=windows.h.api;
 [CryptCATOpen]
 1=LPWSTR pwszFileName
 2=DWORD fdwOpenFlags
-3=[HCRYPTPROV] hProv
+3=HCRYPTPROV hProv
 4=DWORD dwPublicVersion
 5=DWORD dwEncodingType
 ParamCount=5
@@ -130,26 +130,26 @@ Header=cryptography.h.api;
 @=CryptCATOpen
 [CryptCATEnumerateAttr]
 1=HANDLE hCatalog
-2=[CRYPTCATMEMBER*] pCatMember
-3=[CRYPTCATATTRIBUTE*] pPrevAttr
+2=CRYPTCATMEMBER* pCatMember
+3=CRYPTCATATTRIBUTE* pPrevAttr
 ParamCount=3
 Header=cryptography.h.api;windows.h.api;
 @=CryptCATEnumerateAttr
 [CryptCATEnumerateCatAttr]
 1=HANDLE hCatalog
-2=[CRYPTCATATTRIBUTE*] pPrevAttr
+2=CRYPTCATATTRIBUTE* pPrevAttr
 ParamCount=2
 Header=cryptography.h.api;windows.h.api;
 @=CryptCATEnumerateCatAttr
 [CryptCATEnumerateMember]
 1=HANDLE hCatalog
-2=[CRYPTCATMEMBER*] pPrevMember
+2=CRYPTCATMEMBER* pPrevMember
 ParamCount=2
 Header=cryptography.h.api;windows.h.api;
 @=CryptCATEnumerateMember
 [CryptCATGetAttrInfo]
 1=HANDLE hCatalog
-2=[CRYPTCATMEMBER*] pCatMember
+2=CRYPTCATMEMBER* pCatMember
 3=LPWSTR pwszReferenceTag
 ParamCount=3
 Header=cryptography.h.api;windows.h.api;
@@ -167,16 +167,16 @@ ParamCount=2
 Header=windows.h.api;
 @=IsCatalogFile
 [CryptCATAdminAcquireContext2]
-1=[HCATADMIN*] phCatAdmin
-2=[GUID*] pgSubsystem
+1=HCATADMIN* phCatAdmin
+2=GUID* pgSubsystem
 3=PCWSTR pwszHashAlgorithm
-4=[PCCERT_STRONG_SIGN_PARA] pStrongHashPolicy
+4=PCCERT_STRONG_SIGN_PARA pStrongHashPolicy
 5=DWORD dwFlags
 ParamCount=5
 Header=cryptography.h.api;windows.h.api;
 @=CryptCATAdminAcquireContext2
 [CryptCATAdminCalcHashFromFileHandle2]
-1=[HCATADMIN] hCatAdmin
+1=HCATADMIN hCatAdmin
 2=HANDLE hFile
 3=DWORD* pcbHash
 4=BYTE* pbHash
@@ -185,9 +185,9 @@ ParamCount=5
 Header=cryptography.h.api;windows.h.api;
 @=CryptCATAdminCalcHashFromFileHandle2
 [WintrustAddActionID]
-1=[GUID*] pgActionID
+1=GUID* pgActionID
 2=DWORD fdwFlags
-3=[CRYPT_REGISTER_ACTIONID*] psProvInfo
+3=CRYPT_REGISTER_ACTIONID* psProvInfo
 ParamCount=3
 Header=cryptography.h.api;windows.h.api;
 @=WintrustAddActionID
@@ -197,13 +197,13 @@ ParamCount=1
 Header=wintrust.h.api;
 @=WintrustGetRegPolicyFlags
 [WintrustLoadFunctionPointers]
-1=[GUID*] pgActionID
-2=[CRYPT_PROVIDER_FUNCTIONS*] pPfns
+1=GUID* pgActionID
+2=CRYPT_PROVIDER_FUNCTIONS* pPfns
 ParamCount=2
 Header=cryptography.h.api;windows.h.api;
 @=WintrustLoadFunctionPointers
 [WintrustRemoveActionID]
-1=[GUID*] pgActionID
+1=GUID* pgActionID
 ParamCount=1
 Header=windows.h.api;
 @=WintrustRemoveActionID
@@ -217,29 +217,29 @@ ParamCount=1
 Header=wintrust.h.api;
 @=WintrustSetRegPolicyFlags
 [WinVerifyTrust]
-1=[HWND] hWnd
-2=[GUID*] pgActionID
+1=HWND hWnd
+2=GUID* pgActionID
 3=LPVOID pWVTData
 ParamCount=3
 Header=windows.h.api;
 @=WinVerifyTrust
 [WinVerifyTrustEx]
-1=[HWND] hwnd
-2=[GUID*] pgActionID
-3=[WINTRUST_DATA*] pWinTrustData
+1=HWND hwnd
+2=GUID* pgActionID
+3=WINTRUST_DATA* pWinTrustData
 ParamCount=3
 Header=cryptography.h.api;windows.h.api;
 @=WinVerifyTrustEx
 [WTHelperCertCheckValidSignature]
-1=[CRYPT_PROVIDER_DATA*] pProvData
+1=CRYPT_PROVIDER_DATA* pProvData
 ParamCount=1
 Header=cryptography.h.api;
 @=WTHelperCertCheckValidSignature
 [WTHelperCertFindIssuerCertificate]
-1=[PCCERT_CONTEXT] pChildContext
+1=PCCERT_CONTEXT pChildContext
 2=DWORD chStores
-3=[HCERTSTORE*] pahStores
-4=[FILETIME*] psftVerifyAsOf
+3=HCERTSTORE* pahStores
+4=FILETIME* psftVerifyAsOf
 5=DWORD dwEncoding
 6=DWORD* pdwConfidence
 7=DWORD* dwError
@@ -248,7 +248,7 @@ Header=cryptography.h.api;windows.h.api;
 @=WTHelperCertFindIssuerCertificate
 [WTHelperCertIsSelfSigned]
 1=DWORD dwEncoding
-2=[CERT_INFO*] pCert
+2=CERT_INFO* pCert
 ParamCount=2
 Header=cryptography.h.api;
 @=WTHelperCertIsSelfSigned
@@ -258,24 +258,24 @@ Header=cryptography.h.api;
 3=PVOID pvReserved
 4=BYTE* pbFileHash
 5=DWORD* pcbFileHash
-6=[ALG_ID*] pHashAlgid
+6=ALG_ID* pHashAlgid
 ParamCount=6
 Header=cryptography.h.api;
 @=WTHelperGetFileHash
 [WTHelperGetProvCertFromChain]
-1=[CRYPT_PROVIDER_SGNR*] pSgnr
+1=CRYPT_PROVIDER_SGNR* pSgnr
 2=DWORD idxCert
 ParamCount=2
 Header=cryptography.h.api;
 @=WTHelperGetProvCertFromChain
 [WTHelperGetProvPrivateDataFromChain]
-1=[CRYPT_PROVIDER_DATA*] pProvData
-2=[GUID*] pgProviderID
+1=CRYPT_PROVIDER_DATA* pProvData
+2=GUID* pgProviderID
 ParamCount=2
 Header=cryptography.h.api;windows.h.api;
 @=WTHelperGetProvPrivateDataFromChain
 [WTHelperGetProvSignerFromChain]
-1=[CRYPT_PROVIDER_DATA*] pProvData
+1=CRYPT_PROVIDER_DATA* pProvData
 2=DWORD idxSigner
 3=BOOL fCounterSigner
 4=DWORD idxCounterSigner

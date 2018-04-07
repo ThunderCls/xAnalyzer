@@ -4,93 +4,93 @@ ParamCount=1
 Header=windows.h.api;
 @=NtClearEvent
 [NtCreateEvent]
-1=[PHANDLE] EventHandle
+1=PHANDLE EventHandle
 2=[EVENT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=[EVENT_TYPE] EventType
 5=BOOLEAN InitialState
 ParamCount=5
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateEvent
 [NtCreateEventPair]
-1=[PHANDLE] EventPairHandle
+1=PHANDLE EventPairHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtCreateEventPair
 [NtCreateKeyedEvent]
-1=[PHANDLE] KeyedEventHandle
+1=PHANDLE KeyedEventHandle
 2=[EVENT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG Flags
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateKeyedEvent
 [NtCreateMutant]
-1=[PHANDLE] MutantHandle
+1=PHANDLE MutantHandle
 2=[MUTANT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=BOOLEAN InitialOwner
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateMutant
 [NtCreateSemaphore]
-1=[PHANDLE] SemaphoreHandle
+1=PHANDLE SemaphoreHandle
 2=[SEMAPHORE_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=LONG InitialCount
 5=LONG MaximumCount
 ParamCount=5
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateSemaphore
 [NtCreateTimer]
-1=[PHANDLE] TimerHandle
+1=PHANDLE TimerHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=[TIMER_TYPE] TimerType
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateTimer
 [NtOpenEvent]
-1=[PHANDLE] EventHandle
+1=PHANDLE EventHandle
 2=[EVENT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenEvent
 [NtOpenKeyedEvent]
-1=[PHANDLE] EventHandle
+1=PHANDLE EventHandle
 2=[EVENT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenKeyedEvent
 [NtOpenEventPair]
-1=[PHANDLE] EventPairHandle
+1=PHANDLE EventPairHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtOpenEventPair
 [NtOpenMutant]
-1=[PHANDLE] MutantHandle
+1=PHANDLE MutantHandle
 2=[MUTANT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenMutant
 [NtOpenSemaphore]
-1=[PHANDLE] SemaphoreHandle
+1=PHANDLE SemaphoreHandle
 2=[SEMAPHORE_ACCESS_MASK] DesiredAcces
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenSemaphore
 [NtOpenTimer]
-1=[PHANDLE] TimerHandle
+1=PHANDLE TimerHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtOpenTimer
@@ -146,7 +146,7 @@ Header=windows.h.api;
 1=HANDLE EventHandle
 2=PVOID Key
 3=BOOLEAN Alertable
-4=[PLARGE_INTEGER] Timeout
+4=PLARGE_INTEGER Timeout
 ParamCount=4
 Header=windows.h.api;
 @=NtReleaseKeyedEvent
@@ -196,8 +196,8 @@ Header=windows.h.api;
 @=NtSetLowWaitHighEventPair
 [NtSetTimer]
 1=HANDLE TimerHandle
-2=[PLARGE_INTEGER] DueTime
-3=[PTIMER_APC_ROUTINE] TimerApcRoutine
+2=PLARGE_INTEGER DueTime
+3=PTIMER_APC_ROUTINE TimerApcRoutine
 4=PVOID TimerContext
 5=BOOLEAN WakeTimer
 6=LONG Period
@@ -215,7 +215,7 @@ Header=windows.h.api;
 1=HANDLE EventHandle
 2=PVOID Key
 3=BOOLEAN Alertable
-4=[PLARGE_INTEGER] Timeout
+4=PLARGE_INTEGER Timeout
 ParamCount=4
 Header=windows.h.api;
 @=NtWaitForKeyedEvent
@@ -233,7 +233,7 @@ Header=windows.h.api;
 1=ULONG TraceHandle
 2=ULONG Flags
 3=ULONG TraceHeaderLength
-4=[PEVENT_TRACE_HEADER] TraceHeader
+4=PEVENT_TRACE_HEADER TraceHeader
 ParamCount=4
 Header=events.h.api;
 @=NtTraceEvent
@@ -241,7 +241,7 @@ Header=events.h.api;
 1=HANDLE SignalObject
 2=HANDLE WaitObject
 3=BOOLEAN Alertable
-4=[PLARGE_INTEGER] Time
+4=PLARGE_INTEGER Time
 ParamCount=4
 Header=windows.h.api;
 @=NtSignalAndWaitForSingleObject
@@ -250,7 +250,7 @@ Header=windows.h.api;
 2=HANDLE [] Object
 3=[WAIT_TYPE] WaitType
 4=BOOLEAN Alertable
-5=[PLARGE_INTEGER] Time
+5=PLARGE_INTEGER Time
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtWaitForMultipleObjects
@@ -259,14 +259,14 @@ Header=ntdll.h.api;windows.h.api;
 2=PLONG Handles
 3=[WAIT_TYPE] WaitType
 4=BOOLEAN Alertable
-5=[PLARGE_INTEGER] TimeOut
+5=PLARGE_INTEGER TimeOut
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtWaitForMultipleObjects32
 [NtWaitForSingleObject]
 1=HANDLE Object
 2=BOOLEAN Alertable
-3=[PLARGE_INTEGER] Time
+3=PLARGE_INTEGER Time
 ParamCount=3
 Header=windows.h.api;
 @=NtWaitForSingleObject
@@ -276,22 +276,22 @@ ParamCount=1
 Header=windows.h.api;
 @=NtCompressKey
 [NtCreateKey]
-1=[PHANDLE] KeyHandle
+1=PHANDLE KeyHandle
 2=[REGISTRY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG TitleIndex
-5=[PUNICODE_STRING] Class
+5=PUNICODE_STRING Class
 6=ULONG CreateOptions
 7=[RegDisposition-PULONG] Disposition
 ParamCount=7
 Header=ntdll.h.api;native.h.api;registry.h.api;windows.h.api;
 @=NtCreateKey
 [NtCreateKeyTransacted]
-1=[PHANDLE] KeyHandle
+1=PHANDLE KeyHandle
 2=[REGISTRY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG TitleIndex
-5=[PUNICODE_STRING] Class
+5=PUNICODE_STRING Class
 6=ULONG CreateOptions
 7=HANDLE TransactionHandle
 8=[RegDisposition-PULONG] Disposition
@@ -305,7 +305,7 @@ Header=windows.h.api;
 @=NtDeleteKey
 [NtDeleteValueKey]
 1=HANDLE KeyHandle
-2=[PUNICODE_STRING] ValueName
+2=PUNICODE_STRING ValueName
 ParamCount=2
 Header=windows.h.api;
 @=NtDeleteValueKey
@@ -339,14 +339,14 @@ Header=windows.h.api;
 ParamCount=1
 @=NtInitializeRegistry
 [NtLoadKey]
-1=[POBJECT_ATTRIBUTES] KeyObjectAttributes
-2=[POBJECT_ATTRIBUTES] FileObjectAttributes
+1=POBJECT_ATTRIBUTES KeyObjectAttributes
+2=POBJECT_ATTRIBUTES FileObjectAttributes
 ParamCount=2
 Header=native.h.api;
 @=NtLoadKey
 [NtLoadKey2]
-1=[POBJECT_ATTRIBUTES] KeyObjectAttributes
-2=[POBJECT_ATTRIBUTES] FileObjectAttributes
+1=POBJECT_ATTRIBUTES KeyObjectAttributes
+2=POBJECT_ATTRIBUTES FileObjectAttributes
 3=ULONG Flags
 ParamCount=3
 Header=native.h.api;
@@ -359,9 +359,9 @@ Header=windows.h.api;
 [NtNotifyChangeKey]
 1=HANDLE KeyHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=[REG_NOTIFY_CHANGE_FLAGS] CompletionFilter
 7=BOOLEAN Asynchroneous
 8=PVOID ChangeBuffer
@@ -375,9 +375,9 @@ Header=ntdll.h.api;windows.h.api;
 2=ULONG Count
 3=OBJECT_ATTRIBUTES [] SubordinateObjects
 4=HANDLE Event
-5=[PIO_APC_ROUTINE] ApcRoutine
+5=PIO_APC_ROUTINE ApcRoutine
 6=PVOID ApcContext
-7=[PIO_STATUS_BLOCK] IoStatusBlock
+7=PIO_STATUS_BLOCK IoStatusBlock
 8=[REG_NOTIFY_CHANGE_FLAGS] CompletionFilter
 9=BOOLEAN WatchTree
 10=PVOID Buffer
@@ -387,32 +387,32 @@ ParamCount=12
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtNotifyChangeMultipleKeys
 [NtOpenKey]
-1=[PHANDLE] KeyHandle
+1=PHANDLE KeyHandle
 2=[REGISTRY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenKey
 [NtOpenKeyEx]
-1=[PHANDLE] KeyHandle
+1=PHANDLE KeyHandle
 2=[REGISTRY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG OpenOptions
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenKeyEx
 [NtOpenKeyTransacted]
-1=[PHANDLE] KeyHandle
+1=PHANDLE KeyHandle
 2=[REGISTRY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=HANDLE TransactionHandle
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenKeyTransacted
 [NtOpenKeyTransactedEx]
-1=[PHANDLE] KeyHandle
+1=PHANDLE KeyHandle
 2=[REGISTRY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG OpenOptions
 5=HANDLE TransactionHandle
 ParamCount=5
@@ -429,7 +429,7 @@ Header=ntdll.h.api;windows.h.api;
 @=NtQueryKey
 [NtQueryMultipleValueKey]
 1=HANDLE KeyHandle
-2=[PKEY_VALUE_ENTRY] ValueList
+2=PKEY_VALUE_ENTRY ValueList
 3=ULONG NumberOfValues
 4=PVOID Buffer
 5=PULONG Length
@@ -438,13 +438,13 @@ ParamCount=6
 Header=ntdll.h.api;windows.h.api;
 @=NtQueryMultipleValueKey
 [NtQueryOpenSubKeys]
-1=[POBJECT_ATTRIBUTES] TargetKey
+1=POBJECT_ATTRIBUTES TargetKey
 2=PULONG HandleCount
 ParamCount=2
 Header=native.h.api;
 @=NtQueryOpenSubKeys
 [NtQueryOpenSubKeysEx]
-1=[POBJECT_ATTRIBUTES] TargetKey
+1=POBJECT_ATTRIBUTES TargetKey
 2=ULONG BufferLength
 3=PVOID Buffer
 4=PULONG RequiredSize
@@ -453,7 +453,7 @@ Header=native.h.api;
 @=NtQueryOpenSubKeysEx
 [NtQueryValueKey]
 1=HANDLE KeyHandle
-2=[PUNICODE_STRING] ValueName
+2=PUNICODE_STRING ValueName
 3=[KEY_VALUE_INFORMATION_CLASS] KeyValueInformationClass
 4=PVOID KeyValueInformation
 5=ULONG Length
@@ -463,14 +463,14 @@ Header=ntdll.h.api;windows.h.api;
 @=NtQueryValueKey
 [NtRenameKey]
 1=HANDLE KeyHandle
-2=[PUNICODE_STRING] ReplacementName
+2=PUNICODE_STRING ReplacementName
 ParamCount=2
 Header=windows.h.api;
 @=NtRenameKey
 [NtReplaceKey]
-1=[POBJECT_ATTRIBUTES] ObjectAttributes
+1=POBJECT_ATTRIBUTES ObjectAttributes
 2=HANDLE Key
-3=[POBJECT_ATTRIBUTES] ReplacedObjectAttributes
+3=POBJECT_ATTRIBUTES ReplacedObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtReplaceKey
@@ -511,7 +511,7 @@ Header=ntdll.h.api;windows.h.api;
 @=NtSetInformationKey
 [NtSetValueKey]
 1=HANDLE KeyHandle
-2=[PUNICODE_STRING] ValueName
+2=PUNICODE_STRING ValueName
 3=ULONG TitleIndex
 4=ULONG Type
 5=PVOID Data
@@ -520,18 +520,18 @@ ParamCount=6
 Header=windows.h.api;
 @=NtSetValueKey
 [NtUnloadKey]
-1=[POBJECT_ATTRIBUTES] KeyObjectAttributes
+1=POBJECT_ATTRIBUTES KeyObjectAttributes
 ParamCount=1
 Header=native.h.api;
 @=NtUnloadKey
 [NtUnloadKey2]
-1=[POBJECT_ATTRIBUTES] TargetKey
+1=POBJECT_ATTRIBUTES TargetKey
 2=ULONG Flags
 ParamCount=2
 Header=native.h.api;
 @=NtUnloadKey2
 [NtUnloadKeyEx]
-1=[POBJECT_ATTRIBUTES] TargetKey
+1=POBJECT_ATTRIBUTES TargetKey
 2=HANDLE Event
 ParamCount=2
 Header=native.h.api;windows.h.api;
@@ -552,24 +552,24 @@ ParamCount=0
 [NtAddAtom]
 1=PWSTR AtomName
 2=ULONG AtomNameLength
-3=[PRTL_ATOM] Atom
+3=PRTL_ATOM Atom
 ParamCount=3
 Header=ntdll.h.api;
 @=NtAddAtom
 [NtDeleteAtom]
-1=[RTL_ATOM] Atom
+1=RTL_ATOM Atom
 ParamCount=1
 Header=ntdll.h.api;
 @=NtDeleteAtom
 [NtFindAtom]
 1=PWSTR AtomName
 2=ULONG AtomNameLength
-3=[PRTL_ATOM] Atom
+3=PRTL_ATOM Atom
 ParamCount=3
 Header=ntdll.h.api;
 @=NtFindAtom
 [NtQueryInformationAtom]
-1=[RTL_ATOM] Atom
+1=RTL_ATOM Atom
 2=[ATOM_INFORMATION_CLASS] AtomInformationClass
 3=PVOID AtomInformation
 4=ULONG AtomInformationLength
@@ -579,17 +579,17 @@ Header=ntdll.h.api;
 @=NtQueryInformationAtom
 [NtQueryDefaultLocale]
 1=BOOLEAN UserProfile
-2=[PLCID] DefaultLocaleId
+2=PLCID DefaultLocaleId
 ParamCount=2
 Header=windows.h.api;
 @=NtQueryDefaultLocale
 [NtQueryDefaultUILanguage]
-1=[LANGID*] LanguageId
+1=LANGID* LanguageId
 ParamCount=1
 Header=windows.h.api;
 @=NtQueryDefaultUILanguage
 [NtQueryInstallUILanguage]
-1=[LANGID*] LanguageId
+1=LANGID* LanguageId
 ParamCount=1
 Header=windows.h.api;
 @=NtQueryInstallUILanguage
@@ -610,14 +610,14 @@ Header=windows.h.api;
 ParamCount=2
 @=CsrAllocateCaptureBuffer
 [CsrAllocateMessagePointer]
-1=[CSR_CAPTURE_BUFFER*] CaptureBuffer
+1=CSR_CAPTURE_BUFFER* CaptureBuffer
 2=ULONG MessageLength
 3=PVOID* CaptureData
 ParamCount=3
 Header=ntdll.h.api;
 @=CsrAllocateMessagePointer
 [CsrCaptureMessageBuffer]
-1=[CSR_CAPTURE_BUFFER*] CaptureBuffer
+1=CSR_CAPTURE_BUFFER* CaptureBuffer
 2=PVOID MessageString
 3=ULONG StringLength
 4=PVOID* CapturedData
@@ -633,8 +633,8 @@ Header=ntdll.h.api;
 ParamCount=5
 @=CsrClientConnectToServer
 [CsrClientCallServer]
-1=[CSR_API_MESSAGE*] Request
-2=[CSR_CAPTURE_BUFFER*] CaptureBuffer
+1=CSR_API_MESSAGE* Request
+2=CSR_CAPTURE_BUFFER* CaptureBuffer
 3=ULONG ApiNumber
 4=ULONG RequestLength
 ParamCount=4
@@ -644,7 +644,7 @@ Header=ntdll.h.api;
 ParamCount=0
 @=CsrIdentifyAlertableThread
 [CsrFreeCaptureBuffer]
-1=[CSR_CAPTURE_BUFFER*] CaptureBuffer
+1=CSR_CAPTURE_BUFFER* CaptureBuffer
 ParamCount=1
 Header=ntdll.h.api;
 @=CsrFreeCaptureBuffer
@@ -676,20 +676,20 @@ ParamCount=3
 ParamCount=0
 @=DbgUserBreakPoint
 [DbgPrint]
-1=[PCCH] Format
+1=PCCH Format
 ParamCount=1
 Header=ntdll.h.api;
 @=DbgPrint
 [DbgPrintEx]
 1=ULONG ComponentId
 2=ULONG Level
-3=[PCCH] Format
+3=PCCH Format
 ParamCount=3
 Header=ntdll.h.api;
 @=DbgPrintEx
 [DbgPrompt]
-1=[PCCH] Prompt
-2=[PCH] Response
+1=PCCH Prompt
+2=PCH Response
 3=ULONG MaximumResponseLength
 ParamCount=3
 Header=ntdll.h.api;
@@ -698,14 +698,14 @@ Header=ntdll.h.api;
 ParamCount=0
 @=DbgBreakPoint
 [DbgLoadImageSymbols]
-1=[PANSI_STRING] Name
+1=PANSI_STRING Name
 2=PVOID Base
 3=ULONG_PTR ProcessId
 ParamCount=3
 Header=windows.h.api;
 @=DbgLoadImageSymbols
 [DbgUnLoadImageSymbols]
-1=[PANSI_STRING] Name
+1=PANSI_STRING Name
 2=PVOID Base
 3=ULONG_PTR ProcessId
 ParamCount=3
@@ -719,7 +719,7 @@ ParamCount=1
 ParamCount=0
 @=DbgUiConnectToDbg
 [DbgUiContinue]
-1=[PCLIENT_ID] ClientId
+1=PCLIENT_ID ClientId
 2=[NTSTATUS] ContinueStatus
 ParamCount=2
 Header=native.h.api;ntstatus.h.api;
@@ -735,13 +735,13 @@ ParamCount=1
 Header=windows.h.api;
 @=DbgUiStopDebugging
 [DbgUiWaitStateChange]
-1=[PDBGUI_WAIT_STATE_CHANGE] DbgUiWaitStateCange
-2=[PLARGE_INTEGER] TimeOut
+1=PDBGUI_WAIT_STATE_CHANGE DbgUiWaitStateCange
+2=PLARGE_INTEGER TimeOut
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=DbgUiWaitStateChange
 [DbgUiConvertStateChangeStructure]
-1=[PDBGUI_WAIT_STATE_CHANGE] WaitStateChange
+1=PDBGUI_WAIT_STATE_CHANGE WaitStateChange
 2=PVOID DebugEvent
 ParamCount=2
 Header=ntdll.h.api;
@@ -760,16 +760,16 @@ ParamCount=0
 [vDbgPrintEx]
 1=ULONG ComponentId
 2=ULONG Level
-3=[PCH] Format
+3=PCH Format
 4=va_list arglist
 ParamCount=4
 Header=ntdll.h.api;
 @=vDbgPrintEx
 [vDbgPrintExWithPrefix]
-1=[PCH] Prefix
+1=PCH Prefix
 2=ULONG ComponentId
 3=ULONG Level
-4=[PCH] Format
+4=PCH Format
 5=va_list arglist
 ParamCount=5
 Header=ntdll.h.api;
@@ -786,26 +786,26 @@ ParamCount=2
 ParamCount=3
 @=DbgSetDebugFilterState
 [LdrAccessResource]
-1=[HMODULE-PVOID] BaseAddress
-2=[PIMAGE_RESOURCE_DATA_ENTRY] ResourceDataEntry
+1=HMODULE-PVOID BaseAddress
+2=PIMAGE_RESOURCE_DATA_ENTRY ResourceDataEntry
 3=PVOID* Resource
 4=PULONG Size
 ParamCount=4
 Header=ntdll.h.api;
 @=LdrAccessResource
 [LdrFindResource_U]
-1=[HMODULE-PVOID] BaseAddress
-2=[PLDR_RESOURCE_INFO] ResourceInfo
+1=HMODULE-PVOID BaseAddress
+2=PLDR_RESOURCE_INFO ResourceInfo
 3=ULONG Level
-4=[PIMAGE_RESOURCE_DATA_ENTRY*] ResourceDataEntry
+4=PIMAGE_RESOURCE_DATA_ENTRY* ResourceDataEntry
 ParamCount=4
 Header=ntdll.h.api;
 @=LdrFindResource_U
 [LdrFindResourceDirectory_U]
-1=[HMODULE-PVOID] BaseAddress
-2=[PLDR_RESOURCE_INFO] ResourceInfo
+1=HMODULE-PVOID BaseAddress
+2=PLDR_RESOURCE_INFO ResourceInfo
 3=ULONG Level
-4=[PIMAGE_RESOURCE_DIRECTORY*] ResourceDirectory
+4=PIMAGE_RESOURCE_DIRECTORY* ResourceDirectory
 ParamCount=4
 Header=ntdll.h.api;
 @=LdrFindResourceDirectory_U
@@ -842,7 +842,7 @@ ParamCount=3
 @=LdrVerifyMappedImageMatchesChecksum
 [LdrAddRefDll]
 1=[LDR_ADDREF_DLL_FLAGS] Flags
-2=[HMODULE-PVOID] BaseAddress
+2=HMODULE-PVOID BaseAddress
 ParamCount=2
 Header=ntdll.h.api;
 @=LdrAddRefDll
@@ -853,7 +853,7 @@ ParamCount=1
 [LdrGetDllHandle]
 1=PWSTR DllPath
 2=PULONG DllCharacteristics
-3=[PUNICODE_STRING] DllName
+3=PUNICODE_STRING DllName
 4=HMODULE* DllHandle
 ParamCount=4
 Header=windows.h.api;
@@ -862,20 +862,20 @@ Header=windows.h.api;
 1=[LDR_GET_DLL_HANDLE_EX_FLAGS] Flags
 2=PWSTR DllPath
 3=PULONG DllCharacteristics
-4=[PUNICODE_STRING] DllName
+4=PUNICODE_STRING DllName
 5=HMODULE* DllHandle
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=LdrGetDllHandleEx
 [LdrFindEntryForAddress]
 1=PVOID Address
-2=[PLDR_DATA_TABLE_ENTRY*] Module
+2=PLDR_DATA_TABLE_ENTRY* Module
 ParamCount=2
 Header=ntdll.h.api;
 @=LdrFindEntryForAddress
 [LdrGetProcedureAddress]
 1=HMODULE BaseAddress
-2=[PANSI_STRING] Name
+2=PANSI_STRING Name
 3=ULONG Ordinal
 4=PVOID* ProcedureAddress
 ParamCount=4
@@ -891,8 +891,8 @@ ParamCount=4
 [LdrLoadDll]
 1=PWSTR SearchPath
 2=[IMAGE_FILE_CHARACTERISTICS_ULONG*] DllCharacteristics
-3=[PUNICODE_STRING] Name
-4=[HMODULE-PVOID*] BaseAddress
+3=PUNICODE_STRING Name
+4=HMODULE-PVOID* BaseAddress
 ParamCount=4
 Header=windows.h.api;
 @=LdrLoadDll
@@ -904,7 +904,7 @@ Header=windows.h.api;
 ParamCount=4
 @=LdrProcessRelocationBlock
 [LdrQueryImageFileExecutionOptions]
-1=[PUNICODE_STRING] SubKey
+1=PUNICODE_STRING SubKey
 2=PCWSTR ValueName
 3=ULONG ValueSize
 4=PVOID Buffer
@@ -914,7 +914,7 @@ ParamCount=6
 Header=windows.h.api;
 @=LdrQueryImageFileExecutionOptions
 [LdrQueryProcessModuleInformation]
-1=[PRTL_PROCESS_MODULES] ModuleInformation
+1=PRTL_PROCESS_MODULES ModuleInformation
 2=ULONG Size
 3=PULONG ReturnedSize
 ParamCount=3
@@ -929,7 +929,7 @@ ParamCount=1
 @=LdrUnloadDll
 [LdrVerifyImageMatchesChecksum]
 1=HANDLE FileHandle
-2=[PLDR_CALLBACK] Callback
+2=PLDR_CALLBACK Callback
 3=PVOID CallbackContext
 4=[IMAGE_FILE_CHARACTERISTICS_SHORT] ImageCharacteristics
 ParamCount=4
@@ -938,7 +938,7 @@ Header=ntdll.h.api;windows.h.api;
 [LdrRelocateImageWithBias]
 1=PVOID NewAddress
 2=LONGLONG AdditionalBias
-3=[PCCH] LoaderName
+3=PCCH LoaderName
 4=ULONG Success
 5=ULONG Conflict
 6=ULONG Invalid
@@ -956,58 +956,58 @@ Header=ntdll.h.api;
 ParamCount=7
 @=LdrResFindResourceDirectory
 [NtAccessCheck]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=HANDLE ClientToken
 3=[ACCESS_MASK] DesiredAccess
-4=[PGENERIC_MAPPING] GenericMapping
-5=[PPRIVILEGE_SET] PrivilegeSet
+4=PGENERIC_MAPPING GenericMapping
+5=PPRIVILEGE_SET PrivilegeSet
 6=PULONG ReturnLength
-7=[PACCESS_MASK] GrantedAccess
-8=[PNTSTATUS] AccessStatus
+7=PACCESS_MASK GrantedAccess
+8=PNTSTATUS AccessStatus
 ParamCount=8
 Header=ntstatus.h.api;security.h.api;windows.h.api;
 @=NtAccessCheck
 [NtAccessCheckByType]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID] PrincipalSelfSid
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID PrincipalSelfSid
 3=HANDLE ClientToken
 4=[ACCESS_MASK] DesiredAccess
-5=[POBJECT_TYPE_LIST] ObjectTypeList
+5=POBJECT_TYPE_LIST ObjectTypeList
 6=ULONG ObjectTypeLength
-7=[PGENERIC_MAPPING] GenericMapping
-8=[PPRIVILEGE_SET] PrivilegeSet
+7=PGENERIC_MAPPING GenericMapping
+8=PPRIVILEGE_SET PrivilegeSet
 9=ULONG PrivilegeSetLength
-10=[PACCESS_MASK] GrantedAccess
-11=[PNTSTATUS] AccessStatus
+10=PACCESS_MASK GrantedAccess
+11=PNTSTATUS AccessStatus
 ParamCount=11
 Header=ntstatus.h.api;security.h.api;windows.h.api;
 @=NtAccessCheckByType
 [NtAccessCheckByTypeResultList]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID] PrincipalSelfSid
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID PrincipalSelfSid
 3=HANDLE ClientToken
 4=[ACCESS_MASK] DesiredAccess
-5=[POBJECT_TYPE_LIST] ObjectTypeList
+5=POBJECT_TYPE_LIST ObjectTypeList
 6=ULONG ObjectTypeLength
-7=[PGENERIC_MAPPING] GenericMapping
-8=[PPRIVILEGE_SET] PrivilegeSet
+7=PGENERIC_MAPPING GenericMapping
+8=PPRIVILEGE_SET PrivilegeSet
 9=ULONG PrivilegeSetLength
-10=[PACCESS_MASK] GrantedAccess
-11=[PNTSTATUS] AccessStatus
+10=PACCESS_MASK GrantedAccess
+11=PNTSTATUS AccessStatus
 ParamCount=11
 Header=ntstatus.h.api;security.h.api;windows.h.api;
 @=NtAccessCheckByTypeResultList
 [NtAccessCheckAndAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=PVOID HandleId
-3=[PUNICODE_STRING] ObjectTypeName
-4=[PUNICODE_STRING] ObjectName
-5=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+3=PUNICODE_STRING ObjectTypeName
+4=PUNICODE_STRING ObjectName
+5=PSECURITY_DESCRIPTOR SecurityDescriptor
 6=[ACCESS_MASK] DesiredAccess
-7=[PGENERIC_MAPPING] GenericMapping
+7=PGENERIC_MAPPING GenericMapping
 8=BOOLEAN ObjectCreation
-9=[PACCESS_MASK] GrantedAccess
-10=[PNTSTATUS] AccessStatus
+9=PACCESS_MASK GrantedAccess
+10=PNTSTATUS AccessStatus
 11=PBOOLEAN GenerateOnClose
 ParamCount=11
 Header=ntstatus.h.api;security.h.api;windows.h.api;
@@ -1016,7 +1016,7 @@ Header=ntstatus.h.api;security.h.api;windows.h.api;
 1=[ThreadHandle] ThreadHandle
 2=[TOKEN_ACCESS_MASK] DesiredAccess
 3=BOOLEAN OpenAsSelf
-4=[PHANDLE] TokenHandle
+4=PHANDLE TokenHandle
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=NtOpenThreadToken
@@ -1025,16 +1025,16 @@ Header=native.h.api;windows.h.api;
 2=[TOKEN_ACCESS_MASK] DesiredAccess
 3=BOOLEAN OpenAsSelf
 4=ULONG HandleAttributes
-5=[PHANDLE] TokenHandle
+5=PHANDLE TokenHandle
 ParamCount=5
 Header=native.h.api;windows.h.api;
 @=NtOpenThreadTokenEx
 [NtAdjustGroupsToken]
 1=HANDLE TokenHandle
 2=BOOLEAN ResetToDefault
-3=[PTOKEN_GROUPS] NewState
+3=PTOKEN_GROUPS NewState
 4=ULONG BufferLength
-5=[PTOKEN_GROUPS] PreviousState
+5=PTOKEN_GROUPS PreviousState
 6=PULONG ReturnLength
 ParamCount=6
 Header=security.h.api;windows.h.api;
@@ -1042,9 +1042,9 @@ Header=security.h.api;windows.h.api;
 [NtAdjustPrivilegesToken]
 1=HANDLE TokenHandle
 2=BOOLEAN DisableAllPrivileges
-3=[PTOKEN_PRIVILEGES] NewState
+3=PTOKEN_PRIVILEGES NewState
 4=ULONG BufferLength
-5=[PTOKEN_PRIVILEGES] PreviousState
+5=PTOKEN_PRIVILEGES PreviousState
 6=PULONG ReturnLength
 ParamCount=6
 Header=security.h.api;windows.h.api;
@@ -1057,29 +1057,29 @@ ParamCount=3
 Header=windows.h.api;
 @=NtCompareTokens
 [NtCreateToken]
-1=[PHANDLE] TokenHandle
+1=PHANDLE TokenHandle
 2=[TOKEN_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=[TOKEN_TYPE] TokenType
-5=[PLUID] AuthenticationId
-6=[PLARGE_INTEGER] ExpirationTime
-7=[PTOKEN_USER] TokenUser
-8=[PTOKEN_GROUPS] TokenGroups
-9=[PTOKEN_PRIVILEGES] TokenPrivileges
-10=[PTOKEN_OWNER] TokenOwner
-11=[PTOKEN_PRIMARY_GROUP] TokenPrimaryGroup
-12=[PTOKEN_DEFAULT_DACL] TokenDefaultDacl
-13=[PTOKEN_SOURCE] TokenSource
+5=PLUID AuthenticationId
+6=PLARGE_INTEGER ExpirationTime
+7=PTOKEN_USER TokenUser
+8=PTOKEN_GROUPS TokenGroups
+9=PTOKEN_PRIVILEGES TokenPrivileges
+10=PTOKEN_OWNER TokenOwner
+11=PTOKEN_PRIMARY_GROUP TokenPrimaryGroup
+12=PTOKEN_DEFAULT_DACL TokenDefaultDacl
+13=PTOKEN_SOURCE TokenSource
 ParamCount=13
 Header=ntdll.h.api;native.h.api;security.h.api;windows.h.api;
 @=NtCreateToken
 [NtDuplicateToken]
 1=HANDLE ExistingTokenHandle
 2=[TOKEN_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=BOOLEAN EffectiveOnly
 5=[TOKEN_TYPE] TokenType
-6=[PHANDLE] NewTokenHandle
+6=PHANDLE NewTokenHandle
 ParamCount=6
 Header=native.h.api;security.h.api;windows.h.api;
 @=NtDuplicateToken
@@ -1089,15 +1089,15 @@ ParamCount=1
 Header=windows.h.api;
 @=NtImpersonateAnonymousToken
 [NtOpenObjectAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=PVOID HandleId
-3=[PUNICODE_STRING] ObjectTypeName
-4=[PUNICODE_STRING] ObjectName
-5=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+3=PUNICODE_STRING ObjectTypeName
+4=PUNICODE_STRING ObjectName
+5=PSECURITY_DESCRIPTOR SecurityDescriptor
 6=HANDLE ClientToken
 7=ULONG DesiredAccess
 8=ULONG GrantedAccess
-9=[PPRIVILEGE_SET] Privileges
+9=PPRIVILEGE_SET Privileges
 10=BOOLEAN ObjectCreation
 11=BOOLEAN AccessGranted
 12=PBOOLEAN GenerateOnClose
@@ -1105,14 +1105,14 @@ ParamCount=12
 Header=security.h.api;windows.h.api;
 @=NtOpenObjectAuditAlarm
 [NtCloseObjectAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=PVOID HandleId
 3=BOOLEAN GenerateOnClose
 ParamCount=3
 Header=windows.h.api;
 @=NtCloseObjectAuditAlarm
 [NtDeleteObjectAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=PVOID HandleId
 3=BOOLEAN GenerateOnClose
 ParamCount=3
@@ -1121,7 +1121,7 @@ Header=windows.h.api;
 [NtOpenProcessToken]
 1=[ProcessHandle] ProcessHandle
 2=[TOKEN_ACCESS_MASK] DesiredAccess
-3=[PHANDLE] TokenHandle
+3=PHANDLE TokenHandle
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtOpenProcessToken
@@ -1129,32 +1129,32 @@ Header=native.h.api;windows.h.api;
 1=[ProcessHandle] ProcessHandle
 2=[TOKEN_ACCESS_MASK] DesiredAccess
 3=ULONG HandleAttributes
-4=[PHANDLE] TokenHandle
+4=PHANDLE TokenHandle
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=NtOpenProcessTokenEx
 [NtPrivilegeCheck]
 1=HANDLE ClientToken
-2=[PPRIVILEGE_SET] RequiredPrivileges
+2=PPRIVILEGE_SET RequiredPrivileges
 3=PBOOLEAN Result
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=NtPrivilegeCheck
 [NtPrivilegedServiceAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
-2=[PUNICODE_STRING] ServiceName
+1=PUNICODE_STRING SubsystemName
+2=PUNICODE_STRING ServiceName
 3=HANDLE ClientToken
-4=[PPRIVILEGE_SET] Privileges
+4=PPRIVILEGE_SET Privileges
 5=BOOLEAN AccessGranted
 ParamCount=5
 Header=security.h.api;windows.h.api;
 @=NtPrivilegedServiceAuditAlarm
 [NtPrivilegeObjectAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=PVOID HandleId
 3=HANDLE ClientToken
 4=ULONG DesiredAccess
-5=[PPRIVILEGE_SET] Privileges
+5=PPRIVILEGE_SET Privileges
 6=BOOLEAN AccessGranted
 ParamCount=6
 Header=security.h.api;windows.h.api;
@@ -1169,62 +1169,62 @@ ParamCount=5
 Header=security.h.api;windows.h.api;
 @=NtQueryInformationToken
 [NtAccessCheckByTypeAndAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=HANDLE HandleId
-3=[PUNICODE_STRING] ObjectTypeName
-4=[PUNICODE_STRING] ObjectName
-5=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-6=[PSID] PrincipalSelfSid
+3=PUNICODE_STRING ObjectTypeName
+4=PUNICODE_STRING ObjectName
+5=PSECURITY_DESCRIPTOR SecurityDescriptor
+6=PSID PrincipalSelfSid
 7=[ACCESS_MASK] DesiredAccess
 8=[AUDIT_EVENT_TYPE] AuditType
 9=ULONG Flags
-10=[POBJECT_TYPE_LIST] ObjectTypeList
+10=POBJECT_TYPE_LIST ObjectTypeList
 11=ULONG ObjectTypeLength
-12=[PGENERIC_MAPPING] GenericMapping
+12=PGENERIC_MAPPING GenericMapping
 13=BOOLEAN ObjectCreation
-14=[PACCESS_MASK] GrantedAccess
-15=[PNTSTATUS] AccessStatus
+14=PACCESS_MASK GrantedAccess
+15=PNTSTATUS AccessStatus
 16=PBOOLEAN GenerateOnClose
 ParamCount=16
 Header=ntstatus.h.api;security.h.api;windows.h.api;
 @=NtAccessCheckByTypeAndAuditAlarm
 [NtAccessCheckByTypeResultListAndAuditAlarm]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=HANDLE HandleId
-3=[PUNICODE_STRING] ObjectTypeName
-4=[PUNICODE_STRING] ObjectName
-5=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-6=[PSID] PrincipalSelfSid
+3=PUNICODE_STRING ObjectTypeName
+4=PUNICODE_STRING ObjectName
+5=PSECURITY_DESCRIPTOR SecurityDescriptor
+6=PSID PrincipalSelfSid
 7=[ACCESS_MASK] DesiredAccess
 8=[AUDIT_EVENT_TYPE] AuditType
 9=ULONG Flags
-10=[POBJECT_TYPE_LIST] ObjectTypeList
+10=POBJECT_TYPE_LIST ObjectTypeList
 11=ULONG ObjectTypeLength
-12=[PGENERIC_MAPPING] GenericMapping
+12=PGENERIC_MAPPING GenericMapping
 13=BOOLEAN ObjectCreation
-14=[PACCESS_MASK] GrantedAccess
-15=[PNTSTATUS] AccessStatus
+14=PACCESS_MASK GrantedAccess
+15=PNTSTATUS AccessStatus
 16=PBOOLEAN GenerateOnClose
 ParamCount=16
 Header=ntstatus.h.api;security.h.api;windows.h.api;
 @=NtAccessCheckByTypeResultListAndAuditAlarm
 [NtAccessCheckByTypeResultListAndAuditAlarmByHandle]
-1=[PUNICODE_STRING] SubsystemName
+1=PUNICODE_STRING SubsystemName
 2=HANDLE HandleId
 3=HANDLE ClientToken
-4=[PUNICODE_STRING] ObjectTypeName
-5=[PUNICODE_STRING] ObjectName
-6=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-7=[PSID] PrincipalSelfSid
+4=PUNICODE_STRING ObjectTypeName
+5=PUNICODE_STRING ObjectName
+6=PSECURITY_DESCRIPTOR SecurityDescriptor
+7=PSID PrincipalSelfSid
 8=[ACCESS_MASK] DesiredAccess
 9=[AUDIT_EVENT_TYPE] AuditType
 10=ULONG Flags
-11=[POBJECT_TYPE_LIST] ObjectTypeList
+11=POBJECT_TYPE_LIST ObjectTypeList
 12=ULONG ObjectTypeLength
-13=[PGENERIC_MAPPING] GenericMapping
+13=PGENERIC_MAPPING GenericMapping
 14=BOOLEAN ObjectCreation
-15=[PACCESS_MASK] GrantedAccess
-16=[PNTSTATUS] AccessStatus
+15=PACCESS_MASK GrantedAccess
+16=PNTSTATUS AccessStatus
 17=PBOOLEAN GenerateOnClose
 ParamCount=17
 Header=ntstatus.h.api;security.h.api;windows.h.api;
@@ -1240,14 +1240,14 @@ Header=security.h.api;windows.h.api;
 [NtImpersonateThread]
 1=[ThreadHandle] ThreadHandle
 2=HANDLE ThreadToImpersonate
-3=[PSECURITY_QUALITY_OF_SERVICE] SecurityQualityOfService
+3=PSECURITY_QUALITY_OF_SERVICE SecurityQualityOfService
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=NtImpersonateThread
 [NtCreateProcess]
-1=[PHANDLE] ProcessHandle
+1=PHANDLE ProcessHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=HANDLE ParentProcess
 5=BOOLEAN InheritObjectTable
 6=HANDLE SectionHandle
@@ -1257,9 +1257,9 @@ ParamCount=8
 Header=native.h.api;windows.h.api;
 @=NtCreateProcess
 [NtCreateProcessEx]
-1=[PHANDLE] ProcessHandle
+1=PHANDLE ProcessHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=HANDLE ParentProcess
 5=ULONG Flags
 6=HANDLE SectionHandle
@@ -1270,36 +1270,36 @@ ParamCount=9
 Header=native.h.api;windows.h.api;
 @=NtCreateProcessEx
 [NtCreateThread]
-1=[PHANDLE] ThreadHandle
+1=PHANDLE ThreadHandle
 2=[THREAD_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=[ProcessHandle] ProcessHandle
-5=[PCLIENT_ID] ClientId
-6=[PCONTEXT] ThreadContext
-7=[PINITIAL_TEB] UserStack
+5=PCLIENT_ID ClientId
+6=PCONTEXT ThreadContext
+7=PINITIAL_TEB UserStack
 8=BOOLEAN CreateSuspended
 ParamCount=8
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateThread
 [NtCreateThreadEx]
-1=[PHANDLE] ThreadHandle
+1=PHANDLE ThreadHandle
 2=[THREAD_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=[ProcessHandle] ProcessHandle
-5=[PTHREAD_START_ROUTINE] StartAddress
+5=PTHREAD_START_ROUTINE StartAddress
 6=PVOID Parameter
 7=BOOLEAN CreateSuspended
 8=ULONG StackZeroBits
 9=SIZE_T StackCommit
 10=SIZE_T StackReserve
-11=[PTHREADEX_DATA] pThreadExData
+11=PTHREADEX_DATA pThreadExData
 ParamCount=11
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateThreadEx
 [NtOpenJobObject]
-1=[PHANDLE] JobHandle
+1=PHANDLE JobHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtOpenJobObject
@@ -1310,15 +1310,15 @@ ParamCount=2
 Header=windows.h.api;
 @=NtAssignProcessToJobObject
 [NtCreateJobObject]
-1=[PHANDLE] JobHandle
+1=PHANDLE JobHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtCreateJobObject
 [NtCreateJobSet]
 1=ULONG NumJob
-2=[PJOB_SET_ARRAY] UserJobSet
+2=PJOB_SET_ARRAY UserJobSet
 3=ULONG Flags
 ParamCount=3
 Header=ntdll.h.api;
@@ -1404,18 +1404,18 @@ ParamCount=2
 Header=windows.h.api;
 @=NtIsProcessInJob
 [NtOpenProcess]
-1=[PHANDLE] ProcessHandle
+1=PHANDLE ProcessHandle
 2=[PROCESS_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PCLIENT_ID] ClientId
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PCLIENT_ID ClientId
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=NtOpenProcess
 [NtOpenThread]
-1=[PHANDLE] ThreadHandle
+1=PHANDLE ThreadHandle
 2=[THREAD_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PCLIENT_ID] ClientId
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PCLIENT_ID ClientId
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=NtOpenThread
@@ -1432,7 +1432,7 @@ Header=windows.h.api;
 @=NtResumeProcess
 [NtDelayExecution]
 1=BOOLEAN Alertable
-2=[PLARGE_INTEGER] DelayInterval
+2=PLARGE_INTEGER DelayInterval
 ParamCount=2
 Header=windows.h.api;
 @=NtDelayExecution
@@ -1452,9 +1452,9 @@ Header=windows.h.api;
 @=NtAlertThread
 [NtQueueApcThread]
 1=[ThreadHandle] ThreadHandle
-2=[PIO_APC_ROUTINE] ApcRoutine
+2=PIO_APC_ROUTINE ApcRoutine
 3=PVOID ApcRoutineContext
-4=[PIO_STATUS_BLOCK] ApcStatusBlock
+4=PIO_STATUS_BLOCK ApcStatusBlock
 5=ULONG ApcReserved
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
@@ -1475,15 +1475,15 @@ ParamCount=0
 ParamCount=0
 @=NtTestAlert
 [NtCreateUserProcess]
-1=[PHANDLE] ProcessHandle
-2=[PHANDLE] ThreadHandle
+1=PHANDLE ProcessHandle
+2=PHANDLE ThreadHandle
 3=[PROCESS_ACCESS_MASK] ProcessDesiredAccess
 4=[THREAD_ACCESS_MASK] ThreadDesiredAccess
-5=[POBJECT_ATTRIBUTES] ProcessObjectAttributes
-6=[POBJECT_ATTRIBUTES] ThreadObjectAttributes
+5=POBJECT_ATTRIBUTES ProcessObjectAttributes
+6=POBJECT_ATTRIBUTES ThreadObjectAttributes
 7=ULONG CreateProcessFlags
 8=ULONG CreateThreadFlags
-9=[PRTL_USER_PROCESS_PARAMETERS] ProcessParameters
+9=PRTL_USER_PROCESS_PARAMETERS ProcessParameters
 10=PVOID Unknown
 11=PVOID AttributeList
 ParamCount=11
@@ -1496,7 +1496,7 @@ Header=ntdll.h.api;native.h.api;windows.h.api;
 ParamCount=3
 @=NtEnumerateSystemEnvironmentValuesEx
 [NtQuerySystemEnvironmentValue]
-1=[PUNICODE_STRING] Name
+1=PUNICODE_STRING Name
 2=PWSTR Value
 3=ULONG Length
 4=PULONG ReturnLength
@@ -1504,8 +1504,8 @@ ParamCount=4
 Header=windows.h.api;
 @=NtQuerySystemEnvironmentValue
 [NtQuerySystemEnvironmentValueEx]
-1=[PUNICODE_STRING] VariableName
-2=[LPGUID] VendorGuid
+1=PUNICODE_STRING VariableName
+2=LPGUID VendorGuid
 3=PVOID Value
 4=PULONG ReturnLength
 5=PULONG Attributes
@@ -1513,14 +1513,14 @@ ParamCount=5
 Header=windows.h.api;
 @=NtQuerySystemEnvironmentValueEx
 [NtSetSystemEnvironmentValue]
-1=[PUNICODE_STRING] VariableName
-2=[PUNICODE_STRING] Value
+1=PUNICODE_STRING VariableName
+2=PUNICODE_STRING Value
 ParamCount=2
 Header=windows.h.api;
 @=NtSetSystemEnvironmentValue
 [NtSetSystemEnvironmentValueEx]
-1=[PUNICODE_STRING] VariableName
-2=[LPGUID] VendorGuid
+1=PUNICODE_STRING VariableName
+2=LPGUID VendorGuid
 ParamCount=2
 Header=windows.h.api;
 @=NtSetSystemEnvironmentValueEx
@@ -1538,7 +1538,7 @@ Header=native.h.api;windows.h.api;
 1=[ProcessHandle] ProcessHandle
 2=PVOID* BaseAddress
 3=PSIZE_T RegionSize
-4=[PIO_STATUS_BLOCK] IoStatus
+4=PIO_STATUS_BLOCK IoStatus
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=NtFlushVirtualMemory
@@ -1649,16 +1649,16 @@ Header=windows.h.api;
 @=NtResetWriteWatch
 [NtCancelIoFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtCancelIoFile
 [NtCreateFile]
-1=[PHANDLE] FileHandle
+1=PHANDLE FileHandle
 2=[FILE_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PIO_STATUS_BLOCK] IoStatusBlock
-5=[PLARGE_INTEGER] AllocationSize
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PIO_STATUS_BLOCK IoStatusBlock
+5=PLARGE_INTEGER AllocationSize
 6=[FILE_ATTRIBUTES_ULONG] FileAttributes
 7=[FILE_SHARE_MODE] ShareAccess
 8=[NtCreateDisposition] CreateDisposition
@@ -1669,27 +1669,27 @@ ParamCount=11
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateFile
 [NtCreateIoCompletion]
-1=[PHANDLE] IoCompletionHandle
+1=PHANDLE IoCompletionHandle
 2=[IO_COMPLETION_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG NumberOfConcurrentThreads
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateIoCompletion
 [NtOpenFile]
-1=[PHANDLE] FileHandle
+1=PHANDLE FileHandle
 2=[FILE_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PIO_STATUS_BLOCK] IoStatusBlock
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PIO_STATUS_BLOCK IoStatusBlock
 5=[FILE_SHARE_MODE] ShareAccess
 6=[NtCreateOptions] OpenOptions
 ParamCount=6
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenFile
 [NtOpenIoCompletion]
-1=[PHANDLE] CompetionPort
+1=PHANDLE CompetionPort
 2=[IO_COMPLETION_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenIoCompletion
@@ -1706,8 +1706,8 @@ Header=ntdll.h.api;windows.h.api;
 1=HANDLE IoCompletionHandle
 2=PVOID* CompletionKey
 3=PVOID* CompletionContext
-4=[PIO_STATUS_BLOCK] IoStatusBlock
-5=[PLARGE_INTEGER] Timeout
+4=PIO_STATUS_BLOCK IoStatusBlock
+5=PLARGE_INTEGER Timeout
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtRemoveIoCompletion
@@ -1721,41 +1721,41 @@ ParamCount=5
 Header=ntstatus.h.api;windows.h.api;
 @=NtSetIoCompletion
 [NtCreateSymbolicLinkObject]
-1=[PHANDLE] SymbolicLinkHandle
+1=PHANDLE SymbolicLinkHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PUNICODE_STRING] Name
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PUNICODE_STRING Name
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=NtCreateSymbolicLinkObject
 [NtOpenSymbolicLinkObject]
-1=[PHANDLE] SymbolicLinkHandle
+1=PHANDLE SymbolicLinkHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=native.h.api;windows.h.api;
 @=NtOpenSymbolicLinkObject
 [NtQuerySymbolicLinkObject]
 1=HANDLE SymLinkObjHandle
-2=[PUNICODE_STRING] LinkTarget
+2=PUNICODE_STRING LinkTarget
 3=PULONG DataWritten
 ParamCount=3
 Header=windows.h.api;
 @=NtQuerySymbolicLinkObject
 [NtDeleteFile]
-1=[POBJECT_ATTRIBUTES] ObjectAttributes
+1=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=1
 Header=native.h.api;
 @=NtDeleteFile
 [NtQueryFullAttributesFile]
-1=[POBJECT_ATTRIBUTES] ObjectAttributes
-2=[PFILE_NETWORK_OPEN_INFORMATION] FileInformation
+1=POBJECT_ATTRIBUTES ObjectAttributes
+2=PFILE_NETWORK_OPEN_INFORMATION FileInformation
 ParamCount=2
 Header=ntdll.h.api;native.h.api;
 @=NtQueryFullAttributesFile
 [NtQueryInformationFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID FileInformation
 4=ULONG Length
 5=[FILE_INFORMATION_CLASS] FileInformationClass
@@ -1765,11 +1765,11 @@ Header=ntdll.h.api;windows.h.api;
 [NtLockFile]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
-6=[PLARGE_INTEGER] ByteOffset
-7=[PLARGE_INTEGER] Length
+5=PIO_STATUS_BLOCK IoStatusBlock
+6=PLARGE_INTEGER ByteOffset
+7=PLARGE_INTEGER Length
 8=ULONG Key
 9=BOOLEAN FailImmediatedly
 10=BOOLEAN ExclusiveLock
@@ -1778,9 +1778,9 @@ Header=ntdll.h.api;windows.h.api;
 @=NtLockFile
 [NtUnlockFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
-3=[PLARGE_INTEGER] ByteOffset
-4=[PLARGE_INTEGER] Lenght
+2=PIO_STATUS_BLOCK IoStatusBlock
+3=PLARGE_INTEGER ByteOffset
+4=PLARGE_INTEGER Lenght
 5=ULONG Key
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
@@ -1788,12 +1788,12 @@ Header=ntdll.h.api;windows.h.api;
 [NtWriteFile]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=PVOID Buffer
 7=ULONG Length
-8=[PLARGE_INTEGER] ByteOffset
+8=PLARGE_INTEGER ByteOffset
 9=PULONG Key
 ParamCount=9
 Header=ntdll.h.api;windows.h.api;
@@ -1801,12 +1801,12 @@ Header=ntdll.h.api;windows.h.api;
 [NtWriteFileGather]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=FILE_SEGMENT_ELEMENT[] BufferDescription
 7=ULONG BufferLength
-8=[PLARGE_INTEGER] ByteOffset
+8=PLARGE_INTEGER ByteOffset
 9=PULONG Key
 ParamCount=9
 Header=ntdll.h.api;windows.h.api;
@@ -1814,12 +1814,12 @@ Header=ntdll.h.api;windows.h.api;
 [NtReadFile]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] UserApcRoutine
+3=PIO_APC_ROUTINE UserApcRoutine
 4=PVOID UserApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=PVOID Buffer
 7=ULONG BufferLength
-8=[PLARGE_INTEGER] ByteOffset
+8=PLARGE_INTEGER ByteOffset
 9=PULONG Key
 ParamCount=9
 Header=ntdll.h.api;windows.h.api;
@@ -1827,32 +1827,32 @@ Header=ntdll.h.api;windows.h.api;
 [NtReadFileScatter]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] UserApcRoutine
+3=PIO_APC_ROUTINE UserApcRoutine
 4=PVOID UserApcContext
-5=[PIO_STATUS_BLOCK] UserIoStatusBlock
+5=PIO_STATUS_BLOCK UserIoStatusBlock
 6=FILE_SEGMENT_ELEMENT[] BufferDescription
 7=ULONG BufferLength
-8=[PLARGE_INTEGER] ByteOffset
+8=PLARGE_INTEGER ByteOffset
 9=PULONG Key
 ParamCount=9
 Header=ntdll.h.api;windows.h.api;
 @=NtReadFileScatter
 [NtFlushBuffersFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtFlushBuffersFile
 [NtFlushBuffersFileEx]
 1=HANDLE FileHandle
 2=[FLUSH_FLAGS] Flags
-3=[PIO_STATUS_BLOCK] IoStatusBlock
+3=PIO_STATUS_BLOCK IoStatusBlock
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=NtFlushBuffersFileEx
 [NtSetInformationFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID FileInformation
 4=ULONG Length
 5=[FILE_INFORMATION_CLASS] FileInformationClass
@@ -1860,14 +1860,14 @@ ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtSetInformationFile
 [NtQueryAttributesFile]
-1=[POBJECT_ATTRIBUTES] ObjectAttributes
-2=[PFILE_BASIC_INFORMATION] FileInformation
+1=POBJECT_ATTRIBUTES ObjectAttributes
+2=PFILE_BASIC_INFORMATION FileInformation
 ParamCount=2
 Header=ntdll.h.api;native.h.api;
 @=NtQueryAttributesFile
 [NtQueryEaFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID Buffer
 4=ULONG Length
 5=BOOLEAN ReturnSingleEntry
@@ -1880,7 +1880,7 @@ Header=ntdll.h.api;windows.h.api;
 @=NtQueryEaFile
 [NtSetEaFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID EaBuffer
 4=ULONG EaBufferSize
 ParamCount=4
@@ -1888,52 +1888,52 @@ Header=ntdll.h.api;windows.h.api;
 @=NtSetEaFile
 [NtQueryQuotaInformationFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID Buffer
 4=ULONG Length
 5=BOOLEAN ReturnSingleEntry
 6=PVOID SidList
 7=ULONG SidListLength
-8=[PSID] StartSid
+8=PSID StartSid
 9=BOOLEAN RestartScan
 ParamCount=9
 Header=ntdll.h.api;windows.h.api;
 @=NtQueryQuotaInformationFile
 [NtSetQuotaInformationFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID Buffer
 4=ULONG BufferLength
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=NtSetQuotaInformationFile
 [NtCreatePagingFile]
-1=[PUNICODE_STRING] FileName
-2=[PLARGE_INTEGER] InitialSize
-3=[PLARGE_INTEGER] MaxiumSize
+1=PUNICODE_STRING FileName
+2=PLARGE_INTEGER InitialSize
+3=PLARGE_INTEGER MaxiumSize
 4=ULONG Reserved
 ParamCount=4
 Header=windows.h.api;
 @=NtCreatePagingFile
 [NtTranslateFilePath]
-1=[PFILE_PATH] InputFilePath
+1=PFILE_PATH InputFilePath
 2=ULONG OutputType
-3=[PFILE_PATH] OutputFilePath
+3=PFILE_PATH OutputFilePath
 4=ULONG OutputFilePathLength
 ParamCount=4
 Header=ntdll.h.api;
 @=NtTranslateFilePath
 [NtCreateDirectoryObject]
-1=[PHANDLE] DirectoryHandle
+1=PHANDLE DirectoryHandle
 2=[DIRECTORY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateDirectoryObject
 [NtOpenDirectoryObject]
-1=[PHANDLE] FileHandle
+1=PHANDLE FileHandle
 2=[DIRECTORY_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenDirectoryObject
@@ -1951,9 +1951,9 @@ Header=windows.h.api;
 [NtNotifyChangeDirectoryFile]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=PVOID Buffer
 7=ULONG BufferSize
 8=[FILE_NOTIFY_CHANGE_FLAGS] CompletionFilter
@@ -1964,14 +1964,14 @@ Header=ntdll.h.api;windows.h.api;
 [NtQueryDirectoryFile]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=PVOID FileInformation
 7=ULONG Length
 8=[FILE_INFORMATION_CLASS] FileInformationClass
 9=BOOLEAN ReturnSingleEntry
-10=[PUNICODE_STRING] FileName
+10=PUNICODE_STRING FileName
 11=BOOLEAN RestartScan
 ParamCount=11
 Header=ntdll.h.api;windows.h.api;
@@ -1979,21 +1979,21 @@ Header=ntdll.h.api;windows.h.api;
 [NtQueryOleDirectoryFile]
 1=HANDLE FileHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=PVOID FileInformation
 7=ULONG Length
 8=[FILE_INFORMATION_CLASS] FileInformationClass
 9=BOOLEAN ReturnSingleEntry
-10=[PUNICODE_STRING] FileMask
+10=PUNICODE_STRING FileMask
 11=BOOLEAN RestartScan
 ParamCount=11
 Header=ntdll.h.api;windows.h.api;
 @=NtQueryOleDirectoryFile
 [NtQueryVolumeInformationFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID FsInformation
 4=ULONG Length
 5=[FS_INFORMATION_CLASS] FsInformationClass
@@ -2002,7 +2002,7 @@ Header=ntdll.h.api;windows.h.api;
 @=NtQueryVolumeInformationFile
 [NtSetVolumeInformationFile]
 1=HANDLE FileHandle
-2=[PIO_STATUS_BLOCK] IoStatusBlock
+2=PIO_STATUS_BLOCK IoStatusBlock
 3=PVOID FsInformation
 4=ULONG Length
 5=[FS_INFORMATION_CLASS] FsInformationClass
@@ -2010,10 +2010,10 @@ ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtSetVolumeInformationFile
 [NtCreateSection]
-1=[PHANDLE] SectionHandle
+1=PHANDLE SectionHandle
 2=[SECTION_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PLARGE_INTEGER] MaximumSize
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PLARGE_INTEGER MaximumSize
 5=[NtProtectionFlags] SectionPageProtection
 6=[SECTION_ALLOCATION] AllocationAttributes
 7=HANDLE FileHandle
@@ -2022,7 +2022,7 @@ Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateSection
 [NtExtendSection]
 1=HANDLE SectionHandle
-2=[PLARGE_INTEGER] NewMaximumSize
+2=PLARGE_INTEGER NewMaximumSize
 ParamCount=2
 Header=windows.h.api;
 @=NtExtendSection
@@ -2032,7 +2032,7 @@ Header=windows.h.api;
 3=PVOID* BaseAddress
 4=ULONG_PTR ZeroBits
 5=SIZE_T CommitSize
-6=[PLARGE_INTEGER] SectionOffset
+6=PLARGE_INTEGER SectionOffset
 7=PSIZE_T ViewSize
 8=[SECTION_INHERIT] InheritDisposition
 9=[MemoryAllocationFlags] AllocationType
@@ -2041,9 +2041,9 @@ ParamCount=10
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtMapViewOfSection
 [NtOpenSection]
-1=[PHANDLE] SectionHandle
+1=PHANDLE SectionHandle
 2=[SECTION_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtOpenSection
@@ -2063,12 +2063,12 @@ ParamCount=2
 Header=windows.h.api;
 @=NtUnmapViewOfSection
 [NtAcceptConnectPort]
-1=[PHANDLE] PortHandle
+1=PHANDLE PortHandle
 2=PVOID PortContext
-3=[PPORT_MESSAGE] ConnectionRequest
+3=PPORT_MESSAGE ConnectionRequest
 4=BOOLEAN AcceptConnection
-5=[PPORT_VIEW] ServerView
-6=[PREMOTE_PORT_VIEW] ClientView
+5=PPORT_VIEW ServerView
+6=PREMOTE_PORT_VIEW ClientView
 ParamCount=6
 Header=ntdll.h.api;windows.h.api;
 @=NtAcceptConnectPort
@@ -2078,11 +2078,11 @@ ParamCount=1
 Header=windows.h.api;
 @=NtCompleteConnectPort
 [NtConnectPort]
-1=[PHANDLE] PortHandle
-2=[PUNICODE_STRING] PortName
-3=[PSECURITY_QUALITY_OF_SERVICE] SecurityQos
-4=[PPORT_VIEW] ClientView
-5=[PREMOTE_PORT_VIEW] ServerView
+1=PHANDLE PortHandle
+2=PUNICODE_STRING PortName
+3=PSECURITY_QUALITY_OF_SERVICE SecurityQos
+4=PPORT_VIEW ClientView
+5=PREMOTE_PORT_VIEW ServerView
 6=PULONG MaxMessageLength
 7=PVOID ConnectionInformation
 8=PULONG ConnectionInformationLength
@@ -2090,8 +2090,8 @@ ParamCount=8
 Header=ntdll.h.api;security.h.api;windows.h.api;
 @=NtConnectPort
 [NtCreatePort]
-1=[PHANDLE] PortHandle
-2=[POBJECT_ATTRIBUTES] ObjectAttributes
+1=PHANDLE PortHandle
+2=POBJECT_ATTRIBUTES ObjectAttributes
 3=ULONG MaxConnectionInfoLength
 4=ULONG MaxMessageLength
 5=ULONG MaxPoolUsage
@@ -2099,8 +2099,8 @@ ParamCount=5
 Header=native.h.api;windows.h.api;
 @=NtCreatePort
 [NtCreateWaitablePort]
-1=[PHANDLE] PortHandle
-2=[POBJECT_ATTRIBUTES] ObjectAttributes
+1=PHANDLE PortHandle
+2=POBJECT_ATTRIBUTES ObjectAttributes
 3=ULONG MaxConnectInfoLength
 4=ULONG MaxDataLength
 5=ULONG NPMessageQueueSize
@@ -2109,13 +2109,13 @@ Header=native.h.api;windows.h.api;
 @=NtCreateWaitablePort
 [NtImpersonateClientOfPort]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] ClientMessage
+2=PPORT_MESSAGE ClientMessage
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtImpersonateClientOfPort
 [NtListenPort]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] ConnectionRequest
+2=PPORT_MESSAGE ConnectionRequest
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtListenPort
@@ -2133,7 +2133,7 @@ ParamCount=0
 @=NtQueryPortInformationProcess
 [NtReadRequestData]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] Message
+2=PPORT_MESSAGE Message
 3=ULONG Index
 4=PVOID Buffer
 5=ULONG BufferLength
@@ -2143,53 +2143,53 @@ Header=ntdll.h.api;windows.h.api;
 @=NtReadRequestData
 [NtReplyPort]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] LpcReply
+2=PPORT_MESSAGE LpcReply
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtReplyPort
 [NtReplyWaitReceivePort]
 1=HANDLE PortHandle
 2=PVOID* PortContext
-3=[PPORT_MESSAGE] ReplyMessage
-4=[PPORT_MESSAGE] ReceiveMessage
+3=PPORT_MESSAGE ReplyMessage
+4=PPORT_MESSAGE ReceiveMessage
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=NtReplyWaitReceivePort
 [NtReplyWaitReceivePortEx]
 1=HANDLE PortHandle
 2=PVOID* PortContext
-3=[PPORT_MESSAGE] ReplyMessage
-4=[PPORT_MESSAGE] ReceiveMessage
-5=[PLARGE_INTEGER] Timeout
+3=PPORT_MESSAGE ReplyMessage
+4=PPORT_MESSAGE ReceiveMessage
+5=PLARGE_INTEGER Timeout
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtReplyWaitReceivePortEx
 [NtReplyWaitReplyPort]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] ReplyMessage
+2=PPORT_MESSAGE ReplyMessage
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtReplyWaitReplyPort
 [NtRequestPort]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] LpcMessage
+2=PPORT_MESSAGE LpcMessage
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=NtRequestPort
 [NtRequestWaitReplyPort]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] LpcReply
-3=[PPORT_MESSAGE] LpcRequest
+2=PPORT_MESSAGE LpcReply
+3=PPORT_MESSAGE LpcRequest
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=NtRequestWaitReplyPort
 [NtSecureConnectPort]
-1=[PHANDLE] PortHandle
-2=[PUNICODE_STRING] PortName
-3=[PSECURITY_QUALITY_OF_SERVICE] SecurityQos
-4=[PPORT_VIEW] ClientView
-5=[PSID] Sid
-6=[PREMOTE_PORT_VIEW] ServerView
+1=PHANDLE PortHandle
+2=PUNICODE_STRING PortName
+3=PSECURITY_QUALITY_OF_SERVICE SecurityQos
+4=PPORT_VIEW ClientView
+5=PSID Sid
+6=PREMOTE_PORT_VIEW ServerView
 7=PULONG MaxMessageLength
 8=PVOID ConnectionInformation
 9=PULONG ConnectionInformationLength
@@ -2198,7 +2198,7 @@ Header=ntdll.h.api;security.h.api;windows.h.api;
 @=NtSecureConnectPort
 [NtWriteRequestData]
 1=HANDLE PortHandle
-2=[PPORT_MESSAGE] Message
+2=PPORT_MESSAGE Message
 3=ULONG Index
 4=PVOID Buffer
 5=ULONG BufferLength
@@ -2217,13 +2217,13 @@ ParamCount=1
 Header=windows.h.api;
 @=NtRegisterThreadTerminatePort
 [NtAddBootEntry]
-1=[PBOOT_ENTRY] BootEntry
+1=PBOOT_ENTRY BootEntry
 2=ULONG Id
 ParamCount=2
 Header=ntdll.h.api;
 @=NtAddBootEntry
 [NtAddDriverEntry]
-1=[PEFI_DRIVER_ENTRY] BootEntry
+1=PEFI_DRIVER_ENTRY BootEntry
 2=ULONG Id
 ParamCount=2
 Header=ntdll.h.api;
@@ -2247,17 +2247,17 @@ ParamCount=2
 ParamCount=2
 @=NtEnumerateDriverEntries
 [NtLoadDriver]
-1=[PUNICODE_STRING] DriverServiceName
+1=PUNICODE_STRING DriverServiceName
 ParamCount=1
 Header=windows.h.api;
 @=NtLoadDriver
 [NtModifyBootEntry]
-1=[PBOOT_ENTRY] BootEntry
+1=PBOOT_ENTRY BootEntry
 ParamCount=1
 Header=ntdll.h.api;
 @=NtModifyBootEntry
 [NtModifyDriverEntry]
-1=[PEFI_DRIVER_ENTRY] DriverEntry
+1=PEFI_DRIVER_ENTRY DriverEntry
 ParamCount=1
 Header=ntdll.h.api;
 @=NtModifyDriverEntry
@@ -2272,7 +2272,7 @@ ParamCount=2
 ParamCount=2
 @=NtQueryBootEntryOrder
 [NtQueryBootOptions]
-1=[PBOOT_OPTIONS] BootOptions
+1=PBOOT_OPTIONS BootOptions
 2=PULONG BootOptionsLength
 ParamCount=2
 Header=ntdll.h.api;
@@ -2283,7 +2283,7 @@ Header=ntdll.h.api;
 ParamCount=2
 @=NtSetBootEntryOrder
 [NtSetBootOptions]
-1=[PBOOT_OPTIONS] BootOptions
+1=PBOOT_OPTIONS BootOptions
 2=ULONG FieldsToChange
 ParamCount=2
 Header=ntdll.h.api;
@@ -2294,12 +2294,12 @@ Header=ntdll.h.api;
 ParamCount=2
 @=NtSetDriverEntryOrder
 [NtUnloadDriver]
-1=[PUNICODE_STRING] DriverServiceName
+1=PUNICODE_STRING DriverServiceName
 ParamCount=1
 Header=windows.h.api;
 @=NtUnloadDriver
 [NtCreateProfile]
-1=[PHANDLE] ProfileHandle
+1=PHANDLE ProfileHandle
 2=HANDLE Process
 3=PVOID ImageBase
 4=ULONG ImageSize
@@ -2307,7 +2307,7 @@ Header=windows.h.api;
 6=PVOID Buffer
 7=ULONG BufferSize
 8=[KPROFILE_SOURCE] ProfileSource
-9=[KAFFINITY] Affinity
+9=KAFFINITY Affinity
 ParamCount=9
 Header=ntdll.h.api;windows.h.api;
 @=NtCreateProfile
@@ -2341,7 +2341,7 @@ Header=windows.h.api;
 @=NtDebugActiveProcess
 [NtDebugContinue]
 1=HANDLE DebugObject
-2=[PCLIENT_ID] AppClientId
+2=PCLIENT_ID AppClientId
 3=[NTSTATUS] ContinueStatus
 ParamCount=3
 Header=native.h.api;ntstatus.h.api;windows.h.api;
@@ -2349,8 +2349,8 @@ Header=native.h.api;ntstatus.h.api;windows.h.api;
 [NtWaitForDebugEvent]
 1=HANDLE DebugObject
 2=BOOLEAN Alertable
-3=[PLARGE_INTEGER] Timeout
-4=[PDBGUI_WAIT_STATE_CHANGE] StateChange
+3=PLARGE_INTEGER Timeout
+4=PDBGUI_WAIT_STATE_CHANGE StateChange
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=NtWaitForDebugEvent
@@ -2370,27 +2370,27 @@ ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtSetInformationDebugObject
 [NtCreateDebugObject]
-1=[PHANDLE] DebugHandle
+1=PHANDLE DebugHandle
 2=[DEBUG_OBJECT_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=BOOLEAN KillProcessOnExit
 ParamCount=4
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateDebugObject
 [NtGetContextThread]
 1=[ThreadHandle] ThreadHandle
-2=[PCONTEXT] pContext
+2=PCONTEXT pContext
 ParamCount=2
 Header=windows.h.api;
 @=NtGetContextThread
 [NtSetContextThread]
 1=[ThreadHandle] ThreadHandle
-2=[PCONTEXT] Context
+2=PCONTEXT Context
 ParamCount=2
 Header=windows.h.api;
 @=NtSetContextThread
 [NtContinue]
-1=[PCONTEXT] ThreadContext
+1=PCONTEXT ThreadContext
 2=BOOLEAN RaiseAlert
 ParamCount=2
 Header=windows.h.api;
@@ -2416,13 +2416,13 @@ ParamCount=6
 Header=ntdll.h.api;
 @=NtSystemDebugControl
 [NtQuerySystemTime]
-1=[PLARGE_INTEGER] SystemTime
+1=PLARGE_INTEGER SystemTime
 ParamCount=1
 Header=windows.h.api;
 @=NtQuerySystemTime
 [NtSetSystemTime]
-1=[PLARGE_INTEGER] SystemTime
-2=[PLARGE_INTEGER] PreviousTime
+1=PLARGE_INTEGER SystemTime
+2=PLARGE_INTEGER PreviousTime
 ParamCount=2
 Header=windows.h.api;
 @=NtSetSystemTime
@@ -2430,12 +2430,12 @@ Header=windows.h.api;
 ParamCount=0
 @=NtGetTickCount
 [NtAllocateLocallyUniqueId]
-1=[LUID*] LocallyUniqueId
+1=LUID* LocallyUniqueId
 ParamCount=1
 Header=windows.h.api;
 @=NtAllocateLocallyUniqueId
 [NtAllocateUuids]
-1=[PULARGE_INTEGER] Time
+1=PULARGE_INTEGER Time
 2=PULONG Range
 3=PULONG Sequence
 4=PUCHAR Seed
@@ -2490,7 +2490,7 @@ ParamCount=3
 Header=power.h.api;powrprof.h.api;
 @=NtSetSystemPowerState
 [NtDisplayString]
-1=[PUNICODE_STRING] DisplayString
+1=PUNICODE_STRING DisplayString
 ParamCount=1
 Header=windows.h.api;
 @=NtDisplayString
@@ -2503,8 +2503,8 @@ ParamCount=4
 Header=power.h.api;powrprof.h.api;
 @=NtInitiatePowerAction
 [NtQueryPerformanceCounter]
-1=[PLARGE_INTEGER] PerformanceCounter
-2=[PLARGE_INTEGER] PerformanceFrequency
+1=PLARGE_INTEGER PerformanceCounter
+2=PLARGE_INTEGER PerformanceFrequency
 ParamCount=2
 Header=windows.h.api;
 @=NtQueryPerformanceCounter
@@ -2515,22 +2515,22 @@ Header=windows.h.api;
 ParamCount=3
 @=NtQueryTimerResolution
 [NtCreateMailslotFile]
-1=[PHANDLE] MailSlotFileHandle
+1=PHANDLE MailSlotFileHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PIO_STATUS_BLOCK] IoStatusBlock
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PIO_STATUS_BLOCK IoStatusBlock
 5=ULONG FileAttributes
 6=[FILE_SHARE_MODE] ShareAccess
 7=ULONG MaxMessageSize
-8=[PLARGE_INTEGER] TimeOut
+8=PLARGE_INTEGER TimeOut
 ParamCount=8
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateMailslotFile
 [NtCreateNamedPipeFile]
-1=[PHANDLE] NamedPipeFileHandle
+1=PHANDLE NamedPipeFileHandle
 2=[PIPE_ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PIO_STATUS_BLOCK] IoStatusBlock
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PIO_STATUS_BLOCK IoStatusBlock
 5=[FILE_SHARE_MODE] ShareAccess
 6=[NtCreateDisposition] CreateDisposition
 7=[NtCreateOptions] CreateOptions
@@ -2540,16 +2540,16 @@ Header=ntdll.h.api;native.h.api;windows.h.api;
 11=ULONG MaxInstances
 12=ULONG InBufferSize
 13=ULONG OutBufferSize
-14=[PLARGE_INTEGER] DefaultTimeOut
+14=PLARGE_INTEGER DefaultTimeOut
 ParamCount=14
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=NtCreateNamedPipeFile
 [NtDeviceIoControlFile]
 1=HANDLE DeviceHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] UserApcRoutine
+3=PIO_APC_ROUTINE UserApcRoutine
 4=PVOID UserApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=[IOCTL] IoControlCode
 7=PVOID InputBuffer
 8=ULONG InputBufferSize
@@ -2561,9 +2561,9 @@ Header=ntdll.h.api;ioctl.h.api;windows.h.api;
 [NtFsControlFile]
 1=HANDLE DeviceHandle
 2=HANDLE Event
-3=[PIO_APC_ROUTINE] ApcRoutine
+3=PIO_APC_ROUTINE ApcRoutine
 4=PVOID ApcContext
-5=[PIO_STATUS_BLOCK] IoStatusBlock
+5=PIO_STATUS_BLOCK IoStatusBlock
 6=ULONG IoControlCode
 7=PVOID InputBuffer
 8=ULONG InputBufferSize
@@ -2582,7 +2582,7 @@ Header=ntdll.h.api;
 [NtGetPlugPlayEvent]
 1=ULONG Reserved1
 2=ULONG Reserved2
-3=[PPLUGPLAY_EVENT_BLOCK] Buffer
+3=PPLUGPLAY_EVENT_BLOCK Buffer
 4=ULONG BufferSize
 ParamCount=4
 Header=ntdll.h.api;
@@ -2632,7 +2632,7 @@ Header=windows.h.api;
 1=[ProcessHandle] SourceProcessHandle
 2=HANDLE SourceHandle
 3=[ProcessHandle] TargetProcessHandle
-4=[PHANDLE] TargetHandle
+4=PHANDLE TargetHandle
 5=[ACCESS_MASK] DesiredAccess
 6=ULONG HandleAttributes
 7=ULONG Options
@@ -2661,7 +2661,7 @@ Header=ntdll.h.api;windows.h.api;
 [NtQuerySecurityObject]
 1=HANDLE Handle
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+3=PSECURITY_DESCRIPTOR SecurityDescriptor
 4=ULONG Length
 5=PULONG ResultLength
 ParamCount=5
@@ -2678,14 +2678,14 @@ Header=ntdll.h.api;windows.h.api;
 [NtSetSecurityObject]
 1=HANDLE Handle
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+3=PSECURITY_DESCRIPTOR SecurityDescriptor
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=NtSetSecurityObject
 [RtlAppendPathElement]
 1=[RTL_APE_FLAGS] flags
-2=[PRTL_UNICODE_STRING_BUFFER] pStrBuffer
-3=[PCUNICODE_STRING] pAddend
+2=PRTL_UNICODE_STRING_BUFFER pStrBuffer
+3=PCUNICODE_STRING pAddend
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=RtlAppendPathElement
@@ -2696,29 +2696,29 @@ Header=ntdll.h.api;windows.h.api;
 ParamCount=3
 @=RtlCopyMappedMemory
 [RtlDumpResource]
-1=[PRTL_RESOURCE] pResource
+1=PRTL_RESOURCE pResource
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDumpResource
 [RtlGetLengthWithoutLastFullDosOrNtPathElement]
 1=ULONG flags
-2=[PUNICODE_STRING] pStr
+2=PUNICODE_STRING pStr
 3=PULONG pOutLen
 ParamCount=3
 Header=windows.h.api;
 @=RtlGetLengthWithoutLastFullDosOrNtPathElement
 [RtlMultiAppendUnicodeStringBuffer]
-1=[PRTL_UNICODE_STRING_BUFFER] pStrBuffer
+1=PRTL_UNICODE_STRING_BUFFER pStrBuffer
 2=ULONG numAddends
-3=[PCUNICODE_STRING] pAddends
+3=PCUNICODE_STRING pAddends
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=RtlMultiAppendUnicodeStringBuffer
 [RtlTraceDatabaseAdd]
-1=[PRTL_TRACE_DATABASE] pDatabase
+1=PRTL_TRACE_DATABASE pDatabase
 2=ULONG numFrames
 3=PVOID* ppFrames
-4=[PRTL_TRACE_BLOCK*] ppBlock
+4=PRTL_TRACE_BLOCK* ppBlock
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlTraceDatabaseAdd
@@ -2727,55 +2727,55 @@ Header=ntdll.h.api;
 2=SIZE_T maximumSize
 3=ULONG flags
 4=ULONG tag
-5=[PRTL_TRACE_HASH_FUNCTION] pfnHash
+5=PRTL_TRACE_HASH_FUNCTION pfnHash
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlTraceDatabaseCreate
 [RtlTraceDatabaseDestroy]
-1=[PRTL_TRACE_DATABASE] pDatabase
+1=PRTL_TRACE_DATABASE pDatabase
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlTraceDatabaseDestroy
 [RtlTraceDatabaseEnumerate]
-1=[PRTL_TRACE_DATABASE] pDatabase
-2=[PRTL_TRACE_ENUM] pEnumData
-3=[PRTL_TRACE_BLOCK*] ppBlock
+1=PRTL_TRACE_DATABASE pDatabase
+2=PRTL_TRACE_ENUM pEnumData
+3=PRTL_TRACE_BLOCK* ppBlock
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlTraceDatabaseEnumerate
 [RtlTraceDatabaseFind]
-1=[PRTL_TRACE_DATABASE] pDatabase
+1=PRTL_TRACE_DATABASE pDatabase
 2=ULONG numFrames
 3=PVOID* ppFrames
-4=[PRTL_TRACE_BLOCK*] ppBlock
+4=PRTL_TRACE_BLOCK* ppBlock
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlTraceDatabaseFind
 [RtlTraceDatabaseLock]
-1=[PRTL_TRACE_DATABASE] pDatabase
+1=PRTL_TRACE_DATABASE pDatabase
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlTraceDatabaseLock
 [RtlTraceDatabaseUnlock]
-1=[PRTL_TRACE_DATABASE] pDatabase
+1=PRTL_TRACE_DATABASE pDatabase
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlTraceDatabaseUnlock
 [RtlTraceDatabaseValidate]
-1=[PRTL_TRACE_DATABASE] pDatabase
+1=PRTL_TRACE_DATABASE pDatabase
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlTraceDatabaseValidate
 [RtlpEnsureBufferSize]
 1=ULONG flags
-2=[PRTL_BUFFER] pBuffer
+2=PRTL_BUFFER pBuffer
 3=SIZE_T requiredSize
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlpEnsureBufferSize
 [LdrRegisterDllNotification]
 1=ULONG Flags
-2=[PLDR_DLL_NOTIFICATION_FUNCTION] NotificationFunction
+2=PLDR_DLL_NOTIFICATION_FUNCTION NotificationFunction
 3=PVOID Context
 4=PVOID* Cookie
 ParamCount=4
@@ -2798,7 +2798,7 @@ ParamCount=3
 @=RtlExtendedLargeIntegerDivide
 [RtlAddGrowableFunctionTable]
 1=PVOID* DynamicTable
-2=[PRUNTIME_FUNCTION] FunctionTable
+2=PRUNTIME_FUNCTION FunctionTable
 3=ULONG EntryCount
 4=ULONG MaximumEntryCount
 5=ULONG_PTR RangeBase
@@ -2823,8 +2823,8 @@ ParamCount=0
 ParamCount=1
 @=RtlSetUnhandledExceptionFilter
 [RtlDispatchException]
-1=[PEXCEPTION_RECORD] ExceptionRecord
-2=[PCONTEXT] Context
+1=PEXCEPTION_RECORD ExceptionRecord
+2=PCONTEXT Context
 ParamCount=2
 Header=windows.h.api;
 @=RtlDispatchException
@@ -2834,7 +2834,7 @@ ParamCount=1
 Header=ntstatus.h.api;
 @=RtlRaiseStatus
 [RtlUnhandledExceptionFilter]
-1=[EXCEPTION_POINTERS*] ExceptionInfo
+1=EXCEPTION_POINTERS* ExceptionInfo
 ParamCount=1
 Header=windows.h.api;
 @=RtlUnhandledExceptionFilter
@@ -2848,52 +2848,52 @@ ParamCount=3
 ParamCount=0
 @=RtlLogStackBackTrace
 [RtlFirstEntrySList]
-1=[PSLIST_HEADER] ListHead
+1=PSLIST_HEADER ListHead
 ParamCount=1
 Header=windows.h.api;
 @=RtlFirstEntrySList
 [RtlInitializeSListHead]
-1=[PSLIST_HEADER] ListHead
+1=PSLIST_HEADER ListHead
 ParamCount=1
 Header=windows.h.api;
 @=RtlInitializeSListHead
 [RtlInterlockedFlushSList]
-1=[PSLIST_HEADER] ListHead
+1=PSLIST_HEADER ListHead
 ParamCount=1
 Header=windows.h.api;
 @=RtlInterlockedFlushSList
 [RtlInterlockedPopEntrySList]
-1=[PSLIST_HEADER] ListHead
+1=PSLIST_HEADER ListHead
 ParamCount=1
 Header=windows.h.api;
 @=RtlInterlockedPopEntrySList
 [RtlInterlockedPushEntrySList]
-1=[PSLIST_HEADER] ListHead
-2=[PSLIST_ENTRY] ListEntry
+1=PSLIST_HEADER ListHead
+2=PSLIST_ENTRY ListEntry
 ParamCount=2
 Header=windows.h.api;
 @=RtlInterlockedPushEntrySList
 [RtlQueryDepthSList]
-1=[PSLIST_HEADER] ListHead
+1=PSLIST_HEADER ListHead
 ParamCount=1
 Header=windows.h.api;
 @=RtlQueryDepthSList
 [NtCreateTransactionManager]
-1=[PHANDLE] TmHandle
+1=PHANDLE TmHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PUNICODE_STRING] LogFileName
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PUNICODE_STRING LogFileName
 5=ULONG CreateOptions
 6=ULONG CommitStrength
 ParamCount=6
 Header=native.h.api;windows.h.api;
 @=NtCreateTransactionManager
 [NtOpenTransactionManager]
-1=[PHANDLE] TmHandle
+1=PHANDLE TmHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[PUNICODE_STRING] LogFileName
-5=[LPGUID] TmIdentity
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=PUNICODE_STRING LogFileName
+5=LPGUID TmIdentity
 6=ULONG OpenOptions
 ParamCount=6
 Header=native.h.api;windows.h.api;
@@ -2913,14 +2913,14 @@ ParamCount=1
 Header=windows.h.api;
 @=NtRecoverTransactionManager
 [NtRenameTransactionManager]
-1=[PUNICODE_STRING] LogFileName
-2=[LPGUID] ExistingTransactionManagerGuid
+1=PUNICODE_STRING LogFileName
+2=LPGUID ExistingTransactionManagerGuid
 ParamCount=2
 Header=windows.h.api;
 @=NtRenameTransactionManager
 [NtRollforwardTransactionManager]
 1=HANDLE TransactionManagerHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtRollforwardTransactionManager
@@ -2939,33 +2939,33 @@ ParamCount=2
 Header=windows.h.api;
 @=NtCommitTransaction
 [NtCreateTransaction]
-1=[PHANDLE] TransactionHandle
+1=PHANDLE TransactionHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[LPGUID] Uow
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=LPGUID Uow
 5=HANDLE TmHandle
 6=ULONG CreateOptions
 7=ULONG IsolationLevel
 8=ULONG IsolationFlags
-9=[PLARGE_INTEGER] Timeout
-10=[PUNICODE_STRING] Description
+9=PLARGE_INTEGER Timeout
+10=PUNICODE_STRING Description
 ParamCount=10
 Header=native.h.api;windows.h.api;
 @=NtCreateTransaction
 [NtEnumerateTransactionObject]
 1=HANDLE RootObjectHandle
 2=[KTMOBJECT_TYPE] QueryType
-3=[PKTMOBJECT_CURSOR] ObjectCursor
+3=PKTMOBJECT_CURSOR ObjectCursor
 4=ULONG ObjectCursorLength
 5=PULONG ReturnLength
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=NtEnumerateTransactionObject
 [NtOpenTransaction]
-1=[PHANDLE] TransactionHandle
+1=PHANDLE TransactionHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
-4=[LPGUID] Uow
+3=POBJECT_ATTRIBUTES ObjectAttributes
+4=LPGUID Uow
 5=HANDLE TmHandle
 ParamCount=5
 Header=native.h.api;windows.h.api;
@@ -2994,8 +2994,8 @@ ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=NtSetInformationTransaction
 [NtFreezeTransactions]
-1=[PLARGE_INTEGER] FreezeTimeout
-2=[PLARGE_INTEGER] ThawTimeout
+1=PLARGE_INTEGER FreezeTimeout
+2=PLARGE_INTEGER ThawTimeout
 ParamCount=2
 Header=windows.h.api;
 @=NtFreezeTransactions
@@ -3004,22 +3004,22 @@ ParamCount=0
 @=NtThawTransactions
 [NtCommitComplete]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtCommitComplete
 [NtCommitEnlistment]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtCommitEnlistment
 [NtCreateEnlistment]
-1=[PHANDLE] EnlistmentHandle
+1=PHANDLE EnlistmentHandle
 2=[ACCESS_MASK] DesiredAccess
 3=HANDLE ResourceManagerHandle
 4=HANDLE TransactionHandle
-5=[POBJECT_ATTRIBUTES] ObjectAttributes
+5=POBJECT_ATTRIBUTES ObjectAttributes
 6=ULONG CreateOptions
 7=[NOTIFICATION_MASK] NotificationMask
 8=PVOID EnlistmentKey
@@ -3027,35 +3027,35 @@ ParamCount=8
 Header=native.h.api;windows.h.api;
 @=NtCreateEnlistment
 [NtOpenEnlistment]
-1=[PHANDLE] EnlistmentHandle
+1=PHANDLE EnlistmentHandle
 2=[ACCESS_MASK] DesiredAccess
 3=HANDLE RmHandle
-4=[LPGUID] EnlistmentGuid
-5=[POBJECT_ATTRIBUTES] ObjectAttributes
+4=LPGUID EnlistmentGuid
+5=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=5
 Header=native.h.api;windows.h.api;
 @=NtOpenEnlistment
 [NtPrepareComplete]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtPrepareComplete
 [NtPrePrepareComplete]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtPrePrepareComplete
 [NtPrepareEnlistment]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtPrepareEnlistment
 [NtPrePrepareEnlistment]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtPrePrepareEnlistment
@@ -3070,7 +3070,7 @@ Header=ntdll.h.api;windows.h.api;
 @=NtQueryInformationEnlistment
 [NtReadOnlyEnlistment]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtReadOnlyEnlistment
@@ -3082,13 +3082,13 @@ Header=windows.h.api;
 @=NtRecoverEnlistment
 [NtRollbackComplete]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtRollbackComplete
 [NtRollbackEnlistment]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtRollbackEnlistment
@@ -3102,26 +3102,26 @@ Header=ntdll.h.api;windows.h.api;
 @=NtSetInformationEnlistment
 [NtSinglePhaseReject]
 1=HANDLE EnlistmentHandle
-2=[PLARGE_INTEGER] TmVirtualClock
+2=PLARGE_INTEGER TmVirtualClock
 ParamCount=2
 Header=windows.h.api;
 @=NtSinglePhaseReject
 [NtCreateResourceManager]
-1=[PHANDLE] ResourceManagerHandle
+1=PHANDLE ResourceManagerHandle
 2=[ACCESS_MASK] DesiredAccess
 3=HANDLE TmHandle
-4=[LPGUID] ResourceManagerGuid
-5=[POBJECT_ATTRIBUTES] ObjectAttributes
+4=LPGUID ResourceManagerGuid
+5=POBJECT_ATTRIBUTES ObjectAttributes
 6=ULONG CreateOptions
-7=[PUNICODE_STRING] Description
+7=PUNICODE_STRING Description
 ParamCount=7
 Header=native.h.api;windows.h.api;
 @=NtCreateResourceManager
 [NtGetNotificationResourceManager]
 1=HANDLE ResourceManagerHandle
-2=[PTRANSACTION_NOTIFICATION] TransactionNotification
+2=PTRANSACTION_NOTIFICATION TransactionNotification
 3=ULONG NotificationLength
-4=[PLARGE_INTEGER] Timeout
+4=PLARGE_INTEGER Timeout
 5=PULONG ReturnLength
 6=ULONG Asynchronous
 7=ULONG_PTR AsynchronousContext
@@ -3129,11 +3129,11 @@ ParamCount=7
 Header=native.h.api;windows.h.api;
 @=NtGetNotificationResourceManager
 [NtOpenResourceManager]
-1=[PHANDLE] ResourceManagerHandle
+1=PHANDLE ResourceManagerHandle
 2=[ACCESS_MASK] DesiredAccess
 3=HANDLE TmHandle
-4=[LPGUID] ResourceManagerGuid
-5=[POBJECT_ATTRIBUTES] ObjectAttributes
+4=LPGUID ResourceManagerGuid
+5=POBJECT_ATTRIBUTES ObjectAttributes
 ParamCount=5
 Header=native.h.api;windows.h.api;
 @=NtOpenResourceManager
@@ -3160,26 +3160,26 @@ ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=NtSetInformationResourceManager
 [RtlInitializeGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
-2=[PRTL_AVL_COMPARE_ROUTINE] CompareRoutine
-3=[PRTL_AVL_ALLOCATE_ROUTINE] AllocateRoutine
-4=[PRTL_AVL_FREE_ROUTINE] FreeRoutine
+1=PRTL_AVL_TABLE Table
+2=PRTL_AVL_COMPARE_ROUTINE CompareRoutine
+3=PRTL_AVL_ALLOCATE_ROUTINE AllocateRoutine
+4=PRTL_AVL_FREE_ROUTINE FreeRoutine
 5=PVOID TableContext
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlInitializeGenericTableAvl
 [RtlInsertElementGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID Buffer
-3=[CLONG] BufferSize
+3=CLONG BufferSize
 4=PBOOLEAN NewElement
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlInsertElementGenericTableAvl
 [RtlInsertElementGenericTableFullAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID Buffer
-3=[CLONG] BufferSize
+3=CLONG BufferSize
 4=PBOOLEAN NewElement
 5=PVOID NodeOrParent
 6=[TABLE_SEARCH_RESULT] SearchResult
@@ -3187,47 +3187,47 @@ ParamCount=6
 Header=ntdll.h.api;
 @=RtlInsertElementGenericTableFullAvl
 [RtlDeleteElementGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID Buffer
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlDeleteElementGenericTableAvl
 [RtlLookupElementGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID Buffer
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlLookupElementGenericTableAvl
 [RtlLookupElementGenericTableFullAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID Buffer
 3=PVOID* NodeOrParent
-4=[TABLE_SEARCH_RESULT*] SearchResult
+4=TABLE_SEARCH_RESULT* SearchResult
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlLookupElementGenericTableFullAvl
 [RtlEnumerateGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=BOOLEAN Restart
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEnumerateGenericTableAvl
 [RtlEnumerateGenericTableWithoutSplayingAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID* RestartKey
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEnumerateGenericTableWithoutSplayingAvl
 [RtlLookupFirstMatchingElementGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=PVOID Buffer
 3=PVOID* RestartKey
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlLookupFirstMatchingElementGenericTableAvl
 [RtlEnumerateGenericTableLikeADirectory]
-1=[PRTL_AVL_TABLE] Table
-2=[PRTL_AVL_MATCH_FUNCTION] MatchFunction
+1=PRTL_AVL_TABLE Table
+2=PRTL_AVL_MATCH_FUNCTION MatchFunction
 3=PVOID MatchData
 4=ULONG NextFlag
 5=PVOID* RestartKey
@@ -3237,68 +3237,68 @@ ParamCount=7
 Header=ntdll.h.api;
 @=RtlEnumerateGenericTableLikeADirectory
 [RtlGetElementGenericTableAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 2=ULONG I
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlGetElementGenericTableAvl
 [RtlNumberGenericTableElementsAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlNumberGenericTableElementsAvl
 [RtlIsGenericTableEmptyAvl]
-1=[PRTL_AVL_TABLE] Table
+1=PRTL_AVL_TABLE Table
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlIsGenericTableEmptyAvl
 [RtlSplay]
-1=[PRTL_SPLAY_LINKS] Links
+1=PRTL_SPLAY_LINKS Links
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlSplay
 [RtlDelete]
-1=[PRTL_SPLAY_LINKS] Links
+1=PRTL_SPLAY_LINKS Links
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDelete
 [RtlDeleteNoSplay]
-1=[PRTL_SPLAY_LINKS] Links
-2=[PRTL_SPLAY_LINKS*] Root
+1=PRTL_SPLAY_LINKS Links
+2=PRTL_SPLAY_LINKS* Root
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlDeleteNoSplay
 [RtlSubtreeSuccessor]
-1=[PRTL_SPLAY_LINKS] Links
+1=PRTL_SPLAY_LINKS Links
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlSubtreeSuccessor
 [RtlSubtreePredecessor]
-1=[PRTL_SPLAY_LINKS] Links
+1=PRTL_SPLAY_LINKS Links
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlSubtreePredecessor
 [RtlRealSuccessor]
-1=[PRTL_SPLAY_LINKS] Links
+1=PRTL_SPLAY_LINKS Links
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlRealSuccessor
 [RtlRealPredecessor]
-1=[PRTL_SPLAY_LINKS] Links
+1=PRTL_SPLAY_LINKS Links
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlRealPredecessor
 [RtlInitializeGenericTable]
-1=[PRTL_GENERIC_TABLE] Table
-2=[PRTL_GENERIC_COMPARE_ROUTINE] CompareRoutine
-3=[PRTL_GENERIC_ALLOCATE_ROUTINE] AllocateRoutine
-4=[PRTL_GENERIC_FREE_ROUTINE] FreeRoutine
+1=PRTL_GENERIC_TABLE Table
+2=PRTL_GENERIC_COMPARE_ROUTINE CompareRoutine
+3=PRTL_GENERIC_ALLOCATE_ROUTINE AllocateRoutine
+4=PRTL_GENERIC_FREE_ROUTINE FreeRoutine
 5=PVOID TableContext
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlInitializeGenericTable
 [RtlInsertElementGenericTable]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=PVOID Buffer
 3=ULONG BufferSize
 4=PBOOLEAN NewElement
@@ -3306,7 +3306,7 @@ ParamCount=4
 Header=ntdll.h.api;
 @=RtlInsertElementGenericTable
 [RtlInsertElementGenericTableFull]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=PVOID Buffer
 3=ULONG BufferSize
 4=PBOOLEAN NewElement
@@ -3316,201 +3316,201 @@ ParamCount=6
 Header=ntdll.h.api;
 @=RtlInsertElementGenericTableFull
 [RtlDeleteElementGenericTable]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=PVOID Buffer
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlDeleteElementGenericTable
 [RtlLookupElementGenericTable]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=PVOID Buffer
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlLookupElementGenericTable
 [RtlLookupElementGenericTableFull]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=PVOID Buffer
 3=PVOID* NodeOrParent
-4=[TABLE_SEARCH_RESULT*] SearchResult
+4=TABLE_SEARCH_RESULT* SearchResult
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlLookupElementGenericTableFull
 [RtlEnumerateGenericTable]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=BOOLEAN Restart
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEnumerateGenericTable
 [RtlEnumerateGenericTableWithoutSplaying]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=PVOID* RestartKey
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEnumerateGenericTableWithoutSplaying
 [RtlGetElementGenericTable]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 2=ULONG I
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlGetElementGenericTable
 [RtlNumberGenericTableElements]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlNumberGenericTableElements
 [RtlIsGenericTableEmpty]
-1=[PRTL_GENERIC_TABLE] Table
+1=PRTL_GENERIC_TABLE Table
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlIsGenericTableEmpty
 [RtlRbInsertNodeEx]
-1=[PRTL_RB_TREE] Tree
-2=[PRTL_BALANCED_NODE] Parent
+1=PRTL_RB_TREE Tree
+2=PRTL_BALANCED_NODE Parent
 3=BOOLEAN Right
-4=[PRTL_BALANCED_NODE] Node
+4=PRTL_BALANCED_NODE Node
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlRbInsertNodeEx
 [RtlRbRemoveNode]
-1=[PRTL_RB_TREE] Tree
-2=[PRTL_BALANCED_NODE] Node
+1=PRTL_RB_TREE Tree
+2=PRTL_BALANCED_NODE Node
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlRbRemoveNode
 [RtlCreateHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE*] HashTable
+1=PRTL_DYNAMIC_HASH_TABLE* HashTable
 2=ULONG Shift
 3=ULONG Flags
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlCreateHashTable
 [RtlDeleteHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDeleteHashTable
 [RtlInsertEntryHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENTRY] Entry
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENTRY Entry
 3=ULONG_PTR Signature
-4=[PRTL_DYNAMIC_HASH_TABLE_CONTEXT] Context
+4=PRTL_DYNAMIC_HASH_TABLE_CONTEXT Context
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlInsertEntryHashTable
 [RtlRemoveEntryHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENTRY] Entry
-3=[PRTL_DYNAMIC_HASH_TABLE_CONTEXT] Context
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENTRY Entry
+3=PRTL_DYNAMIC_HASH_TABLE_CONTEXT Context
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlRemoveEntryHashTable
 [RtlLookupEntryHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
 2=ULONG_PTR Signature
-3=[PRTL_DYNAMIC_HASH_TABLE_CONTEXT] Context
+3=PRTL_DYNAMIC_HASH_TABLE_CONTEXT Context
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlLookupEntryHashTable
 [RtlGetNextEntryHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_CONTEXT] Context
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_CONTEXT Context
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlGetNextEntryHashTable
 [RtlInitEnumerationHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR] Enumerator
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR Enumerator
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlInitEnumerationHashTable
 [RtlEnumerateEntryHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR] Enumerator
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR Enumerator
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEnumerateEntryHashTable
 [RtlEndEnumerationHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR] Enumerator
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR Enumerator
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEndEnumerationHashTable
 [RtlInitWeakEnumerationHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR] Enumerator
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR Enumerator
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlInitWeakEnumerationHashTable
 [RtlWeaklyEnumerateEntryHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR] Enumerator
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR Enumerator
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlWeaklyEnumerateEntryHashTable
 [RtlEndWeakEnumerationHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
-2=[PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR] Enumerator
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
+2=PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR Enumerator
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlEndWeakEnumerationHashTable
 [RtlExpandHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlExpandHashTable
 [RtlContractHashTable]
-1=[PRTL_DYNAMIC_HASH_TABLE] HashTable
+1=PRTL_DYNAMIC_HASH_TABLE HashTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlContractHashTable
 [RtlInitializeCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlInitializeCriticalSection
 [RtlInitializeCriticalSectionAndSpinCount]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 2=ULONG SpinCount
 ParamCount=2
 Header=native.h.api;
 @=RtlInitializeCriticalSectionAndSpinCount
 [RtlDeleteCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlDeleteCriticalSection
 [RtlEnterCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlEnterCriticalSection
 [RtlLeaveCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlLeaveCriticalSection
 [RtlTryEnterCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlTryEnterCriticalSection
 [RtlIsCriticalSectionLocked]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlIsCriticalSectionLocked
 [RtlIsCriticalSectionLockedByThread]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlIsCriticalSectionLockedByThread
 [RtlGetCriticalSectionRecursionCount]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlGetCriticalSectionRecursionCount
 [RtlSetCriticalSectionSpinCount]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 2=ULONG SpinCount
 ParamCount=2
 Header=native.h.api;
@@ -3526,177 +3526,177 @@ ParamCount=1
 Header=windows.h.api;
 @=RtlCheckForOrphanedCriticalSections
 [RtlpUnWaitCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlpUnWaitCriticalSection
 [RtlpWaitForCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlpWaitForCriticalSection
 [RtlInitializeResource]
-1=[PRTL_RESOURCE] pResource
+1=PRTL_RESOURCE pResource
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlInitializeResource
 [RtlDeleteResource]
-1=[PRTL_RESOURCE] pResource
+1=PRTL_RESOURCE pResource
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDeleteResource
 [RtlAcquireResourceShared]
-1=[PRTL_RESOURCE] pResource
+1=PRTL_RESOURCE pResource
 2=BOOLEAN bWaitForAccess
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlAcquireResourceShared
 [RtlAcquireResourceExclusive]
-1=[PRTL_RESOURCE] pResource
+1=PRTL_RESOURCE pResource
 2=BOOLEAN bWaitForAccess
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlAcquireResourceExclusive
 [RtlReleaseResource]
-1=[PRTL_RESOURCE] pResource
+1=PRTL_RESOURCE pResource
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlReleaseResource
 [RtlConvertSharedToExclusive]
-1=[PRTL_RESOURCE] Resource
+1=PRTL_RESOURCE Resource
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlConvertSharedToExclusive
 [RtlConvertExclusiveToShared]
-1=[PRTL_RESOURCE] Resource
+1=PRTL_RESOURCE Resource
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlConvertExclusiveToShared
 [RtlInitializeSRWLock]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlInitializeSRWLock
 [RtlAcquireSRWLockExclusive]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlAcquireSRWLockExclusive
 [RtlAcquireSRWLockShared]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlAcquireSRWLockShared
 [RtlReleaseSRWLockExclusive]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlReleaseSRWLockExclusive
 [RtlReleaseSRWLockShared]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlReleaseSRWLockShared
 [RtlTryAcquireSRWLockExclusive]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlTryAcquireSRWLockExclusive
 [RtlTryAcquireSRWLockShared]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlTryAcquireSRWLockShared
 [RtlAcquireReleaseSRWLockExclusive]
-1=[PRTL_SRWLOCK] SRWLock
+1=PRTL_SRWLOCK SRWLock
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlAcquireReleaseSRWLockExclusive
 [RtlInitializeConditionVariable]
-1=[PRTL_CONDITION_VARIABLE] ConditionVariable
+1=PRTL_CONDITION_VARIABLE ConditionVariable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlInitializeConditionVariable
 [RtlSleepConditionVariableCS]
-1=[PRTL_CONDITION_VARIABLE] ConditionVariable
-2=[PRTL_CRITICAL_SECTION] CriticalSection
-3=[PLARGE_INTEGER] Timeout
+1=PRTL_CONDITION_VARIABLE ConditionVariable
+2=PRTL_CRITICAL_SECTION CriticalSection
+3=PLARGE_INTEGER Timeout
 ParamCount=3
 Header=ntdll.h.api;native.h.api;windows.h.api;
 @=RtlSleepConditionVariableCS
 [RtlSleepConditionVariableSRW]
-1=[PRTL_CONDITION_VARIABLE] ConditionVariable
-2=[PRTL_SRWLOCK] SRWLock
-3=[PLARGE_INTEGER] Timeout
+1=PRTL_CONDITION_VARIABLE ConditionVariable
+2=PRTL_SRWLOCK SRWLock
+3=PLARGE_INTEGER Timeout
 4=ULONG Flags
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlSleepConditionVariableSRW
 [RtlWakeConditionVariable]
-1=[PRTL_CONDITION_VARIABLE] ConditionVariable
+1=PRTL_CONDITION_VARIABLE ConditionVariable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlWakeConditionVariable
 [RtlWakeAllConditionVariable]
-1=[PRTL_CONDITION_VARIABLE] ConditionVariable
+1=PRTL_CONDITION_VARIABLE ConditionVariable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlWakeAllConditionVariable
 [RtlInitBarrier]
-1=[PRTL_BARRIER] Barrier
+1=PRTL_BARRIER Barrier
 2=ULONG TotalThreads
 3=ULONG SpinCount
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlInitBarrier
 [RtlDeleteBarrier]
-1=[PRTL_BARRIER] Barrier
+1=PRTL_BARRIER Barrier
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDeleteBarrier
 [RtlBarrier]
-1=[PRTL_BARRIER] Barrier
+1=PRTL_BARRIER Barrier
 2=ULONG Flags
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlBarrier
 [RtlBarrierForDelete]
-1=[PRTL_BARRIER] Barrier
+1=PRTL_BARRIER Barrier
 2=ULONG Flags
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlBarrierForDelete
 [RtlInitString]
-1=[PSTRING] DestinationString
-2=[PCSZ] SourceString
+1=PSTRING DestinationString
+2=PCSZ SourceString
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlInitString
 [RtlInitAnsiString]
-1=[PANSI_STRING] DestinationString
-2=[PCSZ] SourceString
+1=PANSI_STRING DestinationString
+2=PCSZ SourceString
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlInitAnsiString
 [RtlInitAnsiStringEx]
-1=[PANSI_STRING] DestinationString
-2=[PCSZ] SourceString
+1=PANSI_STRING DestinationString
+2=PCSZ SourceString
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlInitAnsiStringEx
 [RtlFreeAnsiString]
-1=[PANSI_STRING] AnsiString
+1=PANSI_STRING AnsiString
 ParamCount=1
 Header=windows.h.api;
 @=RtlFreeAnsiString
 [RtlFreeOemString]
-1=[POEM_STRING] OemString
+1=POEM_STRING OemString
 ParamCount=1
 Header=windows.h.api;
 @=RtlFreeOemString
 [RtlCopyString]
-1=[PSTRING] DestinationString
-2=[STRING*] SourceString
+1=PSTRING DestinationString
+2=STRING* SourceString
 ParamCount=2
 Header=windows.h.api;
 @=RtlCopyString
@@ -3705,83 +3705,83 @@ Header=windows.h.api;
 ParamCount=1
 @=RtlUpperChar
 [RtlCompareString]
-1=[STRING*] String1
-2=[STRING*] String2
+1=STRING* String1
+2=STRING* String2
 3=BOOLEAN CaseInSensitive
 ParamCount=3
 Header=windows.h.api;
 @=RtlCompareString
 [RtlEqualString]
-1=[STRING*] String1
-2=[STRING*] String2
+1=STRING* String1
+2=STRING* String2
 3=BOOLEAN CaseInSensitive
 ParamCount=3
 Header=windows.h.api;
 @=RtlEqualString
 [RtlPrefixString]
-1=[PCANSI_STRING] String1
-2=[PCANSI_STRING] String2
+1=PCANSI_STRING String1
+2=PCANSI_STRING String2
 3=BOOLEAN CaseInsensitive
 ParamCount=3
 Header=windows.h.api;
 @=RtlPrefixString
 [RtlAppendStringToString]
-1=[PSTRING] Destination
-2=[STRING*] Source
+1=PSTRING Destination
+2=STRING* Source
 ParamCount=2
 Header=windows.h.api;
 @=RtlAppendStringToString
 [RtlAppendAsciizToString]
-1=[PSTRING] Destination
+1=PSTRING Destination
 2=PSTR Source
 ParamCount=2
 Header=windows.h.api;
 @=RtlAppendAsciizToString
 [RtlUpperString]
-1=[PSTRING] DestinationString
-2=[STRING*] SourceString
+1=PSTRING DestinationString
+2=STRING* SourceString
 ParamCount=2
 Header=windows.h.api;
 @=RtlUpperString
 [RtlInitUnicodeString]
-1=[PUNICODE_STRING] DestinationString
+1=PUNICODE_STRING DestinationString
 2=PCWSTR SourceString
 ParamCount=2
 Header=windows.h.api;
 @=RtlInitUnicodeString
 [RtlInitUnicodeStringEx]
-1=[PUNICODE_STRING] DestinationString
+1=PUNICODE_STRING DestinationString
 2=PCWSTR SourceString
 ParamCount=2
 Header=windows.h.api;
 @=RtlInitUnicodeStringEx
 [RtlCreateUnicodeString]
-1=[PUNICODE_STRING] DestinationString
+1=PUNICODE_STRING DestinationString
 2=PCWSTR SourceString
 ParamCount=2
 Header=windows.h.api;
 @=RtlCreateUnicodeString
 [RtlCreateUnicodeStringFromAsciiz]
-1=[PUNICODE_STRING] Destination
-2=[PCSZ] Source
+1=PUNICODE_STRING Destination
+2=PCSZ Source
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlCreateUnicodeStringFromAsciiz
 [RtlFreeUnicodeString]
-1=[PUNICODE_STRING] UnicodeString
+1=PUNICODE_STRING UnicodeString
 ParamCount=1
 Header=windows.h.api;
 @=RtlFreeUnicodeString
 [RtlDuplicateUnicodeString]
 1=[RTL_DUPLICATE_UNICODE_STRING_FLAGS] Flags
-2=[PCUNICODE_STRING] SourceString
-3=[PUNICODE_STRING] DestinationString
+2=PCUNICODE_STRING SourceString
+3=PUNICODE_STRING DestinationString
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=RtlDuplicateUnicodeString
 [RtlCopyUnicodeString]
-1=[PUNICODE_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=PUNICODE_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 ParamCount=2
 Header=windows.h.api;
 @=RtlCopyUnicodeString
@@ -3794,30 +3794,30 @@ ParamCount=1
 ParamCount=1
 @=RtlDowncaseUnicodeChar
 [RtlCompareUnicodeString]
-1=[PCUNICODE_STRING] String1
-2=[PCUNICODE_STRING] String2
+1=PCUNICODE_STRING String1
+2=PCUNICODE_STRING String2
 3=BOOLEAN CaseInsensitive
 ParamCount=3
 Header=windows.h.api;
 @=RtlCompareUnicodeString
 [RtlCompareUnicodeStrings]
-1=[PWCH] String1
+1=PWCH String1
 2=SIZE_T String1Length
-3=[PWCH] String2
+3=PWCH String2
 4=SIZE_T String2Length
 5=BOOLEAN CaseInSensitive
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlCompareUnicodeStrings
 [RtlEqualUnicodeString]
-1=[PCUNICODE_STRING] String1
-2=[PCUNICODE_STRING] String2
+1=PCUNICODE_STRING String1
+2=PCUNICODE_STRING String2
 3=BOOLEAN CaseInsensitive
 ParamCount=3
 Header=windows.h.api;
 @=RtlEqualUnicodeString
 [RtlHashUnicodeString]
-1=[UNICODE_STRING*] String
+1=UNICODE_STRING* String
 2=BOOLEAN CaseInSensitive
 3=[HASH_STRING_ALGORITHM] HashAlgorithm
 4=PULONG HashValue
@@ -3826,66 +3826,66 @@ Header=ntdll.h.api;windows.h.api;
 @=RtlHashUnicodeString
 [RtlValidateUnicodeString]
 1=ULONG Flags
-2=[PCUNICODE_STRING] String
+2=PCUNICODE_STRING String
 ParamCount=2
 Header=windows.h.api;
 @=RtlValidateUnicodeString
 [RtlPrefixUnicodeString]
-1=[PCUNICODE_STRING] String1
-2=[PCUNICODE_STRING] String2
+1=PCUNICODE_STRING String1
+2=PCUNICODE_STRING String2
 3=BOOLEAN CaseInsensitive
 ParamCount=3
 Header=windows.h.api;
 @=RtlPrefixUnicodeString
 [RtlFindCharInUnicodeString]
 1=[RTL_FIND_CHAR_IN_UNICODE_STRING_FLAGS] Flags
-2=[PUNICODE_STRING] SearchString
-3=[PCUNICODE_STRING] MatchString
+2=PUNICODE_STRING SearchString
+3=PCUNICODE_STRING MatchString
 4=PUSHORT Position
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlFindCharInUnicodeString
 [RtlAppendUnicodeStringToString]
-1=[PUNICODE_STRING] Destination
-2=[PCUNICODE_STRING] Source
+1=PUNICODE_STRING Destination
+2=PCUNICODE_STRING Source
 ParamCount=2
 Header=windows.h.api;
 @=RtlAppendUnicodeStringToString
 [RtlAppendUnicodeToString]
-1=[PUNICODE_STRING] Destination
+1=PUNICODE_STRING Destination
 2=PCWSTR Source
 ParamCount=2
 Header=windows.h.api;
 @=RtlAppendUnicodeToString
 [RtlUpcaseUnicodeString]
-1=[PUNICODE_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=PUNICODE_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlUpcaseUnicodeString
 [RtlDowncaseUnicodeString]
-1=[PUNICODE_STRING] UniDest
-2=[PCUNICODE_STRING] UniSource
+1=PUNICODE_STRING UniDest
+2=PCUNICODE_STRING UniSource
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlDowncaseUnicodeString
 [RtlEraseUnicodeString]
-1=[PUNICODE_STRING] String
+1=PUNICODE_STRING String
 ParamCount=1
 Header=windows.h.api;
 @=RtlEraseUnicodeString
 [RtlAnsiStringToUnicodeString]
-1=[PUNICODE_STRING] DestinationString
-2=[PCANSI_STRING] SourceString
+1=PUNICODE_STRING DestinationString
+2=PCANSI_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlAnsiStringToUnicodeString
 [RtlUnicodeStringToAnsiString]
-1=[PANSI_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=PANSI_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
@@ -3895,43 +3895,43 @@ Header=windows.h.api;
 ParamCount=1
 @=RtlAnsiCharToUnicodeChar
 [RtlUpcaseUnicodeStringToAnsiString]
-1=[PANSI_STRING] DestinationString
-2=[PUNICODE_STRING] SourceString
+1=PANSI_STRING DestinationString
+2=PUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlUpcaseUnicodeStringToAnsiString
 [RtlOemStringToUnicodeString]
-1=[PUNICODE_STRING] DestinationString
-2=[PCOEM_STRING] SourceString
+1=PUNICODE_STRING DestinationString
+2=PCOEM_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlOemStringToUnicodeString
 [RtlUnicodeStringToOemString]
-1=[POEM_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=POEM_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlUnicodeStringToOemString
 [RtlUpcaseUnicodeStringToOemString]
-1=[POEM_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=POEM_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlUpcaseUnicodeStringToOemString
 [RtlUnicodeStringToCountedOemString]
-1=[POEM_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=POEM_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlUnicodeStringToCountedOemString
 [RtlUpcaseUnicodeStringToCountedOemString]
-1=[POEM_STRING] DestinationString
-2=[PCUNICODE_STRING] SourceString
+1=POEM_STRING DestinationString
+2=PCUNICODE_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
@@ -3997,10 +3997,10 @@ ParamCount=5
 ParamCount=5
 @=RtlUpcaseUnicodeToOemN
 [RtlConsoleMultiByteToUnicodeN]
-1=[PWCH] UnicodeString
+1=PWCH UnicodeString
 2=ULONG MaxBytesInUnicodeString
 3=PULONG BytesInUnicodeString
-4=[PCH] MultiByteString
+4=PCH MultiByteString
 5=ULONG BytesInMultiByteString
 6=PULONG pdwSpecialChar
 ParamCount=6
@@ -4010,7 +4010,7 @@ Header=ntdll.h.api;
 1=PWSTR UnicodeStringDestination
 2=ULONG UnicodeStringMaxByteCount
 3=PULONG UnicodeStringActualByteCount
-4=[PCCH] UTF8StringSource
+4=PCCH UTF8StringSource
 5=ULONG UTF8StringByteCount
 ParamCount=5
 Header=ntdll.h.api;
@@ -4019,44 +4019,44 @@ Header=ntdll.h.api;
 1=PCHAR UTF8StringDestination
 2=ULONG UTF8StringMaxByteCount
 3=PULONG UTF8StringActualByteCount
-4=[PCWCH] UnicodeStringSource
+4=PCWCH UnicodeStringSource
 5=ULONG UnicodeStringByteCount
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlUnicodeToUTF8N
 [RtlCustomCPToUnicodeN]
-1=[PCPTABLEINFO] CustomCP
-2=[PWCH] UnicodeString
+1=PCPTABLEINFO CustomCP
+2=PWCH UnicodeString
 3=ULONG MaxBytesInUnicodeString
 4=PULONG BytesInUnicodeString
-5=[PCH] CustomCPString
+5=PCH CustomCPString
 6=ULONG BytesInCustomCPString
 ParamCount=6
 Header=ntdll.h.api;
 @=RtlCustomCPToUnicodeN
 [RtlUnicodeToCustomCPN]
-1=[PCPTABLEINFO] CustomCP
-2=[PCH] CustomCPString
+1=PCPTABLEINFO CustomCP
+2=PCH CustomCPString
 3=ULONG MaxBytesInCustomCPString
 4=PULONG BytesInCustomCPString
-5=[PWCH] UnicodeString
+5=PWCH UnicodeString
 6=ULONG BytesInUnicodeString
 ParamCount=6
 Header=ntdll.h.api;
 @=RtlUnicodeToCustomCPN
 [RtlUpcaseUnicodeToCustomCPN]
-1=[PCPTABLEINFO] CustomCP
-2=[PCH] CustomCPString
+1=PCPTABLEINFO CustomCP
+2=PCH CustomCPString
 3=ULONG MaxBytesInCustomCPString
 4=PULONG BytesInCustomCPString
-5=[PWCH] UnicodeString
+5=PWCH UnicodeString
 6=ULONG BytesInUnicodeString
 ParamCount=6
 Header=ntdll.h.api;
 @=RtlUpcaseUnicodeToCustomCPN
 [RtlInitCodePageTable]
 1=PUSHORT TableBase
-2=[PCPTABLEINFO] CodePageTable
+2=PCPTABLEINFO CodePageTable
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlInitCodePageTable
@@ -4064,12 +4064,12 @@ Header=ntdll.h.api;
 1=PUSHORT AnsiTableBase
 2=PUSHORT OemTableBase
 3=PUSHORT CaseTableBase
-4=[PNLSTABLEINFO] NlsTable
+4=PNLSTABLEINFO NlsTable
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlInitNlsTables
 [RtlResetRtlTranslations]
-1=[PNLSTABLEINFO] NlsTable
+1=PNLSTABLEINFO NlsTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlResetRtlTranslations
@@ -4096,67 +4096,67 @@ ParamCount=5
 ParamCount=4
 @=RtlIsNormalizedString
 [RtlIsNameInExpression]
-1=[PUNICODE_STRING] Expression
-2=[PUNICODE_STRING] Name
+1=PUNICODE_STRING Expression
+2=PUNICODE_STRING Name
 3=BOOLEAN IgnoreCase
-4=[PWCH] UpcaseTable
+4=PWCH UpcaseTable
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlIsNameInExpression
 [RtlEqualDomainName]
-1=[PUNICODE_STRING] String1
-2=[PUNICODE_STRING] String2
+1=PUNICODE_STRING String1
+2=PUNICODE_STRING String2
 ParamCount=2
 Header=windows.h.api;
 @=RtlEqualDomainName
 [RtlEqualComputerName]
-1=[PUNICODE_STRING] String1
-2=[PUNICODE_STRING] String2
+1=PUNICODE_STRING String1
+2=PUNICODE_STRING String2
 ParamCount=2
 Header=windows.h.api;
 @=RtlEqualComputerName
 [RtlDnsHostNameToComputerName]
-1=[PUNICODE_STRING] ComputerNameString
-2=[PCUNICODE_STRING] DnsHostNameString
+1=PUNICODE_STRING ComputerNameString
+2=PCUNICODE_STRING DnsHostNameString
 3=BOOLEAN AllocateComputerNameString
 ParamCount=3
 Header=windows.h.api;
 @=RtlDnsHostNameToComputerName
 [RtlStringFromGUID]
-1=[REFGUID] Guid
-2=[PUNICODE_STRING] GuidString
+1=REFGUID Guid
+2=PUNICODE_STRING GuidString
 ParamCount=2
 Header=windows.h.api;
 @=RtlStringFromGUID
 [RtlGUIDFromString]
-1=[PCUNICODE_STRING] GuidString
-2=[GUID*] Guid
+1=PCUNICODE_STRING GuidString
+2=GUID* Guid
 ParamCount=2
 Header=windows.h.api;
 @=RtlGUIDFromString
 [RtlCompareAltitudes]
-1=[PUNICODE_STRING] Altitude1
-2=[PUNICODE_STRING] Altitude2
+1=PUNICODE_STRING Altitude1
+2=PUNICODE_STRING Altitude2
 ParamCount=2
 Header=windows.h.api;
 @=RtlCompareAltitudes
 [RtlxUnicodeStringToAnsiSize]
-1=[PCUNICODE_STRING] UnicodeString
+1=PCUNICODE_STRING UnicodeString
 ParamCount=1
 Header=windows.h.api;
 @=RtlxUnicodeStringToAnsiSize
 [RtlxUnicodeStringToOemSize]
-1=[PCUNICODE_STRING] UnicodeString
+1=PCUNICODE_STRING UnicodeString
 ParamCount=1
 Header=windows.h.api;
 @=RtlxUnicodeStringToOemSize
 [RtlxOemStringToUnicodeSize]
-1=[PCOEM_STRING] OemString
+1=PCOEM_STRING OemString
 ParamCount=1
 Header=windows.h.api;
 @=RtlxOemStringToUnicodeSize
 [RtlxAnsiStringToUnicodeSize]
-1=[PCANSI_STRING] AnsiString
+1=PCANSI_STRING AnsiString
 ParamCount=1
 Header=windows.h.api;
 @=RtlxAnsiStringToUnicodeSize
@@ -4166,73 +4166,73 @@ Header=windows.h.api;
 ParamCount=2
 @=RtlGetDefaultCodePage
 [RtlAnsiStringToUnicodeSize]
-1=[PANSI_STRING] AnsiString
+1=PANSI_STRING AnsiString
 ParamCount=1
 Header=windows.h.api;
 @=RtlAnsiStringToUnicodeSize
 [RtlUnicodeStringToAnsiSize]
-1=[PUNICODE_STRING] UnicodeString
+1=PUNICODE_STRING UnicodeString
 ParamCount=1
 Header=windows.h.api;
 @=RtlUnicodeStringToAnsiSize
 [RtlOemStringToCountedUnicodeString]
-1=[PUNICODE_STRING] DestinationString
-2=[PCOEM_STRING] SourceString
+1=PUNICODE_STRING DestinationString
+2=PCOEM_STRING SourceString
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlOemStringToCountedUnicodeString
 [PfxInitialize]
-1=[PPREFIX_TABLE] PrefixTable
+1=PPREFIX_TABLE PrefixTable
 ParamCount=1
 Header=ntdll.h.api;
 @=PfxInitialize
 [PfxInsertPrefix]
-1=[PPREFIX_TABLE] PrefixTable
-2=[PSTRING] Prefix
-3=[PPREFIX_TABLE_ENTRY] PrefixTableEntry
+1=PPREFIX_TABLE PrefixTable
+2=PSTRING Prefix
+3=PPREFIX_TABLE_ENTRY PrefixTableEntry
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=PfxInsertPrefix
 [PfxRemovePrefix]
-1=[PPREFIX_TABLE] PrefixTable
-2=[PPREFIX_TABLE_ENTRY] PrefixTableEntry
+1=PPREFIX_TABLE PrefixTable
+2=PPREFIX_TABLE_ENTRY PrefixTableEntry
 ParamCount=2
 Header=ntdll.h.api;
 @=PfxRemovePrefix
 [PfxFindPrefix]
-1=[PPREFIX_TABLE] PrefixTable
-2=[PSTRING] FullName
+1=PPREFIX_TABLE PrefixTable
+2=PSTRING FullName
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=PfxFindPrefix
 [RtlInitializeUnicodePrefix]
-1=[PUNICODE_PREFIX_TABLE] PrefixTable
+1=PUNICODE_PREFIX_TABLE PrefixTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlInitializeUnicodePrefix
 [RtlInsertUnicodePrefix]
-1=[PUNICODE_PREFIX_TABLE] PrefixTable
-2=[PUNICODE_STRING] Prefix
-3=[PUNICODE_PREFIX_TABLE_ENTRY] PrefixTableEntry
+1=PUNICODE_PREFIX_TABLE PrefixTable
+2=PUNICODE_STRING Prefix
+3=PUNICODE_PREFIX_TABLE_ENTRY PrefixTableEntry
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=RtlInsertUnicodePrefix
 [RtlRemoveUnicodePrefix]
-1=[PUNICODE_PREFIX_TABLE] PrefixTable
-2=[PUNICODE_PREFIX_TABLE_ENTRY] PrefixTableEntry
+1=PUNICODE_PREFIX_TABLE PrefixTable
+2=PUNICODE_PREFIX_TABLE_ENTRY PrefixTableEntry
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlRemoveUnicodePrefix
 [RtlFindUnicodePrefix]
-1=[PUNICODE_PREFIX_TABLE] PrefixTable
-2=[PUNICODE_STRING] FullName
+1=PUNICODE_PREFIX_TABLE PrefixTable
+2=PUNICODE_STRING FullName
 3=ULONG CaseInsensitiveIndex
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=RtlFindUnicodePrefix
 [RtlNextUnicodePrefix]
-1=[PUNICODE_PREFIX_TABLE] PrefixTable
+1=PUNICODE_PREFIX_TABLE PrefixTable
 2=BOOLEAN Restart
 ParamCount=2
 Header=ntdll.h.api;
@@ -4307,7 +4307,7 @@ ParamCount=5
 4=ULONG CompressedBufferSize
 5=PUCHAR CompressedTail
 6=ULONG CompressedTailSize
-7=[PCOMPRESSED_DATA_INFO] CompressedDataInfo
+7=PCOMPRESSED_DATA_INFO CompressedDataInfo
 ParamCount=7
 Header=ntdll.h.api;
 @=RtlDecompressChunks
@@ -4316,7 +4316,7 @@ Header=ntdll.h.api;
 2=ULONG UncompressedBufferSize
 3=PUCHAR CompressedBuffer
 4=ULONG CompressedBufferSize
-5=[PCOMPRESSED_DATA_INFO] CompressedDataInfo
+5=PCOMPRESSED_DATA_INFO CompressedDataInfo
 6=ULONG CompressedDataInfoLength
 7=PVOID WorkSpace
 ParamCount=7
@@ -4338,7 +4338,7 @@ ParamCount=2
 @=RtlIsValidLocaleName
 [RtlGetParentLocaleName]
 1=PWSTR LocaleName
-2=[PUNICODE_STRING] ParentLocaleName
+2=PUNICODE_STRING ParentLocaleName
 3=ULONG Flags
 4=BOOLEAN AllocateDestinationString
 ParamCount=4
@@ -4346,7 +4346,7 @@ Header=windows.h.api;
 @=RtlGetParentLocaleName
 [RtlLcidToLocaleName]
 1=[LCID] lcid
-2=[PUNICODE_STRING] LocaleName
+2=PUNICODE_STRING LocaleName
 3=ULONG Flags
 4=BOOLEAN AllocateDestinationString
 ParamCount=4
@@ -4354,20 +4354,20 @@ Header=windows.h.api;
 @=RtlLcidToLocaleName
 [RtlLocaleNameToLcid]
 1=PWSTR LocaleName
-2=[PLCID] lcid
+2=PLCID lcid
 3=ULONG Flags
 ParamCount=3
 Header=windows.h.api;
 @=RtlLocaleNameToLcid
 [RtlLCIDToCultureName]
 1=[LCID] Lcid
-2=[PUNICODE_STRING] String
+2=PUNICODE_STRING String
 ParamCount=2
 Header=windows.h.api;
 @=RtlLCIDToCultureName
 [RtlCultureNameToLCID]
-1=[PUNICODE_STRING] String
-2=[PLCID] Lcid
+1=PUNICODE_STRING String
+2=PLCID Lcid
 ParamCount=2
 Header=windows.h.api;
 @=RtlCultureNameToLCID
@@ -4376,8 +4376,8 @@ ParamCount=0
 @=RtlCleanUpTEBLangLists
 [RtlGetLocaleFileMappingAddress]
 1=PVOID* BaseAddress
-2=[PLCID] DefaultLocaleId
-3=[PLARGE_INTEGER] DefaultCasingTableSize
+2=PLCID DefaultLocaleId
+3=PLARGE_INTEGER DefaultCasingTableSize
 ParamCount=3
 Header=windows.h.api;
 @=RtlGetLocaleFileMappingAddress
@@ -4404,60 +4404,60 @@ ParamCount=2
 ParamCount=0
 @=RtlGetCurrentPeb
 [RtlCreateProcessParameters]
-1=[PRTL_USER_PROCESS_PARAMETERS*] ProcessParameters
-2=[PUNICODE_STRING] ImagePathName
-3=[PUNICODE_STRING] DllPath
-4=[PUNICODE_STRING] CurrentDirectory
-5=[PUNICODE_STRING] CommandLine
+1=PRTL_USER_PROCESS_PARAMETERS* ProcessParameters
+2=PUNICODE_STRING ImagePathName
+3=PUNICODE_STRING DllPath
+4=PUNICODE_STRING CurrentDirectory
+5=PUNICODE_STRING CommandLine
 6=PWSTR Environment
-7=[PUNICODE_STRING] WindowTitle
-8=[PUNICODE_STRING] DesktopInfo
-9=[PUNICODE_STRING] ShellInfo
-10=[PUNICODE_STRING] RuntimeInfo
+7=PUNICODE_STRING WindowTitle
+8=PUNICODE_STRING DesktopInfo
+9=PUNICODE_STRING ShellInfo
+10=PUNICODE_STRING RuntimeInfo
 ParamCount=10
 Header=ntdll.h.api;windows.h.api;
 @=RtlCreateProcessParameters
 [RtlCreateProcessParametersEx]
-1=[PRTL_USER_PROCESS_PARAMETERS*] pProcessParameters
-2=[PUNICODE_STRING] ImagePathName
-3=[PUNICODE_STRING] DllPath
-4=[PUNICODE_STRING] CurrentDirectory
-5=[PUNICODE_STRING] CommandLine
+1=PRTL_USER_PROCESS_PARAMETERS* pProcessParameters
+2=PUNICODE_STRING ImagePathName
+3=PUNICODE_STRING DllPath
+4=PUNICODE_STRING CurrentDirectory
+5=PUNICODE_STRING CommandLine
 6=PVOID Environment
-7=[PUNICODE_STRING] WindowTitle
-8=[PUNICODE_STRING] DesktopInfo
-9=[PUNICODE_STRING] ShellInfo
-10=[PUNICODE_STRING] RuntimeData
+7=PUNICODE_STRING WindowTitle
+8=PUNICODE_STRING DesktopInfo
+9=PUNICODE_STRING ShellInfo
+10=PUNICODE_STRING RuntimeData
 11=ULONG Flags
 ParamCount=11
 Header=ntdll.h.api;windows.h.api;
 @=RtlCreateProcessParametersEx
 [RtlDestroyProcessParameters]
-1=[PRTL_USER_PROCESS_PARAMETERS] ProcessParameters
+1=PRTL_USER_PROCESS_PARAMETERS ProcessParameters
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDestroyProcessParameters
 [RtlNormalizeProcessParams]
-1=[PRTL_USER_PROCESS_PARAMETERS] ProcessParameters
+1=PRTL_USER_PROCESS_PARAMETERS ProcessParameters
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlNormalizeProcessParams
 [RtlDeNormalizeProcessParams]
-1=[PRTL_USER_PROCESS_PARAMETERS] ProcessParameters
+1=PRTL_USER_PROCESS_PARAMETERS ProcessParameters
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDeNormalizeProcessParams
 [RtlCreateUserProcess]
-1=[PUNICODE_STRING] ImageFileName
+1=PUNICODE_STRING ImageFileName
 2=ULONG Attributes
-3=[PRTL_USER_PROCESS_PARAMETERS] ProcessParameters
-4=[PSECURITY_DESCRIPTOR] ProcessSecutityDescriptor
-5=[PSECURITY_DESCRIPTOR] ThreadSecurityDescriptor
+3=PRTL_USER_PROCESS_PARAMETERS ProcessParameters
+4=PSECURITY_DESCRIPTOR ProcessSecutityDescriptor
+5=PSECURITY_DESCRIPTOR ThreadSecurityDescriptor
 6=HANDLE ParentProcess
 7=BOOLEAN CurrentDirectory
 8=HANDLE DebugPort
 9=HANDLE ExceptionPort
-10=[PRTL_USER_PROCESS_INFORMATION] ProcessInfo
+10=PRTL_USER_PROCESS_INFORMATION ProcessInfo
 ParamCount=10
 Header=ntdll.h.api;security.h.api;windows.h.api;
 @=RtlCreateUserProcess
@@ -4468,21 +4468,21 @@ Header=ntstatus.h.api;
 @=RtlExitUserProcess
 [RtlCloneUserProcess]
 1=[RTL_CLONE_PROCESS_FLAGS] ProcessFlags
-2=[PSECURITY_DESCRIPTOR] ProcessSecurityDescriptor
-3=[PSECURITY_DESCRIPTOR] ThreadSecurityDescriptor
+2=PSECURITY_DESCRIPTOR ProcessSecurityDescriptor
+3=PSECURITY_DESCRIPTOR ThreadSecurityDescriptor
 4=HANDLE DebugPort
-5=[PRTL_USER_PROCESS_INFORMATION] ProcessInformation
+5=PRTL_USER_PROCESS_INFORMATION ProcessInformation
 ParamCount=5
 Header=ntdll.h.api;security.h.api;windows.h.api;
 @=RtlCloneUserProcess
 [RtlUpdateClonedCriticalSection]
-1=[PRTL_CRITICAL_SECTION] CriticalSection
+1=PRTL_CRITICAL_SECTION CriticalSection
 ParamCount=1
 Header=native.h.api;
 @=RtlUpdateClonedCriticalSection
 [RtlUpdateClonedSRWLock]
-1=[PRTL_SRWLOCK] SRWLock
-2=[LOGICAL] Shared
+1=PRTL_SRWLOCK SRWLock
+2=LOGICAL Shared
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlUpdateClonedSRWLock
@@ -4492,7 +4492,7 @@ Header=ntdll.h.api;
 3=PVOID StartRoutine
 4=PVOID StartContext
 5=HANDLE EventHandle
-6=[PRTLP_PROCESS_REFLECTION_REFLECTION_INFORMATION] ReflectionInformation
+6=PRTLP_PROCESS_REFLECTION_REFLECTION_INFORMATION ReflectionInformation
 ParamCount=6
 Header=ntdll.h.api;windows.h.api;
 @=RtlCreateProcessReflection
@@ -4510,15 +4510,15 @@ ParamCount=3
 @=RtlSetThreadIsCritical
 [RtlCreateUserThread]
 1=[ProcessHandle] ProcessHandle
-2=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+2=PSECURITY_DESCRIPTOR SecurityDescriptor
 3=BOOLEAN CreateSuspended
 4=ULONG StackZeroBits
 5=SIZE_T StackReserve
 6=SIZE_T StackCommit
-7=[PTHREAD_START_ROUTINE] StartAddress
+7=PTHREAD_START_ROUTINE StartAddress
 8=PVOID Parameter
-9=[PHANDLE] ThreadHandle
-10=[PCLIENT_ID] ClientId
+9=PHANDLE ThreadHandle
+10=PCLIENT_ID ClientId
 ParamCount=10
 Header=ntdll.h.api;native.h.api;security.h.api;windows.h.api;
 @=RtlCreateUserThread
@@ -4533,16 +4533,16 @@ Header=ntstatus.h.api;
 3=ULONG_PTR ZeroBits
 4=SIZE_T PageSize
 5=ULONG_PTR ReserveAlignment
-6=[PINITIAL_TEB] InitialTeb
+6=PINITIAL_TEB InitialTeb
 ParamCount=6
 Header=ntdll.h.api;
 @=RtlCreateUserStack
 [RtlInitializeContext]
 1=[ProcessHandle] ProcessHandle
-2=[PCONTEXT] ThreadContext
+2=PCONTEXT ThreadContext
 3=PVOID ThreadStartParam
-4=[PTHREAD_START_ROUTINE] ThreadStartAddress
-5=[PINITIAL_TEB] InitialTeb
+4=PTHREAD_START_ROUTINE ThreadStartAddress
+5=PINITIAL_TEB InitialTeb
 ParamCount=5
 Header=ntdll.h.api;windows.h.api;
 @=RtlInitializeContext
@@ -4559,13 +4559,13 @@ Header=windows.h.api;
 @=RtlRemoteCall
 [RtlWow64GetThreadContext]
 1=HANDLE ThreadHandle
-2=[PWOW64_CONTEXT] ThreadContext
+2=PWOW64_CONTEXT ThreadContext
 ParamCount=2
 Header=kernel32.h.api;windows.h.api;
 @=RtlWow64GetThreadContext
 [RtlWow64SetThreadContext]
 1=HANDLE ThreadHandle
-2=[PWOW64_CONTEXT] ThreadContext
+2=PWOW64_CONTEXT ThreadContext
 ParamCount=2
 Header=kernel32.h.api;windows.h.api;
 @=RtlWow64SetThreadContext
@@ -4586,21 +4586,21 @@ ParamCount=1
 @=RtlImageNtHeader
 [RtlImageNtHeaderEx]
 1=[RTL_IMAGE_NT_HEADER_EX_FLAGS] Flags
-2=[HMODULE-PVOID] BaseAddress
+2=HMODULE-PVOID BaseAddress
 3=ULONGLONG Size
-4=[PIMAGE_NT_HEADERS*] NtHeader
+4=PIMAGE_NT_HEADERS* NtHeader
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlImageNtHeaderEx
 [RtlAddressInSectionTable]
-1=[PIMAGE_NT_HEADERS] NtHeaders
+1=PIMAGE_NT_HEADERS NtHeaders
 2=PVOID BaseOfImage
 3=ULONG VirtualAddress
 ParamCount=3
 Header=windows.h.api;
 @=RtlAddressInSectionTable
 [RtlSectionTableFromVirtualAddress]
-1=[PIMAGE_NT_HEADERS] NtHeaders
+1=PIMAGE_NT_HEADERS NtHeaders
 2=PVOID BaseOfImage
 3=ULONG VirtualAddress
 ParamCount=3
@@ -4614,17 +4614,17 @@ Header=windows.h.api;
 ParamCount=4
 @=RtlImageDirectoryEntryToData
 [RtlImageRvaToSection]
-1=[PIMAGE_NT_HEADERS] NtHeader
+1=PIMAGE_NT_HEADERS NtHeader
 2=PVOID BaseAddress
 3=ULONG Rva
 ParamCount=3
 Header=windows.h.api;
 @=RtlImageRvaToSection
 [RtlImageRvaToVa]
-1=[PIMAGE_NT_HEADERS] NtHeader
+1=PIMAGE_NT_HEADERS NtHeader
 2=PVOID BaseAddress
 3=ULONG Rva
-4=[PIMAGE_SECTION_HEADER*] SectionHeader
+4=PIMAGE_SECTION_HEADER* SectionHeader
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=RtlImageRvaToVa
@@ -4700,8 +4700,8 @@ ParamCount=5
 @=RtlSetEnvironmentVar
 [RtlSetEnvironmentVariable]
 1=PWSTR* Environment
-2=[PUNICODE_STRING] Name
-3=[PUNICODE_STRING] Value
+2=PUNICODE_STRING Name
+3=PUNICODE_STRING Value
 ParamCount=3
 Header=windows.h.api;
 @=RtlSetEnvironmentVariable
@@ -4716,8 +4716,8 @@ ParamCount=6
 @=RtlQueryEnvironmentVariable
 [RtlQueryEnvironmentVariable_U]
 1=PWSTR Environment
-2=[PUNICODE_STRING] Name
-3=[PUNICODE_STRING] Value
+2=PUNICODE_STRING Name
+3=PUNICODE_STRING Value
 ParamCount=3
 Header=windows.h.api;
 @=RtlQueryEnvironmentVariable_U
@@ -4732,8 +4732,8 @@ ParamCount=6
 @=RtlExpandEnvironmentStrings
 [RtlExpandEnvironmentStrings_U]
 1=PWSTR Environment
-2=[PUNICODE_STRING] Source
-3=[PUNICODE_STRING] Destination
+2=PUNICODE_STRING Source
+3=PUNICODE_STRING Destination
 4=PULONG Length
 ParamCount=4
 Header=windows.h.api;
@@ -4744,10 +4744,10 @@ Header=windows.h.api;
 ParamCount=2
 @=RtlSetEnvironmentStrings
 [RtlGenerate8dot3Name]
-1=[PUNICODE_STRING] Name
+1=PUNICODE_STRING Name
 2=BOOLEAN AllowExtendedCharacters
-3=[PGENERATE_NAME_CONTEXT] Context
-4=[PUNICODE_STRING] Name8dot3
+3=PGENERATE_NAME_CONTEXT Context
+4=PUNICODE_STRING Name8dot3
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlGenerate8dot3Name
@@ -4760,7 +4760,7 @@ ParamCount=1
 ParamCount=1
 @=RtlIsDosDeviceName_U
 [RtlIsDosDeviceName_Ustr]
-1=[PUNICODE_STRING] Name
+1=PUNICODE_STRING Name
 ParamCount=1
 Header=windows.h.api;
 @=RtlIsDosDeviceName_Ustr
@@ -4776,18 +4776,18 @@ ParamCount=4
 2=ULONG BufferLength
 3=PWSTR Buffer
 4=PWSTR* FilePart
-5=[RTL_PATH_TYPE*] InputPathType
+5=RTL_PATH_TYPE* InputPathType
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlGetFullPathName_UEx
 [RtlGetFullPathName_UstrEx]
-1=[PUNICODE_STRING] FileName
-2=[PUNICODE_STRING] StaticString
-3=[PUNICODE_STRING] DynamicString
-4=[PUNICODE_STRING*] StringUsed
+1=PUNICODE_STRING FileName
+2=PUNICODE_STRING StaticString
+3=PUNICODE_STRING DynamicString
+4=PUNICODE_STRING* StringUsed
 5=SIZE_T* FilePartPrefixCch
 6=PBOOLEAN NameInvalid
-7=[RTL_PATH_TYPE*] InputPathType
+7=RTL_PATH_TYPE* InputPathType
 8=SIZE_T* BytesRequired
 ParamCount=8
 Header=ntdll.h.api;windows.h.api;
@@ -4798,7 +4798,7 @@ Header=ntdll.h.api;windows.h.api;
 ParamCount=2
 @=RtlGetCurrentDirectory_U
 [RtlSetCurrentDirectory_U]
-1=[PUNICODE_STRING] name
+1=PUNICODE_STRING name
 ParamCount=1
 Header=windows.h.api;
 @=RtlSetCurrentDirectory_U
@@ -4807,38 +4807,38 @@ ParamCount=0
 @=RtlGetLongestNtPathLength
 [RtlDosPathNameToNtPathName_U]
 1=PCWSTR DosPathName
-2=[PUNICODE_STRING] NtPathName
+2=PUNICODE_STRING NtPathName
 3=PCWSTR* NtFileNamePart
-4=[CURDIR*] DirectoryInfo
+4=CURDIR* DirectoryInfo
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlDosPathNameToNtPathName_U
 [RtlDosPathNameToNtPathName_U_WithStatus]
 1=PWSTR DosFileName
-2=[PUNICODE_STRING] NtFileName
+2=PUNICODE_STRING NtFileName
 3=PWSTR* FilePart
-4=[PRTL_RELATIVE_NAME_U] RelativeName
+4=PRTL_RELATIVE_NAME_U RelativeName
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlDosPathNameToNtPathName_U_WithStatus
 [RtlDosPathNameToRelativeNtPathName_U]
 1=PWSTR DosFileName
-2=[PUNICODE_STRING] NtFileName
+2=PUNICODE_STRING NtFileName
 3=PWSTR* FilePart
-4=[PRTL_RELATIVE_NAME_U] RelativeName
+4=PRTL_RELATIVE_NAME_U RelativeName
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlDosPathNameToRelativeNtPathName_U
 [RtlDosPathNameToRelativeNtPathName_U_WithStatus]
 1=PWSTR DosFileName
-2=[PUNICODE_STRING] NtFileName
+2=PUNICODE_STRING NtFileName
 3=PWSTR* FilePart
-4=[PRTL_RELATIVE_NAME_U] RelativeName
+4=PRTL_RELATIVE_NAME_U RelativeName
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlDosPathNameToRelativeNtPathName_U_WithStatus
 [RtlReleaseRelativeName]
-1=[PRTL_RELATIVE_NAME_U] RelativeName
+1=PRTL_RELATIVE_NAME_U RelativeName
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlReleaseRelativeName
@@ -4853,12 +4853,12 @@ ParamCount=6
 @=RtlDosSearchPath_U
 [RtlDosSearchPath_Ustr]
 1=[RTL_DOS_SEARCH_PATH_FLAG] Flags
-2=[PUNICODE_STRING] Path
-3=[PUNICODE_STRING] FileName
-4=[PUNICODE_STRING] DefaultExtension
-5=[PUNICODE_STRING] StaticString
-6=[PUNICODE_STRING] DynamicString
-7=[PCUNICODE_STRING*] FullFileNameOut
+2=PUNICODE_STRING Path
+3=PUNICODE_STRING FileName
+4=PUNICODE_STRING DefaultExtension
+5=PUNICODE_STRING StaticString
+6=PUNICODE_STRING DynamicString
+7=PCUNICODE_STRING* FullFileNameOut
 8=SIZE_T* FilePartPrefixCch
 9=SIZE_T* BytesRequired
 ParamCount=9
@@ -4869,40 +4869,40 @@ Header=ntdll.h.api;windows.h.api;
 ParamCount=1
 @=RtlDoesFileExists_U
 [RtlDoesFileExists_UstrEx]
-1=[PCUNICODE_STRING] FileName
+1=PCUNICODE_STRING FileName
 2=BOOLEAN SucceedIfBusy
 ParamCount=2
 Header=windows.h.api;
 @=RtlDoesFileExists_UstrEx
 [RtlDetermineDosPathNameType_Ustr]
-1=[PCUNICODE_STRING] Path
+1=PCUNICODE_STRING Path
 ParamCount=1
 Header=windows.h.api;
 @=RtlDetermineDosPathNameType_Ustr
 [RtlGetFullPathName_Ustr]
-1=[PUNICODE_STRING] FileName
+1=PUNICODE_STRING FileName
 2=ULONG Size
 3=PWSTR Buffer
 4=PWSTR* ShortName
 5=PBOOLEAN InvalidName
-6=[RTL_PATH_TYPE*] PathType
+6=RTL_PATH_TYPE* PathType
 ParamCount=6
 Header=ntdll.h.api;windows.h.api;
 @=RtlGetFullPathName_Ustr
 [RtlIsNameLegalDOS8Dot3]
-1=[PCUNICODE_STRING] Name
-2=[POEM_STRING] OemName
+1=PCUNICODE_STRING Name
+2=POEM_STRING OemName
 3=PBOOLEAN NameContainsSpaces
 ParamCount=3
 Header=windows.h.api;
 @=RtlIsNameLegalDOS8Dot3
 [RtlDosApplyFileIsolationRedirection_Ustr]
 1=BOOLEAN Unknown
-2=[PUNICODE_STRING] OriginalName
-3=[PUNICODE_STRING] Extension
-4=[PUNICODE_STRING] RedirectedName
-5=[PUNICODE_STRING] RedirectedName2
-6=[PUNICODE_STRING*] OriginalName2
+2=PUNICODE_STRING OriginalName
+3=PUNICODE_STRING Extension
+4=PUNICODE_STRING RedirectedName
+5=PUNICODE_STRING RedirectedName2
+6=PUNICODE_STRING* OriginalName2
 7=PVOID Unknown1
 8=PVOID Unknown2
 9=PVOID Unknown3
@@ -4915,7 +4915,7 @@ Header=windows.h.api;
 3=SIZE_T SizeToReserve
 4=SIZE_T SizeToCommit
 5=PVOID Lock
-6=[PRTL_HEAP_PARAMETERS] Parameters
+6=PRTL_HEAP_PARAMETERS Parameters
 ParamCount=6
 Header=ntdll.h.api;windows.h.api;
 @=RtlCreateHeap
@@ -5004,7 +5004,7 @@ ParamCount=4
 2=ULONG Flags
 3=USHORT TagIndex
 4=BOOLEAN ResetCounters
-5=[PRTL_HEAP_TAG_INFO] HeapTagInfo
+5=PRTL_HEAP_TAG_INFO HeapTagInfo
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlQueryTagHeap
@@ -5034,12 +5034,12 @@ ParamCount=0
 @=RtlValidateProcessHeaps
 [RtlGetProcessHeaps]
 1=ULONG HeapCount
-2=[HANDLE*] HeapArray
+2=HANDLE* HeapArray
 ParamCount=2
 Header=windows.h.api;
 @=RtlGetProcessHeaps
 [RtlEnumProcessHeaps]
-1=[PHEAP_ENUMERATION_ROUTINE] HeapEnumerationRoutine
+1=PHEAP_ENUMERATION_ROUTINE HeapEnumerationRoutine
 2=PVOID Param
 ParamCount=2
 Header=ntdll.h.api;
@@ -5047,7 +5047,7 @@ Header=ntdll.h.api;
 [RtlUsageHeap]
 1=PVOID HeapHandle
 2=[HEAP_FLAGS_ULONG] Flags
-3=[PRTL_HEAP_USAGE] Usage
+3=PRTL_HEAP_USAGE Usage
 ParamCount=3
 Header=ntdll.h.api;windows.h.api;
 @=RtlUsageHeap
@@ -5168,15 +5168,15 @@ ParamCount=1
 Header=windows.h.api;
 @=RtlSetCurrentTransaction
 [RtlCopyLuid]
-1=[PLUID] LuidDest
-2=[PLUID] LuidSrc
+1=PLUID LuidDest
+2=PLUID LuidSrc
 ParamCount=2
 Header=windows.h.api;
 @=RtlCopyLuid
 [RtlCopyLuidAndAttributesArray]
 1=ULONG Count
-2=[PLUID_AND_ATTRIBUTES] Src
-3=[PLUID_AND_ATTRIBUTES] Dest
+2=PLUID_AND_ATTRIBUTES Src
+3=PLUID_AND_ATTRIBUTES Dest
 ParamCount=3
 Header=security.h.api;
 @=RtlCopyLuidAndAttributesArray
@@ -5186,18 +5186,18 @@ Header=security.h.api;
 ParamCount=2
 @=RtlCreateQueryDebugBuffer
 [RtlDestroyQueryDebugBuffer]
-1=[PRTL_DEBUG_INFORMATION] DebugBuffer
+1=PRTL_DEBUG_INFORMATION DebugBuffer
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDestroyQueryDebugBuffer
 [RtlCommitDebugInfo]
-1=[PRTL_DEBUG_INFORMATION] Buffer
+1=PRTL_DEBUG_INFORMATION Buffer
 2=SIZE_T Size
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlCommitDebugInfo
 [RtlDeCommitDebugInfo]
-1=[PRTL_DEBUG_INFORMATION] Buffer
+1=PRTL_DEBUG_INFORMATION Buffer
 2=PVOID p
 3=SIZE_T Size
 ParamCount=3
@@ -5206,7 +5206,7 @@ Header=ntdll.h.api;
 [RtlQueryProcessDebugInformation]
 1=ULONG ProcessId
 2=[RTL_DEBUG_QUERY_FLAGS] DebugInfoClassMask
-3=[PRTL_DEBUG_INFORMATION] DebugBuffer
+3=PRTL_DEBUG_INFORMATION DebugBuffer
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlQueryProcessDebugInformation
@@ -5215,7 +5215,7 @@ Header=ntdll.h.api;
 2=ULONG Type
 3=ULONG Language
 4=ULONG MessageId
-5=[PRTL_MESSAGE_RESOURCE_ENTRY*] MessageResourceEntry
+5=PRTL_MESSAGE_RESOURCE_ENTRY* MessageResourceEntry
 ParamCount=5
 Header=ntdll.h.api;
 @=RtlFindMessage
@@ -5241,7 +5241,7 @@ ParamCount=9
 7=PWSTR Buffer
 8=ULONG Length
 9=PULONG ReturnLength
-10=[PPARSE_MESSAGE_CONTEXT] ParseContext
+10=PPARSE_MESSAGE_CONTEXT ParseContext
 ParamCount=10
 Header=ntdll.h.api;
 @=RtlFormatMessageEx
@@ -5284,8 +5284,8 @@ ParamCount=2
 Header=ntdll.h.api;
 @=RtlSetThreadErrorMode
 [RtlReportException]
-1=[PEXCEPTION_RECORD] ExceptionRecord
-2=[PCONTEXT] ContextRecord
+1=PEXCEPTION_RECORD ExceptionRecord
+2=PCONTEXT ContextRecord
 3=ULONG Flags
 ParamCount=3
 Header=windows.h.api;
@@ -5294,7 +5294,7 @@ Header=windows.h.api;
 1=ULONG ProcessId
 2=HANDLE CrashReportSharedMem
 3=ULONG Flags
-4=[PHANDLE] CrashVerticalProcessHandle
+4=PHANDLE CrashVerticalProcessHandle
 ParamCount=4
 Header=windows.h.api;
 @=RtlWerpReportException
@@ -5306,7 +5306,7 @@ Header=ntstatus.h.api;windows.h.api;
 @=RtlReportSilentProcessExit
 [RtlAddVectoredExceptionHandler]
 1=ULONG FirstHandler
-2=[PVECTORED_EXCEPTION_HANDLER] VectoredHandler
+2=PVECTORED_EXCEPTION_HANDLER VectoredHandler
 ParamCount=2
 Header=windows.h.api;
 @=RtlAddVectoredExceptionHandler
@@ -5316,7 +5316,7 @@ ParamCount=1
 @=RtlRemoveVectoredExceptionHandler
 [RtlAddVectoredContinueHandler]
 1=ULONG First
-2=[PVECTORED_EXCEPTION_HANDLER] Handler
+2=PVECTORED_EXCEPTION_HANDLER Handler
 ParamCount=2
 Header=windows.h.api;
 @=RtlAddVectoredContinueHandler
@@ -5351,7 +5351,7 @@ Header=windows.h.api;
 ParamCount=4
 @=RtlIntegerToChar
 [RtlCharToInteger]
-1=[PCSZ] String
+1=PCSZ String
 2=ULONG Base
 3=PULONG Value
 ParamCount=3
@@ -5360,19 +5360,19 @@ Header=ntdll.h.api;
 [RtlIntegerToUnicodeString]
 1=ULONG Value
 2=ULONG Base
-3=[PUNICODE_STRING] String
+3=PUNICODE_STRING String
 ParamCount=3
 Header=windows.h.api;
 @=RtlIntegerToUnicodeString
 [RtlInt64ToUnicodeString]
 1=ULONGLONG Value
 2=ULONG Base
-3=[PUNICODE_STRING] String
+3=PUNICODE_STRING String
 ParamCount=3
 Header=windows.h.api;
 @=RtlInt64ToUnicodeString
 [RtlUnicodeStringToInteger]
-1=[PCUNICODE_STRING] String
+1=PCUNICODE_STRING String
 2=ULONG Base
 3=PULONG Value
 ParamCount=3
@@ -5386,13 +5386,13 @@ Header=windows.h.api;
 ParamCount=4
 @=RtlIntegerToUnicode
 [RtlIpv4AddressToString]
-1=[IN_ADDR*] Addr
+1=IN_ADDR* Addr
 2=LPTSTR S
 ParamCount=2
 Header=sockets.h.api;
 @=RtlIpv4AddressToString
 [RtlIpv4AddressToStringEx]
-1=[IN_ADDR*] Address
+1=IN_ADDR* Address
 2=USHORT Port
 3=LPTSTR AddressString
 4=PULONG AddressStringLength
@@ -5400,13 +5400,13 @@ ParamCount=4
 Header=sockets.h.api;
 @=RtlIpv4AddressToStringEx
 [RtlIpv6AddressToString]
-1=[IN6_ADDR*] Addr
+1=IN6_ADDR* Addr
 2=LPTSTR S
 ParamCount=2
 Header=sockets.h.api;
 @=RtlIpv6AddressToString
 [RtlIpv6AddressToStringEx]
-1=[IN6_ADDR*] Address
+1=IN6_ADDR* Address
 2=ULONG ScopeId
 3=USHORT Port
 4=LPTSTR AddressString
@@ -5418,14 +5418,14 @@ Header=sockets.h.api;
 1=PCTSTR String
 2=BOOLEAN Strict
 3=LPTSTR* Terminator
-4=[IN_ADDR*] Addr
+4=IN_ADDR* Addr
 ParamCount=4
 Header=sockets.h.api;
 @=RtlIpv4StringToAddress
 [RtlIpv4StringToAddressEx]
 1=PCTSTR AddressString
 2=BOOLEAN Strict
-3=[IN_ADDR*] Address
+3=IN_ADDR* Address
 4=PUSHORT Port
 ParamCount=4
 Header=sockets.h.api;
@@ -5433,227 +5433,227 @@ Header=sockets.h.api;
 [RtlIpv6StringToAddress]
 1=PCTSTR String
 2=PCTSTR* Terminator
-3=[IN6_ADDR*] Addr
+3=IN6_ADDR* Addr
 ParamCount=3
 Header=sockets.h.api;
 @=RtlIpv6StringToAddress
 [RtlIpv6StringToAddressEx]
 1=PCTSTR AddressString
-2=[IN6_ADDR*] Address
+2=IN6_ADDR* Address
 3=PULONG ScopeId
 4=PUSHORT Port
 ParamCount=4
 Header=sockets.h.api;
 @=RtlIpv6StringToAddressEx
 [RtlCutoverTimeToSystemTime]
-1=[PTIME_FIELDS] CutoverTime
-2=[PLARGE_INTEGER] SystemTime
-3=[PLARGE_INTEGER] CurrentSystemTime
+1=PTIME_FIELDS CutoverTime
+2=PLARGE_INTEGER SystemTime
+3=PLARGE_INTEGER CurrentSystemTime
 4=BOOLEAN ThisYear
 ParamCount=4
 Header=ntdll.h.api;windows.h.api;
 @=RtlCutoverTimeToSystemTime
 [RtlSystemTimeToLocalTime]
-1=[PLARGE_INTEGER] SystemTime
-2=[PLARGE_INTEGER] LocalTime
+1=PLARGE_INTEGER SystemTime
+2=PLARGE_INTEGER LocalTime
 ParamCount=2
 Header=windows.h.api;
 @=RtlSystemTimeToLocalTime
 [RtlLocalTimeToSystemTime]
-1=[PLARGE_INTEGER] LocalTime
-2=[PLARGE_INTEGER] SystemTime
+1=PLARGE_INTEGER LocalTime
+2=PLARGE_INTEGER SystemTime
 ParamCount=2
 Header=windows.h.api;
 @=RtlLocalTimeToSystemTime
 [RtlTimeToElapsedTimeFields]
-1=[PLARGE_INTEGER] Time
-2=[PTIME_FIELDS] TimeFields
+1=PLARGE_INTEGER Time
+2=PTIME_FIELDS TimeFields
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlTimeToElapsedTimeFields
 [RtlTimeToTimeFields]
-1=[PLARGE_INTEGER] Time
-2=[PTIME_FIELDS] TimeFields
+1=PLARGE_INTEGER Time
+2=PTIME_FIELDS TimeFields
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlTimeToTimeFields
 [RtlTimeFieldsToTime]
-1=[PTIME_FIELDS] TimeFields
-2=[PLARGE_INTEGER] Time
+1=PTIME_FIELDS TimeFields
+2=PLARGE_INTEGER Time
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlTimeFieldsToTime
 [RtlTimeToSecondsSince1980]
-1=[PLARGE_INTEGER] Time
+1=PLARGE_INTEGER Time
 2=PULONG ElapsedSeconds
 ParamCount=2
 Header=windows.h.api;
 @=RtlTimeToSecondsSince1980
 [RtlSecondsSince1980ToTime]
 1=ULONG ElapsedSeconds
-2=[PLARGE_INTEGER] Time
+2=PLARGE_INTEGER Time
 ParamCount=2
 Header=windows.h.api;
 @=RtlSecondsSince1980ToTime
 [RtlTimeToSecondsSince1970]
-1=[PLARGE_INTEGER] Time
+1=PLARGE_INTEGER Time
 2=PULONG SecondsSince1970
 ParamCount=2
 Header=windows.h.api;
 @=RtlTimeToSecondsSince1970
 [RtlSecondsSince1970ToTime]
 1=ULONG SecondsSince1970
-2=[PLARGE_INTEGER] Time
+2=PLARGE_INTEGER Time
 ParamCount=2
 Header=windows.h.api;
 @=RtlSecondsSince1970ToTime
 [RtlQueryTimeZoneInformation]
-1=[PRTL_TIME_ZONE_INFORMATION] TimeZoneInformation
+1=PRTL_TIME_ZONE_INFORMATION TimeZoneInformation
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlQueryTimeZoneInformation
 [RtlSetTimeZoneInformation]
-1=[PRTL_TIME_ZONE_INFORMATION] TimeZoneInformation
+1=PRTL_TIME_ZONE_INFORMATION TimeZoneInformation
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlSetTimeZoneInformation
 [RtlInitializeBitMap]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=PULONG BitMapBuffer
 3=ULONG SizeOfBitMap
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlInitializeBitMap
 [RtlClearBit]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG BitNumber
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlClearBit
 [RtlSetBit]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG BitNumber
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlSetBit
 [RtlTestBit]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG BitNumber
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlTestBit
 [RtlClearAllBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlClearAllBits
 [RtlSetAllBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlSetAllBits
 [RtlFindClearBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG NumberToFind
 3=ULONG HintIndex
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlFindClearBits
 [RtlFindClearBitsAndSet]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG NumberToFind
 3=ULONG HintIndex
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlFindClearBitsAndSet
 [RtlFindSetBitsAndClear]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG NumberToFind
 3=ULONG HintIndex
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlFindSetBitsAndClear
 [RtlClearBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG StartingIndex
 3=ULONG NumberToClear
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlClearBits
 [RtlSetBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG StartingIndex
 3=ULONG NumberToSet
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlSetBits
 [RtlFindClearRuns]
-1=[PRTL_BITMAP] BitMapHeader
-2=[PRTL_BITMAP_RUN] RunArray
+1=PRTL_BITMAP BitMapHeader
+2=PRTL_BITMAP_RUN RunArray
 3=ULONG SizeOfRunArray
 4=BOOLEAN LocateLongestRuns
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlFindClearRuns
 [RtlFindLongestRunClear]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=PULONG StartingIndex
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlFindLongestRunClear
 [RtlFindFirstRunClear]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=PULONG StartingIndex
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlFindFirstRunClear
 [RtlNumberOfClearBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlNumberOfClearBits
 [RtlNumberOfSetBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlNumberOfSetBits
 [RtlAreBitsClear]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG StartingIndex
 3=ULONG Length
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlAreBitsClear
 [RtlAreBitsSet]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG StartingIndex
 3=ULONG Length
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlAreBitsSet
 [RtlFindNextForwardRunClear]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG FromIndex
 3=PULONG StartingRunIndex
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlFindNextForwardRunClear
 [RtlFindLastBackwardRunClear]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG FromIndex
 3=PULONG StartingRunIndex
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlFindLastBackwardRunClear
 [RtlInterlockedClearBitRun]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG StartingIndex
 3=ULONG NumberToClear
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlInterlockedClearBitRun
 [RtlInterlockedSetBitRun]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG StartingIndex
 3=ULONG NumberToSet
 ParamCount=3
@@ -5668,7 +5668,7 @@ ParamCount=1
 ParamCount=1
 @=RtlFindMostSignificantBit
 [RtlFindSetBits]
-1=[PRTL_BITMAP] BitMapHeader
+1=PRTL_BITMAP BitMapHeader
 2=ULONG NumberToFind
 3=ULONG HintIndex
 ParamCount=3
@@ -5681,48 +5681,48 @@ ParamCount=1
 [RtlInitializeHandleTable]
 1=ULONG TableSize
 2=ULONG HandleSize
-3=[PRTL_HANDLE_TABLE] HandleTable
+3=PRTL_HANDLE_TABLE HandleTable
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlInitializeHandleTable
 [RtlDestroyHandleTable]
-1=[PRTL_HANDLE_TABLE] HandleTable
+1=PRTL_HANDLE_TABLE HandleTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDestroyHandleTable
 [RtlAllocateHandle]
-1=[PRTL_HANDLE_TABLE] HandleTable
+1=PRTL_HANDLE_TABLE HandleTable
 2=PULONG Index
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlAllocateHandle
 [RtlFreeHandle]
-1=[PRTL_HANDLE_TABLE] HandleTable
-2=[PRTL_HANDLE_TABLE_ENTRY] Handle
+1=PRTL_HANDLE_TABLE HandleTable
+2=PRTL_HANDLE_TABLE_ENTRY Handle
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlFreeHandle
 [RtlIsValidHandle]
-1=[PRTL_HANDLE_TABLE] HandleTable
-2=[PRTL_HANDLE_TABLE_ENTRY] Handle
+1=PRTL_HANDLE_TABLE HandleTable
+2=PRTL_HANDLE_TABLE_ENTRY Handle
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlIsValidHandle
 [RtlIsValidIndexHandle]
-1=[PRTL_HANDLE_TABLE] HandleTable
+1=PRTL_HANDLE_TABLE HandleTable
 2=ULONG Index
-3=[PRTL_HANDLE_TABLE_ENTRY*] Handle
+3=PRTL_HANDLE_TABLE_ENTRY* Handle
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlIsValidIndexHandle
 [RtlCreateAtomTable]
 1=ULONG TableSize
-2=[PRTL_ATOM_TABLE*] AtomTable
+2=PRTL_ATOM_TABLE* AtomTable
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlCreateAtomTable
 [RtlDestroyAtomTable]
-1=[PRTL_ATOM_TABLE] AtomTable
+1=PRTL_ATOM_TABLE AtomTable
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlDestroyAtomTable
@@ -5732,34 +5732,34 @@ Header=ntdll.h.api;
 ParamCount=2
 @=RtlEmptyAtomTable
 [RtlAddAtomToAtomTable]
-1=[PRTL_ATOM_TABLE] AtomTable
+1=PRTL_ATOM_TABLE AtomTable
 2=PWSTR AtomName
-3=[PRTL_ATOM] Atom
+3=PRTL_ATOM Atom
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlAddAtomToAtomTable
 [RtlLookupAtomInAtomTable]
-1=[PRTL_ATOM_TABLE] AtomTable
+1=PRTL_ATOM_TABLE AtomTable
 2=PWSTR AtomName
-3=[PRTL_ATOM] Atom
+3=PRTL_ATOM Atom
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlLookupAtomInAtomTable
 [RtlDeleteAtomFromAtomTable]
-1=[PRTL_ATOM_TABLE] AtomTable
-2=[RTL_ATOM] Atom
+1=PRTL_ATOM_TABLE AtomTable
+2=RTL_ATOM Atom
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlDeleteAtomFromAtomTable
 [RtlPinAtomInAtomTable]
-1=[PRTL_ATOM_TABLE] AtomTable
-2=[RTL_ATOM] Atom
+1=PRTL_ATOM_TABLE AtomTable
+2=RTL_ATOM Atom
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlPinAtomInAtomTable
 [RtlQueryAtomInAtomTable]
-1=[PRTL_ATOM_TABLE] AtomTable
-2=[RTL_ATOM] Atom
+1=PRTL_ATOM_TABLE AtomTable
+2=RTL_ATOM Atom
 3=PULONG RefCount
 4=PULONG PinCount
 5=PWSTR AtomName
@@ -5773,13 +5773,13 @@ Header=ntdll.h.api;
 ParamCount=2
 @=RtlGetIntegerAtom
 [RtlValidSid]
-1=[PSID] Sid
+1=PSID Sid
 ParamCount=1
 Header=windows.h.api;
 @=RtlValidSid
 [RtlEqualSid]
-1=[PSID] Sid1
-2=[PSID] Sid2
+1=PSID Sid1
+2=PSID Sid2
 ParamCount=2
 Header=windows.h.api;
 @=RtlEqualSid
@@ -5788,12 +5788,12 @@ Header=windows.h.api;
 ParamCount=1
 @=RtlLengthRequiredSid
 [RtlFreeSid]
-1=[PSID] Sid
+1=PSID Sid
 ParamCount=1
 Header=windows.h.api;
 @=RtlFreeSid
 [RtlAllocateAndInitializeSid]
-1=[PSID_IDENTIFIER_AUTHORITY] IdentifierAuthority
+1=PSID_IDENTIFIER_AUTHORITY IdentifierAuthority
 2=UCHAR SubAuthorityCount
 3=ULONG SubAuthority0
 4=ULONG SubAuthority1
@@ -5803,114 +5803,114 @@ Header=windows.h.api;
 8=ULONG SubAuthority5
 9=ULONG SubAuthority6
 10=ULONG SubAuthority7
-11=[PSID*] Sid
+11=PSID* Sid
 ParamCount=11
 Header=security.h.api;windows.h.api;
 @=RtlAllocateAndInitializeSid
 [RtlInitializeSid]
-1=[PSID] Sid
-2=[PSID_IDENTIFIER_AUTHORITY] IdentifierAuthority
+1=PSID Sid
+2=PSID_IDENTIFIER_AUTHORITY IdentifierAuthority
 3=UCHAR SubAuthorityCount
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlInitializeSid
 [RtlIdentifierAuthoritySid]
-1=[PSID] Sid
+1=PSID Sid
 ParamCount=1
 Header=windows.h.api;
 @=RtlIdentifierAuthoritySid
 [RtlSubAuthoritySid]
-1=[PSID] Sid
+1=PSID Sid
 2=ULONG SubAuthority
 ParamCount=2
 Header=windows.h.api;
 @=RtlSubAuthoritySid
 [RtlSubAuthorityCountSid]
-1=[PSID] Sid
+1=PSID Sid
 ParamCount=1
 Header=windows.h.api;
 @=RtlSubAuthorityCountSid
 [RtlLengthSid]
-1=[PSID] Sid
+1=PSID Sid
 ParamCount=1
 Header=windows.h.api;
 @=RtlLengthSid
 [RtlCopySid]
 1=ULONG Length
-2=[PSID] Destination
-3=[PSID] Source
+2=PSID Destination
+3=PSID Source
 ParamCount=3
 Header=windows.h.api;
 @=RtlCopySid
 [RtlCreateServiceSid]
-1=[PUNICODE_STRING] ServiceName
-2=[PSID] ServiceSid
+1=PUNICODE_STRING ServiceName
+2=PSID ServiceSid
 3=PULONG ServiceSidLength
 ParamCount=3
 Header=windows.h.api;
 @=RtlCreateServiceSid
 [RtlSidDominates]
-1=[PSID] Sid1
-2=[PSID] Sid2
+1=PSID Sid1
+2=PSID Sid2
 3=PBOOLEAN pbDominate
 ParamCount=3
 Header=windows.h.api;
 @=RtlSidDominates
 [RtlSidEqualLevel]
-1=[PSID] Sid1
-2=[PSID] Sid2
+1=PSID Sid1
+2=PSID Sid2
 3=PBOOLEAN pbEqual
 ParamCount=3
 Header=windows.h.api;
 @=RtlSidEqualLevel
 [RtlSidIsHigherLevel]
-1=[PSID] Sid1
-2=[PSID] Sid2
+1=PSID Sid1
+2=PSID Sid2
 3=PBOOLEAN pbHigher
 ParamCount=3
 Header=windows.h.api;
 @=RtlSidIsHigherLevel
 [RtlCreateVirtualAccountSid]
-1=[PUNICODE_STRING] Name
+1=PUNICODE_STRING Name
 2=ULONG BaseSubAuthority
-3=[PSID] Sid
+3=PSID Sid
 4=PULONG SidLength
 ParamCount=4
 Header=windows.h.api;
 @=RtlCreateVirtualAccountSid
 [RtlReplaceSidInSd]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID] OldSid
-3=[PSID] NewSid
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID OldSid
+3=PSID NewSid
 4=ULONG* NumChanges
 ParamCount=4
 Header=security.h.api;windows.h.api;
 @=RtlReplaceSidInSd
 [RtlConvertSidToUnicodeString]
-1=[PUNICODE_STRING] DestinationString
-2=[PSID] Sid
+1=PUNICODE_STRING DestinationString
+2=PSID Sid
 3=BOOLEAN AllocateDestinationString
 ParamCount=3
 Header=windows.h.api;
 @=RtlConvertSidToUnicodeString
 [RtlSidHashInitialize]
-1=[PSID_AND_ATTRIBUTES] SidAttr
+1=PSID_AND_ATTRIBUTES SidAttr
 2=ULONG SidCount
-3=[PSID_AND_ATTRIBUTES_HASH] SidAttrHash
+3=PSID_AND_ATTRIBUTES_HASH SidAttrHash
 ParamCount=3
 Header=ntdll.h.api;security.h.api;
 @=RtlSidHashInitialize
 [RtlSidHashLookup]
-1=[PSID_AND_ATTRIBUTES_HASH] SidAttrHash
-2=[PSID] Sid
+1=PSID_AND_ATTRIBUTES_HASH SidAttrHash
+2=PSID Sid
 ParamCount=2
 Header=ntdll.h.api;windows.h.api;
 @=RtlSidHashLookup
 [RtlCopySidAndAttributesArray]
 1=ULONG Count
-2=[PSID_AND_ATTRIBUTES] Src
+2=PSID_AND_ATTRIBUTES Src
 3=ULONG SidAreaSize
-4=[PSID_AND_ATTRIBUTES] Dest
+4=PSID_AND_ATTRIBUTES Dest
 5=PVOID SidArea
 6=PVOID* RemainingSidArea
 7=PULONG RemainingSidAreaSize
@@ -5918,164 +5918,164 @@ ParamCount=7
 Header=security.h.api;
 @=RtlCopySidAndAttributesArray
 [RtlCreateSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=ULONG Revision
 ParamCount=2
 Header=security.h.api;
 @=RtlCreateSecurityDescriptor
 [RtlValidSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 ParamCount=1
 Header=security.h.api;
 @=RtlValidSecurityDescriptor
 [RtlLengthSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 ParamCount=1
 Header=security.h.api;
 @=RtlLengthSecurityDescriptor
 [RtlValidRelativeSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR_RELATIVE] SecurityDescriptorInput
+1=PSECURITY_DESCRIPTOR_RELATIVE SecurityDescriptorInput
 2=ULONG SecurityDescriptorLength
 3=[SECURITY_INFORMATION] RequiredInformation
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlValidRelativeSecurityDescriptor
 [RtlGetControlSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSECURITY_DESCRIPTOR_CONTROL] Control
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSECURITY_DESCRIPTOR_CONTROL Control
 3=PULONG Revision
 ParamCount=3
 Header=security.h.api;
 @=RtlGetControlSecurityDescriptor
 [RtlSetControlSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=[SECURITY_DESCRIPTOR_CONTROL] ControlBitsOfInterest
 3=[SECURITY_DESCRIPTOR_CONTROL] ControlBitsToSet
 ParamCount=3
 Header=security.h.api;
 @=RtlSetControlSecurityDescriptor
 [RtlSetAttributesSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=[SECURITY_DESCRIPTOR_CONTROL] Control
 3=PULONG Revision
 ParamCount=3
 Header=security.h.api;
 @=RtlSetAttributesSecurityDescriptor
 [RtlGetSecurityDescriptorRMControl]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=PUCHAR RMControl
 ParamCount=2
 Header=security.h.api;
 @=RtlGetSecurityDescriptorRMControl
 [RtlSetSecurityDescriptorRMControl]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=PUCHAR RMControl
 ParamCount=2
 Header=security.h.api;
 @=RtlSetSecurityDescriptorRMControl
 [RtlSetDaclSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=BOOLEAN DaclPresent
-3=[PACL] Dacl
+3=PACL Dacl
 4=BOOLEAN DaclDefaulted
 ParamCount=4
 Header=security.h.api;
 @=RtlSetDaclSecurityDescriptor
 [RtlGetDaclSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=PBOOLEAN DaclPresent
-3=[PACL*] Dacl
+3=PACL* Dacl
 4=PBOOLEAN DaclDefaulted
 ParamCount=4
 Header=security.h.api;
 @=RtlGetDaclSecurityDescriptor
 [RtlSetSaclSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=BOOLEAN SaclPresent
-3=[PACL] Sacl
+3=PACL Sacl
 4=BOOLEAN SaclDefaulted
 ParamCount=4
 Header=security.h.api;
 @=RtlSetSaclSecurityDescriptor
 [RtlGetSaclSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
 2=PBOOLEAN SaclPresent
-3=[PACL*] Sacl
+3=PACL* Sacl
 4=PBOOLEAN SaclDefaulted
 ParamCount=4
 Header=security.h.api;
 @=RtlGetSaclSecurityDescriptor
 [RtlSetOwnerSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID] Owner
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID Owner
 3=BOOLEAN OwnerDefaulted
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlSetOwnerSecurityDescriptor
 [RtlGetOwnerSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID*] Owner
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID* Owner
 3=PBOOLEAN OwnerDefaulted
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlGetOwnerSecurityDescriptor
 [RtlSetGroupSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID] Group
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID Group
 3=BOOLEAN GroupDefaulted
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlSetGroupSecurityDescriptor
 [RtlGetGroupSecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] SecurityDescriptor
-2=[PSID*] Group
+1=PSECURITY_DESCRIPTOR SecurityDescriptor
+2=PSID* Group
 3=PBOOLEAN GroupDefaulted
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlGetGroupSecurityDescriptor
 [RtlMakeSelfRelativeSD]
-1=[PSECURITY_DESCRIPTOR] AbsoluteSD
-2=[PSECURITY_DESCRIPTOR_RELATIVE] SelfRelativeSD
+1=PSECURITY_DESCRIPTOR AbsoluteSD
+2=PSECURITY_DESCRIPTOR_RELATIVE SelfRelativeSD
 3=PULONG BufferLength
 ParamCount=3
 Header=security.h.api;
 @=RtlMakeSelfRelativeSD
 [RtlAbsoluteToSelfRelativeSD]
-1=[PSECURITY_DESCRIPTOR] AbsoluteSecurityDescriptor
-2=[PSECURITY_DESCRIPTOR_RELATIVE] SelfRelativeSecurityDescriptor
+1=PSECURITY_DESCRIPTOR AbsoluteSecurityDescriptor
+2=PSECURITY_DESCRIPTOR_RELATIVE SelfRelativeSecurityDescriptor
 3=PULONG BufferLength
 ParamCount=3
 Header=security.h.api;
 @=RtlAbsoluteToSelfRelativeSD
 [RtlSelfRelativeToAbsoluteSD]
-1=[PSECURITY_DESCRIPTOR_RELATIVE] SelfRelativeSD
-2=[PSECURITY_DESCRIPTOR] AbsoluteSD
+1=PSECURITY_DESCRIPTOR_RELATIVE SelfRelativeSD
+2=PSECURITY_DESCRIPTOR AbsoluteSD
 3=PULONG AbsoluteSDSize
-4=[PACL] Dacl
+4=PACL Dacl
 5=PULONG DaclSize
-6=[PACL] Sacl
+6=PACL Sacl
 7=PULONG SaclSize
-8=[PSID] Owner
+8=PSID Owner
 9=PULONG OwnerSize
-10=[PSID] PrimaryGroup
+10=PSID PrimaryGroup
 11=PULONG PrimaryGroupSize
 ParamCount=11
 Header=security.h.api;windows.h.api;
 @=RtlSelfRelativeToAbsoluteSD
 [RtlSelfRelativeToAbsoluteSD2]
-1=[PSECURITY_DESCRIPTOR_RELATIVE] SelfRelativeSD
+1=PSECURITY_DESCRIPTOR_RELATIVE SelfRelativeSD
 2=PULONG BufferSize
 ParamCount=2
 Header=security.h.api;
 @=RtlSelfRelativeToAbsoluteSD2
 [RtlCopySecurityDescriptor]
-1=[PSECURITY_DESCRIPTOR] pSourceSecurityDescriptor
-2=[PSECURITY_DESCRIPTOR] pDestinationSecurityDescriptor
+1=PSECURITY_DESCRIPTOR pSourceSecurityDescriptor
+2=PSECURITY_DESCRIPTOR pDestinationSecurityDescriptor
 ParamCount=2
 Header=security.h.api;
 @=RtlCopySecurityDescriptor
 [RtlCreateSecurityDescriptorRelative]
-1=[PISECURITY_DESCRIPTOR_RELATIVE] SecurityDescriptor
+1=PISECURITY_DESCRIPTOR_RELATIVE SecurityDescriptor
 2=ULONG Revision
 ParamCount=2
 Header=security.h.api;
@@ -6093,25 +6093,25 @@ ParamCount=2
 Header=windows.h.api;
 @=RtlAreAnyAccessesGranted
 [RtlMapGenericMask]
-1=[PACCESS_MASK] AccessMask
-2=[PGENERIC_MAPPING] GenericMapping
+1=PACCESS_MASK AccessMask
+2=PGENERIC_MAPPING GenericMapping
 ParamCount=2
 Header=security.h.api;windows.h.api;
 @=RtlMapGenericMask
 [RtlCreateAcl]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG AclSize
 3=ULONG AclRevision
 ParamCount=3
 Header=security.h.api;
 @=RtlCreateAcl
 [RtlValidAcl]
-1=[PACL] Acl
+1=PACL Acl
 ParamCount=1
 Header=security.h.api;
 @=RtlValidAcl
 [RtlQueryInformationAcl]
-1=[PACL] Acl
+1=PACL Acl
 2=PVOID Information
 3=ULONG InformationLength
 4=[ACL_INFORMATION_CLASS] InformationClass
@@ -6119,7 +6119,7 @@ ParamCount=4
 Header=security.h.api;
 @=RtlQueryInformationAcl
 [RtlSetInformationAcl]
-1=[PACL] Acl
+1=PACL Acl
 2=PVOID Information
 3=ULONG InformationLength
 4=[ACL_INFORMATION_CLASS] InformationClass
@@ -6127,7 +6127,7 @@ ParamCount=4
 Header=security.h.api;
 @=RtlSetInformationAcl
 [RtlAddAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG AceRevision
 3=ULONG StartingAceIndex
 4=PVOID AceList
@@ -6136,190 +6136,190 @@ ParamCount=5
 Header=security.h.api;
 @=RtlAddAce
 [RtlDeleteAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG AceIndex
 ParamCount=2
 Header=security.h.api;
 @=RtlDeleteAce
 [RtlGetAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG AceIndex
-3=[PACE*] Ace
+3=PACE* Ace
 ParamCount=3
 Header=security.h.api;
 @=RtlGetAce
 [RtlFirstFreeAce]
-1=[PACL] Acl
-2=[PACE*] Ace
+1=PACL Acl
+2=PACE* Ace
 ParamCount=2
 Header=security.h.api;
 @=RtlFirstFreeAce
 [RtlFindAceByType]
-1=[PACL] pAcl
+1=PACL pAcl
 2=[ACE_TYPE|UCHAR] AceType
 3=PULONG pIndex
 ParamCount=3
 Header=security.h.api;
 @=RtlFindAceByType
 [RtlOwnerAcesPresent]
-1=[PACL] pAcl
+1=PACL pAcl
 ParamCount=1
 Header=security.h.api;
 @=RtlOwnerAcesPresent
 [RtlAddAccessAllowedAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG AceRevision
 3=[ACCESS_MASK] AccessMask
-4=[PSID] Sid
+4=PSID Sid
 ParamCount=4
 Header=security.h.api;windows.h.api;
 @=RtlAddAccessAllowedAce
 [RtlAddAccessAllowedAceEx]
-1=[PACL] pAcl
+1=PACL pAcl
 2=ULONG AceRevision
 3=[ACE_FLAGS_ULONG] AceFlags
 4=[ACCESS_MASK] AccessMask
-5=[PSID] Sid
+5=PSID Sid
 ParamCount=5
 Header=ntdll.h.api;security.h.api;windows.h.api;
 @=RtlAddAccessAllowedAceEx
 [RtlAddAccessDeniedAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG Revision
 3=[ACCESS_MASK] AccessMask
-4=[PSID] Sid
+4=PSID Sid
 ParamCount=4
 Header=security.h.api;windows.h.api;
 @=RtlAddAccessDeniedAce
 [RtlAddAccessDeniedAceEx]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG Revision
 3=ULONG Flags
 4=[ACCESS_MASK] AccessMask
-5=[PSID] Sid
+5=PSID Sid
 ParamCount=5
 Header=security.h.api;windows.h.api;
 @=RtlAddAccessDeniedAceEx
 [RtlAddAuditAccessAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG Revision
 3=[ACCESS_MASK] AccessMask
-4=[PSID] Sid
+4=PSID Sid
 5=BOOLEAN Success
 6=BOOLEAN Failure
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=RtlAddAuditAccessAce
 [RtlAddAuditAccessAceEx]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG Revision
 3=ULONG Flags
 4=[ACCESS_MASK] AccessMask
-5=[PSID] Sid
+5=PSID Sid
 6=BOOLEAN Success
 7=BOOLEAN Failure
 ParamCount=7
 Header=security.h.api;windows.h.api;
 @=RtlAddAuditAccessAceEx
 [RtlAddAccessAllowedObjectAce]
-1=[PACL] pAcl
+1=PACL pAcl
 2=ULONG dwAceRevision
 3=[ACE_FLAGS_ULONG] AceFlags
 4=[ACCESS_MASK] AccessMask
-5=[GUID*] ObjectTypeGuid
-6=[GUID*] InheritedObjectTypeGuid
-7=[PSID] pSid
+5=GUID* ObjectTypeGuid
+6=GUID* InheritedObjectTypeGuid
+7=PSID pSid
 ParamCount=7
 Header=ntdll.h.api;security.h.api;windows.h.api;
 @=RtlAddAccessAllowedObjectAce
 [RtlAddAccessDeniedObjectAce]
-1=[PACL] pAcl
+1=PACL pAcl
 2=ULONG dwAceRevision
 3=[ACE_FLAGS_ULONG] AceFlags
 4=[ACCESS_MASK] AccessMask
-5=[GUID*] ObjectTypeGuid
-6=[GUID*] InheritedObjectTypeGuid
-7=[PSID] pSid
+5=GUID* ObjectTypeGuid
+6=GUID* InheritedObjectTypeGuid
+7=PSID pSid
 ParamCount=7
 Header=ntdll.h.api;security.h.api;windows.h.api;
 @=RtlAddAccessDeniedObjectAce
 [RtlAddAuditAccessObjectAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG Revision
 3=ULONG Flags
 4=[ACCESS_MASK] AccessMask
-5=[GUID*] ObjectTypeGuid
-6=[GUID*] InheritedObjectTypeGuid
-7=[PSID] Sid
+5=GUID* ObjectTypeGuid
+6=GUID* InheritedObjectTypeGuid
+7=PSID Sid
 8=BOOLEAN Success
 9=BOOLEAN Failure
 ParamCount=9
 Header=security.h.api;windows.h.api;
 @=RtlAddAuditAccessObjectAce
 [RtlAddCompoundAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG AceRevision
 3=[ACE_TYPE|UCHAR] AceType
 4=[ACCESS_MASK] AccessMask
-5=[PSID] ServerSid
-6=[PSID] ClientSid
+5=PSID ServerSid
+6=PSID ClientSid
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=RtlAddCompoundAce
 [RtlAddMandatoryAce]
-1=[PACL] Acl
+1=PACL Acl
 2=ULONG Revision
 3=ULONG Flags
 4=ULONG MandatoryFlags
 5=[ACE_TYPE|UCHAR] AceType
-6=[PSID] LabelSid
+6=PSID LabelSid
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=RtlAddMandatoryAce
 [RtlNewSecurityObject]
-1=[PSECURITY_DESCRIPTOR] ParentDescriptor
-2=[PSECURITY_DESCRIPTOR] CreatorDescriptor
-3=[PSECURITY_DESCRIPTOR*] NewDescriptor
+1=PSECURITY_DESCRIPTOR ParentDescriptor
+2=PSECURITY_DESCRIPTOR CreatorDescriptor
+3=PSECURITY_DESCRIPTOR* NewDescriptor
 4=BOOLEAN IsDirectoryObject
 5=HANDLE Token
-6=[PGENERIC_MAPPING] GenericMapping
+6=PGENERIC_MAPPING GenericMapping
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=RtlNewSecurityObject
 [RtlNewSecurityObjectEx]
-1=[PSECURITY_DESCRIPTOR] ParentDescriptor
-2=[PSECURITY_DESCRIPTOR] CreatorDescriptor
-3=[PSECURITY_DESCRIPTOR*] NewDescriptor
-4=[GUID*] ObjectType
+1=PSECURITY_DESCRIPTOR ParentDescriptor
+2=PSECURITY_DESCRIPTOR CreatorDescriptor
+3=PSECURITY_DESCRIPTOR* NewDescriptor
+4=GUID* ObjectType
 5=BOOLEAN IsDirectoryObject
 6=ULONG AutoInheritFlags
 7=HANDLE Token
-8=[PGENERIC_MAPPING] GenericMapping
+8=PGENERIC_MAPPING GenericMapping
 ParamCount=8
 Header=security.h.api;windows.h.api;
 @=RtlNewSecurityObjectEx
 [RtlNewSecurityObjectWithMultipleInheritance]
-1=[PSECURITY_DESCRIPTOR] ParentDescriptor
-2=[PSECURITY_DESCRIPTOR] CreatorDescriptor
-3=[PSECURITY_DESCRIPTOR*] NewDescriptor
-4=[GUID**] ObjectType
+1=PSECURITY_DESCRIPTOR ParentDescriptor
+2=PSECURITY_DESCRIPTOR CreatorDescriptor
+3=PSECURITY_DESCRIPTOR* NewDescriptor
+4=GUID** ObjectType
 5=ULONG GuidCount
 6=BOOLEAN IsDirectoryObject
 7=ULONG AutoInheritFlags
 8=HANDLE Token
-9=[PGENERIC_MAPPING] GenericMapping
+9=PGENERIC_MAPPING GenericMapping
 ParamCount=9
 Header=security.h.api;windows.h.api;
 @=RtlNewSecurityObjectWithMultipleInheritance
 [RtlDeleteSecurityObject]
-1=[PSECURITY_DESCRIPTOR*] ObjectDescriptor
+1=PSECURITY_DESCRIPTOR* ObjectDescriptor
 ParamCount=1
 Header=security.h.api;
 @=RtlDeleteSecurityObject
 [RtlQuerySecurityObject]
-1=[PSECURITY_DESCRIPTOR] ObjectDescriptor
+1=PSECURITY_DESCRIPTOR ObjectDescriptor
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR] ResultantDescriptor
+3=PSECURITY_DESCRIPTOR ResultantDescriptor
 4=ULONG DescriptorLength
 5=PULONG ReturnLength
 ParamCount=5
@@ -6327,56 +6327,56 @@ Header=security.h.api;windows.h.api;
 @=RtlQuerySecurityObject
 [RtlSetSecurityObject]
 1=[SECURITY_INFORMATION] SecurityInformation
-2=[PSECURITY_DESCRIPTOR] ModificationDescriptor
-3=[PSECURITY_DESCRIPTOR*] ObjectsSecurityDescriptor
-4=[PGENERIC_MAPPING] GenericMapping
+2=PSECURITY_DESCRIPTOR ModificationDescriptor
+3=PSECURITY_DESCRIPTOR* ObjectsSecurityDescriptor
+4=PGENERIC_MAPPING GenericMapping
 5=HANDLE Token
 ParamCount=5
 Header=security.h.api;windows.h.api;
 @=RtlSetSecurityObject
 [RtlSetSecurityObjectEx]
 1=[SECURITY_INFORMATION] SecurityInformation
-2=[PSECURITY_DESCRIPTOR] ModificationDescriptor
-3=[PSECURITY_DESCRIPTOR*] ObjectsSecurityDescriptor
+2=PSECURITY_DESCRIPTOR ModificationDescriptor
+3=PSECURITY_DESCRIPTOR* ObjectsSecurityDescriptor
 4=ULONG AutoInheritFlags
-5=[PGENERIC_MAPPING] GenericMapping
+5=PGENERIC_MAPPING GenericMapping
 6=HANDLE Token
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=RtlSetSecurityObjectEx
 [RtlConvertToAutoInheritSecurityObject]
-1=[PSECURITY_DESCRIPTOR] ParentDescriptor
-2=[PSECURITY_DESCRIPTOR] CurrentSecurityDescriptor
-3=[PSECURITY_DESCRIPTOR*] NewSecurityDescriptor
-4=[GUID*] ObjectType
+1=PSECURITY_DESCRIPTOR ParentDescriptor
+2=PSECURITY_DESCRIPTOR CurrentSecurityDescriptor
+3=PSECURITY_DESCRIPTOR* NewSecurityDescriptor
+4=GUID* ObjectType
 5=BOOLEAN IsDirectoryObject
-6=[PGENERIC_MAPPING] GenericMapping
+6=PGENERIC_MAPPING GenericMapping
 ParamCount=6
 Header=security.h.api;windows.h.api;
 @=RtlConvertToAutoInheritSecurityObject
 [RtlNewInstanceSecurityObject]
 1=BOOLEAN ParentDescriptorChanged
 2=BOOLEAN CreatorDescriptorChanged
-3=[PLUID] OldClientTokenModifiedId
-4=[PLUID] NewClientTokenModifiedId
-5=[PSECURITY_DESCRIPTOR] ParentDescriptor
-6=[PSECURITY_DESCRIPTOR] CreatorDescriptor
-7=[PSECURITY_DESCRIPTOR*] NewDescriptor
+3=PLUID OldClientTokenModifiedId
+4=PLUID NewClientTokenModifiedId
+5=PSECURITY_DESCRIPTOR ParentDescriptor
+6=PSECURITY_DESCRIPTOR CreatorDescriptor
+7=PSECURITY_DESCRIPTOR* NewDescriptor
 8=BOOLEAN IsDirectoryObject
 9=HANDLE Token
-10=[PGENERIC_MAPPING] GenericMapping
+10=PGENERIC_MAPPING GenericMapping
 ParamCount=10
 Header=security.h.api;windows.h.api;
 @=RtlNewInstanceSecurityObject
 [RtlRunEncodeUnicodeString]
 1=PUCHAR Seed
-2=[PUNICODE_STRING] String
+2=PUNICODE_STRING String
 ParamCount=2
 Header=windows.h.api;
 @=RtlRunEncodeUnicodeString
 [RtlRunDecodeUnicodeString]
 1=UCHAR Seed
-2=[PUNICODE_STRING] String
+2=PUNICODE_STRING String
 ParamCount=2
 Header=windows.h.api;
 @=RtlRunDecodeUnicodeString
@@ -6388,7 +6388,7 @@ Header=security.h.api;
 [RtlImpersonateSelfEx]
 1=[SECURITY_IMPERSONATION_LEVEL] ImpersonationLevel
 2=[ACCESS_MASK] AdditionalAccess
-3=[PHANDLE] ThreadToken
+3=PHANDLE ThreadToken
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=RtlImpersonateSelfEx
@@ -6419,7 +6419,7 @@ ParamCount=3
 Header=windows.h.api;
 @=RtlRemovePrivileges
 [RtlCreateBoundaryDescriptor]
-1=[PUNICODE_STRING] Name
+1=PUNICODE_STRING Name
 2=ULONG Flags
 ParamCount=2
 Header=windows.h.api;
@@ -6430,23 +6430,23 @@ ParamCount=1
 @=RtlDeleteBoundaryDescriptor
 [RtlAddSIDToBoundaryDescriptor]
 1=PVOID* BoundaryDescriptor
-2=[PSID] RequiredSid
+2=PSID RequiredSid
 ParamCount=2
 Header=windows.h.api;
 @=RtlAddSIDToBoundaryDescriptor
 [RtlAddIntegrityLabelToBoundaryDescriptor]
 1=PVOID* BoundaryDescriptor
-2=[PSID] IntegrityLabel
+2=PSID IntegrityLabel
 ParamCount=2
 Header=windows.h.api;
 @=RtlAddIntegrityLabelToBoundaryDescriptor
 [RtlGetVersion]
-1=[PRTL_OSVERSIONINFOW] lpVersionInformation
+1=PRTL_OSVERSIONINFOW lpVersionInformation
 ParamCount=1
 Header=windows.h.api;
 @=RtlGetVersion
 [RtlVerifyVersionInfo]
-1=[PRTL_OSVERSIONINFOEXW] VersionInfo
+1=PRTL_OSVERSIONINFOEXW VersionInfo
 2=[NtVerType] TypeMask
 3=ULONGLONG ConditionMask
 ParamCount=3
@@ -6456,7 +6456,7 @@ Header=native.h.api;windows.h.api;
 ParamCount=0
 @=RtlGetNtGlobalFlags
 [RtlGetNtProductType]
-1=[PNT_PRODUCT_TYPE] ProductType
+1=PNT_PRODUCT_TYPE ProductType
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlGetNtProductType
@@ -6467,9 +6467,9 @@ Header=ntdll.h.api;
 ParamCount=3
 @=RtlGetNtVersionNumbers
 [RtlRegisterWait]
-1=[PHANDLE] phNewWaitObject
+1=PHANDLE phNewWaitObject
 2=HANDLE hObject
-3=[WAITORTIMERCALLBACKFUNC] Callback
+3=WAITORTIMERCALLBACKFUNC Callback
 4=PVOID pvContext
 5=ULONG ulMilliseconds
 6=ULONG ulFlags
@@ -6488,7 +6488,7 @@ ParamCount=2
 Header=windows.h.api;
 @=RtlDeregisterWaitEx
 [RtlQueueWorkItem]
-1=[WORKERCALLBACKFUNC] Function
+1=WORKERCALLBACKFUNC Function
 2=PVOID Context
 3=ULONG Flags
 ParamCount=3
@@ -6496,20 +6496,20 @@ Header=ntdll.h.api;
 @=RtlQueueWorkItem
 [RtlSetIoCompletionCallback]
 1=HANDLE FileHandle
-2=[PIO_APC_ROUTINE] Callback
+2=PIO_APC_ROUTINE Callback
 3=ULONG Flags
 ParamCount=3
 Header=windows.h.api;
 @=RtlSetIoCompletionCallback
 [RtlCreateTimerQueue]
-1=[PHANDLE] TimerQueue
+1=PHANDLE TimerQueue
 ParamCount=1
 Header=windows.h.api;
 @=RtlCreateTimerQueue
 [RtlCreateTimer]
 1=HANDLE TimerQueue
-2=[PHANDLE] phNewTimer
-3=[WAITORTIMERCALLBACKFUNC] Callback
+2=PHANDLE phNewTimer
+3=WAITORTIMERCALLBACKFUNC Callback
 4=PVOID Parameter
 5=ULONG DueTime
 6=ULONG Period
@@ -6544,13 +6544,13 @@ ParamCount=2
 Header=windows.h.api;
 @=RtlDeleteTimerQueueEx
 [RtlFormatCurrentUserKeyPath]
-1=[PUNICODE_STRING] KeyPath
+1=PUNICODE_STRING KeyPath
 ParamCount=1
 Header=windows.h.api;
 @=RtlFormatCurrentUserKeyPath
 [RtlOpenCurrentUser]
 1=[ACCESS_MASK] DesiredAccess
-2=[PHANDLE] KeyHandle
+2=PHANDLE KeyHandle
 ParamCount=2
 Header=windows.h.api;
 @=RtlOpenCurrentUser
@@ -6569,7 +6569,7 @@ Header=ntdll.h.api;
 [RtlQueryRegistryValues]
 1=[RTL_REGISTRY_RELATIVE_TO] RelativeTo
 2=PCWSTR Path
-3=[PRTL_QUERY_REGISTRY_TABLE] QueryTable
+3=PRTL_QUERY_REGISTRY_TABLE QueryTable
 4=PVOID Context
 5=PVOID Environment
 ParamCount=5
@@ -6613,32 +6613,32 @@ Header=windows.h.api;
 [RtlReadThreadProfilingData]
 1=HANDLE PerformanceDataHandle
 2=ULONG Flags
-3=[PPERFORMANCE_DATA] PerformanceData
+3=PPERFORMANCE_DATA PerformanceData
 ParamCount=3
 Header=kernel32.h.api;windows.h.api;
 @=RtlReadThreadProfilingData
 [RtlComputePrivatizedDllName_U]
-1=[PUNICODE_STRING] DllName
-2=[PUNICODE_STRING] RealName
-3=[PUNICODE_STRING] LocalName
+1=PUNICODE_STRING DllName
+2=PUNICODE_STRING RealName
+3=PUNICODE_STRING LocalName
 ParamCount=3
 Header=windows.h.api;
 @=RtlComputePrivatizedDllName_U
 [RtlFreeRangeList]
-1=[PRTL_RANGE_LIST] RangeList
+1=PRTL_RANGE_LIST RangeList
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlFreeRangeList
 [RtlpNtOpenKey]
 1=HANDLE KeyHandle
 2=[ACCESS_MASK] DesiredAccess
-3=[POBJECT_ATTRIBUTES] ObjectAttributes
+3=POBJECT_ATTRIBUTES ObjectAttributes
 4=ULONG Unused
 ParamCount=4
 Header=native.h.api;windows.h.api;
 @=RtlpNtOpenKey
 [RtlRegisterSecureMemoryCacheCallback]
-1=[PRTL_SECURE_MEMORY_CACHE_CALLBACK] Callback
+1=PRTL_SECURE_MEMORY_CACHE_CALLBACK Callback
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlRegisterSecureMemoryCacheCallback
@@ -6662,7 +6662,7 @@ ParamCount=4
 ParamCount=4
 @=RtlAssert
 [RtlCaptureContext]
-1=[PCONTEXT] ContextRecord
+1=PCONTEXT ContextRecord
 ParamCount=1
 Header=windows.h.api;
 @=RtlCaptureContext
@@ -6672,7 +6672,7 @@ Header=windows.h.api;
 3=SIZE_T SizeToReserve
 4=SIZE_T SizeToCommit
 5=PVOID Lock
-6=[PRTL_HEAP_PARAMETERS] Parameters
+6=PRTL_HEAP_PARAMETERS Parameters
 ParamCount=6
 Header=ntdll.h.api;windows.h.api;
 @=RtlDebugCreateHeap
@@ -6682,13 +6682,13 @@ Header=ntdll.h.api;windows.h.api;
 ParamCount=2
 @=RtlGetCallersAddress
 [RtlCmDecodeMemIoResource]
-1=[PCM_PARTIAL_RESOURCE_DESCRIPTOR] Descriptor
+1=PCM_PARTIAL_RESOURCE_DESCRIPTOR Descriptor
 2=PULONGLONG Start
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlCmDecodeMemIoResource
 [RtlCmEncodeMemIoResource]
-1=[PCM_PARTIAL_RESOURCE_DESCRIPTOR] Descriptor
+1=PCM_PARTIAL_RESOURCE_DESCRIPTOR Descriptor
 2=UCHAR Type
 3=ULONGLONG Length
 4=ULONGLONG Start
@@ -6714,7 +6714,7 @@ ParamCount=2
 [RtlExtendedMagicDivide]
 1=LARGE_INTEGER Dividend
 2=LARGE_INTEGER MagicDivisor
-3=[CCHAR] ShiftCount
+3=CCHAR ShiftCount
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlExtendedMagicDivide
@@ -6730,7 +6730,7 @@ ParamCount=1
 Header=ntdll.h.api;
 @=RtlGetEnabledExtendedFeatures
 [RtlIoDecodeMemIoResource]
-1=[PIO_RESOURCE_DESCRIPTOR] Descriptor
+1=PIO_RESOURCE_DESCRIPTOR Descriptor
 2=PULONGLONG Alignment
 3=PULONGLONG MinimumAddress
 4=PULONGLONG MaximumAddress
@@ -6738,7 +6738,7 @@ ParamCount=4
 Header=ntdll.h.api;
 @=RtlIoDecodeMemIoResource
 [RtlIoEncodeMemIoResource]
-1=[PIO_RESOURCE_DESCRIPTOR] Descriptor
+1=PIO_RESOURCE_DESCRIPTOR Descriptor
 2=UCHAR Type
 3=ULONGLONG Length
 4=ULONGLONG Alignment
@@ -6813,18 +6813,18 @@ ParamCount=0
 ParamCount=3
 @=RtlGetUnloadEventTraceEx
 [RtlQueryPerformanceCounter]
-1=[PLARGE_INTEGER] PerformanceCounter
+1=PLARGE_INTEGER PerformanceCounter
 ParamCount=1
 Header=windows.h.api;
 @=RtlQueryPerformanceCounter
 [RtlQueryPerformanceFrequency]
-1=[PLARGE_INTEGER] PerformanceFrequency
+1=PLARGE_INTEGER PerformanceFrequency
 ParamCount=1
 Header=windows.h.api;
 @=RtlQueryPerformanceFrequency
 [RtlEqualPrefixSid]
-1=[PSID] Sid1
-2=[PSID] Sid2
+1=PSID Sid1
+2=PSID Sid2
 ParamCount=2
 Header=windows.h.api;
 @=RtlEqualPrefixSid
@@ -6843,14 +6843,14 @@ ParamCount=2
 @=RtlLargeIntegerAdd
 [RtlLargeIntegerArithmeticShift]
 1=LARGE_INTEGER LargeInteger
-2=[CCHAR] ShiftCount
+2=CCHAR ShiftCount
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlLargeIntegerArithmeticShift
 [RtlLargeIntegerDivide]
 1=LARGE_INTEGER Dividend
 2=LARGE_INTEGER Divisor
-3=[PLARGE_INTEGER] Remainder
+3=PLARGE_INTEGER Remainder
 ParamCount=3
 Header=windows.h.api;
 @=RtlLargeIntegerDivide
@@ -6860,13 +6860,13 @@ ParamCount=1
 @=RtlLargeIntegerNegate
 [RtlLargeIntegerShiftLeft]
 1=LARGE_INTEGER LargeInteger
-2=[CCHAR] ShiftCount
+2=CCHAR ShiftCount
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlLargeIntegerShiftLeft
 [RtlLargeIntegerShiftRight]
 1=LARGE_INTEGER LargeInteger
-2=[CCHAR] ShiftCount
+2=CCHAR ShiftCount
 ParamCount=2
 Header=ntdll.h.api;
 @=RtlLargeIntegerShiftRight
@@ -6876,7 +6876,7 @@ Header=ntdll.h.api;
 ParamCount=2
 @=RtlLargeIntegerSubtract
 [RtlLargeIntegerToChar]
-1=[PLARGE_INTEGER] Value
+1=PLARGE_INTEGER Value
 2=ULONG Base
 3=ULONG Length
 4=PCHAR String
@@ -6904,7 +6904,7 @@ ParamCount=1
 3=ULONG ExtraBytes
 4=PVOID NotificationRoutine
 5=PVOID NotificationContext
-6=[PHANDLE] ActCtx
+6=PHANDLE ActCtx
 ParamCount=6
 Header=windows.h.api;
 @=RtlCreateActivationContext
@@ -6915,9 +6915,9 @@ ParamCount=2
 @=RtlDeactivateActivationContext
 [RtlFindActivationContextSectionString]
 1=[FIND_ACTCTX_SECTION_FLAGS] dwFlags
-2=[GUID*] ExtensionGuid
+2=GUID* ExtensionGuid
 3=[ACTIVATION_CONTEXT_SECTION] SectionType
-4=[PUNICODE_STRING] SectionName
+4=PUNICODE_STRING SectionName
 5=PVOID ReturnedData
 ParamCount=5
 Header=windows.h.api;
@@ -6945,29 +6945,29 @@ ParamCount=1
 ParamCount=1
 @=RtlZombifyActivationContext
 [RtlRunOnceBeginInitialize]
-1=[PRTL_RUN_ONCE] RunOnce
+1=PRTL_RUN_ONCE RunOnce
 2=[RTL_RUN_ONCE_FLAGS] Flags
 3=PVOID* Context
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlRunOnceBeginInitialize
 [RtlRunOnceComplete]
-1=[PRTL_RUN_ONCE] RunOnce
+1=PRTL_RUN_ONCE RunOnce
 2=[RTL_RUN_ONCE_FLAGS] Flags
 3=PVOID Context
 ParamCount=3
 Header=ntdll.h.api;
 @=RtlRunOnceComplete
 [RtlRunOnceExecuteOnce]
-1=[PRTL_RUN_ONCE] RunOnce
-2=[PRTL_RUN_ONCE_INIT_FN] InitFn
+1=PRTL_RUN_ONCE RunOnce
+2=PRTL_RUN_ONCE_INIT_FN InitFn
 3=PVOID Parameter
 4=PVOID* Context
 ParamCount=4
 Header=ntdll.h.api;
 @=RtlRunOnceExecuteOnce
 [RtlRunOnceInitialize]
-1=[PRTL_RUN_ONCE] RunOnce
+1=PRTL_RUN_ONCE RunOnce
 ParamCount=1
 Header=ntdll.h.api;
 @=RtlRunOnceInitialize

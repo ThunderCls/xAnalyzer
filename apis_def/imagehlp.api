@@ -1,11 +1,11 @@
 [GetImageConfigInformation]
-1=[PLOADED_IMAGE] LoadedImage
-2=[PIMAGE_LOAD_CONFIG_DIRECTORY] ImageConfigInformation
+1=PLOADED_IMAGE LoadedImage
+2=PIMAGE_LOAD_CONFIG_DIRECTORY ImageConfigInformation
 ParamCount=2
 Header=imagehlp.h.api;
 @=GetImageConfigInformation
 [GetImageUnusedHeaderBytes]
-1=[PLOADED_IMAGE] LoadedImage
+1=PLOADED_IMAGE LoadedImage
 2=PDWORD SizeUnusedHeaderBytes
 ParamCount=2
 Header=imagehlp.h.api;
@@ -16,33 +16,33 @@ Header=imagehlp.h.api;
 ParamCount=2
 @=ImageLoad
 [ImageUnload]
-1=[PLOADED_IMAGE] LoadedImage
+1=PLOADED_IMAGE LoadedImage
 ParamCount=1
 Header=imagehlp.h.api;
 @=ImageUnload
 [MapAndLoad]
 1=PSTR ImageName
 2=PSTR DllPath
-3=[PLOADED_IMAGE] LoadedImage
+3=PLOADED_IMAGE LoadedImage
 4=BOOL DotDll
 5=BOOL ReadOnly
 ParamCount=5
 Header=imagehlp.h.api;
 @=MapAndLoad
 [SetImageConfigInformation]
-1=[PLOADED_IMAGE] LoadedImage
-2=[PIMAGE_LOAD_CONFIG_DIRECTORY] ImageConfigInformation
+1=PLOADED_IMAGE LoadedImage
+2=PIMAGE_LOAD_CONFIG_DIRECTORY ImageConfigInformation
 ParamCount=2
 Header=imagehlp.h.api;
 @=SetImageConfigInformation
 [UnMapAndLoad]
-1=[PLOADED_IMAGE] LoadedImage
+1=PLOADED_IMAGE LoadedImage
 ParamCount=1
 Header=imagehlp.h.api;
 @=UnMapAndLoad
 [ImageAddCertificate]
 1=HANDLE FileHandle
-2=[LPWIN_CERTIFICATE] Certificate
+2=LPWIN_CERTIFICATE Certificate
 3=PDWORD Index
 ParamCount=3
 Header=imagehlp.h.api;windows.h.api;
@@ -59,7 +59,7 @@ Header=windows.h.api;
 [ImageGetCertificateData]
 1=HANDLE FileHandle
 2=DWORD CertificateIndex
-3=[LPWIN_CERTIFICATE] Certificate
+3=LPWIN_CERTIFICATE Certificate
 4=PDWORD RequiredLength
 ParamCount=4
 Header=imagehlp.h.api;windows.h.api;
@@ -67,15 +67,15 @@ Header=imagehlp.h.api;windows.h.api;
 [ImageGetCertificateHeader]
 1=HANDLE FileHandle
 2=DWORD CertificateIndex
-3=[LPWIN_CERTIFICATE] CertificateHeader
+3=LPWIN_CERTIFICATE CertificateHeader
 ParamCount=3
 Header=imagehlp.h.api;windows.h.api;
 @=ImageGetCertificateHeader
 [ImageGetDigestStream]
 1=HANDLE FileHandle
 2=DWORD DigestLevel
-3=[DIGEST_FUNCTION] DigestFunction
-4=[DIGEST_HANDLE] DigestHandle
+3=DIGEST_FUNCTION DigestFunction
+4=DIGEST_HANDLE DigestHandle
 ParamCount=4
 Header=imagehlp.h.api;windows.h.api;
 @=ImageGetDigestStream
@@ -96,7 +96,7 @@ ParamCount=3
 2=PSTR ImageName
 3=PSTR DllPath
 4=PSTR SymbolPath
-5=[PIMAGEHLP_STATUS_ROUTINE] StatusRoutine
+5=PIMAGEHLP_STATUS_ROUTINE StatusRoutine
 ParamCount=5
 Header=imagehlp.h.api;
 @=BindImageEx
@@ -136,7 +136,7 @@ ParamCount=4
 @=SplitSymbols
 [TouchFileTimes]
 1=HANDLE FileHandle
-2=[PSYSTEMTIME] pSystemTime
+2=PSYSTEMTIME pSystemTime
 ParamCount=2
 Header=windows.h.api;
 @=TouchFileTimes
@@ -144,7 +144,7 @@ Header=windows.h.api;
 1=PSTR ImageFileName
 2=PSTR SymbolPath
 3=PSTR DebugFilePath
-4=[PIMAGE_NT_HEADERS] NtHeaders
+4=PIMAGE_NT_HEADERS NtHeaders
 ParamCount=4
 Header=windows.h.api;
 @=UpdateDebugInfoFile
@@ -152,7 +152,7 @@ Header=windows.h.api;
 1=PSTR ImageFileName
 2=PSTR SymbolPath
 3=PSTR DebugFilePath
-4=[PIMAGE_NT_HEADERS] NtHeaders
+4=PIMAGE_NT_HEADERS NtHeaders
 5=DWORD OldChecksum
 ParamCount=5
 Header=windows.h.api;

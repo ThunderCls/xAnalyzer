@@ -1,7 +1,3 @@
-[HBC]
-Base=LPVOID
-[HBC*]
-Base=HBC
 [NtdsBackupType]
 TypeDisplay=ULONG
 Base=ULONG

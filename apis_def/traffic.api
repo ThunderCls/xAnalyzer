@@ -1,7 +1,7 @@
 [TcAddFilter]
 1=HANDLE FlowHandle
-2=[PTC_GEN_FILTER] pGenericFilter
-3=[PHANDLE] pFilterHandle
+2=PTC_GEN_FILTER pGenericFilter
+3=PHANDLE pFilterHandle
 ParamCount=3
 Header=traffic.h.api;windows.h.api;
 @=TcAddFilter
@@ -9,8 +9,8 @@ Header=traffic.h.api;windows.h.api;
 1=HANDLE IfcHandle
 2=HANDLE ClFlowCtx
 3=ULONG Flags
-4=[PTC_GEN_FLOW] pGenericFlow
-5=[PHANDLE] pFlowHandle
+4=PTC_GEN_FLOW pGenericFlow
+5=PHANDLE pFlowHandle
 ParamCount=5
 Header=traffic.h.api;windows.h.api;
 @=TcAddFlow
@@ -36,17 +36,17 @@ Header=windows.h.api;
 @=TcDeregisterClient
 [TcEnumerateFlows]
 1=HANDLE IfcHandle
-2=[PHANDLE] pEnumToken
+2=PHANDLE pEnumToken
 3=PULONG pFlowCount
 4=PULONG pBufSize
-5=[PENUMERATION_BUFFER] Buffer
+5=PENUMERATION_BUFFER Buffer
 ParamCount=5
 Header=traffic.h.api;windows.h.api;
 @=TcEnumerateFlows
 [TcEnumerateInterfaces]
 1=HANDLE ClientHandle
 2=PULONG pBufferSize
-3=[PTC_IFC_DESCRIPTOR] InterfaceBuffer
+3=PTC_IFC_DESCRIPTOR InterfaceBuffer
 ParamCount=3
 Header=traffic.h.api;windows.h.api;
 @=TcEnumerateInterfaces
@@ -59,7 +59,7 @@ Header=windows.h.api;
 @=TcGetFlowName
 [TcModifyFlow]
 1=HANDLE FlowHandle
-2=[PTC_GEN_FLOW] pGenericFlow
+2=PTC_GEN_FLOW pGenericFlow
 ParamCount=2
 Header=traffic.h.api;windows.h.api;
 @=TcModifyFlow
@@ -67,13 +67,13 @@ Header=traffic.h.api;windows.h.api;
 1=LPTSTR pInterfaceName
 2=HANDLE ClientHandle
 3=HANDLE ClIfcCtx
-4=[PHANDLE] pIfcHandle
+4=PHANDLE pIfcHandle
 ParamCount=4
 Header=windows.h.api;
 @=TcOpenInterface
 [TcQueryFlow]
 1=LPTSTR FlowName
-2=[LPGUID] pGuidParam
+2=LPGUID pGuidParam
 3=PULONG pBufferSize
 4=PVOID Buffer
 ParamCount=4
@@ -81,7 +81,7 @@ Header=windows.h.api;
 @=TcQueryFlow
 [TcQueryInterface]
 1=HANDLE IfcHandle
-2=[LPGUID] pGuidParam
+2=LPGUID pGuidParam
 3=BOOLEAN NotifyChange
 4=PULONG BufferSize
 5=PVOID Buffer
@@ -91,14 +91,14 @@ Header=windows.h.api;
 [TcRegisterClient]
 1=ULONG TciVersion
 2=HANDLE ClRegCtx
-3=[PTCI_CLIENT_FUNC_LIST] pClientHandlerList
-4=[PHANDLE] pClientHandle
+3=PTCI_CLIENT_FUNC_LIST pClientHandlerList
+4=PHANDLE pClientHandle
 ParamCount=4
 Header=traffic.h.api;windows.h.api;
 @=TcRegisterClient
 [TcSetFlow]
 1=LPTSTR pFlowName
-2=[LPGUID] pGuidParam
+2=LPGUID pGuidParam
 3=ULONG BufferSize
 4=PVOID Buffer
 ParamCount=4
@@ -106,7 +106,7 @@ Header=windows.h.api;
 @=TcSetFlow
 [TcSetInterface]
 1=HANDLE IfcHandle
-2=[LPGUID] pGuidParam
+2=LPGUID pGuidParam
 3=ULONG BufferSize
 4=PVOID Buffer
 ParamCount=4

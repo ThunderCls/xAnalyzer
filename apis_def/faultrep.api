@@ -1,5 +1,5 @@
 [WerReportHang]
-1=[HWND] hwndHungWinow
+1=HWND hwndHungWinow
 2=PCWSTR wszHungApplicationName
 ParamCount=2
 Header=windows.h.api;
@@ -9,7 +9,7 @@ Header=windows.h.api;
 ParamCount=1
 @=AddERExcludedApplication
 [ReportFault]
-1=[LPEXCEPTION_POINTERS] pep
+1=LPEXCEPTION_POINTERS pep
 2=DWORD dwMode
 ParamCount=2
 Header=windows.h.api;

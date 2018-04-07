@@ -3,15 +3,15 @@
 ParamCount=1
 @=ShellDDEInit
 [SoftwareUpdateMessageBox]
-1=[HWND] hWnd
+1=HWND hWnd
 2=LPCWSTR pszDistUnit
 3=DWORD dwFlags
-4=[LPSOFTDISTINFO] psdi
+4=LPSOFTDISTINFO psdi
 ParamCount=4
 Header=url.h.api;windows.h.api;
 @=SoftwareUpdateMessageBox
 [DoPrivacyDlg]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=LPCWSTR pszUrl
 3=IEnumPrivacyRecords* pPrivacyEnum
 4=BOOL fReportAllSites

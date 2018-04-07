@@ -132,7 +132,7 @@ ParamCount=4
 ParamCount=4
 @=MFCreateMuxSink
 [MFCreateNetSchemePlugin]
-1=[REFIID] riid
+1=REFIID riid
 2=LPVOID* ppvHandler
 ParamCount=2
 Header=windows.h.api;
@@ -181,7 +181,7 @@ ParamCount=3
 [MFCreateSequencerSegmentOffset]
 1=MFSequencerElementId dwId
 2=MFTIME hnsOffset
-3=[PROPVARIANT*] pvarSegmentOffset
+3=PROPVARIANT* pvarSegmentOffset
 ParamCount=3
 Header=ole.h.api;
 @=MFCreateSequencerSegmentOffset
@@ -234,13 +234,13 @@ ParamCount=4
 ParamCount=4
 @=MFCreateTranscodeTopologyFromByteStream
 [MFCreateVideoRenderer]
-1=[REFIID] riidRenderer
+1=REFIID riidRenderer
 2=void** ppVideoRenderer
 ParamCount=2
 Header=windows.h.api;
 @=MFCreateVideoRenderer
 [MFCreateVideoRendererActivate]
-1=[HWND] hwndVideo
+1=HWND hwndVideo
 2=IMFActivate** ppActivate
 ParamCount=2
 Header=windows.h.api;
@@ -265,19 +265,19 @@ ParamCount=3
 @=MFEnumDeviceSources
 [MFGetService]
 1=IUnknown* punkObject
-2=[REFGUID] guidService
-3=[REFIID] riid
+2=REFGUID guidService
+3=REFIID riid
 4=LPVOID* ppvObject
 ParamCount=4
 Header=windows.h.api;
 @=MFGetService
 [MFGetSupportedMimeTypes]
-1=[PROPVARIANT*] pPropVarMimeTypeArray
+1=PROPVARIANT* pPropVarMimeTypeArray
 ParamCount=1
 Header=ole.h.api;
 @=MFGetSupportedMimeTypes
 [MFGetSupportedSchemes]
-1=[PROPVARIANT*] pPropVarSchemeArray
+1=PROPVARIANT* pPropVarSchemeArray
 ParamCount=1
 Header=ole.h.api;
 @=MFGetSupportedSchemes
@@ -297,7 +297,7 @@ ParamCount=1
 ParamCount=1
 @=MFShutdownObject
 [MFTranscodeGetAudioOutputAvailableTypes]
-1=[REFGUID] guidSubType
+1=REFGUID guidSubType
 2=DWORD dwMFTFlags
 3=IMFAttributes* pCodecConfig
 4=IMFCollection** ppAvailableTypes
@@ -312,7 +312,7 @@ Header=windows.h.api;
 ParamCount=4
 @=MFCreateFMPEG4MediaSink
 [MFCreateMP3ByteStreamPlugin]
-1=[REFIID] riid
+1=REFIID riid
 2=LPVOID* ppvHandler
 ParamCount=2
 Header=windows.h.api;

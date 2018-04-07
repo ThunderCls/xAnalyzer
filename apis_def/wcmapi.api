@@ -4,12 +4,12 @@ ParamCount=1
 @=WcmFreeMemory
 [WcmGetProfileList]
 1=PVOID pReserved
-2=[PWCM_PROFILE_INFO_LIST*] ppProfileList
+2=PWCM_PROFILE_INFO_LIST* ppProfileList
 ParamCount=2
 Header=wcmapi.h.api;
 @=WcmGetProfileList
 [WcmQueryProperty]
-1=[GUID*] pInterface
+1=GUID* pInterface
 2=LPCWSTR strProfileName
 3=[WCM_PROPERTY] Property
 4=PVOID pReserved
@@ -19,7 +19,7 @@ ParamCount=6
 Header=wcmapi.h.api;windows.h.api;
 @=WcmQueryProperty
 [WcmSetProfileList]
-1=[WCM_PROFILE_INFO_LIST*] pProfileList
+1=WCM_PROFILE_INFO_LIST* pProfileList
 2=DWORD dwPosition
 3=BOOL fIgnoreUnknownProfiles
 4=PVOID pReserved
@@ -27,7 +27,7 @@ ParamCount=4
 Header=wcmapi.h.api;
 @=WcmSetProfileList
 [WcmSetProperty]
-1=[GUID*] pInterface
+1=GUID* pInterface
 2=LPCWSTR strProfileName
 3=[WCM_PROPERTY] Property
 4=PVOID pReserved

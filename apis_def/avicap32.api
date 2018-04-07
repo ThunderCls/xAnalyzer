@@ -5,7 +5,7 @@
 4=int y
 5=int nWidth
 6=int nHeight
-7=[HWND] hWnd
+7=HWND hWnd
 8=int nID
 ParamCount=8
 Header=windows.h.api;

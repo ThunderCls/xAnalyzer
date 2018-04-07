@@ -1,18 +1,18 @@
 [PTConvertPrintTicketToDevMode]
-1=[HPTPROVIDER] hProvider
+1=HPTPROVIDER hProvider
 2=IStream* pPrintTicket
 3=[EDefaultDevmodeType] baseDevmodeType
 4=[EPrintTicketScope] scope
 5=ULONG* pcbDevmode
-6=[PDEVMODE*] ppDevmode
-7=[BSTR*] pbstrErrorMessage
+6=PDEVMODE* ppDevmode
+7=BSTR* pbstrErrorMessage
 ParamCount=7
 Header=prntvpt.h.api;windows.h.api;
 @=PTConvertPrintTicketToDevMode
 [PTConvertDevModeToPrintTicket]
-1=[HPTPROVIDER] hProvider
+1=HPTPROVIDER hProvider
 2=ULONG cbDevmode
-3=[PDEVMODE] pDevmode
+3=PDEVMODE pDevmode
 4=[EPrintTicketScope] scope
 5=IStream* pPrintTicket
 ParamCount=5
@@ -23,27 +23,27 @@ Header=prntvpt.h.api;windows.h.api;
 ParamCount=1
 @=PTReleaseMemory
 [PTMergeAndValidatePrintTicket]
-1=[HPTPROVIDER] hProvider
+1=HPTPROVIDER hProvider
 2=IStream* pBaseTicket
 3=IStream* pDeltaTicket
 4=[EPrintTicketScope] scope
 5=IStream* pResultTicket
-6=[BSTR*] pbstrErrorMessage
+6=BSTR* pbstrErrorMessage
 ParamCount=6
 Header=prntvpt.h.api;windows.h.api;
 @=PTMergeAndValidatePrintTicket
 [PTGetPrintCapabilities]
-1=[HPTPROVIDER] hProvider
+1=HPTPROVIDER hProvider
 2=IStream* pPrintTicket
 3=IStream* pCapabilities
-4=[BSTR*] pbstrErrorMessage
+4=BSTR* pbstrErrorMessage
 ParamCount=4
 Header=prntvpt.h.api;windows.h.api;
 @=PTGetPrintCapabilities
 [PTOpenProvider]
 1=PCWSTR pszPrinterName
 2=DWORD version
-3=[HPTPROVIDER*] phProvider
+3=HPTPROVIDER* phProvider
 ParamCount=3
 Header=prntvpt.h.api;
 @=PTOpenProvider
@@ -51,13 +51,13 @@ Header=prntvpt.h.api;
 1=PCWSTR pszPrinterName
 2=DWORD maxVersion
 3=DWORD prefVersion
-4=[HPTPROVIDER*] phProvider
+4=HPTPROVIDER* phProvider
 5=DWORD* usedVersion
 ParamCount=5
 Header=prntvpt.h.api;
 @=PTOpenProviderEx
 [PTCloseProvider]
-1=[HPTPROVIDER] hProvider
+1=HPTPROVIDER hProvider
 ParamCount=1
 Header=prntvpt.h.api;
 @=PTCloseProvider

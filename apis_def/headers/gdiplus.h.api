@@ -1,173 +1,3 @@
-[LOGFONT*]
-Base=LPLOGFONT
-[NST LOGFONT*]
-Base=LOGFONT*
-[NST GUID*]
-Base=GUID*
-[NST WCHAR*]
-Base=WCHAR*
-[REAL]
-Base=float
-[REAL*]
-Base=REAL
-[NST REAL*]
-Base=REAL*
-[NST UINT16*]
-Base=UINT16*
-[NST void*]
-Base=void*
-[NST BITMAPINFO*]
-Base=BITMAPINFO
-[NST CLSID*]
-Base=CLSID*
-[NST BYTE*]
-Base=BYTE*
-[GdiplusAbort*]
-Base=LPVOID
-[DebugEventProc]
-Base=LPVOID
-[NotificationHookProc]
-Base=LPVOID
-[NotificationUnhookProc]
-Base=LPVOID
-[GetThumbnailImageAbort]
-Base=LPVOID
-[DrawImageAbort]
-Base=LPVOID
-[EnumerateMetafileProc]
-Base=LPVOID
-[GraphicsState]
-Base=UINT
-[GraphicsState*]
-Base=GraphicsState
-[GraphicsContainer]
-Base=UINT
-[GraphicsContainer*]
-Base=GraphicsContainer
-[ARGB]
-Base=DWORD
-[ARGB*]
-Base=ARGB
-[NST ARGB*]
-Base=ARGB*
-[NST EncoderParameters*]
-Base=EncoderParameters
-[GpCachedBitmap*]
-Base=LPVOID
-[GpCachedBitmap**]
-Base=GpCachedBitmap*
-[GpPath*]
-Base=LPVOID
-[GpPath**]
-Base=GpPath*
-[NST GpPath*]
-Base=LPVOID
-[GpPathIterator*]
-Base=LPVOID
-[GpPathIterator**]
-Base=GpPathIterator*
-[GpPathGradient*]
-Base=LPVOID
-[GpPathGradient**]
-Base=GpPathGradient*
-[GpFontFamily*]
-Base=LPVOID
-[GpFontFamily**]
-Base=GpFontFamily*
-[NST GpFontFamily*]
-Base=GpFontFamily*
-[GpFontFamily* []
-Base=GpFontFamily*
-[GpPen*]
-Base=LPVOID
-[GpPen**]
-Base=GpPen*
-[NST GpPen*]
-Base=LPVOID
-[GpGraphics*]
-Base=LPVOID
-[GpGraphics**]
-Base=GpGraphics*
-[NST GpGraphics*]
-Base=GpGraphics*
-[GpRegion*]
-Base=LPVOID
-[GpRegion**]
-Base=GpRegion*
-[GpBrush*]
-Base=LPVOID
-[GpBrush**]
-Base=GpBrush*
-[NST GpBrush*]
-Base=GpBrush*
-[GpHatch*]
-Base=LPVOID
-[GpHatch**]
-Base=GpHatch*
-[GpImage*]
-Base=LPVOID
-[GpImage**]
-Base=GpImage*
-[GpTexture*]
-Base=LPVOID
-[GpTexture**]
-Base=GpTexture*
-[GpImageAttributes*]
-Base=LPVOID
-[GpImageAttributes**]
-Base=GpImageAttributes*
-[NST GpImageAttributes*]
-Base=GpImageAttributes*
-[GpSolidFill*]
-Base=LPVOID
-[GpSolidFill**]
-Base=GpSolidFill*
-[GpLineGradient*]
-Base=LPVOID
-[GpLineGradient**]
-Base=GpLineGradient*
-[GpCustomLineCap*]
-Base=LPVOID
-[GpCustomLineCap**]
-Base=GpCustomLineCap*
-[GpAdjustableArrowCap*]
-Base=LPVOID
-[GpAdjustableArrowCap**]
-Base=GpAdjustableArrowCap*
-[GpBitmap*]
-Base=LPVOID
-[GpBitmap**]
-Base=GpBitmap*
-[CGpEffect*]
-Base=LPVOID
-[GpMetafile*]
-Base=LPVOID
-[GpMetafile**]
-Base=GpMetafile*
-[NST GpMetafile*]
-Base=GpMetafile*
-[GpFontCollection*]
-Base=LPVOID
-[GpFontCollection**]
-Base=GpFontCollection*
-[GpFont*]
-Base=LPVOID
-[GpFont**]
-Base=GpFont*
-[NST GpFont*]
-Base=GpFont*
-[GpStringFormat*]
-Base=LPVOID
-[GpStringFormat**]
-Base=GpStringFormat*
-[NST GpStringFormat*]
-Base=GpStringFormat*
-[GpMatrix*]
-Base=LPVOID
-[GpMatrix**]
-Base=GpMatrix*
-[NST GpMatrix*]
-Base=LPVOID
 [PropertyTagType]
 TypeDisplay=WORD
 Base=WORD
@@ -188,10 +18,6 @@ Const7=PropertyTagTypeSLONG
 Value7=9
 Const8=PropertyTagTypeSRational
 Value8=10
-[PropertyItem*]
-Base=PropertyItem
-[NST PropertyItem*]
-Base=PropertyItem
 [MetafileType]
 Base=UINT
 Type=Enum
@@ -213,18 +39,6 @@ Base=UINT
 Type=Flag
 Const1=GDIP_EMFPLUSFLAGS_DISPLAY
 Value1=0x00000001
-[MetafileHeader*]
-Base=MetafileHeader
-[NST WmfPlaceableFileHeader*]
-Base=WmfPlaceableFileHeader
-[BitmapData*]
-Base=BitmapData
-[NST ColorMap*]
-Base=ColorMap
-[NST ColorMatrix*]
-Base=ColorMatrix
-[ImageItemData*]
-Base=ImageItemData
 [PaletteFlags]
 TypeDisplay=PaletteFlags
 Base=UINT
@@ -235,14 +49,6 @@ Const2=PaletteFlagsGrayScale
 Value2=0x0002
 Const3=PaletteFlagsHalftone
 Value3=0x0004
-[ColorPalette*]
-Base=ColorPalette
-[NST ColorPalette*]
-Base=ColorPalette
-[GdiplusStartupOutput*]
-Base=GdiplusStartupOutput
-[GdiplusStartupInput*]
-Base=GdiplusStartupInput
 [ImageCodecFlags]
 TypeDisplay=DWORD
 Base=DWORD
@@ -265,22 +71,6 @@ Const8=ImageCodecFlagsSystem
 Value8=0x00020000
 Const9=ImageCodecFlagsUser
 Value9=0x00040000
-[ImageCodecInfo*]
-Base=ImageCodecInfo
-[NST Point*]
-Base=Point
-[GpPoint*]
-Base=Point
-[NST GpPoint*]
-Base=Point
-[PointF*]
-Base=PointF
-[NST PointF*]
-Base=PointF
-[GpPointF*]
-Base=PointF
-[NST GpPointF*]
-Base=PointF
 [PathPointType]
 TypeDisplay=BYTE
 Base=BYTE
@@ -303,24 +93,6 @@ Base=PathPointType
 [NST PathPointType*]
 TypeDisplay=GDIPCONST BYTE*
 Base=PathPointType
-[GpPathData*]
-Base=PathData
-[NST Rect*]
-Base=Rect
-[GpRect*]
-Base=Rect
-[NST GpRect*]
-Base=Rect
-[RectF*]
-Base=RectF
-[NST RectF*]
-Base=RectF
-[GpRectF*]
-Base=RectF
-[NST GpRectF*]
-Base=RectF
-[NST CharacterRange*]
-Base=CharacterRange
 [DitherType]
 Base=UINT
 Type=Enum
@@ -353,8 +125,6 @@ Const1=FillModeAlternate
 Value1=0
 Const2=FillModeWinding
 Value2=1
-[GpFillMode*]
-Base=GpFillMode
 [GpWrapMode]
 Base=UINT
 Type=Enum
@@ -368,8 +138,6 @@ Const4=WrapModeTileFlipXY
 Value4=3
 Const5=WrapModeClamp
 Value5=4
-[GpWrapMode*]
-Base=GpWrapMode
 [GpPenAlignment]
 Base=UINT
 Type=Enum
@@ -377,8 +145,6 @@ Const1=PenAlignmentCenter
 Value1=0
 Const2=PenAlignmentInset
 Value2=1
-[GpPenAlignment*]
-Base=GpPenAlignment
 [PaletteType]
 Base=UINT
 Type=Enum
@@ -460,8 +226,6 @@ Const6=SmoothingModeAntiAlias8x4
 Value6=4
 Const7=SmoothingModeAntiAlias8x8
 Value7=5
-[SmoothingMode*]
-Base=SmoothingMode
 [StringAlignment]
 Base=UINT
 Type=Enum
@@ -471,8 +235,6 @@ Const2=StringAlignmentCenter
 Value2=1
 Const3=StringAlignmentFar
 Value3=2
-[StringAlignment*]
-Base=StringAlignment
 [WarpMode]
 Base=UINT
 Type=Enum
@@ -495,8 +257,6 @@ Const5=PenTypePathGradient
 Value5=3
 Const6=PenTypeLinearGradient
 Value6=4
-[GpPenType*]
-Base=GpPenType
 [GpDashStyle]
 Base=UINT
 Type=Enum
@@ -510,8 +270,6 @@ Const4=DashStyleDashDotDot
 Value4=3
 Const5=DashStyleCustom
 Value5=4
-[GpDashStyle*]
-Base=GpDashStyle
 [CustomLineCapType]
 Base=UINT
 Type=Enum
@@ -519,8 +277,6 @@ Const1=CustomLineCapTypeDefault
 Value1=0
 Const2=CustomLineCapTypeAdjustableArrow
 Value2=1
-[CustomLineCapType*]
-Base=CustomLineCapType
 [RotateFlipType]
 Base=UINT
 Type=Enum
@@ -562,8 +318,6 @@ Const5=PixelOffsetModeNone
 Value5=3
 Const6=PixelOffsetModeHalf
 Value6=4
-[PixelOffsetMode*]
-Base=PixelOffsetMode
 [GpCoordinateSpace]
 Base=UINT
 Type=Enum
@@ -608,8 +362,6 @@ Const3=StringDigitSubstituteNational
 Value3=2
 Const4=StringDigitSubstituteTraditional
 Value4=3
-[StringDigitSubstitute*]
-Base=StringDigitSubstitute
 [GpTestControlEnum]
 Base=UINT
 Type=Enum
@@ -647,8 +399,6 @@ Const4=BrushTypePathGradient
 Value4=3
 Const5=BrushTypeLinearGradient
 Value5=4
-[GpBrushType*]
-Base=GpBrushType
 [GpHatchStyle]
 Base=UINT
 Type=Enum
@@ -758,8 +508,6 @@ Const52=HatchStyleOutlinedDiamond
 Value52=51
 Const53=HatchStyleSolidDiamond
 Value53=52
-[GpHatchStyle*]
-Base=GpHatchStyle
 [LinearGradientMode]
 Base=UINT
 Type=Enum
@@ -788,12 +536,6 @@ Const6=UnitDocument
 Value6=5
 Const7=UnitMillimeter
 Value7=6
-[Unit*]
-Base=Unit
-[GpUnit]
-Base=Unit
-[GpUnit*]
-Base=GpUnit
 [GpLineCap]
 Base=UINT
 Type=Enum
@@ -817,8 +559,6 @@ Const9=LineCapArrowAnchor
 Value9=0x14
 Const10=LineCapCustom
 Value10=0xff
-[GpLineCap*]
-Base=GpLineCap
 [GpDashCap]
 Base=UINT
 Type=Enum
@@ -828,8 +568,6 @@ Const2=DashCapRound
 Value2=1
 Const3=DashCapTriangle
 Value3=2
-[GpDashCap*]
-Base=GpDashCap
 [GpLineJoin]
 Base=UINT
 Type=Enum
@@ -841,8 +579,6 @@ Const3=LineJoinRound
 Value3=2
 Const4=LineJoinMiterClipped
 Value4=3
-[GpLineJoin*]
-Base=GpLineJoin
 [GpMatrixOrder]
 Base=UINT
 Type=Enum
@@ -859,8 +595,6 @@ Const2=ImageTypeBitmap
 Value2=1
 Const3=ImageTypeMetafile
 Value3=2
-[ImageType*]
-Base=ImageType
 [ColorAdjustType]
 Base=UINT
 Type=Enum
@@ -885,8 +619,6 @@ Const1=CompositingModeSourceOver
 Value1=0
 Const2=CompositingModeSourceCopy
 Value2=1
-[CompositingMode*]
-Base=CompositingMode
 [CompositingQuality]
 Base=UINT
 Type=Enum
@@ -902,8 +634,6 @@ Const5=CompositingQualityGammaCorrected
 Value5=3
 Const6=CompositingQualityAssumeLinear
 Value6=4
-[CompositingQuality*]
-Base=CompositingQuality
 [TextRenderingHint]
 Base=UINT
 Type=Enum
@@ -919,8 +649,6 @@ Const5=TextRenderingHintAntiAlias
 Value5=4
 Const6=TextRenderingHintClearTypeGridFit
 Value6=5
-[TextRenderingHint*]
-Base=TextRenderingHint
 [StringTrimming]
 Base=UINT
 Type=Enum
@@ -936,10 +664,6 @@ Const5=StringTrimmingEllipsisWord
 Value5=4
 Const6=StringTrimmingEllipsisPath
 Value6=5
-[StringTrimming*]
-Base=StringTrimming
-[EmfPlusRecordType]
-Base=LPVOID
 [GpStatus]
 Base=UINT
 Type=Enum

@@ -4,7 +4,7 @@ ParamCount=1
 @=PR_JoinThread
 [PR_CreateThread]
 1=PRThreadType type
-2=[void (*)(void*)] start
+2=void (*)(void*) start
 3=void* arg
 4=PRThreadPriority priority
 5=PRThreadScope scope

@@ -1,21 +1,21 @@
 [MsiSetInternalUI]
 1=[INSTALLUILEVEL] dwUILevel
-2=[HWND*] phWnd
+2=HWND* phWnd
 ParamCount=2
 Header=msi.h.api;windows.h.api;
 @=MsiSetInternalUI
 [MsiSetExternalUI]
-1=[INSTALLUI_HANDLER] puiHandler
+1=INSTALLUI_HANDLER puiHandler
 2=[MsiInstallLogMode] dwMessageFilter
 3=LPVOID pvContext
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetExternalUI
 [MsiSetExternalUIRecord]
-1=[PINSTALLUI_HANDLER_RECORD] puiHandler
+1=PINSTALLUI_HANDLER_RECORD puiHandler
 2=[MsiInstallLogMode] dwMessageFilter
 3=LPVOID pvContext
-4=[PINSTALLUI_HANDLER_RECORD] ppuiPrevHandler
+4=PINSTALLUI_HANDLER_RECORD ppuiPrevHandler
 ParamCount=4
 Header=msi.h.api;
 @=MsiSetExternalUIRecord
@@ -27,7 +27,7 @@ ParamCount=3
 Header=msi.h.api;
 @=MsiEnableLog
 [MsiCloseHandle]
-1=[MSIHANDLE] hAny
+1=MSIHANDLE hAny
 ParamCount=1
 Header=msi.h.api;
 @=MsiCloseHandle
@@ -55,7 +55,7 @@ Header=msi.h.api;windows.h.api;
 [MsiAdvertiseScript]
 1=LPCTSTR szScriptFile
 2=[MsiScriptFlags] dwFlags
-3=[PHKEY] phRegData
+3=PHKEY phRegData
 4=BOOL fRemoveItems
 ParamCount=4
 Header=msi.h.api;registry.h.api;
@@ -315,7 +315,7 @@ ParamCount=3
 2=LPTSTR szUserSid
 3=[MSIINSTALLCONTEXT] dwContext
 4=LPCTSTR szComponent
-5=[INSTALLSTATE*] pdwState
+5=INSTALLSTATE* pdwState
 ParamCount=5
 Header=msi.h.api;
 @=MsiQueryComponentState
@@ -352,7 +352,7 @@ ParamCount=2
 3=[MSIINSTALLCONTEXT] dwContext
 4=DWORD dwIndex
 5=TCHAR [39] szInstalledProductCode
-6=[MSIINSTALLCONTEXT*] pdwInstalledContext
+6=MSIINSTALLCONTEXT* pdwInstalledContext
 7=LPTSTR szSid
 8=LPDWORD pcchSid
 ParamCount=8
@@ -382,7 +382,7 @@ ParamCount=2
 2=[MSIINSTALLCONTEXT] dwContext
 3=DWORD dwIndex
 4=TCHAR [39] szInstalledComponentCode
-5=[MSIINSTALLCONTEXT*] pdwInstalledContext
+5=MSIINSTALLCONTEXT* pdwInstalledContext
 6=LPTSTR szSid
 7=LPDWORD pcchSid
 ParamCount=7
@@ -400,7 +400,7 @@ ParamCount=3
 3=[MSIINSTALLCONTEXT] dwContext
 4=DWORD dwProductIndex
 5=TCHAR [39] szProductBuf
-6=[MSIINSTALLCONTEXT*] pdwInstalledContext
+6=MSIINSTALLCONTEXT* pdwInstalledContext
 7=LPTSTR szSid
 8=LPDWORD pcchSid
 ParamCount=8
@@ -425,7 +425,7 @@ ParamCount=2
 2=LPTSTR szUserSid
 3=[MSIINSTALLCONTEXT] dwContext
 4=LPCTSTR szFeature
-5=[INSTALLSTATE*] pdwState
+5=INSTALLSTATE* pdwState
 ParamCount=5
 Header=msi.h.api;
 @=MsiQueryFeatureStateEx
@@ -469,20 +469,20 @@ ParamCount=7
 @=MsiGetUserInfo
 [MsiOpenProduct]
 1=LPCTSTR szProduct
-2=[MSIHANDLE*] hProduct
+2=MSIHANDLE* hProduct
 ParamCount=2
 Header=msi.h.api;
 @=MsiOpenProduct
 [MsiOpenPackage]
 1=LPCTSTR szPackagePath
-2=[MSIHANDLE*] hProduct
+2=MSIHANDLE* hProduct
 ParamCount=2
 Header=msi.h.api;
 @=MsiOpenPackage
 [MsiOpenPackageEx]
 1=LPCTSTR szPackagePath
 2=[MsiOpenPackageFlags] dwOptions
-3=[MSIHANDLE*] hProduct
+3=MSIHANDLE* hProduct
 ParamCount=3
 Header=msi.h.api;
 @=MsiOpenPackageEx
@@ -494,7 +494,7 @@ ParamCount=2
 [MsiGetProductInfoFromScript]
 1=LPCTSTR szScriptFile
 2=LPTSTR lpProductBuf39
-3=[LANGID*] plgidLanguage
+3=LANGID* plgidLanguage
 4=DWORD* pdwVersion
 5=LPTSTR lpNameBuf
 6=DWORD* pcchNameBuf
@@ -504,7 +504,7 @@ ParamCount=8
 Header=windows.h.api;
 @=MsiGetProductInfoFromScript
 [MsiGetProductProperty]
-1=[MSIHANDLE] hProduct
+1=MSIHANDLE hProduct
 2=LPCTSTR szProperty
 3=LPTSTR lpValueBuf
 4=DWORD* pcchValueBuf
@@ -519,7 +519,7 @@ Header=msi.h.api;
 ParamCount=4
 @=MsiGetShortcutTarget
 [MsiGetFeatureInfo]
-1=[MSIHANDLE] hProduct
+1=MSIHANDLE hProduct
 2=LPCTSTR szFeature
 3=[MsiInstallFeatureAttr*] lpAttributes
 4=LPTSTR lpTitleBuf
@@ -569,7 +569,7 @@ Header=msi.h.api;
 2=LPCTSTR szUserSid
 3=[MSIINSTALLCONTEXT] dwContext
 4=DWORD cPatchInfo
-5=[PMSIPATCHSEQUENCEINFO] pPatchInfo
+5=PMSIPATCHSEQUENCEINFO pPatchInfo
 ParamCount=5
 Header=msi.h.api;
 @=MsiDeterminePatchSequence
@@ -587,7 +587,7 @@ ParamCount=3
 5=DWORD dwIndex
 6=TCHAR [39] szPatchCode
 7=TCHAR [39] szTargetProductCode
-8=[MSIINSTALLCONTEXT*] pdwTargetProductContext
+8=MSIINSTALLCONTEXT* pdwTargetProductContext
 9=LPTSTR szTargetUserSid
 10=LPDWORD pcchTargetUserSid
 ParamCount=10
@@ -597,7 +597,7 @@ Header=msi.h.api;
 1=LPCTSTR szProductCode
 2=LPCTSTR szPatchList
 3=LPDWORD pcFiles
-4=[MSIHANDLE**] pphFileRecords
+4=MSIHANDLE** pphFileRecords
 ParamCount=4
 Header=msi.h.api;
 @=MsiGetPatchFileList
@@ -622,21 +622,21 @@ ParamCount=4
 [MsiDetermineApplicablePatches]
 1=LPCTSTR szProductPackagePath
 2=DWORD cPatchInfo
-3=[PMSIPATCHSEQUENCEINFO] pPatchInfo
+3=PMSIPATCHSEQUENCEINFO pPatchInfo
 ParamCount=3
 Header=msi.h.api;
 @=MsiDetermineApplicablePatches
 [MsiGetFileHash]
 1=LPCTSTR szFilePath
 2=DWORD dwOptions
-3=[PMSIFILEHASHINFO] pHash
+3=PMSIFILEHASHINFO pHash
 ParamCount=3
 Header=msi.h.api;
 @=MsiGetFileHash
 [MsiGetFileSignatureInformation]
 1=LPCTSTR szSignedObjectPath
 2=[MsiHashFlags] dwFlags
-3=[PCCERT_CONTEXT*] ppcCertContext
+3=PCCERT_CONTEXT* ppcCertContext
 4=BYTE* pbHashData
 5=DWORD* pcbHashData
 ParamCount=5
@@ -653,15 +653,15 @@ ParamCount=5
 [MsiBeginTransaction]
 1=LPCWSTR szTransactionName
 2=[MsiTransactionAttributes] dwTransactionAttributes
-3=[MSIHANDLE*] hTransactionID
-4=[HANDLE*] phChangeOfOwnerEvent
+3=MSIHANDLE* hTransactionID
+4=HANDLE* phChangeOfOwnerEvent
 ParamCount=4
 Header=msi.h.api;windows.h.api;
 @=MsiBeginTransaction
 [MsiJoinTransaction]
-1=[MSIHANDLE] hTransactionID
+1=MSIHANDLE hTransactionID
 2=[MsiTransactionAttributes] dwTransactionAttributes
-3=[HANDLE*] phChangeOfOwnerEvent
+3=HANDLE* phChangeOfOwnerEvent
 ParamCount=3
 Header=msi.h.api;windows.h.api;
 @=MsiJoinTransaction
@@ -671,83 +671,83 @@ ParamCount=1
 Header=msi.h.api;
 @=MsiEndTransaction
 [MsiDatabaseCommit]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 ParamCount=1
 Header=msi.h.api;
 @=MsiDatabaseCommit
 [MsiDatabaseGetPrimaryKeys]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szTableName
-3=[MSIHANDLE*] phRecord
+3=MSIHANDLE* phRecord
 ParamCount=3
 Header=msi.h.api;
 @=MsiDatabaseGetPrimaryKeys
 [MsiDatabaseIsTablePersistent]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szTableName
 ParamCount=2
 Header=msi.h.api;
 @=MsiDatabaseIsTablePersistent
 [MsiDatabaseOpenView]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szQuery
-3=[MSIHANDLE*] phView
+3=MSIHANDLE* phView
 ParamCount=3
 Header=msi.h.api;
 @=MsiDatabaseOpenView
 [MsiGetActiveDatabase]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 ParamCount=1
 Header=msi.h.api;
 @=MsiGetActiveDatabase
 [MsiViewGetColumnInfo]
-1=[MSIHANDLE] hView
+1=MSIHANDLE hView
 2=[MSICOLINFO] eColumnInfo
-3=[MSIHANDLE*] phRecord
+3=MSIHANDLE* phRecord
 ParamCount=3
 Header=msi.h.api;
 @=MsiViewGetColumnInfo
 [MsiOpenDatabase]
 1=LPCTSTR szDatabasePath
 2=LPCTSTR szPersist
-3=[MSIHANDLE*] phDatabase
+3=MSIHANDLE* phDatabase
 ParamCount=3
 Header=msi.h.api;
 @=MsiOpenDatabase
 [MsiViewClose]
-1=[MSIHANDLE] hView
+1=MSIHANDLE hView
 ParamCount=1
 Header=msi.h.api;
 @=MsiViewClose
 [MsiViewExecute]
-1=[MSIHANDLE] hView
-2=[MSIHANDLE] hRecord
+1=MSIHANDLE hView
+2=MSIHANDLE hRecord
 ParamCount=2
 Header=msi.h.api;
 @=MsiViewExecute
 [MsiViewFetch]
-1=[MSIHANDLE] hView
-2=[MSIHANDLE*] phRecord
+1=MSIHANDLE hView
+2=MSIHANDLE* phRecord
 ParamCount=2
 Header=msi.h.api;
 @=MsiViewFetch
 [MsiViewGetError]
-1=[MSIHANDLE] hView
+1=MSIHANDLE hView
 2=LPTSTR szColumnNameBuffer
 3=DWORD* pcchBuf
 ParamCount=3
 Header=msi.h.api;
 @=MsiViewGetError
 [MsiViewModify]
-1=[MSIHANDLE] hView
+1=MSIHANDLE hView
 2=[MSIMODIFY] eModifyMode
-3=[MSIHANDLE] hRecord
+3=MSIHANDLE hRecord
 ParamCount=3
 Header=msi.h.api;
 @=MsiViewModify
 [MsiCreateTransformSummaryInfo]
-1=[MSIHANDLE] hDatabase
-2=[MSIHANDLE] hDatabaseReference
+1=MSIHANDLE hDatabase
+2=MSIHANDLE hDatabaseReference
 3=LPCTSTR szTransformFile
 4=[MSITRANSFORM_ERROR] iErrorConditions
 5=[MSITRANSFORM_VALIDATE] iValidation
@@ -755,14 +755,14 @@ ParamCount=5
 Header=msi.h.api;
 @=MsiCreateTransformSummaryInfo
 [MsiDatabaseApplyTransform]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szTransformFile
 3=[MSITRANSFORM_ERROR] iErrorConditions
 ParamCount=3
 Header=msi.h.api;
 @=MsiDatabaseApplyTransform
 [MsiDatabaseExport]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szTableName
 3=LPCTSTR szFolderPath
 4=LPCTSTR szFileName
@@ -770,8 +770,8 @@ ParamCount=4
 Header=msi.h.api;
 @=MsiDatabaseExport
 [MsiDatabaseGenerateTransform]
-1=[MSIHANDLE] hDatabase
-2=[MSIHANDLE] hDatabaseReference
+1=MSIHANDLE hDatabase
+2=MSIHANDLE hDatabaseReference
 3=LPCTSTR szTransformFile
 4=int iReserved1
 5=int iReserved2
@@ -779,21 +779,21 @@ ParamCount=5
 Header=msi.h.api;
 @=MsiDatabaseGenerateTransform
 [MsiDatabaseImport]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szFolderPath
 3=LPCTSTR szFileName
 ParamCount=3
 Header=msi.h.api;
 @=MsiDatabaseImport
 [MsiDatabaseMerge]
-1=[MSIHANDLE] hDatabase
-2=[MSIHANDLE] hDatabaseMerge
+1=MSIHANDLE hDatabase
+2=MSIHANDLE hDatabaseMerge
 3=LPCTSTR szTableName
 ParamCount=3
 Header=msi.h.api;
 @=MsiDatabaseMerge
 [MsiGetDatabaseState]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 ParamCount=1
 Header=msi.h.api;
 @=MsiGetDatabaseState
@@ -802,37 +802,37 @@ Header=msi.h.api;
 ParamCount=1
 @=MsiCreateRecord
 [MsiFormatRecord]
-1=[MSIHANDLE] hInstall
-2=[MSIHANDLE] hRecord
+1=MSIHANDLE hInstall
+2=MSIHANDLE hRecord
 3=LPTSTR szResultBuf
 4=DWORD* pcchResultBuf
 ParamCount=4
 Header=msi.h.api;
 @=MsiFormatRecord
 [MsiRecordClearData]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 ParamCount=1
 Header=msi.h.api;
 @=MsiRecordClearData
 [MsiRecordDataSize]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=unsigned int iField
 ParamCount=2
 Header=msi.h.api;
 @=MsiRecordDataSize
 [MsiRecordGetFieldCount]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 ParamCount=1
 Header=msi.h.api;
 @=MsiRecordGetFieldCount
 [MsiRecordGetInteger]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=unsigned int iField
 ParamCount=2
 Header=msi.h.api;
 @=MsiRecordGetInteger
 [MsiRecordGetString]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=unsigned int iField
 3=LPTSTR szValueBuf
 4=DWORD* pcchValueBuf
@@ -840,13 +840,13 @@ ParamCount=4
 Header=msi.h.api;
 @=MsiRecordGetString
 [MsiRecordIsNull]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=unsigned int iField
 ParamCount=2
 Header=msi.h.api;
 @=MsiRecordIsNull
 [MsiRecordReadStream]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=UINT iField
 3=char* szDataBuf
 4=DWORD* pcbDataBuf
@@ -854,68 +854,68 @@ ParamCount=4
 Header=msi.h.api;
 @=MsiRecordReadStream
 [MsiRecordSetInteger]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=unsigned int iField
 3=int iValue
 ParamCount=3
 Header=msi.h.api;
 @=MsiRecordSetInteger
 [MsiRecordSetStream]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=UINT iField
 3=LPCTSTR szFilePath
 ParamCount=3
 Header=msi.h.api;
 @=MsiRecordSetStream
 [MsiRecordSetString]
-1=[MSIHANDLE] hRecord
+1=MSIHANDLE hRecord
 2=unsigned int iField
 3=LPCTSTR szValue
 ParamCount=3
 Header=msi.h.api;
 @=MsiRecordSetString
 [MsiGetSummaryInformation]
-1=[MSIHANDLE] hDatabase
+1=MSIHANDLE hDatabase
 2=LPCTSTR szDatabasePath
 3=UINT uiUpdateCount
-4=[MSIHANDLE*] phSummaryInfo
+4=MSIHANDLE* phSummaryInfo
 ParamCount=4
 Header=msi.h.api;
 @=MsiGetSummaryInformation
 [MsiSummaryInfoGetProperty]
-1=[MSIHANDLE] hSummaryInfo
+1=MSIHANDLE hSummaryInfo
 2=[MSI_PID] uiProperty
 3=[MSI_DATA_TYPE*] puiDataType
 4=INT* piValue
-5=[FILETIME*] pftValue
+5=FILETIME* pftValue
 6=LPTSTR szValueBuf
 7=DWORD* pcchValueBuf
 ParamCount=7
 Header=msi.h.api;windows.h.api;
 @=MsiSummaryInfoGetProperty
 [MsiSummaryInfoGetPropertyCount]
-1=[MSIHANDLE] hSummaryInfo
+1=MSIHANDLE hSummaryInfo
 2=UINT* puiPropertyCount
 ParamCount=2
 Header=msi.h.api;
 @=MsiSummaryInfoGetPropertyCount
 [MsiSummaryInfoPersist]
-1=[MSIHANDLE] hSummaryInfo
+1=MSIHANDLE hSummaryInfo
 ParamCount=1
 Header=msi.h.api;
 @=MsiSummaryInfoPersist
 [MsiSummaryInfoSetProperty]
-1=[MSIHANDLE] hSummaryInfo
+1=MSIHANDLE hSummaryInfo
 2=[MSI_PID] uiProperty
 3=[MSI_DATA_TYPE] uiDataType
 4=INT iValue
-5=[FILETIME*] pftValue
+5=FILETIME* pftValue
 6=LPTSTR szValue
 ParamCount=6
 Header=msi.h.api;windows.h.api;
 @=MsiSummaryInfoSetProperty
 [MsiGetLanguage]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 ParamCount=1
 Header=msi.h.api;
 @=MsiGetLanguage
@@ -923,13 +923,13 @@ Header=msi.h.api;
 ParamCount=0
 @=MsiGetLastErrorRecord
 [MsiGetMode]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=[MSIRUNMODE] iRunMode
 ParamCount=2
 Header=msi.h.api;
 @=MsiGetMode
 [MsiGetProperty]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szName
 3=LPTSTR szValueBuf
 4=DWORD* pchValueBuf
@@ -937,47 +937,47 @@ ParamCount=4
 Header=msi.h.api;
 @=MsiGetProperty
 [MsiSetProperty]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szName
 3=LPCTSTR szValue
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetProperty
 [MsiSetMode]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=unsigned int iRunMode
 3=BOOL fState
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetMode
 [MsiDoAction]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szAction
 ParamCount=2
 Header=msi.h.api;
 @=MsiDoAction
 [MsiEvaluateCondition]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szCondition
 ParamCount=2
 Header=msi.h.api;
 @=MsiEvaluateCondition
 [MsiProcessMessage]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=[INSTALLMESSAGE] eMessageType
-3=[MSIHANDLE] hRecord
+3=MSIHANDLE hRecord
 ParamCount=3
 Header=msi.h.api;
 @=MsiProcessMessage
 [MsiSequence]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szTable
 3=INT iSequenceMode
 ParamCount=3
 Header=msi.h.api;
 @=MsiSequence
 [MsiGetSourcePath]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFolder
 3=LPTSTR szPathBuf
 4=DWORD* pcchPathBuf
@@ -985,7 +985,7 @@ ParamCount=4
 Header=msi.h.api;
 @=MsiGetSourcePath
 [MsiGetTargetPath]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFolder
 3=LPTSTR szPathBuf
 4=DWORD* pcchPathBuf
@@ -993,14 +993,14 @@ ParamCount=4
 Header=msi.h.api;
 @=MsiGetTargetPath
 [MsiSetTargetPath]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFolder
 3=LPCTSTR szFolderPath
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetTargetPath
 [MsiEnumComponentCosts]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szComponent
 3=DWORD dwIndex
 4=[INSTALLSTATE] iState
@@ -1012,15 +1012,15 @@ ParamCount=8
 Header=msi.h.api;
 @=MsiEnumComponentCosts
 [MsiGetComponentState]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szComponent
-3=[INSTALLSTATE*] piInstalled
-4=[INSTALLSTATE*] piAction
+3=INSTALLSTATE* piInstalled
+4=INSTALLSTATE* piAction
 ParamCount=4
 Header=msi.h.api;
 @=MsiGetComponentState
 [MsiGetFeatureCost]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFeature
 3=[MSICOSTTREE] iCostTree
 4=[INSTALLSTATE] iState
@@ -1029,67 +1029,67 @@ ParamCount=5
 Header=msi.h.api;
 @=MsiGetFeatureCost
 [MsiGetFeatureState]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFeature
-3=[INSTALLSTATE*] piInstalled
-4=[INSTALLSTATE*] piAction
+3=INSTALLSTATE* piInstalled
+4=INSTALLSTATE* piAction
 ParamCount=4
 Header=msi.h.api;
 @=MsiGetFeatureState
 [MsiGetFeatureValidStates]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFeature
 3=[INSTALLSTATE-DWORD*] pInstallState
 ParamCount=3
 Header=msi.h.api;
 @=MsiGetFeatureValidStates
 [MsiSetComponentState]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szComponent
 3=[INSTALLSTATE] iState
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetComponentState
 [MsiSetFeatureAttributes]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFeature
 3=[MsiInstallFeatureAttr] dwAttributes
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetFeatureAttributes
 [MsiSetFeatureState]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=LPCTSTR szFeature
 3=[INSTALLSTATE] iState
 ParamCount=3
 Header=msi.h.api;
 @=MsiSetFeatureState
 [MsiSetInstallLevel]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 2=int iInstallLevel
 ParamCount=2
 Header=msi.h.api;
 @=MsiSetInstallLevel
 [MsiVerifyDiskSpace]
-1=[MSIHANDLE] hInstall
+1=MSIHANDLE hInstall
 ParamCount=1
 Header=msi.h.api;
 @=MsiVerifyDiskSpace
 [MsiEnableUIPreview]
-1=[MSIHANDLE] hDatabase
-2=[MSIHANDLE*] phPreview
+1=MSIHANDLE hDatabase
+2=MSIHANDLE* phPreview
 ParamCount=2
 Header=msi.h.api;
 @=MsiEnableUIPreview
 [MsiPreviewBillboard]
-1=[MSIHANDLE] hPreview
+1=MSIHANDLE hPreview
 2=LPCTSTR szControlName
 3=LPCTSTR szBillboard
 ParamCount=3
 Header=msi.h.api;
 @=MsiPreviewBillboard
 [MsiPreviewDialog]
-1=[MSIHANDLE] hPreview
+1=MSIHANDLE hPreview
 2=LPCTSTR szDialogName
 ParamCount=2
 Header=msi.h.api;

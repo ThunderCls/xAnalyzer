@@ -3,7 +3,7 @@
 ParamCount=1
 @=CreateVssBackupComponentsInternal
 [CreateVssExamineWriterMetadataInternal]
-1=[BSTR] bstrXML
+1=BSTR bstrXML
 2=IVssExamineWriterMetadata** ppMetadata
 ParamCount=2
 Header=windows.h.api;
@@ -57,7 +57,7 @@ ParamCount=1
 ParamCount=1
 @=?CreateVssBackupComponents@@YAJPEAPEAVIVssBackupComponents@@@Z
 [?CreateVssExamineWriterMetadata@@YAJPEAGPEAPEAVIVssExamineWriterMetadata@@@Z]
-1=[BSTR] bstrXML
+1=BSTR bstrXML
 2=IVssExamineWriterMetadata** ppMetadata
 ParamCount=2
 Header=windows.h.api;
@@ -67,7 +67,7 @@ Header=windows.h.api;
 ParamCount=1
 @=?CreateVssBackupComponents@@YGJPAPAVIVssBackupComponents@@@Z
 [?CreateVssExamineWriterMetadata@@YGJPAGPAPAVIVssExamineWriterMetadata@@@Z]
-1=[BSTR] bstrXML
+1=BSTR bstrXML
 2=IVssExamineWriterMetadata** ppMetadata
 ParamCount=2
 Header=windows.h.api;

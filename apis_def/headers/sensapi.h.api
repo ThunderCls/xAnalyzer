@@ -1,5 +1,3 @@
-[LPQOCINFO]
-Base=QOCINFO
 [NetworkAliveFlags]
 TypeDisplay=DWORD
 Base=DWORD

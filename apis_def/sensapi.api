@@ -1,6 +1,6 @@
 [IsDestinationReachable]
 1=LPCSTR lpszDestination
-2=[LPQOCINFO] lpQOCInfo
+2=LPQOCINFO lpQOCInfo
 ParamCount=2
 Header=sensapi.h.api;
 @=IsDestinationReachable

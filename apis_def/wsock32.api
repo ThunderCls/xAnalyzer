@@ -123,7 +123,7 @@ SourceModule=ws2_32.api
 ParamCount=1
 @=inet_addr
 [inet_ntoa]
-1=[struct in_addr] in
+1=struct in_addr in
 ParamCount=1
 Header=sockets.h.api;
 @=inet_ntoa

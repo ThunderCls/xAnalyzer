@@ -1,7 +1,7 @@
 [DsAddressToSiteNames]
 1=LPCTSTR ComputerName
 2=DWORD EntryCount
-3=[PSOCKET_ADDRESS] SocketAddresses
+3=PSOCKET_ADDRESS SocketAddresses
 4=LPTSTR** SiteNames
 ParamCount=4
 Header=sockets.h.api;
@@ -9,7 +9,7 @@ Header=sockets.h.api;
 [DsAddressToSiteNamesEx]
 1=LPCTSTR ComputerName
 2=DWORD EntryCount
-3=[PSOCKET_ADDRESS] SocketAddresses
+3=PSOCKET_ADDRESS SocketAddresses
 4=LPTSTR** SiteNames
 5=LPTSTR** SubnetNames
 ParamCount=5
@@ -18,8 +18,8 @@ Header=sockets.h.api;
 [DsDeregisterDnsHostRecords]
 1=LPTSTR ServerName
 2=LPTSTR DnsDomainName
-3=[GUID*] DomainGuid
-4=[GUID*] DsaGuid
+3=GUID* DomainGuid
+4=GUID* DsaGuid
 5=LPTSTR DnsHostName
 ParamCount=5
 Header=windows.h.api;
@@ -27,7 +27,7 @@ Header=windows.h.api;
 [DsEnumerateDomainTrusts]
 1=LPTSTR ServerName
 2=ULONG Flags
-3=[PDS_DOMAIN_TRUSTS*] Domains
+3=PDS_DOMAIN_TRUSTS* Domains
 4=PULONG DomainCount
 ParamCount=4
 Header=netapi32.h.api;
@@ -40,17 +40,17 @@ Header=windows.h.api;
 [DsGetDcName]
 1=LPCTSTR ComputerName
 2=LPCTSTR DomainName
-3=[GUID*] DomainGuid
+3=GUID* DomainGuid
 4=LPCTSTR SiteName
 5=[DsGetDcNameFlags] Flags
-6=[PDOMAIN_CONTROLLER_INFO*] DomainControllerInfo
+6=PDOMAIN_CONTROLLER_INFO* DomainControllerInfo
 ParamCount=6
 Header=netapi32.h.api;windows.h.api;
 @=DsGetDcName
 [DsGetDcNext]
 1=HANDLE GetDcContextHandle
 2=PULONG SockAddressCount
-3=[LPSOCKET_ADDRESS*] SockAddresses
+3=LPSOCKET_ADDRESS* SockAddresses
 4=LPTSTR* DnsHostName
 ParamCount=4
 Header=sockets.h.api;windows.h.api;
@@ -59,10 +59,10 @@ Header=sockets.h.api;windows.h.api;
 1=LPCTSTR DnsName
 2=ULONG OptionFlags
 3=LPCTSTR SiteName
-4=[GUID*] DomainGuid
+4=GUID* DomainGuid
 5=LPCTSTR DnsForestName
 6=ULONG DcFlags
-7=[PHANDLE] RetGetDcContext
+7=PHANDLE RetGetDcContext
 ParamCount=7
 Header=windows.h.api;
 @=DsGetDcOpen
@@ -76,7 +76,7 @@ ParamCount=3
 1=LPCWSTR ServerName
 2=LPCWSTR TrustedDomainName
 3=DWORD Flags
-4=[PLSA_FOREST_TRUST_INFORMATION*] ForestTrustInfo
+4=PLSA_FOREST_TRUST_INFORMATION* ForestTrustInfo
 ParamCount=4
 Header=network.h.api;
 @=DsGetForestTrustInformationW
@@ -87,9 +87,9 @@ ParamCount=2
 @=DsGetSiteName
 [DsMergeForestTrustInformationW]
 1=LPCWSTR DomainName
-2=[PLSA_FOREST_TRUST_INFORMATION] NewForestTrustInfo
-3=[PLSA_FOREST_TRUST_INFORMATION] OldForestTrustInfo
-4=[PLSA_FOREST_TRUST_INFORMATION*] ForestTrustInfo
+2=PLSA_FOREST_TRUST_INFORMATION NewForestTrustInfo
+3=PLSA_FOREST_TRUST_INFORMATION OldForestTrustInfo
+4=PLSA_FOREST_TRUST_INFORMATION* ForestTrustInfo
 ParamCount=4
 Header=network.h.api;
 @=DsMergeForestTrustInformationW
@@ -175,7 +175,7 @@ ParamCount=6
 [NetGetJoinInformation]
 1=LPCWSTR lpServer
 2=LPWSTR* lpNameBuffer
-3=[PNETSETUP_JOIN_STATUS] BufferType
+3=PNETSETUP_JOIN_STATUS BufferType
 ParamCount=3
 Header=netapi32.h.api;
 @=NetGetJoinInformation
@@ -254,7 +254,7 @@ ParamCount=5
 Header=netapi32.h.api;
 @=NetValidateName
 [NetCreateProvisioningPackage]
-1=[PNETSETUP_PROVISIONING_PARAMS] pProvisioningParams
+1=PNETSETUP_PROVISIONING_PARAMS pProvisioningParams
 2=PBYTE* pPackageBinData
 3=DWORD* pdwPackageBinDataSize
 4=LPWSTR* pPackageTextData
@@ -616,7 +616,7 @@ ParamCount=7
 ParamCount=7
 @=NetWkstaTransportEnum
 [NetUseAdd]
-1=[LMSTR] UncServerName
+1=LMSTR UncServerName
 2=DWORD Level
 3=LPBYTE Buf
 4=LPDWORD ParmError
@@ -624,14 +624,14 @@ ParamCount=4
 Header=netapi32.h.api;
 @=NetUseAdd
 [NetUseDel]
-1=[LMSTR] UncServerName
-2=[LMSTR] UseName
+1=LMSTR UncServerName
+2=LMSTR UseName
 3=DWORD ForceCond
 ParamCount=3
 Header=netapi32.h.api;
 @=NetUseDel
 [NetUseEnum]
-1=[LMSTR] UncServerName
+1=LMSTR UncServerName
 2=DWORD Level
 3=LPBYTE* BufPtr
 4=DWORD PreferedMaximumSize
@@ -642,15 +642,15 @@ ParamCount=7
 Header=netapi32.h.api;
 @=NetUseEnum
 [NetUseGetInfo]
-1=[LMSTR] UncServerName
-2=[LMSTR] UseName
+1=LMSTR UncServerName
+2=LMSTR UseName
 3=DWORD Level
 4=LPBYTE* BufPtr
 ParamCount=4
 Header=netapi32.h.api;
 @=NetUseGetInfo
 [NetUserAdd]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE buf
 4=LPDWORD parm_err
@@ -798,7 +798,7 @@ ParamCount=4
 1=LPWSTR ServerName
 2=DWORD Flags
 3=DWORD* AccountsCount
-4=[PZPWSTR*] Accounts
+4=PZPWSTR* Accounts
 ParamCount=4
 Header=netapi32.h.api;
 @=NetEnumerateServiceAccounts
@@ -815,7 +815,7 @@ ParamCount=3
 ParamCount=3
 @=NetRemoveServiceAccount
 [DavAddConnection]
-1=[HANDLE*] ConnectionHandle
+1=HANDLE* ConnectionHandle
 2=LPCWSTR RemoteName
 3=LPCWSTR UserName
 4=LPCWSTR Password
@@ -855,15 +855,15 @@ ParamCount=3
 ParamCount=3
 @=DavGetUNCFromHTTPPath
 [NetFileClose]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD fileid
 ParamCount=2
 Header=netapi32.h.api;
 @=NetFileClose
 [NetFileEnum]
-1=[LMSTR] servername
-2=[LMSTR] basepath
-3=[LMSTR] username
+1=LMSTR servername
+2=LMSTR basepath
+3=LMSTR username
 4=DWORD level
 5=LPBYTE* bufptr
 6=DWORD prefmaxlen
@@ -874,7 +874,7 @@ ParamCount=9
 Header=netapi32.h.api;
 @=NetFileEnum
 [NetFileGetInfo]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD fileid
 3=DWORD level
 4=LPBYTE* bufptr
@@ -908,8 +908,8 @@ ParamCount=9
 ParamCount=5
 @=NetSessionGetInfo
 [NetConnectionEnum]
-1=[LMSTR] servername
-2=[LMSTR] qualifier
+1=LMSTR servername
+2=LMSTR qualifier
 3=DWORD level
 4=LPBYTE* bufptr
 5=DWORD prefmaxlen
@@ -933,21 +933,21 @@ ParamCount=4
 ParamCount=3
 @=NetShareCheck
 [NetShareDel]
-1=[LMSTR] servername
-2=[LMSTR] netname
+1=LMSTR servername
+2=LMSTR netname
 3=DWORD reserved
 ParamCount=3
 Header=netapi32.h.api;
 @=NetShareDel
 [NetShareDelSticky]
-1=[LMSTR] servername
-2=[LMSTR] netname
+1=LMSTR servername
+2=LMSTR netname
 3=DWORD reserved
 ParamCount=3
 Header=netapi32.h.api;
 @=NetShareDelSticky
 [NetShareDelEx]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE buf
 ParamCount=3
@@ -964,7 +964,7 @@ Header=netapi32.h.api;
 ParamCount=7
 @=NetShareEnum
 [NetShareEnumSticky]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE* bufptr
 4=DWORD prefmaxlen
@@ -1060,7 +1060,7 @@ ParamCount=3
 [NetAuditRead]
 1=LPCWSTR server
 2=LPCWSTR service
-3=[LPHLOG] auditloghandle
+3=LPHLOG auditloghandle
 4=DWORD offset
 5=LPDWORD reserved1
 6=DWORD reserved2
@@ -1114,7 +1114,7 @@ ParamCount=3
 [NetErrorLogRead]
 1=LPCWSTR UncServerName
 2=LPWSTR Reserved1
-3=[LPHLOG] ErrorLogHandle
+3=LPHLOG ErrorLogHandle
 4=DWORD Offset
 5=LPDWORD Reserved2
 6=DWORD Reserved3
@@ -1140,14 +1140,14 @@ ParamCount=8
 [NetLocalGroupAddMember]
 1=LPCWSTR servername
 2=LPCWSTR groupname
-3=[PSID] membersid
+3=PSID membersid
 ParamCount=3
 Header=windows.h.api;
 @=NetLocalGroupAddMember
 [NetLocalGroupDelMember]
 1=LPCWSTR servername
 2=LPCWSTR groupname
-3=[PSID] membersid
+3=PSID membersid
 ParamCount=3
 Header=windows.h.api;
 @=NetLocalGroupDelMember
@@ -1185,7 +1185,7 @@ ParamCount=4
 ParamCount=5
 @=NetServiceInstall
 [NetWkstaTransportAdd]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE buf
 4=LPDWORD parm_err
@@ -1193,8 +1193,8 @@ ParamCount=4
 Header=netapi32.h.api;
 @=NetWkstaTransportAdd
 [NetWkstaTransportDel]
-1=[LMSTR] servername
-2=[LMSTR] transportname
+1=LMSTR servername
+2=LMSTR transportname
 3=DWORD ucond
 ParamCount=3
 Header=netapi32.h.api;
@@ -1258,7 +1258,7 @@ ParamCount=5
 [NetDfsGetFtContainerSecurity]
 1=LPWSTR DomainName
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR*] ppSecurityDescriptor
+3=PSECURITY_DESCRIPTOR* ppSecurityDescriptor
 4=LPDWORD lpcbSecurityDescriptor
 ParamCount=4
 Header=security.h.api;windows.h.api;
@@ -1274,7 +1274,7 @@ ParamCount=5
 [NetDfsGetSecurity]
 1=LPWSTR DfsEntryPath
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR*] ppSecurityDescriptor
+3=PSECURITY_DESCRIPTOR* ppSecurityDescriptor
 4=LPDWORD lpcbSecurityDescriptor
 ParamCount=4
 Header=security.h.api;windows.h.api;
@@ -1282,7 +1282,7 @@ Header=security.h.api;windows.h.api;
 [NetDfsGetStdContainerSecurity]
 1=LPWSTR MachineName
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR*] ppSecurityDescriptor
+3=PSECURITY_DESCRIPTOR* ppSecurityDescriptor
 4=LPDWORD lpcbSecurityDescriptor
 ParamCount=4
 Header=security.h.api;windows.h.api;
@@ -1290,7 +1290,7 @@ Header=security.h.api;windows.h.api;
 [NetDfsGetSupportedNamespaceVersion]
 1=[DFS_NAMESPACE_VERSION_ORIGIN] Origin
 2=PWSTR pName
-3=[PDFS_SUPPORTED_NAMESPACE_VERSION_INFO*] ppVersionInfo
+3=PDFS_SUPPORTED_NAMESPACE_VERSION_INFO* ppVersionInfo
 ParamCount=3
 Header=netapi32.h.api;
 @=NetDfsGetSupportedNamespaceVersion
@@ -1351,7 +1351,7 @@ ParamCount=5
 [NetDfsSetFtContainerSecurity]
 1=LPWSTR DomainName
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR] pSecurityDescriptor
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=NetDfsSetFtContainerSecurity
@@ -1366,33 +1366,33 @@ ParamCount=5
 [NetDfsSetSecurity]
 1=LPWSTR DfsEntryPath
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR] pSecurityDescriptor
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=NetDfsSetSecurity
 [NetDfsSetStdContainerSecurity]
 1=LPWSTR MachineName
 2=[SECURITY_INFORMATION] SecurityInformation
-3=[PSECURITY_DESCRIPTOR] pSecurityDescriptor
+3=PSECURITY_DESCRIPTOR pSecurityDescriptor
 ParamCount=3
 Header=security.h.api;windows.h.api;
 @=NetDfsSetStdContainerSecurity
 [NetServerAliasAdd]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE buf
 ParamCount=3
 Header=netapi32.h.api;
 @=NetServerAliasAdd
 [NetServerAliasDel]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE buf
 ParamCount=3
 Header=netapi32.h.api;
 @=NetServerAliasDel
 [NetServerAliasEnum]
-1=[LMSTR] servername
+1=LMSTR servername
 2=DWORD level
 3=LPBYTE* bufptr
 4=DWORD prefmaxlen

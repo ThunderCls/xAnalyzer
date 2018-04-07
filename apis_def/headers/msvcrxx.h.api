@@ -1,111 +1,3 @@
-[_locale_t]
-Base=LPVOID
-[_CrtMemState*]
-Base=LPVOID
-[struct _stati64*]
-Base=LPVOID
-[struct _finddata_t*]
-Base=LPVOID
-[struct _finddatai64_t*]
-Base=LPVOID
-[struct _wfinddata_t*]
-Base=LPVOID
-[struct _wfinddatai64_t*]
-Base=LPVOID
-[unsigned]
-Base=unsigned int
-[unsigned*]
-Base=unsigned
-[long int]
-Base=long
-[FILE*]
-Base=LPVOID
-[FILE**]
-Base=FILE*
-[unsigned char*]
-Base=unsigned char
-[wint_t]
-Base=unsigned short
-[_CRT_ALLOC_HOOK]
-Base=LPVOID
-[_CRT_DUMP_CLIENT]
-Base=LPVOID
-[_CRT_REPORT_HOOK]
-Base=LPVOID
-[_CRT_REPORT_HOOKW]
-Base=LPVOID
-[_se_translator_function]
-Base=LPVOID
-[terminate_function]
-Base=LPVOID
-[unexpected_function]
-Base=LPVOID
-[intptr_t]
-Base=INT_PTR
-[__time32_t]
-Base=long
-[__time32_t*]
-Base=__time32_t
-[__time64_t]
-Base=__int64
-[__time64_t*]
-Base=__time64_t
-[wchar]
-Base=WCHAR
-[wchar*]
-Base=wchar
-[_PNH]
-Base=LPVOID
-[uintptr_t]
-Base=UINT_PTR
-[_onexit_t]
-Base=LPVOID
-[clock_t]
-Base=long
-[char***]
-Base=char**
-[wchar_t***]
-Base=wchar_t**
-[_PVFV]
-Base=LPVOID
-[_PVFV*]
-Base=_PVFV
-[_PVFV**]
-Base=_PVFV*
-[mbstate_t]
-Base=int
-[mbstate_t*]
-Base=mbstate_t
-[unsigned short*]
-Base=unsigned short
-[_HANDLE_MATH_ERROR]
-Base=LPVOID
-[_invalid_parameter_handler]
-Base=LPVOID
-[PEXCEPTION_REGISTRATION]
-Base=LPVOID
-[EHExceptionRecord*]
-Base=LPVOID
-[EHRegistrationNode*]
-Base=LPVOID
-[DispatcherContext*]
-Base=LPVOID
-[_dev_t]
-Base=unsigned int
-[_ino_t]
-Base=unsigned short
-[_off_t]
-Base=long
-[_fsize_t]
-Base=unsigned long
-[fpos_t]
-Base=__int64
-[fpos_t*]
-Base=fpos_t
-[_purecall_handler]
-Base=LPVOID
-[struct _EXCEPTION_POINTERS*]
-Base=EXCEPTION_POINTERS
 [_HFILE]
 Base=void*
 Type=Enum
@@ -282,10 +174,6 @@ Const79=ETXTBSY
 Value79=139
 Const80=EWOULDBLOCK
 Value80=140
-[struct _diskfree_t*]
-Base=struct _diskfree_t
-[_startupinfo*]
-Base=_startupinfo
 [EXCEPTION_DISPOSITION]
 Base=UINT
 Type=Enum
@@ -363,22 +251,6 @@ Const6=_S_IWRITE
 Value6=0x0080
 Const7=_S_IEXEC
 Value7=0x0040
-[struct _stat*]
-Base=struct _stat
-[struct _stat32*]
-Base=struct _stat32
-[struct _stat64*]
-Base=struct _stat64
-[struct _stat32i64*]
-Base=struct _stat32i64
-[struct _stat64i32*]
-Base=struct _stat64i32
-[_CRT_DOUBLE*]
-Base=_CRT_DOUBLE
-[_CRT_FLOAT*]
-Base=_CRT_FLOAT
-[struct tm*]
-Base=struct tm
 [HEAP_RESULT]
 TypeDisplay=int
 Base=int
@@ -403,20 +275,6 @@ Const1=_FREEENTRY
 Value1=0
 Const2=_USEDENTRY
 Value2=1
-[_HEAPINFO*]
-Base=_HEAPINFO
-[struct _timeb*]
-Base=struct _timeb
-[struct __timeb32*]
-Base=struct __timeb32
-[struct __timeb64*]
-Base=struct __timeb64
-[struct _utimbuf*]
-Base=struct _utimbuf
-[struct __utimbuf32*]
-Base=struct __utimbuf32
-[struct __utimbuf64*]
-Base=struct __utimbuf64
 [FINDDATA_ATTRIB]
 TypeDisplay=unsigned
 Base=unsigned
@@ -433,22 +291,6 @@ Const5=_A_SUBDIR
 Value5=0x10
 Const6=_A_ARCH
 Value6=0x20
-[struct _finddata32_t*]
-Base=struct _finddata32_t
-[struct _finddata32i64_t*]
-Base=struct _finddata32i64_t
-[struct _finddata64i32_t*]
-Base=struct _finddata64i32_t
-[struct __finddata64_t*]
-Base=struct __finddata64_t
-[struct _wfinddata32_t*]
-Base=struct _wfinddata32_t
-[struct _wfinddata32i64_t*]
-Base=struct _wfinddata32i64_t
-[struct _wfinddata64i32_t*]
-Base=struct _wfinddata64i32_t
-[struct _wfinddata64_t*]
-Base=struct _wfinddata64_t
 [wctype_t]
 Base=unsigned short
 Type=Flag
@@ -472,8 +314,6 @@ Const9=_LEADBYTE
 Value9=0x8000
 Const10=_ALPHA
 Value10=0x0103
-[_ctype_t]
-Base=wctype_t
 [exception_type]
 TypeDisplay=int
 Base=int
@@ -490,18 +330,12 @@ Const5=_TLOSS
 Value5=5
 Const6=_PLOSS
 Value6=6
-[struct _exception*]
-Base=struct _exception
-[_LDOUBLE*]
-Base=_LDOUBLE
 [lconv_val]
 TypeDisplay=char
 Base=UINT8
 Type=Enum
 Const1=CHAR_MAX
 Value1=127
-[struct lconv*]
-Base=struct lconv
 [LOCK_NUM]
 TypeDisplay=int
 Base=int

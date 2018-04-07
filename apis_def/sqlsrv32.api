@@ -1,5 +1,5 @@
 [ConfigDriver]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=[ODBC_DRIVER_REQUEST] fRequest
 3=LPCTSTR lpszDriver
 4=LPCTSTR lpszArgs
@@ -10,7 +10,7 @@ ParamCount=7
 Header=odbc.h.api;windows.h.api;
 @=ConfigDriver
 [ConfigDSN]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=[ODBC_DSN_REQUEST] fRequest
 3=LPCTSTR lpszDriver
 4=LPCTSTR lpszAttributes
@@ -18,7 +18,7 @@ ParamCount=4
 Header=odbc.h.api;windows.h.api;
 @=ConfigDSN
 [ConfigTranslator]
-1=[HWND] hwndParent
+1=HWND hwndParent
 2=DWORD* pvOption
 ParamCount=2
 Header=windows.h.api;

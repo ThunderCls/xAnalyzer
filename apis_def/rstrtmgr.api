@@ -1,7 +1,7 @@
 [RmAddFilter]
 1=DWORD dwSessionHandle
 2=LPCWSTR strFilename
-3=[RM_UNIQUE_PROCESS*] Application
+3=RM_UNIQUE_PROCESS* Application
 4=LPCWSTR strShortServiceName
 5=[RM_FILTER_ACTION] ActionType
 ParamCount=5
@@ -53,14 +53,14 @@ ParamCount=4
 [RmShutdown]
 1=DWORD dwSessionHandle
 2=ULONG lActionFlags
-3=[RM_WRITE_STATUS_CALLBACK] fnStatus
+3=RM_WRITE_STATUS_CALLBACK fnStatus
 ParamCount=3
 Header=rstrtmgr.h.api;
 @=RmShutdown
 [RmRemoveFilter]
 1=DWORD dwSessionHandle
 2=LPCWSTR strFilename
-3=[RM_UNIQUE_PROCESS*] Application
+3=RM_UNIQUE_PROCESS* Application
 4=LPCWSTR strShortServiceName
 ParamCount=4
 Header=rstrtmgr.h.api;
@@ -68,7 +68,7 @@ Header=rstrtmgr.h.api;
 [RmRestart]
 1=DWORD dwSessionHandle
 2=DWORD dwRestartFlags
-3=[RM_WRITE_STATUS_CALLBACK] fnStatus
+3=RM_WRITE_STATUS_CALLBACK fnStatus
 ParamCount=3
 Header=rstrtmgr.h.api;
 @=RmRestart

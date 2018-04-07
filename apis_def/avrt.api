@@ -5,18 +5,18 @@ ParamCount=2
 Header=windows.h.api;
 @=AvQuerySystemResponsiveness
 [AvRtCreateThreadOrderingGroup]
-1=[PHANDLE] Context
-2=[PLARGE_INTEGER] Period
-3=[GUID*] ThreadOrderingGuid
-4=[PLARGE_INTEGER] Timeout
+1=PHANDLE Context
+2=PLARGE_INTEGER Period
+3=GUID* ThreadOrderingGuid
+4=PLARGE_INTEGER Timeout
 ParamCount=4
 Header=windows.h.api;
 @=AvRtCreateThreadOrderingGroup
 [AvRtCreateThreadOrderingGroupEx]
-1=[PHANDLE] Context
-2=[PLARGE_INTEGER] Period
-3=[GUID*] ThreadOrderingGuid
-4=[PLARGE_INTEGER] Timeout
+1=PHANDLE Context
+2=PLARGE_INTEGER Period
+3=GUID* ThreadOrderingGuid
+4=PLARGE_INTEGER Timeout
 5=LPCTSTR TaskName
 ParamCount=5
 Header=windows.h.api;
@@ -27,8 +27,8 @@ ParamCount=1
 Header=windows.h.api;
 @=AvRtDeleteThreadOrderingGroup
 [AvRtJoinThreadOrderingGroup]
-1=[PHANDLE] Context
-2=[GUID*] ThreadOrderingGuid
+1=PHANDLE Context
+2=GUID* ThreadOrderingGuid
 3=BOOL Before
 ParamCount=3
 Header=windows.h.api;

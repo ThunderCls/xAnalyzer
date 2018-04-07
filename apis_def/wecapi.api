@@ -1,5 +1,5 @@
 [EcClose]
-1=[EC_HANDLE] Object
+1=EC_HANDLE Object
 ParamCount=1
 Header=wecapi.h.api;
 @=EcClose
@@ -9,7 +9,7 @@ Header=wecapi.h.api;
 ParamCount=2
 @=EcDeleteSubscription
 [EcEnumNextSubscription]
-1=[EC_HANDLE] SubscriptionEnum
+1=EC_HANDLE SubscriptionEnum
 2=DWORD SubscriptionNameBufferSize
 3=LPWSTR SubscriptionNameBuffer
 4=PDWORD SubscriptionNameBufferUsed
@@ -17,28 +17,28 @@ ParamCount=4
 Header=wecapi.h.api;
 @=EcEnumNextSubscription
 [EcGetObjectArrayProperty]
-1=[EC_OBJECT_ARRAY_PROPERTY_HANDLE] ObjectArray
+1=EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray
 2=[EC_SUBSCRIPTION_PROPERTY_ID] PropertyId
 3=DWORD ArrayIndex
 4=DWORD Flags
 5=DWORD PropertyValueBufferSize
-6=[PEC_VARIANT] PropertyValueBuffer
+6=PEC_VARIANT PropertyValueBuffer
 7=PDWORD PropertyValueBufferUsed
 ParamCount=7
 Header=wecapi.h.api;
 @=EcGetObjectArrayProperty
 [EcGetObjectArraySize]
-1=[EC_OBJECT_ARRAY_PROPERTY_HANDLE] ObjectArray
+1=EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray
 2=PDWORD ObjectArraySize
 ParamCount=2
 Header=wecapi.h.api;
 @=EcGetObjectArraySize
 [EcGetSubscriptionProperty]
-1=[EC_HANDLE] Subscription
+1=EC_HANDLE Subscription
 2=[EC_SUBSCRIPTION_PROPERTY_ID] PropertyId
 3=DWORD Flags
 4=DWORD PropertyValueBufferSize
-5=[PEC_VARIANT] PropertyValueBuffer
+5=PEC_VARIANT PropertyValueBuffer
 6=PDWORD PropertyValueBufferUsed
 ParamCount=6
 Header=wecapi.h.api;
@@ -49,13 +49,13 @@ Header=wecapi.h.api;
 3=LPCWSTR EventSourceName
 4=DWORD Flags
 5=DWORD StatusValueBufferSize
-6=[PEC_VARIANT] StatusValueBuffer
+6=PEC_VARIANT StatusValueBuffer
 7=PDWORD StatusValueBufferUsed
 ParamCount=7
 Header=wecapi.h.api;
 @=EcGetSubscriptionRunTimeStatus
 [EcInsertObjectArrayElement]
-1=[EC_OBJECT_ARRAY_PROPERTY_HANDLE] ObjectArray
+1=EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray
 2=DWORD ArrayIndex
 ParamCount=2
 Header=wecapi.h.api;
@@ -71,30 +71,30 @@ ParamCount=1
 ParamCount=3
 @=EcOpenSubscription
 [EcSaveSubscription]
-1=[EC_HANDLE] Subscription
+1=EC_HANDLE Subscription
 2=DWORD Flags
 ParamCount=2
 Header=wecapi.h.api;
 @=EcSaveSubscription
 [EcSetObjectArrayProperty]
-1=[EC_OBJECT_ARRAY_PROPERTY_HANDLE] ObjectArray
+1=EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray
 2=[EC_SUBSCRIPTION_PROPERTY_ID] PropertyId
 3=DWORD ArrayIndex
 4=DWORD Flags
-5=[PEC_VARIANT] PropertyValue
+5=PEC_VARIANT PropertyValue
 ParamCount=5
 Header=wecapi.h.api;
 @=EcSetObjectArrayProperty
 [EcSetSubscriptionProperty]
-1=[EC_HANDLE] Subscription
+1=EC_HANDLE Subscription
 2=[EC_SUBSCRIPTION_PROPERTY_ID] PropertyId
 3=DWORD Flags
-4=[PEC_VARIANT] PropertyValue
+4=PEC_VARIANT PropertyValue
 ParamCount=4
 Header=wecapi.h.api;
 @=EcSetSubscriptionProperty
 [EcRemoveObjectArrayElement]
-1=[EC_OBJECT_ARRAY_PROPERTY_HANDLE] ObjectArray
+1=EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray
 2=DWORD ArrayIndex
 ParamCount=2
 Header=wecapi.h.api;

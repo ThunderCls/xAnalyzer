@@ -1,11 +1,11 @@
 [TxfLogCreateFileReadContext]
 1=LPCWSTR LogPath
-2=[CLFS_LSN] BeginningLsn
-3=[CLFS_LSN] EndingLSN
-4=[PTXF_ID] TxfFileId
+2=CLFS_LSN BeginningLsn
+3=CLFS_LSN EndingLSN
+4=PTXF_ID TxfFileId
 5=PVOID* TxfLogContext
 ParamCount=5
-Header=txfw32.h.api;clfsw32.h.api;
+Header=clfsw32.h.api;
 @=TxfLogCreateFileReadContext
 [TxfLogDestroyReadContext]
 1=PVOID TxfLogContext

@@ -1,5 +1,5 @@
 [CreateHardwareEventMoniker]
-1=[REFCLSID] clsid
+1=REFCLSID clsid
 2=LPCTSTR pszEventHandler
 3=IMoniker** ppmoniker
 ParamCount=3

@@ -1,57 +1,3 @@
-[PLDAPSearch]
-Base=LPVOID
-[PTCHAR*]
-Base=PTCHAR
-[PTCHAR**]
-Base=PTCHAR*
-[LDAP*]
-Base=LDAP
-[PLDAP]
-Base=LDAP
-[PLDAPMessage]
-Base=LDAPMessage
-[LDAPMessage*]
-Base=LDAPMessage
-[LDAPMessage**]
-Base=LDAPMessage*
-[struct berval]
-Base=berval
-[struct berval*]
-Base=berval
-[struct berval**]
-Base=struct berval*
-[BERVAL*]
-Base=berval
-[PBERVAL]
-Base=berval
-[PBERVAL*]
-Base=PBERVAL
-[LDAPControl*]
-Base=LDAPControl
-[LDAPControl**]
-Base=LDAPControl*
-[PLDAPControl]
-Base=LDAPControl
-[PLDAPControl*]
-Base=PLDAPControl
-[PLDAPControl**]
-Base=LDAPControl**
-[LDAP_TIMEVAL*]
-Base=LDAP_TIMEVAL
-[struct l_timeval]
-Base=LDAP_TIMEVAL
-[struct l_timeval*]
-Base=struct l_timeval
-[PLDAPSortKey]
-Base=LDAPSortKey
-[PLDAPSortKey*]
-Base=PLDAPSortKey
-[LDAPVLVInfo*]
-Base=LDAPVLVInfo
-[BerElement*]
-Base=BerElement
-[BerElement**]
-Base=BerElement*
 [LDAP_RETCODE]
 TypeDisplay=ULONG
 Base=ULONG
@@ -197,7 +143,3 @@ Const3=LDAP_MOD_REPLACE
 Value3=0x02
 Const4=LDAP_MOD_BVALUES
 Value4=0x80
-[LDAPMod*]
-Base=LDAPMod
-[LDAPMod* []
-Base=LDAPMod*

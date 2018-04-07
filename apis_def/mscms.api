@@ -1,19 +1,19 @@
 [CheckBitmapBits]
-1=[HTRANSFORM] hColorTransform
+1=HTRANSFORM hColorTransform
 2=PVOID pSrcBits
 3=[BMFORMAT] bmInput
 4=DWORD dwWidth
 5=DWORD dwHeight
 6=DWORD dwStride
 7=PBYTE paResult
-8=[PBMCALLBACKFN] pfnCallback
-9=[LPARAM] lpCallbackData
+8=PBMCALLBACKFN pfnCallback
+9=LPARAM lpCallbackData
 ParamCount=9
 Header=gdi.h.api;gdi32.h.api;windows.h.api;
 @=CheckBitmapBits
 [CheckColors]
-1=[HTRANSFORM] hColorTransform
-2=[PCOLOR] paInputColors
+1=HTRANSFORM hColorTransform
+2=PCOLOR paInputColors
 3=DWORD nColors
 4=[COLORTYPE] ctInput
 5=PBYTE paResult
@@ -21,31 +21,31 @@ ParamCount=5
 Header=gdi.h.api;gdi32.h.api;icm32.h.api;
 @=CheckColors
 [ConvertColorNameToIndex]
-1=[HPROFILE] hProfile
-2=[PCOLOR_NAME] paColorName
+1=HPROFILE hProfile
+2=PCOLOR_NAME paColorName
 3=PDWORD paIndex
 4=DWORD dwCount
 ParamCount=4
 Header=gdi.h.api;
 @=ConvertColorNameToIndex
 [ConvertIndexToColorName]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=PDWORD paIndex
-3=[PCOLOR_NAME] paColorName
+3=PCOLOR_NAME paColorName
 4=DWORD dwCount
 ParamCount=4
 Header=gdi.h.api;
 @=ConvertIndexToColorName
 [CreateColorTransform]
-1=[LPLOGCOLORSPACE] pLogColorSpace
-2=[HPROFILE] hDestProfile
-3=[HPROFILE] hTargetProfile
+1=LPLOGCOLORSPACE pLogColorSpace
+2=HPROFILE hDestProfile
+3=HPROFILE hTargetProfile
 4=[CCT_FLAGS] dwFlags
 ParamCount=4
 Header=gdi.h.api;
 @=CreateColorTransform
 [CreateMultiProfileTransform]
-1=[PHPROFILE] pahProfiles
+1=PHPROFILE pahProfiles
 2=DWORD nProfiles
 3=[RENDERING_INTENT*] padwIntent
 4=DWORD nIntents
@@ -55,19 +55,19 @@ ParamCount=6
 Header=gdi.h.api;
 @=CreateMultiProfileTransform
 [DeleteColorTransform]
-1=[HTRANSFORM] hColorTransform
+1=HTRANSFORM hColorTransform
 ParamCount=1
 Header=gdi32.h.api;
 @=DeleteColorTransform
 [GetCMMInfo]
-1=[HTRANSFORM] hColorTransform
+1=HTRANSFORM hColorTransform
 2=[CMM_INFO] dwInfo
 ParamCount=2
 Header=gdi.h.api;gdi32.h.api;
 @=GetCMMInfo
 [GetNamedProfileInfo]
-1=[HPROFILE] hProfile
-2=[PNAMED_PROFILE_INFO] pNamedProfileInfo
+1=HPROFILE hProfile
+2=PNAMED_PROFILE_INFO pNamedProfileInfo
 ParamCount=2
 Header=gdi.h.api;
 @=GetNamedProfileInfo
@@ -76,7 +76,7 @@ Header=gdi.h.api;
 ParamCount=1
 @=SelectCMM
 [TranslateBitmapBits]
-1=[HTRANSFORM] hColorTransform
+1=HTRANSFORM hColorTransform
 2=PVOID pSrcBits
 3=[BMFORMAT] bmInput
 4=DWORD dwWidth
@@ -85,23 +85,23 @@ ParamCount=1
 7=PVOID pDestBits
 8=[BMFORMAT] bmOutput
 9=DWORD dwOutputStride
-10=[PBMCALLBACKFN] pfnCallback
-11=[LPARAM] ulCallbackData
+10=PBMCALLBACKFN pfnCallback
+11=LPARAM ulCallbackData
 ParamCount=11
 Header=gdi.h.api;gdi32.h.api;windows.h.api;
 @=TranslateBitmapBits
 [TranslateColors]
-1=[HTRANSFORM] hColorTransform
-2=[PCOLOR] paInputColors
+1=HTRANSFORM hColorTransform
+2=PCOLOR paInputColors
 3=DWORD nColors
 4=[COLORTYPE] ctInput
-5=[PCOLOR] paOutputColors
+5=PCOLOR paOutputColors
 6=[COLORTYPE] ctOutput
 ParamCount=6
 Header=gdi.h.api;gdi32.h.api;icm32.h.api;
 @=TranslateColors
 [WcsCheckColors]
-1=[HTRANSFORM] hColorTransform
+1=HTRANSFORM hColorTransform
 2=DWORD nColors
 3=DWORD nInputChannels
 4=[COLORDATATYPE] cdtInput
@@ -112,7 +112,7 @@ ParamCount=7
 Header=gdi.h.api;gdi32.h.api;
 @=WcsCheckColors
 [WcsTranslateColors]
-1=[HTRANSFORM] hColorTransform
+1=HTRANSFORM hColorTransform
 2=DWORD nColors
 3=DWORD nInputChannels
 4=[COLORDATATYPE] cdtInput
@@ -126,12 +126,12 @@ ParamCount=10
 Header=gdi.h.api;gdi32.h.api;
 @=WcsTranslateColors
 [CloseColorProfile]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 ParamCount=1
 Header=gdi.h.api;
 @=CloseColorProfile
 [CreateDeviceLinkProfile]
-1=[PHPROFILE] pahProfiles
+1=PHPROFILE pahProfiles
 2=DWORD nProfiles
 3=[RENDERING_INTENT*] padwIntent
 4=DWORD nIntents
@@ -142,8 +142,8 @@ ParamCount=7
 Header=gdi.h.api;
 @=CreateDeviceLinkProfile
 [GetColorProfileElement]
-1=[HPROFILE] hProfile
-2=[TAGTYPE] tag
+1=HPROFILE hProfile
+2=TAGTYPE tag
 3=DWORD dwOffset
 4=PDWORD pcbSize
 5=PVOID pBuffer
@@ -152,33 +152,33 @@ ParamCount=6
 Header=mscms.h.api;gdi.h.api;
 @=GetColorProfileElement
 [GetColorProfileElementTag]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=DWORD dwIndex
-3=[PTAGTYPE] pTag
+3=PTAGTYPE pTag
 ParamCount=3
 Header=mscms.h.api;gdi.h.api;
 @=GetColorProfileElementTag
 [GetColorProfileFromHandle]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=PBYTE pBuffer
 3=PDWORD pcbSize
 ParamCount=3
 Header=gdi.h.api;
 @=GetColorProfileFromHandle
 [GetColorProfileHeader]
-1=[HPROFILE] hProfile
-2=[PPROFILEHEADER] pHeader
+1=HPROFILE hProfile
+2=PPROFILEHEADER pHeader
 ParamCount=2
 Header=mscms.h.api;gdi.h.api;
 @=GetColorProfileHeader
 [GetCountColorProfileElements]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=PDWORD pnCount
 ParamCount=2
 Header=gdi.h.api;
 @=GetCountColorProfileElements
 [GetPS2ColorRenderingDictionary]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=[RENDERING_INTENT] dwIntent
 3=PBYTE pBuffer
 4=PDWORD pcbSize
@@ -187,7 +187,7 @@ ParamCount=5
 Header=gdi.h.api;
 @=GetPS2ColorRenderingDictionary
 [GetPS2ColorRenderingIntent]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=[RENDERING_INTENT] dwIntent
 3=PBYTE pBuffer
 4=PDWORD pcbSize
@@ -195,7 +195,7 @@ ParamCount=4
 Header=gdi.h.api;
 @=GetPS2ColorRenderingIntent
 [GetPS2ColorSpaceArray]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=[RENDERING_INTENT] dwIntent
 3=DWORD dwCSAType
 4=PBYTE pBuffer
@@ -205,20 +205,20 @@ ParamCount=6
 Header=gdi.h.api;
 @=GetPS2ColorSpaceArray
 [IsColorProfileTagPresent]
-1=[HPROFILE] hProfile
-2=[TAGTYPE] tag
+1=HPROFILE hProfile
+2=TAGTYPE tag
 3=PBOOL pbPresent
 ParamCount=3
 Header=mscms.h.api;gdi.h.api;
 @=IsColorProfileTagPresent
 [IsColorProfileValid]
-1=[HPROFILE] hProfile
+1=HPROFILE hProfile
 2=PBOOL pbValid
 ParamCount=2
 Header=gdi.h.api;
 @=IsColorProfileValid
 [OpenColorProfile]
-1=[PPROFILE] pProfile
+1=PPROFILE pProfile
 2=[PROFILE_ACCESS] dwDesiredAccess
 3=[FILE_SHARE_MODE] dwShareMode
 4=[CreationDisposition] dwCreationMode
@@ -226,8 +226,8 @@ ParamCount=4
 Header=mscms.h.api;kernel32.h.api;native.h.api;
 @=OpenColorProfile
 [SetColorProfileElement]
-1=[HPROFILE] hProfile
-2=[TAGTYPE] tag
+1=HPROFILE hProfile
+2=TAGTYPE tag
 3=DWORD dwOffset
 4=PDWORD pcbSize
 5=PVOID pBuffer
@@ -235,22 +235,22 @@ ParamCount=5
 Header=mscms.h.api;gdi.h.api;
 @=SetColorProfileElement
 [SetColorProfileElementReference]
-1=[HPROFILE] hProfile
-2=[TAGTYPE] newTag
-3=[TAGTYPE] refTag
+1=HPROFILE hProfile
+2=TAGTYPE newTag
+3=TAGTYPE refTag
 ParamCount=3
 Header=mscms.h.api;gdi.h.api;
 @=SetColorProfileElementReference
 [SetColorProfileElementSize]
-1=[HPROFILE] hProfile
-2=[TAGTYPE] tag
+1=HPROFILE hProfile
+2=TAGTYPE tag
 3=DWORD cbSize
 ParamCount=3
 Header=mscms.h.api;gdi.h.api;
 @=SetColorProfileElementSize
 [SetColorProfileHeader]
-1=[HPROFILE] hProfile
-2=[PPROFILEHEADER] pHeader
+1=HPROFILE hProfile
+2=PPROFILEHEADER pHeader
 ParamCount=2
 Header=mscms.h.api;gdi.h.api;
 @=SetColorProfileHeader
@@ -269,7 +269,7 @@ ParamCount=1
 ParamCount=3
 @=AssociateColorProfileWithDevice
 [CreateProfileFromLogColorSpace]
-1=[LPLOGCOLORSPACE] pLogColorSpace
+1=LPLOGCOLORSPACE pLogColorSpace
 2=PBYTE* pBuffer
 ParamCount=2
 Header=gdi.h.api;
@@ -282,7 +282,7 @@ ParamCount=3
 @=DisassociateColorProfileFromDevice
 [EnumColorProfiles]
 1=PCTSTR pMachineName
-2=[PENUMTYPE] pEnumRecord
+2=PENUMTYPE pEnumRecord
 3=PBYTE pBuffer
 4=PDWORD pdwSize
 5=PDWORD pnProfiles
@@ -340,7 +340,7 @@ ParamCount=3
 Header=gdi32.h.api;
 @=WcsAssociateColorProfileWithDevice
 [WcsCreateIccProfile]
-1=[HPROFILE] hWcsProfile
+1=HPROFILE hWcsProfile
 2=DWORD dwOptions
 ParamCount=2
 Header=gdi.h.api;
@@ -354,7 +354,7 @@ Header=gdi32.h.api;
 @=WcsDisassociateColorProfileFromDevice
 [WcsEnumColorProfiles]
 1=[WCS_PROFILE_MANAGEMENT_SCOPE] profileManagementScope
-2=[PENUMTYPEW] pEnumRecord
+2=PENUMTYPEW pEnumRecord
 3=PBYTE pBuffer
 4=DWORD dwSize
 5=PDWORD pnProfiles
@@ -363,7 +363,7 @@ Header=gdi.h.api;gdi32.h.api;
 @=WcsEnumColorProfiles
 [WcsEnumColorProfilesSize]
 1=[WCS_PROFILE_MANAGEMENT_SCOPE] profileManagementScope
-2=[PENUMTYPEW] pEnumRecord
+2=PENUMTYPEW pEnumRecord
 3=PDWORD pdwSize
 ParamCount=3
 Header=gdi.h.api;gdi32.h.api;
@@ -403,9 +403,9 @@ ParamCount=3
 Header=gdi.h.api;
 @=WcsGetUsePerUserProfiles
 [WcsOpenColorProfile]
-1=[PPROFILE] pCDMPProfile
-2=[PPROFILE] pCAMPProfile
-3=[PPROFILE] pGMMPProfile
+1=PPROFILE pCDMPProfile
+2=PPROFILE pCAMPProfile
+3=PPROFILE pGMMPProfile
 4=[PROFILE_ACCESS] dwDesiredAccess
 5=[FILE_SHARE_MODE] dwShareMode
 6=[CreationDisposition] dwCreationMode

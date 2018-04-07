@@ -36,8 +36,9 @@ char szAPIFunctionParameter[MAX_COMMENT_SIZE] = "";
 char *vc = "msvcrxx\0";
 char *vcrt = "vcruntime\0";
 char *ucrt = "ucrtbase\0";
-stack <INSTRUCTIONSTACK*> IS; // global instructions stack
-stack <LOOPSTACK*> LS; // global loops instructions stack
+stack <INSTRUCTIONSTACK*> stackInstructions; // global instructions stack
+stack <LOOPSTACK*> stackLoops; // global loops instructions stack
+vector <INSTRUCTIONSTACK*> vectorFunctPointer; // function pointers handling stack
 unordered_map<string, Utf8Ini*>::const_iterator apiDefPointer; // pointer to the current def file
 unordered_map<string, Utf8Ini*> apiFiles; // map of main def files
 unordered_map<string, Utf8Ini*> apiHFiles; // map of headers def files
@@ -330,7 +331,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			// --------------------------------------------------------------------------------------
 			CallDestination = bii.addr;
 			DbgDisasmFastAt(CallDestination, &cbii);
-			GuiGetDisassembly(CurrentAddress, szDisasmText);
+			GuiGetDisassembly(CurrentAddress, szDisasmText); // get the "as GUI" instruction text line
 			GuiGetDisassembly(CallDestination, szJmpDisasmText); // Detect function name on call scheme: CALL -> JMP -> JMP -> API
 
 			// save data for the argument
@@ -385,57 +386,68 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 				else
 				{
 					char szLabelAPIFunction[MAX_COMMENT_SIZE] = "";
+					char szFunctionName[MAX_COMMENT_SIZE] = "";
 					DbgGetLabelAt(CurrentAddress, SEG_DEFAULT, szLabelAPIFunction); // get label if any as function name
 					if (*szLabelAPIFunction)
 						szAPIFunction = szLabelAPIFunction; // save the API function name
 					else
 						strcpy_s(szLabelAPIFunction, szAPIFunction.c_str());
 
-					if (strncmp(szLabelAPIFunction, "sub_", 4) == 0) // internal function call or sub
+					// track the stack of mov instructions to find the function pointer handler
+					// predict function calls like: CALL {REGISTER}, CALL {REGISTER + DISPLACEMENT}, CALL {POINTER}
+					if (conf.track_undef_functions && FindFunctionFromPointer(szDisasmText, szFunctionName) && SearchApiFileForDefinition(szFunctionName, szAPIDefinition, true))
 					{
-						if (conf.undef_funtion_analysis)
-						{
-							// internal subs
-							if (SetSubParams(&ai))
-								SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
-						}
+						if (SetFunctionParams(&ai, szFunctionName))
+							SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 					}
 					else
 					{
-						// indirect call or call/!jmp
-						duint api = DbgValFromString(CallDirection(&bii).c_str());
-						if (api > 0)
+						if (strncmp(szLabelAPIFunction, "sub_", 4) == 0) // internal function call or sub
 						{
-							Module::NameFromAddr(api, szAPIModuleName);
-							TruncateString(szAPIModuleName, '.'); // strip .dll from module name
-
-							// get the correct dll module name to lookup 
-							GetModuleNameSearch(szAPIModuleName, szAPIModuleNameSearch);
-
-							bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0);
-							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, recursive)) // just to get the correct definition file .api
+							if (conf.undef_funtion_analysis)
 							{
-								if (SetFunctionParams(&ai, szAPIModuleNameSearch))
-									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
-							}
-							else if (conf.undef_funtion_analysis)
-							{
+								// internal subs
 								if (SetSubParams(&ai))
 									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 							}
-
 						}
-						else if (*szLabelAPIFunction) // in case it couldn't get the value try looking recursive
+						else
 						{
-							if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, true)) // just to get the correct definition file .api
+							// indirect call or call/!jmp
+							duint api = DbgValFromString(CallDirection(&bii).c_str());
+							if (api > 0)
 							{
-								if (SetFunctionParams(&ai, szAPIModuleNameSearch))
-									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+								Module::NameFromAddr(api, szAPIModuleName);
+								TruncateString(szAPIModuleName, '.'); // strip .dll from module name
+
+								// get the correct dll module name to lookup 
+								GetModuleNameSearch(szAPIModuleName, szAPIModuleNameSearch);
+
+								bool recursive = (strncmp(szMainModule, szAPIModuleNameSearch, strlen(szAPIModuleNameSearch)) == 0);
+								if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, recursive)) // just to get the correct definition file .api
+								{
+									if (SetFunctionParams(&ai, szAPIModuleNameSearch))
+										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+								}
+								else if (conf.undef_funtion_analysis)
+								{
+									if (SetSubParams(&ai))
+										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+								}
+
 							}
-							else if (conf.undef_funtion_analysis)// in case of direct call with no definition just set the comment on it and set saved arguments
+							else if (*szLabelAPIFunction) // in case it couldn't get the value try looking recursive
 							{
-								if (SetSubParams(&ai))
-									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+								if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, true)) // just to get the correct definition file .api
+								{
+									if (SetFunctionParams(&ai, szAPIModuleNameSearch))
+										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+								}
+								else if (conf.undef_funtion_analysis)// in case of direct call with no definition just set the comment on it and set saved arguments
+								{
+									if (SetSubParams(&ai))
+										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+								}
 							}
 						}
 					}
@@ -445,7 +457,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			// check if it was the first call after the function prolog
 			if (IsPrologCall && conf.undef_funtion_analysis)
 			{
-				ClearStack(IS);
+				ClearStack(stackInstructions);
 				IsPrologCall = false;
 			}
 		}
@@ -454,26 +466,53 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		// --------------------------------------------------------------------------------------
 		else if (!bii.branch)
 		{
-			if (IsArgumentInstruction(&bii, CurrentAddress)) // only arguments instruction / excluding unusual instructions
+			if (conf.track_undef_functions && IsMovFunctPointer(&bii, CurrentAddress)) // check possible function pointer handling
 			{
-				if (IS.size() < INSTRUCTIONSTACK_MAXSIZE) // save instruction into stack
+				if (vectorFunctPointer.size() < INSTRUCTION_FUNCT_POINTER_MAXSIZE)
 				{
-					strcpy_s(inst->Instruction, bii.instruction); // save instruction string
-					GetDestRegister(bii.instruction, inst->destRegister); // save destination registry
-					IS.push(inst); // save instruction
+					INSTRUCTIONSTACK *mov_inst = new INSTRUCTIONSTACK;
+					memcpy_s(mov_inst, sizeof(INSTRUCTIONSTACK), inst, sizeof(INSTRUCTIONSTACK));
+					GuiGetDisassembly(CurrentAddress, szDisasmText); // get the "as GUI" instruction text line (PERFORMANCE LOAD)
+
+					strcpy_s(mov_inst->Instruction, bii.instruction); // save instruction string
+					strcpy_s(mov_inst->GuiInstruction, szDisasmText); // save the gui instruction string
+					DecomposeMovInstruction(mov_inst->GuiInstruction, mov_inst->DestinationRegister, mov_inst->SourceRegister);
+					vectorFunctPointer.insert(vectorFunctPointer.begin(), mov_inst); // save instruction
 				}
 				else
-					ClearStack(IS);
+					ClearVector(vectorFunctPointer);
 			}
-			else if (!selectionAnal && (prolog || epilog)) // reset instruction stack for the next call
-				ClearStack(IS);
+
+			if (IsArgumentInstruction(&bii, CurrentAddress)) // only arguments instruction / excluding unusual instructions
+			{
+				if (stackInstructions.size() < INSTRUCTIONSTACK_MAXSIZE) // save instruction into stack
+				{
+					GuiGetDisassembly(CurrentAddress, szDisasmText); // get the "as GUI" instruction text line (PERFORMANCE LOAD)
+
+					strcpy_s(inst->Instruction, bii.instruction); // save instruction string
+					strcpy_s(inst->GuiInstruction, szDisasmText); // save the gui instruction string
+					strcpy_s(inst->SourceRegister, GetInstructionSource(bii.instruction));
+					if (strcmp(inst->SourceRegister, "0x00") == 0) // get rid of double zeros
+						inst->SourceRegister[1] = 0;
+					GetDestinationRegister(bii.instruction, inst->DestinationRegister); // save destination registry
+					stackInstructions.push(inst); // save instruction
+				}
+				else
+					ClearStack(stackInstructions);
+			}
+			// reset instruction stack and function pointers stack for the next call if function ends
+			else if (!selectionAnal && (prolog || epilog)) 
+			{
+				ClearStack(stackInstructions);
+				ClearVector(vectorFunctPointer); // clear funct pointer stack after
+			}
 		}
 		// --------------------------------------------------------------------------------------
 		// JUMP INSTRUCTION
 		// --------------------------------------------------------------------------------------
 		else if (!bii.call && bii.branch) // if this is a jump then clear stack
 		{
-			ClearStack(IS);
+			ClearStack(stackInstructions); // Remove restriction of no jumps between arguments by commenting this line
 			IsPrologCall = false; // no jumps in prolog so we're ok
 			IsLoopJump(&bii, CurrentAddress); // check if jump is a loop
 		}
@@ -495,15 +534,16 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		{
 			addressFunctionStart = 0;
 			SetFunctionLoops(); // setup loops for this block
-			ClearLoopStack(LS);
+			ClearLoopStack(stackLoops);
 		}
 
 		CurrentAddress += bii.size;
 		actual_progress += bii.size;
 	}
 
-	ClearStack(IS);
-	ClearLoopStack(LS);
+	ClearStack(stackInstructions);
+	ClearLoopStack(stackLoops);
+	ClearVector(vectorFunctPointer);
 }
 
 // ------------------------------------------------------------------------------------
@@ -694,22 +734,29 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 	ParamCount = GetFunctionParamCount(szAPIModuleName, szAPIFunction.c_str());
 	if (ParamCount > 0) // make sure we are only checked for functions that are succesfully found in api file and have 1 or more parameters
 	{
-		if (ParamCount <= IS.size()) // make sure we have enough in our stack to check for parameters
+		// create the arguments list
+		vector <INSTRUCTIONSTACK*> argum;
+		CurrentParam = 0;
+		while (!stackInstructions.empty())
+		{
+			INSTRUCTIONSTACK *inst = stackInstructions.top(); // get last/first element
+#ifndef _WIN64
+			if (IsValidArgumentInstruction(inst, ParamCount))
+			{
+#endif
+				argum.insert(argum.begin() + CurrentParam, inst);
+				//argum[CurrentParam] = inst;
+				CurrentParam++;
+#ifndef _WIN64
+			}
+#endif
+			stackInstructions.pop(); // remove element on top
+		}
+
+		if (ParamCount <= argum.size()) // make sure we have enough in our stack to check for parameters
  		{
 			procSummary.defCallsDetected++; // get record of defined calls amount
 			ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
-
-			// create the arguments list
-			vector <INSTRUCTIONSTACK*> argum(IS.size());
-			CurrentParam = 0;
-			while (!IS.empty())
-			{ 
-				argum[CurrentParam] = IS.top(); // get last/first element
-				IS.pop(); // remove element on top
-
-				CurrentParam++;
-			}
-
 			CurrentParam = 1;
 			duint LowerMemoryRVAAddress = 0;
 			ai->rvaStart = argum[0]->Address - Module::BaseFromAddr(argum[0]->Address); // first argument line
@@ -744,7 +791,7 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 				endbak = ParamCount - 1;
 #endif // !_WIN64
 				for (duint i = startbak; i > endbak; i--)
-					IS.push(argum[i]);
+					stackInstructions.push(argum[i]);
 				argum.clear();
 			}
 
@@ -764,16 +811,16 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 	INSTRUCTIONSTACK inst;
 
 	ZeroMemory(&inst, sizeof(INSTRUCTIONSTACK));
-	if (!IsPrologCall && !IS.empty())
+	if (!IsPrologCall && !stackInstructions.empty())
 	{
 		procSummary.undefCallsDetected++; // get record of undefined calls amount
 
 		// create the arguments list
-		vector <INSTRUCTIONSTACK*> argum(IS.size());
-		while (!IS.empty())
+		vector <INSTRUCTIONSTACK*> argum(stackInstructions.size());
+		while (!stackInstructions.empty())
 		{
-			argum[ParamCount] = IS.top(); // get last/first element
-			IS.pop(); // remove element on top
+			argum[ParamCount] = stackInstructions.top(); // get last/first element
+			stackInstructions.pop(); // remove element on top
 
 			ParamCount++;
 		}
@@ -818,7 +865,7 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 		endbak = CurrentParam - 1;
 #endif // _WIN64
  		for (duint i = startbak; i > endbak; i--)
- 			IS.push(argum[i]);
+			stackInstructions.push(argum[i]);
  		argum.clear();
 
 		return true;
@@ -830,12 +877,11 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 // ------------------------------------------------------------------------------------
 // Strips out the brackets, underscores, full stops and @ symbols from calls : 
 // call <winbif._GetModuleHandleA@4> and returns just the api call : GetModuleHandle
-// Returns true if succesful and lpszAPIFunction will contain the stripped api function 
+// Returns true if successful and lpszAPIFunction will contain the stripped api function 
 // name, otherwise false and lpszAPIFunction will be a null string
 // ------------------------------------------------------------------------------------
 bool Strip_x64dbg_calls(LPSTR lpszCallText)
 {
-	int index = 0;
 	int index_cpy = 0;
 	char funct[MAX_COMMENT_SIZE] = "";
 	char lpszAPIFunction[MAX_COMMENT_SIZE];
@@ -848,53 +894,23 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText)
 		return true;
 	}
 
-	// parse the function: module.function
-	// -------------------------------------------------------
-	while (lpszCallText[index] != '.' && lpszCallText[index] != '&' && lpszCallText[index] != ':')
+	string apiStr = StripFunctionNamePointer(lpszCallText, &index_cpy);
+	if (apiStr == "")
 	{
-		if (lpszCallText[index] == 0)
+		char *functName = strchr(lpszCallText, ' '); // get the call content
+		if (functName != NULL)
 		{
-			*lpszAPIFunction = 0;
+			sprintf_s(lpszAPIFunction, MAX_COMMENT_SIZE, "sub_<%s>", ++functName);
 			szAPIFunction = lpszAPIFunction;
-			return false;
+			return true;
 		}
-
-		index++; // sub_undefined
-	}
-
-	++index; // jump over the "." or the "&"
-	if (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index])) // if not function name
-	{
-		while (lpszCallText[index] != '_' && lpszCallText[index] != '?' && lpszCallText[index] != '(' && lpszCallText[index] != '[') // get the initial bracket
-		{
-			if (lpszCallText[index] == 0)
-			{
-				*lpszAPIFunction = 0;
-				szAPIFunction = lpszAPIFunction;
-				return false;
-			}
-
-			index++;
-		}
-	}
-
-	// delete all underscores left or other non letter or digits chars
-	while (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index]))
-		index++;
-
-	while (lpszCallText[index] != '@' && lpszCallText[index] != '>' && lpszCallText[index] != ')' && lpszCallText[index] != ']')
-	{
- 		if (lpszCallText[index] == 0)
- 		{
- 			*lpszAPIFunction = 0;
-			szAPIFunction = lpszAPIFunction;
- 			return false;
- 		}
+		else
+			szAPIFunction = "";
 		
-		lpszAPIFunction[index_cpy] = lpszCallText[index];
-		index++;
-		index_cpy++;
+		return false;
 	}
+
+	strcpy_s(lpszAPIFunction, apiStr.c_str());
 
 	// check if the current call has a params definition into parenthesis
 	char *funct_parenthesis = strchr(lpszAPIFunction, '(');
@@ -915,6 +931,60 @@ bool Strip_x64dbg_calls(LPSTR lpszCallText)
 	return true;
 }
 
+// ------------------------------------------------------------------------------------
+// Strips out the brackets, underscores, full stops and @ symbols from calls : 
+// call <winbif._GetModuleHandleA@4> and returns just the api call : GetModuleHandle
+// Returns the new stripped api function string if successful 
+// otherwise a null string
+// ------------------------------------------------------------------------------------
+string StripFunctionNamePointer(char *lpszCallText, int *index_caller)
+{
+	int index = 0;
+	int index_cpy = 0;
+	char lpszAPIFunction[MAX_COMMENT_SIZE] = {0};
+
+	// parse the function: module.function
+	// -------------------------------------------------------
+	while (lpszCallText[index] != '.' && lpszCallText[index] != '&' && lpszCallText[index] != ':')
+	{
+		if (lpszCallText[index] == 0)
+			return "";
+
+		index++; // sub_undefined
+	}
+
+	++index; // jump over the "." or the "&"
+	if (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index])) // if not function name
+	{
+		while (lpszCallText[index] != '_' && lpszCallText[index] != '?' && lpszCallText[index] != '(' && lpszCallText[index] != '[') // get the initial bracket
+		{
+			if (lpszCallText[index] == 0)
+				return "";
+			
+			index++;
+		}
+	}
+
+	// delete all underscores left or other non letter or digits chars
+	while (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index]))
+		index++;
+
+	while (lpszCallText[index] != '@' && lpszCallText[index] != '>' && lpszCallText[index] != ')' && lpszCallText[index] != ']')
+	{
+		if (lpszCallText[index] == 0)
+			return "";
+
+		lpszAPIFunction[index_cpy] = lpszCallText[index];
+		index++;
+		index_cpy++;
+	}
+
+	if (index_caller)
+		*index_caller = index_cpy;
+
+	string funct = lpszAPIFunction;
+	return funct;
+}
 // ------------------------------------------------------------------------------------
 // Check if a given string has a register inside
 // ------------------------------------------------------------------------------------
@@ -994,8 +1064,7 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 	}
 	else // set the API param comment
 	{
-		char *inst_source = GetInstructionSource(inst->Instruction);
-		isHeaderConst = IsHeaderConstant(CommentString, szConstComment, inst_source);
+		isHeaderConst = IsHeaderConstant(CommentString, szConstComment, inst->SourceRegister, inst->GuiInstruction);
 
 		// avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 		duint spaceleft = MAX_COMMENT_SIZE - strlen(CommentString);
@@ -1033,11 +1102,12 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 				char *nullstr = "NULL\0";
 				string boolstr[] = { "TRUE", "FALSE" };
 
-				if (inst_source != NULL && ((strlen(inst_source) + 10) <= spaceleft - 1)) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
+				if (inst->SourceRegister != NULL && ((strlen(inst->SourceRegister) + 10) <= spaceleft - 1)) // avoid BoF for longer comments than MAX_COMMENT_SIZE (FIXED!)
 				{
-					bool instHex = IsHex(inst_source);
+					bool instHex = IsHex(inst->SourceRegister);
+					string subName = StripFunctNameFromInst(inst->GuiInstruction);
 					if (instHex) // get constants as value of argument / excluding push memory, registers, etc
-						ToUpperHex(inst_source);
+						ToUpperHex(inst->SourceRegister);
 
 					// check if param is an enum or flag
 					if (isHeaderConst)
@@ -1045,14 +1115,14 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 						strcpy_s(CommentString, CommentStringCount, szConstComment);
 						if (CommentString[strlen(CommentString) - 1] == ' ') // if the actual comment is like "TYPE varName = "
 						{
-							if (instHex)
+							if (instHex || subName != "")
 							{
 								string paramType = ToUpper(CommentString);
 
 								// resolve BOOL types
 								if (strncmp(paramType.c_str(), "BOOL", 4) == 0)
 								{
-									if (strcmp(inst_source, "0") == 0)
+									if (strcmp(inst->SourceRegister, "0") == 0)
 										sprintf_s(szConstComment, "%s%s", CommentString, boolstr[1].c_str());
 									else
 										sprintf_s(szConstComment, "%s%s", CommentString, boolstr[0].c_str());
@@ -1060,41 +1130,48 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 								else if (!IsNumericParam(paramType))
 								{
 									// resolve zero arguments values as NULL
-									if (strcmp(inst_source, "0") == 0)
+									if (strcmp(inst->SourceRegister, "0") == 0)
 										sprintf_s(szConstComment, "%s%s", CommentString, nullstr);
 									else
-										sprintf_s(szConstComment, "%s%s", CommentString, inst_source);
+									{
+										if (subName != "") // if its using a sub function pointer as argument
+											// show the function pointer in a friendly manner
+											sprintf_s(szConstComment, "%s%s", CommentString, subName.c_str()); 
+										else
+											sprintf_s(szConstComment, "%s%s", CommentString, inst->SourceRegister);
+									}
 								}
 								else
-									sprintf_s(szConstComment, "%s%s", CommentString, inst_source);
+									sprintf_s(szConstComment, "%s%s", CommentString, inst->SourceRegister);
 
 								strcpy_s(CommentString, CommentStringCount, szConstComment);
 							}
 						}
 					}
 					// param is a plain value
-					else if (instHex)
+					else if (instHex || subName != "")
 					{
 						string paramType = ToUpper(CommentString);
 
 						// resolve BOOL types
 						if (strncmp(paramType.c_str(), "BOOL", 4) == 0)
 						{
-							if(strcmp(inst_source, "0") == 0)
+							if (strcmp(inst->SourceRegister, "0") == 0)
 								sprintf_s(szConstComment, "%s = %s", CommentString, boolstr[1].c_str());
 							else
 								sprintf_s(szConstComment, "%s = %s", CommentString, boolstr[0].c_str());
 						}
-						else if (!IsNumericParam(paramType))
-						{
+						else if (!IsNumericParam(paramType) && strcmp(inst->SourceRegister, "0") == 0)
 							// resolve zero arguments values as NULL
-							if (strcmp(inst_source, "0") == 0)
-								sprintf_s(szConstComment, "%s = %s", CommentString, nullstr);
-							else
-								sprintf_s(szConstComment, "%s = %s", CommentString, inst_source);
-						}
+							sprintf_s(szConstComment, "%s = %s", CommentString, nullstr);
 						else
-							sprintf_s(szConstComment, "%s = %s", CommentString, inst_source);
+						{
+							if (subName != "") // if its using a sub function pointer as argument
+								// show the function pointer in a friendly manner
+								sprintf_s(szConstComment, "%s = %s", CommentString, subName.c_str());
+							else
+								sprintf_s(szConstComment, "%s = %s", CommentString, inst->SourceRegister); // if no funct pointer just show the numeric  value
+						}						
 
 						strcpy_s(CommentString, CommentStringCount, szConstComment);
 					}
@@ -1109,6 +1186,36 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 }
 
 // ------------------------------------------------------------------------------------
+// Extracts the function name of an argument instruction
+// ------------------------------------------------------------------------------------
+string StripFunctNameFromInst(char *instruction)
+{
+	string subName = "";
+	if (strstr(instruction, "<") == nullptr)
+		return "";
+
+	char subPointerNameStripped[MAX_MNEMONIC_SIZE * 4] = "";
+	char *subPointer = GetInstructionSource(instruction);
+	char *subPointerName = strchr(subPointer, '<');
+	if (*subPointerName)
+	{
+		duint index = 0;
+		while (index < strlen(subPointerName))
+		{
+			subPointerNameStripped[index] = subPointerName[index];
+			if (subPointerName[index] == '>')
+				break;
+
+			index++;
+		}
+
+		subName = subPointerNameStripped;
+	}
+
+	return subName;
+}
+
+// ------------------------------------------------------------------------------------
 // Determine if the given parameter is a numeric type
 // ------------------------------------------------------------------------------------
 bool IsNumericParam(string paramType)
@@ -1116,9 +1223,10 @@ bool IsNumericParam(string paramType)
 	string numericDataTypes[] = { "BYTE", "CHAR", "DWORD", "DWORDLONG", "DWORD32", "DWORD64",
 		"FLOAT", "INT", "INT8", "INT16", "INT32", "INT64", "LONG", "LONGLONG", "LONG32", "LONG64",
 		"QWORD", "SHORT", "UINT", "UINT8", "UINT16", "UINT32", "UINT64", "ULONG", "ULONGLONG", "ULONG32",
-		"ULONG64", "USHORT", "WORD" };
+		"ULONG64", "USHORT", "WORD", "SIZE_T" };
 
 	char szParam[MAX_PATH] = "";
+	transform(paramType.begin(), paramType.end(), paramType.begin(), toupper);
 	strcpy_s(szParam, paramType.c_str());
 	TruncateString(szParam, ' ');
 
@@ -1146,14 +1254,33 @@ bool IsMovStack(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 	{
 		char *next_token = NULL;
 		auto movDestination = strtok_s(instr, ",", &next_token); // Get the left part of ,
-		auto isMovDestinationEsp = strstr(movDestination, "esp") != nullptr;
-		auto isMovDestinationEbp = strstr(movDestination, "ebp") != nullptr;
+		auto isMovDestinationEsp = strstr(movDestination, "[esp") != nullptr || strstr(movDestination, "esp") != nullptr;
+		//auto isMovDestinationEbp = strstr(movDestination, "[ebp") != nullptr;
 
-		if(movDestination != nullptr && (isMovDestinationEsp || isMovDestinationEbp)) // If instruction manipulate [esp*] or [ebp*], its valid
+		if (movDestination != nullptr && (isMovDestinationEsp/* || isMovDestinationEbp*/)) // If instruction manipulate [esp*] it's valid
 			return true;
 	}
 
 	return false;
+}
+
+// ------------------------------------------------------------------------------------
+// Returns true if instruction is a mov manipulating a possible function pointer, excluding [ebp*], epilog and prolog
+// otherwise returns false
+// ------------------------------------------------------------------------------------
+bool IsMovFunctPointer(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
+{
+	bool isMov = strstr(bii->instruction, "mov") != nullptr;
+
+	// mov [ebp-x], FUNCTION  
+	// call mov [ebp-x]
+	// This instructions can be used as well
+/*#ifdef _WIN64
+	bool isMovEbp = strstr(bii->instruction, "[rbp") != nullptr;
+#else
+	bool isMovEbp = strstr(bii->instruction, "[ebp") != nullptr;
+#endif*/
+	return (isMov /*&& !isMovEbp */&& !IsProlog(bii, CurrentAddress) && !IsEpilog(bii)); // Is a mov instruction excluding prolog and epilog and ebp
 }
 
 // ------------------------------------------------------------------------------------
@@ -1328,7 +1455,7 @@ void TraverseHFilesTree(string &base, string header, string &htype, char *lpszAp
 // ------------------------------------------------------------------------------------
 // Determine if the given parameter is a constant (ENUM or FLAG)
 // ------------------------------------------------------------------------------------
-bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_source)
+bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_source, char *gui_inst_source)
 {
 	char lpszHeaders[MAX_PATH] = "";
 	char lpszApiConstant[MAX_PATH] = "";
@@ -1338,6 +1465,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 	bool found = false;
 	bool result = false;
 	bool instHex = false;
+	bool instFunctPointer = false;
 	duint instConst = 0;
 	duint fileConst = 0;
 	const int safety_chars = 5;
@@ -1354,6 +1482,12 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 		{
 			if(instHex = IsHex(inst_source))
 				instConst = hextoduint(inst_source);
+		}
+
+		if (gui_inst_source != NULL)
+		{
+			string subName = StripFunctNameFromInst(gui_inst_source);
+			instFunctPointer = subName != "";
 		}
 
 		// get the headers files list where to search the constant
@@ -1392,7 +1526,9 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 
 					strcpy_s(szComment, MAX_COMMENT_SIZE, typeParam.c_str());
 					strcat_s(szComment, MAX_COMMENT_SIZE, ptrVarName);
-					if (instHex) // only add '=' if there exist a numeric parameter, otherwise just exit here
+
+					// only add '=' if there exist a numeric parameter or function pointer, otherwise just exit here
+					if (instHex || instFunctPointer)
 						strcat_s(szComment, MAX_COMMENT_SIZE, " = ");
 					else
 						break;
@@ -1408,7 +1544,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 						if (value.length() != 0) // if value found
 						{
 							// check if value in def file is base16 or base10 to convert accordingly
-							if (value.substr(0, 2) == "0x")
+							if (value[0] == '0' && value[1] == 'x')
 								fileConst = stoul(value.c_str(), 0, 16);
 							else
 								fileConst = stoul(value.c_str());
@@ -1445,7 +1581,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 										break;
 									}
 
-									int chars_left = MAX_COMMENT_SIZE - (strlen(szConstantComment) + constant.length() + 5);								
+									size_t chars_left = MAX_COMMENT_SIZE - (strlen(szConstantComment) + constant.length() + 5);
 									// check length to avoid BoF
 									if (chars_left >= safety_chars) // 5 chars left for safety
 									{
@@ -1478,7 +1614,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 		}
 
 		// check length to avoid BoF
-		int chars_left = MAX_COMMENT_SIZE - (strlen(szComment) + safety_chars);
+		size_t chars_left = MAX_COMMENT_SIZE - (strlen(szComment) + safety_chars);
 		if (chars_left >= (int)strlen(szConstantComment)) // 5 chars left for safety
 			strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
 		else
@@ -1650,11 +1786,9 @@ int GetFunctionParamCount(LPSTR lpszApiModule, string lpszApiFunction)
 	if (lpszApiModule == NULL || lpszApiFunction.length() == 0)
 		return -1;
 
-	auto search = apiFiles.find(lpszApiModule);
-	if (search != apiFiles.end())
+	if (apiDefPointer != apiFiles.end())
 	{
-		Utf8Ini *defApiFile = search->second;
-		string params = defApiFile->GetValue(lpszApiFunction, "ParamCount");
+		string params = apiDefPointer->second->GetValue(lpszApiFunction, "ParamCount");
 		// check if key is found
 		if (!params.empty() && IsHex(params.c_str()))
 			return atoi(params.c_str());
@@ -1676,11 +1810,9 @@ bool GetFunctionParam(LPSTR lpszApiModule, string lpszApiFunction, duint dwParam
 		return false;
 	}
 
-	auto search = apiFiles.find(lpszApiModule);
-	if (search != apiFiles.end())
+	if (apiDefPointer != apiFiles.end())
 	{
-		Utf8Ini *defApiFile = search->second;
-		string apiParameter = defApiFile->GetValue(lpszApiFunction, argument[dwParamNo - 1]);
+		string apiParameter = apiDefPointer->second->GetValue(lpszApiFunction, argument[dwParamNo - 1]);
 		// check if key is found
 		if (!apiParameter.empty())
 		{
@@ -1745,22 +1877,19 @@ void TruncateString(LPSTR str, char value)
 }
 
 // ------------------------------------------------------------------------------------
-// Make Hex value all UPPERCASE
+// Make Hex value all UPPERCASE and strip the "0x" prefix
 // ------------------------------------------------------------------------------------
 void ToUpperHex(char *str)
 {
 	duint size = strlen(str);
 	size++;
-	char *str_cpy = new char[size];
-	strcpy_s(str_cpy, size, str);
 
-	for (duint i = 0; i < size - 1; i++)
-	{
-		if (isalpha(str_cpy[i]) && str_cpy[i] != 'x')
-			str[i] = toupper(str_cpy[i]);
-	}
+	string strArg = str;
+	if (size > 2) // get rid of the 0x part
+		strArg = strArg.substr(2, size - 2);
 
-	delete[] str_cpy;
+	transform(strArg.begin(), strArg.end(), strArg.begin(), toupper);
+	strcpy_s(str, MAX_MNEMONIC_SIZE * 4, strArg.c_str());
 }
 
 // ------------------------------------------------------------------------------------
@@ -1908,6 +2037,12 @@ void ClearLoopStack(stack<LOOPSTACK*> &q)
 	swap(q, empty);
 }
 
+void ClearVector(vector<INSTRUCTIONSTACK*> &q)
+{
+	while (!q.empty())
+		q.pop_back();
+}
+
 // ------------------------------------------------------------------------------------
 // True if destination is a valid x64 valid argument register
 // ------------------------------------------------------------------------------------
@@ -1931,8 +2066,9 @@ bool IsArgumentRegister(const char *destination)
 		strncmp(destination, "r8", 2) == 0 ||
 		// r9
 		strncmp(destination, "r9", 2) == 0 ||
+		//strstr(destination, "[rbp - ") != NULL ||
 		// stack argument (>4 args or XMM0, XMM1, XMM2, XMM3 included)
-		strstr(destination, "[rsp + ") != NULL
+		strstr(destination, "rsp + ") != NULL
 		);
 }
 #endif
@@ -1970,14 +2106,58 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddre
 
 #else
 	auto validPushInstruction = strncmp(bii->instruction, "push ", 5) == 0 &&
-		strcmp((char*)(bii->instruction + 5), "ebp") != 0 &&
-		strcmp((char*)(bii->instruction + 5), "esp") != 0 &&
-		strcmp((char*)(bii->instruction + 5), "ds") != 0 &&
-		strcmp((char*)(bii->instruction + 5), "es") != 0;
+		//strcmp((char*)(bii->instruction + 5), "ebp") != 0 &&  // push ebp, push esp instructions can be used as arguments for some function calls
+		//strcmp((char*)(bii->instruction + 5), "bp") != 0 &&
+		//strcmp((char*)(bii->instruction + 5), "esp") != 0 &&
+		strcmp((char*)(bii->instruction + 5), "gs") != 0 && // exclude all the below registers
+		strcmp((char*)(bii->instruction + 5), "es") != 0 &&
+		strcmp((char*)(bii->instruction + 5), "cs") != 0 &&
+		strcmp((char*)(bii->instruction + 5), "fs") != 0 &&
+		strcmp((char*)(bii->instruction + 5), "ds") != 0 && 
+		strcmp((char*)(bii->instruction + 5), "ss") != 0;
 
 	return (validPushInstruction || IsMovStack(bii, CurrentAddress));
 #endif
 }
+
+// ------------------------------------------------------------------------------------
+// True if argument instruction is valid. Double check for MOV [ESP*], MOV [EBP*]
+// ------------------------------------------------------------------------------------
+#ifndef _WIN64
+bool IsValidArgumentInstruction(INSTRUCTIONSTACK *inst, duint args_count)
+{
+	char *next_token = NULL;
+	char instruction[MAX_MNEMONIC_SIZE * 4] = { 0 };
+
+	if (strncmp(inst->Instruction, "mov", 3) != 0) // check only mov
+		return true;
+
+	strcpy_s(instruction, inst->Instruction);
+	char *pch = strtok_s(instruction, ",", &next_token); // get the string of the left operand of the instruction
+	if (pch != NULL)
+	{
+		TruncateString(pch, ']');
+
+		if (strstr(pch, "esp") != NULL) // [ESP + N] or ESP
+		{
+
+			char *str_value = strchr(pch, '+'); 
+			if (!str_value)
+				return true; // no displacement
+			else
+			{
+				str_value += 2;
+				duint stack_displace_value = hextoduint(str_value);
+				// displacement can't be greater than the amount of args space in stack
+				if ((stack_displace_value + sizeof(duint)) / sizeof(duint) <= args_count)
+					return true;
+			}
+		}
+	}
+
+	return false;
+}
+#endif
 
 // ------------------------------------------------------------------------------------
 // True if instruction is part of the function prolog
@@ -2018,7 +2198,7 @@ bool IsEpilog(const BASIC_INSTRUCTION_INFO *bii)
 }
 
 // ------------------------------------------------------------------------------------
-// Breaks instruction into parts and give the destination argument
+// Breaks instruction into parts and give the source part
 // ------------------------------------------------------------------------------------
 char *GetInstructionSource(char *instruction)
 {
@@ -2055,9 +2235,34 @@ char *GetInstructionSource(char *instruction)
 }
 
 // ------------------------------------------------------------------------------------
+// Gets the destination and source part of a given instruction 
+// ------------------------------------------------------------------------------------
+void DecomposeMovInstruction(char *instruction, char *destination, char *source)
+{
+	char line[MAX_MNEMONIC_SIZE * 4] = "";
+	char *next_token = nullptr;
+
+	strcpy_s(line, instruction);
+
+	char *token = strtok_s(line, ",", &next_token);
+	if (*token)
+	{
+		char *ptr = strstr(token, " ");
+		if (*ptr)
+		{
+			ptr++; // skip space
+			strcpy_s(destination, MAX_MNEMONIC_SIZE * 4, ptr);
+		}
+	}
+
+	if (*next_token)
+		strcpy_s(source, MAX_MNEMONIC_SIZE * 4, next_token);
+}
+
+// ------------------------------------------------------------------------------------
 // Gets the destination register in an arguments the instruction 
 // ------------------------------------------------------------------------------------
-void GetDestRegister(char *instruction, char *destRegister)
+void GetDestinationRegister(char *instruction, char *destRegister)
 {
 #ifdef _WIN64
 	char *next_token = nullptr;
@@ -2078,7 +2283,7 @@ void GetDestRegister(char *instruction, char *destRegister)
 		}
 	}
 #else
-	strcpy_s(destRegister, REGISTER_MAXSIZE, " ");
+	strcpy_s(destRegister, MAX_MNEMONIC_SIZE * 4, " ");
 #endif
 }
 
@@ -2096,11 +2301,11 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 1:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->destRegister, "rcx", 3) == 0 ||
-				strncmp(arguments[i]->destRegister, "ecx", 3) == 0 ||
-				strncmp(arguments[i]->destRegister, "cx", 2) == 0 ||
-				strncmp(arguments[i]->destRegister, "ch", 2) == 0 ||
-				strncmp(arguments[i]->destRegister, "cl", 2) == 0)
+			if (strncmp(arguments[i]->DestinationRegister, "rcx", 3) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "ecx", 3) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "cx", 2) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "ch", 2) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "cl", 2) == 0)
 			{
 				arg = *arguments[i];
 				del_index = i;
@@ -2112,11 +2317,11 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 2:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->destRegister, "rdx", 3) == 0 ||
-				strncmp(arguments[i]->destRegister, "edx", 3) == 0 ||
-				strncmp(arguments[i]->destRegister, "dx", 2) == 0 ||
-				strncmp(arguments[i]->destRegister, "dh", 2) == 0 ||
-				strncmp(arguments[i]->destRegister, "dl", 2) == 0)
+			if (strncmp(arguments[i]->DestinationRegister, "rdx", 3) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "edx", 3) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "dx", 2) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "dh", 2) == 0 ||
+				strncmp(arguments[i]->DestinationRegister, "dl", 2) == 0)
 			{
 				arg = *arguments[i];
 				del_index = i;
@@ -2128,7 +2333,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 3:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->destRegister, "r8", 2) == 0)
+			if (strncmp(arguments[i]->DestinationRegister, "r8", 2) == 0)
 			{
 				arg = *arguments[i];
 				del_index = i;
@@ -2140,7 +2345,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 4:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->destRegister, "r9", 2) == 0)
+			if (strncmp(arguments[i]->DestinationRegister, "r9", 2) == 0)
 			{
 				arg = *arguments[i];
 				del_index = i;
@@ -2176,7 +2381,7 @@ void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 		loop->dwStartAddress = bii->addr;
 		loop->dwEndAddress = CurrentAddress;
 
-		LS.push(loop);
+		stackLoops.push(loop);
 	}
 }
 
@@ -2188,12 +2393,12 @@ void SetFunctionLoops()
 {
 	LOOPSTACK *loop;
 
-	while (!LS.empty())
+	while (!stackLoops.empty())
 	{
-		loop = LS.top();
+		loop = stackLoops.top();
 		DbgLoopAdd(loop->dwStartAddress, loop->dwEndAddress);
 		procSummary.loopsDetected++; // get record of loops amount
-		LS.pop();
+		stackLoops.pop();
 	}
 }
 
@@ -2209,6 +2414,52 @@ void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch)
 		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, vc);
 	else
 		strcpy_s(szAPIModuleNameSearch, MAX_MODULE_SIZE, szAPIModuleName);		
+}
+
+// ------------------------------------------------------------------------------------
+// Goes through the list of instructions to find the correct function name, thus
+// predicting calls like CALL {REGISTER}, CALL {STACK}, etc
+// ------------------------------------------------------------------------------------
+bool FindFunctionFromPointer(char *szDisasmText, char *szFunctionName)
+{
+	char line[GUI_MAX_DISASSEMBLY_SIZE] = "";
+	bool found = false;
+	strcpy_s(line, szDisasmText);
+	char *addr = nullptr;
+	strtok_s(line, " ", &addr);
+
+	if (!addr)
+		return false;
+
+	duint index = 0;
+	while (!found && index < vectorFunctPointer.size())
+	{
+		INSTRUCTIONSTACK *inst = vectorFunctPointer.at(index);
+		if (strcmp(inst->DestinationRegister, addr) == 0)
+		{
+			if (strstr(inst->SourceRegister, "<") != nullptr) // if this is the instruction with the function pointer 
+			{
+				string funct = StripFunctionNamePointer(inst->SourceRegister);
+				if (funct != "")
+				{
+					szOriginalCharsetAPIFunction = funct;
+					// transform charsets search
+					if (funct.back() == 'A' || funct.back() == 'W')
+						funct.pop_back();
+
+					szAPIFunction = funct;
+					strcpy_s(szFunctionName, MAX_COMMENT_SIZE, funct.c_str());
+					found = true;
+				}
+			}
+			else
+				addr = inst->SourceRegister;
+		}
+
+		index++;
+	}
+
+	return found;
 }
 
 // ------------------------------------------------------------------------------------
@@ -2249,6 +2500,7 @@ void LoadConfig()
 	conf.clear_userlabels = iniReader.ReadBoolean("settings", "clear_userlabels", false);
 	conf.clear_autocomments = iniReader.ReadBoolean("settings", "clear_autocomments", true);
 	conf.clear_autolabels = iniReader.ReadBoolean("settings", "clear_autolabels", true);
+	conf.track_undef_functions = iniReader.ReadBoolean("settings", "track_undef_functions", true);
 }
 
 // ------------------------------------------------------------------------------------
@@ -2264,6 +2516,7 @@ void SaveConfig()
 	iniWriter.WriteBoolean("settings", "clear_userlabels", conf.clear_userlabels);
 	iniWriter.WriteBoolean("settings", "clear_autocomments", conf.clear_autocomments);
 	iniWriter.WriteBoolean("settings", "clear_autolabels", conf.clear_autolabels);
+	iniWriter.WriteBoolean("settings", "track_undef_functions", conf.track_undef_functions);
 
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_EXT, conf.extended_analysis);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_UNDEF, conf.undef_funtion_analysis);
@@ -2272,6 +2525,7 @@ void SaveConfig()
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_LBLS, conf.clear_userlabels);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ACMTS, conf.clear_autocomments);
 	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_CLEAR_ALBLS, conf.clear_autolabels);
+	_plugin_menuentrysetchecked(pluginHandle, MENU_ANALYZE_TRACK_UNDEF, conf.track_undef_functions);
 }
 
 // ------------------------------------------------------------------------------------

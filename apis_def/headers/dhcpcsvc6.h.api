@@ -1,7 +1,3 @@
-[LPDHCPV6CAPI_CLASSID]
-Base=DHCPV6CAPI_CLASSID
-[LPDHCPV6CAPI_PARAMS]
-Base=DHCPV6CAPI_PARAMS
 [StatusCode]
 Base=UINT
 Type=Enum
@@ -13,7 +9,3 @@ Const3=STATUS_NO_BINDING
 Value3=3
 Const4=STATUS_NOPREFIX_AVAIL
 Value4=6
-[LPDHCPV6Prefix]
-Base=DHCPV6Prefix
-[LPDHCPV6PrefixLeaseInformation]
-Base=DHCPV6PrefixLeaseInformation
