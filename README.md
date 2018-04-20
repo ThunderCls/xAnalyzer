@@ -162,7 +162,7 @@ If you find that a certain API call definition is not being detected or not dete
 ## Version History
 
 ***xAnalyzer 2.5.1***<br/>
-*-Fixed crash on mov instructions variations
+*-Fixed crash on mov instructions variations*<br/>
 
 ***xAnalyzer 2.5.0***<br/>
 *-Removed [EBP+/-] instructions as possible function caller arguments*<br/>
