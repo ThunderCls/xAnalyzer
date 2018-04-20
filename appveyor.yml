@@ -1,4 +1,4 @@
-version: 2.4.{build}
+version: 2.5.{build}
 skip_tags: true
 skip_branch_with_pr: true
 image: Visual Studio 2013
