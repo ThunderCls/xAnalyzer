@@ -222,14 +222,14 @@ void DoExtendedAnalysis()
 
 	GuiAddLogMessage("[xAnalyzer]: Doing analysis, please wait...\r\n");
 	start_t = clock();
+
 	// make complete x64dbg analysis if asked or if doing function analysis with
 	// the undefined function analysis activated
 	if (completeAnal)
 		DoInitialAnalysis();
-
 	ExtraAnalysis(); // call my own function to get extended analysis
-	end_t = clock();
 
+	end_t = clock();
 	sprintf_s(message, "[xAnalyzer]: Analysis completed in %f secs\r\n", (double)(end_t - start_t) / CLOCKS_PER_SEC); // elapsed time
 
 	//GuiAddStatusBarMessage(message);
@@ -2216,8 +2216,8 @@ char *GetInstructionSource(char *instruction)
 	// for push {constant}
 	if (strncmp(instruction, "push ", 5) == 0)
 		return instruction += 5; 
-	// for mov esp/ebp, {constant}
-	else if (strncmp(instruction, "mov", 3) == 0)
+	// for mov instructions
+	else if (strstr(instruction, "mov") != nullptr)
 	{
 		char *ret = strstr(instruction, ",");
 		if (ret)
@@ -2230,7 +2230,7 @@ char *GetInstructionSource(char *instruction)
 		return ret;
 	}
 
-	return NULL;
+	return "";
 #endif
 }
 
@@ -2264,27 +2264,21 @@ void DecomposeMovInstruction(char *instruction, char *destination, char *source)
 // ------------------------------------------------------------------------------------
 void GetDestinationRegister(char *instruction, char *destRegister)
 {
-#ifdef _WIN64
 	char *next_token = nullptr;
 
 	char *pch = strtok_s(instruction, ",", &next_token); // get the string of the left operand of the instruction
-	if (pch != NULL)
+	if (strncmp(instruction, "push ", 5) != 0 && pch != NULL)
 	{
-		if (strstr(pch, "[rsp + ") != NULL) // check if the stack is the destination registry
-			strcpy_s(destRegister, 5, "rsp");
-		else
+		char *reg = strstr(pch, " ");
+		if (reg != NULL)
 		{
-			char *reg = strstr(pch, " ");
-			if (reg != NULL)
-			{
-				reg++; // avoid blank space
-				strcpy_s(destRegister, 5, reg);
-			}
+			reg++; // avoid blank space
+			strcpy_s(destRegister, MAX_MNEMONIC_SIZE * 4, reg);
+			return;
 		}
 	}
-#else
+
 	strcpy_s(destRegister, MAX_MNEMONIC_SIZE * 4, " ");
-#endif
 }
 
 // ------------------------------------------------------------------------------------

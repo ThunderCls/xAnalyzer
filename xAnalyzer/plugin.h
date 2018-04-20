@@ -5,7 +5,7 @@
 //plugin data
 #define PLUGIN_NAME "xAnalyzer"
 #define PLUGIN_VERSION 2
-#define PLUGIN_VERSION_STR "2.5.0"
+#define PLUGIN_VERSION_STR "2.5.1"
 
 enum
 {
