@@ -161,6 +161,9 @@ If you find that a certain API call definition is not being detected or not dete
 
 ## Version History
 
+***xAnalyzer 2.5.1***<br/>
+*-Fixed crash on mov instructions variations
+
 ***xAnalyzer 2.5.0***<br/>
 *-Removed [EBP+/-] instructions as possible function caller arguments*<br/>
 *-Removed prefix "0x" of all function arguments values since hexadecimal is inferred*<br/>
