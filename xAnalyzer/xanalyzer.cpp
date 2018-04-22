@@ -90,13 +90,14 @@ void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo)
 	Module::InfoFromAddr(bpInfo->breakpoint->addr, &mi);
 	// if we hit the EP with a dbg one-shot EP BP
 	if (bpInfo->breakpoint->type == bp_normal &&
-		mi.entry == bpInfo->breakpoint->addr &&		
+		mi.entry == bpInfo->breakpoint->addr &&	
+		GetModuleEntryPoint(mi.name) == bpInfo->breakpoint->addr ||
 		strcmp(bpInfo->breakpoint->name, "entry breakpoint") == 0)
 	{
 		if (conf.auto_analysis)
 		{
 			if (!FileDbExists())
-				DbgCmdExec("xanal exe");
+				DbgCmdExec("xanal module");
 			else
 			{
 				GuiAddLogMessage("[xAnalyzer]: Analysis retrieved from data base\r\n");
@@ -139,7 +140,7 @@ bool cbExtendedAnalysis(int argc, char* argv[])
 		 return true;
 	 }
 
-	 if (strcmp(argv[1], "exe") == 0) // cmd "xanal exe"
+	 if (strcmp(argv[1], "module") == 0) // cmd "xanal module"
 	 {
 		 completeAnal = true;
 		 DoExtendedAnalysis();
@@ -183,7 +184,7 @@ bool cbExtendedAnalysisRemove(int argc, char* argv[])
 		return true;
 	}
 
-	if (strcmp(argv[1], "exe") == 0) // cmd "xanalremove exe"
+	if (strcmp(argv[1], "module") == 0) // cmd "xanalremove module"
 	{
 		completeAnal = true;
 		RemoveAnalysis();
@@ -556,10 +557,10 @@ void DbgGetEntryExitPoints(duint *lpdwEntry, duint *lpdwExit)
 
 	if (completeAnal)
 	{
-		// Analyze entire executable
+		// Analyze entire module section
 		// -----------------------------------------------------
 		Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
-		entry = GetContextData(UE_CIP);
+		entry = Disassembly::SelectionGetStart();
 		Module::NameFromAddr(entry, modname);
 
 		if (conf.extended_analysis)
@@ -635,10 +636,24 @@ void GetRegularAnalysisRange(duint *lpdwEntry, duint *lpdwExit, char *modname)
 {
 	duint baseaddress;
 	duint dwModSize;
+
+	duint ep = GetModuleEntryPoint(modname);
+	if (ep == 0)
+		return;
+
+	baseaddress = DbgMemFindBaseAddr(ep, &dwModSize);
+
+	*lpdwEntry = ep;
+	*lpdwExit = (dwModSize + baseaddress) - 0x2D;
+}
+
+// ------------------------------------------------------------------------------------
+// Gets a module EP
+// ------------------------------------------------------------------------------------
+duint GetModuleEntryPoint(char *modname)
+{
 	HMODULE base;
-	HMODULE hModule;
-	HANDLE hProcess;
-	MODULEINFO modinfo;
+	MODULEINFO modinfo = {0};
 	PROCESS_INFORMATION *pi;
 
 	// Process only STARTING in the Entrypoint to end of code section
@@ -646,14 +661,13 @@ void GetRegularAnalysisRange(duint *lpdwEntry, duint *lpdwExit, char *modname)
 
 	base = (HMODULE)DbgModBaseFromName(modname);
 	pi = TitanGetProcessInformation();
-	hProcess = pi->hProcess;
-	GetModuleBaseName(hProcess, base, modbasename, MAX_MODULE_SIZE);
-	hModule = GetModuleHandle(modbasename);
-	GetModuleInformation(hProcess, hModule, &modinfo, sizeof(MODULEINFO));
-	baseaddress = DbgMemFindBaseAddr((duint)modinfo.EntryPoint, &dwModSize);
+	if (pi == NULL)
+		return 0;
 
-	*lpdwEntry = (duint)modinfo.EntryPoint;
-	*lpdwExit = (dwModSize + baseaddress) - 0x2D;
+	GetModuleBaseName(pi->hProcess, base, modbasename, MAX_MODULE_SIZE);
+	GetModuleInformation(pi->hProcess, GetModuleHandle(modbasename), &modinfo, sizeof(MODULEINFO));
+
+	return (duint)modinfo.EntryPoint;
 }
 
 // ------------------------------------------------------------------------------------
@@ -714,7 +728,7 @@ void GetAnalysisBoundaries()
 	char modname[MAX_MODULE_SIZE] = "";
 
 	Module::ModuleSectionInfo *modInfo = new Module::ModuleSectionInfo;
-	entry = GetContextData(UE_CIP);
+	entry = Disassembly::SelectionGetStart();
 	Module::NameFromAddr(entry, modname);
 	mEntryPoint = Module::EntryFromAddr(entry); // gets the EP
 	GetExtendedAnalysisRange(&mSectionLowerLimit, &lpdwExit, entry, modname, modInfo); // gets the first address of code section
@@ -2708,10 +2722,10 @@ void DisplayHelp()
 							 "--------------------------------\r\n"
 							 "xanal selection : Performs a selection analysis\r\n"
 							 "xanal function : Performs a function analysis\r\n"
-							 "xanal exe : Performs an entire executable analysis\r\n"
+							 "xanal module : Performs an entire module code section analysis\r\n"
 							 "xanalremove selection : Removes a previous selection analysis\r\n"
 							 "xanalremove function : Removes a previous function analysis\r\n"
-							 "xanalremove exe : Removes a previous entire executable analysis\r\n"
+							 "xanalremove module : Removes a previous module code section analysis\r\n"
 							 "xanal help : Brings up this help text\r\n\n";
 
 	GuiAddLogMessage(pluginHelp);

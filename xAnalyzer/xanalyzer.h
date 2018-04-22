@@ -69,6 +69,7 @@ void GetExtendedAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint entry, ch
 void GetRegularAnalysisRange(duint *lpdwEntry, duint *lpdwExit, char *modname);
 void GetFunctionAnalysisRange(duint *lpdwEntry, duint *lpdwExit, duint selectedAddr);
 void GetAnalysisBoundaries();
+duint GetModuleEntryPoint(char *modname);
 bool Strip_x64dbg_calls(LPSTR lpszCallText);
 void StripDbgCommentAddress(char *szComment);
 string StripFunctNameFromInst(char *instruction);

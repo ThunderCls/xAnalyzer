@@ -136,7 +136,7 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 		// COMMANDS MENUS
 		// ------------------------------------------------------------------------
 		case MENU_ANALYZE_DISASM:
-			DbgCmdExec("xanal exe");
+			DbgCmdExec("xanal module");
 			break;
 		case MENU_ANALYZE_DISASM_FUNCT:
 			DbgCmdExec("xanal function");
@@ -151,7 +151,7 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 			DbgCmdExec("xanalremove function");
 			break;
 		case MENU_REM_ANALYSIS_DISASM:
-			DbgCmdExec("xanalremove exe");
+			DbgCmdExec("xanalremove module");
 			break;
 		default:
 			break;
@@ -255,13 +255,13 @@ void pluginSetup()
 	
 	// disasm window menu
 	_plugin_menuseticon(hMenuDisasm, &menu_icon);
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze Selection");
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze Function");
-	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze Executable");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_SELEC, "&Analyze selection");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM_FUNCT, "&Analyze function");
+	_plugin_menuaddentry(hMenuDisasm, MENU_ANALYZE_DISASM, "&Analyze module");
 	_plugin_menuaddseparator(hMenuDisasm);
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_SELEC, "&Remove analysis from selection");
 	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM_FUNCT, "&Remove analysis from function");
-	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM, "&Remove analysis from executable");
+	_plugin_menuaddentry(hMenuDisasm, MENU_REM_ANALYSIS_DISASM, "&Remove analysis from module");
 
 	// entries icons
 	_plugin_menuentryseticon(pluginHandle, MENU_ANALYZE_DISASM_SELEC, &anal_select_icon);
