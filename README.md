@@ -69,20 +69,20 @@ CALL {DYNAMIC_POINTER}
 xAnalyzer has some commands and menu options to choose from when working with an executable:
 
 ### Analyze Selection
-By making a selection of several instructions in the disassembly windows of x64dbg and selecting this menu, a fast analysis will be made over the selected lines. You can also use the hotkeys *Ctrl+Shift+X* for launching this option.
+By making a selection of several instructions in the disassembly windows of x64dbg and selecting this menu, a fast analysis will be made over the selected lines. You can also use the command *xanal selection* for launching this option or even set your own hotkeys for it in the x64dbg gui.
 
 <p align="center"><img width=80% height=80% src ="images/selection_analysis.gif" /></p>
 
 ### Analyze Function
-If you are in the middle of some function you could use this menu entry to analyze that entire function and only that function. Taking your single selected instruction as a reference xAnalyzer will process from there all the lines inside a block of code. You could also use the hotkeys *Ctrl+X* for launching this type of analysis
+If you are in the middle of some function you could use this menu entry to analyze that entire function and only that function. Taking your single selected instruction as a reference xAnalyzer will process from there all the lines inside a block of code. You could also use the command *xanal function* for launching this type of analysis or even set your own hotkeys for it in the x64dbg gui.
 
 <p align="center"><img width=80% height=80% src ="images/function_analysis.gif" /></p>
 
-### Analyze Executable
-This command it's going to launch a full analysis over the entire executable. This feature takes the **Extended Analysis** option into consideration for the depth of analysis to be used. You could use the hotkeys *Ctrl+Alt+X* to execute it as well
+### Analyze Module
+This command it's going to launch a full analysis over the entire module. This feature takes the **Extended Analysis** option into consideration for the depth of analysis to be used. You could use the command *xanal module* to execute it as well or even set your own hotkeys for it in the x64dbg gui.
 
 ### Remove Analysis Menus
-In these cases, all of these menus are going to make the opposite of what the previous commands did. In case you want to get rid of the analysis extra information in some parts of the code or in the entire executable if wished.
+In these cases, all of these menus are going to make the opposite of what the previous commands did. In case you want to get rid of the analysis extra information in some parts of the code or in the entire executable if wished. You could also use the commands: *xanalremove selection/function/module*
 
 ## API Definition Files
 xAnalyzer has an expandable system of API definition files, these files are present in the folders *"api_def"* and *"api_def/headers"* which should contain all the files with a .ini structure and with the norm of:
@@ -160,6 +160,12 @@ If you find that a certain API call definition is not being detected or not dete
 - Case-Switch detection
 
 ## Version History
+
+***xAnalyzer 2.5.2***<br/>
+*-Used current selected disasm line for module analysis instead of cip*<br/>
+*-Modified some typing in plugin entries*<br/>
+*-Some code refactoring*<br/>
+*-Modified command "xanal/xanalremove exe" to "xanal/xanalremove module"*<br/>
 
 ***xAnalyzer 2.5.1***<br/>
 *-Fixed crash on mov instructions variations*<br/>
