@@ -50,6 +50,8 @@ Download [HERE](https://github.com/ThunderCls/xAnalyzer/releases/latest) the lat
 
 3. Look under the "*Plugins*" menu in the main x64dbg window or in the secondary menu in the Disasm window as well for an "*xAnalyzer*" entry
 
+* If, after following the above steps can't see the menu entry under the "*Plugins*" menu, head to the "*Log*" tab and check for any message from the plugin that could give you an error solution hint
+
 ## Configuration
 xAnalyzer has some options to choose from in order to personalize even more the experience with it, to use it just when you need it and the way you wan it. The plugin options are as follows:
 
