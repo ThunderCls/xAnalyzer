@@ -967,7 +967,10 @@ string StripFunctionNamePointer(char *lpszCallText, int *index_caller)
 		index++; // sub_undefined
 	}
 
-	++index; // jump over the "." or the "&"
+	// jump over the "." and/or the "&"
+	while (lpszCallText[index] == '.' || lpszCallText[index] == '&')
+		index++;
+
 	if (!isalpha(lpszCallText[index]) && !isdigit(lpszCallText[index])) // if not function name
 	{
 		while (lpszCallText[index] != '_' && lpszCallText[index] != '?' && lpszCallText[index] != '(' && lpszCallText[index] != '[') // get the initial bracket
@@ -1062,6 +1065,36 @@ bool GetDynamicUndefinedCall(LPSTR lpszCallText, LPSTR dest)
 	return false;
 }
 
+/*string GetMemoryString(INSTRUCTIONSTACK *inst)
+{
+	string memString = "";
+	string addrString = "";
+	if (strncmp(inst->Instruction, "push", 4) == 0)
+	{
+		char *strPtr = nullptr;
+		if ((strPtr = strchr(inst->DestinationRegister, '[')) != nullptr)
+		{
+			addrString = strPtr;
+			if (addrString.back() == ']')
+				addrString.pop_back();
+		}
+	}
+
+	duint memAddr = hextoduint(addrString.c_str());
+	if (Memory::IsValidPtr(memAddr))
+	{
+		duint memAddrPtr = Memory::ReadPtr(memAddr);
+		char byteStr = 0;
+		while ((byteStr = Memory::ReadByte(memAddrPtr)) != 0 && (Memory::ReadByte(++memAddrPtr) != 0))
+		{
+			memString += byteStr;
+			memAddrPtr++;
+		}
+	}
+
+	return memString;
+}*/
+
 // ------------------------------------------------------------------------------------
 // Set Auto Comment only if a comment isn't already set
 // ------------------------------------------------------------------------------------
@@ -1085,8 +1118,12 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 		if (spaceleft <= 1)
 			return;
 
-		if (DbgGetCommentAt(inst->Address, szComment))
+		//string memStr = "";
+		if (DbgGetCommentAt(inst->Address, szComment)/* || (memStr = GetMemoryString(inst)) != ""*/)
 		{
+			/*if (!*szComment && memStr != "")
+				strcpy_s(szComment, memStr.c_str());*/
+
 			if (*szComment)
 			{
 				StripDbgCommentAddress(szComment); // get rid of the comment address id used by the dbg
