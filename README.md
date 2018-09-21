@@ -163,6 +163,9 @@ If you find that a certain API call definition is not being detected or not dete
 
 ## Version History
 
+***xAnalyzer 2.5.3***<br/>
+*-Detection of function names in newer versions of x64dbg fixed*<br/>
+
 ***xAnalyzer 2.5.2***<br/>
 *-Used current selected disasm line for module analysis instead of cip*<br/>
 *-Modified some typing in plugin entries*<br/>
