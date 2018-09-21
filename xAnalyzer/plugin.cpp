@@ -87,8 +87,8 @@ PLUG_EXPORT void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 				conf.extended_analysis = false;
 			else
 			{
-				if (MessageBox(hwndDlg, "By using this option the entire code section will be processed.\n"
-					"Doing this may take some time to complete and amounts of RAM\n"
+				if (MessageBox(hwndDlg, "By using this option the entire code section will be processed. "
+					"Doing this may take some time to complete and amounts of RAM "
 					"memory depending on the size of the section.\n\n"
 					"Do you wish to continue?",
 					"Extended Analysis?", MB_ICONINFORMATION + MB_YESNO) == IDYES)
