@@ -9,6 +9,7 @@
 #include <ctime>
 #include <string>
 #include <algorithm>
+#include <regex>
 
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "Shlwapi.lib")
@@ -736,21 +737,22 @@ void GetAnalysisBoundaries()
 	delete modInfo;
 }
 
-// ------------------------------------------------------------------------------------
-// Set params for the current call
-// ------------------------------------------------------------------------------------
+/// <summary>
+/// Set params for the current defined function call
+/// </summary>
+/// <param name="ai"></param>
+/// <param name="szAPIModuleName"></param>
+/// <returns></returns>
 bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 {
-	duint CurrentParam;
-	duint ParamCount;
 	INSTRUCTIONSTACK inst;
 
-	ParamCount = GetFunctionParamCount(szAPIModuleName, szAPIFunction.c_str());
+	duint ParamCount = GetFunctionParamCount(szAPIModuleName, szAPIFunction.c_str());
 	if (ParamCount > 0) // make sure we are only checked for functions that are succesfully found in api file and have 1 or more parameters
 	{
 		// create the arguments list
-		vector <INSTRUCTIONSTACK*> argum;
-		CurrentParam = 0;
+		vector <INSTRUCTIONSTACK*> args;
+		duint CurrentParam = 0;
 		while (!stackInstructions.empty())
 		{
 			INSTRUCTIONSTACK *inst = stackInstructions.top(); // get last/first element
@@ -758,7 +760,7 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 			if (IsValidArgumentInstruction(inst, ParamCount))
 			{
 #endif
-				argum.insert(argum.begin() + CurrentParam, inst);
+				args.insert(args.begin() + CurrentParam, inst);
 				//argum[CurrentParam] = inst;
 				CurrentParam++;
 #ifndef _WIN64
@@ -767,16 +769,16 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 			stackInstructions.pop(); // remove element on top
 		}
 
-		if (ParamCount <= argum.size()) // make sure we have enough in our stack to check for parameters
+		if (ParamCount <= args.size()) // make sure we have enough in our stack to check for parameters
  		{
 			procSummary.defCallsDetected++; // get record of defined calls amount
 			ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
 			CurrentParam = 1;
 			duint LowerMemoryRVAAddress = 0;
-			ai->rvaStart = argum[0]->Address - Module::BaseFromAddr(argum[0]->Address); // first argument line
+			ai->rvaStart = args[0]->Address - Module::BaseFromAddr(args[0]->Address); // first argument line
 			while (CurrentParam <= ParamCount)
 			{
-				GetArgument(CurrentParam, argum, inst); // get arguments in order. 64 bits may have different argument order
+				GetArgument(CurrentParam, args, inst); // get arguments in order. 64 bits may have different argument order
 				if (inst.Address > 0)
 				{
 					LowerMemoryRVAAddress = inst.Address - Module::BaseFromAddr(inst.Address);
@@ -795,18 +797,16 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 
 			if (IsPrologCall)
 				IsPrologCall = false;
-			else
+			else if(!args.empty())
 			{
-				// put back to the stack the instructions not used
-				duint startbak = 0; // if x64 
-				duint endbak = 0;
-#ifndef _WIN64
-				startbak = argum.size() - 1; // if x86 save back only the unused instructions
-				endbak = ParamCount - 1;
-#endif // !_WIN64
+				// put back to the stack the instructions not used to keep nested functions args
+				duint startbak = args.size() - 1;
+				duint endbak = ParamCount - 1;
+				// save back only the unused instructions
 				for (duint i = startbak; i > endbak; i--)
-					stackInstructions.push(argum[i]);
-				argum.clear();
+					stackInstructions.push(args[i]);
+
+				args.clear();
 			}
 
 			return true;
@@ -816,9 +816,11 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 	return false;
 }
 
-// ------------------------------------------------------------------------------------
-// Set params for the current call (sub)
-// ------------------------------------------------------------------------------------
+/// <summary>
+/// Set params for the current undefined function call (sub)
+/// </summary>
+/// <param name="ai"></param>
+/// <returns></returns>
 bool SetSubParams(Argument::ArgumentInfo *ai)
 {
 	duint ParamCount = 0;
@@ -827,34 +829,44 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 	ZeroMemory(&inst, sizeof(INSTRUCTIONSTACK));
 	if (!IsPrologCall && !stackInstructions.empty())
 	{
-		procSummary.undefCallsDetected++; // get record of undefined calls amount
+		procSummary.undefCallsDetected++; // record amount of undefined calls
 
 		// create the arguments list
-		vector <INSTRUCTIONSTACK*> argum(stackInstructions.size());
-		while (!stackInstructions.empty())
+		vector <INSTRUCTIONSTACK*> args;
+		while (!stackInstructions.empty()) 
 		{
-			argum[ParamCount] = stackInstructions.top(); // get last/first element
-			stackInstructions.pop(); // remove element on top
-
-			ParamCount++;
+			INSTRUCTIONSTACK *inst = stackInstructions.top(); // get last inserted (first) element
+#ifdef _WIN64
+			// Remove duplicated register instructions, 
+			// keeping only the first in the stack (last inserted) as valid argument
+			// x64 only (x86 can push repeated values/registers to stack as args)
+			if (!IsArgDuplicated(args, inst))
+			{
+#endif
+				args.push_back(stackInstructions.top());
+				ParamCount++;
+#ifdef _WIN64
+			}
+#endif
+			stackInstructions.pop(); // remove element on top			
 		}
 
-#ifdef _WIN64
-		// In x64 can't be defined the amount of arguments of an unknown function or sub
-		// so only four main arguments (RCX, RDX, R8, R9) will be displayed if there are more in stack
+		// It's difficult to heuristically predict or define the amount of arguments of an 
+		// unknown function or sub so only the four main arguments 
+		// RCX, RDX, R8, R9 (x64) or the first 4 DWORDS in stack (x86) will be displayed 
+		// if the function uses more in stack, they won't be shown
 		if (ParamCount > 4)
 			ParamCount = 4;
-#endif // _WIN64
 
 		duint CurrentParam = 1;
 		duint LowerMemoryRVAAddress = 0;
 
 		ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
-		ai->rvaStart = argum[0]->Address - Module::BaseFromAddr(argum[0]->Address); // first argument line
+		ai->rvaStart = args[0]->Address - Module::BaseFromAddr(args[0]->Address); // first argument line
 
 		while (CurrentParam <= ParamCount)
 		{
-			GetArgument(CurrentParam, argum, inst); // get arguments in order. 64 bits may have different argument order				
+			GetArgument(CurrentParam, args, inst); // get arguments in order. 64 bits may have different argument order				
 			if (inst.Address > 0)
 			{
 				LowerMemoryRVAAddress = inst.Address - Module::BaseFromAddr(inst.Address);
@@ -871,22 +883,112 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 
 		Argument::Add(ai); // set arguments of current call
 
-		// put back to the stack the instructions not used
-		duint startbak = 0; // if x64 
-		duint endbak = 0;
-#ifndef _WIN64
-		startbak = argum.size() - 1; // if x86 save back only the unused instructions
-		endbak = CurrentParam - 1;
-#endif // _WIN64
- 		for (duint i = startbak; i > endbak; i--)
-			stackInstructions.push(argum[i]);
- 		argum.clear();
+		if (!args.empty())
+		{
+			// NOTE: To show nested undef functions uncomment. 
+			//       To get rid of nested undefined functions comment
+			// put back to the stack the instructions not used to keep nested functions args
+			//duint startbak = args.size() - 1;
+			//duint endbak = ParamCount - 1;
+			//// save back only the unused instructions
+			//for (duint i = startbak; i > endbak; i--)
+			//	stackInstructions.push(args[i]);
+
+			args.clear();
+		}
 
 		return true;
 	}
 
 	return false;
 }
+
+#ifdef _WIN64
+/// <summary>
+/// Checks if the current argument register or stack pointer is already in the args list
+/// </summary>
+/// <param name="args"></param>
+/// <param name="inst"></param>
+/// <returns></returns>
+bool IsArgDuplicated(vector <INSTRUCTIONSTACK*> args, const INSTRUCTIONSTACK *inst)
+{	
+	if (/*IsVectorEmpty*/args.empty())
+		return false;
+
+	RegisterDetails instDetails = GetStandardRegisterFromArg(inst);
+	if (instDetails.Origin == ARGUMENT_NONE)
+		return true;
+
+	// Check if both the instruction beign passed and the current argument list 
+	// share the same register group or the same stack pointer locations
+	for (auto arg : args)
+	{		
+		if (arg != nullptr)
+		{
+			RegisterDetails argDetails = GetStandardRegisterFromArg(arg);
+			if (argDetails.Origin == instDetails.Origin &&
+				argDetails.StackOffset == instDetails.StackOffset)
+				return true;
+		}
+	}
+
+	return false;
+}
+#endif
+
+/// <summary>
+/// Check if a vector is empty or with fully uninitialized elements
+/// </summary>
+/// <param name="collection"></param>
+/// <returns></returns>
+/*bool IsVectorEmpty(const vector<INSTRUCTIONSTACK*> collection)
+{
+	if (collection.empty())
+		return true;
+
+	int nullElements = 0;
+	for(auto item : collection)
+	{
+		if (item == nullptr)
+			nullElements++;
+	}
+
+	return collection.size() == nullElements;
+}*/
+
+#ifdef _WIN64
+/// <summary>
+/// Gets a standard argument name
+/// </summary>
+/// <param name="inst"></param>
+/// <returns></returns>
+RegisterDetails GetStandardRegisterFromArg(const INSTRUCTIONSTACK *inst)
+{
+	RegisterDetails regDetails = { ARGUMENT_NONE, 0 };
+	string instDestReg = inst->DestinationRegister;
+
+	const std::regex re(R"((ESP|esp|RSP|rsp)\+?(.*[^\]])?)"); // pattern like [ESP+xxx], [esp+xxx], [RSP+xxx], [rsp+xxx]
+	std::cmatch cm;
+	bool foundmatch = false;
+	// search for instruction handling the stack like [STACK_POINTER+xxx]
+	foundmatch = std::regex_search(instDestReg.c_str(), cm, re);
+	if (foundmatch && cm.size() == 3)
+	{
+		regDetails.Origin = STACK_POINTER;
+		regDetails.StackOffset = hextoduint(cm[2].str().c_str()); // access the displacement value
+	}
+	else if (instDestReg == "rcx" || instDestReg == "ecx" || instDestReg == "cx" || instDestReg == "ch" || instDestReg == "cl")
+		regDetails.Origin = ARG_1;
+	else if (instDestReg == "rdx" || instDestReg == "edx" || instDestReg == "dx" || instDestReg == "dh" || instDestReg == "dl")
+		regDetails.Origin = ARG_2;
+	else if (instDestReg == "r8" || instDestReg == "r8d" || instDestReg == "r8w" || instDestReg == "r8b")
+		regDetails.Origin = ARG_3;
+	else if (instDestReg == "r9" || instDestReg == "r9d" || instDestReg == "r9w" || instDestReg == "r9b")
+		regDetails.Origin = ARG_4;
+
+	return regDetails;
+}
+#endif
 
 // ------------------------------------------------------------------------------------
 // Strips out the brackets, underscores, full stops and @ symbols from calls : 
@@ -1007,6 +1109,8 @@ string StripFunctionNamePointer(char *lpszCallText, int *index_caller)
 // ------------------------------------------------------------------------------------
 bool HasRegister(const char *reg)
 {
+	// NOTE: should include lower bits registers?
+	// https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture
 	return(
 #ifdef _WIN64
 		// CALL {REGISTER}
@@ -1241,7 +1345,7 @@ void SetAutoCommentIfCommentIsEmpty(INSTRUCTIONSTACK *inst, char *CommentString,
 // ------------------------------------------------------------------------------------
 string StripFunctNameFromInst(char *instruction)
 {
-	string subName = "";
+	string subName;
 	if (strstr(instruction, "<") == nullptr)
 		return "";
 
@@ -1291,8 +1395,8 @@ bool IsNumericParam(string paramType)
 }
 
 // ------------------------------------------------------------------------------------
-// Returns true if instruction is a mov manipulating esp or ebp, excluding epilog, prolog
-// otherwise returns false
+// Returns true if instruction is manipulating the stack pointer like MOV [ESP]
+// excluding epilog and prolog. Otherwise returns false
 // ------------------------------------------------------------------------------------
 bool IsMovStack(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
@@ -1443,14 +1547,14 @@ void TraverseHFilesTree(string &base, string header, string &htype, char *lpszAp
 	Utf8Ini *newdefApiHFile = defApiHFile;
 	strcpy_s(szApiConstant, lpszApiConstant);
 
-	while (newBase != "")
+	while (!newBase.empty())
 	{
 		GetConstantValue(szApiConstant, newBase.c_str()); // strip brackets if any
 		if (*szApiConstant)
 		{
 			newBase = newdefApiHFile->GetValue(szApiConstant, "Base"); // search for the next constant in the same header file
 			newHtype = newdefApiHFile->GetValue(szApiConstant, "Type"); // search for the next type in the same header file
-			if (newBase == "" && header != "") 
+			if (newBase.empty() && !header.empty()) 
 			{	// search in the next header file
 				strcpy_s(lpszHeaders, MAX_PATH, header.c_str());
 				// search through the headers files for the constant
@@ -1475,7 +1579,7 @@ void TraverseHFilesTree(string &base, string header, string &htype, char *lpszAp
 					}
 
 					// advance to the next header file
-					token = strtok_s(NULL, ";", &next_token);
+					token = strtok_s(nullptr, ";", &next_token);
 				}
 
 				header = newdefApiHFile->GetValue(szApiConstant, "Header"); // get new headers if any
@@ -1483,7 +1587,7 @@ void TraverseHFilesTree(string &base, string header, string &htype, char *lpszAp
 
 			if (getTypeDisplay) // walk the entire link chain
 			{
-				if (newBase != "")
+				if (!newBase.empty())
 				{
 					strcpy_s(lpszApiConstant, MAX_PATH, szApiConstant);
 					ZeroMemory(szApiConstant, MAX_PATH);
@@ -1569,7 +1673,7 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 					result = true;
 					// Uncomment to get the final TypeDisplay to show as data type
  					string typeParam = defApiHFile->GetValue(lpszApiConstant, "TypeDisplay"); // if enum or flag already then take TypeDisplay value
- 					if (typeParam == "")
+ 					if (typeParam.empty())
  					{
  						TraverseHFilesTree(base, hheader, htype, lpszApiConstant, defApiHFile, true); // if not TypeDisplay walk the tree to get the correct base
 						typeParam = base;
@@ -1754,7 +1858,7 @@ bool SearchApiFileForDefinition(LPSTR lpszApiModule, LPSTR lpszApiDefinition, bo
 
 			// lookup for the original name (A/W)
 			string apiFunction = defApiFile->GetValue(szOriginalCharsetAPIFunction, "@");
-			if (apiFunction == "")
+			if (apiFunction.empty())
 				// if not found search for the standard
 				apiFunction = defApiFile->GetValue(szAPIFunction, "@");
 			else
@@ -1910,7 +2014,7 @@ duint hextoduint(LPCTSTR str)
 {
 	duint value = 0;
 
-	if (str != NULL)
+	if (str != nullptr)
 		sscanf_s(str, "%li", &value);
 
 	return value;
@@ -1920,10 +2024,8 @@ duint hextoduint(LPCTSTR str)
 // ------------------------------------------------------------------------------------
 void TruncateString(LPSTR str, char value)
 {
-	char *pch;
-
-	pch = strchr(str, value);
-	if (pch != NULL)
+	char *pch = strchr(str, value);
+	if (pch != nullptr)
 		*pch = 0; // truncate at value
 }
 
@@ -2054,7 +2156,7 @@ std::string CallDirection(BASIC_INSTRUCTION_INFO *bii)
 #endif
 	strcpy_s(mnemonic, bii->instruction); // direct call
 	pch = strchr(mnemonic, ' ');
-	if (pch != NULL)
+	if (pch != nullptr)
 	{
 		pch++; // go over blank space
 		return pch;
@@ -2100,6 +2202,8 @@ void ClearVector(vector<INSTRUCTIONSTACK*> &q)
 #ifdef _WIN64
 bool IsArgumentRegister(const char *destination)
 {
+	// NOTE: should include lower bits registers for R8, R9?
+	// https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture
 	return (
 		// rcx
 		strncmp(destination, "rcx", 3) == 0 ||
@@ -2119,7 +2223,9 @@ bool IsArgumentRegister(const char *destination)
 		strncmp(destination, "r9", 2) == 0 ||
 		//strstr(destination, "[rbp - ") != NULL ||
 		// stack argument (>4 args or XMM0, XMM1, XMM2, XMM3 included)
-		strstr(destination, "rsp + ") != NULL
+		// NOTE: Use a helper function to remove spaces and make a single comparison
+		strstr(destination, "rsp + ") != nullptr ||
+		strstr(destination, "rsp+") != nullptr
 		);
 }
 #endif
@@ -2136,7 +2242,7 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddre
 
 	strcpy_s(instruction, bii->instruction);
 	char *pch = strtok_s(instruction, ",", &next_token); // get the string of the left operand of the instruction
-	if (pch != NULL)
+	if (pch != nullptr)
 	{
 		if (strncmp(pch, "mov", 3) == 0 ||
 			strncmp(pch, "lea", 3) == 0 ||
@@ -2145,7 +2251,7 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddre
 			strncmp(pch, "and", 3) == 0)
 		{
 			char *reg = strstr(pch, " ");
-			if (reg != NULL)
+			if (reg != nullptr)
 			{
 				reg++; // go over blank space
 				IsArgument = IsArgumentRegister(reg);
@@ -2337,8 +2443,12 @@ void GetDestinationRegister(char *instruction, char *destRegister)
 // ------------------------------------------------------------------------------------
 void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTRUCTIONSTACK &arg)
 {
-#ifdef _WIN64
+	// NOTE: should include lower bits registers for R8, R9?
+	// https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture
 	int del_index = 0;
+
+#ifdef _WIN64
+
 	bool found = false;
 
 	switch (CurrentParam)
@@ -2400,19 +2510,75 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 		}
 		if (found) break;
 	default: // the rest of stack-related arguments
-		arg = *arguments[0];
-		del_index = 0;
+		// parse expression rsp+XXX and select the proper argument order: 
+		// [rsp+20] -> 1
+		// [rsp+28] -> 2
+		// [rsp+30] -> 3
+		// ...etc
+		del_index = GetArgumentIndex(CurrentParam, arguments);
+		if (del_index >= arguments.size())
+			del_index = 0;
+
+		arg = *arguments[del_index];
 		break;
 	}
 
-	if (arguments.size() > 0)
+	if (!arguments.empty())
 	{
 		delete arguments[del_index];
 		arguments.erase(arguments.begin() + del_index); // take out the parameter from list
 	}
+
 #else
-	arg = *arguments[CurrentParam - 1]; // x86 doesn't have arguments order changes
+
+	// parse expression esp+XXX and select the proper argument order: 
+	// [esp] -> 1
+	// [esp+4] -> 2
+	// [esp+8] -> 3
+	// [esp+C] -> 4
+	// ...etc
+	duint index = GetArgumentIndex(CurrentParam, arguments);
+	if (index >= arguments.size())
+		index = 0;
+
+	arg = *arguments[index];
+
 #endif
+}
+
+/// <summary>
+/// Get the proper argument index from the stack instructions
+/// </summary>
+/// <param name="CurrentParam"></param>
+/// <param name="arguments"></param>
+/// <returns></returns>
+duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments)
+{
+	bool foundmatch = false;
+	bool foundStackPointer = false;
+	int argIndex = 0;
+	
+	CurrentParam--; // set proper zero based index	
+	const std::regex re(R"((ESP|esp|RSP|rsp)\+?(.*[^\]])?)"); // pattern like [ESP+xxx], [esp+xxx], [RSP+xxx], [rsp+xxx]
+	std::cmatch cm;
+	
+	for (; argIndex < arguments.size(); argIndex++)
+	{
+		// search for instruction handling the stack like [STACK_REGISTER+xxx]
+		foundmatch = std::regex_search(arguments[argIndex]->DestinationRegister, cm, re);
+		if(foundmatch && cm.size() == 3)
+		{
+			duint dispInt = hextoduint(cm[2].str().c_str()); // access the displacement value
+			if (dispInt == CurrentParam * sizeof(duint))
+			{
+				foundStackPointer = true;
+				break;
+			}
+		}
+	}
+
+	// if not a stack pointer param then always return the current parameter order
+	return (foundStackPointer) ? argIndex : CurrentParam;
 }
 
 // ------------------------------------------------------------------------------------
@@ -2436,11 +2602,9 @@ void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 // ------------------------------------------------------------------------------------
 void SetFunctionLoops()
 {
-	LOOPSTACK *loop;
-
 	while (!stackLoops.empty())
 	{
-		loop = stackLoops.top();
+		LOOPSTACK *loop = stackLoops.top();
 		DbgLoopAdd(loop->dwStartAddress, loop->dwEndAddress);
 		procSummary.loopsDetected++; // get record of loops amount
 		stackLoops.pop();
@@ -2485,7 +2649,7 @@ bool FindFunctionFromPointer(char *szDisasmText, char *szFunctionName)
 			if (strstr(inst->SourceRegister, "<") != nullptr) // if this is the instruction with the function pointer 
 			{
 				string funct = StripFunctionNamePointer(inst->SourceRegister);
-				if (funct != "")
+				if (!funct.empty())
 				{
 					szOriginalCharsetAPIFunction = funct;
 					// transform charsets search

@@ -17,12 +17,27 @@
 using namespace std;
 using namespace Script;
 
+enum ARGUMENT_ORIGIN
+{
+	ARGUMENT_NONE,
+	ARG_1,
+	ARG_2,
+	ARG_3,
+	ARG_4,
+	STACK_POINTER
+};
+
+typedef  struct stRegisterDetails{
+	ARGUMENT_ORIGIN Origin;
+	duint StackOffset;
+}RegisterDetails;
+
 typedef struct stINSTRUCTIONSTACK{
 	duint Address;
 	char Instruction[MAX_MNEMONIC_SIZE * 4];
 	char GuiInstruction[MAX_MNEMONIC_SIZE * 4];
 	char DestinationRegister[MAX_MNEMONIC_SIZE * 4];
-	char SourceRegister[MAX_MNEMONIC_SIZE * 4];
+	char SourceRegister[MAX_MNEMONIC_SIZE * 4];	
 }INSTRUCTIONSTACK;
 
 typedef struct stLOOPSTACK{
@@ -130,9 +145,12 @@ void ClearPrevAnalysis(const duint start, const duint end);
 void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch);
 bool FindFunctionFromPointer(char *szDisasmText, char *szFunctionName);
 string StripFunctionNamePointer(char *line, int *index = 0);
+duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments);
+//bool IsVectorEmpty(const vector<INSTRUCTIONSTACK*> collection);
 #ifdef _WIN64
 bool IsArgumentRegister(const char *destination);
+bool IsArgDuplicated(vector <INSTRUCTIONSTACK*> arg, const INSTRUCTIONSTACK *inst);
+RegisterDetails GetStandardRegisterFromArg(const INSTRUCTIONSTACK *inst);
 #endif
-
 
 #endif

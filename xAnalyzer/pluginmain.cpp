@@ -3,7 +3,7 @@
 
 // Variables
 const char *szprojectnameInfo = "\n" PLUGIN_NAME " " PLUGIN_VERSION_STR
-								" Plugin by ThunderCls 2018\n"
+								" Plugin by ThunderCls 2019\n"
 								"Extended analysis for static code\n"
 								"-> For latest release, issues, etc....\n"
 								"-> For help type command \"xanal help\"\n"
