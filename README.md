@@ -163,6 +163,14 @@ If you find that a certain API call definition is not being detected or not dete
 
 ## Version History
 
+***xAnalyzer 2.5.4***<br/>
+*- Updated project to VS2017*<br/>
+*- Fixed issues when processing argument instructions involving the stack pointer (x64 version).*<br/>
+*- Fixed incorrect arguments order involving the stack pointer (x64 version).*<br/>
+*- Fixed bug on undefined functions' arguments recognition that duplicated registers as different arguments (x64 version)*<br/>
+*- Changed undefined call args recognition, it will only predict up to 4 undefined args by default (x86 version)*<br/>
+*- Some code refactoring*<br/>
+
 ***xAnalyzer 2.5.3***<br/>
 *-Detection of function names in newer versions of x64dbg fixed*<br/>
 
