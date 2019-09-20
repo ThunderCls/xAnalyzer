@@ -1,7 +1,7 @@
 version: 2.5.{build}
 skip_tags: true
 skip_branch_with_pr: true
-image: Visual Studio 2013
+image: Visual Studio 2017
 configuration: Release
 platform:
 - x86
@@ -12,6 +12,7 @@ only_commits:
     - '**/*.h'
     - '**/*.cpp'
     - '**/*.rc'
+    - '**/*.vcxproj'
 build_script:
 - cmd: >-
     msbuild.exe xAnalyzer.sln /verbosity:minimal /t:Build /p:Configuration=Release;Platform=Win32
