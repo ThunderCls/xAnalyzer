@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/analexe.png</file>
+        <file>images/analfunction.png</file>
+        <file>images/analselection.png</file>
+        <file>images/analstruct.png</file>
+        <file>images/mainicon.png</file>
+        <file>images/remexe.png</file>
+        <file>images/remfunction.png</file>
+        <file>images/remselection.png</file>
+        <file>images/about.png</file>
+        <file>images/qrwallet.png</file>
+        <file>images/information.png</file>
+        <file>images/settings.png</file>
+    </qresource>
+</RCC>

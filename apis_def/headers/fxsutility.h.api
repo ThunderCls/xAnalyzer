@@ -1,5 +1,0 @@
-[SendToMode]
-Base=UINT
-Type=Enum
-Const1=SEND_TO_FAX_RECIPIENT_ATTACHMENT
-Value1=0

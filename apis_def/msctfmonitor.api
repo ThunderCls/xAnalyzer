@@ -1,7 +1,0 @@
-[InitLocalMsCtfMonitor]
-1=DWORD dwFlags
-ParamCount=1
-@=InitLocalMsCtfMonitor
-[UninitLocalMsCtfMonitor]
-ParamCount=0
-@=UninitLocalMsCtfMonitor

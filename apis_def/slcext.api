@@ -1,8 +1,0 @@
-[SLAcquireGenuineTicket]
-1=void** ppTicketBlob
-2=UINT* pcbTicketBlob
-3=PCWSTR pwszTemplateId
-4=PCWSTR pwszServerUrl
-5=PCWSTR pwszClientToken
-ParamCount=5
-@=SLAcquireGenuineTicket

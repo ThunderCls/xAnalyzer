@@ -1,8 +1,0 @@
-[IpOptionFlags]
-TypeDisplay=UCHAR
-Base=UCHAR
-Type=Flag
-Const1=IP_FLAG_REVERSE
-Value1=0x1
-Const2=IP_FLAG_DF
-Value2=0x2

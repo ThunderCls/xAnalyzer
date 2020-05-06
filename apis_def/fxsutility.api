@@ -1,9 +1,0 @@
-[CanSendToFaxRecipient]
-ParamCount=0
-@=CanSendToFaxRecipient
-[SendToFaxRecipient]
-1=[SendToMode] sndMode
-2=LPCWSTR lpFileName
-ParamCount=2
-Header=fxsutility.h.api;
-@=SendToFaxRecipient

@@ -5,6 +5,9 @@
 
 #ifndef __cplusplus
 #include <stdbool.h>
+#define DEFAULT_PARAM(name, value) name
+#else
+#define DEFAULT_PARAM(name, value) name = value
 #endif
 
 //default structure alignments forced
@@ -40,17 +43,92 @@ extern "C"
 #define DBG_VERSION 25
 
 //Bridge functions
+
+/// <summary>
+/// Initialize the bridge.
+/// </summary>
+/// <returns>On error it returns a non-null error message.</returns>
 BRIDGE_IMPEXP const wchar_t* BridgeInit();
+
+/// <summary>
+/// Start the bridge.
+/// </summary>
+/// <returns>On error it returns a non-null error message.</returns>
 BRIDGE_IMPEXP const wchar_t* BridgeStart();
+
+/// <summary>
+/// Allocate buffer. Use BridgeFree to free the buffer.
+/// </summary>
+/// <param name="size">Size in bytes of the buffer to allocate.</param>
+/// <returns>A pointer to the allocated buffer. This function will trigger a crash dump if unsuccessful.</returns>
 BRIDGE_IMPEXP void* BridgeAlloc(size_t size);
+
+/// <summary>
+/// Free buffer allocated by BridgeAlloc.
+/// </summary>
+/// <param name="ptr">Buffer to free.</param>
 BRIDGE_IMPEXP void BridgeFree(void* ptr);
+
+/// <summary>
+/// Get a string setting from the in-memory setting store.
+/// </summary>
+/// <param name="section">Section the setting is in. Cannot be null.</param>
+/// <param name="key">Setting key (name). Cannot be null.</param>
+/// <param name="value">Output buffer for the value. Should be of MAX_SETTING_SIZE. Cannot be null.</param>
+/// <returns>True if the setting was found and copied in the value parameter.</returns>
 BRIDGE_IMPEXP bool BridgeSettingGet(const char* section, const char* key, char* value);
+
+/// <summary>
+/// Get an integer setting from the in-memory setting store.
+/// </summary>
+/// <param name="section">Section the setting is in. Cannot be null.</param>
+/// <param name="key">Setting key (name). Cannot be null.</param>
+/// <param name="value">Output value.</param>
+/// <returns>True if the setting was found and successfully converted to an integer.</returns>
 BRIDGE_IMPEXP bool BridgeSettingGetUint(const char* section, const char* key, duint* value);
+
+/// <summary>
+/// Set a string setting in the in-memory setting store.
+/// </summary>
+/// <param name="section">Section the setting is in. Cannot be null.</param>
+/// <param name="key">Setting key (name). Set to null to clear the whole section.</param>
+/// <param name="value">New setting value. Set to null to remove the key from the section.</param>
+/// <returns>True if the operation was successful.</returns>
 BRIDGE_IMPEXP bool BridgeSettingSet(const char* section, const char* key, const char* value);
+
+/// <summary>
+/// Set an integer setting in the in-memory setting store.
+/// </summary>
+/// <param name="section">Section the setting is in. Cannot be null.</param>
+/// <param name="key">Setting key (name). Set to null to clear the whole section.</param>
+/// <param name="value">New setting value.</param>
+/// <returns>True if the operation was successful.</returns>
 BRIDGE_IMPEXP bool BridgeSettingSetUint(const char* section, const char* key, duint value);
+
+/// <summary>
+/// Flush the in-memory setting store to disk.
+/// </summary>
+/// <returns></returns>
 BRIDGE_IMPEXP bool BridgeSettingFlush();
+
+/// <summary>
+/// Read the in-memory setting store from disk.
+/// </summary>
+/// <param name="errorLine">Line where the error occurred. Set to null to ignore this.</param>
+/// <returns>True if the setting were read and parsed correctly.</returns>
 BRIDGE_IMPEXP bool BridgeSettingRead(int* errorLine);
+
+/// <summary>
+/// Get the debugger version.
+/// </summary>
+/// <returns>25</returns>
 BRIDGE_IMPEXP int BridgeGetDbgVersion();
+
+/// <summary>
+/// Checks if the current process is elevated.
+/// </summary>
+/// <returns>true if the process is elevated, false otherwise.</returns>
+BRIDGE_IMPEXP bool BridgeIsProcessElevated();
 
 #ifdef __cplusplus
 }
@@ -239,6 +317,8 @@ typedef enum
     DBG_GET_PEB_ADDRESS,            // param1=DWORD ProcessId,           param2=unused
     DBG_GET_TEB_ADDRESS,            // param1=DWORD ThreadId,            param2=unused
     DBG_ANALYZE_FUNCTION,           // param1=BridgeCFGraphList* graph,  param2=duint entry
+    DBG_MENU_PREPARE,               // param1=int hMenu,                 param2=unused
+    DBG_GET_SYMBOL_INFO,            // param1=void* symbol,              param2=SYMBOLINFO* info
 } DBGMSG;
 
 typedef enum
@@ -387,12 +467,56 @@ typedef enum
     MODE_UNCHANGED // alert if expression is not changed
 } WATCHDOGMODE;
 
+typedef enum
+{
+    hw_access,
+    hw_write,
+    hw_execute
+} BPHWTYPE;
+
+typedef enum
+{
+    mem_access,
+    mem_read,
+    mem_write,
+    mem_execute
+} BPMEMTYPE;
+
+typedef enum
+{
+    dll_load = 1,
+    dll_unload,
+    dll_all
+} BPDLLTYPE;
+
+typedef enum
+{
+    ex_firstchance = 1,
+    ex_secondchance,
+    ex_all
+} BPEXTYPE;
+
+typedef enum
+{
+    hw_byte,
+    hw_word,
+    hw_dword,
+    hw_qword
+} BPHWSIZE;
+
+typedef enum
+{
+    sym_import,
+    sym_export,
+    sym_symbol
+} SYMBOLTYPE;
+
 //Debugger typedefs
 typedef MEMORY_SIZE VALUE_SIZE;
-typedef struct SYMBOLINFO_ SYMBOLINFO;
+
 typedef struct DBGFUNCTIONS_ DBGFUNCTIONS;
 
-typedef void (*CBSYMBOLENUM)(SYMBOLINFO* symbol, void* user);
+typedef bool (*CBSYMBOLENUM)(const struct SYMBOLPTR_* symbol, void* user);
 
 //Debugger structs
 typedef struct
@@ -418,6 +542,8 @@ typedef struct
     char mod[MAX_MODULE_SIZE];
     unsigned short slot;
     // extended part
+    unsigned char typeEx; //BPHWTYPE/BPMEMTYPE/BPDLLTYPE/BPEXTYPE
+    unsigned char hwSize; //BPHWSIZE
     unsigned int hitCount;
     bool fastResume;
     bool silent;
@@ -461,7 +587,6 @@ typedef struct
     duint instrcount; //OUT
 } LOOP;
 
-#ifndef _NO_ADDRINFO
 typedef struct
 {
     int flags; //ADDRINFOFLAGS (IN)
@@ -472,16 +597,18 @@ typedef struct
     FUNCTION function;
     LOOP loop;
     FUNCTION args;
-} ADDRINFO;
-#endif
+} BRIDGE_ADDRINFO;
 
-struct SYMBOLINFO_
+typedef struct SYMBOLINFO_
 {
     duint addr;
     char* decoratedSymbol;
     char* undecoratedSymbol;
-    bool isImported;
-};
+    SYMBOLTYPE type;
+    bool freeDecorated;
+    bool freeUndecorated;
+    DWORD ordinal;
+} SYMBOLINFO;
 
 typedef struct
 {
@@ -536,7 +663,7 @@ typedef struct
     bool C2;
     bool C1;
     bool C0;
-    bool IR;
+    bool ES;
     bool SF;
     bool P;
     bool U;
@@ -650,6 +777,12 @@ typedef struct
 
 typedef struct
 {
+    DWORD code;
+    char name[128];
+} LASTSTATUS;
+
+typedef struct
+{
     REGISTERCONTEXT regcontext;
     FLAGS flags;
     X87FPUREGISTER x87FPURegisters[8];
@@ -658,6 +791,7 @@ typedef struct
     X87STATUSWORDFIELDS x87StatusWordFields;
     X87CONTROLWORDFIELDS x87ControlWordFields;
     LASTERROR lastError;
+    LASTSTATUS lastStatus;
 } REGDUMP;
 
 typedef struct
@@ -774,6 +908,12 @@ typedef struct
     XREF_RECORD* references;
 } XREF_INFO;
 
+typedef struct SYMBOLPTR_
+{
+    duint modbase;
+    const void* symbol;
+} SYMBOLPTR;
+
 //Debugger functions
 BRIDGE_IMPEXP const char* DbgInit();
 BRIDGE_IMPEXP void DbgExit();
@@ -781,7 +921,26 @@ BRIDGE_IMPEXP bool DbgMemRead(duint va, void* dest, duint size);
 BRIDGE_IMPEXP bool DbgMemWrite(duint va, const void* src, duint size);
 BRIDGE_IMPEXP duint DbgMemGetPageSize(duint base);
 BRIDGE_IMPEXP duint DbgMemFindBaseAddr(duint addr, duint* size);
+
+/// <summary>
+/// Asynchronously execute a debugger command by adding it to the command queue.
+/// Note: the command may not have completed before this call returns. Use this
+/// function if you don't care when the command gets executed.
+///
+/// Example: DbgCmdExec("ClearLog")
+/// </summary>
+/// <param name="cmd">The command to execute.</param>
+/// <returns>True if the command was successfully submitted to the command queue. False if the submission failed.</returns>
 BRIDGE_IMPEXP bool DbgCmdExec(const char* cmd);
+
+/// <summary>
+/// Performs synchronous execution of a debugger command. This function call only
+/// returns after the command has completed.
+///
+/// Example: DbgCmdExecDirect("loadlib advapi32.dll")
+/// </summary>
+/// <param name="cmd">The command to execute.</param>
+/// <returns>True if the command executed successfully, False if there was a problem.</returns>
 BRIDGE_IMPEXP bool DbgCmdExecDirect(const char* cmd);
 BRIDGE_IMPEXP bool DbgMemMap(MEMMAP* memmap);
 BRIDGE_IMPEXP bool DbgIsValidExpression(const char* expression);
@@ -799,7 +958,7 @@ BRIDGE_IMPEXP void DbgClearBookmarkRange(duint start, duint end);
 BRIDGE_IMPEXP bool DbgGetModuleAt(duint addr, char* text);
 BRIDGE_IMPEXP BPXTYPE DbgGetBpxTypeAt(duint addr);
 BRIDGE_IMPEXP duint DbgValFromString(const char* string);
-BRIDGE_IMPEXP bool DbgGetRegDump(REGDUMP* regdump);
+BRIDGE_IMPEXP bool DbgGetRegDumpEx(REGDUMP* regdump, size_t size);
 BRIDGE_IMPEXP bool DbgValToString(const char* string, duint value);
 BRIDGE_IMPEXP bool DbgMemIsValidReadPtr(duint addr);
 BRIDGE_IMPEXP int DbgGetBpList(BPXTYPE type, BPMAP* list);
@@ -877,19 +1036,32 @@ BRIDGE_IMPEXP DWORD DbgGetThreadId();
 BRIDGE_IMPEXP duint DbgGetPebAddress(DWORD ProcessId);
 BRIDGE_IMPEXP duint DbgGetTebAddress(DWORD ThreadId);
 BRIDGE_IMPEXP bool DbgAnalyzeFunction(duint entry, BridgeCFGraphList* graph);
+BRIDGE_IMPEXP duint DbgEval(const char* expression, bool* DEFAULT_PARAM(success, nullptr));
+BRIDGE_IMPEXP void DbgGetSymbolInfo(const SYMBOLPTR* symbolptr, SYMBOLINFO* info);
 
 //Gui defines
-#define GUI_PLUGIN_MENU 0
-#define GUI_DISASM_MENU 1
-#define GUI_DUMP_MENU 2
-#define GUI_STACK_MENU 3
+typedef enum
+{
+    GUI_PLUGIN_MENU,
+    GUI_DISASM_MENU,
+    GUI_DUMP_MENU,
+    GUI_STACK_MENU,
+    GUI_GRAPH_MENU,
+    GUI_MEMMAP_MENU,
+    GUI_SYMMOD_MENU,
+} GUIMENUTYPE;
 
-#define GUI_DISASSEMBLY 0
-#define GUI_DUMP 1
-#define GUI_STACK 2
-#define GUI_GRAPH 3
-#define GUI_MEMMAP 4
-#define GUI_SYMMOD 5
+BRIDGE_IMPEXP void DbgMenuPrepare(GUIMENUTYPE hMenu);
+
+typedef enum
+{
+    GUI_DISASSEMBLY,
+    GUI_DUMP,
+    GUI_STACK,
+    GUI_GRAPH,
+    GUI_MEMMAP,
+    GUI_SYMMOD,
+} GUISELECTIONTYPE;
 
 #define GUI_MAX_LINE_SIZE 65536
 #define GUI_MAX_DISASSEMBLY_SIZE 2048
@@ -940,8 +1112,8 @@ typedef enum
     GUI_MENU_ADD_ENTRY,             // param1=int hMenu,            param2=const char* title
     GUI_MENU_ADD_SEPARATOR,         // param1=int hMenu,            param2=unused
     GUI_MENU_CLEAR,                 // param1=int hMenu,            param2=unused
-    GUI_SELECTION_GET,              // param1=int hWindow,          param2=SELECTIONDATA* selection
-    GUI_SELECTION_SET,              // param1=int hWindow,          param2=const SELECTIONDATA* selection
+    GUI_SELECTION_GET,              // param1=GUISELECTIONTYPE,     param2=SELECTIONDATA* selection
+    GUI_SELECTION_SET,              // param1=GUISELECTIONTYPE,     param2=const SELECTIONDATA* selection
     GUI_GETLINE_WINDOW,             // param1=const char* title,    param2=char* text
     GUI_AUTOCOMPLETE_ADDCMD,        // param1=const char* cmd,      param2=ununsed
     GUI_AUTOCOMPLETE_DELCMD,        // param1=const char* cmd,      param2=ununsed
@@ -956,14 +1128,14 @@ typedef enum
     GUI_SYMBOL_REFRESH_CURRENT,     // param1=unused,               param2=unused
     GUI_UPDATE_MEMORY_VIEW,         // param1=unused,               param2=unused
     GUI_REF_INITIALIZE,             // param1=const char* name,     param2=unused
-    GUI_LOAD_SOURCE_FILE,           // param1=const char* path,     param2=line
+    GUI_LOAD_SOURCE_FILE,           // param1=const char* path,     param2=duint addr
     GUI_MENU_SET_ICON,              // param1=int hMenu,            param2=ICONINFO*
     GUI_MENU_SET_ENTRY_ICON,        // param1=int hEntry,           param2=ICONINFO*
     GUI_SHOW_CPU,                   // param1=unused,               param2=unused
     GUI_ADD_QWIDGET_TAB,            // param1=QWidget*,             param2=unused
     GUI_SHOW_QWIDGET_TAB,           // param1=QWidget*,             param2=unused
     GUI_CLOSE_QWIDGET_TAB,          // param1=QWidget*,             param2=unused
-    GUI_EXECUTE_ON_GUI_THREAD,      // param1=GUICALLBACK,          param2=unused
+    GUI_EXECUTE_ON_GUI_THREAD,      // param1=GUICALLBACKEX cb,     param2=void* userdata
     GUI_UPDATE_TIME_WASTED_COUNTER, // param1=unused,               param2=unused
     GUI_SET_GLOBAL_NOTES,           // param1=const char* text,     param2=unused
     GUI_GET_GLOBAL_NOTES,           // param1=char** text,          param2=unused
@@ -998,12 +1170,22 @@ typedef enum
     GUI_MENU_SET_NAME,              // param1=int hMenu,            param2=const char* name
     GUI_MENU_SET_ENTRY_NAME,        // param1=int hEntry,           param2=const char* name
     GUI_FLUSH_LOG,                  // param1=unused,               param2=unused
+    GUI_MENU_SET_ENTRY_HOTKEY,      // param1=int hEntry,           param2=const char* hack
+    GUI_REF_SEARCH_GETROWCOUNT,     // param1=unused,               param2=unused
+    GUI_REF_SEARCH_GETCELLCONTENT,  // param1=int row,              param2=int col
+    GUI_MENU_REMOVE,                // param1=int hEntryMenu,       param2=unused
+    GUI_REF_ADDCOMMAND,             // param1=const char* title,    param2=const char* command
+    GUI_OPEN_TRACE_FILE,            // param1=const char* file name,param2=unused
+    GUI_UPDATE_TRACE_BROWSER,       // param1=unused,               param2=unused
+    GUI_INVALIDATE_SYMBOL_SOURCE,   // param1=duint base,           param2=unused
+    GUI_GET_CURRENT_GRAPH,          // param1=BridgeCFGraphList*,   param2=unused
 } GUIMSG;
 
 //GUI Typedefs
 struct _TYPEDESCRIPTOR;
 
 typedef void (*GUICALLBACK)();
+typedef void (*GUICALLBACKEX)(void*);
 typedef bool (*GUISCRIPTEXECUTE)(const char* text);
 typedef void (*GUISCRIPTCOMPLETER)(const char* text, char** entries, int* entryCount);
 typedef bool (*TYPETOSTRING)(const struct _TYPEDESCRIPTOR* type, char* dest, size_t* destCount); //don't change destCount for final failure
@@ -1062,6 +1244,7 @@ typedef struct _TYPEDESCRIPTOR
 BRIDGE_IMPEXP const char* GuiTranslateText(const char* Source);
 BRIDGE_IMPEXP void GuiDisasmAt(duint addr, duint cip);
 BRIDGE_IMPEXP void GuiSetDebugState(DBGSTATE state);
+BRIDGE_IMPEXP void GuiSetDebugStateFast(DBGSTATE state);
 BRIDGE_IMPEXP void GuiAddLogMessage(const char* msg);
 BRIDGE_IMPEXP void GuiLogClear();
 BRIDGE_IMPEXP void GuiUpdateAllViews();
@@ -1088,10 +1271,12 @@ BRIDGE_IMPEXP void GuiSymbolRefreshCurrent();
 BRIDGE_IMPEXP void GuiReferenceAddColumn(int width, const char* title);
 BRIDGE_IMPEXP void GuiReferenceSetRowCount(int count);
 BRIDGE_IMPEXP int GuiReferenceGetRowCount();
+BRIDGE_IMPEXP int GuiReferenceSearchGetRowCount();
 BRIDGE_IMPEXP void GuiReferenceDeleteAllColumns();
 BRIDGE_IMPEXP void GuiReferenceInitialize(const char* name);
 BRIDGE_IMPEXP void GuiReferenceSetCellContent(int row, int col, const char* str);
 BRIDGE_IMPEXP char* GuiReferenceGetCellContent(int row, int col);
+BRIDGE_IMPEXP char* GuiReferenceSearchGetCellContent(int row, int col);
 BRIDGE_IMPEXP void GuiReferenceReloadData();
 BRIDGE_IMPEXP void GuiReferenceSetSingleSelection(int index, bool scroll);
 BRIDGE_IMPEXP void GuiReferenceSetProgress(int progress);
@@ -1109,8 +1294,9 @@ BRIDGE_IMPEXP int GuiMenuAdd(int hMenu, const char* title);
 BRIDGE_IMPEXP int GuiMenuAddEntry(int hMenu, const char* title);
 BRIDGE_IMPEXP void GuiMenuAddSeparator(int hMenu);
 BRIDGE_IMPEXP void GuiMenuClear(int hMenu);
-BRIDGE_IMPEXP bool GuiSelectionGet(int hWindow, SELECTIONDATA* selection);
-BRIDGE_IMPEXP bool GuiSelectionSet(int hWindow, const SELECTIONDATA* selection);
+BRIDGE_IMPEXP void GuiMenuRemove(int hEntryMenu);
+BRIDGE_IMPEXP bool GuiSelectionGet(GUISELECTIONTYPE hWindow, SELECTIONDATA* selection);
+BRIDGE_IMPEXP bool GuiSelectionSet(GUISELECTIONTYPE hWindow, const SELECTIONDATA* selection);
 BRIDGE_IMPEXP bool GuiGetLineWindow(const char* title, char* text);
 BRIDGE_IMPEXP void GuiAutoCompleteAddCmd(const char* cmd);
 BRIDGE_IMPEXP void GuiAutoCompleteDelCmd(const char* cmd);
@@ -1121,7 +1307,7 @@ BRIDGE_IMPEXP void GuiRepaintTableView();
 BRIDGE_IMPEXP void GuiUpdatePatches();
 BRIDGE_IMPEXP void GuiUpdateCallStack();
 BRIDGE_IMPEXP void GuiUpdateSEHChain();
-BRIDGE_IMPEXP void GuiLoadSourceFile(const char* path, int line);
+BRIDGE_IMPEXP void GuiLoadSourceFileEx(const char* path, duint addr);
 BRIDGE_IMPEXP void GuiMenuSetIcon(int hMenu, const ICONDATA* icon);
 BRIDGE_IMPEXP void GuiMenuSetEntryIcon(int hEntry, const ICONDATA* icon);
 BRIDGE_IMPEXP void GuiMenuSetEntryChecked(int hEntry, bool checked);
@@ -1129,6 +1315,7 @@ BRIDGE_IMPEXP void GuiMenuSetVisible(int hMenu, bool visible);
 BRIDGE_IMPEXP void GuiMenuSetEntryVisible(int hEntry, bool visible);
 BRIDGE_IMPEXP void GuiMenuSetName(int hMenu, const char* name);
 BRIDGE_IMPEXP void GuiMenuSetEntryName(int hEntry, const char* name);
+BRIDGE_IMPEXP void GuiMenuSetEntryHotkey(int hEntry, const char* hack);
 BRIDGE_IMPEXP void GuiShowCpu();
 BRIDGE_IMPEXP void GuiAddQWidgetTab(void* qWidget);
 BRIDGE_IMPEXP void GuiShowQWidgetTab(void* qWidget);
@@ -1148,7 +1335,7 @@ BRIDGE_IMPEXP void GuiFocusView(int hWindow);
 BRIDGE_IMPEXP bool GuiIsUpdateDisabled();
 BRIDGE_IMPEXP void GuiUpdateEnable(bool updateNow);
 BRIDGE_IMPEXP void GuiUpdateDisable();
-BRIDGE_IMPEXP void GuiLoadGraph(BridgeCFGraphList* graph, duint addr);
+BRIDGE_IMPEXP bool GuiLoadGraph(BridgeCFGraphList* graph, duint addr);
 BRIDGE_IMPEXP duint GuiGraphAt(duint addr);
 BRIDGE_IMPEXP void GuiUpdateGraphView();
 BRIDGE_IMPEXP void GuiDisableLog();
@@ -1166,6 +1353,12 @@ BRIDGE_IMPEXP bool GuiTypeClear();
 BRIDGE_IMPEXP void GuiUpdateTypeWidget();
 BRIDGE_IMPEXP void GuiCloseApplication();
 BRIDGE_IMPEXP void GuiFlushLog();
+BRIDGE_IMPEXP void GuiReferenceAddCommand(const char* title, const char* command);
+BRIDGE_IMPEXP void GuiUpdateTraceBrowser();
+BRIDGE_IMPEXP void GuiOpenTraceFile(const char* fileName);
+BRIDGE_IMPEXP void GuiInvalidateSymbolSource(duint base);
+BRIDGE_IMPEXP void GuiExecuteOnGuiThreadEx(GUICALLBACKEX cbGuiThread, void* userdata);
+BRIDGE_IMPEXP void GuiGetCurrentGraph(BridgeCFGraphList* graphList);
 
 #ifdef __cplusplus
 }

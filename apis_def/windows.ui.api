@@ -1,5 +1,0 @@
-[CreateXamlUIPresenter]
-1=IViewObjectPresentNotifySite* pPresentSite
-2=Windows::UI::Xaml::Hosting::IXamlUIPresenter** ppPresenter
-ParamCount=2
-@=CreateXamlUIPresenter

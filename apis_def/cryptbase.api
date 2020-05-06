@@ -1,9 +1,0 @@
-[SystemFunction036]
-SourceModule=advapi32.api
-@=SystemFunction036
-[SystemFunction040]
-SourceModule=advapi32.api
-@=SystemFunction040
-[SystemFunction041]
-SourceModule=advapi32.api
-@=SystemFunction041

@@ -1,7 +1,0 @@
-[LSA_LOOKUP_DOMAIN_INFO_CLASS]
-Base=UINT
-Type=Enum
-Const1=AccountDomainInformation
-Value1=5
-Const2=DnsDomainInformation
-Value2=12

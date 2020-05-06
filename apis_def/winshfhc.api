@@ -1,8 +1,0 @@
-[EstimateFileRiskLevel]
-1=LPCWSTR pszFilePath
-2=LPCWSTR pszExt
-3=LPCWSTR pszHandler
-4=FILE_RISK_LEVEL* pfrlEstimate
-ParamCount=4
-Header=winshfhc.h.api;
-@=EstimateFileRiskLevel

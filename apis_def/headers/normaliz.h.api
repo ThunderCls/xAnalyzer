@@ -1,8 +1,0 @@
-[IdnFlags]
-TypeDisplay=DWORD
-Base=DWORD
-Type=Flag
-Const1=IDN_ALLOW_UNASSIGNED
-Value1=0x01
-Const2=IDN_USE_STD3_ASCII_RULES
-Value2=0x02

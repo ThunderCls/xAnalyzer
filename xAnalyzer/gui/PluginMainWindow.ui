@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PluginMainWindow</class>
+ <widget class="QMainWindow" name="PluginMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QtPlugin</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/icons/images/icon.png</normaloff>:/icons/images/icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPlainTextEdit" name="editText">
+        <property name="font">
+         <font>
+          <family>Lucida Console</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="plainText">
+         <string>Feel free to type in my edit box, if you know what I mean ^_^</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonClear">
+        <property name="text">
+         <string>Clear</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuQtPlugin">
+    <property name="title">
+     <string>QtPlugin</string>
+    </property>
+    <addaction name="actionClearText"/>
+   </widget>
+   <addaction name="menuQtPlugin"/>
+  </widget>
+  <action name="actionClearText">
+   <property name="text">
+    <string>&amp;Clear Text</string>
+   </property>
+   <property name="toolTip">
+    <string>Clear Text</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionClearText</sender>
+   <signal>triggered()</signal>
+   <receiver>buttonClear</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonClear</sender>
+   <signal>clicked()</signal>
+   <receiver>editText</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>558</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

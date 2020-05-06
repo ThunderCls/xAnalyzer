@@ -1,7 +1,0 @@
-[CreateHardwareEventMoniker]
-1=REFCLSID clsid
-2=LPCTSTR pszEventHandler
-3=IMoniker** ppmoniker
-ParamCount=3
-Header=windows.h.api;
-@=CreateHardwareEventMoniker
