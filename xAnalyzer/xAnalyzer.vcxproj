@@ -112,21 +112,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\core\bin\x32d\</OutDir>
     <TargetName>xanalcore32</TargetName>
+    <IntDir>.\core\bin\x32d\intermediates</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>xanalcore64</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\core\bin\x64d\</OutDir>
+    <IntDir>.\core\bin\x64d\intermediates</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\core\bin\x32\</OutDir>
     <TargetName>xanalcore32</TargetName>
+    <IntDir>.\core\bin\x32\intermediates</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>xanalcore64</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\core\bin\x64\</OutDir>
+    <IntDir>.\core\bin\x64\intermediates</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -141,7 +145,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDir)core\bin\x32d\$(TargetFileName)" "$(ProjectDir)bin\x32d\$(TargetFileName)" /Y</Command>
+      <Command>copy "$(ProjectDir)core\bin\x32d\$(TargetFileName)" "$(ProjectDir)bin\x32d\$(TargetFileName)" /Y
+copy "$(ProjectDir)bin\x32d\$(TargetFileName)" "C:\x64dbg\release\x32\plugins" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy to bin</Message>
@@ -160,7 +165,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDir)core\bin\x64d\$(TargetFileName)" "$(ProjectDir)bin\x64d\$(TargetFileName)" /Y</Command>
+      <Command>copy "$(ProjectDir)core\bin\x64d\$(TargetFileName)" "$(ProjectDir)bin\x64d\$(TargetFileName)" /Y
+copy "$(ProjectDir)bin\x64d\$(TargetFileName)" "C:\x64dbg\release\x64\plugins" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy to bin</Message>

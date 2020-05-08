@@ -38,6 +38,12 @@ void AboutDialog::on_btnOk_clicked()
     this->close();
 }
 
+/**
+ * @brief Installs and event to filter mouse click on labels
+ * @param obj
+ * @param event
+ * @return
+ */
 bool AboutDialog::eventFilter(QObject* obj, QEvent* event)
 {
     if(event->type() == QEvent::MouseButtonPress)

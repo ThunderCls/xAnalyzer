@@ -241,8 +241,8 @@ HUB_EXPIMP void QtPlugin::CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo
         }
         else
         {
-            GuiAddLogMessage("[xAnalyzer]: Automatic analysis is disabled...skipping automatic analysis\r\n");
-            GuiAddStatusBarMessage("[xAnalyzer]: Automatic analysis is disabled...skipping automatic analysis\r\n");
+            GuiAddLogMessage("[xAnalyzer]: Automatic analysis is disabled\r\n");
+            GuiAddStatusBarMessage("[xAnalyzer]: Automatic analysis is disabled\r\n");
         }
     }
 }
