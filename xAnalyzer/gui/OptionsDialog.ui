@@ -45,7 +45,7 @@
        <x>10</x>
        <y>10</y>
        <width>221</width>
-       <height>101</height>
+       <height>121</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -53,6 +53,13 @@
        <widget class="QCheckBox" name="checkAutoAnalysis">
         <property name="text">
          <string>Automatic Analysis</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkEntropy">
+        <property name="text">
+         <string>Analyze Entropy</string>
         </property>
        </widget>
       </item>
@@ -136,7 +143,7 @@
      <property name="title">
       <string> Comments Type </string>
      </property>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -171,9 +178,9 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>90</x>
      <y>250</y>
-     <width>141</width>
+     <width>168</width>
      <height>31</height>
     </rect>
    </property>

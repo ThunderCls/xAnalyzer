@@ -19,9 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="core\Analysis.h" />
     <ClInclude Include="core\AnalyzerCore.h" />
+    <ClInclude Include="core\Entropy.h" />
+    <ClInclude Include="core\FunctionAnalysis.h" />
+    <ClInclude Include="core\ModuleAnalysis.h" />
+    <ClInclude Include="core\PEParser.h" />
     <ClInclude Include="core\Plugin.h" />
     <ClInclude Include="core\AnalyzerHub.h" />
+    <ClInclude Include="core\SelectionAnalysis.h" />
     <ClInclude Include="pluginsdk\bridgegraph.h" />
     <ClInclude Include="pluginsdk\bridgelist.h" />
     <ClInclude Include="pluginsdk\bridgemain.h" />
@@ -57,8 +63,14 @@
     <ClInclude Include="pluginsdk\_scriptapi_symbol.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\Analysis.cpp" />
     <ClCompile Include="core\AnalyzerCore.cpp" />
     <ClCompile Include="core\AnalyzerHub.cpp" />
+    <ClCompile Include="core\Entropy.cpp" />
+    <ClCompile Include="core\FunctionAnalysis.cpp" />
+    <ClCompile Include="core\ModuleAnalysis.cpp" />
+    <ClCompile Include="core\PEParser.cpp" />
+    <ClCompile Include="core\SelectionAnalysis.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C3D06AC1-8D38-4B77-A53D-61F6EE1B90CB}</ProjectGuid>
@@ -189,7 +201,8 @@ copy "$(ProjectDir)bin\x64d\$(TargetFileName)" "C:\x64dbg\release\x64\plugins" /
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDir)core\bin\x32\$(TargetFileName)" "$(ProjectDir)bin\x32\$(TargetFileName)" /Y</Command>
+      <Command>copy "$(ProjectDir)core\bin\x32\$(TargetFileName)" "$(ProjectDir)bin\x32\$(TargetFileName)" /Y
+copy "$(ProjectDir)core\bin\x32\$(TargetFileName)" "C:\x64dbg\release\x32\plugins" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy to bin</Message>
@@ -212,7 +225,8 @@ copy "$(ProjectDir)bin\x64d\$(TargetFileName)" "C:\x64dbg\release\x64\plugins" /
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDir)core\bin\x64\$(TargetFileName)" "$(ProjectDir)bin\x64\$(TargetFileName)" /Y</Command>
+      <Command>copy "$(ProjectDir)core\bin\x64\$(TargetFileName)" "$(ProjectDir)bin\x64\$(TargetFileName)" /Y
+copy "$(ProjectDir)core\bin\x64\$(TargetFileName)" "C:\x64dbg\release\x64\plugins" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy to bin folder</Message>

@@ -6,7 +6,9 @@
 #include <QFile>
 #include <QDir>
 #include <QSettings>
-#include <QMessageBox> // TODO: remove (debug only)
+#include <ctime>
+#include "../core/AnalyzerHub.h"
+#include <QDebug> // TODO: remove (debug only)
 
 static OptionsDialog* optionsDialog;
 static AboutDialog* aboutDialog;
@@ -54,14 +56,23 @@ static QWidget* getParent()
 bool QtPlugin::Init()
 {
     LoadSettings();
-    // TODO: Check if apis definitions are in place or return false to prevent plugin loading
+    // TODO: implement
+    /*if (!LoadDefinitionFiles())
+    {
+        if (errorLine != -1)
+            sprintf_s(message, "[" PLUGIN_NAME "] Failed to load API definitions in file: \n%s - Line: %d\r\n"
+                        "            Check the malformed file/line and try again...exiting plugin initialization!\r\n", faultyFile.c_str(), errorLine);
+        else
+            sprintf_s(message, "[" PLUGIN_NAME "] Failed to locate API definitions files.\r\n"
+            "            Check that the folder: %s\r\n"
+            "            and definition files are present and try again...exiting plugin initialization!\r\n", folder.c_str());
+
+        _plugin_logprintf(message);
+        return false;
+    }*/
 
     hSetupEvent = CreateEventW(NULL, TRUE, FALSE, NULL);
     hStopEvent = CreateEventW(NULL, TRUE, FALSE, NULL);
-
-    // register plugin commands
-    _plugin_registercommand(Plugin::handle, "xanal", cbRunAnalysis, true);
-    _plugin_registercommand(Plugin::handle, "xanalremove", cbRemoveAnalysis, true);
 
     return true;
 }
@@ -165,7 +176,7 @@ bool QtPlugin::LaunchAnalyzerTask(QString action, AnalyzerHub::AnalyzerMode anal
         AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
     }
 
-    AnalyzerHub::StartAnalyzer();
+    RunAnalyzer();
     return true;
 }
 
@@ -179,6 +190,7 @@ bool QtPlugin::LaunchAnalyzerTask(QString action, AnalyzerHub::AnalyzerMode anal
 
 HUB_EXPIMP void QtPlugin::CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
 {
+    AnalyzerHub::AnalysisType type = AnalyzerHub::TypeNone;
     switch(info->hEntry)
     {
         case QtPlugin::Options:
@@ -190,48 +202,90 @@ HUB_EXPIMP void QtPlugin::CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
             break;
 
         case QtPlugin::AnalyzeSelection:
-            DbgCmdExec("xanal selection");
+            //DbgCmdExec("xanal selection");
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeSelection;
+            AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
+            RunAnalyzer();
             break;
 
-        case QtPlugin::AnalyzeFunction:
-            DbgCmdExec("xanal function");
+        case QtPlugin::AnalyzeFunction:        
+            //DbgCmdExec("xanal function");
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeFunction;
+            AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
+            RunAnalyzer();
             break;
 
         case QtPlugin::AnalyzeModule:
-            DbgCmdExec("xanal module");
+            //DbgCmdExec("xanal module");
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+            AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
+            RunAnalyzer();
             break;
 
         case QtPlugin::RemoveSelection:
-            DbgCmdExec("xanalremove selection");
+            //DbgCmdExec("xanalremove selection");
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeSelection;
+            AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeRemove;
+            RunAnalyzer();
             break;
 
         case QtPlugin::RemoveFunction:
-            DbgCmdExec("xanalremove function");
+            //DbgCmdExec("xanalremove function");
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeFunction;
+            AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeRemove;
+            RunAnalyzer();
             break;
 
         case QtPlugin::RemoveModule:
-            DbgCmdExec("xanalremove module");
+            //DbgCmdExec("xanalremove module");
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+            AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeRemove;
+            RunAnalyzer();
+            break;
     }
 }
 
 HUB_EXPIMP void QtPlugin::CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo)
-{
+{    
     if(analysisLaunched)
     {
         return;
     }
 
-    Script::Module::ModuleInfo mi;
-    Script::Module::InfoFromAddr(bpInfo->breakpoint->addr, &mi);
-
-    if(AnalyzerHub::GetModuleEntryPoint(mi.name) == bpInfo->breakpoint->addr)
+    if(Script::Module::EntryFromAddr(bpInfo->breakpoint->addr) == bpInfo->breakpoint->addr)
     {
         analysisLaunched = true;
         if(AnalyzerHub::pSettings.autoAnalysis)
         {
+            /*clock_t start_t;
+            clock_t end_t;
+            GuiAddLogMessage("[xAnalyzer Qt] Starting entropy calculation\r\n");
+            start_t = clock();*/
+
+            // TODO: show entropy value in the gui?
+            if(AnalyzerHub::pSettings.analyzeEntropy)
+            {
+                char exePath[MAX_PATH] = {0};
+                Script::Module::PathFromAddr(bpInfo->breakpoint->addr, exePath);
+                if(AnalyzerHub::IsExecutablePacked(exePath))
+                {
+                    MessageBoxA((HWND)getParent()->winId(),
+                               "A high entropy has been found which could indicate a possible encrypted or packed executable",
+                               "High Entropy",
+                                MB_ICONINFORMATION + MB_OK);
+                }
+            }
+            // TODO: remove only for debug
+            /*end_t = clock();
+            std::string msg = "[xAnalyzer Qt] Done in " + std::to_string(static_cast<double>((end_t - start_t) / CLOCKS_PER_SEC)) + "\r\n";
+            GuiAddLogMessage(msg.c_str());*/
+
             if(!DebugeeDatabaseExists())
             {
-                DbgCmdExec("xanal module");
+                //DbgCmdExec("xanal module");
+                AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+                AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
+                RunAnalyzer();
             }
             else
             {
@@ -247,11 +301,13 @@ HUB_EXPIMP void QtPlugin::CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo
     }
 }
 
+HUB_EXPIMP void CBSTOPDEBUG(CBTYPE cbType, PLUG_CB_STOPDEBUG* info)
+{
+    // reset analysis flag
+    analysisLaunched = false;
+}
+
 //HUB_EXPIMP void CBINITDEBUG(CBTYPE cbType, PLUG_CB_INITDEBUG* info)
-//{
-//}
-//
-//HUB_EXPIMP void CBSTOPDEBUG(CBTYPE cbType, PLUG_CB_STOPDEBUG* info)
 //{
 //}
 //
@@ -289,11 +345,28 @@ HUB_EXPIMP void QtPlugin::CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo
 // --------------------------------------------------------
 
 /**
+ * @brief Passes data to the hub and launches the analyzer
+ */
+void QtPlugin::RunAnalyzer()
+{
+    AnalyzerHub::SetAnalyzerMode(AnalyzerHub::analyzerMode);
+    AnalyzerHub::SetAnalysisType(AnalyzerHub::analysisType);
+    AnalyzerHub::SetHubSettings(&AnalyzerHub::pSettings);
+    AnalyzerHub::StartAnalyzer();
+}
+
+/**
  * @brief Loads the settings or creates a default file
  */
 void QtPlugin::LoadSettings()
 {
-    QString settingsFile = QDir::currentPath() + "/xanalyzer.ini";
+    QString settingsFile = QDir::currentPath();
+    if(QDir(settingsFile).dirName().toLower() != "plugins")
+    {
+        settingsFile += "/plugins";
+    }
+    settingsFile += "/xanalyzer.ini";
+
     qSettings = new QSettings(settingsFile, QSettings::IniFormat);
     if(!QFile(settingsFile).exists())
     {
@@ -308,6 +381,7 @@ void QtPlugin::LoadSettings()
         qSettings->setValue("undefunctions", "true");
         qSettings->setValue("smarttrack", "true");
         qSettings->setValue("auto", "false");
+        qSettings->setValue("entropy", "false");
         qSettings->endGroup();
 
         qSettings->beginGroup("data");
@@ -327,6 +401,7 @@ void QtPlugin::LoadSettings()
     AnalyzerHub::pSettings.undeFunctions = qSettings->value("undefunctions").toBool();
     AnalyzerHub::pSettings.smartTrack = qSettings->value("smarttrack").toBool();
     AnalyzerHub::pSettings.autoAnalysis = qSettings->value("auto").toBool();
+    AnalyzerHub::pSettings.analyzeEntropy = qSettings->value("entropy").toBool();
     qSettings->endGroup();
 
     qSettings->beginGroup("data");
@@ -347,7 +422,10 @@ void QtPlugin::SaveSettings()
     qSettings->setValue("extended", AnalyzerHub::pSettings.extendedAnalysis);
     qSettings->setValue("undefunctions", AnalyzerHub::pSettings.undeFunctions);
     qSettings->setValue("smarttrack", AnalyzerHub::pSettings.smartTrack);
+    //TODO: REMOVE
+    //qDebug().nospace().noquote() << "pSettings Auto: " << AnalyzerHub::pSettings.autoAnalysis;
     qSettings->setValue("auto", AnalyzerHub::pSettings.autoAnalysis);
+    qSettings->setValue("entropy", AnalyzerHub::pSettings.analyzeEntropy);
     qSettings->endGroup();
 
     qSettings->beginGroup("data");
@@ -368,9 +446,9 @@ void QtPlugin::SaveSettings()
 bool QtPlugin::DebugeeDatabaseExists()
 {
     //TODO: Check the db content and see if it is empty
-    char moduleName[MAX_MODULE_SIZE] = "";
-    Script::Module::GetMainModuleName(moduleName);
+    char moduleName[MAX_MODULE_SIZE] = {};
 
+    Script::Module::GetMainModuleName(moduleName);
     QString dbPath = QDir::currentPath() + "\\db\\" + moduleName;
 
 #ifdef _WIN64

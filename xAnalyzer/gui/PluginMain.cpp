@@ -15,9 +15,14 @@ HUB_EXPIMP bool pluginit(PLUG_INITSTRUCT* initStruct)
 {
     initStruct->pluginVersion = AnalyzerHub::PluginVersionInt;
     initStruct->sdkVersion = PLUG_SDKVERSION;
-    strcpy_s(initStruct->pluginName, AnalyzerHub::PluginName.c_str());
+    strcpy_s(initStruct->pluginName, AnalyzerHub::PluginName);
 
     Plugin::handle = initStruct->pluginHandle;
+
+    // register plugin commands
+    _plugin_registercommand(Plugin::handle, "xanal", QtPlugin::cbRunAnalysis, true);
+    _plugin_registercommand(Plugin::handle, "xanalremove", QtPlugin::cbRemoveAnalysis, true);
+
     return QtPlugin::Init();
 }
 

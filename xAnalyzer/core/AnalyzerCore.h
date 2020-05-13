@@ -4,6 +4,8 @@
 #define ANALYZERCORE_H
 
 #include "Plugin.h"
+#include "AnalyzerHub.h"
+#include "Analysis.h"
 
 class AnalyzerCore
 {
@@ -11,14 +13,13 @@ public:
 	AnalyzerCore();
 	~AnalyzerCore();
 
-	void Run();
+	void RunAnalysis();
+	void RemoveAnalysis();
 	
 private:
-	duint startAddress;
-	duint endAddress;
-	
-	void GetAnalysisAddressRange();
-	void Execute();
+	std::unique_ptr<Analysis> analysis;
+	void BuildProperAnalysisObject();
+	void ShowAnalysisSummary();
 };
 
 #endif

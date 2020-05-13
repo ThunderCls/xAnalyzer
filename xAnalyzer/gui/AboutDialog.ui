@@ -27,7 +27,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Extended static analysis for #&lt;a href=&quot;https://github.com/x64dbg/x64dbg&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;x64dbg&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;extended analysis for #&lt;a href=&quot;https://github.com/x64dbg/x64dbg&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;x64dbg&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblAboutImg">

@@ -10,6 +10,7 @@
 #endif
 
 #include "Plugin.h"
+#include <memory>
 
 //plugin data
 #define PLUGIN_NAME_LEN 255
@@ -17,8 +18,8 @@
 
 namespace AnalyzerHub
 {
-	const std::string PluginName = "xAnalyzer";
-	const std::string PluginVersionStr = "3.0";
+	const char* const PluginName = "xAnalyzer";
+	const char* const PluginVersionStr = "3.0";
 	const int PluginVersionInt = 3;
 
 	typedef enum
@@ -47,8 +48,9 @@ namespace AnalyzerHub
 
 	typedef struct
 	{
-		bool undeFunctions;
+		bool undefFunctions;
 		bool autoAnalysis;
+		bool analyzeEntropy;
 		bool extendedAnalysis;
 		bool clearUsercomments;
 		bool clearAutocomments;
@@ -63,11 +65,16 @@ namespace AnalyzerHub
 	// plugin exported functions start
 	// --------------------------------------------------------
 	HUB_EXPIMP void StartAnalyzer();
-	HUB_EXPIMP duint GetModuleEntryPoint(const char *modName);
+	HUB_EXPIMP bool IsExecutablePacked(const char *fileName);
 	HUB_EXPIMP void GetCoreVersionString(char *versionString);
 	HUB_EXPIMP int GetCoreVersionInt();
 	HUB_EXPIMP void GetCorePluginName(char *nameString);
-
+	HUB_EXPIMP void SetAnalysisType(AnalysisType pAnalysisType);
+	HUB_EXPIMP void SetAnalyzerMode(AnalyzerMode pAnalyzerMode);
+	HUB_EXPIMP void SetHubSettings(const PluginSettings *ppSettings);
+	/*HUB_EXPIMP AnalysisType GetAnalysisType();
+	HUB_EXPIMP AnalyzerMode GetAnalyzerMode();
+	HUB_EXPIMP PluginSettings* GetHubSettings();*/	
 	// --------------------------------------------------------
 	// plugin exported functions end
 	// --------------------------------------------------------

@@ -15,7 +15,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->setupUi(this);
     setModal(true);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint | Qt::MSWindowsFixedSizeDialogHint);
-    ui->lblVersion->setText("Version: " + QString(AnalyzerHub::PluginVersionStr.c_str()));
+    ui->lblVersion->setText("Version: " + QString(AnalyzerHub::PluginVersionStr));
 
     ui->lblQrCode->installEventFilter(this);
     ui->lblGithubUrl->installEventFilter(this);

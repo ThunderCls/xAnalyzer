@@ -2,6 +2,11 @@
 #include "AnalyzerCore.h"
 #include "Plugin.h"
 #include <psapi.h>
+#include <map>
+#include <ctime>
+#include <string>
+#include "Entropy.h"
+#include <memory>
 
 /// <summary>
 /// Main entry function for a DLL file  - required.
@@ -22,9 +27,9 @@ BOOL WINAPI DllMain(
 
 namespace AnalyzerHub
 {
-	AnalysisType analysisType;
-	AnalyzerMode analyzerMode;
-	PluginSettings pSettings;
+	AnalysisType analysisType = TypeNone;
+	AnalyzerMode analyzerMode = ModeNone;
+	PluginSettings pSettings = {};
 
 	/// <summary>
 	/// Launch a main analyzer class instance
@@ -34,36 +39,31 @@ namespace AnalyzerHub
 	/// <returns></returns>
 	HUB_EXPIMP void StartAnalyzer()
 	{
-		AnalyzerCore Analyzer;
-		Analyzer.Run();
+		AnalyzerCore Analyzer;		
+		switch (analyzerMode)
+		{
+			case ModeAnalyze:
+				Analyzer.RunAnalysis();
+				break;
+
+			case ModeRemove:
+				Analyzer.RemoveAnalysis();
+				break;
+			
+			case ModeNone:
+				break;
+		}		
 	}
 
 	/// <summary>
-	/// Get the module entry point address
+	/// Check if the given executable is packed or encrypted using file entropy
 	/// </summary>
-	/// <param name="moduleName">Module name</param>
-	/// <returns>Entry point address</returns>
-	HUB_EXPIMP duint GetModuleEntryPoint(const char *moduleName)
-	{
-		MODULEINFO modInfo = { 0 };
-		wchar_t moduleBaseName[MAX_MODULE_SIZE] = L"";
-
-		HMODULE base = (HMODULE)DbgModBaseFromName(moduleName);
-		if (!base)
-		{
-			return 0;
-		}
-
-		PROCESS_INFORMATION *pi = TitanGetProcessInformation();
-		if (pi == nullptr)
-		{
-			return 0;
-		}
-
-		GetModuleBaseName(pi->hProcess, base, moduleBaseName, MAX_MODULE_SIZE);
-		GetModuleInformation(pi->hProcess, GetModuleHandle(moduleBaseName), &modInfo, sizeof(MODULEINFO));
-
-		return reinterpret_cast<duint>(modInfo.EntryPoint);
+	/// <param name="fileName"></param>
+	/// <returns></returns>
+	HUB_EXPIMP bool IsExecutablePacked(const char *fileName)
+	{		
+		auto entropy = std::make_unique<Entropy>(std::string(fileName));
+		return entropy->IsPacked();
 	}
 
 	/// <summary>
@@ -72,7 +72,7 @@ namespace AnalyzerHub
 	/// <returns></returns>
 	HUB_EXPIMP int GetCoreVersionInt()
 	{
-		return AnalyzerHub::PluginVersionInt;
+		return PluginVersionInt;
 	}
 
 	/// <summary>
@@ -82,7 +82,7 @@ namespace AnalyzerHub
 	/// <returns></returns>
 	HUB_EXPIMP void GetCoreVersionString(char *versionString)
 	{
-		strcpy_s(versionString, PLUGIN_VERSION_LEN, AnalyzerHub::PluginVersionStr.c_str());
+		strcpy_s(versionString, PLUGIN_VERSION_LEN, PluginVersionStr);
 	}
 
 	/// <summary>
@@ -92,7 +92,37 @@ namespace AnalyzerHub
 	/// <returns></returns>
 	HUB_EXPIMP void GetCorePluginName(char *nameString)
 	{
-		strcpy_s(nameString, PLUGIN_NAME_LEN, AnalyzerHub::PluginName.c_str());
+		strcpy_s(nameString, PLUGIN_NAME_LEN, PluginName);
+	}
+
+	/*HUB_EXPIMP AnalysisType GetAnalysisType()
+	{
+		return analysisType;
+	}
+
+	HUB_EXPIMP AnalyzerMode GetAnalyzerMode()
+	{
+		return analyzerMode;
+	}
+
+	HUB_EXPIMP PluginSettings* GetHubSettings()
+	{
+		return &pSettings;
+	}*/
+
+	HUB_EXPIMP void SetAnalysisType(const AnalysisType pAnalysisType)
+	{
+		analysisType = pAnalysisType;
+	}
+
+	HUB_EXPIMP void SetAnalyzerMode(const AnalyzerMode pAnalyzerMode)
+	{
+		analyzerMode = pAnalyzerMode;
+	}
+
+	HUB_EXPIMP void SetHubSettings(const PluginSettings *ppSettings)
+	{
+		pSettings = *ppSettings;
 	}
 	
 }

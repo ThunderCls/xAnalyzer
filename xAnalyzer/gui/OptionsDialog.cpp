@@ -2,6 +2,7 @@
 #include "ui_OptionsDialog.h"
 #include <QMessageBox>
 #include "QtPlugin.h"
+#include <QDebug>
 
 /**
  * @brief OptionsDialog::OptionsDialog
@@ -38,6 +39,7 @@ void OptionsDialog::on_btnSaveSettings_clicked()
     AnalyzerHub::pSettings.extendedAnalysis = ui->checkExtendedAnalysis->isChecked();
     AnalyzerHub::pSettings.undeFunctions = ui->checkUndefFunctions->isChecked();
     AnalyzerHub::pSettings.smartTrack = ui->checkSmartTracking->isChecked();
+    AnalyzerHub::pSettings.analyzeEntropy = ui->checkEntropy->isChecked();
 
     AnalyzerHub::pSettings.clearAutocomments = ui->checkClrAutoComments->isChecked();
     AnalyzerHub::pSettings.clearAutolabels = ui->checkClrAutoLabels->isChecked();
@@ -52,6 +54,8 @@ void OptionsDialog::on_btnSaveSettings_clicked()
         AnalyzerHub::pSettings.commentType = AnalyzerHub::CommentType::TypeAutoComment;
     }
 
+    // TODO: remove
+    //qDebug().nospace().noquote() << "Auto: " << AnalyzerHub::pSettings.autoAnalysis;
     QtPlugin::SaveSettings();    
     this->close();
 }
@@ -66,6 +70,8 @@ void OptionsDialog::LoadSettings()
     QtPlugin::LoadSettings();
 
     ui->checkAutoAnalysis->setChecked(AnalyzerHub::pSettings.autoAnalysis);
+    ui->checkEntropy->setEnabled(AnalyzerHub::pSettings.autoAnalysis);
+    ui->checkEntropy->setChecked(AnalyzerHub::pSettings.analyzeEntropy);
     ui->checkExtendedAnalysis->setChecked(AnalyzerHub::pSettings.extendedAnalysis);
     ui->checkUndefFunctions->setChecked(AnalyzerHub::pSettings.undeFunctions);
     ui->checkSmartTracking->setChecked(AnalyzerHub::pSettings.smartTrack);
@@ -82,4 +88,9 @@ void OptionsDialog::LoadSettings()
     {
         ui->radAutoCom->setChecked(true);
     }
+}
+
+void OptionsDialog::on_checkAutoAnalysis_clicked()
+{
+    ui->checkEntropy->setEnabled(ui->checkAutoAnalysis->isChecked());
 }

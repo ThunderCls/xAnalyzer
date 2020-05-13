@@ -29,6 +29,7 @@ namespace QtPlugin
     void CreatePluginMenu();
     void LoadSettings();
     void SaveSettings();
+    void RunAnalyzer();
 
     HUB_EXPIMP void CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info);
     HUB_EXPIMP void CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo);
