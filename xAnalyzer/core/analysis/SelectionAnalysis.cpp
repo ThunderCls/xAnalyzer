@@ -1,4 +1,5 @@
 #include "SelectionAnalysis.h"
+#include "../AnalyzerCore.h"
 
 SelectionAnalysis::SelectionAnalysis()
 {
@@ -8,11 +9,35 @@ SelectionAnalysis::SelectionAnalysis()
 void SelectionAnalysis::RunAnalysis()
 {
 	// TODO: implement
+	RemoveAnalysis();
+	if (AnalyzerHub::pSettings.UndefFunctions)
+	{
+		RunLinearAnalysis();
+	}
+
+	AnalyzeByteRange();
+}
+
+void SelectionAnalysis::AnalyzeByteRange()
+{
+	
 }
 
 void SelectionAnalysis::RemoveAnalysis()
 {
 	// TODO: implement
+	RemoveLoops(this->startAddress, this->endAddress);
+	RemoveArguments(this->startAddress, this->endAddress);
+	RemoveComments(this->startAddress, this->endAddress);
+	RemoveXRefs(this->startAddress, this->endAddress);
+	RemoveFunctions(this->startAddress, this->endAddress);
+
+	this->xRefsAnalysisDone = false;
+	this->ctrlFlowAnalysisDone = false;
+	this->exceptionDirectoryAnalysisDone = false;
+	this->linearAnalysisDone = false;
+	
+	GuiUpdateDisassemblyView();
 }
 
 void SelectionAnalysis::SetAnalysisRange()
@@ -27,7 +52,6 @@ void SelectionAnalysis::SetAnalysisRange()
 
 	GetInstructionAddressRange(this->startAddress, this->endAddress, start, end);
 }
-
 
 void SelectionAnalysis::GetInstructionAddressRange(duint &startAddress, duint &endAddress, const duint startSelection, const duint endSelection)
 {

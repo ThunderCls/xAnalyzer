@@ -2,11 +2,8 @@
 #include "AnalyzerCore.h"
 #include "Plugin.h"
 #include <psapi.h>
-#include <map>
 #include <ctime>
 #include <string>
-#include "Entropy.h"
-#include <memory>
 
 /// <summary>
 /// Main entry function for a DLL file  - required.
@@ -53,17 +50,6 @@ namespace AnalyzerHub
 			case ModeNone:
 				break;
 		}		
-	}
-
-	/// <summary>
-	/// Check if the given executable is packed or encrypted using file entropy
-	/// </summary>
-	/// <param name="fileName"></param>
-	/// <returns></returns>
-	HUB_EXPIMP bool IsExecutablePacked(const char *fileName)
-	{		
-		auto entropy = std::make_unique<Entropy>(std::string(fileName));
-		return entropy->IsPacked();
 	}
 
 	/// <summary>

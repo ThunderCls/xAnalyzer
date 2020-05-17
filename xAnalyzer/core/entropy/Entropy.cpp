@@ -1,6 +1,6 @@
 #include "Entropy.h"
-#include "Plugin.h"
-#include "PEParser.h"
+#include "../Plugin.h"
+#include "../pe/PEParser.h"
 
 /// <summary>
 /// Constructor

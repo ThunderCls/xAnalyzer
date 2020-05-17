@@ -1,10 +1,10 @@
 #include "AnalyzerCore.h"
 #include "AnalyzerHub.h"
 #include "Plugin.h"
-#include "PEParser.h"
-#include "SelectionAnalysis.h"
-#include "FunctionAnalysis.h"
-#include "ModuleAnalysis.h"
+#include "pe/PEParser.h"
+#include "analysis/SelectionAnalysis.h"
+#include "analysis/FunctionAnalysis.h"
+#include "analysis/ModuleAnalysis.h"
 #include <ctime>
 
 AnalyzerCore::AnalyzerCore() = default;
@@ -66,8 +66,9 @@ void AnalyzerCore::RemoveAnalysis()
 }
 
 void AnalyzerCore::ShowAnalysisSummary()
-{
+{	
 	// TODO: implement
+	// Use Analysis::AnalysisReport
 }
 
 

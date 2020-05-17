@@ -48,15 +48,15 @@ namespace AnalyzerHub
 
 	typedef struct
 	{
-		bool undefFunctions;
-		bool autoAnalysis;
-		bool analyzeEntropy;
-		bool extendedAnalysis;
-		bool clearUsercomments;
-		bool clearAutocomments;
-		bool clearUserlabels;
-		bool clearAutolabels;
-		bool smartTrack;
+		bool UndefFunctions;
+		bool AutoAnalysis;
+		bool AnalyzeEntropy;
+		bool ExtendedAnalysis;
+		bool ClearUsercomments;
+		bool ClearAutocomments;
+		bool ClearUserlabels;
+		bool ClearAutolabels;
+		bool SmartTrack;
 		CommentType commentType;
 	}PluginSettings;
 	extern PluginSettings pSettings;
@@ -65,7 +65,6 @@ namespace AnalyzerHub
 	// plugin exported functions start
 	// --------------------------------------------------------
 	HUB_EXPIMP void StartAnalyzer();
-	HUB_EXPIMP bool IsExecutablePacked(const char *fileName);
 	HUB_EXPIMP void GetCoreVersionString(char *versionString);
 	HUB_EXPIMP int GetCoreVersionInt();
 	HUB_EXPIMP void GetCorePluginName(char *nameString);

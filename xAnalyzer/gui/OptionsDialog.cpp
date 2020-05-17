@@ -35,16 +35,16 @@ OptionsDialog::~OptionsDialog()
 
 void OptionsDialog::on_btnSaveSettings_clicked()
 {
-    AnalyzerHub::pSettings.autoAnalysis = ui->checkAutoAnalysis->isChecked();
-    AnalyzerHub::pSettings.extendedAnalysis = ui->checkExtendedAnalysis->isChecked();
-    AnalyzerHub::pSettings.undeFunctions = ui->checkUndefFunctions->isChecked();
-    AnalyzerHub::pSettings.smartTrack = ui->checkSmartTracking->isChecked();
-    AnalyzerHub::pSettings.analyzeEntropy = ui->checkEntropy->isChecked();
+    AnalyzerHub::pSettings.AutoAnalysis = ui->checkAutoAnalysis->isChecked();
+    AnalyzerHub::pSettings.ExtendedAnalysis = ui->checkExtendedAnalysis->isChecked();
+    AnalyzerHub::pSettings.UndefFunctions = ui->checkUndefFunctions->isChecked();
+    AnalyzerHub::pSettings.SmartTrack = ui->checkSmartTracking->isChecked();
+    AnalyzerHub::pSettings.AnalyzeEntropy = ui->checkEntropy->isChecked();
 
-    AnalyzerHub::pSettings.clearAutocomments = ui->checkClrAutoComments->isChecked();
-    AnalyzerHub::pSettings.clearAutolabels = ui->checkClrAutoLabels->isChecked();
-    AnalyzerHub::pSettings.clearUsercomments = ui->checkClrUserComments->isChecked();
-    AnalyzerHub::pSettings.clearUserlabels = ui->checkClrUserLabels->isChecked();
+    AnalyzerHub::pSettings.ClearAutocomments = ui->checkClrAutoComments->isChecked();
+    AnalyzerHub::pSettings.ClearAutolabels = ui->checkClrAutoLabels->isChecked();
+    AnalyzerHub::pSettings.ClearUsercomments = ui->checkClrUserComments->isChecked();
+    AnalyzerHub::pSettings.ClearUserlabels = ui->checkClrUserLabels->isChecked();
     if(ui->radUserCom->isChecked())
     {
         AnalyzerHub::pSettings.commentType = AnalyzerHub::CommentType::TypeUserComment;
@@ -69,17 +69,17 @@ void OptionsDialog::LoadSettings()
 {
     QtPlugin::LoadSettings();
 
-    ui->checkAutoAnalysis->setChecked(AnalyzerHub::pSettings.autoAnalysis);
-    ui->checkEntropy->setEnabled(AnalyzerHub::pSettings.autoAnalysis);
-    ui->checkEntropy->setChecked(AnalyzerHub::pSettings.analyzeEntropy);
-    ui->checkExtendedAnalysis->setChecked(AnalyzerHub::pSettings.extendedAnalysis);
-    ui->checkUndefFunctions->setChecked(AnalyzerHub::pSettings.undeFunctions);
-    ui->checkSmartTracking->setChecked(AnalyzerHub::pSettings.smartTrack);
+    ui->checkAutoAnalysis->setChecked(AnalyzerHub::pSettings.AutoAnalysis);
+    ui->checkEntropy->setEnabled(AnalyzerHub::pSettings.AutoAnalysis);
+    ui->checkEntropy->setChecked(AnalyzerHub::pSettings.AnalyzeEntropy);
+    ui->checkExtendedAnalysis->setChecked(AnalyzerHub::pSettings.ExtendedAnalysis);
+    ui->checkUndefFunctions->setChecked(AnalyzerHub::pSettings.UndefFunctions);
+    ui->checkSmartTracking->setChecked(AnalyzerHub::pSettings.SmartTrack);
 
-    ui->checkClrAutoComments->setChecked(AnalyzerHub::pSettings.clearAutocomments);
-    ui->checkClrAutoLabels->setChecked(AnalyzerHub::pSettings.clearAutolabels);
-    ui->checkClrUserComments->setChecked(AnalyzerHub::pSettings.clearUsercomments);
-    ui->checkClrUserLabels->setChecked(AnalyzerHub::pSettings.clearUserlabels);
+    ui->checkClrAutoComments->setChecked(AnalyzerHub::pSettings.ClearAutocomments);
+    ui->checkClrAutoLabels->setChecked(AnalyzerHub::pSettings.ClearAutolabels);
+    ui->checkClrUserComments->setChecked(AnalyzerHub::pSettings.ClearUsercomments);
+    ui->checkClrUserLabels->setChecked(AnalyzerHub::pSettings.ClearUserlabels);
     if(AnalyzerHub::pSettings.commentType == AnalyzerHub::CommentType::TypeUserComment)
     {
          ui->radUserCom->setChecked(true);

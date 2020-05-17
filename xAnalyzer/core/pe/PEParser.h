@@ -2,7 +2,7 @@
 
 #include <windows.h>
 #include <vector>
-#include "../pluginsdk/_plugin_types.h"
+#include "../../pluginsdk/_plugin_types.h"
 
 class PEParser
 {

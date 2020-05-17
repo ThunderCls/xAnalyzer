@@ -255,34 +255,10 @@ HUB_EXPIMP void QtPlugin::CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo
     if(Script::Module::EntryFromAddr(bpInfo->breakpoint->addr) == bpInfo->breakpoint->addr)
     {
         analysisLaunched = true;
-        if(AnalyzerHub::pSettings.autoAnalysis)
+        if(AnalyzerHub::pSettings.AutoAnalysis)
         {
-            /*clock_t start_t;
-            clock_t end_t;
-            GuiAddLogMessage("[xAnalyzer Qt] Starting entropy calculation\r\n");
-            start_t = clock();*/
-
-            // TODO: show entropy value in the gui?
-            if(AnalyzerHub::pSettings.analyzeEntropy)
-            {
-                char exePath[MAX_PATH] = {0};
-                Script::Module::PathFromAddr(bpInfo->breakpoint->addr, exePath);
-                if(AnalyzerHub::IsExecutablePacked(exePath))
-                {
-                    MessageBoxA((HWND)getParent()->winId(),
-                               "A high entropy has been found which could indicate a possible encrypted or packed executable",
-                               "High Entropy",
-                                MB_ICONINFORMATION + MB_OK);
-                }
-            }
-            // TODO: remove only for debug
-            /*end_t = clock();
-            std::string msg = "[xAnalyzer Qt] Done in " + std::to_string(static_cast<double>((end_t - start_t) / CLOCKS_PER_SEC)) + "\r\n";
-            GuiAddLogMessage(msg.c_str());*/
-
             if(!DebugeeDatabaseExists())
             {
-                //DbgCmdExec("xanal module");
                 AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
                 AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
                 RunAnalyzer();
@@ -365,7 +341,7 @@ void QtPlugin::LoadSettings()
     {
         settingsFile += "/plugins";
     }
-    settingsFile += "/xanalyzer.ini";
+    settingsFile += "/xAnalyzer.ini";
 
     qSettings = new QSettings(settingsFile, QSettings::IniFormat);
     if(!QFile(settingsFile).exists())
@@ -376,40 +352,40 @@ void QtPlugin::LoadSettings()
         //settings->beginGroup("settings");
         //settings->endGroup();
 
-        qSettings->beginGroup("analysis");
-        qSettings->setValue("extended", "true");
-        qSettings->setValue("undefunctions", "true");
-        qSettings->setValue("smarttrack", "true");
-        qSettings->setValue("auto", "false");
-        qSettings->setValue("entropy", "false");
+        qSettings->beginGroup("Analysis");
+        qSettings->setValue("Extended", "true");
+        qSettings->setValue("UndefFunctions", "true");
+        qSettings->setValue("SmartTrack", "true");
+        qSettings->setValue("Auto", "false");
+        qSettings->setValue("Entropy", "false");
         qSettings->endGroup();
 
-        qSettings->beginGroup("data");
-        qSettings->setValue("comment_type", 1);
-        qSettings->setValue("clear_usercomments", "true");
-        qSettings->setValue("clear_userlabels", "true");
-        qSettings->setValue("clear_autocomments", "true");
-        qSettings->setValue("clear_autolabels", "true");
+        qSettings->beginGroup("Data");
+        qSettings->setValue("CommentType", 1);
+        qSettings->setValue("ClearUserComments", "true");
+        qSettings->setValue("ClearUserLabels", "true");
+        qSettings->setValue("ClearAutoComments", "true");
+        qSettings->setValue("ClearAutoLabels", "true");
         qSettings->endGroup();
 
         qSettings->sync();
     }
 
     // read values
-    qSettings->beginGroup("analysis");
-    AnalyzerHub::pSettings.extendedAnalysis = qSettings->value("extended").toBool();
-    AnalyzerHub::pSettings.undeFunctions = qSettings->value("undefunctions").toBool();
-    AnalyzerHub::pSettings.smartTrack = qSettings->value("smarttrack").toBool();
-    AnalyzerHub::pSettings.autoAnalysis = qSettings->value("auto").toBool();
-    AnalyzerHub::pSettings.analyzeEntropy = qSettings->value("entropy").toBool();
+    qSettings->beginGroup("Analysis");
+    AnalyzerHub::pSettings.ExtendedAnalysis = qSettings->value("Extended").toBool();
+    AnalyzerHub::pSettings.UndefFunctions = qSettings->value("UndefFunctions").toBool();
+    AnalyzerHub::pSettings.SmartTrack = qSettings->value("SmartTrack").toBool();
+    AnalyzerHub::pSettings.AutoAnalysis = qSettings->value("Auto").toBool();
+    AnalyzerHub::pSettings.AnalyzeEntropy = qSettings->value("Entropy").toBool();
     qSettings->endGroup();
 
-    qSettings->beginGroup("data");
-    AnalyzerHub::pSettings.commentType = static_cast<AnalyzerHub::CommentType>(qSettings->value("comment_type").toInt());
-    AnalyzerHub::pSettings.clearUsercomments = qSettings->value("clear_usercomments").toBool();
-    AnalyzerHub::pSettings.clearUserlabels = qSettings->value("clear_userlabels").toBool();
-    AnalyzerHub::pSettings.clearAutocomments = qSettings->value("clear_autocomments").toBool();
-    AnalyzerHub::pSettings.clearAutolabels = qSettings->value("clear_autolabels").toBool();
+    qSettings->beginGroup("Data");
+    AnalyzerHub::pSettings.commentType = static_cast<AnalyzerHub::CommentType>(qSettings->value("CommentType").toInt());
+    AnalyzerHub::pSettings.ClearUsercomments = qSettings->value("ClearUserComments").toBool();
+    AnalyzerHub::pSettings.ClearUserlabels = qSettings->value("ClearUserLabels").toBool();
+    AnalyzerHub::pSettings.ClearAutocomments = qSettings->value("ClearAutoComments").toBool();
+    AnalyzerHub::pSettings.ClearAutolabels = qSettings->value("ClearAutoLabels").toBool();
     qSettings->endGroup();
 }
 
@@ -418,22 +394,22 @@ void QtPlugin::LoadSettings()
  */
 void QtPlugin::SaveSettings()
 {
-    qSettings->beginGroup("analysis");
-    qSettings->setValue("extended", AnalyzerHub::pSettings.extendedAnalysis);
-    qSettings->setValue("undefunctions", AnalyzerHub::pSettings.undeFunctions);
-    qSettings->setValue("smarttrack", AnalyzerHub::pSettings.smartTrack);
+    qSettings->beginGroup("Analysis");
+    qSettings->setValue("Extended", AnalyzerHub::pSettings.ExtendedAnalysis);
+    qSettings->setValue("UndefFunctions", AnalyzerHub::pSettings.UndefFunctions);
+    qSettings->setValue("SmartTrack", AnalyzerHub::pSettings.SmartTrack);
     //TODO: REMOVE
     //qDebug().nospace().noquote() << "pSettings Auto: " << AnalyzerHub::pSettings.autoAnalysis;
-    qSettings->setValue("auto", AnalyzerHub::pSettings.autoAnalysis);
-    qSettings->setValue("entropy", AnalyzerHub::pSettings.analyzeEntropy);
+    qSettings->setValue("Auto", AnalyzerHub::pSettings.AutoAnalysis);
+    qSettings->setValue("Entropy", AnalyzerHub::pSettings.AnalyzeEntropy);
     qSettings->endGroup();
 
-    qSettings->beginGroup("data");
-    qSettings->setValue("comment_type", static_cast<int>(AnalyzerHub::pSettings.commentType));
-    qSettings->setValue("clear_usercomments", AnalyzerHub::pSettings.clearUsercomments);
-    qSettings->setValue("clear_userlabels", AnalyzerHub::pSettings.clearUserlabels);
-    qSettings->setValue("clear_autocomments", AnalyzerHub::pSettings.clearAutocomments);
-    qSettings->setValue("clear_autolabels", AnalyzerHub::pSettings.clearAutolabels);
+    qSettings->beginGroup("Data");
+    qSettings->setValue("CommentType", static_cast<int>(AnalyzerHub::pSettings.commentType));
+    qSettings->setValue("ClearUserComments", AnalyzerHub::pSettings.ClearUsercomments);
+    qSettings->setValue("ClearUserLabels", AnalyzerHub::pSettings.ClearUserlabels);
+    qSettings->setValue("ClearAutoComments", AnalyzerHub::pSettings.ClearAutocomments);
+    qSettings->setValue("ClearAutoLabels", AnalyzerHub::pSettings.ClearAutolabels);
     qSettings->endGroup();
 
     qSettings->sync();

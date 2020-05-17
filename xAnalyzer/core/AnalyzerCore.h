@@ -5,7 +5,7 @@
 
 #include "Plugin.h"
 #include "AnalyzerHub.h"
-#include "Analysis.h"
+#include "analysis/Analysis.h"
 
 class AnalyzerCore
 {

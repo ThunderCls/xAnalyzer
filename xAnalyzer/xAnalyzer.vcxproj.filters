@@ -126,22 +126,25 @@
     <ClInclude Include="core\AnalyzerCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\Entropy.h">
+    <ClInclude Include="core\entropy\Entropy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\PEParser.h">
+    <ClInclude Include="core\pe\PEParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\Analysis.h">
+    <ClInclude Include="core\analysis\Analysis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\SelectionAnalysis.h">
+    <ClInclude Include="core\analysis\FunctionAnalysis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\FunctionAnalysis.h">
+    <ClInclude Include="core\analysis\ModuleAnalysis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\ModuleAnalysis.h">
+    <ClInclude Include="core\analysis\SelectionAnalysis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\utils\StringUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,22 +155,25 @@
     <ClCompile Include="core\AnalyzerCore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\Entropy.cpp">
+    <ClCompile Include="core\entropy\Entropy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\PEParser.cpp">
+    <ClCompile Include="core\pe\PEParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\Analysis.cpp">
+    <ClCompile Include="core\analysis\Analysis.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\SelectionAnalysis.cpp">
+    <ClCompile Include="core\analysis\FunctionAnalysis.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\FunctionAnalysis.cpp">
+    <ClCompile Include="core\analysis\ModuleAnalysis.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\ModuleAnalysis.cpp">
+    <ClCompile Include="core\analysis\SelectionAnalysis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core\utils\StringUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

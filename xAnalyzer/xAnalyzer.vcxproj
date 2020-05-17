@@ -19,15 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core\Analysis.h" />
+    <ClInclude Include="core\analysis\Analysis.h" />
     <ClInclude Include="core\AnalyzerCore.h" />
-    <ClInclude Include="core\Entropy.h" />
-    <ClInclude Include="core\FunctionAnalysis.h" />
-    <ClInclude Include="core\ModuleAnalysis.h" />
-    <ClInclude Include="core\PEParser.h" />
+    <ClInclude Include="core\entropy\Entropy.h" />
+    <ClInclude Include="core\analysis\FunctionAnalysis.h" />
+    <ClInclude Include="core\analysis\ModuleAnalysis.h" />
+    <ClInclude Include="core\pe\PEParser.h" />
     <ClInclude Include="core\Plugin.h" />
     <ClInclude Include="core\AnalyzerHub.h" />
-    <ClInclude Include="core\SelectionAnalysis.h" />
+    <ClInclude Include="core\analysis\SelectionAnalysis.h" />
+    <ClInclude Include="core\utils\StringUtils.h" />
     <ClInclude Include="pluginsdk\bridgegraph.h" />
     <ClInclude Include="pluginsdk\bridgelist.h" />
     <ClInclude Include="pluginsdk\bridgemain.h" />
@@ -63,14 +64,15 @@
     <ClInclude Include="pluginsdk\_scriptapi_symbol.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\Analysis.cpp" />
+    <ClCompile Include="core\analysis\Analysis.cpp" />
     <ClCompile Include="core\AnalyzerCore.cpp" />
     <ClCompile Include="core\AnalyzerHub.cpp" />
-    <ClCompile Include="core\Entropy.cpp" />
-    <ClCompile Include="core\FunctionAnalysis.cpp" />
-    <ClCompile Include="core\ModuleAnalysis.cpp" />
-    <ClCompile Include="core\PEParser.cpp" />
-    <ClCompile Include="core\SelectionAnalysis.cpp" />
+    <ClCompile Include="core\entropy\Entropy.cpp" />
+    <ClCompile Include="core\analysis\FunctionAnalysis.cpp" />
+    <ClCompile Include="core\analysis\ModuleAnalysis.cpp" />
+    <ClCompile Include="core\pe\PEParser.cpp" />
+    <ClCompile Include="core\analysis\SelectionAnalysis.cpp" />
+    <ClCompile Include="core\utils\StringUtils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C3D06AC1-8D38-4B77-A53D-61F6EE1B90CB}</ProjectGuid>
@@ -123,26 +125,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\core\bin\x32d\</OutDir>
-    <TargetName>xanalcore32</TargetName>
-    <IntDir>.\core\bin\x32d\intermediates</IntDir>
+    <TargetName>xAnalcore32</TargetName>
+    <IntDir>.\core\bin\x32d\intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>xanalcore64</TargetName>
+    <TargetName>xAnalcore64</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\core\bin\x64d\</OutDir>
-    <IntDir>.\core\bin\x64d\intermediates</IntDir>
+    <IntDir>.\core\bin\x64d\intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\core\bin\x32\</OutDir>
-    <TargetName>xanalcore32</TargetName>
-    <IntDir>.\core\bin\x32\intermediates</IntDir>
+    <TargetName>xAnalcore32</TargetName>
+    <IntDir>.\core\bin\x32\intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>xanalcore64</TargetName>
+    <TargetName>xAnalcore64</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\core\bin\x64\</OutDir>
-    <IntDir>.\core\bin\x64\intermediates</IntDir>
+    <IntDir>.\core\bin\x64\intermediates\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

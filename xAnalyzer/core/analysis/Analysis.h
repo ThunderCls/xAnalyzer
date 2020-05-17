@@ -1,23 +1,34 @@
 #pragma once
 
-#include <windows.h>
 #include <sstream>
-#include "Plugin.h"
-#include "AnalyzerHub.h"
+#include "../Plugin.h"
+#include "../utils/StringUtils.h"
 
 class Analysis
 {
 public:
 	Analysis();
-	~Analysis();
-
-	virtual void RemoveAnalysis();
-	virtual void RunAnalysis();
+	virtual void RemoveAnalysis() = 0;
+	virtual void RunAnalysis() = 0;
 	
 protected:
+	~Analysis() = default;
+
+	std::string mainModuleName;
 	duint startAddress;
 	duint endAddress;
 
+	typedef struct
+	{
+		int DefinedCalls;
+		int UndefCalls;
+		int VbFunctionCalls;
+		int Loops;
+		int TotalCommentsSet;
+		int TotalLabelsSet;
+	}AnalysisReport;
+	
+	bool IsVB;
 	bool xRefsAnalysisDone;
 	bool ctrlFlowAnalysisDone;
 	bool exceptionDirectoryAnalysisDone;
@@ -25,10 +36,7 @@ protected:
 
 	void RunFunctionAnalysis(const duint startAddress)
 	{
-		std::stringstream stream;
-		stream << std::hex << startAddress;
-
-		std::string cmd("analr " + stream.str());
+		std::string cmd("analr " + StringUtils::ToHex(startAddress));
 		DbgCmdExecDirect(cmd.c_str());
 
 		// this cmd erases the current references
@@ -72,9 +80,15 @@ protected:
 		}
 	}
 
-	virtual void RunPreliminaryAnalysis();
-	virtual void SetAnalysisRange();
-
+	void RemoveLoops(const duint startAddress = 0, const duint endAddress = 0);
+	void RemoveArguments(const duint startAddress, const duint endAddress);
+	void RemoveComments(const duint startAddress, const duint endAddress);
+	void RemoveFunctions(const duint startAddress = 0, const duint endAddress = 0);
+	void RemoveXRefs(const duint startAddress = 0, const duint endAddress = 0);
+	
 	bool IsProlog(const BASIC_INSTRUCTION_INFO *bii);
 	bool IsEpilog(const BASIC_INSTRUCTION_INFO *bii);
+	bool IsVisualBasic();
+	
+	virtual void AnalyzeByteRange() = 0;
 };
