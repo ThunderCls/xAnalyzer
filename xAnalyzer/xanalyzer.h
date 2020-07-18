@@ -34,10 +34,10 @@ typedef  struct stRegisterDetails{
 
 typedef struct stINSTRUCTIONSTACK{
 	duint Address;
-	char Instruction[MAX_MNEMONIC_SIZE * 4];
-	char GuiInstruction[MAX_MNEMONIC_SIZE * 4];
-	char DestinationRegister[MAX_MNEMONIC_SIZE * 4];
-	char SourceRegister[MAX_MNEMONIC_SIZE * 4];	
+	char Instruction[GUI_MAX_DISASSEMBLY_SIZE];
+	char GuiInstruction[GUI_MAX_DISASSEMBLY_SIZE];
+	char DestinationRegister[GUI_MAX_DISASSEMBLY_SIZE];
+	char SourceRegister[GUI_MAX_DISASSEMBLY_SIZE];
 }INSTRUCTIONSTACK;
 
 typedef struct stLOOPSTACK{
@@ -74,7 +74,7 @@ extern string szAPIFunction;
 extern char szCurrentDirectory[MAX_PATH];
 extern char szAPIFunctionParameter[MAX_COMMENT_SIZE];
 extern duint addressFunctionStart;
-extern stack <INSTRUCTIONSTACK*> stackInstructions;
+extern stack <INSTRUCTIONSTACK> stackInstructions;
 
 void AnalyzeBytesRange(duint dwEntry, duint dwExit);
 void OnBreakpoint(PLUG_CB_BREAKPOINT* bpInfo);
@@ -110,9 +110,9 @@ void ExtraAnalysis();
 bool cbExtendedAnalysis(int argc, char* argv[]);
 bool cbExtendedAnalysisRemove(int argc, char* argv[]);
 void DoExtendedAnalysis();
-void ClearStack(stack<INSTRUCTIONSTACK*> &q);
+void ClearStack(stack<INSTRUCTIONSTACK> &q);
 void ClearLoopStack(stack<LOOPSTACK*> &q);
-void ClearVector(vector<INSTRUCTIONSTACK*> &q);
+void ClearVector(vector<INSTRUCTIONSTACK> &q);
 string CallDirection(BASIC_INSTRUCTION_INFO *bii);
 bool SetFunctionParams(Script::Argument::ArgumentInfo *ai, char *szAPIModuleName);
 bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_source = NULL, char *gui_inst_source = NULL);
@@ -129,7 +129,7 @@ bool IsEpilog(const BASIC_INSTRUCTION_INFO *bii);
 char *GetInstructionSource(char *instruction);
 void DecomposeMovInstruction(char *instruction, char *destination, char *source);
 void GetDestinationRegister(char *instruction, char *destRegister);
-void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTRUCTIONSTACK &arg);
+void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRUCTIONSTACK &arg);
 void IsLoopJump(BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress);
 void SetFunctionLoops();
 bool FileDbExists();
@@ -145,11 +145,10 @@ void ClearPrevAnalysis(const duint start, const duint end);
 void GetModuleNameSearch(char *szAPIModuleName, char *szAPIModuleNameSearch);
 bool FindFunctionFromPointer(char *szDisasmText, char *szFunctionName);
 string StripFunctionNamePointer(char *line, int *index = 0);
-duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments);
-//bool IsVectorEmpty(const vector<INSTRUCTIONSTACK*> collection);
+duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments);
 #ifdef _WIN64
 bool IsArgumentRegister(const char *destination);
-bool IsArgDuplicated(vector <INSTRUCTIONSTACK*> arg, const INSTRUCTIONSTACK *inst);
+bool IsArgDuplicated(vector <INSTRUCTIONSTACK> arg, const INSTRUCTIONSTACK *inst);
 RegisterDetails GetStandardRegisterFromArg(const INSTRUCTIONSTACK *inst);
 #endif
 

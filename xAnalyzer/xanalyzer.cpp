@@ -37,9 +37,9 @@ char szAPIFunctionParameter[MAX_COMMENT_SIZE] = "";
 char *vc = "msvcrxx\0";
 char *vcrt = "vcruntime\0";
 char *ucrt = "ucrtbase\0";
-stack <INSTRUCTIONSTACK*> stackInstructions; // global instructions stack
+stack <INSTRUCTIONSTACK> stackInstructions; // global instructions stack
 stack <LOOPSTACK*> stackLoops; // global loops instructions stack
-vector <INSTRUCTIONSTACK*> vectorFunctPointer; // function pointers handling stack
+vector <INSTRUCTIONSTACK> vectorFunctPointer; // function pointers handling stack
 unordered_map<string, Utf8Ini*>::const_iterator apiDefPointer; // pointer to the current def file
 unordered_map<string, Utf8Ini*> apiFiles; // map of main def files
 unordered_map<string, Utf8Ini*> apiHFiles; // map of headers def files
@@ -320,8 +320,8 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		ZeroMemory(&cbii, sizeof(BASIC_INSTRUCTION_INFO));
 		szAPIFunction = ""; // clear prev api function name
 
-		INSTRUCTIONSTACK *inst = new INSTRUCTIONSTACK;
-		inst->Address = CurrentAddress; // save address of instruction
+		INSTRUCTIONSTACK inst = {0};
+		inst.Address = CurrentAddress; // save address of instruction
 
 		DbgDisasmFastAt(CurrentAddress, &bii);
 		prolog = IsProlog(&bii, CurrentAddress); // function prolog flag
@@ -376,13 +376,13 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 								strcpy_s(szAPIComment, szAPIFunction.c_str());
 
 							if (SetSubParams(&ai)) // when no definition use generic arguments
-								SetAutoCommentIfCommentIsEmpty(inst, szAPIComment, _countof(szAPIComment), true);
+								SetAutoCommentIfCommentIsEmpty(&inst, szAPIComment, _countof(szAPIComment), true);
 						}
 					}
 					else
 					{
 						if (SetFunctionParams(&ai, szAPIModuleNameSearch)) // set arguments for defined function
-							SetAutoCommentIfCommentIsEmpty(inst, szAPIDefinition, _countof(szAPIDefinition), true);
+							SetAutoCommentIfCommentIsEmpty(&inst, szAPIDefinition, _countof(szAPIDefinition), true);
 					}
 				}
 				else
@@ -400,7 +400,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 					if (conf.track_undef_functions && FindFunctionFromPointer(szDisasmText, szFunctionName) && SearchApiFileForDefinition(szFunctionName, szAPIDefinition, true))
 					{
 						if (SetFunctionParams(&ai, szFunctionName))
-							SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+							SetAutoCommentIfCommentIsEmpty(&inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 					}
 					else
 					{
@@ -410,7 +410,7 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 							{
 								// internal subs
 								if (SetSubParams(&ai))
-									SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+									SetAutoCommentIfCommentIsEmpty(&inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 							}
 						}
 						else
@@ -429,12 +429,12 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 								if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, recursive)) // just to get the correct definition file .api
 								{
 									if (SetFunctionParams(&ai, szAPIModuleNameSearch))
-										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+										SetAutoCommentIfCommentIsEmpty(&inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 								}
 								else if (conf.undef_funtion_analysis)
 								{
 									if (SetSubParams(&ai))
-										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+										SetAutoCommentIfCommentIsEmpty(&inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 								}
 
 							}
@@ -443,12 +443,12 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 								if (SearchApiFileForDefinition(szAPIModuleNameSearch, szAPIDefinition, true)) // just to get the correct definition file .api
 								{
 									if (SetFunctionParams(&ai, szAPIModuleNameSearch))
-										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+										SetAutoCommentIfCommentIsEmpty(&inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 								}
 								else if (conf.undef_funtion_analysis)// in case of direct call with no definition just set the comment on it and set saved arguments
 								{
 									if (SetSubParams(&ai))
-										SetAutoCommentIfCommentIsEmpty(inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
+										SetAutoCommentIfCommentIsEmpty(&inst, szLabelAPIFunction, _countof(szLabelAPIFunction), true);
 								}
 							}
 						}
@@ -472,13 +472,13 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 			{
 				if (vectorFunctPointer.size() < INSTRUCTION_FUNCT_POINTER_MAXSIZE)
 				{
-					INSTRUCTIONSTACK *mov_inst = new INSTRUCTIONSTACK;
-					memcpy_s(mov_inst, sizeof(INSTRUCTIONSTACK), inst, sizeof(INSTRUCTIONSTACK));
+					INSTRUCTIONSTACK mov_inst = {0};
+					memcpy_s(&mov_inst, sizeof(INSTRUCTIONSTACK), &inst, sizeof(INSTRUCTIONSTACK));
 					GuiGetDisassembly(CurrentAddress, szDisasmText); // get the "as GUI" instruction text line (PERFORMANCE LOAD)
 
-					strcpy_s(mov_inst->Instruction, bii.instruction); // save instruction string
-					strcpy_s(mov_inst->GuiInstruction, szDisasmText); // save the gui instruction string
-					DecomposeMovInstruction(mov_inst->GuiInstruction, mov_inst->DestinationRegister, mov_inst->SourceRegister);
+					strcpy_s(mov_inst.Instruction, bii.instruction); // save instruction string
+					strcpy_s(mov_inst.GuiInstruction, szDisasmText); // save the gui instruction string
+					DecomposeMovInstruction(mov_inst.GuiInstruction, mov_inst.DestinationRegister, mov_inst.SourceRegister);
 					vectorFunctPointer.insert(vectorFunctPointer.begin(), mov_inst); // save instruction
 				}
 				else
@@ -491,12 +491,12 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 				{
 					GuiGetDisassembly(CurrentAddress, szDisasmText); // get the "as GUI" instruction text line (PERFORMANCE LOAD)
 
-					strcpy_s(inst->Instruction, bii.instruction); // save instruction string
-					strcpy_s(inst->GuiInstruction, szDisasmText); // save the gui instruction string
-					strcpy_s(inst->SourceRegister, GetInstructionSource(bii.instruction));
-					if (strcmp(inst->SourceRegister, "0x00") == 0) // get rid of double zeros
-						inst->SourceRegister[1] = 0;
-					GetDestinationRegister(bii.instruction, inst->DestinationRegister); // save destination registry
+					strcpy_s(inst.Instruction, bii.instruction); // save instruction string
+					strcpy_s(inst.GuiInstruction, szDisasmText); // save the gui instruction string
+					strcpy_s(inst.SourceRegister, GetInstructionSource(bii.instruction));
+					if (strcmp(inst.SourceRegister, "0x00") == 0) // get rid of double zeros
+						inst.SourceRegister[1] = 0;
+					GetDestinationRegister(bii.instruction, inst.DestinationRegister); // save destination registry
 					stackInstructions.push(inst); // save instruction
 				}
 				else
@@ -751,13 +751,13 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 	if (ParamCount > 0) // make sure we are only checked for functions that are succesfully found in api file and have 1 or more parameters
 	{
 		// create the arguments list
-		vector <INSTRUCTIONSTACK*> args;
+		vector <INSTRUCTIONSTACK> args;
 		duint CurrentParam = 0;
 		while (!stackInstructions.empty())
 		{
-			INSTRUCTIONSTACK *inst = stackInstructions.top(); // get last/first element
+			INSTRUCTIONSTACK inst = stackInstructions.top(); // get last/first element
 #ifndef _WIN64
-			if (IsValidArgumentInstruction(inst, ParamCount))
+			if (IsValidArgumentInstruction(&inst, ParamCount))
 			{
 #endif
 				args.insert(args.begin() + CurrentParam, inst);
@@ -775,7 +775,7 @@ bool SetFunctionParams(Argument::ArgumentInfo *ai, char *szAPIModuleName)
 			ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
 			CurrentParam = 1;
 			duint LowerMemoryRVAAddress = 0;
-			ai->rvaStart = args[0]->Address - Module::BaseFromAddr(args[0]->Address); // first argument line
+			ai->rvaStart = args[0].Address - Module::BaseFromAddr(args[0].Address); // first argument line
 			while (CurrentParam <= ParamCount)
 			{
 				GetArgument(CurrentParam, args, inst); // get arguments in order. 64 bits may have different argument order
@@ -832,15 +832,15 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 		procSummary.undefCallsDetected++; // record amount of undefined calls
 
 		// create the arguments list
-		vector <INSTRUCTIONSTACK*> args;
+		vector <INSTRUCTIONSTACK> args;
 		while (!stackInstructions.empty()) 
 		{
-			INSTRUCTIONSTACK *inst = stackInstructions.top(); // get last inserted (first) element
+			INSTRUCTIONSTACK inst = stackInstructions.top(); // get last inserted (first) element
 #ifdef _WIN64
 			// Remove duplicated register instructions, 
 			// keeping only the first in the stack (last inserted) as valid argument
 			// x64 only (x86 can push repeated values/registers to stack as args)
-			if (!IsArgDuplicated(args, inst))
+			if (!IsArgDuplicated(args, &inst))
 			{
 #endif
 				args.push_back(stackInstructions.top());
@@ -862,7 +862,7 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 		duint LowerMemoryRVAAddress = 0;
 
 		ai->instructioncount = ParamCount + 1; // lenght of the argument + 1 including CALL
-		ai->rvaStart = args[0]->Address - Module::BaseFromAddr(args[0]->Address); // first argument line
+		ai->rvaStart = args[0].Address - Module::BaseFromAddr(args[0].Address); // first argument line
 
 		while (CurrentParam <= ParamCount)
 		{
@@ -910,7 +910,7 @@ bool SetSubParams(Argument::ArgumentInfo *ai)
 /// <param name="args"></param>
 /// <param name="inst"></param>
 /// <returns></returns>
-bool IsArgDuplicated(vector <INSTRUCTIONSTACK*> args, const INSTRUCTIONSTACK *inst)
+bool IsArgDuplicated(vector <INSTRUCTIONSTACK> args, const INSTRUCTIONSTACK *inst)
 {	
 	if (/*IsVectorEmpty*/args.empty())
 		return false;
@@ -923,38 +923,15 @@ bool IsArgDuplicated(vector <INSTRUCTIONSTACK*> args, const INSTRUCTIONSTACK *in
 	// share the same register group or the same stack pointer locations
 	for (auto arg : args)
 	{		
-		if (arg != nullptr)
-		{
-			RegisterDetails argDetails = GetStandardRegisterFromArg(arg);
-			if (argDetails.Origin == instDetails.Origin &&
-				argDetails.StackOffset == instDetails.StackOffset)
-				return true;
-		}
+		RegisterDetails argDetails = GetStandardRegisterFromArg(&arg);
+		if (argDetails.Origin == instDetails.Origin &&
+			argDetails.StackOffset == instDetails.StackOffset)
+			return true;
 	}
 
 	return false;
 }
 #endif
-
-/// <summary>
-/// Check if a vector is empty or with fully uninitialized elements
-/// </summary>
-/// <param name="collection"></param>
-/// <returns></returns>
-/*bool IsVectorEmpty(const vector<INSTRUCTIONSTACK*> collection)
-{
-	if (collection.empty())
-		return true;
-
-	int nullElements = 0;
-	for(auto item : collection)
-	{
-		if (item == nullptr)
-			nullElements++;
-	}
-
-	return collection.size() == nullElements;
-}*/
 
 #ifdef _WIN64
 /// <summary>
@@ -1349,7 +1326,7 @@ string StripFunctNameFromInst(char *instruction)
 	if (strstr(instruction, "<") == nullptr)
 		return "";
 
-	char subPointerNameStripped[MAX_MNEMONIC_SIZE * 4] = "";
+	char subPointerNameStripped[GUI_MAX_DISASSEMBLY_SIZE] = "";
 	char *subPointer = GetInstructionSource(instruction);
 	char *subPointerName = strchr(subPointer, '<');
 	if (*subPointerName)
@@ -1400,7 +1377,7 @@ bool IsNumericParam(string paramType)
 // ------------------------------------------------------------------------------------
 bool IsMovStack(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddress)
 {
-	char instr[MAX_MNEMONIC_SIZE * 4];
+	char instr[GUI_MAX_DISASSEMBLY_SIZE];
 
 	strcpy_s(instr, bii->instruction); // keep original instruction string unchanged
 	auto isMovInstruction = strstr(instr, "mov") != nullptr;
@@ -2042,7 +2019,7 @@ void ToUpperHex(char *str)
 		strArg = strArg.substr(2, size - 2);
 
 	transform(strArg.begin(), strArg.end(), strArg.begin(), toupper);
-	strcpy_s(str, MAX_MNEMONIC_SIZE * 4, strArg.c_str());
+	strcpy_s(str, GUI_MAX_DISASSEMBLY_SIZE, strArg.c_str());
 }
 
 // ------------------------------------------------------------------------------------
@@ -2140,7 +2117,7 @@ void GetDisasmRange(duint *selstart, duint *selend, duint raw_start, duint raw_e
 // ------------------------------------------------------------------------------------
 std::string CallDirection(BASIC_INSTRUCTION_INFO *bii)
 {
-	char mnemonic[MAX_MNEMONIC_SIZE * 4] = { "[" };
+	char mnemonic[GUI_MAX_DISASSEMBLY_SIZE] = { "[" };
 	char *pch;
 #ifdef _WIN64
 	if (*bii->memory.mnemonic) // indirect call
@@ -2168,12 +2145,11 @@ std::string CallDirection(BASIC_INSTRUCTION_INFO *bii)
 // ------------------------------------------------------------------------------------
 // clearing standard containers is swapping with an empty version of the container
 // ------------------------------------------------------------------------------------
-void ClearStack(stack<INSTRUCTIONSTACK*> &q)
+void ClearStack(stack<INSTRUCTIONSTACK> &q)
 {
-	stack<INSTRUCTIONSTACK*> empty;
+	stack<INSTRUCTIONSTACK> empty;
 	while (!q.empty())
 	{
-		delete q.top();
 		q.pop();
 	}
 	swap(q, empty);
@@ -2190,7 +2166,7 @@ void ClearLoopStack(stack<LOOPSTACK*> &q)
 	swap(q, empty);
 }
 
-void ClearVector(vector<INSTRUCTIONSTACK*> &q)
+void ClearVector(vector<INSTRUCTIONSTACK> &q)
 {
 	while (!q.empty())
 		q.pop_back();
@@ -2238,7 +2214,7 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddre
 #ifdef _WIN64
 	bool IsArgument = false;
 	char *next_token = nullptr;
-	char instruction[MAX_MNEMONIC_SIZE * 4] = { 0 };
+	char instruction[GUI_MAX_DISASSEMBLY_SIZE] = { 0 };
 
 	strcpy_s(instruction, bii->instruction);
 	char *pch = strtok_s(instruction, ",", &next_token); // get the string of the left operand of the instruction
@@ -2284,7 +2260,7 @@ bool IsArgumentInstruction(const BASIC_INSTRUCTION_INFO *bii, duint CurrentAddre
 bool IsValidArgumentInstruction(INSTRUCTIONSTACK *inst, duint args_count)
 {
 	char *next_token = NULL;
-	char instruction[MAX_MNEMONIC_SIZE * 4] = { 0 };
+	char instruction[GUI_MAX_DISASSEMBLY_SIZE] = { 0 };
 
 	if (strncmp(inst->Instruction, "mov", 3) != 0) // check only mov
 		return true;
@@ -2396,7 +2372,7 @@ char *GetInstructionSource(char *instruction)
 // ------------------------------------------------------------------------------------
 void DecomposeMovInstruction(char *instruction, char *destination, char *source)
 {
-	char line[MAX_MNEMONIC_SIZE * 4] = "";
+	char line[GUI_MAX_DISASSEMBLY_SIZE] = "";
 	char *next_token = nullptr;
 
 	strcpy_s(line, instruction);
@@ -2408,12 +2384,12 @@ void DecomposeMovInstruction(char *instruction, char *destination, char *source)
 		if (*ptr)
 		{
 			ptr++; // skip space
-			strcpy_s(destination, MAX_MNEMONIC_SIZE * 4, ptr);
+			strcpy_s(destination, GUI_MAX_DISASSEMBLY_SIZE, ptr);
 		}
 	}
 
 	if (*next_token)
-		strcpy_s(source, MAX_MNEMONIC_SIZE * 4, next_token);
+		strcpy_s(source, GUI_MAX_DISASSEMBLY_SIZE, next_token);
 }
 
 // ------------------------------------------------------------------------------------
@@ -2430,18 +2406,18 @@ void GetDestinationRegister(char *instruction, char *destRegister)
 		if (reg != NULL)
 		{
 			reg++; // avoid blank space
-			strcpy_s(destRegister, MAX_MNEMONIC_SIZE * 4, reg);
+			strcpy_s(destRegister, GUI_MAX_DISASSEMBLY_SIZE, reg);
 			return;
 		}
 	}
 
-	strcpy_s(destRegister, MAX_MNEMONIC_SIZE * 4, " ");
+	strcpy_s(destRegister, GUI_MAX_DISASSEMBLY_SIZE, " ");
 }
 
 // ------------------------------------------------------------------------------------
 // Gets the correct argument index from the stack 
 // ------------------------------------------------------------------------------------
-void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTRUCTIONSTACK &arg)
+void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments, INSTRUCTIONSTACK &arg)
 {
 	// NOTE: should include lower bits registers for R8, R9?
 	// https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture
@@ -2456,13 +2432,13 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 1:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->DestinationRegister, "rcx", 3) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "ecx", 3) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "cx", 2) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "ch", 2) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "cl", 2) == 0)
+			if (strncmp(arguments[i].DestinationRegister, "rcx", 3) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "ecx", 3) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "cx", 2) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "ch", 2) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "cl", 2) == 0)
 			{
-				arg = *arguments[i];
+				arg = arguments[i];
 				del_index = i;
 				found = true;
 				break;
@@ -2472,13 +2448,13 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 2:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->DestinationRegister, "rdx", 3) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "edx", 3) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "dx", 2) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "dh", 2) == 0 ||
-				strncmp(arguments[i]->DestinationRegister, "dl", 2) == 0)
+			if (strncmp(arguments[i].DestinationRegister, "rdx", 3) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "edx", 3) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "dx", 2) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "dh", 2) == 0 ||
+				strncmp(arguments[i].DestinationRegister, "dl", 2) == 0)
 			{
-				arg = *arguments[i];
+				arg = arguments[i];
 				del_index = i;
 				found = true;
 				break;
@@ -2488,9 +2464,9 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 3:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->DestinationRegister, "r8", 2) == 0)
+			if (strncmp(arguments[i].DestinationRegister, "r8", 2) == 0)
 			{
-				arg = *arguments[i];
+				arg = arguments[i];
 				del_index = i;
 				found = true;
 				break;
@@ -2500,9 +2476,9 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	case 4:
 		for (int i = 0; i < arguments.size(); i++)
 		{
-			if (strncmp(arguments[i]->DestinationRegister, "r9", 2) == 0)
+			if (strncmp(arguments[i].DestinationRegister, "r9", 2) == 0)
 			{
-				arg = *arguments[i];
+				arg = arguments[i];
 				del_index = i;
 				found = true;
 				break;
@@ -2519,13 +2495,12 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 		if (del_index >= arguments.size())
 			del_index = 0;
 
-		arg = *arguments[del_index];
+		arg = arguments[del_index];
 		break;
 	}
 
 	if (!arguments.empty())
 	{
-		delete arguments[del_index];
 		arguments.erase(arguments.begin() + del_index); // take out the parameter from list
 	}
 
@@ -2541,7 +2516,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 	if (index >= arguments.size())
 		index = 0;
 
-	arg = *arguments[index];
+	arg = arguments[index];
 
 #endif
 }
@@ -2552,7 +2527,7 @@ void GetArgument(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments, INSTR
 /// <param name="CurrentParam"></param>
 /// <param name="arguments"></param>
 /// <returns></returns>
-duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments)
+duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments)
 {
 	bool foundmatch = false;
 	bool foundStackPointer = false;
@@ -2565,7 +2540,7 @@ duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK*> &arguments)
 	for (; argIndex < arguments.size(); argIndex++)
 	{
 		// search for instruction handling the stack like [STACK_REGISTER+xxx]
-		foundmatch = std::regex_search(arguments[argIndex]->DestinationRegister, cm, re);
+		foundmatch = std::regex_search(arguments[argIndex].DestinationRegister, cm, re);
 		if(foundmatch && cm.size() == 3)
 		{
 			duint dispInt = hextoduint(cm[2].str().c_str()); // access the displacement value
@@ -2643,12 +2618,12 @@ bool FindFunctionFromPointer(char *szDisasmText, char *szFunctionName)
 	duint index = 0;
 	while (!found && index < vectorFunctPointer.size())
 	{
-		INSTRUCTIONSTACK *inst = vectorFunctPointer.at(index);
-		if (strcmp(inst->DestinationRegister, addr) == 0)
+		INSTRUCTIONSTACK inst = vectorFunctPointer.at(index);
+		if (strcmp(inst.DestinationRegister, addr) == 0)
 		{
-			if (strstr(inst->SourceRegister, "<") != nullptr) // if this is the instruction with the function pointer 
+			if (strstr(inst.SourceRegister, "<") != nullptr) // if this is the instruction with the function pointer 
 			{
-				string funct = StripFunctionNamePointer(inst->SourceRegister);
+				string funct = StripFunctionNamePointer(inst.SourceRegister);
 				if (!funct.empty())
 				{
 					szOriginalCharsetAPIFunction = funct;
@@ -2662,7 +2637,7 @@ bool FindFunctionFromPointer(char *szDisasmText, char *szFunctionName)
 				}
 			}
 			else
-				addr = inst->SourceRegister;
+				addr = inst.SourceRegister;
 		}
 
 		index++;
