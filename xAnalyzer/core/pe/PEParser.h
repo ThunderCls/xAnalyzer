@@ -16,12 +16,15 @@ public:
 	~PEParser();
 
 	bool ReadPEData();
-	bool FindCodeSectionRange(duint& startAddress, duint& endAddress);
+	bool CodeSection(duint& startAddress, duint& endAddress, bool rva = true);
+	duint EntryPoint(bool rva = true);
+	int ExecutableSections();
 	
 	void SetFile(const char* filePath)
 	{
 		fileName.assign(filePath);
 	};
+	
 	LPVOID GetMappedFile()
 	{
 		return mFile;

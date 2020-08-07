@@ -4,7 +4,7 @@
 #include "pe/PEParser.h"
 #include "analysis/SelectionAnalysis.h"
 #include "analysis/FunctionAnalysis.h"
-#include "analysis/ModuleAnalysis.h"
+#include "analysis/SectionAnalysis.h"
 #include <ctime>
 
 AnalyzerCore::AnalyzerCore() = default;
@@ -12,18 +12,21 @@ AnalyzerCore::~AnalyzerCore() = default;
 
 void AnalyzerCore::BuildProperAnalysisObject()
 {
+	char exePath[MAX_PATH] = {};
+	Script::Module::GetMainModulePath(exePath);
+	
 	switch (AnalyzerHub::analysisType)
 	{
 		case AnalyzerHub::TypeSelection:
-			this->analysis = std::make_unique<SelectionAnalysis>();
+			this->analysis = std::make_unique<SelectionAnalysis>(exePath);
 			break;
 
 		case AnalyzerHub::TypeFunction:
-			this->analysis = std::make_unique<FunctionAnalysis>();
+			this->analysis = std::make_unique<FunctionAnalysis>(exePath);
 			break;
 
-		case AnalyzerHub::TypeModule:
-			this->analysis = std::make_unique<ModuleAnalysis>();
+		case AnalyzerHub::TypeSection:
+			this->analysis = std::make_unique<SectionAnalysis>(exePath);
 			break;
 
 		case AnalyzerHub::TypeNone:

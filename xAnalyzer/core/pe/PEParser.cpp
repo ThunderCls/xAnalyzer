@@ -37,7 +37,6 @@ void PEParser::FreeResources()
 	}
 }
 
-
 bool PEParser::ReadPEData()
 {
 	FreeResources();
@@ -84,14 +83,73 @@ bool PEParser::ReadPEData()
 	return false;
 }
 
-bool PEParser::FindCodeSectionRange(duint& startAddress, duint& endAddress)
+bool PEParser::CodeSection(duint& startAddress, duint& endAddress, bool rva)
 {
 	if (NtHeader != nullptr)
 	{
-		startAddress = NtHeader->OptionalHeader.BaseOfCode + NtHeader->OptionalHeader.ImageBase;
-		endAddress = NtHeader->OptionalHeader.BaseOfCode + NtHeader->OptionalHeader.SizeOfCode + NtHeader->OptionalHeader.ImageBase;
+		startAddress = NtHeader->OptionalHeader.BaseOfCode;
+		endAddress = NtHeader->OptionalHeader.BaseOfCode + NtHeader->OptionalHeader.SizeOfCode;
+
+		// align code section size with section alignment value
+		if (endAddress < NtHeader->OptionalHeader.SectionAlignment)
+		{
+			endAddress = NtHeader->OptionalHeader.SectionAlignment;
+		}
+		if (endAddress % NtHeader->OptionalHeader.SectionAlignment > 0)
+		{
+			duint multiplier = endAddress / NtHeader->OptionalHeader.SectionAlignment;
+			if (multiplier > 0)
+			{
+				endAddress = ++multiplier * NtHeader->OptionalHeader.SectionAlignment;
+			}
+		}
+		
+		if (rva)
+		{
+			startAddress += NtHeader->OptionalHeader.ImageBase;
+			endAddress += NtHeader->OptionalHeader.ImageBase;
+		}
+
+		--endAddress;
 		return true;
 	}
 
 	return false;
+}
+
+duint PEParser::EntryPoint(bool rva)
+{
+	return rva ? NtHeader->OptionalHeader.AddressOfEntryPoint + NtHeader->OptionalHeader.ImageBase :
+				 NtHeader->OptionalHeader.AddressOfEntryPoint;
+}
+
+int PEParser::ExecutableSections()
+{
+	duint startCodeBase = 0;
+	duint endCodeBase = 0;
+	if(!CodeSection(startCodeBase, endCodeBase, false))
+	{
+		return -1;
+	}
+
+	// check if other sections have IMAGE_SCN_CNT_CODE and IMAGE_SCN_MEM_EXECUTE set
+	int additionalSections = 0;
+	for (const auto section : Sections)
+	{
+		// exclude code section and sections with size equals zero
+		if (section->Misc.VirtualSize == 0 ||
+			section->VirtualAddress >= startCodeBase &&
+			(section->VirtualAddress + section->Misc.VirtualSize) <= endCodeBase)
+		{
+			continue;
+		}
+		
+		if(section->Characteristics & IMAGE_SCN_CNT_CODE || 
+			section->Characteristics & IMAGE_SCN_MEM_EXECUTE)
+		{
+			additionalSections++;
+		}		
+	}
+
+	return additionalSections;
 }

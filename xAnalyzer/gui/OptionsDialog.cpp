@@ -36,10 +36,8 @@ OptionsDialog::~OptionsDialog()
 void OptionsDialog::on_btnSaveSettings_clicked()
 {
     AnalyzerHub::pSettings.AutoAnalysis = ui->checkAutoAnalysis->isChecked();
-    AnalyzerHub::pSettings.ExtendedAnalysis = ui->checkExtendedAnalysis->isChecked();
+    AnalyzerHub::pSettings.PreliminaryAnalysis = ui->checkPreliminary->isChecked();
     AnalyzerHub::pSettings.UndefFunctions = ui->checkUndefFunctions->isChecked();
-    AnalyzerHub::pSettings.SmartTrack = ui->checkSmartTracking->isChecked();
-    AnalyzerHub::pSettings.AnalyzeEntropy = ui->checkEntropy->isChecked();
 
     AnalyzerHub::pSettings.ClearAutocomments = ui->checkClrAutoComments->isChecked();
     AnalyzerHub::pSettings.ClearAutolabels = ui->checkClrAutoLabels->isChecked();
@@ -47,11 +45,11 @@ void OptionsDialog::on_btnSaveSettings_clicked()
     AnalyzerHub::pSettings.ClearUserlabels = ui->checkClrUserLabels->isChecked();
     if(ui->radUserCom->isChecked())
     {
-        AnalyzerHub::pSettings.commentType = AnalyzerHub::CommentType::TypeUserComment;
+        AnalyzerHub::pSettings.AnnotationType = AnalyzerHub::CommentType::TypeUserComment;
     }
     else if(ui->radAutoCom->isChecked())
     {
-        AnalyzerHub::pSettings.commentType = AnalyzerHub::CommentType::TypeAutoComment;
+        AnalyzerHub::pSettings.AnnotationType = AnalyzerHub::CommentType::TypeAutoComment;
     }
 
     // TODO: remove
@@ -70,21 +68,19 @@ void OptionsDialog::LoadSettings()
     QtPlugin::LoadSettings();
 
     ui->checkAutoAnalysis->setChecked(AnalyzerHub::pSettings.AutoAnalysis);
-    ui->checkEntropy->setEnabled(AnalyzerHub::pSettings.AutoAnalysis);
-    ui->checkEntropy->setChecked(AnalyzerHub::pSettings.AnalyzeEntropy);
-    ui->checkExtendedAnalysis->setChecked(AnalyzerHub::pSettings.ExtendedAnalysis);
+    ui->checkPreliminary->setEnabled(AnalyzerHub::pSettings.AutoAnalysis);
+    ui->checkPreliminary->setChecked(AnalyzerHub::pSettings.PreliminaryAnalysis);
     ui->checkUndefFunctions->setChecked(AnalyzerHub::pSettings.UndefFunctions);
-    ui->checkSmartTracking->setChecked(AnalyzerHub::pSettings.SmartTrack);
 
     ui->checkClrAutoComments->setChecked(AnalyzerHub::pSettings.ClearAutocomments);
     ui->checkClrAutoLabels->setChecked(AnalyzerHub::pSettings.ClearAutolabels);
     ui->checkClrUserComments->setChecked(AnalyzerHub::pSettings.ClearUsercomments);
     ui->checkClrUserLabels->setChecked(AnalyzerHub::pSettings.ClearUserlabels);
-    if(AnalyzerHub::pSettings.commentType == AnalyzerHub::CommentType::TypeUserComment)
+    if(AnalyzerHub::pSettings.AnnotationType == AnalyzerHub::CommentType::TypeUserComment)
     {
          ui->radUserCom->setChecked(true);
     }
-    else if(AnalyzerHub::pSettings.commentType == AnalyzerHub::CommentType::TypeAutoComment)
+    else if(AnalyzerHub::pSettings.AnnotationType == AnalyzerHub::CommentType::TypeAutoComment)
     {
         ui->radAutoCom->setChecked(true);
     }
@@ -92,5 +88,5 @@ void OptionsDialog::LoadSettings()
 
 void OptionsDialog::on_checkAutoAnalysis_clicked()
 {
-    ui->checkEntropy->setEnabled(ui->checkAutoAnalysis->isChecked());
+    ui->checkPreliminary->setEnabled(ui->checkAutoAnalysis->isChecked());
 }

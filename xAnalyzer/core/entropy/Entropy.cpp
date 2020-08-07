@@ -16,7 +16,7 @@ Entropy::Entropy(std::string pFileName)
 /// </summary>
 /// <returns></returns>
 /// Refs: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.120.9861&rep=rep1&type=pdf
-bool Entropy::IsPacked()
+bool Entropy::IsHigh()
 {
 	return (GetEntropy() > packedEntropyThreshold);
 }

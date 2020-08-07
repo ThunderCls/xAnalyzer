@@ -2,11 +2,11 @@
 
 #include "Analysis.h"
 
-class ModuleAnalysis : public Analysis
+class SectionAnalysis : public Analysis
 {
 public:
-	ModuleAnalysis();
-	virtual ~ModuleAnalysis() = default;
+	SectionAnalysis(const char* exePath);
+	virtual ~SectionAnalysis() = default;
 	
 	void RunAnalysis() override;
 	void RemoveAnalysis() override;
@@ -14,9 +14,6 @@ public:
 private:
 	void SetAnalysisRange();
 	void RunDbgAnalysisCmds();
-	void AnalyzeByteRange() override;
-	void RunPreliminaryAnalysis();
-	bool IsExecutablePacked();
-
+	bool RunPreliminaryAnalysis();
 	void ProcessVbFunctionCalls(const duint startAddr, const duint size = 0);
 };

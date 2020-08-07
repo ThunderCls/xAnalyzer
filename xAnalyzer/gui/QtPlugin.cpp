@@ -173,7 +173,7 @@ bool QtPlugin::LaunchAnalyzerTask(QString action, AnalyzerHub::AnalyzerMode anal
     }
     else if(action == "module")
     {
-        AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+        AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeSection;
     }
 
     RunAnalyzer();
@@ -215,9 +215,9 @@ HUB_EXPIMP void QtPlugin::CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
             RunAnalyzer();
             break;
 
-        case QtPlugin::AnalyzeModule:
+        case QtPlugin::AnalyzeSection:
             //DbgCmdExec("xanal module");
-            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeSection;
             AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
             RunAnalyzer();
             break;
@@ -236,9 +236,9 @@ HUB_EXPIMP void QtPlugin::CBMENUENTRY(CBTYPE cbType, PLUG_CB_MENUENTRY* info)
             RunAnalyzer();
             break;
 
-        case QtPlugin::RemoveModule:
+        case QtPlugin::RemoveSection:
             //DbgCmdExec("xanalremove module");
-            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+            AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeSection;
             AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeRemove;
             RunAnalyzer();
             break;
@@ -259,7 +259,7 @@ HUB_EXPIMP void QtPlugin::CBBREAKPOINT(CBTYPE cbType, PLUG_CB_BREAKPOINT* bpInfo
         {
             if(!DebugeeDatabaseExists())
             {
-                AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeModule;
+                AnalyzerHub::analysisType = AnalyzerHub::AnalysisType::TypeSection;
                 AnalyzerHub::analyzerMode = AnalyzerHub::AnalyzerMode::ModeAnalyze;
                 RunAnalyzer();
             }
@@ -353,15 +353,13 @@ void QtPlugin::LoadSettings()
         //settings->endGroup();
 
         qSettings->beginGroup("Analysis");
-        qSettings->setValue("Extended", "true");
-        qSettings->setValue("UndefFunctions", "true");
-        qSettings->setValue("SmartTrack", "true");
         qSettings->setValue("Auto", "false");
-        qSettings->setValue("Entropy", "false");
+        qSettings->setValue("PreliminaryAnalysis", "false");
+        qSettings->setValue("UndefFunctions", "false");
         qSettings->endGroup();
 
         qSettings->beginGroup("Data");
-        qSettings->setValue("CommentType", 1);
+        qSettings->setValue("AnnotationType", 1);
         qSettings->setValue("ClearUserComments", "true");
         qSettings->setValue("ClearUserLabels", "true");
         qSettings->setValue("ClearAutoComments", "true");
@@ -373,15 +371,13 @@ void QtPlugin::LoadSettings()
 
     // read values
     qSettings->beginGroup("Analysis");
-    AnalyzerHub::pSettings.ExtendedAnalysis = qSettings->value("Extended").toBool();
-    AnalyzerHub::pSettings.UndefFunctions = qSettings->value("UndefFunctions").toBool();
-    AnalyzerHub::pSettings.SmartTrack = qSettings->value("SmartTrack").toBool();
     AnalyzerHub::pSettings.AutoAnalysis = qSettings->value("Auto").toBool();
-    AnalyzerHub::pSettings.AnalyzeEntropy = qSettings->value("Entropy").toBool();
+    AnalyzerHub::pSettings.PreliminaryAnalysis = qSettings->value("PreliminaryAnalysis").toBool();
+    AnalyzerHub::pSettings.UndefFunctions = qSettings->value("UndefFunctions").toBool();
     qSettings->endGroup();
 
     qSettings->beginGroup("Data");
-    AnalyzerHub::pSettings.commentType = static_cast<AnalyzerHub::CommentType>(qSettings->value("CommentType").toInt());
+    AnalyzerHub::pSettings.AnnotationType = static_cast<AnalyzerHub::CommentType>(qSettings->value("AnnotationType").toInt());
     AnalyzerHub::pSettings.ClearUsercomments = qSettings->value("ClearUserComments").toBool();
     AnalyzerHub::pSettings.ClearUserlabels = qSettings->value("ClearUserLabels").toBool();
     AnalyzerHub::pSettings.ClearAutocomments = qSettings->value("ClearAutoComments").toBool();
@@ -395,17 +391,15 @@ void QtPlugin::LoadSettings()
 void QtPlugin::SaveSettings()
 {
     qSettings->beginGroup("Analysis");
-    qSettings->setValue("Extended", AnalyzerHub::pSettings.ExtendedAnalysis);
+    qSettings->setValue("Auto", AnalyzerHub::pSettings.AutoAnalysis);
+    qSettings->setValue("PreliminaryAnalysis", AnalyzerHub::pSettings.PreliminaryAnalysis);
     qSettings->setValue("UndefFunctions", AnalyzerHub::pSettings.UndefFunctions);
-    qSettings->setValue("SmartTrack", AnalyzerHub::pSettings.SmartTrack);
     //TODO: REMOVE
     //qDebug().nospace().noquote() << "pSettings Auto: " << AnalyzerHub::pSettings.autoAnalysis;
-    qSettings->setValue("Auto", AnalyzerHub::pSettings.AutoAnalysis);
-    qSettings->setValue("Entropy", AnalyzerHub::pSettings.AnalyzeEntropy);
     qSettings->endGroup();
 
     qSettings->beginGroup("Data");
-    qSettings->setValue("CommentType", static_cast<int>(AnalyzerHub::pSettings.commentType));
+    qSettings->setValue("AnnotationType", static_cast<int>(AnalyzerHub::pSettings.AnnotationType));
     qSettings->setValue("ClearUserComments", AnalyzerHub::pSettings.ClearUsercomments);
     qSettings->setValue("ClearUserLabels", AnalyzerHub::pSettings.ClearUserlabels);
     qSettings->setValue("ClearAutoComments", AnalyzerHub::pSettings.ClearAutocomments);
@@ -504,7 +498,7 @@ void QtPlugin::CreatePluginMenu()
         iconFile.close();
     }
 
-    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::AnalyzeModule, "&Analyze Module");
+    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::AnalyzeSection, "&Analyze Section");
     iconFile.setFileName(":/icons/images/analexe.png");
     if (iconFile.open(QIODevice::ReadOnly))
     {
@@ -512,13 +506,13 @@ void QtPlugin::CreatePluginMenu()
         ICONDATA icon;
         icon.data = arr.data();
         icon.size = arr.size();
-        _plugin_menuentryseticon(Plugin::handle, QtPlugin::AnalyzeModule, &icon);
+        _plugin_menuentryseticon(Plugin::handle, QtPlugin::AnalyzeSection, &icon);
         iconFile.close();
     }
 
     _plugin_menuaddseparator(Plugin::hMenuDisasm);
 
-    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::RemoveSelection, "&Rollback Selection");
+    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::RemoveSelection, "&Restore Selection");
     iconFile.setFileName(":/icons/images/remselection.png");
     if (iconFile.open(QIODevice::ReadOnly))
     {
@@ -530,7 +524,7 @@ void QtPlugin::CreatePluginMenu()
         iconFile.close();
     }
 
-    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::RemoveFunction, "&Rollback Function");
+    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::RemoveFunction, "&Restore Function");
     iconFile.setFileName(":/icons/images/remfunction.png");
     if (iconFile.open(QIODevice::ReadOnly))
     {
@@ -542,7 +536,7 @@ void QtPlugin::CreatePluginMenu()
         iconFile.close();
     }
 
-    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::RemoveModule, "&Rollback Module");
+    _plugin_menuaddentry(Plugin::hMenuDisasm, QtPlugin::RemoveSection, "&Restore Section");
     iconFile.setFileName(":/icons/images/remexe.png");
     if (iconFile.open(QIODevice::ReadOnly))
     {
@@ -550,7 +544,7 @@ void QtPlugin::CreatePluginMenu()
         ICONDATA icon;
         icon.data = arr.data();
         icon.size = arr.size();
-        _plugin_menuentryseticon(Plugin::handle, QtPlugin::RemoveModule, &icon);
+        _plugin_menuentryseticon(Plugin::handle, QtPlugin::RemoveSection, &icon);
         iconFile.close();
     }
 }

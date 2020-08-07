@@ -15,7 +15,7 @@ public:
 
 	void RunAnalysis();
 	void RemoveAnalysis();
-	
+
 private:
 	std::unique_ptr<Analysis> analysis;
 	void BuildProperAnalysisObject();

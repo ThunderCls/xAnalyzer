@@ -1,7 +1,7 @@
 #include "SelectionAnalysis.h"
 #include "../AnalyzerCore.h"
 
-SelectionAnalysis::SelectionAnalysis()
+SelectionAnalysis::SelectionAnalysis(const char *exePath) : Analysis(exePath)
 {
 	SetAnalysisRange();
 }
@@ -15,12 +15,7 @@ void SelectionAnalysis::RunAnalysis()
 		RunLinearAnalysis();
 	}
 
-	AnalyzeByteRange();
-}
-
-void SelectionAnalysis::AnalyzeByteRange()
-{
-	
+	AnalyzeBytesRange(this->startAddress, this->endAddress);
 }
 
 void SelectionAnalysis::RemoveAnalysis()

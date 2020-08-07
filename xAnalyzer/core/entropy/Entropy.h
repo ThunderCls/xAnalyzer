@@ -6,7 +6,7 @@ public:
 	Entropy(std::string pFileName);
 	double GetEntropy();
 	double GetEntropyFromDisk(); // TODO: maybe implement ?
-	bool IsPacked();
+	bool IsHigh();
 
 private:
 	const double packedEntropyThreshold = 6.75;

@@ -45,7 +45,7 @@
        <x>10</x>
        <y>10</y>
        <width>221</width>
-       <height>121</height>
+       <height>81</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -57,30 +57,16 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkEntropy">
+       <widget class="QCheckBox" name="checkPreliminary">
         <property name="text">
-         <string>Analyze Entropy</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkExtendedAnalysis">
-        <property name="text">
-         <string>Extended Analysis</string>
+         <string>Preliminary Analysis</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="checkUndefFunctions">
         <property name="text">
-         <string>Analyze Undefined Functions</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkSmartTracking">
-        <property name="text">
-         <string>Function Smart Tracking</string>
+         <string>Undefined Functions</string>
         </property>
        </widget>
       </item>
@@ -141,7 +127,7 @@
       </rect>
      </property>
      <property name="title">
-      <string> Comments Type </string>
+      <string> Annotations Type </string>
      </property>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">

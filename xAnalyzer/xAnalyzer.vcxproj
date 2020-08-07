@@ -21,13 +21,17 @@
   <ItemGroup>
     <ClInclude Include="core\analysis\Analysis.h" />
     <ClInclude Include="core\AnalyzerCore.h" />
+    <ClInclude Include="core\data\ApiDefinition.h" />
+    <ClInclude Include="core\data\DataAccess.h" />
+    <ClInclude Include="core\data\HeaderDefinition.h" />
     <ClInclude Include="core\entropy\Entropy.h" />
     <ClInclude Include="core\analysis\FunctionAnalysis.h" />
-    <ClInclude Include="core\analysis\ModuleAnalysis.h" />
+    <ClInclude Include="core\analysis\SectionAnalysis.h" />
     <ClInclude Include="core\pe\PEParser.h" />
     <ClInclude Include="core\Plugin.h" />
     <ClInclude Include="core\AnalyzerHub.h" />
     <ClInclude Include="core\analysis\SelectionAnalysis.h" />
+    <ClInclude Include="core\utils\ContainerUtils.h" />
     <ClInclude Include="core\utils\StringUtils.h" />
     <ClInclude Include="pluginsdk\bridgegraph.h" />
     <ClInclude Include="pluginsdk\bridgelist.h" />
@@ -67,9 +71,12 @@
     <ClCompile Include="core\analysis\Analysis.cpp" />
     <ClCompile Include="core\AnalyzerCore.cpp" />
     <ClCompile Include="core\AnalyzerHub.cpp" />
+    <ClCompile Include="core\data\ApiDefinition.cpp" />
+    <ClCompile Include="core\data\DataAccess.cpp" />
+    <ClCompile Include="core\data\HeaderDefinition.cpp" />
     <ClCompile Include="core\entropy\Entropy.cpp" />
     <ClCompile Include="core\analysis\FunctionAnalysis.cpp" />
-    <ClCompile Include="core\analysis\ModuleAnalysis.cpp" />
+    <ClCompile Include="core\analysis\SectionAnalysis.cpp" />
     <ClCompile Include="core\pe\PEParser.cpp" />
     <ClCompile Include="core\analysis\SelectionAnalysis.cpp" />
     <ClCompile Include="core\utils\StringUtils.cpp" />

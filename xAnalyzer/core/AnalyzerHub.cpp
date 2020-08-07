@@ -21,7 +21,6 @@ BOOL WINAPI DllMain(
 	return TRUE;
 }
 
-
 namespace AnalyzerHub
 {
 	AnalysisType analysisType = TypeNone;

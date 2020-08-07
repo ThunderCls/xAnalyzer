@@ -1,7 +1,7 @@
 #include "FunctionAnalysis.h"
 #include "../AnalyzerHub.h"
 
-FunctionAnalysis::FunctionAnalysis()
+FunctionAnalysis::FunctionAnalysis(const char *exePath) : Analysis(exePath)
 {
 	SetAnalysisRange();
 }
@@ -16,12 +16,7 @@ void FunctionAnalysis::RunAnalysis()
 	}
 
 	RunFunctionAnalysis(this->startAddress); // get function line and xrefs
-	AnalyzeByteRange();
-}
-
-void FunctionAnalysis::AnalyzeByteRange()
-{
-	
+	AnalyzeBytesRange(this->startAddress, this->endAddress);
 }
 
 void FunctionAnalysis::RemoveAnalysis()
@@ -59,14 +54,14 @@ void FunctionAnalysis::GetFunctionAddressRange(duint &startAddress, duint &endAd
 
 	do
 	{
-		BASIC_INSTRUCTION_INFO bii;
-		DbgDisasmFastAt(addrPointer, &bii);
+		BASIC_INSTRUCTION_INFO instruction;
+		DbgDisasmFastAt(addrPointer, &instruction);
 
 		if (start == 0)
 		{
 			// do backward disassembling (using xrefs) in order to find the beginning of the function
 			// backtrace until a reference, ep or the beginning of the code section is reached
-			if (IsProlog(&bii) || (addrPointer == entryPoint) || (addrPointer == sectionStart))
+			if (IsProlog(instruction) || (addrPointer == entryPoint) || (addrPointer == sectionStart))
 			{
 				start = addrPointer;
 				addrPointer = selectedAddr; // reset the pointer to the select address
@@ -79,17 +74,17 @@ void FunctionAnalysis::GetFunctionAddressRange(duint &startAddress, duint &endAd
 		else
 		{
 			// do forward disassembling in order to find the end of the function
-			if (IsEpilog(&bii))
+			if (IsEpilog(instruction))
 			{
 				end = addrPointer;
 			}
 			else
 			{
-				addrPointer += bii.size;
+				addrPointer += instruction.size;
 			}
 		}
 
-		memset(&bii, 0, sizeof(BASIC_INSTRUCTION_INFO));
+		memset(&instruction, 0, sizeof(BASIC_INSTRUCTION_INFO));
 	} while (start == 0 || end == 0);
 
 	startAddress = start;

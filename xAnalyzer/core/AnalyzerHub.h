@@ -27,7 +27,7 @@ namespace AnalyzerHub
 		TypeNone = 0,
 		TypeSelection,
 		TypeFunction,
-		TypeModule
+		TypeSection
 	}AnalysisType;
 	extern AnalysisType analysisType;
 	
@@ -47,17 +47,15 @@ namespace AnalyzerHub
 	}CommentType;
 
 	typedef struct
-	{
-		bool UndefFunctions;
+	{		
 		bool AutoAnalysis;
-		bool AnalyzeEntropy;
-		bool ExtendedAnalysis;
+		bool PreliminaryAnalysis;
+		bool UndefFunctions;
 		bool ClearUsercomments;
 		bool ClearAutocomments;
 		bool ClearUserlabels;
 		bool ClearAutolabels;
-		bool SmartTrack;
-		CommentType commentType;
+		CommentType AnnotationType;
 	}PluginSettings;
 	extern PluginSettings pSettings;
 	

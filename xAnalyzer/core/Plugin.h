@@ -2,10 +2,12 @@
 
 // workaround for compiler dependent relative path
 // https://forum.qt.io/topic/109248/is-there-a-define-for-checking-if-the-compiler-is-qt/6
-#ifdef QT_CORE_LIB
-#define UPPERPATH "../"
+#if defined(QT_CORE_LIB)
+	#define PATH "../"
+#elif defined(UNIT_TEST)
+	#define PATH "../xAnalyzer/"
 #else
-#define UPPERPATH "./"
+	#define PATH "./"
 #endif
 
 #include "../pluginsdk/bridgemain.h"
@@ -35,19 +37,19 @@
 #include "../pluginsdk/XEDParse/XEDParse.h"
 
 #ifdef _WIN64
-#pragma comment(lib, UPPERPATH"pluginsdk/x64dbg.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/x64bridge.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/DeviceNameResolver/DeviceNameResolver_x64.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/jansson/jansson_x64.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/lz4/lz4_x64.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/TitanEngine/TitanEngine_x64.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/XEDParse/XEDParse_x64.lib")
+#pragma comment(lib, PATH"pluginsdk/x64dbg.lib")
+#pragma comment(lib, PATH"pluginsdk/x64bridge.lib")
+#pragma comment(lib, PATH"pluginsdk/DeviceNameResolver/DeviceNameResolver_x64.lib")
+#pragma comment(lib, PATH"pluginsdk/jansson/jansson_x64.lib")
+#pragma comment(lib, PATH"pluginsdk/lz4/lz4_x64.lib")
+#pragma comment(lib, PATH"pluginsdk/TitanEngine/TitanEngine_x64.lib")
+#pragma comment(lib, PATH"pluginsdk/XEDParse/XEDParse_x64.lib")
 #else
-#pragma comment(lib, UPPERPATH"pluginsdk/x32dbg.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/x32bridge.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/DeviceNameResolver/DeviceNameResolver_x86.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/jansson/jansson_x86.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/lz4/lz4_x86.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/TitanEngine/TitanEngine_x86.lib")
-#pragma comment(lib, UPPERPATH"pluginsdk/XEDParse/XEDParse_x86.lib")
+#pragma comment(lib, PATH"pluginsdk/x32dbg.lib")
+#pragma comment(lib, PATH"pluginsdk/x32bridge.lib")
+#pragma comment(lib, PATH"pluginsdk/DeviceNameResolver/DeviceNameResolver_x86.lib")
+#pragma comment(lib, PATH"pluginsdk/jansson/jansson_x86.lib")
+#pragma comment(lib, PATH"pluginsdk/lz4/lz4_x86.lib")
+#pragma comment(lib, PATH"pluginsdk/TitanEngine/TitanEngine_x86.lib")
+#pragma comment(lib, PATH"pluginsdk/XEDParse/XEDParse_x86.lib")
 #endif //_WIN64

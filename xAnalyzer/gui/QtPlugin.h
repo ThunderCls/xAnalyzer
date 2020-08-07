@@ -14,10 +14,10 @@ namespace QtPlugin
         About,
         AnalyzeSelection,
         AnalyzeFunction,
-        AnalyzeModule,
+        AnalyzeSection,
         RemoveSelection,
         RemoveFunction,
-        RemoveModule
+        RemoveSection
     };
 
     bool Init();
