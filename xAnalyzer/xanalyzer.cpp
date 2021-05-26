@@ -324,6 +324,9 @@ void AnalyzeBytesRange(duint dwEntry, duint dwExit)
 		inst.Address = CurrentAddress; // save address of instruction
 
 		DbgDisasmFastAt(CurrentAddress, &bii);
+		DISASM_INSTR instruction = { 0 };
+		DbgDisasmAt(CurrentAddress, &instruction);
+		
 		prolog = IsProlog(&bii, CurrentAddress); // function prolog flag
 		epilog = IsEpilog(&bii); // function epilog flag
 		if (bii.call && bii.branch)
@@ -1713,15 +1716,18 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 										break;
 									}
 
-									size_t chars_left = MAX_COMMENT_SIZE - (strlen(szConstantComment) + constant.length() + 5);
+									//size_t chars_left = MAX_COMMENT_SIZE - (strlen(szConstantComment) + constant.length() + 5);
 									// check length to avoid BoF
-									if (chars_left >= safety_chars) // 5 chars left for safety
+									if ((strlen(szConstantComment) + constant.length() + 5) < MAX_COMMENT_SIZE) // 5 chars left for safety
 									{
 										if (orOperator)
 											strcat_s(szConstantComment, MAX_COMMENT_SIZE, " | ");
 
 										strcat_s(szConstantComment, MAX_COMMENT_SIZE, constant.c_str());
 									}
+									else
+										break;
+									
 									orOperator = true;
 								}
 							}
@@ -1746,14 +1752,10 @@ bool IsHeaderConstant(const char *CommentString, char *szComment, char *inst_sou
 		}
 
 		// check length to avoid BoF
-		size_t chars_left = MAX_COMMENT_SIZE - (strlen(szComment) + safety_chars);
-		if (chars_left >= (int)strlen(szConstantComment)) // 5 chars left for safety
+		if ((strlen(szConstantComment) + strlen(szComment) + 5) < MAX_COMMENT_SIZE) // 5 chars left for safety
 			strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
 		else
-		{
-			strcpy_s(&szConstantComment[chars_left], MAX_COMMENT_SIZE, "...\0");
-			strcat_s(szComment, MAX_COMMENT_SIZE, szConstantComment);
-		}
+			strcat_s(szComment, MAX_COMMENT_SIZE, "...");
 	}
 	
 	return result;

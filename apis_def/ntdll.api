@@ -2606,6 +2606,22 @@ ParamCount=3
 ParamCount=4
 Header=ntdll.h.api;
 @=NtQuerySystemInformation
+[RtlGetNativeSystemInformation]
+1=[SYSTEM_INFORMATION_CLASS] SystemInformationClass
+2=PVOID SystemInformation
+3=ULONG Length
+4=PULONG ResultLength
+ParamCount=4
+Header=ntdll.h.api;
+@=RtlGetNativeSystemInformation
+[NtWow64GetNativeSystemInformation]
+1=[SYSTEM_INFORMATION_CLASS] SystemInformationClass
+2=PVOID SystemInformation
+3=ULONG Length
+4=PULONG ResultLength
+ParamCount=4
+Header=ntdll.h.api;
+@=NtWow64GetNativeSystemInformation
 [NtSetSystemInformation]
 1=[SYSTEM_INFORMATION_CLASS] SystemInformationClass
 2=PVOID SystemInformation
