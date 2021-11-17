@@ -46,9 +46,11 @@ Download [HERE](https://github.com/ThunderCls/xAnalyzer/releases/latest) the lat
 ## Installation
 1. Download the latest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/latest)
 
-2. Copy *xAnalyzer.dp32/xAnalyzer.dp64* files and *apis_def* folder to x32/x64 respective plugins directories of x64dbg
+1. Extract *apis_def.zip*
 
-3. Look under the "*Plugins*" menu in the main x64dbg window or in the secondary menu in the Disasm window as well for an "*xAnalyzer*" entry
+1. Copy *xAnalyzer.dp32/xAnalyzer.dp64* and the *apis_def* folder to the respective plugin directories in x64dbg
+
+1. Look under the "*Plugins*" menu in the main x64dbg window or in the secondary menu in the Disasm window as well for an "*xAnalyzer*" entry
 
 * If, after following the above steps can't see the menu entry under the "*Plugins*" menu, head to the "*Log*" tab and check for any message from the plugin that could give you an error solution hint
 
