@@ -1,7 +1,7 @@
 version: 2.5.{build}
 skip_tags: true
 skip_branch_with_pr: true
-image: Visual Studio 2017
+image: Visual Studio 2022
 configuration: Release
 platform:
 - x86
@@ -16,7 +16,7 @@ only_commits:
 build_script:
 - cmd: >-
     msbuild.exe xAnalyzer.sln /verbosity:minimal /t:Build /p:Configuration=Release;Platform=Win32
-    
+
     msbuild.exe xAnalyzer.sln /verbosity:minimal /t:Build /p:Configuration=Release;Platform=x64
 artifacts:
 - path: bin\x32\xAnalyzer.dp32
