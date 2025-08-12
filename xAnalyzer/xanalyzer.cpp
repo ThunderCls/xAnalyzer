@@ -2536,7 +2536,7 @@ duint GetArgumentIndex(duint CurrentParam, vector<INSTRUCTIONSTACK> &arguments)
 {
 	bool foundmatch = false;
 	bool foundStackPointer = false;
-	int argIndex = 0;
+	size_t argIndex = 0;
 
 	CurrentParam--; // set proper zero based index
 	const std::regex re(R"((ESP|esp|RSP|rsp)\+?(.*[^\]])?)"); // pattern like [ESP+xxx], [esp+xxx], [RSP+xxx], [rsp+xxx]
