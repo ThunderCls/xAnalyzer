@@ -1331,20 +1331,23 @@ string StripFunctNameFromInst(char *instruction)
 
 	char subPointerNameStripped[GUI_MAX_DISASSEMBLY_SIZE] = "";
 	char *subPointer = GetInstructionSource(instruction);
-	char *subPointerName = strchr(subPointer, '<');
-	if (subPointerName)
+	if (subPointer)
 	{
-		duint index = 0;
-		while (index < strlen(subPointerName))
+		char *subPointerName = strchr(subPointer, '<');
+		if (subPointerName)
 		{
-			subPointerNameStripped[index] = subPointerName[index];
-			if (subPointerName[index] == '>')
-				break;
+			duint index = 0;
+			while (index < strlen(subPointerName))
+			{
+				subPointerNameStripped[index] = subPointerName[index];
+				if (subPointerName[index] == '>')
+					break;
 
-			index++;
+				index++;
+			}
+
+			subName = subPointerNameStripped;
 		}
-
-		subName = subPointerNameStripped;
 	}
 
 	return subName;
